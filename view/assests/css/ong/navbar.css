@@ -1,0 +1,201 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+:root{
+    --cor-roxa-degrade: linear-gradient(45deg,#3E00A3,#DA70FF);
+    --cor-input: #FFFFFF;
+    --cor-texto-input: #B6B6B6;
+    --cor-texto-padrao: #000000;
+    --cor-icone: #8B1CD3;  
+    --cor-texto-branco: #FFFFFF;  
+}
+
+body{
+    font-family: Roboto, sans-serif;
+}
+
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: var(--cor-roxa-degrade);
+    padding: 10px 5px;
+    height: 8vh;
+    a{
+      color: var(--cor-texto-branco);
+        text-decoration: none;
+        transition: 0.3s;
+        margin-left: 20px;
+    }
+    a:hover{
+      opacity: 0.7;
+    }
+}
+
+.logo-navbar{
+    max-width: 200px;
+}
+
+.nav-links{
+    display: flex;
+    letter-spacing: 1px;
+    
+    li{
+        margin: 0 25px;
+        margin-left: 80px;
+    }
+}
+
+.pesquisar {
+  position: relative;
+  box-sizing: border-box;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 200px;
+}
+
+.mainbox {
+  position: absolute;
+  right: 10px; /* Posiciona o campo de pesquisa à direita da navbar */
+  width: 50px; /* Tamanho inicial */
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 160px;
+  background-color: transparent;
+  border: solid;
+  border-color: var(--cor-input);
+  transition: width 0.3s ease; /* Transição apenas na largura */
+}
+
+.checkbox:focus {
+  border: none;
+  outline: none;
+}
+
+.checkbox:checked ~ .mainbox {
+  width: 230px; /* Expande a caixa para o tamanho completo */
+}
+
+.checkbox {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 9;
+  cursor: pointer;
+  appearance: none;
+}
+
+.checkbox:checked ~ .mainbox .search_input {
+  opacity: 1; /* Torna o input visível */
+  width: 170px; /* Largura do input quando expandido */
+  visibility: visible;
+  transition: width 0.3s ease, opacity 0.3s ease, visibility 0s 0s; /* Transições de visibilidade e largura */
+}
+
+.search_input {
+  box-sizing: border-box;
+  height: 100%;
+  width: 0px; /* Inicialmente invisível */
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  font-size: 1em;
+  color: var(--cor-input);
+  opacity: 0; /* Inicialmente invisível */
+  visibility: hidden; /* Não ocupa espaço */
+  transition: width 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s; /* Transições de visibilidade e largura */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search_input::placeholder {
+  color: var(--cor-input);
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;   /* Alinha verticalmente */
+  justify-content: center; /* Alinha horizontalmente */
+  box-sizing: border-box;
+  padding-top: 5px;
+  width: 100%; /* Ocupa todo o espaço disponível */
+  transition: padding-right 0.3s ease;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+
+.search_icon {
+  box-sizing: border-box;
+  fill: var(--cor-input);
+  font-size: 1.3em;
+}
+
+
+.admin-moldure {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-background);
+  border-radius: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.admin-icon {
+  color: aliceblue;
+  scale: 80%;
+}
+
+
+  .admin-moldure{
+    width: 70px ;
+    height: 70px;
+    background: var(--gradient-background);
+    border-radius: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+ 
+.admin-icon{
+    color: aliceblue;
+    scale:  40%;
+}
+
+@media (max-width: 1450px){
+  
+
+.nav-links{
+  display: flex;
+  letter-spacing: 1px;
+  position: absolute;
+  top: 8vh;
+  right: 0;
+  width: 50vw;
+  height: 92vh;
+  background: var(--cor-roxa-degrade);
+  flex-direction: column;
+  align-items: center;
+  li{
+      margin: 0 25px;
+      margin-left: 10px;
+      justify-content: space-around;
+  }
+
+  .nav-links li{
+    margin-left: 0;
+    opacity: 0;
+  }
+}
+}
