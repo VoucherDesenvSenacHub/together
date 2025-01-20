@@ -46,6 +46,15 @@ body{
         margin: 0 25px;
         margin-left: 80px;
     }
+
+    #tag{
+      background-color: transparent;
+      border-color: transparent;
+      color: var(--cor-texto-branco);
+      font-family: Roboto, sans-serif;
+      font-size: medium;
+      letter-spacing: 1px;
+    }
 }
 
 .pesquisar {
@@ -61,7 +70,7 @@ body{
 .mainbox {
   position: absolute;
   right: 10px; /* Posiciona o campo de pesquisa à direita da navbar */
-  width: 50px; /* Tamanho inicial */
+  width: 90px; /* Tamanho inicial */
   height: 50px;
   display: flex;
   align-items: center;
@@ -176,34 +185,72 @@ body{
 .filtro{
   width: 100%;
   height: 437px;
-  background-color: #000000;
+  background-color: transparent;
 }
 
 
-@media (max-width: 1450px){
-  
+@media (max-width: 1400px){
+  .nav-links{
+    li{
+      margin-left: 20px;
+    }
+  }
+}
+@media (max-width: 812px) 
+{
+body{
+  overflow-x: hidden;
+}
 
 .nav-links{
-  display: flex;
   letter-spacing: 1px;
   position: absolute;
   top: 8vh;
   right: 0;
-  width: 50vw;
+  width: 30vw;
   height: 92vh;
   background: var(--cor-roxa-degrade);
   flex-direction: column;
   align-items: center;
+  z-index: -1;
   li{
       margin: 0 25px;
       margin-left: 10px;
       justify-content: space-around;
+      margin-top: 60px;
   }
 
-  .nav-links li{
-    margin-left: 0;
-    opacity: 0;
-  }
+  transform: translateX(100%);
+}
+
+.nav-links li{
+  margin-left: 0;
+  opacity: 0;
+}
+
+
+.checkbox:checked ~ .mainbox {
+  width: 300px; /* Expande a caixa para o tamanho completo */
+}
+
+.mobile-menu{
+  display: block;
+}
+
+
+.iconContainer{
+  margin-left: 0;
+  width: 40px;
+  margin-left: 10px;
+}
+
+.mainbox{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.nav-links.active{
+  transform: translateX(0);
 }
 }
 
