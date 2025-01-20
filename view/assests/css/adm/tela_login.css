@@ -97,7 +97,7 @@ main {
     border-radius: 30px;
     border: none;
     margin: 3%;
-    margin-top: 1vw;
+    margin-top: 10px;
     box-shadow: 1px 1px 3px var(--shadow);
     color: var(--shadow);
     padding: 0 0px 0px 15px;
@@ -114,7 +114,7 @@ main {
     color: var(--text-color);
     font-weight: 600;
     font-size: 16px;
-    margin-top: 2vw;
+    margin-top: 10%;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -158,20 +158,20 @@ h1 {
     font-size: 72px;
     background: -webkit-linear-gradient(#eee, #333);
     -webkit-text-fill-color: transparent;
-  }
+}
 
 
 #house-icon {
-    position: fixed;
-    z-index: 2;
-    display: flex;
-    justify-content: top;
-    margin-left: 20px;
-    margin-top: 25px;
-    scale: 140%;
     color: var(--gradient-icon);
+    justify-content: top;
+    position: absolute;
+    margin-left: 20px;
     transition: 0.5s;
+    margin-top: 25px;
     cursor: pointer;
+    display: flex;
+    scale: 140%;
+    z-index: 2;
 }
 
 #house-icon:hover {
@@ -186,24 +186,30 @@ h1 {
 @media (max-width: 768px) {
 
     .logo-together {
-        display: none;
+        width: 200px;
+        height: auto;
+
     }
 
     .box1 {
-        width: 0%;
+        width: 100%;
+        height: 9%;
+        display: block;
+
     }
 
     .box2 {
         width: 100%;
         display: flex;
-        flex-direction: column;
+        margin-top: 20px;
         align-items: center;
-        /* height: 180%; */
-        height: 400px;
-        border-radius: 30px;
+        position: relative;
     }
 
     .container {
+        flex-direction: column;
+        height: 100vh;
+        width: 300px;
         gap: 0;
     }
 
@@ -214,11 +220,16 @@ h1 {
     .input-submit {
         width: 50%;
     }
-    #house-icon{
-        margin-right: 250px;
-        margin-top: 25px;
+
+    #house-icon {
+        
+        top: 0%;
+        left: 1%;
     }
-    
+
+    main {
+        height: 0%;
+    }
 }
 
 /* Fim-Media-Area */
