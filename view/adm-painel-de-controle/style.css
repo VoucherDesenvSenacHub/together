@@ -1,0 +1,22 @@
+
+@import url(../../reset.css);
+.navbar{
+    height:103.64px;
+}
+
+.content-top{
+    display: flex;
+    justify-content: space-between;
+    .content-top-inside{
+        max-width: 300px;
+    }
+    
+}
+
+.content-bottom{
+    display: flex;
+    justify-content: space-around;
+    .content-bottom-inside{
+        max-width: 200px;
+    }
+}
