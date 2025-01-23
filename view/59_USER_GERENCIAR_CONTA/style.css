@@ -15,16 +15,16 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.perfil {
+.gerenciar-conta {
   position: absolute;
-  top: 27%;
+  top: 25%;
   left: 5%;
   display: flex;
 }
 
 .imagem {
-  width: 80px;
-  height: 80px;
+  width: 95px;
+  height: 98px;
   border-radius: 300px;
   background: linear-gradient(45deg, #3e00a3, #da70ff);
   position: absolute;
@@ -32,21 +32,23 @@ body {
   top: 0%;
 }
 
-.button {
+.button-perfil {
   background: linear-gradient(45deg, #3e00a3, #da70ff);
   color: var(--cor-fundo);
   border-radius: 300px;
-  width: 450px;
-  height: 80px;
+  border-color: none;
+  border: 1px solid;
+  width: 475px;
+  height: 100px;
   font-size: 16px;
 }
 p {
   position: absolute;
-  left: 20%;
+  left: 25%;
   top: 40%;
 }
 
-.button:hover {
+.button-perfil:hover {
   cursor: pointer;
 }
 
@@ -56,9 +58,82 @@ p {
   top: 35%;
 }
 
+.conjunto_botoes {
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  color: var(--cor-fundo);
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: none;
+  position: relative;
+  top: 300px;
+  left: 5%;
+  margin: 20px;
+  font-size: 16px;
+  .material-symbols-outlined {
+    font-size: 25px;
+    position: absolute;
+    left: 90%;
+    top: 30%;
+  }
+}
+
+.format_p {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+  font-size: 17px;
+}
+
+#icone_2 {
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  font-size: 30px;
+}
+
+.conjunto_botoes:hover {
+  cursor: pointer;
+}
+
 hr {
   border-left: thick solid 5px gray;
   height: 100%;
   position: absolute;
   left: 60%;
+  top: 0%;
+}
+
+.foto_usuario {
+  width: 175px;
+  height: 175px;
+  border-radius: 300px;
+  padding: 0%;
+}
+
+.dados_usuario {
+  position: absolute;
+  left: 75%;
+  top: 17%;
+  text-align: center;
+  padding: 4px;
+}
+
+.dados,
+h4 {
+  text-align: center;
+  font-size: 13px;
+  padding: 8px;
+}
+
+.dados,
+h3 {
+  text-align: center;
+  font-size: 16px;
+  padding: 6px;
+  justify-content: center;
+  color: var(--cor-texto-padrao);
 }

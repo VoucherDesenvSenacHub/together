@@ -11,8 +11,8 @@
       rel="stylesheet"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward_ios"
     />
     <link rel="stylesheet" href="/view/59_USER_GERENCIAR_CONTA/style.css" />
     <header>
@@ -21,9 +21,9 @@
   </head>
   <body>
     <section>
-      <div class="perfil">
+      <div class="gerenciar-conta">
         <a href="#">
-          <button type="button" class="button">
+          <button type="button" class="button-perfil">
             <img
               class="imagem"
               src="/view/59_USER_GERENCIAR_CONTA/imagens/login-foto.png"
@@ -34,7 +34,50 @@
           </button>
         </a>
       </div>
+      <div>
+        <a href="#">
+          <button class="conjunto_botoes" type="button">
+            <p class="format_p">Ongs em que eu sou voluntário</p>
+            <span class="material-symbols-outlined"> chevron_right </span>
+            <span id="icone_2" class="material-symbols-outlined">
+              handshake
+            </span>
+          </button>
+        </a>
+        <a href="#">
+          <button class="conjunto_botoes" type="button">
+            <span id="icone_2" class="material-symbols-outlined">
+              favorite
+            </span>
+            <p class="format_p">Favoritos</p>
+            <span class="material-symbols-outlined"> chevron_right </span>
+          </button>
+        </a>
+        <a href="#">
+          <button class="conjunto_botoes" type="button">
+            <p class="format_p">Historico de doação</p>
+            <span id="icone_2" class="material-symbols-outlined">
+              schedule
+            </span>
+            <span class="material-symbols-outlined"> chevron_right </span>
+          </button>
+        </a>
+      </div>
       <hr />
+      <div class="dados_usuario">
+        <img
+          class="foto_usuario"
+          src="/view/59_USER_GERENCIAR_CONTA/imagens/login-foto.png"
+          alt="foto Usuario"
+        />
+        <div class="dados">
+          <h4>Sua localização</h4>
+          <h3><strong>Nome do Usuario</strong></h3>
+          <h3><strong>Telefone do Usuario</strong></h3>
+          <h3><strong>Email do Usuario</strong></h3>
+          <h3><strong>Cpf do Usuario</strong></h3>
+        </div>
+      </div>
     </section>
   </body>
 </html>
