@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("/view/assests/css/reset.css");
+
+:root {
+  --cor-fundo: #ffffff;
+  --cor-texto: #8b1cd3;
+  --cor-fundo-card: #8b1cd3;
+  --cor-roxa-degrade: linear-gradient(45deg, #3e00a3, #da70ff);
+  --cor-texto-input: #b6b6b6;
+  --cor-texto-padrao: #000000;
+  font-size: 16px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.perfil {
+  position: absolute;
+  top: 27%;
+  left: 5%;
+  display: flex;
+}
+
+.imagem {
+  width: 80px;
+  height: 80px;
+  border-radius: 300px;
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
+.button {
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  color: var(--cor-fundo);
+  border-radius: 300px;
+  width: 450px;
+  height: 80px;
+  font-size: 16px;
+}
+p {
+  position: absolute;
+  left: 20%;
+  top: 40%;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  position: absolute;
+  left: 90%;
+  top: 35%;
+}
+
+hr {
+  border-left: thick solid 5px gray;
+  height: 100%;
+  position: absolute;
+  left: 60%;
+}
