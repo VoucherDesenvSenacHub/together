@@ -2,6 +2,7 @@
 @import url(../../reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 .navbar{
     height:103.64px;
 }
@@ -69,4 +70,73 @@
     font-size: 12px;
     color: black;
     opacity: 50%;
+}
+
+@media (max-width: 768px) {
+    .container{
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 85vh;
+        display:flex;
+        
+    }
+
+    .container-box{
+        width:50px;
+        .content-top{
+            display: flex;
+            justify-content: space-around;
+            .content-top-inside{
+                max-width: 66%;
+                flex-direction: column;
+                justify-items: center;
+                margin: 25px;
+                text-align: center;
+            }
+            .content-top-inside:hover{
+                cursor: pointer;
+                
+            }
+            .content-top-inside {
+                img{
+                    max-width: 20px;
+                }
+                h2{
+                    font-size: 13px;
+                }
+                span{
+                    display: none;
+                }
+            }
+            
+            
+        }
+
+        .content-bottom{
+            display:flex;
+            justify-content: center;
+            .content-bottom-inside{
+                max-width: 66%;
+                flex-direction: column;
+                justify-items: center;
+                margin: 25px;
+                text-align: center;
+            }
+            .content-bottom-inside:hover{
+                cursor: pointer;
+                
+            }
+            .content-bottom-inside {
+                img{
+                    max-width: 40px;
+                    max-height: 40px;
+                }
+                span{
+                    display: none;
+                }
+            }
+        }
+        
+    }
 }
