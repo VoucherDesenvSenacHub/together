@@ -118,7 +118,6 @@ hr {
   position: absolute;
   left: 75%;
   top: 17%;
-  text-align: center;
   padding: 4px;
 }
 
@@ -136,4 +135,33 @@ h3 {
   padding: 6px;
   justify-content: center;
   color: var(--cor-texto-padrao);
+}
+
+@media (max-width: 890px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+  hr {
+    display: none;
+  }
+
+  .dados {
+    display: none;
+  }
+
+  .dados_usuario {
+    position: relative;
+  }
+  .gerenciar-conta {
+    position: relative;
+    top: 400px;
+    left: auto;
+  }
+  .conjunto_botoes {
+    position: relative;
+    top: 450px;
+    left: auto;
+  }
 }
