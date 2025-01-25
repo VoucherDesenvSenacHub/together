@@ -11,6 +11,7 @@
   font-size: 16px;
 }
 
+
 body {
   font-family: "Roboto", sans-serif;
   background: var(--cor-fundo);
@@ -29,7 +30,7 @@ h2 {
   color: var(--cor-roxa-degrade);
   font-weight: bold;
   font-size: 45px;
-  padding-top: 20px;
+  padding-top: 75px;
   padding-bottom: 20px;
 }
 
@@ -385,7 +386,6 @@ button:hover {
     font-size: 15px;
   }
   .card {
-    flex: 1 1 100%;
     margin: 5px;
   }
 
@@ -418,11 +418,12 @@ button:hover {
   .cards-lista {
     margin: 10px;
     padding: 2px;
-    width: 120%;
+    width: 100%;
     height: 50%;
+    justify-content: center;
   }
   .card {
-    flex: 1 1 100%;
+    flex: 1 1 21%;
     margin:0px;
   }
 
@@ -442,7 +443,7 @@ button:hover {
   }
   .card .imagem {
     position: relative;
-    width: 120px;
+    width: 130px;
     height: 200px;
   }
 
