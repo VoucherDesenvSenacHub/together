@@ -34,7 +34,7 @@
 }
 
 .sobreNosApresentationText h1{
-    font-family: Roboto;
+    font-family: 'Roboto',sans-serif;
     font-size: 64px;
     font-weight: 700;
     line-height: 25px;
@@ -43,7 +43,7 @@
 }
 
 .sobreNosApresentationText p{
-    font-family: Roboto;
+    font-family: 'Roboto',sans-serif;
     font-size: 30px;
     font-weight: 400;
     line-height: 30px;
@@ -51,4 +51,43 @@
     text-align: left;
 
 }
+.nossosPatrocinadoresCarroussel{
+    display: flex;
+    gap: 20px;
+    padding-top: 50px;
+}
 
+.nossosPatrocinadores{
+    padding-top: 225px;
+    font-family: Roboto;
+    font-size: 55px;
+    background: linear-gradient(57.52deg, #3E00A3 2.23%, #590AB4 21.71%, #7112C3 39.24%, #8B1CD3 58.23%, #AC28E8 82.58%, #DA70FF 99.62%);
+
+}
+.nossosPatrocinadores h2{
+    color: #fff;
+}
+.iconePatrocinadores{
+    width: 216px;
+    height: 222px;
+    top: 1px;
+    border-radius: 36px;
+    border:solid 0.5px gray;
+}
+
+.containerCarroussel p{
+    font-family: 'Roboto',sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 25px;
+    padding-top: 2.5px;
+    padding-bottom: 2.5px;
+}
+.containerCarroussel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 5px 5px gray;
+    border-radius: 36px;
+    background-color: #fff;
+}
