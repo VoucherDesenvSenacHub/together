@@ -11,6 +11,12 @@
   font-size: 16px;
 }
 
+.Reset {
+  margin: 0px;
+  padding: 0px;
+  height: 0px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -20,6 +26,7 @@ body {
   top: 25%;
   left: 5%;
   display: flex;
+  margin-top: -2%;
 }
 
 .imagem {
@@ -137,7 +144,11 @@ h3 {
   color: var(--cor-texto-padrao);
 }
 
-@media (max-width: 890px) {
+@media (max-width: 950px) {
+  html {
+    position: absolute;
+  }
+
   body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -153,15 +164,25 @@ h3 {
 
   .dados_usuario {
     position: relative;
+    left: 30%;
   }
   .gerenciar-conta {
     position: relative;
     top: 400px;
     left: auto;
   }
+  .button-perfil {
+    width: 400px;
+  }
+  .material-symbols-outlined {
+    position: absolute;
+    left: 85%;
+    top: 35%;
+  }
   .conjunto_botoes {
     position: relative;
     top: 450px;
     left: auto;
+    width: 380px;
   }
 }
