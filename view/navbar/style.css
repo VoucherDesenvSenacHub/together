@@ -1,0 +1,840 @@
+@keyframes search-slide-animation {
+    0% {
+        width: 40px;
+        height: 40px;
+    }
+
+    100% {
+        width: 250px;
+        height: 40px;
+    }
+}
+
+@keyframes lateral-bar-animation {
+    0% {
+        width: 0px;
+        height: 0px;
+        border-radius: 90px;
+    }
+
+    100% {
+        width: 300px;
+        height: 350px;
+    }
+}
+
+@keyframes circle-choice-animation {
+    0% {
+        width: 60px;
+        height: 60px;
+        border-radius: 90px;
+    }
+
+    100% {
+        width: 250px;
+        height: 250px;
+        border-radius: 100px 30px 30px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+
+nav {
+    background-color: #540D6E;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 86.4px;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.logoimg {
+    height: 60px;
+    width: 200px;
+    position: absolute;
+    top: 9px;
+    left: 40px;
+}
+
+a {
+    color: #F6F8FF;
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+a:hover {
+    font-size: 17px;
+    opacity: 0.7;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    letter-spacing: 1.5px;
+    width: 550px;
+    justify-content: space-between;
+    position: absolute;
+    left: 350px;
+}
+
+.barra-pesquisa-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 90px;
+    background-color: rgba(128, 0, 128, 0);
+    border: 2px solid white;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 23px;
+    right: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    width: 350px;
+    height: 40px;
+    border-radius: 90px;
+    border: none;
+    position: absolute;
+    padding: 0 0 0 15px;
+    top: 23px;
+    right: 350px;
+    animation-name: search-slide-animation;
+    animation-duration: 0.3s;
+}
+
+.submit-lente {
+    background: none;
+    width: 40px;
+    position: absolute;
+    top: 35px;
+    right: 350px;
+    border: none;
+}
+
+#lente-icon {
+    width: 40px;
+    color: #7608a5;
+}
+
+.image-area {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    right: 50px;
+    background-image: url("assets/usuario-user-foto.png");
+    border-radius: 90px;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+}
+
+.lateral-bar {
+    width: 300px;
+    height: 350px;
+    background-color: #7608a5;
+    border-radius: 0 0 0 30px;
+    box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    animation-name: lateral-bar-animation;
+    animation-duration: 0.3s;
+}
+
+.lateral-bar-top {
+    width: 100%;
+    height: 86.4px;
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 25px;    
+}
+
+.image-lateral-bar {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    background-image: url("assets/usuario-user-foto.png");
+    border-radius: 90px;
+    background-size: cover;
+    cursor: pointer;
+    border: none;
+}
+
+#favoritosButton {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    right: 155px;
+    top: 100px;
+}
+
+#favoritoIcon {
+    position: absolute;
+    color: white;
+    right: 258px;
+    top: 104px;
+}
+
+#historicoButton {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    right: 50px;
+    top: 160px;
+}
+
+#historicoIcon {
+    position: absolute;
+    color: white;
+    right: 258px;
+    top: 164px;
+}
+
+#configButton {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    right: 99px;
+    top: 220px;
+}
+
+#configIcon {
+    position: absolute;
+    color: white;
+    right: 258px;
+    top: 224px;
+}
+
+#logoutButton {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    right: 205px;
+    top: 280px;
+}
+
+#logoutIcon {
+    position: absolute;
+    color: white;
+    right: 258px;
+    top: 284px;
+}
+
+
+h2 {
+    text-align: center;
+    margin: 10vh 0px 10vh;
+    font-size: 3.5vh;
+    color: #ffff;
+}
+
+h3 {
+    color: #ffff;
+}
+
+p {
+    text-align: center;
+    color: #FFFF;
+}
+
+h2:hover {
+    font-size: 4vh;
+    letter-spacing: 1px;
+    /*faz um espaçamento entre as letras*/
+    transition: 0.4s;
+    /*faz uma suavização na animação*/
+}
+
+.sinop {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* adiciona essa linha */
+    align-items: center;
+    ;
+}
+
+.sobre {
+    margin: 10px;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+
+
+}
+
+fieldset {
+    border-radius: 10px;
+    background: #9d148d18;
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+legend {
+    margin-top: 10px
+}
+
+.nome {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.icon {
+    height: 25vh;
+    width: 25vh;
+    border-radius: 100%;
+    border: #FFFF solid 2px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 7vh 15px 1px;
+    cursor: pointer;
+    transition: 0.7s;
+}
+
+.icon:hover {
+    height: 30vh;
+    width: 30vh;
+    border-radius: 100%;
+    border: #FFFF solid 2px;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.3s;
+}
+
+.mobile-button {
+    display: none;
+}
+
+@media screen and (max-width: 1569px) {
+    .logoimg {
+        height: 60px;
+        width: 200px;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        letter-spacing: 1.5px;
+        width: 350px;
+        /* justify-content: space-between; */
+        position: absolute;
+        left: 300px;
+    }
+    
+    .barra-pesquisa-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 90px;
+        background-color: rgba(128, 0, 128, 0);
+        border: 2px solid white;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        top: 23px;
+        right: 190px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .search-bar {
+        width: 350px;
+        height: 40px;
+        border-radius: 90px;
+        border: none;
+        position: absolute;
+        padding: 0 0 0 15px;
+        top: 23px;
+        right: 190px;
+        animation-name: search-slide-animation;
+        animation-duration: 0.3s;
+    }
+    
+    .submit-lente {
+        background: none;
+        width: 40px;
+        position: absolute;
+        top: 35px;
+        right: 190px;
+        border: none;
+    }
+
+}
+@media screen and (max-width: 1024px) {
+    .logoimg {
+        height: 50px;
+        width: 190px;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+        gap: 10px;
+        letter-spacing: 1.5px;
+        width: 350px;
+        /* justify-content: space-between; */
+        position: absolute;
+        left: 230px;
+    }
+    
+    .barra-pesquisa-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 90px;
+        background-color: rgba(128, 0, 128, 0);
+        border: 2px solid white;
+        color: white;
+        cursor: pointer;
+        position: absolute;
+        top: 25px;
+        right: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .search-bar {
+        width: 250px;
+        height: 40px;
+        border-radius: 90px;
+        border: none;
+        position: absolute;
+        padding: 0 0 0 15px;
+        top: 25px;
+        right: 140px;
+        animation-name: search-slide-animation;
+        animation-duration: 0.3s;
+    }
+    
+    .submit-lente {
+        background: none;
+        width: 40px;
+        position: absolute;
+        top: 37px;
+        right: 140px;
+        border: none;
+    }
+}
+
+@media screen and (max-width: 844px) {
+    @keyframes mobile-lateral-bar-animation {
+
+        from {
+            transform: translateY(-1000px);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+        
+    }
+
+    ul {
+        display: none;
+    }
+
+    .barra-pesquisa-button {
+        display: none;
+    }
+
+    .search-bar {
+        position: absolute;
+        top: 25px;
+        right: 200px;
+    }
+
+    .submit-lente {
+        top: 37px;
+        right: 200px;
+    }
+
+    .logoimg {
+        height: 60px;
+        width: 200px;
+        position: absolute;
+        left: 30px;
+        top: 8px;
+    }
+
+    .image-area {
+        width: 55px;
+        height: 55px;
+        position: absolute;
+        right: 50px;
+        background-image: url("assets/usuario-user-foto.png");
+        border-radius: 90px;
+        background-size: cover;
+        right: 30px;
+    }
+
+    .lateral-bar {
+        width: 100%;
+        height: 350px;
+        background-color: #7608a5;
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        animation-name: mobile-lateral-bar-animation;
+        animation-duration: 0.3s;
+    }
+
+    .image-lateral-bar {
+        width: 55px;
+        height: 55px;
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        background-image: url("assets/usuario-user-foto.png");
+        border-radius: 90px;
+        background-size: cover;
+        cursor: pointer;
+        border: none;
+    }
+
+    #favoritosButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 100px;
+    }
+    
+    #favoritosIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 104px;
+    }
+    
+    #historicoButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 160px;
+    }
+    
+    #historicoIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 164px;
+    }
+    
+    #configButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 220px;
+    }
+    
+    #configIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 224px;
+    }
+    
+    #logoutButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 280px;
+    }
+    
+    #logoutIcon {
+        position: absolute;
+        color: white;
+        left: 28px;
+        top: 284px;
+    }
+
+
+    .mobile-button {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 90px;
+        background-color: #7608a5;
+        color: #F6F8FF;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        cursor: pointer;
+    }
+
+    #bars-icon {
+        font-size: 20px;
+    }
+
+    .circle-choice {
+        background-color: #7608a5;
+        width: 250px;
+        height: 250px;
+        border-radius: 100px 50px 30px;
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        animation-name: circle-choice-animation;
+        animation-duration: 0.3s;
+    }
+
+    #barsCircleButton {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 90px;
+        background-color: #5108708e;
+        color: #F6F8FF;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #homeButton {
+        position: absolute;
+        bottom: 40px;
+        right: 180px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    #filtrarButton {
+        position: absolute;
+        bottom: 120px;
+        right: 180px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    #feedButton {
+        position: absolute;
+        bottom: 185px;
+        right: 160px;
+        font-size: 17px;
+        font-weight: bold;
+    }
+
+    #sobreNosButton {
+        position: absolute;
+        bottom: 200px;
+        right: 40px;
+        font-size: 17px;
+        font-weight: bold;
+        width: 86px;
+    }
+
+}
+
+@media screen and (max-width: 428px) {
+    @keyframes mobile-lateral-bar-animation {
+
+        from {
+            transform: translateY(-1000px);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+        
+    }
+
+    ul {
+        display: none;
+    }
+
+    .barra-pesquisa-button {
+        display: none;
+    }
+
+    .search-bar {
+        display: none;
+    }
+
+    .submit-lente {
+        display: none;
+    }
+
+    .logoimg {
+        height: 60px;
+        width: 200px;
+        position: absolute;
+        left: 20px;
+    }
+
+    .image-area {
+        width: 55px;
+        height: 55px;
+        position: absolute;
+        right: 50px;
+        background-image: url("assets/usuario-user-foto.png");
+        border-radius: 90px;
+        background-size: cover;
+        right: 30px;
+    }
+
+    .lateral-bar {
+        width: 100%;
+        height: 350px;
+        background-color: #7608a5;
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        animation-name: mobile-lateral-bar-animation;
+        animation-duration: 0.3s;
+    }
+
+    .image-lateral-bar {
+        width: 55px;
+        height: 55px;
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        background-image: url("assets/usuario-user-foto.png");
+        border-radius: 90px;
+        background-size: cover;
+        cursor: pointer;
+        border: none;
+    }
+
+    #favoritosButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 100px;
+    }
+    
+    #favoritosIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 104px;
+    }
+    
+    #historicoButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 160px;
+    }
+    
+    #historicoIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 164px;
+    }
+    
+    #configButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 220px;
+    }
+    
+    #configIcon {
+        position: absolute;
+        color: white;
+        left: 25px;
+        top: 224px;
+    }
+    
+    #logoutButton {
+        position: absolute;
+        font-weight: bold;
+        font-size: 20px;
+        left: 55px;
+        top: 280px;
+    }
+    
+    #logoutIcon {
+        position: absolute;
+        color: white;
+        left: 28px;
+        top: 284px;
+    }
+
+
+    .mobile-button {
+        display: flex;
+        width: 60px;
+        height: 60px;
+        border: none;
+        border-radius: 90px;
+        background-color: #7608a5;
+        color: #F6F8FF;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        cursor: pointer;
+    }
+
+    .circle-choice {
+        background-color: #7608a5;
+        width: 250px;
+        height: 250px;
+        border-radius: 100px 50px 30px;
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        animation-name: circle-choice-animation;
+        animation-duration: 0.3s;
+    }
+}
