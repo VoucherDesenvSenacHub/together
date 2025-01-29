@@ -143,14 +143,72 @@ h3 {
   justify-content: center;
   color: var(--cor-texto-padrao);
 }
-
-@media (max-width: 950px) {
+@media (max-width: 790px){
   html {
     position: absolute;
   }
 
+  .Reset{
+    flex-direction: column;
+    display: block;
+    margin-left: 4.5%;
+  }
+
   body {
-    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+  hr {
+    display: none;
+  }
+
+  .dados {
+    display: none;
+  }
+  .dados_usuario {
+    position: relative;
+    left: 75%;
+  }
+  .gerenciar-conta {
+    position: relative;
+    left: 46%;
+    top: 390px;
+  }
+
+  .imagem{
+    width: 80px;
+    height: 83px;
+  }
+  .button-perfil {
+    width: 375px;
+    height: 82px;
+  }
+  .material-symbols-outlined {
+    position: relative;
+    left: 85%;
+    top: 35%;
+  }
+  .conjunto_botoes {
+    position: relative;
+    left: 40%;
+    top: 450px;
+    width: 370px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  html {
+    position: absolute;
+  }
+
+  .Reset{
+    flex-direction: column;
+    display: block;
+    margin-left: 4.5%;
+  }
+
+  body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 50px 50px;
   }
@@ -164,25 +222,33 @@ h3 {
 
   .dados_usuario {
     position: relative;
-    left: 30%;
+    left: 50%;
+    translate: (-50%);
   }
   .gerenciar-conta {
     position: relative;
-    top: 400px;
-    left: auto;
+    left: 23%;
+    top: 390px;
+  }
+
+  .imagem{
+    width: 80px;
+    height: 83px;
   }
   .button-perfil {
-    width: 400px;
+    width: 375px;
+    height: 82px;
   }
   .material-symbols-outlined {
-    position: absolute;
+    position: relative;
     left: 85%;
     top: 35%;
   }
   .conjunto_botoes {
     position: relative;
+    left: 15%;
+    translate: (-15%);
     top: 450px;
-    left: auto;
-    width: 380px;
+    width: 370px;
   }
 }
