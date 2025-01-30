@@ -24,11 +24,6 @@ main {
   width:  100%;
 }
 
-.form {
-  width: 250px;
-  height: 400px;
-}
-
 .card {
 position: relative;
 max-width: 250px;
@@ -118,8 +113,12 @@ padding: 10px;
 
 .card .overlay .favorito {
 position: absolute;
-top: 80%;
+top: 81%;
 left: 75%;
+background: none;
+border: none;
+outline: none;
+
 }
 
 .carousel {
