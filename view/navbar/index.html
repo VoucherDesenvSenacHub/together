@@ -55,7 +55,7 @@
 
         </nav>
     </header>
-    <div id="filtrarArea" class="filtrar-area">
+    <div id="filtrarArea" class="filtrar-area hidden">
         <ol class="filtrar-list">
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox"><p>Erradicação da Pobreza</p>
@@ -209,6 +209,17 @@
             const circleChoice = document.getElementById('circleChoice');
             const mobileButton = document.getElementById('mobileButton');
             circleChoice.classList.add('hidden');
+
+            setTimeout(() => {
+                registrarContent.style.right = '50px'; // Ajuste a posição conforme necessário
+            }, 10); // Pequeno atraso para garantir que a transição funcione
+        });
+
+        document.getElementById('filtrarTopButton').addEventListener('click', function () {
+            event.preventDefault(); // Previne o comportamento padrão do botã
+            const filtrarTopButton = document.getElementById('filtrarTopButton');
+            const filtrarArea = document.getElementById('filtrarArea');
+            filtrarArea.classList.remove('hidden');
 
             setTimeout(() => {
                 registrarContent.style.right = '50px'; // Ajuste a posição conforme necessário
