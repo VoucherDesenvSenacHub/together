@@ -1,7 +1,10 @@
 @import url(../../../reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 
 :root{
     --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+    font-family: "Roboto", serif;
 }
 
 
@@ -14,9 +17,58 @@
     align-items: center;
     .alert-box{
         background-color: white;
-        width: 500px;
-        height: 350px;
+        width: 620px;
+        height: 460px;
         border-radius: 25px;
         border: 3px solid #8B1CD3;
+        .content-top{
+            height: 115px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .titulo-add-patrocinador{
+                height: 115px;
+                font-size: 35px;
+                width: 80%;
+                text-align: center;
+                background: var(--gradient);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                font-weight: 700;  
+                letter-spacing: 0px;   
+                display: flex;   
+                align-items: center;
+                justify-content: right; 
+                padding-right: 60px;      
+            }
+            width: 100%;    
+            .botao-fechar{
+                border-radius: 20px;
+                background-color: white;
+                color: purple;
+                border: none;
+                width: 20%;
+                height: 100%;
+                display: flex;
+                align-items: top;
+                justify-content: right;
+                padding: 20px 20px 0 0;
+                font-family: Arial, sans-serif;
+                
+                .icone-fechar{
+                    width: 30px;
+                    height: 30px;
+                    background: var(--gradient);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+
+            }
+        } 
+        .content-middle{
+            height: 200px;
+            background-color: var(--gradient);
+            width: 100%;
+        }       
     }
 }
