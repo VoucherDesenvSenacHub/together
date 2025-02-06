@@ -49,20 +49,6 @@
     
 }
 
-@keyframes filtrrar-content-animation {
-
-    0% {
-        height: 0px;
-        display: none;
-    }
-
-    100% {
-        height: 200px;
-        display: flex;
-    }
-    
-}
-
 :root {
     --gradient-background: rgb(62, 0, 163);
     --color-menu: rgba(245, 245, 245, 0.556);
@@ -210,7 +196,7 @@ ul {
     top: 40px;
     right: 60px;
     left: 60px;
-    animation-name: filtrrar-content-animation;
+    animation-name: filtrar-content-animation;
     animation-duration: 0.5s;
 }
 
@@ -240,8 +226,6 @@ ul {
     position: absolute;
     top: 0px;
     right: 0px;
-    animation-name: lateral-bar-animation;
-    animation-duration: 0.3s;
 }
 
 .lateral-bar-top {
