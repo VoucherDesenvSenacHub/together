@@ -29,7 +29,7 @@
                     <input type="text" placeholder="Digite seu Login" class="text-input" id="login-input">
                     <input type="text" placeholder="Digite sua Senha" class="text-input" id="senha-input">
                     <a href="#">
-                        <p class="esqueci-senha">Esqueci a senha</p>
+                        <p id="esqueciSenhaButton" class="esqueci-senha">Esqueci a senha</p>
                     </a>
                     <div class="criar-conta-area">
                         <p class="pergunta">Nao possui uma conta?</p>
@@ -43,7 +43,7 @@
         <div class="recuperar-content hidden" id="recuperarContent">
             <div class="box">
                 <form class="login">
-                    <button id="houseButton"></button><i class="fa-solid fa-house fa-xl" id="house-icon"></i></button>
+                    <button id="houseButton"><i class="fa-solid fa-house fa-xl" id="house-icon"></i></button>
                     <h1 class="titulo">Recuperar Senha</h1>
                     <p class="sub-titulo">Enviaremos um E-mail para você confirmar sua nova senha</p>
                     <input type="text" placeholder="Email" class="text-input" id="email-input">
@@ -93,6 +93,25 @@
             recuperarContent.classList.add('hidden');
             registrarContent.classList.remove('hidden');
             registrarContent.classList.add('show');
+    
+            setTimeout(() => {
+                registrarContent.style.right = '50px'; // Ajuste a posição conforme necessário
+            }, 10); // Pequeno atraso para garantir que a transição funcione
+        });
+
+        document.getElementById('esqueciSenhaButton').addEventListener('click', function (event) {
+            event.preventDefault(); // Previne o comportamento padrão do botão
+    
+            const loginContent = document.getElementById('loginContent');
+            const recuperarContent = document.getElementById('recuperarContent');
+            const registrarContent = document.getElementById('registrarContent');
+    
+            loginContent.classList.remove('show');
+            loginContent.classList.add('hidden');
+            recuperarContent.classList.add('show');
+            recuperarContent.classList.remove('hidden');
+            registrarContent.classList.add('hidden');
+            registrarContent.classList.remove('show');
     
             setTimeout(() => {
                 registrarContent.style.right = '50px'; // Ajuste a posição conforme necessário

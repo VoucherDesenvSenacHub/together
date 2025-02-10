@@ -155,7 +155,6 @@ img {
     cursor: pointer;
     text-decoration: underline;
 }
-/* --------------------------------------------------------- */
 
 
 /* --------------------Registrar Usuario-------------------- */
@@ -265,10 +264,23 @@ img {
     transition: 0.2s;
 }
 
-/* ------------------------------------------------------ */
 
 
-/* --------------------Ambas as Telas-------------------- */
+/* --------------------Recuperar Senha-------------------- */
+
+.titulo {
+    position: absolute;
+    top: 50px;
+    font-size: 36px;
+    color: #7608a5;
+}
+
+.sub-titulo {
+    position: absolute;
+    top: 110px;
+    font-size: 10.4px;
+    font-weight: bold;
+}
 
 /* ------------------------------------------------------ */
 #houseButton {
