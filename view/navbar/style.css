@@ -179,7 +179,7 @@ ul {
     right: 80px;
     box-shadow: 0px 11px 5px 0px rgba(0, 0, 0, 0.28);
     animation-name: filtrar-animation;
-    animation-duration: 0.5s;
+    animation-duration: 0.1s;
 }
 
 .filtrar-list {
