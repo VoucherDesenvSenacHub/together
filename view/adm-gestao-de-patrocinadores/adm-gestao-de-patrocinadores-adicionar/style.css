@@ -128,3 +128,22 @@ input{
         }       
     }
 }
+
+.logo-upload{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo-upload label{
+    display: inline-block;
+    color: #5e5c5c;
+    padding: 20px 40px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #CCC;
+}
+
+.logo-upload input[type="file"]{
+    display: none;
+}
