@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de patrocinadores - Adicionar</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    
 </head>
 <body>
     <div class="container">
@@ -16,7 +18,7 @@
             </button>
             </div>
 
-            <div class="content-middle">
+            <div class="content">
 
                 <form action="" class="form-adiciona-patrocinador">
 
@@ -26,12 +28,18 @@
 
                     </div>
                     <div class="div-info-patrocinio">
-                        <input type="date" placeholder="Data de vencimento">
+                        <div class="data-vencimento">
+                            <input type="text" oninput="mascara(this)" placeholder="Data de vencimento" pattern="\d{2}/\{2}/\d{4}" required>
+                        </div>
                         <div class="logo-upload">
                             <label for="logo">Logotipo do patrocinador</label>
                             <input type="file" id="logo" name="logo" accept="image*/" required>
                         </div>
-                    </div>  
+                    </div>
+                    
+                    <div class="botao-enviar">
+                        <button type="submit"> Adicionar </button>
+                    </div>
 
                 </form>
 
