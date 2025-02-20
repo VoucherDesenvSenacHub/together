@@ -17,12 +17,16 @@
 
 .a3{
     width: 27.55vw;
-    height: 100vw;
-    background-color: aqua;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
 }
 .lista-patrocinadores{
     width: 70vw;
-    height: 100vw;
+    height: 100vh;
     padding: 15px;
     text-align: center;
     font-size: 23px;
@@ -72,6 +76,8 @@
     cursor: pointer;
     font-size: 30px;
     user-select: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .checkmark {
@@ -115,8 +121,41 @@
         border-width: 0 0.15em 0.15em 0;
         transform: rotate(45deg);
     }
+
+    .container-ad {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        font-size: 30px;
+        user-select: none;
+        justify-content: center;
+        align-items: center;
+        padding: 35px;
+    }
     
-    
+    .deletar {
+        top: 0;
+        left: 0;
+        height: 1.6em;
+        width: 1.6em;
+        border-radius: 50%;
+        background: #ffeded38;
+        transition: all 0.2s ease;
+        border: rgb(184, 59, 230) solid;
+        padding: 10px;
+    }
+    .adicionar {
+        top: 0;
+        left: 0;
+        height: 1.6em;
+        width: 1.6em;
+        border-radius: 50%;
+        background: #ffeded38;
+        transition: all 0.2s ease;
+        border: rgb(184, 59, 230) solid;
+        background: var(--gradient);
+        padding: 10px;
+    }
     
     .texto-gradient{
         background: linear-gradient(90deg, rgba(62, 0, 163, 1), rgba(218, 112, 255, 1));
