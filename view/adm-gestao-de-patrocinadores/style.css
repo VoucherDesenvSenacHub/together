@@ -1,21 +1,27 @@
 @import url(/view/assests/css/reset.css);
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-:root{
+:root {
     --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
     font-family: "Roboto", serif;
 }
 
-.sec1{
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.sec1 {
     position: fixed;
     left: 0;
 }
 
-.sec2{
+.sec2 {
     position: fixed;
     right: 0;
 }
 
-.a3{
+.btn-delete-add {
     width: 27.55vw;
     height: 100vh;
     display: flex;
@@ -24,39 +30,41 @@
     padding: 20px;
     flex-direction: column;
 }
-.lista-patrocinadores{
+
+.lista-patrocinadores {
     width: 70vw;
     height: 100vh;
     padding: 15px;
     text-align: center;
     font-size: 23px;
 
-    div{
-        display: flex;   
+    div {
+        display: flex;
     }
-    
-    h1{
-        font-size: 30px;
+
+    h1 {
+        font-size: 40px;
         padding: 30px;
     }
-    ul{
+
+    ul {
         display: flex;
         padding: 45px;
         justify-content: center;
         flex-wrap: wrap;
     }
-    
-    li{
+
+    li {
         display: flex;
         flex-direction: row;
         align-items: center;
         padding: 20px;
-        
-        p{
+
+        p {
             margin-left: 70px;
         }
 
-        label{
+        label {
             margin-left: 100px;
         }
     }
@@ -94,73 +102,98 @@
 .checkmark {
     opacity: 0.3;
     border: rgb(184, 59, 230) solid;
-  }
-  
-  .container-check input:checked ~ .checkmark {
-      background: var(--gradient);
-      opacity: 0.9;
-      transition: all 0.2s ease;
-    }
-    
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-    
-    .container-check input:checked ~ .checkmark:after {
-        display: block;
-    }
-    
-    .container-check .checkmark:after {
-        left: 0.61em;
-        top: 0.43em;
-        width: 0.25em;
-        height: 0.5em;
-        border: solid rgb(255, 255, 255);
-        border-width: 0 0.15em 0.15em 0;
-        transform: rotate(45deg);
-    }
+}
 
-    .container-ad {
-        display: block;
-        position: relative;
-        cursor: pointer;
-        font-size: 30px;
-        user-select: none;
-        justify-content: center;
-        align-items: center;
-        padding: 35px;
-    }
-    
-    .deletar {
-        top: 0;
-        left: 0;
-        height: 1.6em;
-        width: 1.6em;
-        border-radius: 50%;
-        background: #ffeded38;
-        transition: all 0.2s ease;
-        border: rgb(184, 59, 230) solid;
-        padding: 10px;
-    }
-    .adicionar {
-        top: 0;
-        left: 0;
-        height: 1.6em;
-        width: 1.6em;
-        border-radius: 50%;
-        background: #ffeded38;
-        transition: all 0.2s ease;
-        border: rgb(184, 59, 230) solid;
-        background: var(--gradient);
-        padding: 10px;
-    }
-    
-    .texto-gradient{
-        background: linear-gradient(90deg, rgba(62, 0, 163, 1), rgba(218, 112, 255, 1));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-    }
+.container-check input:checked~.checkmark {
+    background: var(--gradient);
+    opacity: 0.9;
+    transition: all 0.2s ease;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container-check input:checked~.checkmark:after {
+    display: block;
+}
+
+.container-check .checkmark:after {
+    left: 0.61em;
+    top: 0.43em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid rgb(255, 255, 255);
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+
+.container-ad {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 30px;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+}
+
+.deletar {
+    top: 0;
+    left: 0;
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 50%;
+    background: #ffeded38;
+    transition: all 0.2s ease;
+    border: rgb(184, 59, 230) solid;
+    padding: 10px;
+
+}
+
+.adicionar {
+    top: 0;
+    left: 0;
+    height: 1.6em;
+    width: 1.6em;
+    border-radius: 50%;
+    background: #ffeded38;
+    transition: all 0.2s ease;
+    border: rgb(184, 59, 230) solid;
+    padding: 10px;
+}
+
+.texto-gradient {
+    background: linear-gradient(90deg, rgba(62, 0, 163, 1), rgba(218, 112, 255, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+
+.uil--trash {
+    display: inline-block;
+    width: 50px;
+    height: 45px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cdefs%3E%3ClinearGradient id='gradient' gradientTransform='rotate(54)'%3E%3Cstop offset='0%25' stop-color='rgba(62, 0, 163, 1)'/%3E%3Cstop offset='100%25' stop-color='rgba(218, 112, 255, 1)'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23gradient)' d='M20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2M10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Z'/%3E%3C/svg%3E");
+}
+
+.uil--plus {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2'/%3E%3C/svg%3E");
+    background: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+    -webkit-mask-image: var(--svg);
+    mask-image: var(--svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
