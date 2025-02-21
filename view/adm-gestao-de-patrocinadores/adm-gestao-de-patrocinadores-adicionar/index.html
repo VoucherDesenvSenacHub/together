@@ -32,7 +32,7 @@
                     </div>
                     <div class="div-info-patrocinio">
                         <div class="data-vencimento">
-                            <input type="text" oninput="mascara(this)" placeholder="Data de vencimento" pattern="\d{2}/\{2}/\d{4}" required>
+                            <input placeholder="Data de vencimento" id="data-patrocinio" type="date"  placeholder="Data de vencimento" required>
                         </div>
                         <div class="logo-upload">
                             <label for="logo">Logotipo do patrocinador</label>
@@ -41,7 +41,7 @@
                     </div>
                     
                     <div class="div-botao-enviar">
-                        <button class="botao-enviar" type="submit"> Adicionar </button>
+                        <button class="botao-enviar" onclick="checkDate()" type="button"> Adicionar </button>
                     </div>
 
                 </form>

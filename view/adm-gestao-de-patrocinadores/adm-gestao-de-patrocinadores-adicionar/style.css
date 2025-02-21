@@ -43,6 +43,7 @@ input{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            width: 100%;    
             .titulo-add-patrocinador{
                 height: 115px;
                 font-size: 35px;
@@ -57,7 +58,6 @@ input{
                 align-items: center;
                 justify-content: right;   
             }
-            width: 100%;    
             .div-botao-fechar{                  
                 width: 20%;
                 height: 100%;
@@ -75,13 +75,7 @@ input{
                     margin-bottom: 50px;
 
                 }
-                
-                .icone-fechar{
-                    width: 30px;
-                    height: 30px;
-                    color: var(--gradient);
-                }
-                .icone-fechar:hover{
+                .botao-fechar:hover{
                     cursor: pointer;
                 }
 
@@ -136,11 +130,13 @@ input{
     text-align: center;
     margin-top: 20px;
     width: 45%;
-
     input{
+        padding-right: 10px;
         background-color: #e7e6e6;
         width: 100%;
+        color: #5e5c5c;
     }
+
 }
 
 
