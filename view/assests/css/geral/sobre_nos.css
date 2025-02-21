@@ -56,3 +56,9 @@
     height: 596px;
 
 }
+
+.cardsIcon img{
+    color: black;
+    width: 40px;
+    height: 40px;
+}
