@@ -1,0 +1,62 @@
+@import url(/reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container-h1{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    padding: 20px;
+    font-size: 30px;
+}
+span{
+    color: #118211;
+}
+
+.texto-gradient {
+    background: linear-gradient(90deg, rgba(62, 0, 163, 1), rgba(218, 112, 255, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+table {
+    text-align: center;
+    margin: 0 auto;
+    width: 98%;
+   
+    td {
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+   
+    th {
+      background-color: #40045c;
+      color: white;
+      padding: 7px;
+      border-right: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+   
+  }
+   
+  tr:nth-child(even) {
+    background: #cb89ea;
+  }
+
+  .icon-btn {
+    border: none;
+    background-color: transparent;
+}
+ 
+.icon {
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+    width: 30px;
+    object-fit: contain;
+}
