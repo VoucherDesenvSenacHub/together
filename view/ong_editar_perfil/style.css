@@ -1,12 +1,15 @@
 @import url(/view/assests/css/reset.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url(/view/ong_editar_perfil/assets/components/button.css);
 
 :root {
-    --cor-botao-salvar: 
+    --cor-botao-salvar: linear-gradient(45deg, #3e00a3, #da70ff);
+    --cor-botão-cancelar: rgb(226, 105, 226);
     --cor-text-parag-postagem: #00000087;
     --cor-tag-obrigatoria: red;
     --cor-fundo-body: #D7D7D7;
     --cor-fundo-main: #fff;
+    --cor-input: #000;
     font-size: 16px;
     font-family: "Roboto", serif;
 }
@@ -23,15 +26,45 @@ main {
     top: 50%;
     transform: translate(-50%, -50%);    
     height: 80vh;
-    width: 80vw;
+    width: 65vw;
     z-index: 2;
     background-color: var(--cor-fundo-main);
     border-radius: 14px;
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
 }
 
+.lista-img {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.input-img {
+    display: none;
+    
+}
+
+.label-img {
+    width: 212px;
+    height: 125px;
+    border-radius: 5px;
+    background-color: #D9D9D9;
+    text-align: center;
+    display: block;
+    position: relative;
+    cursor: pointer;
+
+    .label-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
 .img-postagem {
-    width: 15vw;
+    width: 212px;
+    height: 125px;
     border-radius: 5px;
 }
 
@@ -57,10 +90,18 @@ main {
     padding: 5px 0 5px 0;
 }
 
-.botao-salvar{
-    border-radius: 25px;
+.btn-div {
+    margin-top: 10px;
+    display: flex;
+    gap: 30px;
 }
 
-.botao-cancela{
-    border-radius: 25px;
+.input-postagem {
+    width: 922px;
+    height: 55px;
+    border-radius: 5px;
+    border: none;
+    background-color: #d9d9d9;
+    padding: 0 10px 0 10px;
+    margin-bottom: 20px;
 }

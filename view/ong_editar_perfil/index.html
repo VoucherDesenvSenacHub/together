@@ -13,24 +13,33 @@
         <h1 class="titulo-postagem">Postagem da ONG</h1>
         <p class="paragrafo-postagem">Mostrem ao público que seus projetos salvam vidas !!!</p>
         <p class="tag-obrigatorio">*Obrigatorio</p>
-        <ul>
+        <ul class="lista-img">
             <li>
-                <img class="img-postagem" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxz5tVBTLXussY-3KaWIMG1wSBPv_rbKFMQ&s" alt="Foto do projeto">
+                <label class="label-img" for="arquivo"><img class="label-icon" src="assets/add.png"
+                        alt="icon add"></label>
+                <input class="input-img" name="arquivo" id="arquivo" type="file">
+            </li>
+            <li>
+                <img class="img-postagem"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxz5tVBTLXussY-3KaWIMG1wSBPv_rbKFMQ&s"
+                    alt="Foto do projeto">
             </li>
         </ul>
         <form action="">
             <p class="tag-obrigatorio">*Obrigatorio</p>
             <h1 class="subtitulo-postagem">Descrição</h1>
             <p class="paragrafo-postagem">Coloque uma descrição breve da Postagem</p>
-            <input type="text" size=10 maxlength=255 required placeholder="Digite">
+            <input class="input-postagem" id="contador" type="text" size=10 maxlength=255 required placeholder="Digite">
 
             <p class="tag-obrigatorio">*Obrigatorio</p>
             <h1 class="subtitulo-postagem">Hiperlink</h1>
             <p class="paragrafo-postagem">Digite aqui o link de Redirecionamento da Descrição.</p>
-            <input type="url" size=10 maxlength=255 required placeholder="Digite">
-            
-            <button class="botao-salvar" type="submit">Salvar</button>
-            <button class="botao-cancela" type="reset">Cancelar</button>
+            <input class="input-postagem" id="contador" type="url" size=10 maxlength=255 required placeholder="Digite">
+
+            <div class="btn-div">
+                <button class="botao salvar" type="submit">Salvar</button>
+                <button class="botao cancelar" type="reset">Cancelar</button>
+            </div>
         </form>
     </main>
 </body>
