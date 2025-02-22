@@ -6,10 +6,10 @@
 }
 
 h1 {
-  position: relative;
+  position: fixed;
   top: 130px;
   left: 150px;
-  font-size: 45px;
+  font-size: 40px;
   font-weight: bold;
   background: linear-gradient(#6a10be, #a224e2);
   -webkit-background-clip: text;
