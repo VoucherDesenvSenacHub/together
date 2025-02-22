@@ -44,3 +44,52 @@ td {
   padding: 5px;
   text-align: center;
 }
+
+@media (max-width: 790px){
+
+}
+
+
+@media (max-width: 480px){
+
+  h1 {
+    position: fixed;
+    top: 150px;
+    left: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    background: linear-gradient(#6a10be, #a224e2);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  body {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    min-height: 50vh;
+  }
+  
+  .tabela {
+    /* border-collapse: collapse; */
+    width: 50%;
+    position: fixed;
+    top: 15em;
+    left: 3em;
+    font-size: 13.5px;
+  }
+  
+  .row-head {
+    background-color: var(--cor-cabeçalho-tabela);
+  }
+  
+  .row-body:nth-child(even) {
+    background-color: var(--cor-tabela);
+  }
+  
+  .row-head,
+  td {
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+  }
+}
