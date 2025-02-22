@@ -24,7 +24,7 @@ input{
 }   
 
 
-.container-adiciona-patrocinador{
+.container-adiciona-patrocinador, .container-remove-patrocinador{
     z-index: 1;
     background-color: white;
     width: 620px;
@@ -39,7 +39,7 @@ input{
             flex-direction: row;
             justify-content: space-between;
             width: 100%;    
-            .titulo-add-patrocinador{
+            .titulo-add-patrocinador, .titulo-remove-patrocinador{
                 height: 115px;
                 font-size: 35px;
                 width: 80%;
@@ -73,13 +73,28 @@ input{
                 .botao-fechar:hover{
                     cursor: pointer;
                 }
-
+                
             }
         } 
         .content{
             height: 350px;
             background-color: var(--gradient);
             width: 100%;
+
+            .content-info{
+            height: 66%;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            .nome-patrocinador-h5{
+                font-size: 40px;
+                background: var(--gradient);
+                background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                padding-left:55px;
+            }
+            
+            }   
             
             .form-adiciona-patrocinador{
                 width: 100%;
@@ -117,7 +132,8 @@ input{
                 }
 
             }            
-        }       
+        } 
+           
     
 }
 
@@ -156,7 +172,7 @@ input{
     display: none;
 }
 
-.div-botao-enviar{
+.div-botao-adicionar{
     width: 100%;
     height: 35%;
     display: flex;
@@ -177,4 +193,27 @@ input{
         cursor:pointer;
     }
 
+}
+.content-botoes{
+    display: flex;
+    flex-direction: row;
+}
+.div-botao-cancelar, .div-botao-remover{
+    width: 50%;
+    height: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .botao-cancelar, .botao-remover{
+        width: 220px;
+        height: 72px;
+        border-radius: 27px;
+        border: none;
+        color:white;    
+        background: linear-gradient(90deg, rgba(62,0,163,1) 0%, rgba(218,112,255,1) 100%);
+        font-size: 36px;
+        font-weight: bold;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        cursor:pointer;
+    }
 }

@@ -1,4 +1,21 @@
-document.querySelector('.adicionar').addEventListener('click', () =>{
+function abrirPopup(dialogName){
+        const dialog = document.querySelector(dialogName)
+        if(dialog.getAttribute('open')){
+            dialog.removeAttribute('open')
+        }else{
+            dialog.setAttribute('open', true);
+        }
+
+}
+
+
+function fecharPopup(dialogName){
+    const dialog = document.querySelector(dialogName);
+    dialog.removeAttribute('open');   
+}
+
+
+document.querySelector('.remover').addEventListener('click', () =>{
     const dialog = document.querySelector('dialog')
     if(dialog.getAttribute('open')){
         dialog.removeAttribute('open')
@@ -7,7 +24,3 @@ document.querySelector('.adicionar').addEventListener('click', () =>{
     }
 });
 
-document.querySelector('.icone-fechar').addEventListener('click', () =>{
-    const dialog = document.querySelector('dialog');
-    dialog.removeAttribute('open');
-});
