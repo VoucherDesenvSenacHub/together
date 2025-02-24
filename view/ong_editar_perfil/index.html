@@ -13,19 +13,14 @@
         <h1 class="titulo-postagem">Postagem da ONG</h1>
         <p class="paragrafo-postagem">Mostrem ao público que seus projetos salvam vidas !!!</p>
         <p class="tag-obrigatorio">*Obrigatorio</p>
-        <ul class="lista-img">
-            <li>
-                <label class="label-img" for="file">
-                    <img class="label-icon" src="assets/img/add.png" alt="icon add">
-                </label>
-                <input class="input-img" id="file" type="file" accept="image/*" multiple>
-            </li>
-            <li>
-                <img class="img-postagem"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmxz5tVBTLXussY-3KaWIMG1wSBPv_rbKFMQ&s"
-                    alt="Foto do projeto">
-            </li>
-        </ul>
+        <div class="lista-img">
+            <input class="input-img" id="file-input" type="file" accept="image/*" onchange="preview()" multiple>
+            <label class="label-img" for="file-input">
+                <img class="label-icon" src="assets/img/add.png" alt="icon add">
+                <p id="num-de-arquivos">Nenhum Arquivo Encontrado</p>
+            </label>
+            <ul id="images"></ul>
+        </div>
         <form action="">
             <p class="tag-obrigatorio">*Obrigatorio</p>
             <h1 class="subtitulo-postagem">Descrição</h1>
@@ -43,7 +38,7 @@
             </div>
         </form>
     </main>
-    <script src="script.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
