@@ -5,8 +5,12 @@ let numDeArq = document.getElementById("num-de-arquivos");
 function preview(){
     imageContainer.innerHTML = "";
     numDeArq.textContent = `${fileInput.files.length} Arquivos Selecionados`;
-
-    for(i of fileInput.files){
+    let numFiles = `${fileInput.files.length}`;
+    if (numFiles > 3) {
+        numDeArq.textContent = "Falha ao enviar!";
+        fileInput.value = "";
+    }
+    for (i of fileInput.files){
         let reader = new FileReader();
         let li = document.createElement("li");
         let figure = document.createElement("figure");
@@ -24,3 +28,14 @@ function preview(){
         reader.readAsDataURL(i);
     }
 }
+
+
+const contTexto = document.getElementById('texto');
+const contador = document.getElementById('contador');
+contTexto.addEventListener('input', function() {
+    if (contTexto.value.length > 60) {
+        contTexto.value = contTexto.value.substring(0, 60);
+    }
+    const totalCaracteres = contTexto.value.length;
+    contador.textContent = `${totalCaracteres} / 60`;
+});

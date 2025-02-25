@@ -10,33 +10,37 @@
 
 <body>
     <main>
-        <h1 class="titulo-postagem">Postagem da ONG</h1>
-        <p class="paragrafo-postagem">Mostrem ao público que seus projetos salvam vidas !!!</p>
-        <p class="tag-obrigatorio">*Obrigatorio</p>
-        <div class="lista-img">
-            <input class="input-img" id="file-input" type="file" accept="image/*" onchange="preview()" multiple>
-            <label class="label-img" for="file-input">
-                <img class="label-icon" src="assets/img/add.png" alt="icon add">
-                <p id="num-de-arquivos">Nenhum Arquivo Encontrado</p>
-            </label>
-            <ul id="images"></ul>
-        </div>
-        <form action="">
+        <div class="container">
+            <h1 class="titulo-postagem">Postagem da ONG</h1>
+            <p class="paragrafo-postagem">Mostrem ao público que seus projetos salvam vidas !!!</p>
             <p class="tag-obrigatorio">*Obrigatorio</p>
-            <h1 class="subtitulo-postagem">Descrição</h1>
-            <p class="paragrafo-postagem">Coloque uma descrição breve da Postagem</p>
-            <input class="input-postagem" id="contador" type="text" size=10 maxlength=255 required placeholder="Digite">
-
-            <p class="tag-obrigatorio">*Obrigatorio</p>
-            <h1 class="subtitulo-postagem">Hiperlink</h1>
-            <p class="paragrafo-postagem">Digite aqui o link de Redirecionamento da Descrição.</p>
-            <input class="input-postagem" id="contador" type="url" size=10 maxlength=255 required placeholder="Digite">
-
-            <div class="btn-div">
-                <button class="botao salvar" type="submit">Salvar</button>
-                <button class="botao cancelar" type="reset">Cancelar</button>
+            <div class="lista-img">
+                <input class="input-img" id="file-input" type="file" accept="image/*" onchange="preview()" multiple>
+                <label class="label-img" for="file-input">
+                    <img class="label-icon" src="assets/img/add.png" alt="icon add">
+                    <p id="num-de-arquivos">Nenhum Arquivo Encontrado</p>
+                </label>
+                <ul id="images"></ul>
             </div>
-        </form>
+            <form action="">
+                <p class="tag-obrigatorio">*Obrigatorio</p>
+                <h1 class="subtitulo-postagem">Descrição</h1>
+                <p class="paragrafo-postagem">Coloque uma descrição breve da Postagem</p>
+                <div class="input-descricao">
+                    <input class="input-postagem" id="texto" type="text" size=10 maxlength=255 required
+                        placeholder="Digite">
+                    <span id="contador"></span>
+                </div>
+                <p class="tag-obrigatorio">*Obrigatorio</p>
+                <h1 class="subtitulo-postagem">Hiperlink</h1>
+                <p class="paragrafo-postagem">Digite aqui o link de Redirecionamento da Descrição.</p>
+                <input class="input-postagem" type="url" size=10 maxlength=255 required placeholder="Digite">
+                <div class="btn-div">
+                    <button class="botao salvar" type="submit">Salvar</button>
+                    <button class="botao cancelar" type="reset">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
