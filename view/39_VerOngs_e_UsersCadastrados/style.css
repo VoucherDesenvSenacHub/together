@@ -55,7 +55,7 @@ td {
   h1 {
     position: fixed;
     top: 150px;
-    left: 40px;
+    left: 29px;
     font-size: 25px;
     font-weight: bold;
     background: linear-gradient(#6a10be, #a224e2);
@@ -73,9 +73,9 @@ td {
     /* border-collapse: collapse; */
     width: 50%;
     position: fixed;
-    top: 15em;
-    left: 3em;
-    font-size: 13.5px;
+    top: 17em;
+    left: 2.3em;
+    font-size: 12px;
   }
   
   .row-head {
