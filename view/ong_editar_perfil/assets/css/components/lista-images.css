@@ -1,60 +1,52 @@
-.lista-img {
+.input-file {
+    display: none;
+}
+
+.label-img {
+    width: 205px;
+    height: 125px;
+    border-radius: 5px;
+    background-color: var(--cor-input-fundo);
+    text-align: center;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    border: 2px dashed var(--cor-border-outline);
+    outline-color: var(--cor-border-outline);
+
+    .label-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #num-de-arquivos {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 5px 0 0 0;
+        font-size: 0.9rem;
+        color: var(--cor-num-arquivos);
+    }
+}
+
+#images {
     display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+}
 
-    .input-img {
-        display: none;
-    
-    }
-    
-    .label-img {
-        width: 212px;
-        height: 125px;
-        border-radius: 5px;
-        background-color: var(--cor-input-fundo);
-        text-align: center;
-        display: block;
-        position: relative;
-        cursor: pointer;
-        border: 2px dashed var(--cor-border-outline);
-        outline-color: var(--cor-border-outline);
-    
-        .label-icon {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+.img-postagem {
+    width: 212px;
+    height: 125px;
+    border-radius: 5px;
+}
 
-        #num-de-arquivos {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            padding: 5px 0 0 0;
-            font-size: 0.9rem;
-            color: var(--cor-num-arquivos);
-        }
-
-    }
-    
-    #images {
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-    }
-
-    .img-postagem {
-        width: 212px;
-        height: 125px;
-        border-radius: 5px;
-    }
-
-    figcaption {
-        text-align: center;
-    }
-
+figcaption {
+    text-align: center;
+    height: 25px;
 }

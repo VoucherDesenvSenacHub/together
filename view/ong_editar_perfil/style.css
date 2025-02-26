@@ -37,40 +37,44 @@ main {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-.container {
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     position: relative;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+
 }
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn-div {
+    display: flex;
+    gap: 30px;
+    justify-content: start;
+}
+
 
 .titulo-postagem {
     font-size: 1.4rem;
     font-weight: bold;
 }
 
-.subtitulo-postagem {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
 .paragrafo-postagem {
     color: var(--cor-text-parag-postagem);
     font-size: 14px;
-    padding: 5px 0 5px 0;
     z-index: 1;
 }
 
 .tag-obrigatorio {
     color: var(--cor-tag-obrigatoria);
     font-size: 12px;
-    padding: 5px 0 5px 0;
-}
-
-.btn-div {
-    margin-top: 10px;
-    display: flex;
-    gap: 30px;
 }
 
 .input-postagem {
@@ -80,15 +84,11 @@ main {
     border: none;
     background-color: var(--cor-input-fundo);
     padding: 0 10px 0 10px;
-    margin-bottom: 20px;
     outline-color: var(--cor-border-outline);
-
 }   
 
-.input-descricao {
-    max-height: 55px;
+.input-descricao {  
     position: relative;
-    margin-bottom: 20px;
 
     #contador{
         color: var(--cor-border-outline);
@@ -97,5 +97,35 @@ main {
         top: 50%;
         transform: translate(-50%, -50%);
         z-index: 2;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    main {
+        height: 85vh;
+    }   
+}
+
+@media screen and (max-width: 1024px) {
+    main {
+        height: 85vh;
+    }   
+}
+
+@media screen and (min-height: 800px ) {
+    main {
+        height: 65vh;
+    }
+}
+
+@media  screen and (min-height: 1000px) {
+    main {
+        height: 50vh;
+    }
+}
+
+@media  screen and (min-height: 1200px) {
+    main {
+        height: 40vh;
     }
 }

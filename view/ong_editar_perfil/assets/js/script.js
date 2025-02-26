@@ -3,7 +3,6 @@ let imageContainer = document.getElementById("images");
 let numDeArq = document.getElementById("num-de-arquivos");
 
 function preview(){
-    imageContainer.innerHTML = "";
     numDeArq.textContent = `${fileInput.files.length} Arquivos Selecionados`;
     let numFiles = `${fileInput.files.length}`;
     if (numFiles > 3) {
