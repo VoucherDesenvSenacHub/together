@@ -22,6 +22,7 @@
     height: 604px;
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 }
 
 .sobreNosText{
@@ -62,6 +63,8 @@
     width: 50%;
     height: 596px;
     border-radius: 0px 0px 0px 4px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
 
 }
 .cardsContainer{
@@ -98,7 +101,7 @@
  .cardsIcon p {
     font-family: 'roboto', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: gray;
     text-align: center;
     margin-top: 10px;
     text-align: justify;
@@ -108,19 +111,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 1000px;
     margin: 0;
 }
 
 .slider {
     width: 70%;
     overflow: hidden;
-    border: 2px solid #ddd;
+    border:none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5),
+    -5px -5px 10px rgba(255, 255, 255, 0.5);
 }
 
 .slides {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.5s ease;
 }
 
 .slide {
@@ -132,4 +137,139 @@
     width: 100%;
     display: block;
 }
+
+footer {
+    font-family: 'roboto', sans-serif;
+    border-top: solid 1px #590AB4;
+    color: gray;
+    text-align: right;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+}
+ 
+footer h3{
+    margin: 5px 20px;
+    color: #590AB4;
+    font-size: 30px;
+ 
+}
+ 
+footer p {
+    margin: 5px 20px;
+    margin-top: 10px;
+}
+ 
+.footer-content {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    /* padding-right: 20px; */
+    height: 200px;
+ 
+}
+ 
+.social-media {
+    margin-top: 1px;
+}
+ 
+.social-media a {
+    margin: 0 1px;
+    display: inline-block;
+}
+ 
+.social-media img {
+    margin: 5px 20px;
+    width: 30px;
+    height: 30px;
+}
+
+/* From Uiverse.io by david-mohseni */ 
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
+  }
+  
+  .wrapper .twitter:hover,
+  .wrapper .twitter:hover .tooltip,
+  .wrapper .twitter:hover .tooltip::before {
+    background: #1da1f2;
+    color: #fff;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #e4405f;
+    color: #fff;
+  }
+  
+
 
