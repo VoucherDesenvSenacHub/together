@@ -46,17 +46,66 @@ td {
 }
 
 @media (max-width: 790px){
+  html{
+    position: absolute;
+  }
 
+  h1 {
+    position: relative;
+    top: 10rem;
+    left: 4rem;
+    font-size: 39px;
+    font-weight: bold;
+    background: linear-gradient(#6a10be, #a224e2);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+ 
+  body {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    min-height: 100vh;
+  }
+ 
+  .tabela {
+    border-collapse: collapse;
+    width: 150%;
+    position: relative;
+    top: 12.5rem;
+    left: 4rem;
+  }
+ 
+  .row-head {
+    background-color: var(--cor-cabeçalho-tabela);
+  }
+ 
+  .row-body:nth-child(even) {
+    background-color: var(--cor-tabela);
+  }
+ 
+  .row-head,
+  td {
+    border: 1px solid black;
+    padding: 2px;
+    text-align: center;
+  }
 }
 
 
 @media (max-width: 480px){
 
+  html{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+  }
+
   h1 {
-    position: fixed;
-    top: 150px;
-    left: 29px;
-    font-size: 25px;
+    position: relative;
+    top: 9rem;
+    left: 2.2rem;
+    font-size: 20px;
     font-weight: bold;
     background: linear-gradient(#6a10be, #a224e2);
     -webkit-background-clip: text;
@@ -72,10 +121,10 @@ td {
   .tabela {
     /* border-collapse: collapse; */
     width: 50%;
-    position: fixed;
-    top: 17em;
-    left: 2.3em;
-    font-size: 12px;
+    position: relative;
+    top: 11rem;
+    left: 2.2rem;
+    font-size: 10px;
   }
   
   .row-head {
