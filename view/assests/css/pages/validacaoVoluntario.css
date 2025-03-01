@@ -1,0 +1,128 @@
+:root {
+    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218, 112, 255, 1) 100%);
+    --shadow: rgba(0, 0, 0, 0.366);
+}
+
+* {
+    font-variation-settings: "wdth" 100;
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    padding: 0%;
+    margin: 0%;
+}
+
+html,
+body {
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.div_title {
+    background-color: rgba(255, 0, 0, 0);
+    width: 90%;
+    height: 100px;
+    position: relative;
+}
+
+.list_voluntarios {
+    position: relative;
+    width: 90%;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.eye_icon_button {
+    background: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+#eye_icon {
+    scale: 150%;
+}
+
+#ampulheta {
+    color: orange;
+}
+
+.title {
+    background: var(--gradient);
+    margin-bottom: 30px;
+    margin-top: 20px;
+    font-weight: 907;
+    font-size: 42px;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    position: absolute;
+}
+
+thead {
+    background-color: #ca99e1;
+    color: rgb(0, 0, 0);
+    position: sticky;
+    box-shadow: 0px 0px 4px 0.5px black;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding-left: 0 0 0 50px;
+    text-align: center;
+    padding: 15px;
+    width: 400px;
+}
+
+tr:nth-child(even) {
+    background-color: #ca99e1;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 8px 16px;
+}
+
+.text {
+    color: rgb(0, 0, 0);
+}
+
+thead {
+    z-index: 2;
+    position: sticky;
+    top: 0;
+}
+
+th {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .div_title {
+        height: 130px;
+        align-items: center;
+        justify-content: center;
+        justify-self: center;
+    }
+}
