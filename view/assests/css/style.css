@@ -1,4 +1,5 @@
 @import url(reset.css);
+@import url(/view/assests/css/components/tabela.css);
 @import url(/view/assests/css/components/dialog.css);
 @import url(/view/assests/css/components/gestaoDePatrocinadores.css);
 @import url(/view/assests/css/components/navbar.css);
@@ -8,4 +9,4 @@
 @import url(/view/assests/css/components/telaLoginUsuario.css);
 @import url(/view/assests/css/components/verOngs.css);
 @import url(/view/assests/css/components/verOngUsuario.css);
-@import url(/view/assests/css/components/visualizarVoluntarios.css);
+@import url(/view/assests/css/components/visualizarVoluntarios.css); 
