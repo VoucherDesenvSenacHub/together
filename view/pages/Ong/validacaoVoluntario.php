@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Voluntarios{
+class Voluntarios
+{
     private $voluntarios = [
         [
             "id" => "1",
@@ -284,10 +285,10 @@ class Voluntarios{
         ],
     ];
 
-    public function listar(){
+    public function listar()
+    {
         return $this->voluntarios;
     }
-
 }
 
 $voluntarios = new Voluntarios();
@@ -304,12 +305,12 @@ $db = $voluntarios->listar();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,350;1,350&display=swap" rel="stylesheet">
     <title>Together</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../assests/css/components/validacaoVoluntario.css">
 </head>
 
 <body>
-    
-<div class="container">
+
+    <div class="validacao_voluntario_container">
         <div class="div_title">
             <h1 class="title">Validação de Voluntarios</h1>
         </div>

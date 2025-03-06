@@ -15,14 +15,14 @@
         rel="stylesheet">
     <!-- ------------ -->
     <script src="https://kit.fontawesome.com/db29c2ca45.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../../../nav_bar/nav_bar.css">
 </head>
 
 <body>
 
     <header>
         <nav>
-            <a href="" class="logo"><img class="logoimg" src="assets/Together.png" alt="logo"></a>
+            <a href="" class="logo"><img class="logoimg" src="../assests/images/Adm/Together.png" alt="logo"></a>
             <ul>
                 <li>
                     <a href="#">Home</a>
