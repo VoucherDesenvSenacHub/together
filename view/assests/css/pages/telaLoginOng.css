@@ -1,45 +1,47 @@
 /* Root Variables */
 :root {
-    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218,112,255,1) 100%); 
-    --shadow:  rgba(0, 0, 0, 0.366);
+    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218, 112, 255, 1) 100%);
+    --shadow: rgba(0, 0, 0, 0.366);
 }
+
 /* End Root Variables */
 
 /* Body */
-body {
-    background-image: url("assets/ong_background-better.png");
+.body_login_da_ong {
+    background-image: url("../../images/Ong/ong_background-better.png");
     background-size: cover;
     background-attachment: fixed;
     font-family: "Roboto", serif;
 }
+
 /* End Body */
 
 
 /* ONG'S WINDOWS */
-.box-login{
+.box-login {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.img_logo{
+.img_logo {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-   
-    
+
+
 }
 
-.login_container{
+.login_container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
 }
 
-.login_box{
+.login_box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,29 +69,34 @@ body {
     width: 100%;
     height: 97vh;
 }
+
 /*  *END-ONG'S WINDOWS/
 
+
+
 /* Containers */
-.container {
+.container_login_da_ong {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
     height: 97vh;
+
 }
 
 
-#login_ong{
+#login_ong {
     height: 50px;
     margin: 3%;
 }
 
 /* End Containers */
-.creat_acc_{
+.creat_acc_ {
     position: absolute;
     top: 345px;
 }
+
 /* Inputs */
 .text_input {
     width: 250px;
@@ -103,9 +110,9 @@ body {
     box-shadow: 1px 3px 1px var(--shadow);
 }
 
-.lost-pass{
+.lost-pass {
     position: absolute;
-    top : 300px;
+    top: 300px;
     right: 26px;
     font-size: 13px;
 }
@@ -129,6 +136,7 @@ body {
 ::placeholder {
     color: #a4a4a4;
 }
+
 /* End Inputs */
 
 /* Terms Area */
@@ -151,6 +159,7 @@ body {
     font-weight: bold;
     color: #7608a5;
 }
+
 /* End Terms Area */
 
 /* Buttons */
@@ -173,6 +182,7 @@ body {
     scale: 105%;
     box-shadow: 1px 3px 1px var(--shadow);
 }
+
 /* End Buttons */
 
 /* Icons */
@@ -191,122 +201,9 @@ body {
 /* End Icons */
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
-    body {
-        
-        background-position: center;
-        background-image: #FFFFFF url("pasta/ongs.jpg") no-repeat right top fixed; 
-    }
 
-    #logo_img {
-        width: 300px;
-        
-    }
-
-    #name_input {
-        height: 46px;
-        font-size: 12px;
-        position: absolute;
-        top: 220px;
-    }
-    
-    #cnpj_input {
-        font-size: 12px;
-        height: 46px;
-        position: absolute;
-        top: 165px;
-    }
-    
-
-    .container {
-        display: flex;
-        background-image: none;
-    }
-
-    .box {
-        width: 100%;
-    }
-
-    .logo_div {
-        width: 0%;
-    }
-
-   
-
-    .login_button {
-        height: 50px;
-    }
-
-    .login_form {
-        min-width: 230px;
-        width: 230px;
-        max-width: 230px;
-        height: 455px;
-    }
-
-    #phone_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 110px;
-    }
-
-    #foundation_date_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 110px;
-    }
-
-    #house_icon {
-        position: absolute;
-        display: flex;
-        justify-content: top;
-        z-index: 2;
-        margin: 0 180px 0 0;
-        color: #7608a5;
-    }
-
-    #fiscal_council_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 200px;
-    }
-
-    #ong_type_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 200px;
-    }
-
-    #ong_logo_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 245px;
-    }
-
-    #email_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 245px;
-    }
-}
 /* End Media Queries */
-#tezt{
-    position: absolute;
-    top: 183px;
-    left: 35px;
-}
+
 .user-moldure {
     width: 130px;
     height: 130px;
@@ -323,7 +220,7 @@ body {
 
 .user-icon {
     color: aliceblue;
-    scale: 70%;
+    scale: 350%;
 }
 
 .logo_div-registroONG {
@@ -525,22 +422,164 @@ body {
     top: 287px;
 }
 
+
+
+.text_lostPASS {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-size: 9.4px;
+    margin: 0;
+    top: 115px;
+}
+
+.title_lostPASS {
+    position: absolute;
+    font-size: 32px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    top: 55px;
+}
+
+.logo-container_lostPASS {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo_lostPASS {
+    scale: 300px;
+}
+
+.form-container_lostPASS {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.form_lostPASS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    width: 255px;
+    height: 370px;
+    background-color: rgba(255, 255, 255, 0.532);
+    border: none;
+    border-radius: 30px;
+    position: relative;
+}
+
+.input_lostPASS {
+    width: 250px;
+    height: 50px;
+    min-width: 50px;
+    border: none;
+    border-radius: 15px;
+    padding: 0 15px;
+    font-family: "Roboto", serif;
+    margin-top: 30px;
+    box-shadow: 1px 1px 7px 1px var(--shadow);
+}
+
+#email-input_lostPASS {
+    font-size: 12px;
+    position: absolute;
+    top: 165px;
+}
+
+::placeholder {
+    color: #a4a4a4;
+}
+
+.button_lostPASS {
+    width: 180px;
+    color: white;
+    background: var(--gradient);
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+    min-height: 50px;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    top: 350px;
+    transition: 0.2s;
+}
+
+.button_lostPASS:hover {
+    width: 185px;
+    height: 55px;
+    transition: 0.2s;
+}
+
+#home-icon_lostPASS,
+#house_icon_registro {
+    position: absolute;
+    display: flex;
+    justify-content: top;
+    z-index: 2;
+    margin-right: 230px;
+    color: #7608a5;
+    top: 30px;
+    left: 25px;
+}
+
 @media screen and (max-width: 768px) {
-    body {
-        background-image: url("assets/ong_background.png");
+
+    #logo_lostPASS {
+        width: 300px;
+
     }
 
-    .login_box{
+    .wrapper_lostPASS {
+        flex-direction: column-reverse;
+        background-image: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container_lostPASS {
+        width: 100%;
+    }
+
+    .logo-container_lostPASS {
+        width: 0%;
+    }
+
+    .input_lostPASS {
+        height: 50px;
+    }
+
+    .button_lostPASS {
+        height: 50px;
+    }
+
+    .form_lostPASS {
+        min-width: 230px;
+        width: 230px;
+        max-width: 230px;
+    }
+
+    #home-icon_lostPASS {
+        margin-right: 180px;
+    }
+
+    .login_box {
         width: 250px;
     }
 
     #logo_img-registroONG {
         width: 300px;
-       
+
     }
 
     .img_logo {
-        
+
         top: 120px;
         width: 100%;
         display: flex;
@@ -557,14 +596,14 @@ body {
         z-index: 2;
     }
 
-   .box-login{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   }
+    .box-login {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 
     .container-registroONG {
         flex-direction: column-reverse;
@@ -652,155 +691,113 @@ body {
         right: 14px;
         top: 245px;
     }
-}
 
+    .body_login_da_ong {
 
-.text_lostPASS {
-    position: absolute;
-    color: rgb(0, 0, 0);
-    font-size: 9.4px;
-    margin: 0;
-    top: 115px;
-}
-
-.title_lostPASS {
-    position: absolute;
-    font-size: 32px;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    top: 55px;
-}
-
-
-
-.logo-container_lostPASS {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-}
-
-#logo_lostPASS {
-    scale: 300px;
-}
-
-.form-container_lostPASS {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.form_lostPASS {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    width: 255px;
-    height: 370px;
-    background-color: rgba(255, 255, 255, 0.532);
-    border: none;
-    border-radius: 30px;
-    position: relative;
-}
-
-.input_lostPASS {
-    width: 250px;
-    height: 50px;
-    min-width: 50px;
-    border: none;
-    border-radius: 15px;
-    padding: 0 15px;
-    font-family: "Roboto", serif;
-    margin-top: 30px;
-    box-shadow: 1px 1px 7px 1px var(--shadow);
-}
-
-#email-input_lostPASS {
-    font-size: 12px;
-    position: absolute;
-    top: 165px;
-}
-
-::placeholder {
-    color: #a4a4a4;
-}
-
-.button_lostPASS {
-    width: 180px;
-    color: white;
-    background: var(--gradient);
-    font-weight: bold;
-    font-size: 20px;
-    height: 50px;
-    min-height: 50px;
-    border: none;
-    border-radius: 30px;
-    position: absolute;
-    top: 350px;
-    transition: 0.2s;
-}
-
-.button_lostPASS:hover {
-    width: 185px;
-    height: 55px;
-    transition: 0.2s;
-}
-
-#home-icon_lostPASS, #house_icon_registro{
-    position: absolute;
-    display: flex;
-    justify-content: top;
-    z-index: 2;
-    margin-right: 230px;
-    color: #7608a5;
-    top: 30px;
-    left: 25px;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        background-image: url("assets/ong_background-better.png");
+        background-position: center;
+        background-image: #FFFFFF url("../../images/Ong/Ong_icon.png") no-repeat right top fixed;
     }
 
-    #logo_lostPASS {
+    #logo_img {
         width: 300px;
-        
+
     }
 
-    .wrapper_lostPASS {
-        flex-direction: column-reverse;
+    #name_input {
+        height: 46px;
+        font-size: 12px;
+        position: absolute;
+        top: 220px;
+    }
+
+    #cnpj_input {
+        font-size: 12px;
+        height: 46px;
+        position: absolute;
+        top: 165px;
+    }
+
+
+    .container {
+        display: flex;
         background-image: none;
-        justify-content: center;
-        align-items: center;
     }
 
-    .form-container_lostPASS {
+    .box {
         width: 100%;
     }
 
-    .logo-container_lostPASS {
+    .logo_div {
         width: 0%;
     }
 
-    .input_lostPASS {
+
+
+    .login_button {
         height: 50px;
     }
 
-    .button_lostPASS {
-        height: 50px;
-    }
-
-    .form_lostPASS {
+    .login_form {
         min-width: 230px;
         width: 230px;
         max-width: 230px;
+        height: 455px;
     }
 
-    #home-icon_lostPASS {
-        margin-right: 180px;
+    #phone_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 110px;
+    }
+
+    #foundation_date_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 110px;
+    }
+
+    #house_icon {
+        position: absolute;
+        display: flex;
+        justify-content: top;
+        z-index: 2;
+        margin: 0 180px 0 0;
+        color: #7608a5;
+    }
+
+    #fiscal_council_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 200px;
+    }
+
+    #ong_type_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 200px;
+    }
+
+    #ong_logo_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 245px;
+    }
+
+    #email_input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 245px;
     }
 }
