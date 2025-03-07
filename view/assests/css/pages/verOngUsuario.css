@@ -5,7 +5,7 @@
   --cor-cabeçalho-tabela: #994dbb;
 }
 
-h1 {
+.titulo {
   position: fixed;
   top: 130px;
   left: 150px;
@@ -16,7 +16,7 @@ h1 {
   color: transparent;
 }
 
-body {
+.body-ver-ong {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   min-height: 100vh;
@@ -30,15 +30,15 @@ body {
   left: 7.5em;
 }
 
-.row-head {
+.tabela-cabecalho {
   background-color: var(--cor-cabeçalho-tabela);
 }
 
-.row-body:nth-child(even) {
+.tabela-corpo:nth-child(even) {
   background-color: var(--cor-tabela);
 }
 
-.row-head,
+.tabela-cabecalho,
 td {
   border: 1px solid black;
   padding: 5px;
@@ -46,11 +46,11 @@ td {
 }
 
 @media (max-width: 790px){
-  html{
+  .validarAtualizacaoOng{
     position: absolute;
   }
 
-  h1 {
+  .titulo {
     position: relative;
     top: 10rem;
     left: 4rem;
@@ -61,7 +61,7 @@ td {
     color: transparent;
   }
  
-  body {
+  .body-ver-ong {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     min-height: 100vh;
@@ -75,15 +75,15 @@ td {
     left: 4rem;
   }
  
-  .row-head {
+  .tabela-cabecalho {
     background-color: var(--cor-cabeçalho-tabela);
   }
  
-  .row-body:nth-child(even) {
+  .tabela-corpo:nth-child(even) {
     background-color: var(--cor-tabela);
   }
  
-  .row-head,
+  .tabela-cabecalho,
   td {
     border: 1px solid black;
     padding: 2px;
@@ -94,14 +94,14 @@ td {
 
 @media (max-width: 480px){
 
-  html{
+  .validarAtualizacaoOng{
     position: absolute;
     top: 20%;
     left: 40%;
     transform: translate(-50%, -50%);
   }
 
-  h1 {
+  .titulo {
     position: relative;
     top: 9rem;
     left: 2.2rem;
@@ -112,7 +112,7 @@ td {
     color: transparent;
   }
 
-  body {
+  .body-ver-ong {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     min-height: 50vh;
@@ -127,15 +127,15 @@ td {
     font-size: 10px;
   }
   
-  .row-head {
+  .tabela-cabecalho {
     background-color: var(--cor-cabeçalho-tabela);
   }
   
-  .row-body:nth-child(even) {
+  .tabela-corpo:nth-child(even) {
     background-color: var(--cor-tabela);
   }
   
-  .row-head,
+  .tabela-cabecalho,
   td {
     border: 1px solid black;
     padding: 2px;
