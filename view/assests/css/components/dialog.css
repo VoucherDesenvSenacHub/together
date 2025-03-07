@@ -7,11 +7,11 @@
     font-family: "Roboto", serif;
 }
 
-body{
+.body-gestaoPatrocinador{
     font-family: "Roboto", sans-serif;    
 }
 
-input{
+.input-gestao-pat{
 
     background-color: #e7e6e6;
     height: 53px;
@@ -76,7 +76,7 @@ input{
                 
             }
         } 
-        .content{
+        .content-info-geral{
             height: 350px;
             background-color: var(--gradient);
             width: 100%;
@@ -108,7 +108,7 @@ input{
                     justify-content: center;
                     
 
-                    input{
+                    input-gestao-pat{
                         width: 95%;
                         height: 53px;
                         margin: 5px 0;
@@ -123,7 +123,7 @@ input{
                     align-items: center;
                     
 
-                    input{
+                    input-gestao-pat{
                         height: 53px;
                         margin: 5px 0px 5px 10px;
                         
@@ -141,7 +141,7 @@ input{
     text-align: center;
     margin-top: 20px;
     width: 45%;
-    input{
+    input-gestao-pat{
         padding-right: 10px;
         background-color: #e7e6e6;
         width: 100%;
