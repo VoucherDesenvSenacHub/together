@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once "../../../view/components/head.php";?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Together</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://kit.fontawesome.com/db29c2ca45.js" crossorigin="anonymous"></script>
-  <!-- Fonte -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <!-- _____ -->
-</head>
-
-<body>
-  <div class="container">
+<body class="body_login_da_ong">
+  <div class="container_login_da_ong">
 
     <div class="box-login">
       <div class="img_logo">
@@ -28,10 +12,10 @@
       </div>
       <div class="login_container">
 
-        <div class="login_box">
+        <div class="login_box"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon"></i>
           <div class="user-moldure">
-            <img class="user-icon" src="assets/Captura de tela 2025-01-28 203642.png" alt="house">
+            <img class="user-icon" src="../../assests/images/Ong/Ong_icon.png" alt="house">
           </div>
 
           <input required type="text" placeholder="Digite seu CNPJ" class="text_input" id="name_input">
@@ -50,7 +34,7 @@
 
     <div class="container-registroONG">
       <div class="box-registroONG">
-        <div class="login_form-registroONG">
+        <div class="login_form-registroONG"> <!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon_registro"></i>
           <input required type="text" placeholder="Digite seu Nome" class="text_input" id="name_input-registroONG">
           <input required type="number" placeholder="Digite seu CNPJ" class="text_input" id="cnpj_input-registroONG">
@@ -82,7 +66,7 @@
 
     <div class="wrapper_lostPASS">
       <div class="form-container_lostPASS">
-        <div class="form_lostPASS">
+        <div class="form_lostPASS"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="home-icon_lostPASS"></i>
           <h1 class="title_lostPASS">Recuperar Senha</h1>
           <p class="text_lostPASS">Enviaremos um E-mail para você confirmar sua nova senha</p>
