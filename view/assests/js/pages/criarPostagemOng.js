@@ -38,3 +38,7 @@ contTexto.addEventListener('input', function() {
     const totalCaracteres = contTexto.value.length;
     contador.textContent = `${totalCaracteres} / 60`;
 });
+
+export default{
+    preview
+}
