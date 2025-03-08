@@ -9,3 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   atualizarStatus(".status-aprovado", "Aprovado", "check");
   atualizarStatus(".status-recusado", "Recusado", "close");
 });
+
+export default{
+}

@@ -1,12 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url(reset.css);
-@import url(/view/assests/css/components/tabela.css);
-@import url(/view/assests/css/components/dialog.css);
-@import url(/view/assests/css/components/gestaoDePatrocinadores.css);
-@import url(/view/assests/css/components/navbar.css);
-@import url(/view/assests/css/components/painelDeControle.css);
-@import url(/view/assests/css/components/telaLoginAdm.css);
-@import url(/view/assests/css/components/telaLoginOng.css);
-@import url(/view/assests/css/components/telaLoginUsuario.css);
-@import url(/view/assests/css/components/verOngs.css);
-@import url(/view/assests/css/components/verOngUsuario.css);
-@import url(/view/assests/css/components/visualizarVoluntarios.css); 
+@import url(components/dialog.css);
+@import url(pages/gestaoDePatrocinadores.css);
+@import url(components/navbar.css);
+@import url(pages/painelDeControle.css);
+@import url(pages/telaLoginAdm.css);
+@import url(pages/telaLoginOng.css);
+@import url(pages/telaLoginUsuario.css);
+@import url(pages/verOngs.css);
+@import url(pages/verOngUsuario.css);
+@import url(pages/visualizarVoluntarios.css);
+@import url(components/button.css);
+
+:root{
+    font-size: 16px;
+    font-family: "Roboto",sans-serif;
+    --cor-font-preto: #000000;
+    --cor-font-branco: #FFFFFF;
+    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+    --cor-roxo-claro: #b56ad0d2;
+    --cor-roxo-escuro: #b56ad0d2;
+    --cor-vermelho: #c63637;
+    --cor-verde: #118211;
+    --cor-amarelo: #ffd94d;
+}
