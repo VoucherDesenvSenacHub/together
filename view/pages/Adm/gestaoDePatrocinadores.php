@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Patrocinadores</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php require_once './../../components/head.php'?>
+
 <body>
     <dialog class="container-remove-patrocinador">
         <div class="content-top">
@@ -141,14 +135,14 @@
         <div class="btn-delete-add">
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-remove-patrocinador')" class="deletar">
+                    <div onclick="abrirPopup('.container-remove-patrocinador')" class="deletar-patrocinador">
                         <span class="uil--trash"></span>
                     </div>
                 </label>
             </div>
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-adiciona-patrocinador')" class="adicionar">
+                    <div onclick="abrirPopup('.container-adiciona-patrocinador')" class="adicionar-patrocinador">
                         <span class="uil--plus"></span>
                     </div>
                 </label>

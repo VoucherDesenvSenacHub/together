@@ -38,3 +38,7 @@ prevButton.addEventListener('click', () => {
     window.addEventListener('resize', () => {
     moveToSlide(currentIndex);
 });
+
+export default{
+    moveToSlide
+}
