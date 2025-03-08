@@ -18,26 +18,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="body-navbar">
 
     <header>
-        <nav>
-            <a href="" class="logo"><img class="logoimg" src="assets/Together.png" alt="logo"></a>
-            <ul>
+        <nav class="nav-navbar">
+            <a href="" class="logo-navbar"><img class="logoimg-navbar" src="assets/Together.png" alt="logo"></a>
+            <ul class="lista-opcoes-navbar">
                 <li>
-                    <a href="#">Home</a>
+                    <a class="a-navbar" href="#">Home</a>
                 </li>
 
                 <li>
-                    <a id="filtrarTopButton" href="#">Filtrar</a>
+                    <a class="a-navbar" id="filtrarTopButton" href="#">Filtrar</a>
                 </li>
 
                 <li>
-                    <a href="#">Feed</a>
+                    <a class="a-navbar" href="#">Feed</a>
                 </li>
 
                 <li>
-                    <a href="#">Sobre Nós</a>
+                    <a class="a-navbar" href="#">Sobre Nós</a>
                 </li>
             </ul>
             <div class="search-button-area">
@@ -59,99 +59,99 @@
         <ol id="filtrarList" class="filtrar-list hidden">
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
             <li class="filtrar-list-line">
                 <input id="listCheckbox" type="checkbox">
-                <p>Erradicação da Pobreza</p>
+                <p class="p-navbar">Erradicação da Pobreza</p>
             </li>
 
         </ol>
     </div>
     <div id="lateralBar" class="lateral-bar hidden">
         <div class="lateral-bar-top">
-            <h3>Nome de Usuario</h3>
+            <h3 class="h3-navbar">Nome de Usuario</h3>
             <button id="imageLateralBar" class="image-lateral-bar"></button>
         </div>
 

@@ -63,12 +63,12 @@
     padding: 0;
 }
 
-body {
+.body-navbar {
     font-family: "Roboto", sans-serif;
 }
 
 
-nav {
+.nav-navbar {
     background: var(--gradient);
     display: flex;
     justify-content: space-around;
@@ -81,11 +81,12 @@ nav {
     display: none;
 }
 
-.show {
+/* NAO TEM NO HTML */
+/* .show {
     display: block;
-}
+} */
 
-.logoimg {
+.logoimg-navbar {
     height: 60px;
     width: 200px;
     position: absolute;
@@ -93,18 +94,18 @@ nav {
     left: 40px;
 }
 
-a {
+.a-navbar {
     color: #F6F8FF;
     text-decoration: none;
     transition: 0.4s;
 }
 
-a:hover {
+.a-navbar:hover {
     font-size: 17px;
     opacity: 0.7;
 }
 
-ul {
+.lista-opcoes-navbar {
     display: flex;
     list-style: none;
     gap: 30px;
@@ -309,78 +310,75 @@ ul {
     top: 284px;
 }
 
-
-h2 {
+/* NAO TEM NENHUMA TAG <h2> NO HTML */
+/* h2 {
     text-align: center;
     margin: 10vh 0px 10vh;
     font-size: 3.5vh;
     color: #ffff;
-}
+} */
 
-h3 {
+.h3-navbar {
     color: #ffff;
 }
 
-p {
+.p-navbar {
     text-align: center;
     color: #FFFF;
 }
 
-h2:hover {
+/* h2:hover {
     font-size: 4vh;
     letter-spacing: 1px;
-    /*faz um espaçamento entre as letras*/
     transition: 0.4s;
-    /*faz uma suavização na animação*/
-}
+} */
 
-.sinop {
+/* .sinop {
     width: 50vw;
     display: flex;
     justify-content: center;
     justify-content: space-around;
     align-items: center;
-}
+} */
 
-.container {
+/* .container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* adiciona essa linha */
     align-items: center;
     ;
-}
+} */
 
 .sobre {
     margin: 10px;
     text-align: center;
     font-size: 20px;
     display: flex;
-
-
 }
 
-fieldset {
+/* NAO TEM NO HTML */
+/* fieldset {
     border-radius: 10px;
     background: #9d148d18;
     width: 10vw;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
-legend {
+/* legend {
     margin-top: 10px
-}
+} */
 
-.nome {
+/* .nome {
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
+} */
 
-.icon {
+/* NAO TEM ESSA CLASSE? */
+/* .icon {
     height: 25vh;
     width: 25vh;
     border-radius: 100%;
@@ -401,19 +399,19 @@ legend {
     align-items: center;
 
     transition: 0.3s;
-}
+} */
 
 .mobile-button {
     display: none;
 }
 
 @media screen and (max-width: 1569px) {
-    .logoimg {
+    .logoimg-navbar {
         height: 60px;
         width: 200px;
     }
 
-    ul {
+    .lista-opcoes-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -465,7 +463,7 @@ legend {
 }
 
 @media screen and (max-width: 1024px) {
-    .logoimg {
+    .logoimg-navbar {
         height: 50px;
         width: 190px;
         position: absolute;
@@ -473,7 +471,7 @@ legend {
         left: 20px;
     }
 
-    ul {
+    .lista-opcoes-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -580,7 +578,7 @@ legend {
 
     }
 
-    ul {
+    .lista-opcoes-navbar {
         display: none;
     }
 
@@ -599,7 +597,7 @@ legend {
         right: 200px;
     }
 
-    .logoimg {
+    .logoimg-navbar {
         height: 60px;
         width: 200px;
         position: absolute;
@@ -912,7 +910,7 @@ legend {
 
     }
 
-    ul {
+    .lista-opcoes-navbar {
         display: none;
     }
 
@@ -928,7 +926,7 @@ legend {
         display: none;
     }
 
-    .logoimg {
+    .logoimg-navbar {
         height: 60px;
         width: 200px;
         position: absolute;
