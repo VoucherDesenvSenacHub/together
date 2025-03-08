@@ -1,18 +1,18 @@
-<?php require_once "../../../view/components/head.php";?>
+<?php require_once "../../../view/components/head.php"; ?>
 
 <body class="body_login_da_ong">
   <div class="container_login_da_ong">
 
     <div class="box-login">
       <div class="img_logo">
-        
-          <img id="logo_lostPASS"
-            src="https://raw.githubusercontent.com/AntonioV1ctor/assets/refs/heads/main/Together.png" alt="logo">
-        
+
+        <img id="logo_lostPASS"
+          src="https://raw.githubusercontent.com/AntonioV1ctor/assets/refs/heads/main/Together.png" alt="logo">
+
       </div>
       <div class="login_container">
 
-        <div class="login_box"><!-- Mudar para Form  -->
+        <form class="login_box"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon"></i>
           <div class="user-moldure">
             <img class="user-icon" src="../../assests/images/Ong/Ong_icon.png" alt="house">
@@ -27,14 +27,14 @@
             <a id="create-account" href="" class="terms_link">Crie uma agora</a>
           </div>
           <input class="login_button" type="button" value="Enviar">
-        </div>
+        </form>
       </div>
     </div>
 
 
     <div class="container-registroONG">
       <div class="box-registroONG">
-        <div class="login_form-registroONG"> <!-- Mudar para Form  -->
+        <form class="login_form-registroONG"> <!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon_registro"></i>
           <input required type="text" placeholder="Digite seu Nome" class="text_input" id="name_input-registroONG">
           <input required type="number" placeholder="Digite seu CNPJ" class="text_input" id="cnpj_input-registroONG">
@@ -56,7 +56,7 @@
             <a href="" class="terms_link-registroONG">Termos e Condições</a>
           </div>
           <button class="login_button-registroONG">Enviar</button>
-        </div>
+        </form>
       </div>
       <div class="logo_div-registroONG">
         <img id="logo_lostPASS"
@@ -66,13 +66,13 @@
 
     <div class="wrapper_lostPASS">
       <div class="form-container_lostPASS">
-        <div class="form_lostPASS"><!-- Mudar para Form  -->
+        <form class="form_lostPASS"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="home-icon_lostPASS"></i>
           <h1 class="title_lostPASS">Recuperar Senha</h1>
           <p class="text_lostPASS">Enviaremos um E-mail para você confirmar sua nova senha</p>
           <input required type="email" placeholder="Digite seu Email" class="input_lostPASS" id="email-input_lostPASS">
           <button class="button_lostPASS">Enviar</button>
-        </div>
+        </form>
       </div>
       <div class="logo_div-registroONG">
         <img id="logo_lostPASS"
@@ -80,7 +80,7 @@
       </div>
     </div>
   </div>
-
+  <? require_once "../../../view/components/footer.php"; ?>
   <script>
     const boxLogin = document.querySelector('.box-login');
     const containerRegistro = document.querySelector('.container-registroONG');
@@ -91,21 +91,21 @@
     const houseIconRegistro = document.getElementById('house_icon_registro');
     const homeIconLostPASS = document.getElementById('home-icon_lostPASS');
 
-    createAccountLink.addEventListener('click', function (event) {
+    createAccountLink.addEventListener('click', function(event) {
       event.preventDefault();
       boxLogin.style.display = 'none';
       containerRegistro.style.display = 'flex';
-      
+
       wrapperLostPASS.style.display = 'none';
     });
 
-    lostPassLink.addEventListener('click', function (event) {
+    lostPassLink.addEventListener('click', function(event) {
       event.preventDefault();
       boxLogin.style.display = 'none';
       wrapperLostPASS.style.display = 'flex';
     });
 
-    houseIcon.addEventListener('click', function (event) {
+    houseIcon.addEventListener('click', function(event) {
       event.preventDefault();
       boxLogin.style.display = 'flex';
       containerRegistro.style.display = 'none';
@@ -113,14 +113,14 @@
     });
 
     if (houseIconRegistro) {
-      houseIconRegistro.addEventListener('click', function (event) {
+      houseIconRegistro.addEventListener('click', function(event) {
         event.preventDefault();
         boxLogin.style.display = 'flex';
         containerRegistro.style.display = 'none';
       });
     }
 
-    homeIconLostPASS.addEventListener('click', function (event) {
+    homeIconLostPASS.addEventListener('click', function(event) {
       event.preventDefault();
       boxLogin.style.display = 'flex';
       wrapperLostPASS.style.display = 'none';
