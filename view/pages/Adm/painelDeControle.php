@@ -1,52 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADM - Painel de Controle</title>
+<?php require_once './../../components/head.php'?>
 
-    <link rel="stylesheet" href="style.css">
 
-</head>
 <body>
     <?php
         // eespaço para adicionar lógica PHP, se necessário. Decidam se vão ou não manter esse bloco
     ?>
     <header>
         <nav class="navbar">
+            <?php require_once './../../components/navbar.php'?>
             <!-- Conteúdo do menu de navegação -->
         </nav>
     </header>
-    <div class="container">
-        <div class="container-box">
-            <div class="content">
-                <div class="content-inside">
-                    <img class="icone" src="assets/icone-atualizacoes-cadastrais.svg" alt="atualizacoes cadastrais SVG">
-                    <h2 class="titulo"><b>Atualizações Cadastrais</b></h2>
-                    <span class="desc">Valide as atualizações cadastrais das ONGs que enviaram uma solicitação.</span>
+    <div class="container-geral-painel-de-controle-adm">
+        <div class="box-painel-de-controle-adm">
+            <div class="conteudo-painel-de-controle-adm">
+                <div class="conteudo-interno">
+                    <img class="icone-conteudo" src="assets/icone-atualizacoes-cadastrais.svg" alt="atualizacoes cadastrais SVG">
+                    <h2 class="titulo-conteudo"><b>Atualizações Cadastrais</b></h2>
+                    <span class="desc-conteudo">Valide as atualizações cadastrais das ONGs que enviaram uma solicitação.</span>
                 </div>
-                <div class="content-inside">
-                    <img class="icone" src="assets/icone-validar-ongs.svg" alt="validar ongs SVG">
-                    <h2 class="titulo"><b>Validar ONGs</b></h2>
-                    <span class="desc">Valide por aqui as ONGs que enviaram uma solicitação.</span>
+                <div class="conteudo-interno">
+                    <img class="icone-conteudo" src="assets/icone-validar-ongs.svg" alt="validar ongs SVG">
+                    <h2 class="titulo-conteudo"><b>Validar ONGs</b></h2>
+                    <span class="desc-conteudo">Valide por aqui as ONGs que enviaram uma solicitação.</span>
                 </div>
-                <div class="content-inside">
-                    <img class="icone" src="assets/icone-ongs-usuarios-cadastrados.svg" alt="ongs usuarios cadastrados SVG">
-                    <h2 class="titulo"><b>ONGs / Usuários Cadastatrados</b></h2>
-                    <span class="desc">Veja por aqui as ONGs e Usuários que estão permitidas pelo sistema.</span>
+                <div class="conteudo-interno">
+                    <img class="icone-conteudo" src="assets/icone-ongs-usuarios-cadastrados.svg" alt="ongs usuarios cadastrados SVG">
+                    <h2 class="titulo-conteudo"><b>ONGs / Usuários Cadastatrados</b></h2>
+                    <span class="desc-conteudo">Veja por aqui as ONGs e Usuários que estão permitidas pelo sistema.</span>
                 </div>
 
-                <div class="content-inside">
-                    <img class="icone" src="assets/icone-editar.svg" alt="editar SVG">
-                    <h2 class="titulo"><b>Editar</b></h2>
-                    <span class="desc">Edite as Tags do botão de filtrar</span>
+                <div class="conteudo-interno">
+                    <img class="icone-conteudo" src="assets/icone-editar.svg" alt="editar SVG">
+                    <h2 class="titulo-conteudo"><b>Editar</b></h2>
+                    <span class="desc-conteudo">Edite as Tags do botão de filtrar</span>
                 </div>
-                <div  class="content-inside">
+                <div  class="conteudo-interno">
                     <a href="../adm-gestao-de-patrocinadores/index.html">
-                        <img class="icone img-patrocinadores" src="assets/patrocinadores.png" alt="patrocinadores PNG">
+                        <img class="icone-conteudo img-patrocinadores" src="assets/patrocinadores.png" alt="patrocinadores PNG">
                     </a>
-                    <h2 class="titulo"><b>Patrocinadores</b></h2>
-                    <span class="desc">Gerencie os Patrocinadores</span>
+                    <h2 class="titulo-conteudo"><b>Patrocinadores</b></h2>
+                    <span class="desc-conteudo">Gerencie os Patrocinadores</span>
                 </div>        
             </div>
         </div>
