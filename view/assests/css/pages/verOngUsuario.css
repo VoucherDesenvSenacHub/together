@@ -3,6 +3,10 @@
 :root {
   --cor-tabela: #ca99e1;
   --cor-cabeçalho-tabela: #994dbb;
+  --cor-padrao: black;
+  --cor-sucesso: green;
+  --cor-agurdando: rgba(236, 249, 55, 0.448);
+  --cor-recusado: red;
 }
 
 h1 {
@@ -22,7 +26,7 @@ body {
   min-height: 100vh;
 }
 
-.tabela {
+.table-validation {
   border-collapse: collapse;
   width: 80%;
   position: fixed;
@@ -45,8 +49,21 @@ td {
   text-align: center;
 }
 
-@media (max-width: 790px){
-  html{
+.material-symbols-outlined.exibicao {
+  color: black;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+.status-aguardando {
+  color: var(--cor-agurdando);
+}
+
+@media (max-width: 790px) {
+  html {
     position: absolute;
   }
 
@@ -60,13 +77,13 @@ td {
     -webkit-background-clip: text;
     color: transparent;
   }
- 
+
   body {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     min-height: 100vh;
   }
- 
+
   .tabela {
     border-collapse: collapse;
     width: 150%;
@@ -74,15 +91,15 @@ td {
     top: 12.5rem;
     left: 4rem;
   }
- 
+
   .row-head {
     background-color: var(--cor-cabeçalho-tabela);
   }
- 
+
   .row-body:nth-child(even) {
     background-color: var(--cor-tabela);
   }
- 
+
   .row-head,
   td {
     border: 1px solid black;
@@ -91,10 +108,8 @@ td {
   }
 }
 
-
-@media (max-width: 480px){
-
-  html{
+@media (max-width: 480px) {
+  html {
     position: absolute;
     top: 20%;
     left: 40%;
@@ -117,7 +132,7 @@ td {
     font-size: 15px;
     min-height: 50vh;
   }
-  
+
   .tabela {
     /* border-collapse: collapse; */
     width: 50%;
@@ -126,15 +141,15 @@ td {
     left: 2.2rem;
     font-size: 10px;
   }
-  
+
   .row-head {
     background-color: var(--cor-cabeçalho-tabela);
   }
-  
+
   .row-body:nth-child(even) {
     background-color: var(--cor-tabela);
   }
-  
+
   .row-head,
   td {
     border: 1px solid black;

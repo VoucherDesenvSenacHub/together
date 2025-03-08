@@ -19,16 +19,20 @@ $tabela = new DadosTabela();
 $arrays = $tabela->getDados();
 ?>
 
+
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
-    
+
     <main>
         <section>
-            <div class="titulo">
-                <h1>Cadastrais</h1>
+            <div class="title-h1">
+                <h1>Atualização Cadastral</h1>
             </div>
             <div>
-                <table class="table-validar">
+                <table class="table-validation">
                     <thead>
                         <tr class="row-head">
                             <th>Data</th>
@@ -37,13 +41,19 @@ $arrays = $tabela->getDados();
                             <th>Visualizar</th>
                         </tr>
                     </thead>
-                    <tbody class="corpo-tabela">
+                    <tbody class="body-table">
                         <?php foreach ($arrays as $array) { ?>
                             <tr class="row-body">
                                 <td><?php echo $array["Data"]; ?></td>
                                 <td><?php echo $array["NomeOngs"]; ?></td>
-                                <td class="status-aprovado"><?php echo $array["Status"] ?></td>
-                                <td><span class='material-symbols-outlined'> visibility </span></td>
+                                <td class="status-aguardando"><?php echo $array["Status"] ?></td>
+                                <td>
+                                    <form action="" method="get">
+                                        <button>
+                                            <span class='material-symbols-outlined exibicao'> visibility </span>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -51,5 +61,5 @@ $arrays = $tabela->getDados();
             </div>
         </section>
     </main>
-    <script src="script.js" defer></script>
+    <script src="../../../view/assests/js/pages/verOngUsuario.js" defer></script>
 </body>
