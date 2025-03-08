@@ -13,13 +13,12 @@ body {
 }
 
 .validation-area {
-  width: 50%;
+  width: 30%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 60px;
+  justify-content: space-evenly;
 }
 
 .imagem-area {
@@ -29,8 +28,8 @@ body {
 }
 
 .imagem-perfil {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   border: none;
   border-radius: 180px;
   box-shadow: 6px 7px 31px 0px rgba(0,0,0,0.42);
@@ -97,6 +96,7 @@ body {
 
 #recuse-icon {
   font-size: 30px;
+  color: blueviolet;
 }
 
 .infomation {
