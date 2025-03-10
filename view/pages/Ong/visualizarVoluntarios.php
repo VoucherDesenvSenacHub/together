@@ -33,7 +33,7 @@
                     <label class="label-visu-voluntarios" id="cpf-label">CPF:</label>
                     <input class="input-visu-voluntarios" type="cpf" name="cpf" id="cpf" value="XXX.XXX.XXX-XX" readonly>
                 </div>
-                
+
                 <div class="metade-input-area">
 
                     <div class="inputs-area">
@@ -43,7 +43,7 @@
 
                     <div class="inputs-area">
                         <label class="label-visu-voluntarios" for="telefone">Telefone:</label>
-                        <input class="input-visu-voluntarios" type="text" name="telefone" value="+XX (XX) XXXXXXXXXX" readonly> 
+                        <input class="input-visu-voluntarios" type="text" name="telefone" value="+XX (XX) XXXXXXXXXX" readonly>
                     </div>
 
                 </div>

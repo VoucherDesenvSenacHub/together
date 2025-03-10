@@ -14,11 +14,11 @@ body {
 
 .validation-area {
   width: 30%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 200px;
 }
 
 .imagem-area {
@@ -32,7 +32,7 @@ body {
   height: 220px;
   border: none;
   border-radius: 180px;
-  box-shadow: 6px 7px 31px 0px rgba(0,0,0,0.42);
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
 }
 
 .confirmacao-area {
@@ -44,7 +44,7 @@ body {
   margin-top: 20px;
   justify-content: center;
   align-items: center;
-  border: 3.5px solid blueviolet;   
+  border: 3.5px solid blueviolet;
   box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.304);
   border-radius: 20px;
   padding: 10px;
@@ -101,7 +101,6 @@ body {
 
 .infomation {
   width: 50%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -124,7 +123,7 @@ body {
   height: 500px;
   padding: 30px;
   border: 3.5px solid blueviolet;
-  box-shadow: 6px 7px 31px 0px rgba(0,0,0,0.42);
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
   border-radius: 30px;
   top: 200px;
 }
@@ -156,4 +155,10 @@ body {
   border-radius: 30px;
   padding: 0 15px 0 15px;
   cursor: default;
+}
+
+@media screen and (max-width: 1000px) {
+
+  
+
 }
