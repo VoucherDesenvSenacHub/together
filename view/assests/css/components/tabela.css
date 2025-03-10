@@ -1,0 +1,35 @@
+table {
+    text-align: center;
+    margin: 0 auto;
+    width: 98%;
+   
+    td {
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+   
+    th {
+      background-color: #40045c;
+      color: white;
+      padding: 7px;
+      border-right: 1px solid #ccc;
+      border-left: 1px solid #ccc;
+    }
+   
+  }
+   
+  tr:nth-child(even) {
+    background: #cb89ea;
+  }
+
+  .icon-btn {
+    border: none;
+    background-color: transparent;
+}
+.icon {
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+    width: 30px;
+    object-fit: contain;
+}
