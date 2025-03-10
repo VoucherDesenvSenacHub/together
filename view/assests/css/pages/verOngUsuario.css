@@ -4,9 +4,7 @@
   --cor-tabela: #ca99e1;
   --cor-cabeçalho-tabela: #994dbb;
   --cor-padrao: black;
-  --cor-sucesso: green;
-  --cor-agurdando: rgba(236, 249, 55, 0.448);
-  --cor-recusado: red;
+  --cor-agurdando: rgba(236, 236, 15, 0.892);
 }
 
 h1 {
@@ -47,15 +45,20 @@ td {
   border: 1px solid black;
   padding: 5px;
   text-align: center;
+  color: black;
 }
 
 .material-symbols-outlined.exibicao {
   color: black;
 }
 
-button {
+.button-visualizar {
   background: none;
   border: none;
+}
+
+.button-visualizar:hover {
+  cursor: pointer;
 }
 
 .status-aguardando {

@@ -4,9 +4,9 @@ require_once "../../../view/components/head.php";
 class DadosTabela
 {
     private $dados = [
-        ["Data" => '10/10/2024', "NomeOngs" => 'Ong Esperança', "Status" => 'Aprovado'],
-        ["Data" => '05/09/2024', "NomeOngs" => 'Ong Vida', "Status" => 'Recusado'],
-        ["Data" => '20/08/2024', "NomeOngs" => 'Ong Amor', "Status" => 'Aguardando'],
+        ["Data" => '10/10/2024', "NomeOngs" => 'Esperança', "Status" => 'Aprovado'],
+        ["Data" => '05/09/2024', "NomeOngs" => 'Vida', "Status" => 'Recusado'],
+        ["Data" => '20/08/2024', "NomeOngs" => 'Amor', "Status" => 'Aguardando'],
     ];
 
     public function getDados()
@@ -49,7 +49,7 @@ $arrays = $tabela->getDados();
                                 <td class="status-aguardando"><?php echo $array["Status"] ?></td>
                                 <td>
                                     <form action="" method="get">
-                                        <button>
+                                        <button class="button-visualizar" type="button">
                                             <span class='material-symbols-outlined exibicao'> visibility </span>
                                         </button>
                                     </form>
