@@ -1,6 +1,6 @@
 <?php require_once "../../../view/components/head.php"; ?>
 
-<body>
+<body class="body-visualizar-voluntarios">
 
     <div class="container">
         <div class="validation-area">
