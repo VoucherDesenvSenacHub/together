@@ -1,4 +1,5 @@
 <?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../../view/components/navbar.php"; ?>
 
 <body class="body-visualizar-voluntarios">
 
@@ -63,5 +64,7 @@
     </div>
 
 </body>
+
+<?php require_once "../../../view/components/footer.php"; ?>
 
 </html>
