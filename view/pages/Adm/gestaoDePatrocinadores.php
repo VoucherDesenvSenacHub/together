@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Patrocinadores</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="body-gestaoPatrocinador">
+<?php require_once './../../components/head.php'?>
+
+<body>
+    <?php require_once './../../components/navbar.php'?>
+
     <dialog class="container-remove-patrocinador">
         <div class="content-top">
             <h1 class="titulo-remove-patrocinador">Remover Patrocinador</h1>
@@ -17,7 +13,7 @@
             </div>
             
         </div>
-        <div class="content-info-geral">
+        <div class="content">
 
             <div class="content-info">
 
@@ -52,21 +48,21 @@
                 </div>
                 
             </div>
-            <div class="content-info-geral">
+            <div class="content">
                 <form action="" class="form-adiciona-patrocinador">
 
                     <div class="div-info-patrocinador">
-                            <input class="input-gestao-pat" type="text" placeholder="Rede Social">
-                            <input class="input-gestao-pat" type="text" placeholder="Nome do patrocinador">
+                            <input type="text" placeholder="Rede Social">
+                            <input type="text" placeholder="Nome do patrocinador">
 
                     </div>
                     <div class="div-info-patrocinio">
                         <div class="data-vencimento">
-                            <input class="input-gestao-pat" placeholder="Data de vencimento" id="data-patrocinio" type="date"  placeholder="Data de vencimento" required>
+                            <input placeholder="Data de vencimento" id="data-patrocinio" type="date"  placeholder="Data de vencimento" required>
                         </div>
                         <div class="logo-upload">
                             <label for="logo">Logotipo do patrocinador</label>
-                            <input class="input-gestao-pat" type="file" id="logo" name="logo" accept="image*/" required>
+                            <input type="file" id="logo" name="logo" accept="image*/" required>
                         </div>
                     </div>
                     
@@ -90,7 +86,7 @@
                     <p>XXXXXXXXXXXXX</p>
                     </div>
                     <label class="container-check">
-                        <input class="input-gestao-pat" checked="checked" type="checkbox">
+                        <input checked="checked" type="checkbox">
                         <div class="checkmark"></div>
                     </label>
                 </li>
@@ -100,7 +96,7 @@
                     <p>XXXXXXXXXXXXX</p>
                     </div>
                     <label class="container-check">
-                        <input class="input-gestao-pat" checked="checked" type="checkbox">
+                        <input checked="checked" type="checkbox">
                         <div class="checkmark"></div>
                     </label>
                 </li>
@@ -110,7 +106,7 @@
                     <p>XXXXXXXXXXXXX</p>
                     </div>
                     <label class="container-check">
-                        <input class="input-gestao-pat" checked="checked" type="checkbox">
+                        <input checked="checked" type="checkbox">
                         <div class="checkmark"></div>
                     </label>
                 </li>
@@ -120,7 +116,7 @@
                     <p>XXXXXXXXXXXXX</p>
                     </div>
                     <label class="container-check">
-                        <input class="input-gestao-pat" checked="checked" type="checkbox">
+                        <input checked="checked" type="checkbox">
                         <div class="checkmark"></div>
                     </label>
                 </li>
@@ -130,7 +126,7 @@
                     <p>XXXXXXXXXXXXX</p>
                     </div>
                     <label class="container-check">
-                        <input class="input-gestao-pat" checked="checked" type="checkbox">
+                        <input checked="checked" type="checkbox">
                         <div class="checkmark"></div>
                     </label>
                 </li>
@@ -141,14 +137,14 @@
         <div class="btn-delete-add">
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-remove-patrocinador')" class="deletar">
+                    <div onclick="abrirPopup('.container-remove-patrocinador')" class="deletar-patrocinador">
                         <span class="uil--trash"></span>
                     </div>
                 </label>
             </div>
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-adiciona-patrocinador')" class="adicionar">
+                    <div onclick="abrirPopup('.container-adiciona-patrocinador')" class="adicionar-patrocinador">
                         <span class="uil--plus"></span>
                     </div>
                 </label>
@@ -156,7 +152,7 @@
         </div>
         </section>
     </section>
-    <script src="script.js"></script>
+    <?php require_once './../../components/footer.php'?>
 </body>
 
 </html>

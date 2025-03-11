@@ -49,26 +49,7 @@
 
 }
 
-:root {
-    --gradient-background: rgb(62, 0, 163);
-    --color-menu: rgba(245, 245, 245, 0.556);
-    --text-color: rgb(227, 227, 227);
-    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-    --gradient-icon: rgb(150, 16, 199);
-    --shadow: rgba(0, 0, 0, 0.658);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.body-navbar {
-    font-family: "Roboto", sans-serif;
-}
-
-
-.nav-navbar {
+.navbar-group {
     background: var(--gradient);
     display: flex;
     justify-content: space-around;
@@ -81,11 +62,6 @@
     display: none;
 }
 
-/* NAO TEM NO HTML */
-/* .show {
-    display: block;
-} */
-
 .logoimg-navbar {
     height: 60px;
     width: 200px;
@@ -95,7 +71,7 @@
 }
 
 .a-navbar {
-    color: #F6F8FF;
+    color: var(--cor-font-branco);
     text-decoration: none;
     transition: 0.4s;
 }
@@ -105,7 +81,7 @@
     opacity: 0.7;
 }
 
-.lista-opcoes-navbar {
+.ul-navbar {
     display: flex;
     list-style: none;
     gap: 30px;
@@ -120,9 +96,9 @@
     width: 40px;
     height: 40px;
     border-radius: 90px;
-    background-color: rgba(128, 0, 128, 0);
+    background-color: var(--cor-font-preto);
     border: 2px solid white;
-    color: white;
+    color: var(--cor-font-branco);
     cursor: pointer;
     position: absolute;
     top: 23px;
@@ -156,7 +132,7 @@
 
 #lente-icon {
     width: 40px;
-    color: #7608a5;
+    color: var(--cor-roxo-escuro);
 }
 
 .image-area {
@@ -221,7 +197,7 @@
 .lateral-bar {
     width: 300px;
     height: 350px;
-    background-color: #7608a5;
+    background-color: var(--cor-roxo-escuro);
     border-radius: 0 0 0 30px;
     box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
     position: absolute;
@@ -260,7 +236,7 @@
 
 #favoritosIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 104px;
 }
@@ -275,7 +251,7 @@
 
 #historicoIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 164px;
 }
@@ -290,7 +266,7 @@
 
 #configIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 224px;
 }
@@ -305,49 +281,19 @@
 
 #logoutIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 284px;
 }
 
-/* NAO TEM NENHUMA TAG <h2> NO HTML */
-/* h2 {
-    text-align: center;
-    margin: 10vh 0px 10vh;
-    font-size: 3.5vh;
-    color: #ffff;
-} */
-
-.h3-navbar {
-    color: #ffff;
+.h3-lateral-bar {
+    color: var(--cor-font-branco);
 }
 
-.p-navbar {
+.p-filtrarArea {
     text-align: center;
-    color: #FFFF;
+    color: var(--cor-font-branco);
 }
-
-/* h2:hover {
-    font-size: 4vh;
-    letter-spacing: 1px;
-    transition: 0.4s;
-} */
-
-/* .sinop {
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    align-items: center;
-} */
-
-/* .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    ;
-} */
 
 .sobre {
     margin: 10px;
@@ -355,51 +301,6 @@
     font-size: 20px;
     display: flex;
 }
-
-/* NAO TEM NO HTML */
-/* fieldset {
-    border-radius: 10px;
-    background: #9d148d18;
-    width: 10vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
-
-/* legend {
-    margin-top: 10px
-} */
-
-/* .nome {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-} */
-
-/* NAO TEM ESSA CLASSE? */
-/* .icon {
-    height: 25vh;
-    width: 25vh;
-    border-radius: 100%;
-    border: #FFFF solid 2px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 7vh 15px 1px;
-    cursor: pointer;
-    transition: 0.7s;
-}
-
-.icon:hover {
-    height: 30vh;
-    width: 30vh;
-    border-radius: 100%;
-    border: #FFFF solid 2px;
-    justify-content: space-between;
-    align-items: center;
-
-    transition: 0.3s;
-} */
 
 .mobile-button {
     display: none;
@@ -411,7 +312,7 @@
         width: 200px;
     }
 
-    .lista-opcoes-navbar {
+    .ul-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -426,9 +327,9 @@
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: rgba(128, 0, 128, 0);
+        background-color: var(--cor-font-preto);
         border: 2px solid white;
-        color: white;
+        color: var(--cor-font-branco);
         cursor: pointer;
         position: absolute;
         top: 23px;
@@ -471,7 +372,7 @@
         left: 20px;
     }
 
-    .lista-opcoes-navbar {
+    .ul-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -486,9 +387,9 @@
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: rgba(128, 0, 128, 0);
+        background-color: var(--cor-font-preto);
         border: 2px solid white;
-        color: white;
+        color: var(--cor-font-branco);
         cursor: pointer;
         position: absolute;
         top: 25px;
@@ -578,7 +479,7 @@
 
     }
 
-    .lista-opcoes-navbar {
+    .ul-navbar {
         display: none;
     }
 
@@ -661,7 +562,7 @@
     .lateral-bar {
         width: 100%;
         height: 400px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         border-radius: 0 0 30px 30px;
         box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
         position: absolute;
@@ -695,7 +596,7 @@
         position: absolute;
         left: 30px;
         width: 40px;
-        color: white;
+        color: var(--cor-font-branco);
     }
 
     .searchMobileBar {
@@ -719,7 +620,7 @@
 
     #favoritosIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 154px;
     }
@@ -734,7 +635,7 @@
 
     #historicoIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 214px;
     }
@@ -749,7 +650,7 @@
 
     #configIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 274px;
     }
@@ -764,7 +665,7 @@
 
     #logoutIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 28px;
         top: 334px;
     }
@@ -776,7 +677,7 @@
         height: 60px;
         border: none;
         border-radius: 90px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         color: #F6F8FF;
         justify-content: center;
         align-items: center;
@@ -791,7 +692,7 @@
     }
 
     .circle-choice {
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         width: 250px;
         height: 250px;
         border-radius: 100px 50px 30px;
@@ -812,7 +713,7 @@
         border: none;
         border-radius: 90px;
         background-color: #5108708e;
-        color: #F6F8FF;
+        color: var(--cor-font-branco);
         justify-content: center;
         align-items: center;
     }
@@ -910,7 +811,7 @@
 
     }
 
-    .lista-opcoes-navbar {
+    .ul-navbar {
         display: none;
     }
 
@@ -992,7 +893,7 @@
     .lateral-bar {
         width: 100%;
         height: 400px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         border-radius: 0 0 30px 30px;
         box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
         position: absolute;
@@ -1025,7 +926,7 @@
         position: absolute;
         left: 30px;
         width: 40px;
-        color: white;
+        color: var(--cor-font-branco);
     }
 
     .searchMobileBar {
@@ -1049,7 +950,7 @@
 
     #favoritosIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 154px;
     }
@@ -1064,7 +965,7 @@
 
     #historicoIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 214px;
     }
@@ -1079,7 +980,7 @@
 
     #configIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 274px;
     }
@@ -1094,7 +995,7 @@
 
     #logoutIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 28px;
         top: 334px;
     }
@@ -1106,8 +1007,8 @@
         height: 60px;
         border: none;
         border-radius: 90px;
-        background-color: #7608a5;
-        color: #F6F8FF;
+        background-color: var(--cor-roxo-escuro);
+        color: var(--cor-font-branco);
         justify-content: center;
         align-items: center;
         position: absolute;
@@ -1117,7 +1018,7 @@
     }
 
     .circle-choice {
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         width: 250px;
         height: 250px;
         border-radius: 100px 50px 30px;
