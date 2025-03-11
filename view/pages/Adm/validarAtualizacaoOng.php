@@ -1,4 +1,6 @@
 <?php
+
+//NAO É PRA EXISTIR UM BANCO, AS INFORMACOES SAO ESTÁTICAS
 require_once "../../../view/components/head.php";
 
 class DadosTabela
@@ -19,7 +21,7 @@ $tabela = new DadosTabela();
 $arrays = $tabela->getDados();
 ?>
 
-
+<!-- REMOVE ESSE LINK -->
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
