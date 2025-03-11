@@ -1,6 +1,8 @@
 <?php require_once './../../components/head.php'?>
 
 <body>
+    <?php require_once './../../components/navbar.php'?>
+
     <dialog class="container-remove-patrocinador">
         <div class="content-top">
             <h1 class="titulo-remove-patrocinador">Remover Patrocinador</h1>
@@ -150,7 +152,7 @@
         </div>
         </section>
     </section>
-    <script src="script.js"></script>
+    <?php require_once './../../components/footer.php'?>
 </body>
 
 </html>

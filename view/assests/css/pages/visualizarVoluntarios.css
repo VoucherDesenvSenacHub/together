@@ -1,62 +1,152 @@
-@import url(/reset.css);
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
-    font-family: 'Roboto', sans-serif;
+.container-visualizar-voluntarios {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container-h1{
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    padding: 20px;
-    font-size: 30px;
-}
-span{
-    color: #118211;
+.validation-area-visualizar-voluntarios {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
 }
 
-.texto-gradient {
-    background: linear-gradient(90deg, rgba(62, 0, 163, 1), rgba(218, 112, 255, 1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+.imagem-area-visualizar-voluntarios {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* table {
-    text-align: center;
-    margin: 0 auto;
-    width: 98%;
-   
-    td {
-      padding: 5px;
-      border: 1px solid #ccc;
-    }
-   
-    th {
-      background-color: #40045c;
-      color: white;
-      padding: 7px;
-      border-right: 1px solid #ccc;
-      border-left: 1px solid #ccc;
-    }
-   
-  }
-   
-  tr:nth-child(even) {
-    background: #cb89ea;
-  }
-
-  .icon-btn {
-    border: none;
-    background-color: transparent;
+.imagem-perfil-visualizar-voluntarios {
+  width: 220px;
+  height: 220px;
+  border: none;
+  border-radius: 180px;
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
 }
- 
-.icon {
-    cursor: pointer;
-    position: relative;
-    margin: 0 auto;
-    width: 30px;
-    object-fit: contain;
-} */
+
+.confirmacao-area-visualizar-voluntarios {
+  height: 150px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  border: 3.5px solid blueviolet;
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.304);
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.button-area-visualizar-voluntarios {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pergunta-confirmacao-visualizar-voluntarios {
+  color: blueviolet;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.validation-button-visualizar-voluntarios {
+  width: 50px;
+  height: 50px;
+  transition: 0.2s;
+}
+
+.validation-button-visualizar-voluntarios:hover {
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  transition: 0.2s;
+}
+
+#check-button {
+  color: white;
+  background-color: blueviolet;
+  border: none;
+  border-radius: 15px;
+}
+
+#recuse-button {
+  color: blueviolet;
+  border: solid 3px blueviolet;
+  border-radius: 15px;
+  background: none;
+}
+
+#check-icon {
+  font-size: 30px;
+}
+
+#recuse-icon {
+  font-size: 30px;
+  color: blueviolet;
+}
+
+.infomation-visualizar-voluntarios {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-title-visualizar-voluntarios {
+  font-size: 40px;
+  font-weight: bold;
+  top: 30px;
+  color: blueviolet;
+}
+
+.info-area-visualizar-voluntarios {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 15px;
+  width: 450px;
+  height: 500px;
+  padding: 30px;
+  border: 3.5px solid blueviolet;
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
+  border-radius: 30px;
+  top: 200px;
+}
+
+.inputs-area-visualizar-voluntarios {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.metade-input-area-visualizar-voluntarios {
+  display: flex;
+  gap: 10px;
+}
+
+.label-visu-voluntarios {
+  font-size: 15px;
+  color: black;
+  margin: 0 0 0 5px;
+}
+
+.input-visu-voluntarios {
+  height: 40px;
+  border: 2px solid blueviolet;
+  color: black;
+  /* border: none; */
+  /* box-shadow: 6px 7px 31px 0px rgba(0,0,0,0.42); */
+  border-radius: 30px;
+  padding: 0 15px 0 15px;
+  cursor: default;
+}
