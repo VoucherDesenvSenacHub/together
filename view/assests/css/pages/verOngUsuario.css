@@ -1,13 +1,6 @@
 @import url("reset.css");
 
-:root {
-  --cor-tabela: #ca99e1;
-  --cor-cabeçalho-tabela: #994dbb;
-  --cor-padrao: black;
-  --cor-agurdando: rgba(236, 236, 15, 0.892);
-}
-
-h1 {
+.title-h1{
   position: fixed;
   top: 130px;
   left: 150px;
@@ -18,52 +11,6 @@ h1 {
   color: transparent;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 20px;
-  min-height: 100vh;
-}
-
-.table-validation {
-  border-collapse: collapse;
-  width: 80%;
-  position: fixed;
-  top: 10em;
-  left: 7.5em;
-}
-
-.row-head {
-  background-color: var(--cor-cabeçalho-tabela);
-}
-
-.row-body:nth-child(even) {
-  background-color: var(--cor-tabela);
-}
-
-.row-head,
-td {
-  border: 1px solid black;
-  padding: 5px;
-  text-align: center;
-  color: black;
-}
-
-.material-symbols-outlined.exibicao {
-  color: black;
-}
-
-.button-visualizar {
-  background: none;
-  border: none;
-}
-
-.button-visualizar:hover {
-  cursor: pointer;
-}
-
-.status-aguardando {
-  color: var(--cor-agurdando);
-}
 
 @media (max-width: 790px) {
   html {
