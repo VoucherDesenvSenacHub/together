@@ -1,0 +1,28 @@
+.botao {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    filter: none; 
+    text-shadow: none;
+
+    &.salvar {
+        background: var(--cor-botao-salvar);
+        color: white;
+        border: 2px;
+    }
+    &.cancelar {
+        background-color: white ;
+        border-style: solid;
+        border-width: 4px;
+        border-color: var(--cor-botão-cancelar);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.botao:hover {
+    transform: scale(1.02);
+}
