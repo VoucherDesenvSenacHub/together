@@ -12,7 +12,7 @@
       </div>
       <div class="login_container">
 
-        <form class="login_box"><!-- Mudar para Form  -->
+        <form method="POST" class="login_box"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon"></i>
           <div class="user-moldure">
             <img class="user-icon" src="../../assests/images/Ong/Ong_icon.png" alt="house">
@@ -34,7 +34,7 @@
 
     <div class="container-registroONG">
       <div class="box-registroONG">
-        <form class="login_form-registroONG"> <!-- Mudar para Form  -->
+        <form method="POST" class="login_form-registroONG"> <!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="house_icon_registro"></i>
           <input required type="text" placeholder="Digite seu Nome" class="text_input" id="name_input-registroONG">
           <input required type="number" placeholder="Digite seu CNPJ" class="text_input" id="cnpj_input-registroONG">
@@ -66,7 +66,7 @@
 
     <div class="wrapper_lostPASS">
       <div class="form-container_lostPASS">
-        <form class="form_lostPASS"><!-- Mudar para Form  -->
+        <form method="POST" class="form_lostPASS"><!-- Mudar para Form  -->
           <i class="fa-solid fa-house fa-xl" id="home-icon_lostPASS"></i>
           <h1 class="title_lostPASS">Recuperar Senha</h1>
           <p class="text_lostPASS">Enviaremos um E-mail para você confirmar sua nova senha</p>
