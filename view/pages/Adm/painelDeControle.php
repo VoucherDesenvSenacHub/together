@@ -1,3 +1,5 @@
+<!-- JA EXISTE UMA NAV BAR, TIRA ESSA DE VCS E CHAMA A QUE EXISTE PELO REQUIRE -->
+
 <?php require_once './../../components/head.php'?>
 
 
