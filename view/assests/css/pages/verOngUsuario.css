@@ -1,6 +1,4 @@
-@import url("reset.css");
-
-.title-h1{
+.title-page-validarong{
   position: fixed;
   top: 130px;
   left: 150px;
@@ -11,13 +9,20 @@
   color: transparent;
 }
 
+.buttom-visibility-ong-status{
+  background: none;
+  color: black;
+}
+
+.buttom-visibility-ong-status:hover{
+  cursor: pointer;
+}
+
 
 @media (max-width: 790px) {
-  html {
-    position: absolute;
-  }
+ 
 
-  h1 {
+  .title-page-validarong{
     position: relative;
     top: 10rem;
     left: 4rem;
@@ -28,45 +33,16 @@
     color: transparent;
   }
 
-  body {
-    font-family: "Roboto", sans-serif;
+  .body-page-validarong{
     font-size: 15px;
     min-height: 100vh;
   }
-
-  .tabela {
-    border-collapse: collapse;
-    width: 150%;
-    position: relative;
-    top: 12.5rem;
-    left: 4rem;
-  }
-
-  .row-head {
-    background-color: var(--cor-cabeçalho-tabela);
-  }
-
-  .row-body:nth-child(even) {
-    background-color: var(--cor-tabela);
-  }
-
-  .row-head,
-  td {
-    border: 1px solid black;
-    padding: 2px;
-    text-align: center;
-  }
 }
 
-@media (max-width: 480px) {
-  html {
-    position: absolute;
-    top: 20%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-  }
 
-  h1 {
+@media (max-width: 480px) {
+
+  .title-page-validarong{
     position: relative;
     top: 9rem;
     left: 2.2rem;
@@ -77,33 +53,8 @@
     color: transparent;
   }
 
-  body {
-    font-family: "Roboto", sans-serif;
+  .body-page-validarong{
     font-size: 15px;
     min-height: 50vh;
-  }
-
-  .tabela {
-    /* border-collapse: collapse; */
-    width: 50%;
-    position: relative;
-    top: 11rem;
-    left: 2.2rem;
-    font-size: 10px;
-  }
-
-  .row-head {
-    background-color: var(--cor-cabeçalho-tabela);
-  }
-
-  .row-body:nth-child(even) {
-    background-color: var(--cor-tabela);
-  }
-
-  .row-head,
-  td {
-    border: 1px solid black;
-    padding: 2px;
-    text-align: center;
   }
 }

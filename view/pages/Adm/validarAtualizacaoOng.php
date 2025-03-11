@@ -4,9 +4,9 @@ require_once "../../../view/components/head.php";
 class DadosTabela
 {
     private $dados = [
-        ["Data" => '10/10/2024', "NomeOngs" => 'Ong Esperança', "Status" => 'Aprovado'],
-        ["Data" => '05/09/2024', "NomeOngs" => 'Ong Vida', "Status" => 'Recusado'],
-        ["Data" => '20/08/2024', "NomeOngs" => 'Ong Amor', "Status" => 'Aguardando'],
+        ["Data" => '10/10/2024', "NomeOngs" => 'Esperança', "Status" => 'Aprovado'],
+        ["Data" => '05/09/2024', "NomeOngs" => 'Vida', "Status" => 'Recusado'],
+        ["Data" => '20/08/2024', "NomeOngs" => 'Amor', "Status" => 'Aguardando'],
     ];
 
     public function getDados()
@@ -23,12 +23,12 @@ $arrays = $tabela->getDados();
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-<body>
+<body class="body-page-validarong">
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main>
         <section>
-            <div class="title-h1">
+            <div class="title-page-validarong">
                 <h1>Atualização Cadastral</h1>
             </div>
             <div>
@@ -49,7 +49,7 @@ $arrays = $tabela->getDados();
                                 <td class="status-aguardando"><?php echo $array["Status"] ?></td>
                                 <td>
                                     <form action="" method="get">
-                                        <button>
+                                        <button class="buttom-visibility-ong-status" type="buttom">
                                             <span class='material-symbols-outlined exibicao'> visibility </span>
                                         </button>
                                     </form>
@@ -61,5 +61,5 @@ $arrays = $tabela->getDados();
             </div>
         </section>
     </main>
-    <script src="../../../view/assests/js/pages/verOngUsuario.js" defer></script>
+    <?php require_once "../../../view/components/footer.php"; ?>
 </body>
