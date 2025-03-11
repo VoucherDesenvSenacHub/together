@@ -3,39 +3,39 @@
 
 <body class="body-visualizar-voluntarios">
 
-    <div class="container">
-        <div class="validation-area">
-            <div class="area-imagem">
-                <img class="imagem-perfil" src="../../../view//assests/images/Usuario/usuario-user-foto.png" alt="foto_perfil">
+    <div class="container-visualizar-voluntarios">
+        <div class="validation-area-visualizar-voluntarios">
+            <div class="area-imagem-visualizar-voluntarios">
+                <img class="imagem-perfil-visualizar-voluntarios" src="../../../view//assests/images/Usuario/usuario-user-foto.png" alt="foto_perfil">
             </div>
 
-            <div class="confirmacao-area">
-                <h3 class="pergunta-confirmacao">Aceitar Voluntario?</h3>
-                <div class="button-area">
-                    <button class="validation-button" id="check-button"><i class="fa-solid fa-check"
+            <div class="confirmacao-area-visualizar-voluntarios">
+                <h3 class="pergunta-confirmacao-visualizar-voluntarios">Aceitar Voluntario?</h3>
+                <div class="button-area-visualizar-voluntarios">
+                    <button class="validation-button-visualizar-voluntarios" id="check-button"><i class="fa-solid fa-check"
                             id="check-icon"></i></button>
-                    <button class="validation-button" id="recuse-button"><i class="fa-solid fa-xmark"
+                    <button class="validation-button-visualizar-voluntarios" id="recuse-button"><i class="fa-solid fa-xmark"
                             id="recuse-icon"></i></button>
                 </div>
             </div>
         </div>
 
-        <div class="infomation">
+        <div class="infomation-visualizar-voluntarios">
 
-            <h3 class="info-title">Dados do Voluntario</h3>
+            <h3 class="info-title-visualizar-voluntarios">Dados do Voluntario</h3>
 
-            <form class="info-area">
-                <div class="inputs-area">
+            <form class="info-area-visualizar-voluntarios">
+                <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="nome">Nome:</label>
                     <input class="input-visu-voluntarios" type="text" name="nome" id="nome" value="XXXXXXXXXXX" readonly>
                 </div>
 
-                <div class="inputs-area">
+                <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" id="cpf-label">CPF:</label>
                     <input class="input-visu-voluntarios" type="cpf" name="cpf" id="cpf" value="XXX.XXX.XXX-XX" readonly>
                 </div>
 
-                <div class="metade-input-area">
+                <div class="metade-input-area-visualizar-voluntarios">
 
                     <div class="inputs-area">
                         <label class="label-visu-voluntarios" id="data-label">Data de Nascimento:</label>
@@ -49,12 +49,12 @@
 
                 </div>
 
-                <div class="inputs-area">
+                <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="endereco">Endereço:</label>
                     <input class="input-visu-voluntarios" type="text" name="endereco" id="endereco-input" value="XXXXXXXXXXX" readonly>
                 </div>
 
-                <div class="inputs-area">
+                <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="email">Email:</label>
                     <input class="input-visu-voluntarios" type="email" name="email" value="XXXXXXXXXXX" readonly>
                 </div>
