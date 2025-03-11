@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Voluntarios{
+class Voluntarios
+{
     private $voluntarios = [
         [
             "id" => "1",
@@ -284,32 +285,21 @@ class Voluntarios{
         ],
     ];
 
-    public function listar(){
+    public function listar()
+    {
         return $this->voluntarios;
     }
-
 }
 
 $voluntarios = new Voluntarios();
 $db = $voluntarios->listar();
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/db29c2ca45.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,350;1,350&display=swap" rel="stylesheet">
-    <title>Together</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php require_once "/togheter/view/components/head.php"; ?>
 
 <body>
-    
-<div class="container">
+
+    <div class="validacao_voluntario_container">
         <div class="div_title">
             <h1 class="title">Validação de Voluntarios</h1>
         </div>
