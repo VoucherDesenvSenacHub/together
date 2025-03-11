@@ -30,8 +30,8 @@ $arrays = $tabela->getDados();
 
     <main>
         <section>
-            <div class="title-page-validarong">
-                <h1>Atualização Cadastral</h1>
+            <div>
+                <h1 class="title-page-validarong">Atualização Cadastral</h1>
             </div>
             <div>
                 <table class="table-validation">
@@ -45,14 +45,14 @@ $arrays = $tabela->getDados();
                     </thead>
                     <tbody class="body-table">
                         <?php foreach ($arrays as $array) { ?>
-                            <tr class="row-body">
-                                <td><?php echo $array["Data"]; ?></td>
-                                <td><?php echo $array["NomeOngs"]; ?></td>
+                            <tr> 
+                                <td class="row-body-table"><?php echo $array["Data"]; ?></td>
+                                <td class="row-body-table"><?php echo $array["NomeOngs"]; ?></td>
                                 <td class="status-aguardando"><?php echo $array["Status"] ?></td>
                                 <td>
                                     <form action="" method="get">
-                                        <button class="buttom-visibility-ong-status" type="buttom">
-                                            <span class='material-symbols-outlined exibicao'> visibility </span>
+                                        <button class="buttom-visibility-ong-status">
+                                            <span class='material-symbols-outlined exibicao-visualizarong'> visibility </span>
                                         </button>
                                     </form>
                                 </td>
