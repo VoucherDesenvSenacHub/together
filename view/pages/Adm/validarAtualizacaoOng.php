@@ -1,29 +1,6 @@
 <?php
-
-//NAO É PRA EXISTIR UM BANCO, AS INFORMACOES SAO ESTÁTICAS
 require_once "../../../view/components/head.php";
-
-class DadosTabela
-{
-    private $dados = [
-        ["Data" => '10/10/2024', "NomeOngs" => 'Esperança', "Status" => 'Aprovado'],
-        ["Data" => '05/09/2024', "NomeOngs" => 'Vida', "Status" => 'Recusado'],
-        ["Data" => '20/08/2024', "NomeOngs" => 'Amor', "Status" => 'Aguardando'],
-    ];
-
-    public function getDados()
-    {
-        return $this->dados;
-    }
-}
-
-$tabela = new DadosTabela();
-$arrays = $tabela->getDados();
 ?>
-
-<!-- REMOVE ESSE LINK -->
-<link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <body class="body-page-validarong">
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -44,20 +21,19 @@ $arrays = $tabela->getDados();
                         </tr>
                     </thead>
                     <tbody class="body-table">
-                        <?php foreach ($arrays as $array) { ?>
-                            <tr> 
-                                <td class="row-body-table"><?php echo $array["Data"]; ?></td>
-                                <td class="row-body-table"><?php echo $array["NomeOngs"]; ?></td>
-                                <td class="status-aguardando"><?php echo $array["Status"] ?></td>
-                                <td>
-                                    <form action="" method="get">
-                                        <button class="buttom-visibility-ong-status">
-                                            <span class='material-symbols-outlined exibicao-visualizarong'> visibility </span>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                        <tr>
+                            <td class="row-body-table">xx/xx/xxxx</td>
+                            <td class="row-body-table">Vida pet</td>
+                            <td class="status-aguardando">aguardando/td>
+                            <td>
+                                <form action="" method="get">
+                                    <button class="buttom-visibility-ong-status">
+                                        <span class='material-symbols-outlined exibicao-visualizarong'> visibility
+                                        </span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
