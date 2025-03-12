@@ -1,8 +1,5 @@
 <?php require_once "../../../view/components/head.php"; ?>
 <body class="body-login-adm">
-    <header>
-        <?php require_once "../../../view/components/navbar.php"; ?>
-    </header>
     <main class="main-login-adm">
         <div class="container-login-adm">
             <div class="box1-login-adm">
@@ -27,6 +24,6 @@
             </div>
         </div>
     </main>
-</body>
     <?php require_once "../../../view/components/footer.php"; ?>
+</body>
 </html>
