@@ -1,40 +1,40 @@
-.form {
+.criar-postagem-ong-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 20px 20px 20px 20px;
 }
 
-.input-group {
+.criar-postagem-ong-input-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-.btn-div {
+.criar-postagem-ong-btn-div {
     display: flex;
     gap: 30px;
     justify-content: start;
 }
 
 
-.titulo-postagem {
-    font-size: 1.4rem;
+.criar-postagem-ong-titulo-postagem {
+    font-size: 1.criar-postagem-ong-4rem;
     font-weight: bold;
 }
 
-.paragrafo-postagem {
+.criar-postagem-ong-paragrafo-postagem {
     color: var(--cor-font-preto);
     font-size: 14px;
     z-index: 1;
 }
 
-.tag-obrigatorio {
+.criar-postagem-ong-tag-obrigatorio {
     color: var(--cor-vermelho);
     font-size: 12px;
 }
 
-.input-postagem {
+.criar-postagem-ong-input-postagem {
     width: calc(100% - 20px);
     height: 55px;
     border-radius: 5px;
@@ -43,7 +43,7 @@
     padding: 0 10px 0 10px;
 }   
 
-.input-descricao {  
+.criar-postagem-ong-input-descricao {  
     position: relative;
 
     #contador{
@@ -56,11 +56,11 @@
     }
 }
 
-.input-file {
+.criar-postagem-ong-input-file {
     display: none;
 }
 
-.label-img {
+.criar-postagem-ong-label-img {
     width: 205px;
     height: 125px;
     border-radius: 5px;
@@ -70,7 +70,7 @@
     position: relative;
     cursor: pointer;
 
-    .label-icon {
+    .criar-postagem-ong-label-icon {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -84,7 +84,7 @@
         transform: translate(-50%, -50%);
         width: 100%;
         padding: 5px 0 0 0;
-        font-size: 0.9rem;
+        font-size: 0.criar-postagem-ong-9rem;
         color: var(--cor-cinza-escuro);
     }
 }
@@ -96,13 +96,13 @@
     gap: 20px;
 }
 
-.img-postagem {
+.criar-postagem-ong-img-postagem {
     width: 212px;
     height: 125px;
     border-radius: 5px;
 }
 
-.figcaption-postagem {
+.criar-postagem-ong-figcaption-postagem {
     text-align: center;
     height: 25px;
 }
