@@ -8,13 +8,13 @@
                 <h1 class="criar-postagem-ong-titulo-postagem">Postagem da ONG</h1>
                 <p class="criar-postagem-ong-paragrafo-postagem">Mostrem ao público que seus projetos salvam vidas !!!</p>
                 <p class="criar-postagem-ong-tag-obrigatorio">*Obrigatorio</p>
-                <ul id="images">
+                <ul id="criar-postagem-ong-images">
                     <li>
                         <input class="criar-postagem-ong-input-file" id="file-input" type="file" accept="image/*" onchange="preview()"
                             multiple>
                         <label class="criar-postagem-ong-label-img" for="file-input">
-                            <img class="criar-postagem-ong-label-icon" src="assets/img/add.png" alt="icon add">
-                            <p id="num-de-arquivos">Nenhum Arquivo Encontrado</p>
+                            <img class="criar-postagem-ong-label-icon" src="../../assests/images/ong/add.png" alt="icon add">
+                            <p id="criar-postagem-ong-num-de-arquivos">Nenhum Arquivo Encontrado</p>
                         </label>
                     </li>
                 </ul>
@@ -26,7 +26,7 @@
                 <div class="criar-postagem-ong-input-descricao">
                     <input class="criar-postagem-ong-input-postagem" id="texto" type="text" size=10 maxlength=255 required
                         placeholder="Digite">
-                    <span id="contador"></span>
+                    <span id="criar-postagem-ong-contador"></span>
                 </div>
             </div>
             <div class="criar-postagem-ong-input-group">
@@ -36,8 +36,8 @@
                 <input class="criar-postagem-ong-input-postagem" type="url" size=10 maxlength=255 required placeholder="Digite">
             </div>
             <div class="criar-postagem-ong-btn-div">
-                <button class="criar-postagem-ong-botao salvar" type="submit">Salvar</button>
-                <button class="criar-postagem-ong- cancelar" type="reset">Cancelar</button>
+                <button class="botao salvar" type="submit">Salvar</button>
+                <button class="botao cancelar" type="reset">Cancelar</button>
             </div>
         </form>
     </main>

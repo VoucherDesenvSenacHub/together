@@ -1,6 +1,6 @@
 let fileInput = document.getElementById("file-input");
-let imageContainer = document.getElementById("images");
-let numDeArq = document.getElementById("num-de-arquivos");
+let imageContainer = document.getElementById("criar-postagem-ong-images");
+let numDeArq = document.getElementById("criar-postagem-ong-num-de-arquivos");
 
 function preview(){
     numDeArq.textContent = `${fileInput.files.length} Arquivos Selecionados`;
@@ -31,7 +31,7 @@ function preview(){
 
 
 const contTexto = document.getElementById('texto');
-const contador = document.getElementById('contador');
+const contador = document.getElementById('criar-postagem-ong-contador');
 contTexto.addEventListener('input', function() {
     if (contTexto.value.length > 60) {
         contTexto.value = contTexto.value.substring(0, 60);

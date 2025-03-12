@@ -19,7 +19,7 @@
 
 
 .criar-postagem-ong-titulo-postagem {
-    font-size: 1.criar-postagem-ong-4rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
@@ -46,7 +46,7 @@
 .criar-postagem-ong-input-descricao {  
     position: relative;
 
-    #contador{
+    #criar-postagem-ong-contador{
         color: var(--cor-cinza-escuro);
         position: absolute;
         right: 0;
@@ -77,19 +77,19 @@
         transform: translate(-50%, -50%);
     }
 
-    #num-de-arquivos {
+    #criar-postagem-ong-num-de-arquivos {
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
         padding: 5px 0 0 0;
-        font-size: 0.criar-postagem-ong-9rem;
+        font-size: 0.9rem;
         color: var(--cor-cinza-escuro);
     }
 }
 
-#images {
+#criar-postagem-ong-images {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
