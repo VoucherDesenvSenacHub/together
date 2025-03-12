@@ -1,37 +1,21 @@
 /*
 -> [Configurações Gerais]: Define coisas padrões da página em geral
--> [Containers]: Define o layout da página.
+-> [container-login-adms]: Define o layout da página.
 -> [Configurações do Contêiner]: Define o layout do contêiner.
 -> [Inputs-Areas]: Define o layout dos inputs e áreas de texto.
 -> [Icon/Logos]: Define o layout dos ícones e logotipos.
 */
 
 
-/* Configurações Gerais */
-* {
-    padding: 0%;
-    margin: 0%;
-    font-family: "Roboto", serif;
-    font-style: normal;
-    color: azure;
-}
+/* tirar root e adicionar as variaves global no php*/
 
-:root {
-    --gradient-background: rgb(62, 0, 163);
-    --color-menu: rgba(245, 245, 245, 0.556);
-    --text-color: rgb(227, 227, 227);
-    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-    --gradient-icon: rgb(150, 16, 199);
-    --shadow: rgba(0, 0, 0, 0.658);
-}
-
-body {
+.body-login-adm {
     background-image: url("assets/background.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
 
-main {
+.main-login-adm {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,8 +25,8 @@ main {
 
 /* Fim-Configurações Gerais */
 
-/* Containers */
-.container {
+/* Container */
+.container-login-adm {
     width: 100%;
     height: 35vh;
     display: flex;
@@ -51,7 +35,7 @@ main {
     gap: 7vw;
 }
 
-.box1 {
+.box1-login-adm {
     display: flex;
     justify-content: right;
     align-items: right;
@@ -60,7 +44,7 @@ main {
 
 }
 
-.box2 {
+.box2-login-adm {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -70,15 +54,15 @@ main {
     border-radius: 30px;
 }
 
-.logo-area {
+.logo-area-login-adm{
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 
-.login-area {
-    background-color: var(--color-menu);
+.login-area-login-adm {
+    background-color: var(--cinza-claro);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,30 +72,30 @@ main {
     border-radius: 30px;
 }
 
-/* Fim-Containers */
+/* Fim-container-login-adms */
 
 /* Inputs-Areas */
-.input-box {
+.input-box-login-adm {
     width: 265px;
     height: 45px;
     border-radius: 30px;
     border: none;
     margin: 3%;
     margin-top: 10px;
-    box-shadow: 1px 1px 3px var(--shadow);
-    color: var(--shadow);
+    box-shadow: 1px 1px 3px var(--cor-font-preto);
+    color: var(--cor-font-preto);
     padding: 0 0px 0px 15px;
 }
 
 
-.input-submit {
+.input-submit-login-adm {
     width: 150px;
     height: 45px;
     border-radius: 30px;
     border: none;
-    background: var(--gradient-background);
     background: var(--gradient);
-    color: var(--text-color);
+    background: var(--gradient);
+    color: var(--cor-font-branco);
     font-weight: 600;
     font-size: 16px;
     margin-top: 10%;
@@ -119,19 +103,19 @@ main {
     transition: 0.5s;
 }
 
-.input-submit:hover {
+.input-submit-login-adm:hover {
     scale: 102%;
-    box-shadow: 1px 1.5px 2px var(--shadow);
+    box-shadow: 1px 1.5px 2px var(--cor-font-preto);
 }
 
 /* Fim-Inputs-Areas */
 
 
 /* Icon/Logos */
-.admin-moldure {
+.admin-moldure-login-adm {
     width: 130px;
     height: 130px;
-    background: var(--gradient-background);
+    background: var(--gradient);
     border-radius: 100%;
     align-items: center;
     display: flex;
@@ -139,12 +123,12 @@ main {
     overflow: hidden;
 }
 
-.admin-icon {
+.admin-icon-login-adm {
     color: aliceblue;
     scale: 30%;
 }
 
-.logo-together {
+.logo-together-login-adm {
     width: 350px;
     height: auto;
 }
@@ -154,15 +138,9 @@ main {
     font-weight: 700;
 }
 
-h1 {
-    font-size: 72px;
-    background: -webkit-linear-gradient(#eee, #333);
-    -webkit-text-fill-color: transparent;
-}
 
-
-#house-icon {
-    color: var(--gradient-icon);
+#house-icon-login-adm {
+    color: var(--cor-roxo-claro);
     justify-content: top;
     position: absolute;
     margin-left: 20px;
@@ -174,9 +152,9 @@ h1 {
     z-index: 2;
 }
 
-#house-icon:hover {
+#house-icon-login-adm:hover {
     scale: 144%;
-    filter: drop-shadow(1px 1px 1px var(--shadow));
+    filter: drop-shadow(1px 1px 1px var(--cor-font-preto));
 
 }
 
@@ -185,20 +163,20 @@ h1 {
 /*Media-Area*/
 @media (max-width: 768px) {
 
-    .logo-together {
+    .logo-together-login-adm {
         width: 200px;
         height: auto;
 
     }
 
-    .box1 {
+    .box1-login-adm {
         width: 100%;
         height: 9%;
         display: block;
 
     }
 
-    .box2 {
+    .box2-login-adm {
         width: 100%;
         display: flex;
         margin-top: 20px;
@@ -206,28 +184,28 @@ h1 {
         position: relative;
     }
 
-    .container {
+    .container-login-adm {
         flex-direction: column;
         height: 100vh;
         width: 300px;
         gap: 0;
     }
 
-    .input-box {
+    .input-box-login-adm {
         width: 83%;
     }
 
-    .input-submit {
+    .input-submit-login-adm {
         width: 50%;
     }
 
-    #house-icon {
+    #house-icon-login-adm {
         
         top: 0%;
         left: 1%;
     }
 
-    main {
+    .main-login-adm {
         height: 0%;
     }
 }
