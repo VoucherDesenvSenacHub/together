@@ -11,6 +11,7 @@
 @import url(pages/verOngUsuario.css);
 @import url(pages/visualizarVoluntarios.css);
 @import url(components/button.css);
+@import url(components/tabela.css);
 
 :root{
     font-size: 16px;

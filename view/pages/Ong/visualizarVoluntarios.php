@@ -1,3 +1,6 @@
+<!-- NAVBAR E FOOTER ESTA FORA DO BODY -->
+<!-- O CSS E O PHP ESTAO COM NOMES DE TELAS DIFERENTES, COLOCA O NOME CERTO DA TELA -->
+
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../../view/components/navbar.php"; ?>
 
