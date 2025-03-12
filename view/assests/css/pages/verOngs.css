@@ -1,151 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url("/view/assests/css/reset.css");
-
-:root {
---cor-fundo: #ffffff;
---cor-texto: #8b1cd3;
---cor-fundo-card: #8b1cd3;
---cor-roxa-degrade: linear-gradient(45deg, #3e00a3, #da70ff);
---cor-texto-input: #b6b6b6;
---cor-texto-padrao: #fff;
-font-size: 16px;
-font-family: "Roboto", sans-serif;
+.card-ver-ongs {
+  position: relative;
+  max-width: 250px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+  display: flex;
 }
 
-body {
-background: var(--cor-fundo);
-color: var(--cor-texto-padrao);
-margin-left: 80px;
-margin-right: 80px;
-/* box-sizing: border-box; */
+.ong-ver-ongs {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+  transition: opacity 0.5s ease;
 }
 
-main {
-  width:  100%;
+.card-ver-ongs:hover .ong-ver-ongs {
+  opacity: 0.1;
 }
 
-.card {
-position: relative;
-max-width: 250px;
-width: 100%;
-height: 400px;
-overflow: hidden;
-border-radius: 20px;
-transition: transform 0.5s ease;
-display: flex;
+.card-ver-ongs .imagem-ver-ongs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.ong {
-position: absolute;
-top: 85%;
-left: 50%;
-transform: translate(-50%, -50%);
-font-size: 1.2rem;
-font-weight: bold;
-text-align: center;
-z-index: 2;
-transition: opacity 0.5s ease;
+.card-ver-ongs .imagem-ver-ongs::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
 }
 
-.card:hover .ong {
-opacity: 0.1;
+.card-ver-ongs:hover {
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
-.card .imagem img {
-width: 100%;
-height: 100%;
-object-fit: cover;
+.card-ver-ongs .overlay-ver-ongs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  color: var(--cor-texto-padrao);
+  font-size: 1.2rem;
+  border-radius: 20px;
+  text-align: center;
 }
 
-.card .imagem::after {
-content: "";
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
+.card-ver-ongs:hover .overlay-ver-ongs {
+  opacity: 1;
 }
 
-.card:hover {
-transform: scale(1.05);
-cursor: pointer;
+.card-ver-ongs .overlay-ver-ongs .ong-overlay-ver-ongs {
+  text-align: center;
+  padding: 10px;
 }
 
-.card .overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
-display: flex;
-justify-content: center;
-align-items: center;
-opacity: 0;
-transition: opacity 0.5s ease;
-color: var(--cor-texto-padrao);
-font-size: 1.2rem;
-border-radius: 20px;
-text-align: center;
-}
-
-.card:hover .overlay {
-opacity: 1;
-}
-
-.card .overlay .ong-overlay {
-text-align: center;
-padding: 10px;
-
-  h3 {
+.ong-overlay-ver-ongs h3 {
   position: absolute;
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  }
-  p {
+}
+
+.ong-overlay-ver-ongs p {
   line-height: 1.2rem;
   margin-top: 15px;
-  }
 }
 
-.card .overlay .favorito {
-position: absolute;
-top: 81%;
-left: 75%;
-background: none;
-border: none;
-outline: none;
-
+.card-ver-ongs .overlay-ver-ongs .favorito-ver-ongs {
+  position: absolute;
+  top: 81%;
+  left: 75%;
+  background: none;
+  border: none;
+  outline: none;
 }
 
-.carousel {
+/* Estilos do Carrossel */
+
+.carousel-ver-ongs {
   position: relative;
   padding: 10px;
   max-width: 1100px;
   margin: auto;
 }
 
-.carousel-wrapper {
+.carousel-wrapper-ver-ongs {
   overflow: hidden;
   width: 100%;
 }
 
-.carousel-track {
-  display: flex;  
+.carousel-track-ver-ongs {
+  display: flex;
   transition: transform 0.4s ease-in-out;
 }
 
-.carousel-item {
-  flex: 0 0 calc(23.0%);  
+.carousel-item-ver-ongs {
+  flex: 0 0 calc(23.0%);
   text-align: center;
   position: relative;
   padding: 10px;
 }
 
-.carousel-btn {
+.carousel-btn-ver-ongs {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -156,276 +132,49 @@ outline: none;
   font-size: 24px;
   cursor: pointer;
   border-radius: 5px;
-  z-index:  1;
+  z-index: 1;
 }
 
-.carousel-btn.prev {
-  left: -50px; 
+.carousel-btn-ver-ongs.prev {
+  left: -50px;
 }
 
-.carousel-btn.next {
-  right: -50px; 
+.carousel-btn-ver-ongs.next {
+  right: -50px;
 }
 
-.carousel-btn:hover {
+.carousel-btn-ver-ongs:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-
-/* From Uiverse.io by Yaya12085 */
-.ui-like {
---icon-size: 30px;
---icon-secondary-color: rgb(255, 255, 255);
---icon-hover-color: rgb(211, 205, 205);
---icon-primary-color: rgb(230, 26, 26);
---icon-circle-border: 1px solid var(--icon-primary-color);
---icon-circle-size: 35px;
---icon-anmt-duration: 0.3s;
-}
-
-.ui-like input {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-display: none;
-}
-
-.ui-like .like {
-width: var(--icon-size);
-height: auto;
-fill: var(--icon-secondary-color);
-cursor: pointer;
--webkit-transition: 0.2s;
--o-transition: 0.2s;
-transition: 0.2s;
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-pack: center;
--ms-flex-pack: center;
-justify-content: center;
--webkit-box-align: center;
--ms-flex-align: center;
-align-items: center;
-position: relative;
--webkit-transform-origin: top;
--ms-transform-origin: top;
-transform-origin: top;
-}
-
-.like::after {
-content: "";
-position: absolute;
-width: 10px;
-height: 10px;
--webkit-box-shadow: 0 30px 0 -4px var(--icon-primary-color),
-30px 0 0 -4px var(--icon-primary-color),
-0 -30px 0 -4px var(--icon-primary-color),
--30px 0 0 -4px var(--icon-primary-color),
--22px 22px 0 -4px var(--icon-primary-color),
--22px -22px 0 -4px var(--icon-primary-color),
-22px -22px 0 -4px var(--icon-primary-color),
-22px 22px 0 -4px var(--icon-primary-color);
-box-shadow: 0 30px 0 -4px var(--icon-primary-color),
-30px 0 0 -4px var(--icon-primary-color),
-0 -30px 0 -4px var(--icon-primary-color),
--30px 0 0 -4px var(--icon-primary-color),
--22px 22px 0 -4px var(--icon-primary-color),
--22px -22px 0 -4px var(--icon-primary-color),
-22px -22px 0 -4px var(--icon-primary-color),
-22px 22px 0 -4px var(--icon-primary-color);
-border-radius: 50%;
--webkit-transform: scale(0);
--ms-transform: scale(0);
-transform: scale(0);
-}
-
-.like::before {
-content: "";
-position: absolute;
-border-radius: 50%;
-border: var(--icon-circle-border);
-opacity: 0;
-}
-
-/* actions */
-
-.ui-like:hover .like {
-fill: var(--icon-hover-color);
-}
-
-.ui-like input:checked + .like::after {
--webkit-animation: circles var(--icon-anmt-duration)
-cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-animation: circles var(--icon-anmt-duration)
-cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
--webkit-animation-delay: var(--icon-anmt-duration);
-animation-delay: var(--icon-anmt-duration);
-}
-
-.ui-like input:checked + .like {
-fill: var(--icon-primary-color);
--webkit-animation: like var(--icon-anmt-duration) forwards;
-animation: like var(--icon-anmt-duration) forwards;
--webkit-transition-delay: 0.3s;
--o-transition-delay: 0.3s;
-transition-delay: 0.3s;
-}
-
-.ui-like input:checked + .like::before {
--webkit-animation: circle var(--icon-anmt-duration)
-cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-animation: circle var(--icon-anmt-duration)
-cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
--webkit-animation-delay: var(--icon-anmt-duration);
-animation-delay: var(--icon-anmt-duration);
-}
-
-@-webkit-keyframes like {
-50% {
--webkit-transform: scaleY(0.6);
-transform: scaleY(0.6);
-}
-
-100% {
--webkit-transform: scaleY(1);
-transform: scaleY(1);
-}
-}
-
-@keyframes like {
-50% {
--webkit-transform: scaleY(0.6);
-transform: scaleY(0.6);
-}
-
-100% {
--webkit-transform: scaleY(1);
-transform: scaleY(1);
-}
-}
-
-@-webkit-keyframes circle {
-from {
-width: 0;
-height: 0;
-opacity: 0;
-}
-
-90% {
-width: var(--icon-circle-size);
-height: var(--icon-circle-size);
-opacity: 1;
-}
-
-to {
-opacity: 0;
-}
-}
-
-@keyframes circle {
-from {
-width: 0;
-height: 0;
-opacity: 0;
-}
-
-90% {
-width: var(--icon-circle-size);
-height: var(--icon-circle-size);
-opacity: 1;
-}
-
-to {
-opacity: 0;
-}
-}
-
-@-webkit-keyframes circles {
-from {
--webkit-transform: scale(0);
-transform: scale(0);
-}
-
-40% {
-opacity: 1;
-}
-
-to {
--webkit-transform: scale(0.8);
-transform: scale(0.8);
-opacity: 0;
-}
-}
-
-@keyframes circles {
-from {
--webkit-transform: scale(0);
-transform: scale(0);
-}
-
-40% {
-opacity: 1;
-}
-
-to {
--webkit-transform: scale(0.8);
-transform: scale(0.8);
-opacity: 0;
-}
-}
-
-/* RESPONSIVIDADE */
+/* Responsividade */
 
 @media screen and (max-width: 1300px) {
-
-.carousel {
-  position: relative;
-  padding: 10px;
-  max-width: 800px;
-  margin: auto;
-}
-.carousel-item {
-  flex: 0 0 calc(31.0%);
-  text-align: center;
-  position: relative;
-  padding: 10px;
-}
-.card {
-  width: 100%;
-  height: 350px;
-}
-
-.card .overlay .ong-overlay {
-  text-align: center;
-  padding: 10px;
-  
-    h3 {
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: bold;
-    }
-    p {
-    line-height: 1.2rem;
-    margin-top: 15px;
-    }
+  .carousel-ver-ongs {
+    max-width: 800px;
   }
 
-@media (max-width: 430px){
-  .carousel-track {
-    display: flex;  
+  .carousel-item-ver-ongs {
+    flex: 0 0 calc(31.0%);
+  }
+
+  .card-ver-ongs {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+@media (max-width: 430px) {
+  .carousel-track-ver-ongs {
     flex-direction: column;
-    transition: transform 0.4s ease-in-out;
   }
-  .card {
+
+  .card-ver-ongs {
     width: 100%;
     height: 250px;
   }
-  .carousel-btn {
+
+  .carousel-btn-ver-ongs {
     display: none;
-  
   }
-}
 }
