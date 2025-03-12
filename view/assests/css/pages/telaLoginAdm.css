@@ -6,9 +6,6 @@
 -> [Icon/Logos]: Define o layout dos ícones e logotipos.
 */
 
-
-/* tirar root e adicionar as variaves global no php*/
-
 .body-login-adm {
     background-image: url("assets/background.jpg");
     background-size: cover;
