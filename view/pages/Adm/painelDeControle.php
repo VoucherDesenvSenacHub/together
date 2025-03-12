@@ -1,14 +1,15 @@
+<!-- TIRA ESSE HEADER E NAV, SO FAZ O REQUIRE -->
+<!-- APAGA O PHP SOLTO NO BODY -->
+<!-- CHAMA O FOOTER PELO REQUIRE -->
+
 <?php require_once './../../components/head.php'?>
-
-
 <body>
     <?php
-        // eespaço para adicionar lógica PHP, se necessário. Decidam se vão ou não manter esse bloco
     ?>
+
     <header>
         <nav class="navbar">
             <?php require_once './../../components/navbar.php'?>
-            <!-- Conteúdo do menu de navegação -->
         </nav>
     </header>
     <div class="container-geral-painel-de-controle-adm">

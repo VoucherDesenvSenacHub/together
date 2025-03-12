@@ -1,6 +1,9 @@
+/* TIRA OS IMPORT */
+/* TIRA ESSA CLASSE NAVBAR */
+/* REVER O NOME DAS CLASSE PARA MAIS ESPECIFICO, E VER SE ELA ESTA IGUAL NO PHP */
+
 @import url('../../reset.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
-
 
 .navbar {
     height: 103.64px;
