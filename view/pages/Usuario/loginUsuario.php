@@ -78,8 +78,8 @@
 
     </div><!--container-->
 
+    <?php require_once "../../../view/components/footer.php"?>
 </body>
 
-<?php require_once "../../../view/components/footer.php"?>
 
 </html>
