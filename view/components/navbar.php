@@ -1,6 +1,7 @@
+<link rel="stylesheet" href="../assests/css/style.css">
 <header>
     <nav class="navbar-group">
-        <a href="" class="logo"><img class="logoimg" src="assets/Together.png" alt="logo"></a>
+        <a href="" class="logo-navbar"><img class="logoimg-navbar" src="../assests/images/components/Together.png" alt="logo"></a>
         <ul class="ul-navbar">
             <li>
                 <a class="a-navbar" href="#">Home</a>

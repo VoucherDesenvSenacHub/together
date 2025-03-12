@@ -49,6 +49,7 @@
 
 }
 
+
 .navbar-group {
     background: var(--gradient);
     display: flex;
@@ -62,7 +63,7 @@
     display: none;
 }
 
-.logoimg {
+.logoimg-navbar {
     height: 60px;
     width: 200px;
     position: absolute;
