@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONG - EDITAR PERFIL</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+<?php require_once "../../../view/components/head.php"; ?>
 
 <body>
+    <?php require_once "../../../view/components/navbar.php"; ?>
     <main>
         <form action="" class="form">
             <div class="input-group">
@@ -48,7 +41,5 @@
             </div>
         </form>
     </main>
-    <script src="./assets/js/script.js"></script>
+    <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
-</html>

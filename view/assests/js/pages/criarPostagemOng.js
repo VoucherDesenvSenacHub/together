@@ -14,6 +14,7 @@ function preview(){
         let li = document.createElement("li");
         let figure = document.createElement("figure");
         let figCap = document.createElement("figcaption");
+        figCap.classList.add("figcaption-postagem");
         figCap.innerHTML = i.name;
         li.appendChild(figure);
         figure.appendChild(figCap);
