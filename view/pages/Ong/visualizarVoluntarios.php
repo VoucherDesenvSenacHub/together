@@ -29,27 +29,28 @@
             <form class="info-area-visualizar-voluntarios">
                 <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="nome">Nome:</label>
-                    <input class="input-visu-voluntarios" type="text" name="nome" id="nome" value="XXXXXXXXXXX"
-                        readonly>
+                    <input class="input-visu-voluntarios" type="text" name="nome" id="nome" value="XXXXXXXXXXXX"
+                        placeholder="Nome de usuario" readonly>
                 </div>
 
-                <div class="inputs-area-visualizar-voluntarios">
+                <div class=" inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" id="cpf-label">CPF:</label>
                     <input class="input-visu-voluntarios" type="cpf" name="cpf" id="cpf" value="XXX.XXX.XXX-XX"
-                        readonly>
+                        placeholder="CPF" readonly>
                 </div>
 
                 <div class="metade-input-area-visualizar-voluntarios">
 
                     <div class="inputs-area">
                         <label class="label-visu-voluntarios" id="data-label">Data de Nascimento:</label>
-                        <input class="input-visu-voluntarios" type="date" name="data" value="XX/XX/XXXX" readonly>
+                        <input class="input-visu-voluntarios" type="date" name="data" value="XX/XX/XXXX"
+                            placeholder="Data de nascimento" readonly>
                     </div>
 
                     <div class="inputs-area">
                         <label class="label-visu-voluntarios" for="telefone">Telefone:</label>
                         <input class="input-visu-voluntarios" type="text" name="telefone" value="+XX (XX) XXXXXXXXXX"
-                            readonly>
+                            placeholder="Telefone" readonly>
                     </div>
 
                 </div>
@@ -57,12 +58,13 @@
                 <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="endereco">Endereço:</label>
                     <input class="input-visu-voluntarios" type="text" name="endereco" id="endereco-input"
-                        value="XXXXXXXXXXX" readonly>
+                        value="XXXXXXXXXXX" placeholder="Endereço" readonly>
                 </div>
 
                 <div class="inputs-area-visualizar-voluntarios">
                     <label class="label-visu-voluntarios" for="email">Email:</label>
-                    <input class="input-visu-voluntarios" type="email" name="email" value="XXXXXXXXXXX" readonly>
+                    <input class="input-visu-voluntarios" type="email" name="email" value="XXXXXXXXXXX"
+                        placeholder="Email" readonly>
                 </div>
 
             </form>
