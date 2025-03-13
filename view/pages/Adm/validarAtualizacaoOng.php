@@ -41,3 +41,4 @@ require_once "../../../view/components/head.php";
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+</html>
