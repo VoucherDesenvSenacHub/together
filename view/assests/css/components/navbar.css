@@ -93,11 +93,11 @@
     left: 350px;
 }
 
-.barra-pesquisa-button {
+.barra-pesquisa-button-navbar {
     width: 40px;
     height: 40px;
     border-radius: 90px;
-    background-color: var(--cor-font-preto);
+    background: none;
     border: 2px solid white;
     color: var(--cor-font-branco);
     cursor: pointer;
@@ -109,7 +109,7 @@
     align-items: center;
 }
 
-.search-bar {
+.barra-pesquisa {
     width: 350px;
     height: 40px;
     border-radius: 90px;

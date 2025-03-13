@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="../assests/css/style.css">
+<script src="../assests/js/components/navbar.js"></script>
 <header>
     <nav class="navbar-group">
-        <a class="a-navbar" href=""><img class="logoimg" src="assets/Together.png" alt="logo"></a>
+        <a class="a-navbar" href=""><img class="logoimg-navbar" src="../assests/images/components/Together.png" alt="logo"></a>
         <ul class="ul-navbar">
             <li>
                 <a class="a-navbar" href="#">Home</a>
@@ -19,13 +20,15 @@
                 <a class="a-navbar" href="#">Sobre Nós</a>
             </li>
         </ul>
-        <div class="search-button-area">
-            <button id="searchBarButton" class="barra-pesquisa-button">
+        <!-- Area Do Boato de Pesquisa -->
+        <div class="search-button-area-navbar">
+            <button id="searchBarButton" class="barra-pesquisa-button-navbar">
                 <i class="fa fa-search" id="lente-button-icon"></i>
             </button>
         </div>
+        <!-- Area De Pesquisa Da Barra -->
         <div id="searchBar" class="search-bar-area hidden">
-            <input class="search-bar" type="text">
+            <input class="barra-pesquisa" type="text">
             <button class="submit-lente">
                 <i class="fa fa-search" id="lente-icon"></i>
             </button>
