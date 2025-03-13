@@ -1,5 +1,4 @@
 <?php require_once './../../components/head.php' ?>
-
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <div class="container-geral-painel-de-controle-adm">
@@ -41,8 +40,6 @@
             </div>
         </div>
     </div>
-
     <?php require_once './../../components/footer.php' ?>
 </body>
 
-</html>
