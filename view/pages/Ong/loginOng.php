@@ -73,6 +73,5 @@
     </div>
   </div>
   <?php require_once "../../../view/components/footer.php"; ?>
-  <script src="../../assests/js/pages/loginOng.js"></script>
 </body>
 </html>
