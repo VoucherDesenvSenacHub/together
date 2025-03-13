@@ -1,15 +1,3 @@
-/* TIRA OS IMPORT */
-/* TIRA ESSA CLASSE NAVBAR */
-/* REVER O NOME DAS CLASSE PARA MAIS ESPECIFICO, E VER SE ELA ESTA IGUAL NO PHP */
-
-@import url('../../reset.css');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap');
-
-.navbar {
-    height: 103.64px;
-}
-
-
 .container-geral-painel-de-controle-adm {
     display: flex;
     justify-content: center;
@@ -18,16 +6,19 @@
     height: 83vh;
 }
 
+.painel-de-controle-icone-conteudo {
+    padding: 20px;
+    width: 80px;
+}
 
 .box-painel-de-controle-adm {
-    margin-top: 103.64px; /* Substituído "top" por "margin-top" */
+    margin-top: 103.64px; 
     width: 100%;
     max-width: 1200px;
     height: 100%;
     display: flex;
     justify-content: center;
 }
-
 
 .conteudo-painel-de-controle-adm {
     display: flex;
@@ -37,9 +28,9 @@
     max-width: 1200px;
 }
 
-.conteudo-interno {
+.conteudo-interno-painel-de-controle{
     width: 350px;
-    height: 300px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,20 +39,19 @@
     text-align: center;
 }
 
-.conteudo-interno:hover {
+.conteudo-interno-painel-de-controle:hover {
     cursor: pointer;
 }
 
-
-.titulo {
-    font-family: "Roboto", serif;
+.painel-de-controle-titulo {
+    font-family: "Roboto", serif; 
     font-size: 18px;
     font-weight: bold;
     margin-top: 25px;
     margin-bottom: 15px;
 }
 
-.desc {
+.painel-de-controle-desc {
     font-family: "Roboto", serif;   
     font-size: 11px;
     color: black;
@@ -79,7 +69,7 @@
         justify-content: center; 
     }
 
-    .conteudo-interno {
+    .painel-de-controle-conteudo-interno {
         width: 300px; /* Reduzindo o tamanho dos blocos */
         height: auto; /* Altura ajustável */
         margin-bottom: 20px; /* Espaçamento entre os blocos */
@@ -93,9 +83,6 @@
         padding: 10px; /* Espaçamento interno reduzido */
         display:flex;
         justify-content:center;
-
-        
-       
-       
+    }
 }
-}
+ 
