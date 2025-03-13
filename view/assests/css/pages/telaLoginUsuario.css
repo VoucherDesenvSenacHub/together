@@ -1,5 +1,5 @@
-body {
-    background-image: url("assets/background_login_usuario.jpg");
+.body-login-usuario {
+    background-image: url("../../images/Usuario/background_login_usuario.jpg");
     background-size: cover;
     background-attachment: fixed;
     font-family: "Roboto", serif;
@@ -16,7 +16,7 @@ body {
     width: 100%;
 }
 
-.container {
+.container-login-usuario {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,15 +24,15 @@ body {
     height: 97vh;
 }
 
-.login-content {
+.conteudo-login-usuario {
     width: 100%;
 }
 
-.recuperar-content {
+.recuperar-conta-login-usuario {
     width: 100%;
 }
 
-.registrar-content {
+.registrar-conta-login-usuario {
     width: 100%;
     transition: right 0.5s ease-in-out;
 }
@@ -42,25 +42,25 @@ body {
     --shadow: rgba(0, 0, 0, 0.75);
 }
 
-.logo {
+.logo-login-usuario {
     display: flex;
     width: 50%;
     align-items: center;
     justify-content: center;
 }
 
-img {
+.logo-imagem-login-usuario {
     width: 50%;
 }
 
-.box {
+.box-login-usuario {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login {
+.login-usuario {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +74,7 @@ img {
     position: relative;
 }
 
-.text-input {
+.text-input-login-usuario {
     width: 250px;
     height: 50px;
     min-height: 50px;
@@ -93,7 +93,7 @@ img {
 
 
 
-.botao-login {
+.botao-login-usuario {
     width: 180px;
     /* margin: 60px 0 0 0; */
     color: white;
@@ -115,7 +115,7 @@ img {
     transition: 0.2s;
 }
 
-.round-image {
+.foto-perfil-login-usuario {
     border-radius: 100%;
     width: 150px;
     height: 150px;
@@ -123,16 +123,16 @@ img {
 }
 
 /* --------------------Login Usuario-------------------- */
-.esqueci-senha {
+.esqueci-senha-login-usuario {
     color: #7608a5;
     font-size: 10px;
     position: absolute;
-    top: 323px;
+    top: 335px;
     right: 50px;
     font-weight: bold;
 }
 
-.criar-conta-area {
+.criar-conta-area-login-usuario {
     display: flex;
     width: 250px;
     justify-content: center;
@@ -142,23 +142,23 @@ img {
 
 }
 
-.pergunta {
+.pergunta-login-usuario {
     font-size: 13px;
 }
 
-.criar-conta {
-    font-size: 13px;
-    font-weight: bold;
-    color: #7608a5;
-    background: none;
-    border: none;
-    cursor: pointer;
-    text-decoration: underline;
+.criar-conta-login-usuario {
+    display: flex;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 360px;
+    gap: 5px;
 }
 
 
 /* --------------------Registrar Usuario-------------------- */
-.registrar-box {
+.registrar-box-login-usuario {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -171,7 +171,7 @@ img {
     position: relative;
 }
 
-.register-input {
+.register-input-login-usuario {
     width: 250px;
     height: 40px;
     min-height: 40px;
@@ -213,7 +213,7 @@ img {
     top: 305px;
 }
 
-.termos-area {
+.termos-area-login-usuario {
     width: 300px;
     display: flex;
     justify-content: center;
@@ -222,7 +222,7 @@ img {
     top: 389px;
 }
 
-#checkbox {
+#checkbox-login-usuario {
     height: 30px;
     width: 20px;
     text-decoration: none;
@@ -230,19 +230,19 @@ img {
     outline: none;
 }
 
-.concordo {
+.concordo-login-usuario {
     font-size: 12px;
-    
+
 }
 
-.termos {
+.termos-login-usuario {
     margin: 0 0 0 3px;
     font-size: 12px;
     font-weight: bold;
     color: #7608a5;
 }
 
-.botao-registrar {
+.botao-registrar-login-usuario {
     width: 180px;
     /* margin: 60px 0 0 0; */
     color: white;
@@ -268,14 +268,14 @@ img {
 
 /* --------------------Recuperar Senha-------------------- */
 
-.titulo {
+.titulo-login-usuario {
     position: absolute;
     top: 50px;
     font-size: 36px;
     color: #7608a5;
 }
 
-.sub-titulo {
+.sub-titulo-login-usuario {
     position: absolute;
     top: 110px;
     font-size: 10.4px;
@@ -283,7 +283,7 @@ img {
 }
 
 /* ------------------------------------------------------ */
-#houseButton {
+#house-button-login-usuario {
     position: absolute;
     top: 30px;
     left: 25px;
@@ -292,7 +292,7 @@ img {
     cursor: pointer;
 }
 
-#house-icon {
+#house-icon-login-usuario {
     position: absolute;
     display: flex;
     justify-content: top;
@@ -303,7 +303,7 @@ img {
 
 
 @media screen and (max-width: 768px) {
-    .container {
+    .container-login-usuario {
         display: flex;
         flex-direction: column;
         background-image: none;
@@ -337,7 +337,7 @@ img {
         height: 50vh;
     }
 
-    #house-icon {
+    #house-icon-login-usuario {
         position: absolute;
         display: flex;
         justify-content: top;

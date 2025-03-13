@@ -24,3 +24,6 @@ document.querySelector('.remover').addEventListener('click', () =>{
     }
 });
 
+export default{
+    abrirPopup,fecharPopup
+}

@@ -49,26 +49,7 @@
 
 }
 
-:root {
-    --gradient-background: rgb(62, 0, 163);
-    --color-menu: rgba(245, 245, 245, 0.556);
-    --text-color: rgb(227, 227, 227);
-    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-    --gradient-icon: rgb(150, 16, 199);
-    --shadow: rgba(0, 0, 0, 0.658);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: "Roboto", sans-serif;
-}
-
-
-nav {
+.navbar-group {
     background: var(--gradient);
     display: flex;
     justify-content: space-around;
@@ -81,10 +62,6 @@ nav {
     display: none;
 }
 
-.show {
-    display: block;
-}
-
 .logoimg {
     height: 60px;
     width: 200px;
@@ -93,18 +70,18 @@ nav {
     left: 40px;
 }
 
-a {
-    color: #F6F8FF;
+.a-navbar {
+    color: var(--cor-font-branco);
     text-decoration: none;
     transition: 0.4s;
 }
 
-a:hover {
+.a-navbar:hover {
     font-size: 17px;
     opacity: 0.7;
 }
 
-ul {
+.ul-navbar {
     display: flex;
     list-style: none;
     gap: 30px;
@@ -119,9 +96,9 @@ ul {
     width: 40px;
     height: 40px;
     border-radius: 90px;
-    background-color: rgba(128, 0, 128, 0);
+    background-color: var(--cor-font-preto);
     border: 2px solid white;
-    color: white;
+    color: var(--cor-font-branco);
     cursor: pointer;
     position: absolute;
     top: 23px;
@@ -155,7 +132,7 @@ ul {
 
 #lente-icon {
     width: 40px;
-    color: #7608a5;
+    color: var(--cor-roxo-escuro);
 }
 
 .image-area {
@@ -220,7 +197,7 @@ ul {
 .lateral-bar {
     width: 300px;
     height: 350px;
-    background-color: #7608a5;
+    background-color: var(--cor-roxo-escuro);
     border-radius: 0 0 0 30px;
     box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
     position: absolute;
@@ -259,7 +236,7 @@ ul {
 
 #favoritosIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 104px;
 }
@@ -274,7 +251,7 @@ ul {
 
 #historicoIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 164px;
 }
@@ -289,7 +266,7 @@ ul {
 
 #configIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 224px;
 }
@@ -304,51 +281,18 @@ ul {
 
 #logoutIcon {
     position: absolute;
-    color: white;
+    color: var(--cor-font-branco);
     right: 258px;
     top: 284px;
 }
 
+.h3-lateral-bar {
+    color: var(--cor-font-branco);
+}
 
-h2 {
+.p-filtrarArea {
     text-align: center;
-    margin: 10vh 0px 10vh;
-    font-size: 3.5vh;
-    color: #ffff;
-}
-
-h3 {
-    color: #ffff;
-}
-
-p {
-    text-align: center;
-    color: #FFFF;
-}
-
-h2:hover {
-    font-size: 4vh;
-    letter-spacing: 1px;
-    /*faz um espaçamento entre as letras*/
-    transition: 0.4s;
-    /*faz uma suavização na animação*/
-}
-
-.sinop {
-    width: 50vw;
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* adiciona essa linha */
-    align-items: center;
-    ;
+    color: var(--cor-font-branco);
 }
 
 .sobre {
@@ -358,49 +302,6 @@ h2:hover {
     display: flex;
 
 
-}
-
-fieldset {
-    border-radius: 10px;
-    background: #9d148d18;
-    width: 10vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-legend {
-    margin-top: 10px
-}
-
-.nome {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.icon {
-    height: 25vh;
-    width: 25vh;
-    border-radius: 100%;
-    border: #FFFF solid 2px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 7vh 15px 1px;
-    cursor: pointer;
-    transition: 0.7s;
-}
-
-.icon:hover {
-    height: 30vh;
-    width: 30vh;
-    border-radius: 100%;
-    border: #FFFF solid 2px;
-    justify-content: space-between;
-    align-items: center;
-
-    transition: 0.3s;
 }
 
 .mobile-button {
@@ -413,7 +314,7 @@ legend {
         width: 200px;
     }
 
-    ul {
+    .ul-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -428,9 +329,9 @@ legend {
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: rgba(128, 0, 128, 0);
+        background-color: var(--cor-font-preto);
         border: 2px solid white;
-        color: white;
+        color: var(--cor-font-branco);
         cursor: pointer;
         position: absolute;
         top: 23px;
@@ -473,7 +374,7 @@ legend {
         left: 20px;
     }
 
-    ul {
+    .ul-navbar {
         display: flex;
         list-style: none;
         gap: 10px;
@@ -488,9 +389,9 @@ legend {
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: rgba(128, 0, 128, 0);
+        background-color: var(--cor-font-preto);
         border: 2px solid white;
-        color: white;
+        color: var(--cor-font-branco);
         cursor: pointer;
         position: absolute;
         top: 25px;
@@ -580,7 +481,7 @@ legend {
 
     }
 
-    ul {
+    .ul-navbar {
         display: none;
     }
 
@@ -663,7 +564,7 @@ legend {
     .lateral-bar {
         width: 100%;
         height: 400px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         border-radius: 0 0 30px 30px;
         box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
         position: absolute;
@@ -697,7 +598,7 @@ legend {
         position: absolute;
         left: 30px;
         width: 40px;
-        color: white;
+        color: var(--cor-font-branco);
     }
 
     .searchMobileBar {
@@ -721,7 +622,7 @@ legend {
 
     #favoritosIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 154px;
     }
@@ -736,7 +637,7 @@ legend {
 
     #historicoIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 214px;
     }
@@ -751,7 +652,7 @@ legend {
 
     #configIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 274px;
     }
@@ -766,7 +667,7 @@ legend {
 
     #logoutIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 28px;
         top: 334px;
     }
@@ -778,7 +679,7 @@ legend {
         height: 60px;
         border: none;
         border-radius: 90px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         color: #F6F8FF;
         justify-content: center;
         align-items: center;
@@ -793,7 +694,7 @@ legend {
     }
 
     .circle-choice {
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         width: 250px;
         height: 250px;
         border-radius: 100px 50px 30px;
@@ -814,7 +715,7 @@ legend {
         border: none;
         border-radius: 90px;
         background-color: #5108708e;
-        color: #F6F8FF;
+        color: var(--cor-font-branco);
         justify-content: center;
         align-items: center;
     }
@@ -912,7 +813,7 @@ legend {
 
     }
 
-    ul {
+    .ul-navbar {
         display: none;
     }
 
@@ -994,7 +895,7 @@ legend {
     .lateral-bar {
         width: 100%;
         height: 400px;
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         border-radius: 0 0 30px 30px;
         box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.63);
         position: absolute;
@@ -1027,7 +928,7 @@ legend {
         position: absolute;
         left: 30px;
         width: 40px;
-        color: white;
+        color: var(--cor-font-branco);
     }
 
     .searchMobileBar {
@@ -1051,7 +952,7 @@ legend {
 
     #favoritosIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 154px;
     }
@@ -1066,7 +967,7 @@ legend {
 
     #historicoIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 214px;
     }
@@ -1081,7 +982,7 @@ legend {
 
     #configIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 25px;
         top: 274px;
     }
@@ -1096,7 +997,7 @@ legend {
 
     #logoutIcon {
         position: absolute;
-        color: white;
+        color: var(--cor-font-branco);
         left: 28px;
         top: 334px;
     }
@@ -1108,8 +1009,8 @@ legend {
         height: 60px;
         border: none;
         border-radius: 90px;
-        background-color: #7608a5;
-        color: #F6F8FF;
+        background-color: var(--cor-roxo-escuro);
+        color: var(--cor-font-branco);
         justify-content: center;
         align-items: center;
         position: absolute;
@@ -1119,7 +1020,7 @@ legend {
     }
 
     .circle-choice {
-        background-color: #7608a5;
+        background-color: var(--cor-roxo-escuro);
         width: 250px;
         height: 250px;
         border-radius: 100px 50px 30px;
