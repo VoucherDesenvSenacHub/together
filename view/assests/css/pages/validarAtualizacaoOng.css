@@ -1,0 +1,83 @@
+/* COLOCAR AS VARIAVEIS DE CORES QUE ESTAO NO STYLE.CSS */
+/* :root{
+  --cor-font-preto: #000000;
+  --cor-font-branco: #FFFFFF;
+  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+  --cor-roxo-claro: #b56ad0d2;
+  --cor-roxo-escuro: #7608a5;
+  --cor-vermelho: #c63637;
+  --cor-verde: #118211;
+  --cor-amarelo: #ffd94d;
+} */
+.title-page-validarong{
+  position: fixed;
+  top: 130px;
+  left: 150px;
+  font-size: 40px;
+  font-weight: bold;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.buttom-visibility-ong-status{
+  background: none;
+  border: none;
+}
+
+.material-symbols-outlined.exibicao-visualizarong{
+  color: var(--cor-font-preto)
+}
+
+.buttom-visibility-ong-status:hover{
+  cursor: pointer;
+}
+
+.status-aguardando{
+  color: var(--cor-amarelo);
+}
+
+.row-body-table{
+  color: var(--cor-font-preto);
+}
+
+
+@media (max-width: 790px) {
+ 
+
+  .title-page-validarong{
+    position: relative;
+    top: 10rem;
+    left: 4rem;
+    font-size: 39px;
+    font-weight: bold;
+    background: linear-gradient(#6a10be, #a224e2);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .body-page-validarong{
+    font-size: 15px;
+    min-height: 100vh;
+  }
+}
+
+
+@media (max-width: 480px) {
+
+  .title-page-validarong{
+    position: relative;
+    top: 9rem;
+    left: 2.2rem;
+    font-size: 20px;
+    font-weight: bold;
+    background: linear-gradient(#6a10be, #a224e2);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .body-page-validarong{
+    font-size: 15px;
+    min-height: 50vh;
+  }
+}
