@@ -3,9 +3,9 @@ require_once "./../../components/head.php";
 ?>
 
 <body>
-    <header class="headerMenu">
-        <div></div>
-    </header>
+    <?php 
+    require_once "./../../components/navbar.php";
+    ?>
     <div class="firstSession">
         <div class="sobreNosText">
             <div class="sobreNosInt">
@@ -123,7 +123,9 @@ require_once "./../../components/head.php";
               
         </div>
     </footer>
-
+    <?php 
+    require_once "./../../components/footer.php";
+    ?>
 </body>
 
 </html>
