@@ -122,11 +122,16 @@
   font-weight: bold;
   top: 30px;
   background: var(--gradient);
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .info-area-visualizar-voluntarios {
+  background: linear-gradient(white, white) padding-box,
+    var(--gradient) border-box;
+  border: 3.5px solid transparent;
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -134,9 +139,6 @@
   width: 450px;
   height: 500px;
   padding: 30px;
-  border: 3.5px solid blueviolet;
-  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
-  border-radius: 30px;
   top: 200px;
 }
 
