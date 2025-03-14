@@ -1,45 +1,38 @@
-/* Root Variables */
-:root {
-    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218,112,255,1) 100%); 
-    --shadow:  rgba(0, 0, 0, 0.366);
-}
-/* End Root Variables */
-
-/* Body */
-body {
-    background-image: url("assets/ong_background-better.png");
+.body-login-da-ong {
+    background-image: url("../../images/Ong/ong_background-better.png");
     background-size: cover;
     background-attachment: fixed;
     font-family: "Roboto", serif;
 }
-/* End Body */
 
+/* Global Styles */
+::placeholder {
+    color: #a4a4a4;
+}
 
 /* ONG'S WINDOWS */
-.box-login{
+.box-login {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.img_logo{
+.img-logo {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-   
-    
 }
 
-.login_container{
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
 }
 
-.login_box{
+.login-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,25 +45,16 @@ body {
     position: relative;
 }
 
-.container-registroONG {
+.container-registro-ong, .wrapper-lost-pass {
     display: none;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 97vh;
 }
-
-.wrapper_lostPASS {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 97vh;
-}
-/*  *END-ONG'S WINDOWS/
 
 /* Containers */
-.container {
+.container-login-da-ong {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,19 +63,18 @@ body {
     height: 97vh;
 }
 
-
-#login_ong{
+#login-ong {
     height: 50px;
     margin: 3%;
 }
 
-/* End Containers */
-.creat_acc_{
+.creat-acc- {
     position: absolute;
     top: 345px;
 }
+
 /* Inputs */
-.text_input {
+.text-input, .text-input-registro-ong {
     width: 250px;
     height: 10px;
     min-height: 38px;
@@ -100,63 +83,76 @@ body {
     padding: 0 0 0 15px;
     font-family: "Roboto", serif;
     margin: 30px 0 0 0;
-    box-shadow: 1px 3px 1px var(--shadow);
+    box-shadow: 0 4px 12px rgba(118, 8, 165, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.lost-pass{
+.text-input-registro-ong {
+    box-shadow: 0 4px 12px rgba(118, 8, 165, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.lost-pass {
     position: absolute;
-    top : 300px;
+    top: 300px;
     right: 26px;
     font-size: 13px;
 }
 
-#name_input {
+#password-input, #name-input-registro-ong {
     font-size: 12px;
     position: absolute;
+}
+
+#password-input {
     top: 220px;
     height: 46px;
 }
 
-#cnpj_input {
+#name-input-registro-ong {
+    top: 20px;
+}
+
+#cnpj-input, #cnpj-input-registro-ong {
     font-size: 12px;
     position: absolute;
+}
+
+#cnpj-input {
     top: 165px;
     height: 46px;
 }
 
-
-
-::placeholder {
-    color: #a4a4a4;
+#cnpj-input-registro-ong {
+    top: 65px;
 }
-/* End Inputs */
 
-/* Terms Area */
-.terms_area {
+.terms-area, .terms-area-registro-ong {
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
+}
+
+.terms-area {
     top: 323px;
 }
 
-.agree_text {
+.terms-area-registro-ong {
+    top: 410px;
+}
+
+.agree-text, .agree-text-registro-ong {
     font-size: 12px;
 }
 
-.terms_link {
+.terms-link, .terms-link-registro-ong {
     margin: 0 0 0 3px;
     font-size: 12px;
     font-weight: bold;
     color: #7608a5;
 }
-/* End Terms Area */
 
-/* Buttons */
-.login_button {
-    width: 210px;
-    height: 50px;
+.login-button, .login-button-registro-ong, .button-lost-pass {
     color: white;
     background: var(--gradient);
     font-weight: bold;
@@ -165,148 +161,62 @@ body {
     border: none;
     border-radius: 30px;
     position: absolute;
-    top: 360px;
     transition: 0.2s;
 }
 
-.login_button:hover {
+.login-button {
+    width: 180px;
+    height: 50px;
+    top: 360px;
+    text-align: center;
+}
+
+.login-button-registro-ong {
+    width: 180px;
+    height: 50px;
+    top: 445px;
+}
+
+.button-lost-pass {
+    width: 180px;
+    height: 50px;
+    top: 350px;
+}
+
+.login-button:hover,.login-button-registro-ong:hover, .button-lost-pass:hover {
     scale: 105%;
     box-shadow: 1px 3px 1px var(--shadow);
 }
-/* End Buttons */
 
-/* Icons */
-#house_icon {
-    cursor: pointer;
+#house-icon, #house-icon-registro, #home-icon-lost-pass {
     position: absolute;
     display: flex;
     justify-content: top;
     z-index: 2;
-    margin: 0 230px 0 0;
     color: #7608a5;
     top: 30px;
     left: 25px;
 }
 
-/* End Icons */
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-    body {
-        
-        background-position: center;
-        background-image: #FFFFFF url("pasta/ongs.jpg") no-repeat right top fixed; 
-    }
-
-    #logo_img {
-        width: 300px;
-        
-    }
-
-    #name_input {
-        height: 46px;
-        font-size: 12px;
-        position: absolute;
-        top: 220px;
-    }
-    
-    #cnpj_input {
-        font-size: 12px;
-        height: 46px;
-        position: absolute;
-        top: 165px;
-    }
-    
-
-    .container {
-        display: flex;
-        background-image: none;
-    }
-
-    .box {
-        width: 100%;
-    }
-
-    .logo_div {
-        width: 0%;
-    }
-
-   
-
-    .login_button {
-        height: 50px;
-    }
-
-    .login_form {
-        min-width: 230px;
-        width: 230px;
-        max-width: 230px;
-        height: 455px;
-    }
-
-    #phone_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 110px;
-    }
-
-    #foundation_date_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 110px;
-    }
-
-    #house_icon {
-        position: absolute;
-        display: flex;
-        justify-content: top;
-        z-index: 2;
-        margin: 0 180px 0 0;
-        color: #7608a5;
-    }
-
-    #fiscal_council_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 200px;
-    }
-
-    #ong_type_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 200px;
-    }
-
-    #ong_logo_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 245px;
-    }
-
-    #email_input {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 245px;
-    }
+#house-icon {
+    cursor: pointer;
+    margin: 0 230px 0 0;
 }
-/* End Media Queries */
-#tezt{
+
+#paperclip-fiscal {
     position: absolute;
-    top: 183px;
-    left: 35px;
+    color: #a4a4a4;
+    left: 148px;
+    top: 242px;
 }
+
+#paperclip-logo {
+    position: absolute;
+    color: #a4a4a4;
+    left: 148px;
+    top: 287px;
+}
+
 .user-moldure {
     width: 130px;
     height: 130px;
@@ -323,10 +233,9 @@ body {
 
 .user-icon {
     color: aliceblue;
-    scale: 70%;
 }
 
-.logo_div-registroONG {
+.logo-div-registro-ong, .logo-container-lost-pass {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -334,11 +243,11 @@ body {
     justify-content: center;
 }
 
-#logo_img-registroONG {
+#logo-img,#logo-img-registro-ong, #logo-lost-pass {
     width: 300px;
 }
 
-.box-registroONG {
+.box-registro-ong, .form-container-lost-pass {
     width: 50%;
     display: flex;
     justify-content: center;
@@ -346,316 +255,90 @@ body {
     position: relative;
 }
 
-.login_form-registroONG {
+.login-form-registro-ong, .form-lost-pass {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    width: 280px;
-    height: 455px;
     background-color: rgba(255, 255, 255, 0.532);
     border: none;
     border-radius: 30px;
     position: relative;
 }
 
-.text_input-registroONG {
-    width: 250px;
-    height: 10px;
-    min-height: 38px;
-    border: none;
-    border-radius: 30px;
-    padding: 0 0 0 15px;
-    font-family: "Roboto", serif;
-    margin: 30px 0 0 0;
-    box-shadow: 23px 22px 41px -24px var(--shadow);
+.login-form-registro-ong {
+    width: 280px;
+    height: 455px;
 }
 
-#name_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    top: 20px;
+.form-lost-pass {
+    width: 255px;
+    height: 370px;
 }
 
-#cnpj_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    top: 65px;
-}
-
-#phone_input-registroONG {
+#phone-input-registro-ong, #fiscal-council-input-registro-ong, #ong-logo-input-registro-ong {
     font-size: 12px;
     position: absolute;
     width: 115px;
     left: 38px;
+}
+
+#phone-input-registro-ong {
     top: 110px;
 }
 
-#foundation_date_input-registroONG {
+#fiscal-council-input-registro-ong {
+    top: 200px;
+}
+
+#ong-logo-input-registro-ong {
+    top: 245px;
+}
+
+#foundation-date-input-registro-ong, #ong-type-input-registro-ong, #email-input-registro-ong {
     font-size: 12px;
     position: absolute;
     width: 115px;
     right: 38px;
+}
+
+#foundation-date-input-registro-ong {
     top: 110px;
 }
 
-#address_input-registroONG {
+#ong-type-input-registro-ong {
+    top: 200px;
+}
+
+#email-input-registro-ong {
+    top: 245px;
+}
+
+#address-input-registro-ong {
     font-size: 12px;
     position: absolute;
     top: 155px;
 }
 
-#fiscal_council_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    width: 115px;
-    left: 38px;
-    top: 200px;
-}
-
-#ong_type_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    width: 115px;
-    right: 38px;
-    top: 200px;
-}
-
-#ong_logo_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    width: 115px;
-    left: 38px;
-    top: 245px;
-}
-
-#email_input-registroONG {
-    font-size: 12px;
-    position: absolute;
-    width: 115px;
-    right: 38px;
-    top: 245px;
-}
-
-#password_input-registroONG {
+#password-input-registro-ong {
     font-size: 12px;
     position: absolute;
     top: 290px;
 }
 
-#confirm_password_input-registroONG {
+#confirm-password-input-registro-ong {
     font-size: 12px;
     position: absolute;
     top: 335px;
 }
 
-::placeholder {
-    color: #a4a4a4;
-}
-
-.terms_area-registroONG {
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 410px;
-}
-
-#checkbox-registroONG {
+#checkbox-registro-ong {
     height: 30px;
     width: 20px;
     text-decoration: none;
 }
 
-.agree_text-registroONG {
-    font-size: 12px;
-}
-
-.terms_link-registroONG {
-    margin: 0 0 0 3px;
-    font-size: 12px;
-    font-weight: bold;
-    color: #7608a5;
-}
-
-.login_button-registroONG {
-    width: 180px;
-    color: white;
-    background: var(--gradient);
-    font-weight: bold;
-    font-size: 20px;
-    height: 50px;
-    min-height: 50px;
-    border: none;
-    border-radius: 30px;
-    position: absolute;
-    top: 445px;
-    transition: 0.2s;
-}
-
-.login_button-registroONG:hover {
-    width: 185px;
-    height: 55px;
-    transition: 0.2s;
-}
-
-#house_icon {
-    position: absolute;
-    display: flex;
-    justify-content: top;
-    z-index: 2;
-    margin: 0 230px 0 0;
-    color: #7608a5;
-    top: 30px;
-    left: 25px;
-}
-
-#paperclip_fiscal {
-    position: absolute;
-    color: #a4a4a4;
-    left: 148px;
-    top: 242px;
-}
-
-#paperclip_logo {
-    position: absolute;
-    color: #a4a4a4;
-    left: 148px;
-    top: 287px;
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        background-image: url("assets/ong_background.png");
-    }
-
-    .login_box{
-        width: 250px;
-    }
-
-    #logo_img-registroONG {
-        width: 300px;
-       
-    }
-
-    .img_logo {
-        
-        top: 120px;
-        width: 100%;
-        display: flex;
-        align-items: bottom;
-        justify-content: center;
-        z-index: 1;
-    }
-
-    .login_container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-    }
-
-   .box-login{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-   }
-
-    .container-registroONG {
-        flex-direction: column-reverse;
-        background-image: none;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .box-registroONG {
-        width: 100%;
-    }
-
-    .logo_div-registroONG {
-        width: 0%;
-    }
-
-    .text_input-registroONG {
-        height: 30px;
-    }
-
-    .login_button-registroONG {
-        height: 50px;
-    }
-
-    .login_form-registroONG {
-        min-width: 230px;
-        width: 230px;
-        max-width: 230px;
-        height: 455px;
-    }
-
-    #phone_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 110px;
-    }
-
-    #foundation_date_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 110px;
-    }
-
-    #house_icon {
-        position: absolute;
-        display: flex;
-        justify-content: top;
-        z-index: 2;
-        margin: 0 180px 0 0;
-        color: #7608a5;
-    }
-
-    #fiscal_council_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 200px;
-    }
-
-    #ong_type_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 200px;
-    }
-
-    #ong_logo_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        left: 14px;
-        top: 245px;
-    }
-
-    #email_input-registroONG {
-        font-size: 12px;
-        position: absolute;
-        width: 115px;
-        right: 14px;
-        top: 245px;
-    }
-}
-
-
-.text_lostPASS {
+.text-lost-pass {
     position: absolute;
     color: rgb(0, 0, 0);
     font-size: 9.4px;
@@ -663,7 +346,7 @@ body {
     top: 115px;
 }
 
-.title_lostPASS {
+.title-lost-pass {
     position: absolute;
     font-size: 32px;
     background: var(--gradient);
@@ -672,43 +355,8 @@ body {
     top: 55px;
 }
 
-
-
-.logo-container_lostPASS {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-}
-
-#logo_lostPASS {
-    scale: 300px;
-}
-
-.form-container_lostPASS {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.form_lostPASS {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 30px;
-    width: 255px;
-    height: 370px;
-    background-color: rgba(255, 255, 255, 0.532);
-    border: none;
-    border-radius: 30px;
-    position: relative;
-}
-
-.input_lostPASS {
-    width: 250px;
+.input-lost-pass {
+    width: 233px;
     height: 50px;
     min-width: 50px;
     border: none;
@@ -716,91 +364,169 @@ body {
     padding: 0 15px;
     font-family: "Roboto", serif;
     margin-top: 30px;
-    box-shadow: 1px 1px 7px 1px var(--shadow);
+    box-shadow: 0 4px 12px rgba(118, 8, 165, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-#email-input_lostPASS {
+#email-input-lost-pass {
     font-size: 12px;
     position: absolute;
     top: 165px;
 }
 
-::placeholder {
-    color: #a4a4a4;
-}
-
-.button_lostPASS {
-    width: 180px;
-    color: white;
-    background: var(--gradient);
-    font-weight: bold;
-    font-size: 20px;
-    height: 50px;
-    min-height: 50px;
-    border: none;
-    border-radius: 30px;
-    position: absolute;
-    top: 350px;
-    transition: 0.2s;
-}
-
-.button_lostPASS:hover {
-    width: 185px;
-    height: 55px;
-    transition: 0.2s;
-}
-
-#home-icon_lostPASS, #house_icon_registro{
-    position: absolute;
-    display: flex;
-    justify-content: top;
-    z-index: 2;
-    margin-right: 230px;
-    color: #7608a5;
-    top: 30px;
-    left: 25px;
-}
-
 @media screen and (max-width: 768px) {
-    body {
-        background-image: url("assets/ong_background-better.png");
-    }
-
-    #logo_lostPASS {
-        width: 300px;
-        
-    }
-
-    .wrapper_lostPASS {
+    .wrapper-lost-pass {
         flex-direction: column-reverse;
         background-image: none;
         justify-content: center;
         align-items: center;
     }
 
-    .form-container_lostPASS {
+    .form-container-lost-pass {
         width: 100%;
     }
 
-    .logo-container_lostPASS {
+    .logo-container-lost-pass {
         width: 0%;
     }
 
-    .input_lostPASS {
-        height: 50px;
-    }
-
-    .button_lostPASS {
-        height: 50px;
-    }
-
-    .form_lostPASS {
+    .form-lost-pass {
         min-width: 230px;
         width: 230px;
         max-width: 230px;
     }
 
-    #home-icon_lostPASS {
+    #home-icon-lost-pass {
         margin-right: 180px;
+    }
+
+    .login-box {
+        width: 250px;
+    }
+
+    .img-logo {
+        top: 120px;
+        width: 100%;
+        display: flex;
+        align-items: bottom;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    .login-container {
+        width: 100%;
+        z-index: 2;
+    }
+
+    .box-login {
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .container-registro-ong {
+        flex-direction: column-reverse;
+        background-image: none;
+    }
+
+    .box-registro-ong {
+        width: 100%;
+    }
+
+    .logo-div-registro-ong {
+        width: 0%;
+    }
+
+    .login-form-registro-ong {
+        min-width: 230px;
+        width: 230px;
+        max-width: 230px;
+        height: 455px;
+    }
+
+    
+    #phone-input-registro-ong, #fiscal-council-input-registro-ong, #ong-logo-input-registro-ong {
+        left: 14px;
+    }
+
+    #foundation-date-input-registro-ong, #ong-type-input-registro-ong, #email-input-registro-ong {
+        right: 14px;
+    }
+
+    #house-icon {
+        margin: 0 180px 0 0;
+    }
+
+    .body-login-da-ong {
+        background-position: center;
+        background-image: #FFFFFF url("../../images/Ong/Ong_icon.png") no-repeat right top fixed;
+    }
+
+    #logo-img {
+        width: 300px;
+    }
+
+    #password-input {
+        height: 46px;
+    }
+
+    .container {
+        display: flex;
+        background-image: none;
+    }
+
+    .box {
+        width: 100%;
+    }
+
+    .logo-div {
+        width: 0%;
+    }
+
+    #phone-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 110px;
+    }
+
+    #foundation-date-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 110px;
+    }
+
+    #fiscal-council-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 200px;
+    }
+
+    #ong-type-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 200px;
+    }
+
+    #ong-logo-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        left: 14px;
+        top: 245px;
+    }
+
+    #email-input {
+        font-size: 12px;
+        position: absolute;
+        width: 115px;
+        right: 14px;
+        top: 245px;
     }
 }
