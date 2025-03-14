@@ -1,54 +1,3 @@
-@keyframes search-slide-animation {
-    0% {
-        width: 40px;
-        height: 40px;
-    }
-
-    100% {
-        width: 250px;
-        height: 40px;
-    }
-}
-
-@keyframes lateral-bar-animation {
-    0% {
-        width: 0px;
-        height: 0px;
-        border-radius: 90px;
-    }
-
-    100% {
-        width: 300px;
-        height: 350px;
-    }
-}
-
-@keyframes circle-choice-animation {
-    0% {
-        width: 60px;
-        height: 60px;
-        border-radius: 90px;
-    }
-
-    100% {
-        width: 250px;
-        height: 250px;
-        border-radius: 100px 30px 30px;
-    }
-}
-
-@keyframes filtrar-animation {
-
-    0% {
-        height: 0px;
-    }
-
-    100% {
-        height: 300px;
-    }
-
-}
-
 .navbar-group {
     background: var(--gradient);
     display: flex;
@@ -140,7 +89,7 @@
     height: 55px;
     position: absolute;
     right: 50px;
-    background-image: url("assets/usuario-user-foto.png");
+    background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
     border-radius: 90px;
     background-size: cover;
     cursor: pointer;
@@ -160,7 +109,7 @@
 }
 
 .filtrar-list {
-
+    
     height: 200px;
     list-style: none;
     display: flex;
@@ -219,7 +168,7 @@
     position: absolute;
     right: 50px;
     top: 10px;
-    background-image: url("assets/usuario-user-foto.png");
+    background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
     border-radius: 90px;
     background-size: cover;
     cursor: pointer;
@@ -300,20 +249,70 @@
     text-align: center;
     font-size: 20px;
     display: flex;
-
-
+    
+    
 }
 
 .mobile-button {
     display: none;
 }
 
+@keyframes search-slide-animation {
+    0% {
+        width: 40px;
+        height: 40px;
+    }
+
+    100% {
+        width: 250px;
+        height: 40px;
+    }
+}
+
+@keyframes lateral-bar-animation {
+    0% {
+        width: 0px;
+        height: 0px;
+        border-radius: 90px;
+    }
+
+    100% {
+        width: 300px;
+        height: 350px;
+    }
+}
+
+@keyframes circle-choice-animation {
+    0% {
+        width: 60px;
+        height: 60px;
+        border-radius: 90px;
+    }
+
+    100% {
+        width: 250px;
+        height: 250px;
+        border-radius: 100px 30px 30px;
+    }
+}
+
+@keyframes filtrar-animation {
+
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: 300px;
+    }
+
+}
 @media screen and (max-width: 1569px) {
     .logoimg {
         height: 60px;
         width: 200px;
     }
-
+    
     .ul-navbar {
         display: flex;
         list-style: none;
@@ -324,7 +323,7 @@
         position: absolute;
         left: 300px;
     }
-
+    
     .barra-pesquisa-button {
         width: 40px;
         height: 40px;
@@ -340,7 +339,7 @@
         justify-content: center;
         align-items: center;
     }
-
+    
     .search-bar {
         width: 350px;
         height: 40px;
@@ -353,7 +352,7 @@
         animation-name: search-slide-animation;
         animation-duration: 0.3s;
     }
-
+    
     .submit-lente {
         background: none;
         width: 40px;
@@ -362,7 +361,7 @@
         right: 190px;
         border: none;
     }
-
+    
 }
 
 @media screen and (max-width: 1024px) {
@@ -373,7 +372,7 @@
         top: 15px;
         left: 20px;
     }
-
+    
     .ul-navbar {
         display: flex;
         list-style: none;
@@ -384,7 +383,7 @@
         position: absolute;
         left: 230px;
     }
-
+    
     .barra-pesquisa-button {
         width: 40px;
         height: 40px;
@@ -400,7 +399,7 @@
         justify-content: center;
         align-items: center;
     }
-
+    
     .search-bar {
         width: 250px;
         height: 40px;
@@ -433,9 +432,9 @@
         right: 30px;
         box-shadow: 0px 11px 5px 0px rgba(0, 0, 0, 0.28);
     }
-
+    
     .filtrar-list {
-
+        
         height: 130px;
         list-style: none;
         display: flex;
@@ -449,7 +448,7 @@
         right: 10px;
         left: 10px;
     }
-
+    
     .filtrar-list-line {
         display: flex;
         gap: 5px;
@@ -459,7 +458,7 @@
         margin: 0 15px 0 0;
         font-size: 13px;
     }
-
+    
     #listCheckbox {
         min-width: 15px;
         min-height: 15px;
@@ -470,36 +469,36 @@
 
 @media screen and (max-width: 840px) {
     @keyframes mobile-lateral-bar-animation {
-
+        
         from {
             transform: translateY(-1000px);
         }
-
+        
         to {
             transform: translateY(0);
         }
-
+        
     }
-
+    
     .ul-navbar {
         display: none;
     }
-
+    
     .barra-pesquisa-button {
         display: none;
     }
-
+    
     .search-bar {
         position: absolute;
         top: 25px;
         right: 200px;
     }
-
+    
     .submit-lente {
         top: 37px;
         right: 200px;
     }
-
+    
     .logoimg {
         height: 60px;
         width: 200px;
@@ -507,18 +506,18 @@
         left: 30px;
         top: 8px;
     }
-
+    
     .image-area {
         width: 55px;
         height: 55px;
         position: absolute;
         right: 50px;
-        background-image: url("assets/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
         border-radius: 90px;
         background-size: cover;
         right: 30px;
     }
-
+    
     .filtrar-area {
         height: 310px;
         position: absolute;
@@ -527,7 +526,7 @@
         right: 30px;
         box-shadow: 0px 11px 5px 0px rgba(0, 0, 0, 0.28);
     }
-
+    
     .filtrar-list {
 
         height: 130px;
@@ -543,7 +542,7 @@
         right: 10px;
         left: 10px;
     }
-
+    
     .filtrar-list-line {
         display: flex;
         gap: 5px;
@@ -553,14 +552,14 @@
         margin: 0 15px 0 0;
         font-size: 13px;
     }
-
+    
     #listCheckbox {
         min-width: 15px;
         min-height: 15px;
         background-color: none;
         margin: 0 5px 0 0;
     }
-
+    
     .lateral-bar {
         width: 100%;
         height: 400px;
@@ -573,34 +572,34 @@
         animation-name: mobile-lateral-bar-animation;
         animation-duration: 0.3s;
     }
-
+    
     .image-lateral-bar {
         width: 55px;
         height: 55px;
         position: absolute;
         right: 30px;
         top: 10px;
-        background-image: url("assets/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
         border-radius: 90px;
         background-size: cover;
         cursor: pointer;
         border: none;
     }
-
+    
     .search-bar-mobile-area {
         position: absolute;
         display: block;
         top: 95px;
         width: 100%;
     }
-
+    
     #mobile-lente-icon {
         position: absolute;
         left: 30px;
         width: 40px;
         color: var(--cor-font-branco);
     }
-
+    
     .searchMobileBar {
         position: absolute;
         left: 25px;
@@ -611,7 +610,7 @@
         border-bottom: 3px solid white;
     }
 
-
+    
     #favoritosButton {
         position: absolute;
         font-weight: bold;
@@ -619,14 +618,14 @@
         left: 55px;
         top: 150px;
     }
-
+    
     #favoritosIcon {
         position: absolute;
         color: var(--cor-font-branco);
         left: 25px;
         top: 154px;
     }
-
+    
     #historicoButton {
         position: absolute;
         font-weight: bold;
@@ -634,14 +633,14 @@
         left: 55px;
         top: 210px;
     }
-
+    
     #historicoIcon {
         position: absolute;
         color: var(--cor-font-branco);
         left: 25px;
         top: 214px;
     }
-
+    
     #configButton {
         position: absolute;
         font-weight: bold;
@@ -649,14 +648,14 @@
         left: 55px;
         top: 270px;
     }
-
+    
     #configIcon {
         position: absolute;
         color: var(--cor-font-branco);
         left: 25px;
         top: 274px;
     }
-
+    
     #logoutButton {
         position: absolute;
         font-weight: bold;
@@ -664,15 +663,15 @@
         left: 55px;
         top: 330px;
     }
-
+    
     #logoutIcon {
         position: absolute;
         color: var(--cor-font-branco);
         left: 28px;
         top: 334px;
     }
-
-
+    
+    
     .mobile-button {
         display: flex;
         width: 60px;
@@ -688,11 +687,11 @@
         right: 30px;
         cursor: pointer;
     }
-
+    
     #bars-icon {
         font-size: 20px;
     }
-
+    
     .circle-choice {
         background-color: var(--cor-roxo-escuro);
         width: 250px;
@@ -704,7 +703,7 @@
         animation-name: circle-choice-animation;
         animation-duration: 0.3s;
     }
-
+    
     #barsCircleButton {
         position: absolute;
         bottom: 0px;
@@ -841,7 +840,7 @@
         height: 55px;
         position: absolute;
         right: 50px;
-        background-image: url("assets/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
         border-radius: 90px;
         background-size: cover;
         right: 30px;
@@ -911,7 +910,7 @@
         position: absolute;
         right: 30px;
         top: 10px;
-        background-image: url("assets/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
         border-radius: 90px;
         background-size: cover;
         cursor: pointer;
