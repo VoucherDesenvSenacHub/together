@@ -1,5 +1,3 @@
-
-
 <?php require_once "../../../view/components/head.php"; ?>
 
 <body>
@@ -39,7 +37,7 @@
         </form>
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
+
+    <!-- Inclua o arquivo JavaScript externo -->
 </body>
 </html>
-
-

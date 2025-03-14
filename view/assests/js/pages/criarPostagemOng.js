@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Seleciona os elementos do DOM
     const fileInput = document.getElementById("criar-postagem-ong-file-input");
     const imageContainer = document.getElementById("criar-postagem-ong-images");
     const numDeArq = document.getElementById("criar-postagem-ong-num-de-arquivos");
@@ -6,6 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const contador = document.getElementById("criar-postagem-ong-contador");
     const form = document.getElementById("criar-postagem-ong-form");
 
+    // Verifica se todos os elementos necessários existem
+    if (!fileInput || !imageContainer || !numDeArq || !contTexto || !contador || !form) {
+        return; // Interrompe a execução do script silenciosamente
+    }
+
+    // Função para pré-visualizar as imagens selecionadas
     function preview() {
         imageContainer.innerHTML = ""; // Limpa imagens anteriores
         let numFiles = fileInput.files.length;
@@ -46,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Função para validar o formulário antes de enviar
     function validarFormulario(event) {
         const link = document.getElementById("criar-postagem-ong-hyperlink").value;
         const descricao = contTexto.value.trim();
@@ -69,23 +77,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Função para validar URLs
     function validarURL(url) {
         const regex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
         return regex.test(url);
     }
 
+    // Atualiza o contador de caracteres da descrição
     contTexto.addEventListener("input", function () {
         let totalCaracteres = contTexto.value.length;
         contador.textContent = `${totalCaracteres} / 60`;
     });
 
+    // Adiciona o evento de mudança ao input de arquivo
     fileInput.addEventListener("change", preview);
+
+    // Adiciona o evento de submit ao formulário
     form.addEventListener("submit", validarFormulario);
 });
-
-export default {
-    preview
-};
-
-
-
