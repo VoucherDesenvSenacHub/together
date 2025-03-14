@@ -1,29 +1,3 @@
-@import url(../../../reset.css);
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-
-:root{
-    --gradient: linear-gradient(90deg, rgba(62,0,163,1) 0%, rgba(218,112,255,1) 100%);
-    font-family: "Roboto", serif;
-}
-
-body{
-    font-family: "Roboto", sans-serif;    
-}
-
-input{
-
-    background-color: #e7e6e6;
-    height: 53px;
-    border-radius: 40px;
-    border: none;
-    text-align: left;
-    padding-left: 10px;
-    font-size: 18px;
-
-}   
-
-
 .container-adiciona-patrocinador, .container-remove-patrocinador{
     z-index: 1;
     background-color: white;
