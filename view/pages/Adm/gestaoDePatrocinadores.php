@@ -144,7 +144,7 @@
             </div>
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-adiciona-patrocinador')" class="adicionar-patrocinador">
+                    <div class="adicionar-patrocinador">
                         <span class="uil--plus"></span>
                     </div>
                 </label>
