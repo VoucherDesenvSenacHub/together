@@ -68,8 +68,99 @@
                 </div>
 
             </form>
+            <div>
+            <ul class="notification-container">
+    <li class="notification-item success">
+      <div class="notification-content">
+        <div class="notification-icon">
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            ></path>
+          </svg>
+        </div>
+        <div class="notification-text">Voluntário Aceito com sucesso!</div>
+      </div>
+      <div class="notification-icon notification-close">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          ></path>
+        </svg>
+      </div>
+      
+      
+      <div class="notification-progress-bar"></div>
+    </li>
+    <li class="notification-item error">
+      <div class="notification-content">
+        <div class="notification-icon">
+          <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+            ></path>
+          </svg>
+        </div>
+        <div class="notification-text">Erro ao completar a ação!</div>
+      </div>
+      <div class="notification-icon notification-close">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          ></path>
+        </svg>
+      </div>
+      <div class="notification-progress-bar"></div>
+    </li>
+    <li class="notification-item success">
+      <div class="notification-content">
+        <div class="notification-icon">
+            <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              ></path>
+            </svg>
+          </div>
+        <div class="notification-text">Voluntário Recusado com sucesso!</div>
+      </div>
+      <div class="notification-icon notification-close">
+        <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18 17.94 6M18 18 6.06 6"
+          ></path>
+        </svg>
+      </div>
+      <div class="notification-progress-bar"></div>
+    </li>
+  </ul>
+            </div>
         </div>
     </div>
+
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>

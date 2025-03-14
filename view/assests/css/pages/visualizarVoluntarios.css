@@ -177,3 +177,159 @@
   padding: 0 15px 0 15px;
   cursor: default;
 }
+
+/* Notificacao */
+
+.notification-container {
+  /* Position top left */
+
+  position: fixed;
+      top: 2%;
+      left: 70%;
+      z-index: 1000;
+      max-width: 80%;
+
+  --content-color: black;
+  --background-color: #f3f3f3;
+  --font-size-content: 0.75em;
+  --icon-size: 1em;
+
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  list-style-type: none;
+  font-family: sans-serif;
+  color: var(--content-color);
+}
+
+/* Notification Item */
+
+.notification-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+  overflow: hidden;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: rgba(111, 111, 111, 0.2) 0px 8px 24px;
+  transition: all 500ms ease;
+}
+
+.notification-item svg {
+  transition: 250ms ease;
+  align-items: center;
+}
+
+.notification-item:active {
+  transform: scale(1.05);
+}
+
+.notification-item .notification-close:hover svg {
+  color: rgb(0, 0, 0);
+}
+
+.notification-item .notification-close:active svg {
+  transform: scale(1.1);
+}
+
+/* Notification Icons */
+
+.notification-item .notification-close {
+  padding: 2px;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.notification-container svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--cor-font-branco);
+}
+
+
+/* Success */
+
+.success {
+  color: var(--cor-font-branco);
+  background: var(--gradient);
+}
+
+.success svg {
+  color: var(--cor-font-branco);
+}
+
+.success .notification-progress-bar {
+  background: linear-gradient(90deg, #FFFFFF 55%, #881CD3 100%);
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+
+/* Error */
+
+.error {
+  color: var(--cor-font-branco);
+  background: var(--gradient);
+}
+
+.error svg {
+  color: var(--cor-font-branco);
+}
+
+.error .notification-progress-bar {
+  background: linear-gradient(90deg, #FFFFFF 55%, #881CD3 100%);
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+
+/* Notification content */
+
+.notification-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.notification-text {
+  font-size: var(--font-size-content);
+  user-select: none;
+}
+
+.notification-close {
+  cursor: pointer;
+}
+
+/* Notification progress bar */
+
+.notification-progress-bar {
+  position: absolute;
+  bottom: 0;
+  top: 32px;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  transform: translateX(100%);
+
+  /* Remove the infinite property for your website */
+
+  animation: progressBar 5s linear;
+}
+
+/* progressBar Animation */
+
+@keyframes progressBar {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
