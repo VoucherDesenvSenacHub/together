@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url(reset.css);
 @import url(components/button.css);
+@import url(components/card.css);
 @import url(components/dialog.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
@@ -32,4 +33,5 @@
     --cor-botao-hover: #5f3ee0;
     --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
     0px 2px 4px -2px rgba(59, 130, 246, 0.2);
+    --cor-title-card: rgba(55, 65, 81, 1);
 }
