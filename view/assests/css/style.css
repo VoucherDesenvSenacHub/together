@@ -15,6 +15,7 @@
 @import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);
 @import url(pages/visualizarVoluntarios.css);
+@import url(pages/Home.css);
 
 :root {
     font-size: 16px;
