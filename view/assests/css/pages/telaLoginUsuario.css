@@ -213,6 +213,11 @@
     top: 250px;
 }
 
+#senha-registrar-input {
+    position: absolute;
+    top: 250px;
+}
+
 #confirme-senha-input {
     position: absolute;
     top: 305px;
@@ -287,8 +292,13 @@
     font-weight: bold;
 }
 
+#email-esqueci-senha-input {
+    position: absolute;
+    top: 195px;
+}
+
 /* ------------------------------------------------------ */
-#house-button-login-usuario {
+#house-button-login-usuario, #house-button-recuperar-usuario, #house-button-registrar-usuario {
     position: absolute;
     top: 30px;
     left: 25px;
@@ -297,7 +307,7 @@
     cursor: pointer;
 }
 
-#house-icon-login-usuario {
+#house-icon-login-usuario, #house-icon-recuperar-usuario, #house-icon-registrar-usuario {
     position: absolute;
     display: flex;
     justify-content: top;
