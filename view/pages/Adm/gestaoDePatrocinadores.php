@@ -7,8 +7,8 @@
         <div class="content-top">
             <h1 class="titulo-remove-patrocinador">Remover Patrocinador</h1>
             <div class="div-botao-fechar">
-                <button onclick="fecharPopup('.container-remove-patrocinador')" class="botao-fechar">
-                    <svg class="icone-fechar" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
+                <button class="botao-fechar">
+                    <svg class="icone-fechar-remove-patrocinador" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
                 </button>
             </div>
             
@@ -28,7 +28,7 @@
             <div class="content-botoes">
 
                 <div class="div-botao-cancelar">
-                    <button class="botao-cancelar" onclick="fecharPopup('.container-remove-patrocinador')" type="button"> Cancelar </button>
+                    <button class="botao-cancelar-remove-patrocinador" type="button"> Cancelar </button>
                 </div>
                 <div class="div-botao-remover">
                     <button class="botao-remover" type="button"> Remover </button>
@@ -42,8 +42,8 @@
             <div class="content-top">
                 <h1 class="titulo-add-patrocinador">Adicionar Patrocinador</h1>
                 <div class="div-botao-fechar">
-                    <button onclick="fecharPopup('.container-adiciona-patrocinador')" class="botao-fechar">
-                        <svg class="icone-fechar" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
+                    <button class="botao-fechar">
+                        <svg class="icone-fechar-adidiona-patrocinador" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
                     </button>
                 </div>
                 
@@ -137,7 +137,7 @@
         <div class="btn-delete-add">
             <div>
                 <label class="container-ad">
-                    <div onclick="abrirPopup('.container-remove-patrocinador')" class="deletar-patrocinador">
+                    <div class="deletar-patrocinador">
                         <span class="uil--trash"></span>
                     </div>
                 </label>
