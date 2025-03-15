@@ -18,13 +18,13 @@
                 <a class="a-navbar" href="#">Sobre Nós</a>
             
             </li>
-            
+
             <li>
                 <a class="a-navbar" href="#">Administração</a>
             </li>
         </ul>
         <div class="search-button-area">
-            <button id="searchBarButton" class="barra-pesquisa-button">
+            <button id="searchBarButton" class="barra-pesquisa-button" >
                 <i class="fa fa-search" id="lente-button-icon"></i>
             </button>
         </div>

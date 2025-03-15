@@ -17,7 +17,7 @@
                         <i class="fa-solid fa-house fa-xl" id="house-icon-login-usuario"></i>
                     </button>
                     
-                    <img src="../../assests/images/Usuario/usuario-user-foto.png" alt="foto-user" class="foto-perfil-login-usuario">
+                    <img src="../../assests/images/Usuario/user-sem-login.png" alt="foto-user" class="foto-perfil-login-usuario">
                 
                     <input type="text" placeholder="Digite seu Login" class="text-input-login-usuario" id="login-input">
                     <input type="text" placeholder="Digite sua Senha" class="text-input-login-usuario" id="senha-input">
@@ -31,7 +31,7 @@
                         <button class="criar-conta-login-usuario" id="criar-conta-button">Crie uma agora</button>
                     </div>
 
-                    <button class="botao-login-usuario">Login</button>
+                    <button class="botao-login-usuario" id="">Login</button>
                 </form><!--login-->
             </div><!--box-->
         </div><!--login-content-->
@@ -49,7 +49,7 @@
 
             </div>
             <div class="logo-login-usuario">
-                <img src="assets/Together.png" alt="logo">
+                <img src="/together/view/assests/images/components/Together.png" alt="logo">
             </div>
         </div>
 
@@ -72,7 +72,7 @@
                 </form>
             </div>
             <div class="logo-login-usuario">
-                <img src="assets/Together.png" alt="logo">
+                <img src="/together/view/assests/images/components/Together.png" alt="logo">
             </div>
         </div>
 
