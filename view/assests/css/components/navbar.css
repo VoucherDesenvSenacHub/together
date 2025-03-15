@@ -318,8 +318,6 @@
         list-style: none;
         gap: 10px;
         letter-spacing: 1.5px;
-        width: 350px;
-        /* justify-content: space-between; */
         position: absolute;
         left: 300px;
     }

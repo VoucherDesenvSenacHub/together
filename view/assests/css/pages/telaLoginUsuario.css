@@ -148,10 +148,15 @@
 
 .criar-conta-login-usuario {
     display: flex;
-    width: 250px;
+    font-size: 13px;
+    border: none;
+    background: none;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    cursor: pointer;
+    color: var(--cor-roxo-escuro);
+    text-decoration: underline;
+    font-weight: bold;
     top: 360px;
     gap: 5px;
 }
