@@ -54,3 +54,11 @@ document.getElementById('house-icon').addEventListener('click', function (event)
         registrarContent.style.right = '50px'; 
     }, 10); 
 });
+
+const botaoLogin = document.getElementById('botao-login-usuario');
+
+    // Adiciona um ouvinte de evento para o clique
+    botaoLogin.addEventListener('click', function() {
+        // Redireciona para outra página
+        window.location.href = 'pagina-de-login.html';
+    });
