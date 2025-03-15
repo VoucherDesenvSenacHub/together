@@ -3,7 +3,7 @@
         <a class="a-navbar" href=""><img class="logoimg" src="/together/view/assests/images/components/Together.png" alt="logo"></a>
         <ul class="ul-navbar">
             <li>
-                <a class="a-navbar" href="#">Home</a>
+                <a class="a-navbar" href="/together/">Home</a>
             </li>
 
             <li>
@@ -11,11 +11,16 @@
             </li>
 
             <li>
-                <a class="a-navbar" href="#">Feed</a>
+                <a class="a-navbar" href="#">Ongs</a>
             </li>
 
             <li>
                 <a class="a-navbar" href="#">Sobre Nós</a>
+            
+            </li>
+            
+            <li>
+                <a class="a-navbar" href="#">Administração</a>
             </li>
         </ul>
         <div class="search-button-area">
