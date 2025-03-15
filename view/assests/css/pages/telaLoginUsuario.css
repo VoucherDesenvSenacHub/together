@@ -148,10 +148,15 @@
 
 .criar-conta-login-usuario {
     display: flex;
-    width: 250px;
+    font-size: 13px;
+    border: none;
+    background: none;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    cursor: pointer;
+    color: var(--cor-roxo-escuro);
+    text-decoration: underline;
+    font-weight: bold;
     top: 360px;
     gap: 5px;
 }
@@ -204,6 +209,11 @@
 }
 
 #senha-input {
+    position: absolute;
+    top: 250px;
+}
+
+#senha-registrar-input {
     position: absolute;
     top: 250px;
 }
@@ -282,8 +292,13 @@
     font-weight: bold;
 }
 
+#email-esqueci-senha-input {
+    position: absolute;
+    top: 195px;
+}
+
 /* ------------------------------------------------------ */
-#house-button-login-usuario {
+#house-button-login-usuario, #house-button-recuperar-usuario, #house-button-registrar-usuario {
     position: absolute;
     top: 30px;
     left: 25px;
@@ -292,7 +307,7 @@
     cursor: pointer;
 }
 
-#house-icon-login-usuario {
+#house-icon-login-usuario, #house-icon-recuperar-usuario, #house-icon-registrar-usuario {
     position: absolute;
     display: flex;
     justify-content: top;
