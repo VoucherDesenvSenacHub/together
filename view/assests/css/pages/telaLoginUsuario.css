@@ -107,6 +107,7 @@
     position: absolute;
     top: 410px;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .botao-login:hover {
