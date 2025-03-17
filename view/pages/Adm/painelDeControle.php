@@ -26,7 +26,7 @@
 
                 <div class="conteudo-interno-painel-de-controle">
                     <img class="painel-de-controle-icone-conteudo" src="../../assests/images/adm/icone-editar.svg" alt="editar SVG">
-                    <h2 class="painel-de-control-titulo-conteudo"><b>Editar</b></h2>
+                    <h2 class="painel-de-controle-titulo-conteudo"><b>Editar</b></h2>
                     <span class="painel-de-controle-desc-conteudo">Edite as Tags do botão de filtrar</span>
                 </div>
                 <div class="conteudo-interno-painel-de-controle">
