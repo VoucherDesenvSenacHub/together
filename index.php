@@ -29,7 +29,7 @@
             <?php }; ?>
         </div>
     </div>
-    <div class="sobre-nos-section">
+    <div class="sobre-nos-section" id="sobre-nos">
         <div class="sobre-nos-text-container">
             <div class="sobre-nos-content">
                 <h1>Sobre Nós</h1>

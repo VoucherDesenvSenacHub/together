@@ -5,9 +5,11 @@
         <div class="box-painel-de-controle-adm">
             <div class="conteudo-painel-de-controle-adm">
                 <div class="conteudo-interno-painel-de-controle">
-                    <img class="painel-de-controle-icone-conteudo" src="../../assests/images/adm/icone-atualizacoes-cadastrais.svg"
+                <a href="/together/view/pages/adm/validarAtualizacaoOng.php">
+                <img class="painel-de-controle-icone-conteudo" src="../../assests/images/adm/icone-atualizacoes-cadastrais.svg"
                         alt="atualizacoes cadastrais SVG">
-                    <h2 class="painel-de-controle-titulo-conteudo"><b>Atualizações Cadastrais</b></h2>
+                </a>
+                <h2 class="painel-de-controle-titulo-conteudo"><b>Atualizações Cadastrais</b></h2>
                     <span class="painel-de-controle-desc-conteudo">Valide as atualizações cadastrais das ONGs que enviaram uma
                         solicitação.</span>
                 </div>
@@ -30,7 +32,7 @@
                     <span class="painel-de-controle-desc-conteudo">Edite as Tags do botão de filtrar</span>
                 </div>
                 <div class="conteudo-interno-painel-de-controle">
-                    <a href="../adm-gestao-de-patrocinadores/index.html">
+                    <a href="/together/view/pages/adm/gestaoDePatrocinadores.php">
                         <img class="painel-de-controle-icone-conteudo img-patrocinadores" src="../../assests/images/adm/patrocinadores.png"
                             alt="patrocinadores PNG">
                     </a>
