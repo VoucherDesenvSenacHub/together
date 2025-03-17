@@ -6,12 +6,12 @@ require_once "../../../view/components/head.php";
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main>
-        <section>
+        <section class="validar-atualizacao-ong-section">
             <div>
                 <h1 class="title-page-validarong">Atualização Cadastral</h1>
             </div>
-            <div>
-                <table class="table-validation">
+            <div class="validar-atualizacao-ong-div-table">
+                <table>
                     <thead>
                         <tr class="row-head">
                             <th>Data</th>
@@ -24,12 +24,11 @@ require_once "../../../view/components/head.php";
                         <tr>
                             <td class="row-body-table">xx/xx/xxxx</td>
                             <td class="row-body-table">Vida pet</td>
-                            <td class="status-aguardando">aguardando/td>
+                            <td class="status-aguardando">Aguardando</td>
                             <td>
                                 <form action="" method="get">
                                     <button class="buttom-visibility-ong-status">
-                                        <span class='material-symbols-outlined exibicao-visualizarong'> visibility
-                                        </span>
+                                        <img class="exibicao-visualizar-ong" src="../../assests/images/ong/eye.png" alt="visualizar">
                                     </button>
                                 </form>
                             </td>
@@ -41,4 +40,5 @@ require_once "../../../view/components/head.php";
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>
