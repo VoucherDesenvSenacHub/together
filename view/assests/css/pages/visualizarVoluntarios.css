@@ -1,3 +1,19 @@
+:root {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  --cor-font-preto: #000000;
+  --cor-font-branco: #ffffff;
+  --gradient: linear-gradient(
+    54deg,
+    rgba(62, 0, 163, 1) 0%,
+    rgba(218, 112, 255, 1) 100%
+  );
+  --cor-roxo-claro: #b56ad0d2;
+  --cor-roxo-escuro: #b56ad0d2;
+  --cor-vermelho: #c63637;
+  --cor-verde: #118211;
+  --cor-amarelo: #ffd94d;
+}
 
 .container-visualizar-voluntarios {
   height: 100vh;
@@ -12,7 +28,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 200px;
+  gap: 100px;
 }
 
 .imagem-area-visualizar-voluntarios {
@@ -38,7 +54,9 @@
   margin-top: 20px;
   justify-content: center;
   align-items: center;
-  border: 3.5px solid blueviolet;
+  background: linear-gradient(white, white) padding-box,
+    var(--gradient) border-box;
+  border: 3.5px solid transparent;
   box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.304);
   border-radius: 20px;
   padding: 10px;
@@ -68,20 +86,23 @@
   width: 55px;
   height: 55px;
   transition: 0.2s;
+  filter: brightness(1.2);
 }
 
 #check-button {
-  color: white;
-  background-color: blueviolet;
+  color: var(--cor-font-branco);
+  background: var(--gradient);
   border: none;
   border-radius: 15px;
 }
 
 #recuse-button {
-  color: blueviolet;
-  border: solid 3px blueviolet;
+  background: var(--gradient);
+  background-clip: border-box;
+  background: linear-gradient(white, white) padding-box,
+    var(--gradient) border-box;
+  border: solid 3px transparent;
   border-radius: 15px;
-  background: none;
 }
 
 #check-icon {
@@ -90,7 +111,9 @@
 
 #recuse-icon {
   font-size: 30px;
-  color: blueviolet;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .infomation-visualizar-voluntarios {
@@ -105,10 +128,17 @@
   font-size: 40px;
   font-weight: bold;
   top: 30px;
-  color: blueviolet;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .info-area-visualizar-voluntarios {
+  background: linear-gradient(white, white) padding-box,
+    var(--gradient) border-box;
+  border: 3.5px solid transparent;
+  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
+  border-radius: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -116,9 +146,6 @@
   width: 450px;
   height: 500px;
   padding: 30px;
-  border: 3.5px solid blueviolet;
-  box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
-  border-radius: 30px;
   top: 200px;
 }
 
@@ -136,17 +163,173 @@
 
 .label-visu-voluntarios {
   font-size: 15px;
-  color: black;
+  color: var(--cor-font-preto);
   margin: 0 0 0 5px;
 }
 
 .input-visu-voluntarios {
   height: 40px;
   border: 2px solid blueviolet;
-  color: black;
+  color: var(--cor-font-preto);
   /* border: none; */
   /* box-shadow: 6px 7px 31px 0px rgba(0,0,0,0.42); */
   border-radius: 30px;
   padding: 0 15px 0 15px;
   cursor: default;
 }
+
+/* Notificacao */
+
+.notification-container {
+  /* Position top left */
+
+  position: fixed;
+      top: 2%;
+      left: 70%;
+      z-index: 1000;
+      max-width: 80%;
+
+  --content-color: black;
+  --background-color: #f3f3f3;
+  --font-size-content: 0.75em;
+  --icon-size: 1em;
+
+  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  list-style-type: none;
+  font-family: sans-serif;
+  color: var(--content-color);
+}
+
+/* Notification Item */
+
+.notification-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+  overflow: hidden;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: rgba(111, 111, 111, 0.2) 0px 8px 24px;
+  transition: all 500ms ease;
+}
+
+.notification-item svg {
+  transition: 250ms ease;
+  align-items: center;
+}
+
+.notification-item:active {
+  transform: scale(1.05);
+}
+
+.notification-item .notification-close:hover svg {
+  color: rgb(0, 0, 0);
+}
+
+.notification-item .notification-close:active svg {
+  transform: scale(1.1);
+}
+
+/* Notification Icons */
+
+.notification-item .notification-close {
+  padding: 2px;
+  border-radius: 5px;
+  transition: all 250ms;
+}
+
+.notification-container svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: var(--cor-font-branco);
+}
+
+
+/* Success */
+
+.success {
+  color: var(--cor-font-branco);
+  background: var(--gradient);
+}
+
+.success svg {
+  color: var(--cor-font-branco);
+}
+
+.success .notification-progress-bar {
+  background: linear-gradient(90deg, #FFFFFF 55%, #881CD3 100%);
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+
+/* Error */
+
+.error {
+  color: var(--cor-font-branco);
+  background: var(--gradient);
+}
+
+.error svg {
+  color: var(--cor-font-branco);
+}
+
+.error .notification-progress-bar {
+  background: linear-gradient(90deg, #FFFFFF 55%, #881CD3 100%);
+  width: 100%;
+  height: 5px;
+  border-radius: 10px;
+}
+
+/* Notification content */
+
+.notification-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.notification-text {
+  font-size: var(--font-size-content);
+  user-select: none;
+}
+
+.notification-close {
+  cursor: pointer;
+}
+
+/* Notification progress bar */
+
+.notification-progress-bar {
+  position: absolute;
+  bottom: 0;
+  top: 32px;
+  left: 0;
+  height: 5px;
+  width: 100%;
+  transform: translateX(100%);
+
+  /* Remove the infinite property for your website */
+
+  animation: progressBar 5s linear;
+}
+
+/* progressBar Animation */
+
+@keyframes progressBar {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
