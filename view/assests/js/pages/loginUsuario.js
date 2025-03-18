@@ -1,38 +1,42 @@
 // Fix the button ID mismatches in the event listeners
-document.getElementById('criar-conta-button').addEventListener('click', function (event) {
+document.getElementById('criar-conta-usuario-button').addEventListener('click', function (event) {
     event.preventDefault(); // Previne o comportamento padrão do botão
 
-    const loginContent = document.getElementById('loginContent');
-    const recuperarContent = document.getElementById('recuperarContent');
-    const registrarContent = document.getElementById('registrarContent');
+    const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
+    const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
 
-    loginContent.classList.remove('show');
-    loginContent.classList.add('hidden');
-    recuperarContent.classList.add('hidden');
-    registrarContent.classList.remove('hidden');
-    registrarContent.classList.add('show');
+    loginConteudoUsuario.classList.remove('show');
+    loginConteudoUsuario.classList.add('hidden');
+
+    recuperarConteudoUsuario.classList.add('hidden');
+
+    registrarConteudoUsuario.classList.remove('hidden');
+    registrarConteudoUsuario.classList.add('show');
 
     setTimeout(() => {
-        registrarContent.style.right = '50px';
+        registrarConteudoUsuario.style.right = '50px';
     }, 10); 
 });
 
 document.getElementById('esqueci-senha-button').addEventListener('click', function (event) {
     event.preventDefault(); // Previne o comportamento padrão do botão
 
-    const loginContent = document.getElementById('loginContent');
-    const recuperarContent = document.getElementById('recuperarContent');
-    const registrarContent = document.getElementById('registrarContent');
+    const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
+    const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
 
-    loginContent.classList.remove('show');
-    loginContent.classList.add('hidden');
-    recuperarContent.classList.add('show');
-    recuperarContent.classList.remove('hidden');
-    registrarContent.classList.add('hidden');
-    registrarContent.classList.remove('show');
+    loginConteudoUsuario.classList.remove('show');
+    loginConteudoUsuario.classList.add('hidden');
+
+    recuperarConteudoUsuario.classList.add('show');
+    recuperarConteudoUsuario.classList.remove('hidden');
+    
+    registrarConteudoUsuario.classList.add('hidden');
+    registrarConteudoUsuario.classList.remove('show');
 
     setTimeout(() => {
-        recuperarContent.style.right = '50px'; // Changed to recuperarContent
+        recuperarConteudoUsuario.style.right = '50px'; // Changed to recuperarConteudoUsuario
     }, 10); 
 });
 
@@ -40,19 +44,19 @@ document.getElementById('esqueci-senha-button').addEventListener('click', functi
 document.getElementById('house-button-login-usuario').addEventListener('click', function (event) {
     event.preventDefault(); // Previne o comportamento padrão do botão
 
-    const loginContent = document.getElementById('loginContent');
-    const recuperarContent = document.getElementById('recuperarContent');
-    const registrarContent = document.getElementById('registrarContent');
+    const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
+    const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
 
-    loginContent.classList.add('show');
-    loginContent.classList.remove('hidden');
-    recuperarContent.classList.add('hidden');
-    recuperarContent.classList.remove('show');
-    registrarContent.classList.add('hidden');
-    registrarContent.classList.remove('show');
+    loginConteudoUsuario.classList.add('show');
+    loginConteudoUsuario.classList.remove('hidden');
+    recuperarConteudoUsuario.classList.add('hidden');
+    recuperarConteudoUsuario.classList.remove('show');
+    registrarConteudoUsuario.classList.add('hidden');
+    registrarConteudoUsuario.classList.remove('show');
 
     setTimeout(() => {
-        loginContent.style.right = '50px'; // Changed to loginContent
+        loginConteudoUsuario.style.right = '50px'; // Changed to loginConteudoUsuario
     }, 10); 
 });
 
@@ -67,37 +71,37 @@ document.getElementById('house-button-login-usuario').addEventListener('click', 
 document.getElementById('house-button-recuperar-usuario').addEventListener('click', function (event) {
     event.preventDefault();
     
-    const loginContent = document.getElementById('loginContent');
-    const recuperarContent = document.getElementById('recuperarContent');
-    const registrarContent = document.getElementById('registrarContent');
+    const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
+    const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
 
-    loginContent.classList.add('show');
-    loginContent.classList.remove('hidden');
-    recuperarContent.classList.add('hidden');
-    recuperarContent.classList.remove('show');
-    registrarContent.classList.add('hidden');
-    registrarContent.classList.remove('show');
+    loginConteudoUsuario.classList.add('show');
+    loginConteudoUsuario.classList.remove('hidden');
+    recuperarConteudoUsuario.classList.add('hidden');
+    recuperarConteudoUsuario.classList.remove('show');
+    registrarConteudoUsuario.classList.add('hidden');
+    registrarConteudoUsuario.classList.remove('show');
 
     setTimeout(() => {
-        loginContent.style.right = '50px';
+        loginConteudoUsuario.style.right = '50px';
     }, 10);
 });
 
 document.getElementById('house-button-registrar-usuario').addEventListener('click', function (event) {
     event.preventDefault();
     
-    const loginContent = document.getElementById('loginContent');
-    const recuperarContent = document.getElementById('recuperarContent');
-    const registrarContent = document.getElementById('registrarContent');
+    const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
+    const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
 
-    loginContent.classList.add('show');
-    loginContent.classList.remove('hidden');
-    recuperarContent.classList.add('hidden');
-    recuperarContent.classList.remove('show');
-    registrarContent.classList.add('hidden');
-    registrarContent.classList.remove('show');
+    loginConteudoUsuario.classList.add('show');
+    loginConteudoUsuario.classList.remove('hidden');
+    recuperarConteudoUsuario.classList.add('hidden');
+    recuperarConteudoUsuario.classList.remove('show');
+    registrarConteudoUsuario.classList.add('hidden');
+    registrarConteudoUsuario.classList.remove('show');
 
     setTimeout(() => {
-        loginContent.style.right = '50px';
+        loginConteudoUsuario.style.right = '50px';
     }, 10);
 });

@@ -7,8 +7,13 @@
     position: relative;
 }
 
+
 .hidden {
     display: none;
+}
+
+.show-nav {
+    display: flex;
 }
 
 .logoimg {
@@ -45,7 +50,7 @@
     width: 40px;
     height: 40px;
     border-radius: 90px;
-    background-color: var(--cor-font-preto);
+    background: none;
     border: 2px solid white;
     color: var(--cor-font-branco);
     cursor: pointer;
@@ -82,6 +87,8 @@
 #lente-icon {
     width: 40px;
     color: var(--cor-roxo-escuro);
+    position: absolute;
+    right: 5px;
 }
 
 .image-area {
@@ -99,7 +106,9 @@
 .filtrar-area {
     height: 300px;
     background-color: #840ab9;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 0 0 30px 30px;
     left: 80px;
     right: 80px;
@@ -118,7 +127,7 @@
     align-items: center;
     gap: 25px;
     /* column-gap: 30px; */
-    position: absolute;
+    /* position: absolute; */
     top: 40px;
     right: 60px;
     left: 60px;
@@ -326,7 +335,7 @@
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: var(--cor-font-preto);
+        background: none;
         border: 2px solid white;
         color: var(--cor-font-branco);
         cursor: pointer;
@@ -386,7 +395,7 @@
         width: 40px;
         height: 40px;
         border-radius: 90px;
-        background-color: var(--cor-font-preto);
+        background: none;
         border: 2px solid white;
         color: var(--cor-font-branco);
         cursor: pointer;

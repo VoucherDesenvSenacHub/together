@@ -13,7 +13,7 @@ addClickEvent('searchBarButton', function () {
     const searchBar = document.getElementById('searchBar');
     if (searchBar) {
         searchBar.classList.remove('hidden');
-        searchBar.classList.add('show');
+        searchBar.classList.add('show-nav');
     }
 });
 
@@ -22,7 +22,7 @@ addClickEvent('imageArea', function () {
     const lateralBar = document.getElementById('lateralBar');
     if (lateralBar) {
         lateralBar.classList.remove('hidden');
-        lateralBar.classList.add('show');
+        lateralBar.classList.add('show-nav');
     }
 });
 
@@ -31,7 +31,7 @@ addClickEvent('imageLateralBar', function () {
     const lateralBar = document.getElementById('lateralBar');
     if (lateralBar) {
         lateralBar.classList.add('hidden');
-        lateralBar.classList.remove('show');
+        lateralBar.classList.remove('show-nav');
     }
 });
 
@@ -60,13 +60,13 @@ addClickEvent('filtrarTopButton', function () {
         if (filtrarArea.classList.contains('hidden')) {
             filtrarArea.classList.remove('hidden');
             filtrarList.classList.remove('hidden');
-            filtrarArea.classList.add('show');
-            filtrarList.classList.add('show');
+            filtrarArea.classList.add('show-nav');
+            filtrarList.classList.add('show-nav');
         } else {
             filtrarArea.classList.add('hidden');
             filtrarList.classList.add('hidden');
-            filtrarArea.classList.remove('show');
-            filtrarList.classList.remove('show');
+            filtrarArea.classList.remove('show-nav');
+            filtrarList.classList.remove('show-nav');
         }
     }
 });
@@ -80,8 +80,8 @@ addClickEvent('filtrarButton', function () {
     if (filtrarArea && filtrarList) {
         filtrarArea.classList.remove('hidden');
         filtrarList.classList.remove('hidden');
-        filtrarArea.classList.add('show');
-        filtrarList.classList.add('show');
+        filtrarArea.classList.add('show-nav');
+        filtrarList.classList.add('show-nav');
     }
     if (circleChoice) {
         circleChoice.classList.add('hidden');
@@ -103,15 +103,15 @@ document.addEventListener('click', function (event) {
             !filtrarTopButton.contains(event.target)) {
             filtrarArea.classList.add('hidden');
             filtrarList.classList.add('hidden');
-            filtrarArea.classList.remove('show');
-            filtrarList.classList.remove('show');
+            filtrarArea.classList.remove('show-nav');
+            filtrarList.classList.remove('show-nav');
         }
     }
 
     if (searchBar && searchBarButton) {
         if (!searchBar.contains(event.target) && !searchBarButton.contains(event.target)) {
             searchBar.classList.add('hidden');
-            searchBar.classList.remove('show');
+            searchBar.classList.remove('show-nav');
         }
     }
 });

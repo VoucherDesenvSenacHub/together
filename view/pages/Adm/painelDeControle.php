@@ -33,6 +33,7 @@
                 </div>
                 <div class="conteudo-interno-painel-de-controle">
                     <a href="gestaoDePatrocinadores.php">
+                    <a href="/together/view/pages/adm/gestaoDePatrocinadores.php">
                         <img class="painel-de-controle-icone-conteudo img-patrocinadores" src="../../assests/images/adm/patrocinadores.png"
                             alt="patrocinadores PNG">
                     </a>
