@@ -115,3 +115,7 @@ document.addEventListener('click', function (event) {
         }
     }
 });
+
+// export default{
+//     moveToSlide
+// }

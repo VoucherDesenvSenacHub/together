@@ -39,6 +39,6 @@ prevButton.addEventListener('click', () => {
     moveToSlide(currentIndex);
 });
 
-export default{
-    moveToSlide
-}
+// export default{
+//     moveToSlide
+// }
