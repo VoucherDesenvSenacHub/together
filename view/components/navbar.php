@@ -11,7 +11,7 @@
             </li>
 
             <li>
-                <a class="a-navbar" href="#">Ongs</a>
+                <a class="a-navbar" href="/together/view/pages/ong/ongAdmin.php">Ongs</a>
             </li>
 
             <li>
