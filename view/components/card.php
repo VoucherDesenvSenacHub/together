@@ -21,7 +21,7 @@
             <br />
             ligula.
           </p>
-          <button class="read-more-button">READ MORE</button>
+          <button class="botao">READ MORE</button>
         </div>
       </article>
     </main>

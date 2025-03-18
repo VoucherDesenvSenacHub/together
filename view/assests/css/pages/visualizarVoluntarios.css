@@ -128,7 +128,7 @@
   font-size: 40px;
   font-weight: bold;
   top: 30px;
-  background: var(--gradient);
+  background: var(--gradient); 
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }

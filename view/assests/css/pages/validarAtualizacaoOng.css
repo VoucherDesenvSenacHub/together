@@ -1,18 +1,12 @@
-/* COLOCAR AS VARIAVEIS DE CORES QUE ESTAO NO STYLE.CSS */
-/* :root{
-  --cor-font-preto: #000000;
-  --cor-font-branco: #FFFFFF;
-  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-  --cor-roxo-claro: #b56ad0d2;
-  --cor-roxo-escuro: #7608a5;
-  --cor-vermelho: #c63637;
-  --cor-verde: #118211;
-  --cor-amarelo: #ffd94d;
-} */
+.validar-atualizacao-ong-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
 .title-page-validarong{
-  position: fixed;
-  top: 130px;
-  left: 150px;
+  margin-left: 20px;
   font-size: 40px;
   font-weight: bold;
   background: var(--gradient);
@@ -25,12 +19,14 @@
   border: none;
 }
 
-.material-symbols-outlined.exibicao-visualizarong{
+.exibicao-visualizar-ong{
+  height: 25px;
   color: var(--cor-font-preto)
 }
 
 .buttom-visibility-ong-status:hover{
   cursor: pointer;
+  height: 25px;
 }
 
 .status-aguardando{

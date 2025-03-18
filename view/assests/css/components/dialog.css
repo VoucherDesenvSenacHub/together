@@ -178,7 +178,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    .botao-cancelar, .botao-remover{
+    .botao-cancelar-remove-patrocinador, .botao-remover{
         width: 220px;
         height: 72px;
         border-radius: 27px;

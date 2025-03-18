@@ -61,3 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         moveToSlide(currentIndex);
     });
 });
+
+// export default{
+//     moveToSlide
+// }
