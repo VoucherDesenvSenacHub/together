@@ -35,6 +35,9 @@ document.querySelector('.botao-cancelar-remove-patrocinador').addEventListener('
     }
 );
 
+// export default{
+//     moveToSlide
+// }
 
 
 
