@@ -1,8 +1,7 @@
+<?php require_once "../../../view/components/head.php";?>
+
 <body class="body-visualizar-voluntarios">
-  <?php
-  require_once "../../../view/components/head.php";
-  require_once "../../../view/components/navbar.php";
-  ?>
+  <?php require_once "../../../view/components/navbar.php";?>
 
   <div class="container-visualizar-voluntarios">
     <div class="validation-area-visualizar-voluntarios">
@@ -75,6 +74,4 @@
   </div>
   <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
-
 </html>
