@@ -116,18 +116,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const imageAreaButton = document.getElementById('imageArea');
-
-//     if (imageAreaButton) {
-//         imageAreaButton.addEventListener('click', function () {
-//             const nextPageUrl = "./view/pages/usuario/loginUsuario.php";
-
-//             if (nextPageUrl) {
-//                 window.location.href = nextPageUrl;
-//             }
-//         });
-//     }
-// });
-
+// export default{
+//     moveToSlide
+// }

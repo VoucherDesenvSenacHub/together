@@ -43,7 +43,7 @@
     cursor: pointer;
 }
 
-.painel-de-controle-titulo {
+.painel-de-controle-titulo-conteudo {
     font-family: "Roboto", serif; 
     font-size: 18px;
     font-weight: bold;
@@ -51,7 +51,7 @@
     margin-bottom: 15px;
 }
 
-.painel-de-controle-desc {
+.painel-de-controle-desc-conteudo {
     font-family: "Roboto", serif;   
     font-size: 11px;
     color: black;

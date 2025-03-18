@@ -7,6 +7,11 @@
 import "./components/navbar.js";
 import "./pages/criarPostagemOng.js";
 import "./pages/gestaoDePatrocinadores.js";
+
+// Arquivos que de acordo com o Luan nao existem mais por isso comentamos, 
+// porque tambemd e acordo com ele o rhyam era quem estava fazendo e nao esta presente na aula
+
 // import verOngUsuario from './pages/verOngUsuario.js';
-import "./pages/verOngs.js";
+// import "./pages/verOngs.js";
+
 

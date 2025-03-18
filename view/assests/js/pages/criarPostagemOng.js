@@ -95,3 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Adiciona o evento de submit ao formulário
     form.addEventListener("submit", validarFormulario);
 });
+
+// export default{
+//     moveToSlide
+// }
