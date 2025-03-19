@@ -30,9 +30,10 @@
                         <p class="pergunta-login-usuario">Nao possui uma conta?</p>
                         <button class="criar-conta-login-usuario" id="criar-conta-usuario-button">Crie uma agora</button>
                     </div>
-
-                    <div class="botao-login-usuario" id="botao-login-usuario">
-                        <button class="botao">Login</button>
+                    <div class="botao-login-usuario" >
+                        <a href="/together/view/home.php">
+                            <button class="botao" type="button">Login</button>
+                        </a>
                     </div>
                 </form><!--login-->
             </div><!--box-->

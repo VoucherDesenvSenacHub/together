@@ -38,7 +38,7 @@
                 <i class="fa fa-search" id="lente-icon"></i>
             </button>
         </div>
-        <button id="imageArea" class="image-area"></button>
+        <div id="imageArea" class="image-area"></div>
 
 
         <div id="lateralBar" class="lateral-bar hidden">
