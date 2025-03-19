@@ -22,6 +22,10 @@
             <li>
                 <a class="a-navbar" href="/together/view/pages/adm/painelDeControle.php">Administração</a>
             </li>
+
+            <li>
+                <a class="a-navbar" href="/together/view/pages/usuario/loginUsuario.php">Entrar</a>
+            </li>
         </ul>
         <div class="search-button-area">
             <button id="searchBarButton" class="barra-pesquisa-button" >
@@ -35,7 +39,6 @@
             </button>
         </div>
         <button id="imageArea" class="image-area"></button>
-
 
 
         <div id="lateralBar" class="lateral-bar hidden">
@@ -77,87 +80,82 @@
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Fome Zero e Agricultura Sustentável</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Saúde e Bem-Estar</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Educação de Qualidade</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Igualdade de Gênero</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Água Potável e Saneamento</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Energia Limpa e Acessível</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Trabalho Decente e Crescimento Econômico</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Indústria, Inovação e Infraestrutura</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Redução das Desigualdades</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Cidades e Comunidades Sustentáveis</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Consumo e Produção Responsáveis</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Ação Contra a Mudança Global do Clima</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Vida na ÁguaVida Terrestre</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Vida TerrestrePaz, Justiça e Instituições Eficazes</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Paz, Justiça e Instituições EficazesParcerias e Meios de Implementação</p>
                 </li>
 
                 <li class="filtrar-list-line">
                     <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
-                </li>
-
-                <li class="filtrar-list-line">
-                    <input id="listCheckbox" type="checkbox">
-                    <p class="p-filtrarArea">Erradicação da Pobreza</p>
+                    <p class="p-filtrarArea">Parcerias e Meios de Implementação</p>
                 </li>
 
             </ol>

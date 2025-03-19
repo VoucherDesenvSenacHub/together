@@ -8,7 +8,7 @@
         <div class="home-card-box">
             <h3 class="home-title-favorite">Destaques</h3>
             <div class="home-div-botao">
-            <button class="botao">Ver Mais</button>
+                <button class="botao">Ver Mais</button>
             </div>
             <div class="home-scroll-area">
                 <?php for ($i = 0; $i < 5; $i++) { ?>
