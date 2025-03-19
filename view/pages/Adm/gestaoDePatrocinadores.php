@@ -4,6 +4,7 @@
     <?php require_once './../../components/navbar.php'?>
 
     <section class="sec1">
+    <?php require_once './../../components/back-button.php'?>
         <div class="lista-patrocinadores texto-gradient">  
             <h1 class="">Lista Patrocinadores</h1>
       
