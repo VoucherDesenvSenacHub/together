@@ -13,7 +13,7 @@
 
                 <table class="validacao-voluntario-tabela">
                     <thead>
-                        <tr>
+                        <tr>    
                             <th>Data</th>
                             <th>Voluntário</th>
                             <th>Status</th>

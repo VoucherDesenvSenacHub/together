@@ -1,6 +1,6 @@
 <header>
     <nav class="navbar-group">
-        <a class="a-navbar" href="/together/view/home.php"><img class="logoimg" src="/together/view/assests/images/components/Together.png" alt="logo"></a>
+        <a class="a-navbar" href="/together/index.php"><img class="logoimg" src="/together/view/assests/images/components/Together.png" alt="logo"></a>
         <ul class="ul-navbar">
             <li>
                 <a class="a-navbar" href="/together/index.php">Home</a>
@@ -15,7 +15,7 @@
             </li>
 
             <li>
-                <a class="a-navbar" href="#sobre-nos">Sobre Nós</a>
+                <a class="a-navbar" href="/together/index.php#sobre-nos">Sobre Nós</a>
             
             </li>
 
