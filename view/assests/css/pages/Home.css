@@ -60,7 +60,6 @@
     margin-left: 30px;
 }
 .sobre-nos-text-container h1{
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 44px;
     line-height: 25px;
@@ -96,7 +95,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
@@ -139,4 +138,8 @@
     margin: 5px 20px;
     width: 30px;
     height: 30px;
+}
+
+.home-div-botao{
+    margin: 20px 0;
 }
