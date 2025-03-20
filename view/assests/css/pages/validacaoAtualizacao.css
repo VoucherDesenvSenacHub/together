@@ -4,6 +4,9 @@
 }
 
 .modal-validacao-atualizacao {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 20px;
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
@@ -14,8 +17,14 @@
 
 .h1-validacao-atualizacao {
     text-align: center;
-    color: var(--cor-roxo-escuro);
+    color: var(--cor-font-preto);
     margin-bottom: 20px;
+}
+
+.p-validacao-atualizacao {
+    color: var(--cor-roxo-escuro);
+    font-size: 1.6rem;
+    text-align: center;
 }
 
 .div-validacao-atualizacao {
