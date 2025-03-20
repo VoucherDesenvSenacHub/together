@@ -20,7 +20,7 @@
             <p class="agree-text">Não tem uma conta?</p>
             <a id="create-account" href="" class="terms-link">Crie uma agora</a>
           </div>
-          <input class="login-button" type="button" value="Enviar">
+          <input href="/together/view/pages/ongadmin.php" class="login-button" type="button" value="Enviar">
         </form>
       </div>
     </div>
