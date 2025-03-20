@@ -2,7 +2,8 @@
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
-    <main>
+    <main class="main-container">
+        <?php require_once './../../components/back-button.php'?>
         <form action="" class="criar-postagem-ong-form" id="criar-postagem-ong-form">
             <div class="criar-postagem-ong-input-group">
                 <h1 class="criar-postagem-ong-titulo-postagem">Postagem da ONG</h1>
