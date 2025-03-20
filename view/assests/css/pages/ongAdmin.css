@@ -1,0 +1,83 @@
+/* Box/Containers */
+.ong-admin-container {
+    width: 100%;
+    height: 83dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ong-admin-box {
+    width: 900px;
+    height: 600px;
+    /* background-color: red; */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+.ong-admin-cards-div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+/* Default-card-config */
+.ong-admin-default-card-config{
+    width: 200px;
+    height: 250px;
+    /* background-color: var(--cor-cinza-claro); */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.ong-admin-default-p-tag{
+    width: 170px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.ong-admin-default-img-config{
+
+}
+
+
+/* Cards */
+#ong-admin-volunter-card {}
+#ong-admin-edit-page-card {}
+#ong-admin-report-card {}
+
+#ong-admin-pending-volunter-card {
+
+}
+
+#ong-admin-create-post-card {}
+
+
+/* Id-Cards */
+
+#ong-admin-peding-volunter-card{
+    margin-left: 33px;
+}
+
+.ong-admin-strong-config{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+#ong-admin-edit-post{
+    margin-top: 1px;
+}

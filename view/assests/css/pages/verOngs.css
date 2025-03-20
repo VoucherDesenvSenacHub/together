@@ -1,0 +1,180 @@
+.card-ver-ongs {
+  position: relative;
+  max-width: 250px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+  display: flex;
+}
+
+.ong-ver-ongs {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+.card-ver-ongs:hover .ong-ver-ongs {
+  opacity: 0.1;
+}
+
+.card-ver-ongs .imagem-ver-ongs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-ver-ongs .imagem-ver-ongs::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
+}
+
+.card-ver-ongs:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card-ver-ongs .overlay-ver-ongs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(163, 12, 163, 0.7), transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  color: var(--cor-texto-padrao);
+  font-size: 1.2rem;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.card-ver-ongs:hover .overlay-ver-ongs {
+  opacity: 1;
+}
+
+.card-ver-ongs .overlay-ver-ongs .ong-overlay-ver-ongs {
+  text-align: center;
+  padding: 10px;
+}
+
+.ong-overlay-ver-ongs h3 {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+
+.ong-overlay-ver-ongs p {
+  line-height: 1.2rem;
+  margin-top: 15px;
+}
+
+.card-ver-ongs .overlay-ver-ongs .favorito-ver-ongs {
+  position: absolute;
+  top: 81%;
+  left: 75%;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Estilos do Carrossel */
+
+.carousel-ver-ongs {
+  position: relative;
+  padding: 10px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.carousel-wrapper-ver-ongs {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track-ver-ongs {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carousel-item-ver-ongs {
+  flex: 0 0 calc(23.0%);
+  text-align: center;
+  position: relative;
+  padding: 10px;
+}
+
+.carousel-btn-ver-ongs {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.carousel-btn-ver-ongs.prev {
+  left: -50px;
+}
+
+.carousel-btn-ver-ongs.next {
+  right: -50px;
+}
+
+.carousel-btn-ver-ongs:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsividade */
+
+@media screen and (max-width: 1300px) {
+  .carousel-ver-ongs {
+    max-width: 800px;
+  }
+
+  .carousel-item-ver-ongs {
+    flex: 0 0 calc(31.0%);
+  }
+
+  .card-ver-ongs {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+@media (max-width: 430px) {
+  .carousel-track-ver-ongs {
+    flex-direction: column;
+  }
+
+  .card-ver-ongs {
+    width: 100%;
+    height: 250px;
+  }
+
+  .carousel-btn-ver-ongs {
+    display: none;
+  }
+}
