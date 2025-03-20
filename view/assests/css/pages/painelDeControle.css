@@ -37,6 +37,9 @@
     align-items: center;
     margin: 15px;
     text-align: center;
+    a{
+        text-decoration: none;
+    }
 }
 
 .conteudo-interno-painel-de-controle:hover {
