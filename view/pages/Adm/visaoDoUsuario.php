@@ -16,6 +16,37 @@
             </div>
 
             <div class="info-area-visao-usuario">
+                <div class="nome-teste">
+                    <form action="">
+
+                        <label for="">Nome</label>
+                        <input type="name" >
+                        
+
+                    </form>
+                </div>
+
+                <div class="nome-teste">
+                    <form action="">
+
+                        <label for="">CPF</label>
+                        <input type="cpf" name="cpf" >
+                        
+
+                    </form>
+                </div>
+                
+                <div class="nome-teste">
+                    <form action="">
+                    
+                        <label for="">CPF</label>
+                        <input type="cpf" name="cpf" >
+                        
+
+                    </form>
+                </div>
+
+
 
                 <!-- Tudo dentro de um Form e uma div com label e input separadas 
                     Ex: <div>
