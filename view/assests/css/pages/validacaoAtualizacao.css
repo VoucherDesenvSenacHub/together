@@ -10,15 +10,14 @@
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
-    max-width: 400px;
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 0;
 }
 
 .h1-validacao-atualizacao {
     text-align: center;
     color: var(--cor-font-preto);
-    margin-bottom: 20px;
 }
 
 .p-validacao-atualizacao {
@@ -27,8 +26,10 @@
     text-align: center;
 }
 
-.div-validacao-atualizacao {
-    margin-bottom: 15px;
+.div-botao-validacao-atualizacao {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
 }
 
 .label-validacao-atualizacao {
@@ -37,9 +38,10 @@
 }
 
 .input-validacao-atualizacao {
-    width: 100%;
-    padding: 5px;
+    background-color: #fff;
+    width: 400px;
+    padding: 10px;
     border: 1px solid var(--cor-font-branco);
     border-radius: 5px;
     font-size: 16px;
-}z
+}

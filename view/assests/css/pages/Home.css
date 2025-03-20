@@ -60,7 +60,6 @@
     margin-left: 30px;
 }
 .sobre-nos-text-container h1{
-    font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 44px;
     line-height: 25px;
@@ -98,6 +97,8 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
 }
  
 .sobre-nos-card{
@@ -124,33 +125,6 @@
     text-align: justify;
 }
  
-.footer-container {
-    border-top: solid 2px #590AB4;
-    color: gray;
-    text-align: right;
-    padding: 20px 0;
-    bottom: 0;
-    width: 100%;
-}
- 
-.footer-h3{
-    margin: 5px 20px;
-    color: var(--cor-roxo-escuro);
-    font-size: 30px;
-}
- 
-.footer-p{
-    margin: 5px 20px;
-    margin-top: 10px;
-}
- 
-.footer-content {
-    display: inline-block;
-    text-align: left;
-    width: 100%;
-    height: 200px;
-}
- 
 .social-media {
     margin-top: 1px;
 }
@@ -164,4 +138,8 @@
     margin: 5px 20px;
     width: 30px;
     height: 30px;
+}
+
+.home-div-botao{
+    margin: 20px 0;
 }
