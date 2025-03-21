@@ -1,8 +1,28 @@
 .validacao-ong-h1{
-    font-size: 30px;
+    font-size: 50px;
     background: var(--gradient);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.validacao-ong-botao-visualizar{
+    background: none;
+    border: none;
+}
+.fa-regular.fa-eye.validacao-ong-icone-visualizar{
+    color: black;
+}
+
+.fa-solid.fa-arrow-left{
+    position: relative;
+    top: -40px;
+
+}
+
+.validacao-ong-tabela{
+    margin-top: 25px;
 }
 
 .container-valida-ong{
