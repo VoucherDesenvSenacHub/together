@@ -12,20 +12,27 @@
 }
 
 .adm-ong-vision-form-box {
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
     width: 1090px;
     height: 1115px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 15px;
 }
 
 /* Tags de filtro */
 .adm-ong-vision-filter-tags {
     width: 100%;
-    height: 30px;
+    height: 50px;
     display: flex;
     align-items: center;
+}
+
+#adm-ong-vision-filter-tag-title {
+    font-weight: 500;
+    font-size: 17px;
 }
 
 /* Seção de título e imagem */
@@ -51,8 +58,41 @@
     font-size: 40px;
 }
 
+.adm-ong-vision-subtitle {
+    height: 153px;
+}
+
+.adm-ong-vision-button-div{
+    height: 70px;
+    gap: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.adm-ong-vision-donate-button {
+    background-color: rgb(74, 72, 72);
+    color: white;
+    border: none;
+    height: 45px;
+    width: 125px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.adm-ong-vision-volunter-button {
+    background-color: rgb(74, 72, 72);
+    color: white;
+    border: none;
+    height: 45px;
+    width: 125px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
 /* Seção de localização e sobre */
-.adm-ong-vision-about-location {
+.adm-ong-vision-about-location-div {
     width: 100%;
     height: 35px;
     display: flex;
@@ -68,9 +108,20 @@
     gap: 30px;
 }
 
+.adm-ong-vision-default-text {
+    color: gray;
+}
+
+#adm-ong-vision-about-location-title {
+    font-weight: 500;
+    font-size: 17px;
+}
+
+
+
 /* Seção de postagens */
-.adm-ong-vision-post-container{
-    background-color: brown;
+.adm-ong-vision-post-container {
+    background-image: var(--gradient);
     width: 100%;
     height: 59vh;
     border-radius: 15px;
@@ -79,18 +130,19 @@
     justify-content: center;
     flex-direction: column;
 }
-.adm-ong-vision-post-box{
+
+.adm-ong-vision-post-box {
     display: flex;
     width: 95%;
     height: 350px;
-    background-color: aliceblue;
+    background-color: none;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
     gap: 30px;
 }
 
-.adm-ong-vision-post-title-div{
+.adm-ong-vision-post-title-div {
     display: flex;
     align-items: center;
     width: 95%;
@@ -99,48 +151,59 @@
 
 }
 
-.adm-ong-vision-title-text{
+.adm-ong-vision-title-text {
     font-size: 30px;
     font-weight: 900;
     color: aliceblue;
 }
 
-.adm-ong-vision-post-area{
+.adm-ong-vision-post-area {
     width: 630px;
     height: 319px;
-    border-top: 15px solid blue;
-    border-bottom: 15px solid blue ;
-    background-color: blue;
+    /* border-top: 15px solid blue; */
+    /* border-bottom: 15px solid blue ; */
+    /* background-color: blue; */
     border-radius: 15px;
     overflow-y: scroll;
-    scrollbar-color: rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0);
+    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 20px;
 }
 
-.adm-ong-vision-social-area{
+.adm-ong-vision-social-area {
     width: 250px;
     height: 319px;
-    background-color: blue;
+    background-color: white;
     border-radius: 15px;
-    border-top: 15px solid blue;
-    border-bottom: 15px solid blue ;
+    box-shadow: 1px 1px 5px black;
+    border: 1px solid black;
+    /* border-top: 15px solid blue;
+    border-bottom: 15px solid blue ; */
 }
 
 .adm-ong-vision-post-card {
     width: 90%;
-    min-height: 17vh; 
-    background-color: coral;
+    min-height: 17vh;
+    background-color: white;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 5px black;
+    margin-bottom: 10px;
 }
 
 .adm-ong-vision-post-card p {
     width: 100%;
     padding: 5px;
+}
+
+/* Icon */
+#adm-ong-vision-icon-default {
+    color: rgba(128, 128, 128, 0.671);
+    margin-right: 10px;
 }
