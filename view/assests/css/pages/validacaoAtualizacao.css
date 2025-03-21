@@ -1,47 +1,61 @@
 .section-validacao-atualizacao {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
-.modal-validacao-atualizacao {
+.form-validacao-atualizacao {
     display: flex;
     flex-flow: column wrap;
     gap: 20px;
     background-color: #f0f0f0;
     border-radius: 10px;
     padding: 20px;
-    margin: 0 auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .h1-validacao-atualizacao {
+    font-weight: bold;
     text-align: center;
-    color: var(--cor-font-preto);
-}
-
-.p-validacao-atualizacao {
-    color: var(--cor-roxo-escuro);
+    background: var(--gradient) text;
+    -webkit-text-fill-color: transparent;
     font-size: 1.6rem;
-    text-align: center;
+    padding: 1px;
 }
 
 .div-botao-validacao-atualizacao {
     display: flex;
     justify-content: center;
-    z-index: 1;
 }
 
 .label-validacao-atualizacao {
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
 }
 
 .input-validacao-atualizacao {
-    background-color: #fff;
+    outline-color: var(--cor-cinza-claro);
+    background-color: var(--cor-font-branco);
     width: 400px;
     padding: 10px;
     border: 1px solid var(--cor-font-branco);
     border-radius: 5px;
     font-size: 16px;
+}
+
+.validacao-file {
+    display: none;
+}
+
+.validacao-label {
+    background-color: white;
+    height: 40px;
+
+}
+
+.validacao-atualizacao-icon {
+    rotate: -45deg;
+    padding: 5px;
+    width: 30px;
 }
