@@ -3,5 +3,43 @@
     background: var(--gradient);
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    padding: ;
+}
+
+.container-valida-ong{
+    z-index: 1;
+    width: 350px;
+    height: 500px;
+    border-radius: 25px;    
+    top: calc((100vh - 520px)/2);
+    border: 2px solid #8B1CD3;
+    box-shadow: 5px 5px 35px black;
+}
+
+.cabecalho-formulario{
+    display: flex;
+    height: 80px;
+}
+
+.titulo-formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    padding-left:6.235px;
+    font-weight: bold;
+    .subtitulo-nome{
+        color:grey;
+        font-size: 14px;
+        margin-bottom:10px;
+    }
+    .titulo-nome{
+        font-size: 25px;
+        background: var(--gradient);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+.container-botao-fechar-dialog{
+    font-size: 20px
 }

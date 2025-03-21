@@ -133,7 +133,7 @@
                     <form action="" class="form-adiciona-patrocinador">
 
                         <div class="div-info-patrocinador">
-                                <input type="text" placeholder="Rede Social">
+                                <input type="text" placeholder="Link">
                                 <input type="text" placeholder="Nome do patrocinador">
 
                         </div>
