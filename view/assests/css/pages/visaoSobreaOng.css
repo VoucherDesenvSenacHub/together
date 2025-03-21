@@ -69,18 +69,7 @@
     align-items: center;
 }
 
-.adm-ong-vision-donate-button {
-    background-color: rgb(74, 72, 72);
-    color: white;
-    border: none;
-    height: 45px;
-    width: 125px;
-    border-radius: 20px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.adm-ong-vision-volunter-button {
+.adm-ong-vision-default-button{
     background-color: rgb(74, 72, 72);
     color: white;
     border: none;
@@ -117,8 +106,6 @@
     font-size: 17px;
 }
 
-
-
 /* Seção de postagens */
 .adm-ong-vision-post-container {
     background-image: var(--gradient);
@@ -145,10 +132,8 @@
 .adm-ong-vision-post-title-div {
     display: flex;
     align-items: center;
-    width: 95%;
+    width: 850px;
     height: 40px;
-    background-color: rgba(255, 255, 0, 0);
-
 }
 
 .adm-ong-vision-title-text {
@@ -160,9 +145,6 @@
 .adm-ong-vision-post-area {
     width: 630px;
     height: 319px;
-    /* border-top: 15px solid blue; */
-    /* border-bottom: 15px solid blue ; */
-    /* background-color: blue; */
     border-radius: 15px;
     overflow-y: scroll;
     scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
@@ -179,8 +161,6 @@
     border-radius: 15px;
     box-shadow: 1px 1px 5px black;
     border: 1px solid black;
-    /* border-top: 15px solid blue;
-    border-bottom: 15px solid blue ; */
 }
 
 .adm-ong-vision-post-card {
