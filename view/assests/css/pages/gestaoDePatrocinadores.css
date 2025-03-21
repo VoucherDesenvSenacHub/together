@@ -49,6 +49,7 @@
 
         p {
             margin-left: 70px;
+            color: var(--cor-font-preto);
         }
 
         label {
@@ -160,6 +161,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
+    font-weight: bold;
 }
 
 

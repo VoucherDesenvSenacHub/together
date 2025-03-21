@@ -4,8 +4,8 @@
     <?php require_once './../../components/navbar.php'?>
 
     <section class="sec1">
-        <div class="lista-patrocinadores texto-gradient">  
-            <h1 class="">Lista Patrocinadores</h1>
+        <div class="lista-patrocinadores ">  
+            <h1 class="texto-gradient"><strong>Lista de patrocinadores</strong></h1>
       
             <ul>
                 <li>
