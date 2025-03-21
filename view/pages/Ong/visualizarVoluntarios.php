@@ -3,6 +3,8 @@
 <body class="body-visualizar-voluntarios">
   <?php require_once "../../../view/components/navbar.php";?>
 
+  <main class="main-container">
+  <?php require_once './../../components/back-button.php'?>
   <div class="container-visualizar-voluntarios">
     <div class="validation-area-visualizar-voluntarios">
       <div class="area-imagem-visualizar-voluntarios">
@@ -72,6 +74,8 @@
       </div>
     </div>
   </div>
+
+  </main>
   <?php require_once "../../../view/components/footer.php"; ?>
 </body>
 </html>

@@ -7,7 +7,7 @@
             <div class="ong-admin-cards-div">
 
                 <div class="ong-admin-default-card-config" id="ong-admin-volunter-card">
-                    <a href="">
+                    <a href="/together/view/pages/emDesenvolvimento.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/volunters.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Voluntários da Ong</strong>
@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-page-card">
-                    <a href="">
+                    <a href="/together/view/pages/emDesenvolvimento.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-ong-page.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Página da ONG</strong>
@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-report-card">
-                    <a href="">
+                    <a href="/together/view/pages/emDesenvolvimento.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/ong-relatory.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Relatório da Ong</strong>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-post">
-                    <a href="">
+                    <a href="/together/view/pages/emDesenvolvimento.php">
                         <img id="ong-admin-edit-post" class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-post.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Postagem</strong>

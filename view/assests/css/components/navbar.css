@@ -96,7 +96,7 @@
     height: 55px;
     position: absolute;
     right: 50px;
-    background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+    background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
     border-radius: 90px;
     background-size: cover;
     cursor: pointer;
@@ -177,7 +177,7 @@
     position: absolute;
     right: 50px;
     top: 10px;
-    background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+    background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
     border-radius: 90px;
     background-size: cover;
     cursor: pointer;
@@ -519,7 +519,7 @@
         height: 55px;
         position: absolute;
         right: 50px;
-        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
         border-radius: 90px;
         background-size: cover;
         right: 30px;
@@ -586,7 +586,7 @@
         position: absolute;
         right: 30px;
         top: 10px;
-        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
         border-radius: 90px;
         background-size: cover;
         cursor: pointer;
@@ -847,7 +847,7 @@
         height: 55px;
         position: absolute;
         right: 50px;
-        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
         border-radius: 90px;
         background-size: cover;
         right: 30px;
@@ -917,7 +917,7 @@
         position: absolute;
         right: 30px;
         top: 10px;
-        background-image: url("/together/view/assests/images/components/usuario-user-foto.png");
+        background-image: url("/together/view/assests/images/usuario/user-sem-login.png");
         border-radius: 90px;
         background-size: cover;
         cursor: pointer;
