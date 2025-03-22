@@ -73,11 +73,24 @@
                             <label for="" class="label-cnpj">CNPJ</label>
                             <input type="text" class="input-cnpj" placeholder="xxxxxxxxxxxxx">
 
+                        <div class="container-data-telefone">
+
+                            <div class="container-data">
+
                             <label for="" class="label-data-fundacao">Data de fundação</label>
                             <input type="date" class="input-data-fundacao">
 
+                            </div>
+
+                            <div class="container-telefone">
+
                             <label for="" class="label-telefone">Telefone</label>
                             <input type="" class="input-telefone" placeholder="+55 (xx) xxxxx-xxxx">
+                            
+                            </div>
+
+                        </div>
+
 
                             <label for="" class="label-endereco">Endereço</label>
                             <input type="text" class="input-endereco" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
