@@ -51,8 +51,18 @@
 .validacao-label {
     background-color: white;
     height: 40px;
+    cursor: pointer;
+    position: relative;
 
+    .validacao-atualizacao-file {
+        position: absolute;
+        color: var(--cor-cinza-escuro);
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
+
 
 .validacao-atualizacao-icon {
     rotate: -45deg;
