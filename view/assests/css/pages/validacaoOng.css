@@ -81,7 +81,7 @@
 }
 
 .container-data{
-    display: flex;
+    display: inline;
    
 }
 
@@ -96,7 +96,4 @@
 }
 
 
-.botao-cancelar-formulario{
-    align-items: end;
-}
 
