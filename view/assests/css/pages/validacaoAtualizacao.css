@@ -5,13 +5,12 @@
 }
 
 .form-validacao-atualizacao {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-flow: column wrap;
+        gap: 20px;
+        background-color: #f0f0f0;
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .h1-validacao-atualizacao {
@@ -25,7 +24,7 @@
 
 .div-botao-validacao-atualizacao {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .label-validacao-atualizacao {
@@ -49,7 +48,7 @@
 }
 
 .validacao-label {
-    background-color: white;
+    background-color: var(--cor-font-branco);
     height: 40px;
     cursor: pointer;
     position: relative;
@@ -63,9 +62,39 @@
     }
 }
 
-
 .validacao-atualizacao-icon {
     rotate: -45deg;
     padding: 5px;
     width: 30px;
+}
+
+.notification-atualizacao-validacao {
+    position: relative;
+    bottom: 0;
+    width: 250px;
+}
+
+.dialog-obs-validacao-atualizacao {
+    display: none;
+    border: none;
+}
+
+.obs-validacao-atualizacao {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 20px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    height: 300px;
+    z-index: 10;
+
+    .textarea-validacao-atualizacao {
+        padding: 10px;
+        resize: none;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+
+    }
 }
