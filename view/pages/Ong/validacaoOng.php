@@ -1,5 +1,4 @@
 <?php require_once "./../../components/head.php";
-
  ?>
 
 <body>
@@ -67,12 +66,7 @@
                                 <h1 class="titulo-nome" >XXXXXXXXXXXX</h1>
                             </div>
                             <div class="container-botao-fechar-dialog">
-                                <h1 class="botao-fechar-dialog">
-                                    <button class="botap-fechar-pop" ><span class="material-symbols-outlined">
-                                    close
-                                    </span>
-                                    </button>
-                                </h1>
+                                <h1 class="botao-fechar-dialog">X</h1>
                             </div>
                         </div>                        
                         <div class="conteudo-formulario">
@@ -96,22 +90,37 @@
                             </div>
 
                         </div>
+                        
 
 
                             <label for="" class="label-endereco">Endereço</label>
                             <input type="text" class="input-endereco" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
-
-                            <label for="" class="label-conselho-fiscal">Conselho fiscal</label>
-                            <input type="file" class="input-conselho-fiscal">
-
-                            <label for="" class="label-tipo-ong">Tipo da ONG</label>
-                            <input type="text" class="input-tipo-ong" placeholder="xxxxxxxxxxx">
-
-                            <label for="" class="label-logo-ong">Logo da ONG</label>
-                            <input type="file" class="input-logo-ong">
-
-                            <label for="" class="label-email">E-mail</label>
-                            <input type="text" class="input-email" placeholder="xxxxxxxxxxxxx@xxxxx.xxx.xx">
+                            <div class="container-conselho-fiscal-e-tipo-ong">
+                                <div class="container-conselho-fiscal">
+                                    <label for="" class="label-conselho-fiscal">Conselho fiscal</label>
+                                    <input type="file" class="input-conselho-fiscal">
+                                </div>
+                                <div class="container-tipo-ong">
+                                    <label for="" class="label-tipo-ong">Tipo da ONG</label>
+                                    <input type="text" class="input-tipo-ong" placeholder="xxxxxxxxxxx">
+                                
+                                </div>
+                            </div>
+                            <div class="container-logo-ong-e-email">
+                                <div class="container-logo-ong">
+                                    <label for="" class="label-logo-ong">Logo da ONG</label>
+                                    <label for="input-logo-ong" class="label-logo-ong-input-plaeholder">
+                                            <span class="material-symbols-outlined">
+                                                attach_file
+                                            </span>
+                                    </label>
+                                    <input placeholder="" type="file" class="input-logo-ong">
+                                </div>
+                                <div class="container-email">
+                                    <label for="" class="label-email">E-mail</label>
+                                    <input type="text" class="input-email" placeholder="xxxxxxxxxxxxx@xxxxx.xxx.xx">
+                                </div>
+                            </div>
                         </div> 
 
                         <div class="botoes-formulario">
