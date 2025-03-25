@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 <?php require_once './../../components/head.php' ?>
-=======
-<!-- JA EXISTE UMA NAV BAR, TIRA ESSA DE VCS E CHAMA A QUE EXISTE PELO REQUIRE -->
-
-<?php require_once './../../components/head.php'?>
-
->>>>>>> a0093b7 (arrumem o que os comentários pedem)
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
