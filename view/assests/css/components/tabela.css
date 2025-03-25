@@ -1,0 +1,35 @@
+table {
+    text-align: center;
+    margin: 0 auto;
+    width: 98%;
+   
+    td {
+      padding: 5px;
+      border: 1px solid var(--cor-font-branco);
+    }
+   
+    th {
+      background-color: var(--cor-roxo-escuro);
+      color: var(--cor-font-branco);
+      padding: 7px;
+      border-right: 1px solid var(--cor-font-branco);
+      border-left: 1px solid var(--cor-font-branco);
+    }
+   
+  }
+   
+  tr:nth-child(even) {
+    background: var(--cor-roxo-claro);
+  }
+
+  .icon-btn {
+    border: none;
+    background-color: transparent;
+}
+.icon {
+    cursor: pointer;
+    position: relative;
+    margin: 0 auto;
+    width: 30px;
+    object-fit: contain;
+}

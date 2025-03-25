@@ -1,29 +1,4 @@
-:root {
-    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218, 112, 255, 1) 100%);
-    --shadow: rgba(0, 0, 0, 0.366);
-}
-
-* {
-    font-variation-settings: "wdth" 100;
-    font-family: "Roboto", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: 400;
-    padding: 0%;
-    margin: 0%;
-}
-
-html,
-body {
-    overflow: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.container {
+.validacao-voluntario-container {
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -33,35 +8,13 @@ a {
     position: relative;
 }
 
-.div_title {
-    background-color: rgba(255, 0, 0, 0);
+.validacao-voluntario-title {
     width: 90%;
     height: 100px;
     position: relative;
 }
 
-.list_voluntarios {
-    position: relative;
-    width: 90%;
-    height: 80vh;
-    overflow-y: scroll;
-}
-
-.eye_icon_button {
-    background: transparent;
-    cursor: pointer;
-    border: none;
-}
-
-#eye_icon {
-    scale: 150%;
-}
-
-#ampulheta {
-    color: orange;
-}
-
-.title {
+.validacao-voluntario-h1 {
     background: var(--gradient);
     margin-bottom: 30px;
     margin-top: 20px;
@@ -72,54 +25,34 @@ a {
     position: absolute;
 }
 
-thead {
-    background-color: #ca99e1;
-    color: rgb(0, 0, 0);
-    position: sticky;
-    box-shadow: 0px 0px 4px 0.5px black;
+.validacao-voluntario-lista {
+    position: relative;
+    width: 90%;
+    height: 80vh;
+    overflow-y: scroll;
 }
 
-table {
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding-left: 0 0 0 50px;
-    text-align: center;
-    padding: 15px;
-    width: 400px;
-}
-
-tr:nth-child(even) {
-    background-color: #ca99e1;
-}
-
-table {
-    border-collapse: collapse;
+.validacao-voluntario-tabela {
     width: 100%;
+    border-collapse: collapse;
 }
 
-td {
-    padding: 8px 16px;
-}
-
-.text {
+.validacao-voluntario-texto {
     color: rgb(0, 0, 0);
 }
 
-thead {
-    z-index: 2;
-    position: sticky;
-    top: 0;
+.validacao-voluntario-botao-visualizar {
+    background: transparent;
+    cursor: pointer;
+    border: none;
 }
 
-th {
-    font-weight: 600;
+.validacao-voluntario-icone-visualizar {
+    scale: 150%;
 }
 
 @media (max-width: 768px) {
-    .div_title {
+    .validacao-voluntario-title {
         height: 130px;
         align-items: center;
         justify-content: center;

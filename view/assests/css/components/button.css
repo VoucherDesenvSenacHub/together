@@ -1,28 +1,40 @@
-.botao {
-    width: 200px;
-    height: 50px;
-    border-radius: 25px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    filter: none; 
-    text-shadow: none;
-
-    &.salvar {
-        background: var(--cor-botao-salvar);
-        color: white;
-        border: 2px;
-    }
-    &.cancelar {
-        background-color: white ;
-        border-style: solid;
-        border-width: 4px;
-        border-color: var(--cor-botão-cancelar);
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    }
-}
-
 .botao:hover {
     transform: scale(1.02);
 }
+
+.botao {
+    color: var(--cor-font-branco);
+    text-align: center;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    text-transform: uppercase;
+    width: 118px;
+    height: 44px;
+    padding: 15px 26px;
+    border-radius: 8px;
+    border: 2px solid var(--cor-font-branco);
+    background-color: var(--cor-botao);
+    box-shadow: var(--botao-box-shadow);
+    transition:
+      background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      border-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      fill 150ms cubic-bezier(0.4, 0, 0.2, 1),
+      stroke 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .botao:hover {
+    background-color:var(--cor-botao-hover);
+  }
+
+  .botao:focus {
+    outline: none;
+    box-shadow: var(--botao-box-shadow);
+  }
