@@ -17,72 +17,64 @@
 
 
             <div class="info-area-visao-usuario">
-
                 <form action="#" method="post" class="form-area-visao-do-usuario">
-
+                    
                     <div class="form-visao-do-usuario">
                         <label for="nome" class="descricao">Nome</label>
-                        <input class="input-visao-do-usuario" type="text" id="nome" name="nome" autocomplete="off" required
-                        placeholder="xxxxxxxxxxxxx"  >
-                        
+                        <div class="form-group-v_d_u">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="nome" name="nome" autocomplete="off" disabled placeholder="xxxxxxxxxxxx">
+                        </div>
                     </div>
-
+                    
                     <div class="form-visao-do-usuario">
                         <label for="cpf" class="descricao">CPF</label>
-                        <input class="input-visao-do-usuario" type="text" id="cpf" name="cpf" autocomplete="off" required placeholder="xxx.xxx.xxx-xx">
-                        <i class="fa-solid fa-file-lines"></i>
+                        <div class="form-group-v_d_u">
+                            <i class="fa-solid fa-id-card"></i>
+                            <input type="text" id="cpf" name="cpf" autocomplete="off" disabled placeholder="xxx.xxx.xxx-xx">
+                        </div>
                     </div>
 
-
-                    <div class="divisao-visao-do-usuario"> <!--Comeco da parte do nasc e tel -->
-
+                    <div class="divisao-visao-do-usuario">
                         <div class="data-nasc-visao-do-usuario">
                             <label for="data" class="descricao">Data de Nascimento</label>
-                            <input class="input-divisao" type="date" id="data" name="data" autocomplete="off" required placeholder="xx/xx/xxxx">
-                            <i class="fa-solid fa-cake-candles"></i>
-
+                            <div class="form-group-v_d_u">
+                                <i class="fa-solid fa-cake-candles"></i>
+                                <input type="text" id="data" name="data" autocomplete="off" placeholder="xx/xx/xxxx" disabled>
+                            </div>
                         </div>
-                    
 
                         <div class="tel-visao-do-usuario">
                             <label for="telefone" class="descricao">Telefone</label>
-                            <input class="input-divisao" type="tel" id="telefone" name="telefone" autocomplete="off" required placeholder="+55(xx) xxxx-xxxx">
-                            <i class="fa-solid fa-phone"></i>
-
+                            <div class="form-group-v_d_u">
+                                <i class="fa-solid fa-phone"></i>
+                                <input type="tel" id="telefone" name="telefone" autocomplete="off"  disabled placeholder="+55 (xx)xxxx-xxxx">
+                            </div>
                         </div>
-
-                    </div> <!--término da parte do nasc e tel -->
+                    </div>
 
                     <div class="form-visao-do-usuario">
                         <label for="endereco" class="descricao">Endereço</label>
-                        <input class="input-visao-do-usuario" type="text" id="endereco" name="endereco" autocomplete="off" required placeholder="xxxxxxxxxx">
-                        <i class="fa-solid fa-location-dot"></i>
-
+                        <div class="form-group-v_d_u">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <input type="text" id="endereco" name="endereco" autocomplete="off" disabled placeholder="xxxxxxxxxx">
+                        </div>
                     </div>
 
                     <div class="form-visao-do-usuario">
                         <label for="email" class="descricao">Email</label>
-                        <input class="input-visao-do-usuario" type="email" id="email" name="email" autocomplete="off" required placeholder="xxxxxxxxxxx">
-                        <i class="fa-solid fa-envelope"></i>
-
+                        <div class="form-group-v_d_u">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="text" id="email" name="email" autocomplete="off" disabled placeholder="xxxxxxxxxxx">
+                        </div>
                     </div>
-
-
-                    
                 </form>
-
             </div>
 
 
-            <div class="confirmacao-area-visao-usuario"></div>
+            <!-- <div class="confirmacao-area-visao-usuario"></div> -->
             
         </div>
 
     </main>
 </body>
-
-<!-- Tudo dentro de um Form e uma div com label e input separadas 
-                    Ex: <div>
-                            <label>
-                            <input>
-                        </div>-->
