@@ -1,4 +1,5 @@
 <?php require_once "./../../components/head.php";
+
  ?>
 
 <body>
@@ -66,7 +67,12 @@
                                 <h1 class="titulo-nome" >XXXXXXXXXXXX</h1>
                             </div>
                             <div class="container-botao-fechar-dialog">
-                                <h1 class="botao-fechar-dialog">X</h1>
+                                <h1 class="botao-fechar-dialog">
+                                    <button class="botap-fechar-pop" ><span class="material-symbols-outlined">
+                                    close
+                                    </span>
+                                    </button>
+                                </h1>
                             </div>
                         </div>                        
                         <div class="conteudo-formulario">

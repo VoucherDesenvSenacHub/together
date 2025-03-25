@@ -71,8 +71,8 @@
 
 .input-cnpj{
     width: 100%;
-    border-radius: 15px;
-    height: 25px;
+    border-radius: 25px;
+    height: 40px;
 }
 
 .container-data-telefone{
@@ -82,11 +82,13 @@
 
 .container-data{
     display: inline;
+    border-radius: 20px;
    
 }
 
 .container-telefone{
-    display: flex;
+    display: inline;
+    border-radius: 20px;
 
 }
 
@@ -95,5 +97,30 @@
     border-radius: 18px;
 }
 
+.input-data-fundacao{
+    border-radius: 25px;
+    height: 40px;
+    width: 155px;
+}
 
+
+
+.input-telefone{
+    border-radius: 25px;
+    height: 40px;
+}
+
+.input-endereco{
+    height: 40px;
+    border-radius: 25px;
+}
+
+.botap-fechar-pop{
+    border: none;
+    background: none;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+   
+}
 
