@@ -58,7 +58,7 @@
                         <div class="form-group-v_d_u">
                             <i class="fa-solid fa-location-dot"></i>
                             <input type="text" id="endereco" name="endereco" autocomplete="off" disabled placeholder="xxxxxxxxxx">
-                        </div>
+                        </div> 
                     </div>
 
                     <div class="form-visao-do-usuario">
