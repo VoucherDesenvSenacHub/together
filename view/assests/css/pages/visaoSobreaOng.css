@@ -14,14 +14,20 @@
 .adm-ong-vision-form-box {
     background-color: rgb(255, 255, 255);
     box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
-    width: 1090px;
-    height: 1115px;
     display: flex;
     align-items: center;
+    width: 1090px;
+    height: 1245px;
     justify-content: center;
+    flex-direction: column;
     border-radius: 15px;
 }
 
+.adm-ong-vision-back-button-div{
+    width: 92%;
+    display: flex;
+    align-items: center;
+}
 /* Tags de filtro */
 .adm-ong-vision-filter-tags {
     width: 100%;
@@ -31,8 +37,9 @@
 }
 
 #adm-ong-vision-filter-tag-title {
-    font-weight: 500;
+    font-weight: bold;
     font-size: 17px;
+    color: #565656;
 }
 
 /* Seção de título e imagem */
@@ -56,28 +63,36 @@
 
 .adm-ong-vision-title {
     font-size: 40px;
+    font-weight: 900;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .adm-ong-vision-subtitle {
-    height: 153px;
+    height: 90px;
 }
 
-.adm-ong-vision-button-div{
-    height: 70px;
+.adm-ong-vision-button-div {
+    height: 133px;
     gap: 50px;
     display: flex;
     align-items: center;
 }
 
-.adm-ong-vision-default-button{
+.adm-ong-vision-default-button {
     background-color: rgb(74, 72, 72);
     color: white;
     border: none;
     height: 45px;
-    width: 125px;
+    width: 145px;
     border-radius: 20px;
     font-weight: 700;
     cursor: pointer;
+}
+
+#adm-ong-vision-title-description{
+    font-weight: bold;
 }
 
 /* Seção de localização e sobre */
@@ -94,6 +109,7 @@
     text-align: justify;
     justify-content: center;
     flex-direction: column;
+    margin-bottom: 50px;
     gap: 30px;
 }
 
@@ -102,15 +118,17 @@
 }
 
 #adm-ong-vision-about-location-title {
-    font-weight: 500;
+    font-weight:bolder;
     font-size: 17px;
+    color: #565656;
 }
 
 /* Seção de postagens */
 .adm-ong-vision-post-container {
     background-image: var(--gradient);
     width: 100%;
-    height: 59vh;
+    height: 400px;
+    max-height: 900px;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -137,7 +155,7 @@
 }
 
 .adm-ong-vision-title-text {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 900;
     color: aliceblue;
 }
@@ -151,7 +169,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
+            hr{
+                width: 90%;
+               background-color:#6C6C6C;
+            }
 }
 
 .adm-ong-vision-social-area {
@@ -161,29 +183,115 @@
     border-radius: 15px;
     box-shadow: 1px 1px 5px black;
     border: 1px solid black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    gap: 5px;
+    
 }
 
 .adm-ong-vision-post-card {
     width: 90%;
-    min-height: 17vh;
+    min-height: 150px;
     background-color: white;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     border-radius: 5px;
     border: 1px solid black;
     box-shadow: 1px 1px 5px black;
-    margin-bottom: 10px;
+    gap: 20px;
 }
 
-.adm-ong-vision-post-card p {
+.adm-ong-vision-social-title{
     width: 100%;
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+                    h1{
+                        font-size: 20.5px;
+                        font-weight: 800;
+                        margin-bottom: 10px;
+                        margin-top: 10px;
+                    }
+}
+
+.adm-ong-vision-social-text{
+    text-align: justify;
+    width: 95%;
 }
 
 /* Icon */
 #adm-ong-vision-icon-default {
     color: rgba(128, 128, 128, 0.671);
     margin-right: 10px;
+}
+
+.adm-ong-vision-post-img-moldure{
+    width: 150px;
+    height: 110px;
+    margin-left: 15px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.adm-ong-vision-post-img{
+    width: 150px;
+    height: 110px;
+}
+
+.adm-ong-vision-post-text-div{
+
+ height: 110px;
+ width: 350px;
+ text-align: left;
+ display: flex;
+ justify-content: left;
+ flex-direction: column;
+            h1{
+               font-weight: 600; 
+            }
+            p{
+                font-size: 10px;
+            }
+            h3,a{
+                color: #0094FF;
+                font-size: 19.8px;
+                cursor: pointer;
+                text-align: justify;
+            }
+}
+
+
+.adm-ong-vision-perfil-area{
+    width: 95%;
+    height: 120px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adm-ong-vision-perfil-default-icon{
+    width: 35px;
+    height: 35px;
+}
+
+.adm-ong-vision-area-div-perfil{
+    display: flex;
+    /* background-color: red; */
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    gap: 10px;
+                h1{
+                    color: #0094FF;
+                    font-size: 19.5px;
+                    font-weight: 800;
+                    letter-spacing: 0.5px;
+                    cursor: pointer;
+                }
 }

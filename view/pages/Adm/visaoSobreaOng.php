@@ -6,7 +6,11 @@ require_once "../../../view/components/head.php";
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
         <div class="adm-ong-vision-container">
+
             <form method="post" action="#" class="adm-ong-vision-form-box">
+                <div class="adm-ong-vision-back-button-div">
+                    <?php require_once './../../components/back-button.php' ?>
+                </div>
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
@@ -20,14 +24,14 @@ require_once "../../../view/components/head.php";
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">Associação Prato Cheio</strong>
                             <div class="adm-ong-vision-subtitle">
-                                <p class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
+                                <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
                             </div>
                             <div class="adm-ong-vision-button-div">
                                 <input class="adm-ong-vision-default-button" type="button" value="Fazer Doação">
                                 <input class="adm-ong-vision-default-button" type="button" value="Voluntariar-se">
                             </div>
                             <div>
-                                <p class="adm-ong-vision-default-text">* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</p>
+                                <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text">* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</p>
                             </div>
                         </div>
                     </div>
@@ -54,19 +58,49 @@ require_once "../../../view/components/head.php";
                     </div>
                     <div class="adm-ong-vision-post-container">
                         <div class="adm-ong-vision-post-title-div">
-                            <h1 class="adm-ong-vision-title-text">Posagens da ONG</h1>
+                            <h1 class="adm-ong-vision-title-text">Postagens da ONG</h1>
                         </div>
                         <div class="adm-ong-vision-post-box">
                             <div class="adm-ong-vision-post-area">
 
                                 <?php for ($i = 0; $i < 12; $i++) { ?>
+                                    <hr>
                                     <li class="adm-ong-vision-post-card">
-                                        <p>A</p>
+                                        <div class="adm-ong-vision-post-img-moldure">
+                                            <img class="adm-ong-vision-post-img" src="./../../assests/images/Adm/adm-vision-ong-post1.png" alt="">
+                                        </div>
+                                        <div class="adm-ong-vision-post-text-div">
+                                            <h1>Instagram</h1>
+                                            <p>https://www.instagram.com > PratoCheio</p>
+                                            <h3><a href="https://www.instagram.com/ongmissaoafrica/p/CsHzIbtPSp8/?img_index=1">Compartilhando Alimento, Nutrindo Esperança: Sua Doação Faz a Diferença na Vida dos Moradores de Rua</a></h3>
+                                        </div>
                                     </li>
                                 <?php } ?>
 
                             </div>
                             <div class="adm-ong-vision-social-area">
+                                <div class="adm-ong-vision-social-title">
+                                    <h1>Nossas Redes Sociais</h1>
+                                </div>
+
+                                <div class="adm-ong-vision-perfil-area">
+                                    <div class="adm-ong-vision-area-div-perfil">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_instagram.png" alt="">
+                                        <h1>/PratoCheioOfc</h1>
+                                    </div>
+                                    <div class="adm-ong-vision-area-div-perfil">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/devicon_facebook.png" alt="">
+                                        <h1>@PratoCheio_Ms</h1>
+                                    </div>
+                                    <div class="adm-ong-vision-area-div-perfil">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.png" alt="">
+                                        <h1>@PratoCheioOfc</h1>
+                                    </div>
+                                </div>
+
+                                <div class="adm-ong-vision-social-text">
+                                    <p>Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
