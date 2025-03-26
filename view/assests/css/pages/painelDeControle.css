@@ -47,17 +47,16 @@
 }
 
 .painel-de-controle-titulo-conteudo {
-    font-family: "Roboto", serif; 
     font-size: 18px;
     font-weight: bold;
     margin-top: 25px;
     margin-bottom: 15px;
+    color: var(--cor-roxo-escuro);
 }
 
 .painel-de-controle-desc-conteudo {
-    font-family: "Roboto", serif;   
     font-size: 11px;
-    color: black;
+    color: var(--cor-font-preto);
     opacity: 50%;
 }
 
