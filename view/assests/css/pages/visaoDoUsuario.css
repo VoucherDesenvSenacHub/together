@@ -10,8 +10,9 @@
 .image-area-visao-usuario {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 35%;
     gap: 100px;
+    flex-wrap: nowrap;
 }
 
 .image-usuario-visao-usuario {
@@ -53,11 +54,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #D9D9D9;
     border-radius: 24px;
     width: 320px;
     height: 380px;
-    padding: 25px;
+    padding: 30px;
     position: relative;
     border: 3px solid transparent;
     background-clip: padding-box;
@@ -68,7 +68,7 @@
     position: absolute;
     inset: 0; 
     border-radius: 24px; 
-    padding: 4px; 
+    padding: 3px; 
     background: linear-gradient(54deg, #3E00A3,#DA70FF);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -79,7 +79,6 @@
 .form-visao-do-usuario{
     height: 80px;
 }
-
 
 .form-group-v_d_u {
     position: relative;
