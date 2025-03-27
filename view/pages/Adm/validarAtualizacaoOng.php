@@ -5,7 +5,8 @@ require_once "../../../view/components/head.php";
 <body class="body-page-validarong">
     <?php require_once "../../../view/components/navbar.php"; ?>
 
-    <main>
+    <main class="main-container">
+        <?php require_once './../../components/back-button.php'?>
         <section class="validar-atualizacao-ong-section">
             <div>
                 <h1 class="title-page-validarong">Atualização Cadastral</h1>
