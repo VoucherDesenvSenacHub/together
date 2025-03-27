@@ -61,10 +61,19 @@ document.getElementById('house-button-login-usuario').addEventListener('click', 
 });
 
 // Garantir que o evento de clique no botão de login seja tratado corretamente
-// document.getElementById('botao-login-usuario').addEventListener('click', function() {
-//     // Redireciona para a página especificada
-//     window.location.href = '/together/view/home.php';
-// });
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.login-usuario');
+
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede que o formulário seja enviado
+        });
+    }
+});
+
+
+
+
 
 
 // Add event listeners for the other house buttons

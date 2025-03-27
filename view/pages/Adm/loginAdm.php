@@ -13,8 +13,13 @@
             <div class="box2-login-adm">
                 <i id="house-icon-login-adm" aria-hidden="true"></i>
                 <div class="login-area-login-adm" role="form" aria-labelledby="login-form">
-                    <div class="admin-moldure-login-adm">
-                        <img class="admin-icon-login-adm" src="assets/login-foto.png" alt="house">
+                    <!-- <div class="admin-moldure-login-adm">
+                        <img class="admin-icon-login-adm" src="assets/login-foto.png" alt="house"> -->
+
+                        <div class="admin-moldure-login-adm"> 
+                            <img class="admin-icon-login-adm" src="./../../assests/images/Adm/login-foto.png" alt="house"> 
+                        </div>
+
                     </div>
                     <input class="input-box-login-adm" type="text" maxlength="21" placeholder="Digite seu Login" aria-label="Digite seu Login">
                     <label for=""></label>
