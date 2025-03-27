@@ -98,7 +98,16 @@
                             <div class="container-conselho-fiscal-e-tipo-ong">
                                 <div class="container-conselho-fiscal">
                                     <label for="" class="label-conselho-fiscal">Conselho fiscal</label>
-                                    <input type="file" class="input-conselho-fiscal">
+                                    <div>
+                                    <label for="input-conselho-fiscal" class="label-input-conselho-fiscal">
+                                            <span class="material-symbols-outlined">
+                                                attach_file
+                                            </span>
+                                    </label>
+                                    <input placeholder="" type="file" class="input-conselho-fiscal">
+                                    </div>
+
+                                   
                                 </div>
                                 <div class="container-tipo-ong">
                                     <label for="" class="label-tipo-ong">Tipo da ONG</label>

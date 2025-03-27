@@ -156,6 +156,22 @@
     }
 }
 
+.label-input-conselho-fiscal{
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
+    width: 85%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 0 grey;
+
+    .material-symbols-outlined{
+        color:grey;
+        height: 25px;
+    }
+}
+
 .label-logo-ong-input-plaeholder{
     background-color: white;
     border-radius: 15px;
@@ -186,7 +202,56 @@
 
 .input-email{
     width: 90%;
-    height: 30px;
-    border-radius: 15px;
+    height: 40px;
+    border-radius: 25px;
 }
 
+.input-tipo-ong{
+    width: 90%;
+    height: 40px;
+    border-radius: 25px;
+}
+
+
+.input-conselho-fiscal{
+    width: 90%;
+    height: 75px;
+    border-radius: 25px;
+    display: none;
+
+}
+
+
+.botoes-formulario{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+
+.botao-cancelar-formulario{
+    width: 200px;
+    height: 42px;
+    border-radius: 27px;
+    border: none;
+    color:white;    
+    background: linear-gradient(90deg, rgba(62,0,163,1) 0%, rgba(218,112,255,1) 100%);
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    cursor:pointer;
+}
+
+.botao-enviar-formulario{
+    width: 200px;
+    height: 42px;
+    border-radius: 27px;
+    border: none;
+    color:white;    
+    background: linear-gradient(90deg, rgba(62,0,163,1) 0%, rgba(218,112,255,1) 100%);
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    cursor:pointer;
+}
