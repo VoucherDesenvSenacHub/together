@@ -77,6 +77,7 @@
 .dialog-obs-validacao-atualizacao {
     display: none;
     border: none;
+    background-color: transparent;
 }
 
 .obs-validacao-atualizacao {
@@ -97,4 +98,18 @@
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
     }
+}
+
+.fechar-validacao-atualizacao {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.div-fechar-validacao-atualizacao {
+    position: relative;
+}
+
+.icon-fechar-validacao-atualizacao {
+    width: 30px;
 }

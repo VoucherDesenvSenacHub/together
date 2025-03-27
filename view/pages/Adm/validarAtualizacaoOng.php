@@ -38,6 +38,8 @@ require_once "../../../view/components/head.php";
                 </table>
             </div>
         </section>
+        <div class="notification-validacao-atualizacao">
+        </div>
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
