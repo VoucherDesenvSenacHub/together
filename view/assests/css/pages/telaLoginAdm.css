@@ -7,7 +7,7 @@
 */
 
 .body-login-adm {
-    background-image: url("assets/background.jpg");
+    background-image: url("./../../images/Adm/background.jpg");
     background-size: cover;
     background-attachment: fixed;
 }
@@ -73,11 +73,11 @@
 
 /* Inputs-Areas */
 .input-box-login-adm {
-    width: 265px;
+    width: 275px;
     height: 45px;
     border-radius: 30px;
     border: none;
-    margin: 3%;
+    margin: 10px 0;
     margin-top: 10px;
     box-shadow: 1px 1px 3px var(--cor-font-preto);
     color: var(--cor-font-preto);
@@ -87,6 +87,7 @@
 
 .input-submit-login-adm {
     width: 150px;
+    display: flex;
     height: 45px;
     border-radius: 30px;
     border: none;
@@ -122,7 +123,7 @@
 
 .admin-icon-login-adm {
     color: aliceblue;
-    scale: 30%;
+    scale: 50%;
 }
 
 .logo-together-login-adm {

@@ -1,0 +1,38 @@
+.titulo-visualizarPerfis{
+    font-size: 3vw;
+    padding: 0  0 30px 0;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s ease-in-out;
+}
+
+.form-filtro-data{
+    h3{
+        margin-left: 20px;
+    }
+}
+
+.filtro-mes{
+    display: flex;
+    input{
+        margin: 20px;
+        width: 100%;
+        max-width: 200px;
+        height: 30px;
+        border: 2px solid var(--cor-roxo-escuro);
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .titulo-visualizarPerfis {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .titulo-visualizarPerfis {
+        font-size: 17px; 
+    }
+}
