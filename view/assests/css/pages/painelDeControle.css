@@ -2,13 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 75%;
     height: 83vh;
+    background-color: #EAE2EE;
+    margin: 0 auto;
+    margin-top: 30px;
+    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
 }
 
 .painel-de-controle-icone-conteudo {
     padding: 20px;
-    width: 80px;
+    width: 65px;
 }
 
 .box-painel-de-controle-adm {
