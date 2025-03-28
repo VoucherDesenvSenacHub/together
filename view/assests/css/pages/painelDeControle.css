@@ -4,10 +4,10 @@
     align-items: center;
     width: 75%;
     height: 83vh;
-    background-color: #EAE2EE;
+    background-color: var(--cor-container-painel);
     margin: 0 auto;
     margin-top: 30px;
-    box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 4px 10px var(--painel-box-shadow);
     border-radius: 30px;
 }
 
