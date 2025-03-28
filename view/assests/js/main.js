@@ -7,7 +7,7 @@
 import "./components/navbar.js";
 import "./pages/criarPostagemOng.js";
 import "./pages/gestaoDePatrocinadores.js";
-import "./pages/loginUsuario.js";
+// import "./pages/loginUsuario.js";
 import "./pages/validacaoAtualizacao.js";
 import "./pages/validarAtualizacaoOng.js";
 

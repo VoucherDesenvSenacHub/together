@@ -1,16 +1,23 @@
 .section-validacao-atualizacao {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .form-validacao-atualizacao {
         display: flex;
         flex-flow: column wrap;
+        width: 30%;
         gap: 20px;
         background-color: #f0f0f0;
         padding: 20px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.div-validacao-atualizacao {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .h1-validacao-atualizacao {
@@ -23,24 +30,26 @@
 }
 
 .div-botao-validacao-atualizacao {
+    padding: 10px;
     display: flex;
     justify-content: space-evenly;
+    gap: 10px;
 }
 
 .label-validacao-atualizacao {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
 }
 
 .input-validacao-atualizacao {
     outline-color: var(--cor-cinza-claro);
     background-color: var(--cor-font-branco);
-    width: 400px;
-    padding: 10px;
+    width: calc(100% - 20px);
+    padding: 0 10px;
     border: 1px solid var(--cor-font-branco);
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 16px;
+    height: 40px;
 }
 
 .validacao-file {
@@ -52,6 +61,9 @@
     height: 40px;
     cursor: pointer;
     position: relative;
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    border-radius: 3px;
 
     .validacao-atualizacao-file {
         position: absolute;
@@ -63,7 +75,7 @@
 }
 
 .validacao-atualizacao-icon {
-    rotate: -45deg;
+    rotate: 45deg;
     padding: 5px;
     width: 30px;
 }
@@ -96,6 +108,7 @@
         border-radius: 5px;
         border: none;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        outline-color: var(--cor-cinza-claro);
 
     }
 }
@@ -112,4 +125,21 @@
 
 .icon-fechar-validacao-atualizacao {
     width: 30px;
+    cursor: pointer;;
 }
+
+@media screen and (max-width: 1500px){
+    .form-validacao-atualizacao {
+        width: 100%;
+    };
+};
+
+@media screen and (max-width: 450px){
+    .input-validacao-atualizacao {
+        max-width: 200px;
+    }
+    .validacao-label {
+        max-width: 200px;
+    }
+};
+    

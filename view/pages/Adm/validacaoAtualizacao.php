@@ -52,7 +52,7 @@
                         <img class="validacao-atualizacao-icon" src="./../../assests/images/adm/anexo.png" alt=""> 
                         <p id="validacao-atualizacao-logo-file-novo" class="validacao-atualizacao-file"></p>
                     </label>
-                    <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*" readonly/>
+                    <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*"  readonly/>
                 </div>  
                 <div class="div-botao-validacao-atualizacao">
                     <button class="botao" id="validacao-atualizacao-botao-recusar"  type="button">Recusar</button>
@@ -60,7 +60,7 @@
                 </div>
             </form>
             <dialog class="dialog-obs-validacao-atualizacao">
-                <form class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="GET">
+                <form class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="POST">
                     <div class="div-fechar-validacao-atualizacao">
                         <h1 class="h1-validacao-atualizacao">Observação</h1>
                         <i class="fechar-validacao-atualizacao" id="validacao-atualizacao-botao-fechar">
