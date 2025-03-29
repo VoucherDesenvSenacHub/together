@@ -27,8 +27,8 @@
 
 .container-valida-ong{
     z-index: 1;
-    width: 350px;
-    height: 500px;
+    width: 500px;
+    height: 750px;
     border-radius: 25px;    
     top: calc((100vh - 520px)/2);
     border: 2px solid #8B1CD3;
@@ -254,4 +254,73 @@
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     cursor:pointer;
+}
+
+.container-observacao-ong{
+    z-index: 1;
+    width: 500px;
+    height: 450px;
+    border-radius: 25px;    
+    top: calc((100vh - 520px)/2);
+    border: 2px solid #8B1CD3;
+    box-shadow: 5px 5px 35px black;
+    background-color: rgb(208, 206, 206);
+    position: relative;
+    left: 40px;
+}
+
+
+.input-observacao{
+    width: 100%;
+    height: 360px;
+    border-radius: 45px;
+    border: none;
+}
+
+
+
+
+.botao-observacao{
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.botao-enviar-observacao{
+    width: 100%;
+    height: 33px;
+    border-radius: 27px;
+    border: none;
+    color:white;    
+    background: linear-gradient(90deg, rgba(62,0,163,1) 0%, rgba(218,112,255,1) 100%);
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    cursor:pointer;
+}
+
+.titulo-observacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    padding-left:6.235px;
+    font-weight: bold;
+    font-size: 25px;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container-botao-fechar-observacao{
+    width: auto;
+    position:relative;
+    /* left: 290px; */
+    /* right: 10px; */
+}
+
+.cabecalho-observacao {
+    display: flex;
 }

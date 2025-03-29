@@ -57,6 +57,7 @@
                     </tr>
                 </tbody>
             </table>
+            
             <dialog open="open" class="container-valida-ong">
                 <div class="container-formulario">
                     <form class="form-valida-ong" action="">
@@ -66,7 +67,7 @@
                                 <h1 class="titulo-nome" >XXXXXXXXXXXX</h1>
                             </div>
                             <div class="container-botao-fechar-dialog">
-                                <h1 class="botao-fechar-dialog">X</h1>
+                                <button class="botao-fechar-dialog" >X</button> 
                             </div>
                         </div>                        
                         <div class="conteudo-formulario">
@@ -139,6 +140,36 @@
                     </form>
                 </div>
             </dialog>
+
+            <dialog open="open" class="container-observacao-ong">
+                <div class="container-observacao">
+                    <form class="form-observacao-ong" action="">
+                        <div  class="cabecalho-observacao" >  
+                            <div class="titulo-observacao">
+                                <h4 class="observacao-nome" >Observação</h4>
+                            </div>
+                            <div class="container-botao-fechar-observacao">
+                            <button>X</button>
+                            </div>
+                            
+
+                        </div>
+                        <div class="container-observacao">
+
+                                <input type="text" class="input-observacao" placeholder="Digite sua observação:">
+
+                            </div>
+                        <div class="botao-observacao">
+                            <button class="botao-enviar-observacao" type="submit" >Enviar</button>
+                        </div>  
+
+                    </form>
+                
+                </div>
+
+            </dialog>
+
+        
     </main>
 
     
