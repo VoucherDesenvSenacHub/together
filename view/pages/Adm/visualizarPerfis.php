@@ -24,7 +24,7 @@
             </thead>
             <tbody class="body-table">
                 <tr>
-                    <td class="row-body-table">xx/xx/xxxx</td>
+                    <td class="row-body-table">XX/XX/XXXX</td>
                     <td class="row-body-table">XXXXX</td>
                     <td>Ong</td>
                     <td>

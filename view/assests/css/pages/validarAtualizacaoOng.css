@@ -11,7 +11,7 @@
   margin-left: 20px;
   font-size: 40px;
   font-weight: bold;
-  background: var(--gradient);
+  background: var(--cor-roxo-escuro);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -55,7 +55,7 @@
     left: 4rem;
     font-size: 39px;
     font-weight: bold;
-    background: linear-gradient(#6a10be, #a224e2);
+    background: var(--gradient);
     -webkit-background-clip: text;
     color: transparent;
   }
@@ -75,7 +75,7 @@
     left: 2.2rem;
     font-size: 20px;
     font-weight: bold;
-    background: linear-gradient(#6a10be, #a224e2);
+    background: var(--gradient);
     -webkit-background-clip: text;
     color: transparent;
   }
