@@ -6,11 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnFechar = document.querySelector("#validacao-atualizacao-botao-fechar");
     var dialog = document.querySelector(".dialog-obs-validacao-atualizacao"); 
     var form = document.querySelector(".form-validacao-atualizacao");
+    var divGroup = document.querySelector(".div-group-validacao-atualizacao");
 
     function abrirDialog() {
         if (dialog && form) {
             dialog.style.display = "flex";   
-            form.style.filter = "blur(2px)";  
+            divGroup.style.filter = "blur(2px)";  
             botaoAceitar.disabled = true;
         }        
     };
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function fecharDialog() {
         if (dialog && form) {
             dialog.style.display = "none";   
-            form.style.filter = "";  
+            divGroup.style.filter = "";  
             botaoAceitar.disabled = false;
         }        
     };

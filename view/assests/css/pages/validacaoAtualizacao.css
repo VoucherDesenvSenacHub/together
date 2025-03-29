@@ -23,18 +23,24 @@
         text-align: center;
         background: var(--gradient) text;
         -webkit-text-fill-color: transparent;
-        font-size: 2.0rem;
-        padding: 1px;
+        font-size: 1.8rem;
+        padding: 10px;
+        letter-spacing: 1.5px;
     }
 }
 
-.form-validacao-atualizacao {
+.div-group-validacao-atualizacao {
     display: flex;
-    flex-flow: column wrap;
-    width: 50%;
+    flex-flow: column;
+    width: 100%;
     gap: 20px;
+}
+
+.form-validacao-atualizacao {
+    position: relative;
     background-color: var(--cor-form);
-    padding: 20px;
+    padding: 30px;
+    width: 60%;
 }
 
 .div-validacao-atualizacao {
@@ -88,7 +94,6 @@
 }
 
 .div-botao-validacao-atualizacao {
-    padding: 10px;
     display: flex;
     justify-content: space-evenly;
     gap: 10px;
@@ -101,6 +106,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    transform: translate(-50%,-50%);
 
     .obs-validacao-atualizacao {
         display: flex;
@@ -149,35 +155,90 @@
 }
 
 @media screen and (max-width: 1000px){
-    .form-validacao-atualizacao {
-        width: 70%;
-    }
-
     .div-aside-validacao-atualizacao {
         .h1-validacao-atualizacao {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
         }
 
         .img-validacao-atualizacao {
-            width: 200px;
+            width: 180px;
         }
     }
 
-};
+    .dialog-obs-validacao-atualizacao {
 
-@media screen and (max-width: 450px){
-    .input-validacao-atualizacao {
-        max-width: 100px;
+        .obs-validacao-atualizacao {
+            height: 250px;
+        }
+
+        .h2-validacao-atualizacao {
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
     }
-    .validacao-label {
-        max-width: 200px;
+
+    @media screen and (max-width: 750px){
+        .section-validacao-atualizacao {
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 5px 10px var(--painel-box-shadow);
+            background-color: var(--cor-form);
+        }
+
+        .form-validacao-atualizacao {
+            width: 100%;
+        }
+
+        .div-aside-validacao-atualizacao {
+            display: none
+        }
+
     }
-    .div-titulo-validacao-atualizacao{
-        display: none;
-    }
-    .div-validacao-atualizacao{
-        width: 1px;
-        height: 50px
+
+    @media screen and (max-width: 400px){
+        .form-validacao-atualizacao {
+            padding: 20px;
+        }
+
+        .div-group-validacao-atualizacao {
+            gap: 10px;
+        }
+        
+        .div-validacao-atualizacao {
+
+            .input-validacao-atualizacao {
+                font-size: 0.8rem;
+                height: 30px;
+            }
+
+            .label-validacao-atualizacao {
+                font-size: 0.8rem;
+            }
+
+            .validacao-label {
+                height: 30px;
+            }
+
+            .validacao-atualizacao-icon {
+                height: 20px;
+                width: 20px;
+            }
+        }
+
+        .h2-validacao-atualizacao {
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .div-botao-validacao-atualizacao {
+            gap: 20px;
+        }
+
+        .dialog-obs-validacao-atualizacao {
+            .obs-validacao-atualizacao {
+                width: 200px;
+            }
+        }
     }
 };
-
