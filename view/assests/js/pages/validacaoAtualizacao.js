@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function abrirDialog() {
         if (dialog && form) {
-            dialog.style.display = "block";   
+            dialog.style.display = "flex";   
             form.style.filter = "blur(2px)";  
+            botaoAceitar.disabled = true;
         }        
     };
 
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (dialog && form) {
             dialog.style.display = "none";   
             form.style.filter = "";  
+            botaoAceitar.disabled = false;
         }        
     };
 

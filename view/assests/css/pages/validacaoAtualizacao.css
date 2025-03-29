@@ -1,32 +1,90 @@
 .section-validacao-atualizacao {
     display: flex;
+    justify-content: end;
+    box-shadow: 0 5px 10px var(--painel-box-shadow);
+    background-color: var(--cor-container-painel);
+}
+
+.div-aside-validacao-atualizacao {
+    display: flex;
+    flex-flow: column wrap;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    width: calc(100% - 50%);
+    gap: 40px;
+
+    .img-validacao-atualizacao {
+        width: 300px;
+    }
+
+    .h1-validacao-atualizacao {
+        font-weight: bold;
+        text-align: center;
+        background: var(--gradient) text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.0rem;
+        padding: 1px;
+    }
 }
 
 .form-validacao-atualizacao {
-        display: flex;
-        flex-flow: column wrap;
-        width: 30%;
-        gap: 20px;
-        background-color: #f0f0f0;
-        padding: 20px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    gap: 20px;
+    background-color: var(--cor-form);
+    padding: 20px;
 }
 
 .div-validacao-atualizacao {
     display: flex;
     flex-direction: column;
     gap: 5px;
-}
 
-.h1-validacao-atualizacao {
-    font-weight: bold;
-    text-align: center;
-    background: var(--gradient) text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.6rem;
-    padding: 1px;
+    .label-validacao-atualizacao {
+        font-weight: bold;
+        display: block;
+    }
+
+    .input-validacao-atualizacao {
+        outline-color: var(--cor-cinza-claro);
+        background-color: var(--cor-font-branco);
+        width: calc(100% - 20px);
+        padding: 0 10px;
+        border: 1px solid var(--cor-font-branco);
+        border-radius: 3px;
+        font-size: 16px;
+        height: 40px;
+    }
+
+    .validacao-atualizacao-icon {
+        rotate: 45deg;
+        padding: 5px;
+        width: 30px;
+    }
+
+    .validacao-file {
+        display: none;
+    }
+    
+    .validacao-label {
+        background-color: var(--cor-font-branco);
+        height: 40px;
+        cursor: pointer;
+        position: relative;
+        width: calc(100% - 20px);
+        padding: 0 10px;
+        border-radius: 3px;
+    
+        .validacao-atualizacao-file {
+            position: absolute;
+            color: var(--cor-cinza-escuro);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
 }
 
 .div-botao-validacao-atualizacao {
@@ -36,110 +94,90 @@
     gap: 10px;
 }
 
-.label-validacao-atualizacao {
-    font-weight: bold;
-    display: block;
-}
-
-.input-validacao-atualizacao {
-    outline-color: var(--cor-cinza-claro);
-    background-color: var(--cor-font-branco);
-    width: calc(100% - 20px);
-    padding: 0 10px;
-    border: 1px solid var(--cor-font-branco);
-    border-radius: 3px;
-    font-size: 16px;
-    height: 40px;
-}
-
-.validacao-file {
-    display: none;
-}
-
-.validacao-label {
-    background-color: var(--cor-font-branco);
-    height: 40px;
-    cursor: pointer;
-    position: relative;
-    width: calc(100% - 20px);
-    padding: 0 10px;
-    border-radius: 3px;
-
-    .validacao-atualizacao-file {
-        position: absolute;
-        color: var(--cor-cinza-escuro);
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
-
-.validacao-atualizacao-icon {
-    rotate: 45deg;
-    padding: 5px;
-    width: 30px;
-}
-
-.notification-atualizacao-validacao {
-    position: relative;
-    bottom: 0;
-    width: 250px;
-}
-
 .dialog-obs-validacao-atualizacao {
     display: none;
     border: none;
     background-color: transparent;
-}
-
-.obs-validacao-atualizacao {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 20px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    height: 300px;
-    z-index: 10;
-
-    .textarea-validacao-atualizacao {
-        padding: 10px;
-        resize: none;
-        border-radius: 5px;
-        border: none;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        outline-color: var(--cor-cinza-claro);
-
-    }
-}
-
-.fechar-validacao-atualizacao {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+
+    .obs-validacao-atualizacao {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: var(--cor-form);
+        padding: 20px;
+        box-shadow: 0 5px 10px var(--painel-box-shadow);
+        height: 300px;
+        z-index: 10;
+    
+        .textarea-validacao-atualizacao {
+            padding: 10px;
+            resize: none;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 5px 10px var(--painel-box-shadow);
+            outline-color: var(--cor-cinza-claro);
+    
+        }
+    }
+
+    .h2-validacao-atualizacao {
+        font-weight: bold;
+        text-align: center;
+        background: var(--gradient) text;
+        -webkit-text-fill-color: transparent;
+        font-size: 1.6rem;
+        padding: 1px;
+    }
 }
 
 .div-fechar-validacao-atualizacao {
     position: relative;
+
+    .fechar-validacao-atualizacao {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .icon-fechar-validacao-atualizacao {
+        width: 30px;
+        cursor: pointer;;
+    }
 }
 
-.icon-fechar-validacao-atualizacao {
-    width: 30px;
-    cursor: pointer;;
-}
-
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1000px){
     .form-validacao-atualizacao {
-        width: 100%;
-    };
+        width: 70%;
+    }
+
+    .div-aside-validacao-atualizacao {
+        .h1-validacao-atualizacao {
+            font-size: 1.4rem;
+        }
+
+        .img-validacao-atualizacao {
+            width: 200px;
+        }
+    }
+
 };
 
 @media screen and (max-width: 450px){
     .input-validacao-atualizacao {
-        max-width: 200px;
+        max-width: 100px;
     }
     .validacao-label {
         max-width: 200px;
     }
+    .div-titulo-validacao-atualizacao{
+        display: none;
+    }
+    .div-validacao-atualizacao{
+        width: 1px;
+        height: 50px
+    }
 };
-    
+

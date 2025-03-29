@@ -4,8 +4,11 @@
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
         <section class="section-validacao-atualizacao">
+            <div class="div-aside-validacao-atualizacao">
+                <h1 class="h1-validacao-atualizacao">Atualização Cadastral</h1>
+                <img class="img-validacao-atualizacao" src="\together\view\assests\images\components\togetherBlack.png" alt="">
+            </div>
             <form class="form-validacao-atualizacao" action="validarAtualizacaoOng.php" method="GET">
-                <h1 class="h1-validacao-atualizacao">Atualização</h1>
 
                 <div class="div-validacao-atualizacao">
                     <label class="label-validacao-atualizacao" for="nome">Nome</label>
@@ -43,7 +46,7 @@
                         <img class="validacao-atualizacao-icon" src="./../../assests/images/adm/anexo.png" alt=""> 
                         <p id="validacao-atualizacao-conselho-fiscal-file-novo" class="validacao-atualizacao-file"></p>
                     </label>
-                    <input class="input-validacao-atualizacao validacao-file" type="file" id="conselho-fiscal-novo" accept="image/*" readonly/>
+                    <input class="input-validacao-atualizacao validacao-file" type="file" id="conselho-fiscal-novo" accept="image/*" disabled/>
                 </div>
 
                 <div class="div-validacao-atualizacao">
@@ -52,17 +55,17 @@
                         <img class="validacao-atualizacao-icon" src="./../../assests/images/adm/anexo.png" alt=""> 
                         <p id="validacao-atualizacao-logo-file-novo" class="validacao-atualizacao-file"></p>
                     </label>
-                    <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*"  readonly/>
+                    <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*"  disabled/>
                 </div>  
                 <div class="div-botao-validacao-atualizacao">
-                    <button class="botao" id="validacao-atualizacao-botao-recusar"  type="button">Recusar</button>
-                    <button class="botao" id="validacao-atualizacao-botao-aceitar"  type="button">Aceitar</button>
+                    <button class="botao" id="validacao-atualizacao-botao-recusar" type="button">Recusar</button>
+                    <button class="botao" id="validacao-atualizacao-botao-aceitar" type="button">Aceitar</button>
                 </div>
             </form>
             <dialog class="dialog-obs-validacao-atualizacao">
                 <form class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="POST">
                     <div class="div-fechar-validacao-atualizacao">
-                        <h1 class="h1-validacao-atualizacao">Observação</h1>
+                        <h2 class="h2-validacao-atualizacao">Observação</h2>
                         <i class="fechar-validacao-atualizacao" id="validacao-atualizacao-botao-fechar">
                             <img class="icon-fechar-validacao-atualizacao" src="../../../view/assests/images/adm/fechar.png" alt="">
                         </i>
