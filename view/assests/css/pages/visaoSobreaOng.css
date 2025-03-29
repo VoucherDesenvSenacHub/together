@@ -6,14 +6,15 @@
     justify-content: center;
     flex-direction: column;
 }
-
+ 
 .adm-ong-vision-area-limiter {
     width: 1000px;
 }
-
+ 
 .adm-ong-vision-form-box {
+    position: relative;
     background-color: rgb(255, 255, 255);
-    box-shadow: 6px 7px 31px 0px rgba(0, 0, 0, 0.42);
+    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     width: 1090px;
@@ -22,12 +23,13 @@
     flex-direction: column;
     border-radius: 15px;
 }
-
+ 
 .adm-ong-vision-back-button-div{
     width: 92%;
     display: flex;
     align-items: center;
 }
+ 
 /* Tags de filtro */
 .adm-ong-vision-filter-tags {
     width: 100%;
@@ -35,32 +37,32 @@
     display: flex;
     align-items: center;
 }
-
+ 
 #adm-ong-vision-filter-tag-title {
     font-weight: bold;
     font-size: 17px;
     color: #565656;
 }
-
+ 
 /* Seção de título e imagem */
 .adm-ong-vision-title-options {
     justify-content: space-between;
     display: flex;
 }
-
+ 
 .adm-ong-vision-title-img-div {
     overflow: hidden;
     width: 500px;
 }
-
+ 
 .adm-ong-vision-img {
     width: 500px;
 }
-
+ 
 .adm-ong-vision-title-div {
     width: 450px;
 }
-
+ 
 .adm-ong-vision-title {
     font-size: 40px;
     font-weight: 900;
@@ -68,18 +70,25 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.adm-ong-vision-subtitle {
-    height: 90px;
+ 
+#adm-ong-vision-text-alert {
+    font-style: italic;
 }
-
+ 
+.adm-ong-vision-subtitle {
+    padding: 10px 0 10px 10px;
+    width: 80%;
+    border-left: 2px solid rgb(94, 43, 211);
+    margin-left: 10px;
+}
+ 
 .adm-ong-vision-button-div {
     height: 133px;
     gap: 50px;
     display: flex;
     align-items: center;
 }
-
+ 
 .adm-ong-vision-default-button {
     background-color: rgb(74, 72, 72);
     color: white;
@@ -89,12 +98,17 @@
     border-radius: 20px;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s;
 }
-
+ 
+.adm-ong-vision-default-button:hover {
+    scale: 1.1;
+}
+ 
 #adm-ong-vision-title-description{
     font-weight: bold;
 }
-
+ 
 /* Seção de localização e sobre */
 .adm-ong-vision-about-location-div {
     width: 100%;
@@ -102,27 +116,28 @@
     display: flex;
     align-items: center;
 }
-
+ 
 .adm-ong-vision-about-div {
     display: flex;
-    height: 300px;
+    height: auto;
     text-align: justify;
     justify-content: center;
     flex-direction: column;
     margin-bottom: 50px;
     gap: 30px;
+    padding: 0 50px 0 50px;
 }
-
+ 
 .adm-ong-vision-default-text {
     color: gray;
 }
-
+ 
 #adm-ong-vision-about-location-title {
     font-weight:bolder;
     font-size: 17px;
     color: #565656;
 }
-
+ 
 /* Seção de postagens */
 .adm-ong-vision-post-container {
     background-image: var(--gradient);
@@ -135,7 +150,7 @@
     justify-content: center;
     flex-direction: column;
 }
-
+ 
 .adm-ong-vision-post-box {
     display: flex;
     width: 95%;
@@ -146,20 +161,20 @@
     align-items: center;
     gap: 30px;
 }
-
+ 
 .adm-ong-vision-post-title-div {
     display: flex;
     align-items: center;
     width: 850px;
     height: 40px;
 }
-
+ 
 .adm-ong-vision-title-text {
     font-size: 40px;
     font-weight: 900;
     color: aliceblue;
 }
-
+ 
 .adm-ong-vision-post-area {
     width: 630px;
     height: 319px;
@@ -169,29 +184,30 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    box-shadow: inset 0px 0px 8px 3px #00000040;
     gap: 5px;
             hr{
                 width: 90%;
                background-color:#6C6C6C;
             }
 }
-
+ 
 .adm-ong-vision-social-area {
     width: 250px;
     height: 319px;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 1px 1px 5px black;
-    border: 1px solid black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: top;
+    padding: 10px;
     gap: 5px;
-    
+   
 }
-
+ 
 .adm-ong-vision-post-card {
     width: 90%;
     min-height: 150px;
@@ -205,7 +221,7 @@
     box-shadow: 1px 1px 5px black;
     gap: 20px;
 }
-
+ 
 .adm-ong-vision-social-title{
     width: 100%;
     display: flex;
@@ -218,18 +234,18 @@
                         margin-top: 10px;
                     }
 }
-
+ 
 .adm-ong-vision-social-text{
     text-align: justify;
     width: 95%;
 }
-
+ 
 /* Icon */
 #adm-ong-vision-icon-default {
     color: rgba(128, 128, 128, 0.671);
     margin-right: 10px;
 }
-
+ 
 .adm-ong-vision-post-img-moldure{
     width: 150px;
     height: 110px;
@@ -237,14 +253,14 @@
     overflow: hidden;
     border-radius: 5px;
 }
-
+ 
 .adm-ong-vision-post-img{
     width: 150px;
     height: 110px;
 }
-
+ 
 .adm-ong-vision-post-text-div{
-
+ 
  height: 110px;
  width: 350px;
  text-align: left;
@@ -252,7 +268,7 @@
  justify-content: left;
  flex-direction: column;
             h1{
-               font-weight: 600; 
+               font-weight: 600;
             }
             p{
                 font-size: 10px;
@@ -264,8 +280,8 @@
                 text-align: justify;
             }
 }
-
-
+ 
+ 
 .adm-ong-vision-perfil-area{
     width: 95%;
     height: 120px;
@@ -274,19 +290,19 @@
     flex-direction: column;
     gap: 8px;
 }
-
+ 
 .adm-ong-vision-perfil-default-icon{
     width: 35px;
     height: 35px;
 }
-
+ 
 .adm-ong-vision-area-div-perfil{
     display: flex;
-    /* background-color: red; */
     align-items: center;
     width: 100%;
     height: 120px;
     gap: 10px;
+    transition: all 0.2s;
                 h1{
                     color: #0094FF;
                     font-size: 19.5px;
@@ -294,4 +310,160 @@
                     letter-spacing: 0.5px;
                     cursor: pointer;
                 }
+}
+ 
+.adm-ong-vision-area-div-perfil:hover {
+    scale: 1.03;
+}
+@media screen and (max-width: 1024px) {
+    .adm-ong-vision-area-limiter {
+        width: 90%;
+    }
+   
+    .adm-ong-vision-form-box {
+        width: 95vw;
+        height: auto;
+        padding: 20px 0;
+    }
+   
+    .adm-ong-vision-title-options {
+        flex-direction: column;
+        align-items: center;
+    }
+   
+    .adm-ong-vision-title-img-div,
+    .adm-ong-vision-img
+    {
+        width: 90%;
+    }
+    .adm-ong-vision-title-div {
+        width: 100%;
+    }
+}
+ 
+@media screen and (max-width: 768px) {
+    .adm-ong-vision-post-box {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+   
+    .adm-ong-vision-post-area,
+    .adm-ong-vision-social-area {
+        width: 95%;
+    }
+   
+    .adm-ong-vision-post-container {
+        height: auto;
+    }
+   
+    .adm-ong-vision-post-title-div {
+        width: 95%;
+    }
+   
+    .adm-ong-vision-title-text {
+        font-size: 32px;
+    }
+   
+    .adm-ong-vision-button-div {
+        gap: 20px;
+        height: auto;
+        padding: 15px 0;
+    }
+}
+ 
+@media screen and (max-width: 576px) {
+    .adm-ong-vision-title {
+        font-size: 30px;
+        text-align: center;
+    }
+   
+    .adm-ong-vision-post-card {
+        min-height: auto;
+        flex-direction: column;
+        padding: 15px 5px;
+        gap: 10px;
+    }
+   
+    .adm-ong-vision-post-img-moldure,
+    .adm-ong-vision-post-img {
+        width: 90%;
+        margin-left: 0;
+    }
+   
+    .adm-ong-vision-post-text-div {
+        width: 90%;
+        height: auto;
+    }
+   
+    .adm-ong-vision-post-text-div h3,
+    .adm-ong-vision-post-text-div a {
+        font-size: 16px;
+    }
+   
+    .adm-ong-vision-about-div {
+        height: auto;
+        gap: 20px;
+    }
+ 
+    #adm-ong-vision-about-location-title,
+    #adm-ong-vision-filter-tag-title {
+        font-size: 15px;
+    }
+   
+    .adm-ong-vision-default-button {
+        width: 120px;
+        font-size: 14px;
+    }
+}
+ 
+@media screen and (max-width: 480px) {
+    .adm-ong-vision-title {
+        font-size: 26px;
+    }
+   
+    .adm-ong-vision-area-div-perfil h1 {
+        font-size: 16px;
+    }
+   
+    .adm-ong-vision-social-title h1 {
+        font-size: 18px;
+    }
+   
+    .adm-ong-vision-title-text {
+        font-size: 28px;
+    }
+   
+    .adm-ong-vision-default-text,
+    .adm-ong-vision-social-text p {
+        font-size: 14px;
+        margin-top: 30px;
+    }
+ 
+    .adm-ong-vision-about-div {
+        gap: 0px;
+    }
+}
+ 
+
+@media screen and (max-width: 320px) {
+    .adm-ong-vision-default-button {
+        width: 110px;
+        height: 40px;
+        font-size: 13px;
+    }
+   
+    .adm-ong-vision-button-div {
+        gap: 10px;
+    }
+   
+    .adm-ong-vision-perfil-area {
+        gap: 5px;
+    }
+   
+    .adm-ong-vision-area-div-perfil {
+        height: auto;
+        padding: 5px 0;
+    }
 }
