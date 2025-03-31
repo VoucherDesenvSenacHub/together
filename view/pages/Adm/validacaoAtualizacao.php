@@ -3,6 +3,9 @@
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
+        <div class="btn-voltar-validacao-atualizacao">
+            <?php require_once './../../components/back-button.php'?>
+        </div>
         <section class="section-validacao-atualizacao">
             <aside class="div-aside-validacao-atualizacao">
                 <h1 class="h1-validacao-atualizacao">Atualização Cadastral</h1>
