@@ -13,7 +13,7 @@
  
 .adm-ong-vision-form-box {
     position: relative;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--cor-font-branco);
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
@@ -41,7 +41,7 @@
 #adm-ong-vision-filter-tag-title {
     font-weight: bold;
     font-size: 17px;
-    color: #565656;
+    color: var(--cor-title-card);
 }
  
 /* Seção de título e imagem */
@@ -78,7 +78,7 @@
 .adm-ong-vision-subtitle {
     padding: 10px 0 10px 10px;
     width: 80%;
-    border-left: 2px solid rgb(94, 43, 211);
+    border-left: 2px solid var(--cor-botao-hover);
     margin-left: 10px;
 }
  
@@ -90,8 +90,8 @@
 }
  
 .adm-ong-vision-default-button {
-    background-color: rgb(74, 72, 72);
-    color: white;
+    background-color: var(--cor-title-card);
+    color: var(--cor-font-branco);
     border: none;
     height: 45px;
     width: 145px;
@@ -99,6 +99,7 @@
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
+    box-shadow: var(--botao-box-shadow);
 }
  
 .adm-ong-vision-default-button:hover {
@@ -129,13 +130,13 @@
 }
  
 .adm-ong-vision-default-text {
-    color: gray;
+    color: var(--cor-cinza-escuro);
 }
  
 #adm-ong-vision-about-location-title {
     font-weight:bolder;
     font-size: 17px;
-    color: #565656;
+    color: var(--cor-title-card);
 }
  
 /* Seção de postagens */
@@ -145,6 +146,7 @@
     height: 400px;
     max-height: 900px;
     border-radius: 15px;
+    padding: 10px 0 20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -172,7 +174,7 @@
 .adm-ong-vision-title-text {
     font-size: 40px;
     font-weight: 900;
-    color: aliceblue;
+    color: var(--cor-font-branco);
 }
  
 .adm-ong-vision-post-area {
@@ -180,22 +182,24 @@
     height: 319px;
     border-radius: 15px;
     overflow-y: scroll;
-    scrollbar-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    scrollbar-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0);
     display: flex;
     align-items: center;
     flex-direction: column;
-    box-shadow: inset 0px 0px 8px 3px #00000040;
+    box-shadow: inset 0px 0px 8px 3px rgba(0, 0, 0, 0.15);
+    padding-top: 10px;
+    padding-bottom: 10px;
     gap: 5px;
             hr{
                 width: 90%;
-               background-color:#6C6C6C;
+               background-color:var(--cor-title-card);
             }
 }
  
 .adm-ong-vision-social-area {
     width: 250px;
     height: 319px;
-    background-color: white;
+    background-color: var(--cor-font-branco);
     border-radius: 15px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     overflow: hidden;
@@ -211,14 +215,13 @@
 .adm-ong-vision-post-card {
     width: 90%;
     min-height: 150px;
-    background-color: white;
+    background-color: var(--cor-font-branco);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: left;
     border-radius: 5px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.35);
     gap: 20px;
 }
  
@@ -242,7 +245,7 @@
  
 /* Icon */
 #adm-ong-vision-icon-default {
-    color: rgba(128, 128, 128, 0.671);
+    color: var(--cor-title-card);
     margin-right: 10px;
 }
  
@@ -274,7 +277,7 @@
                 font-size: 10px;
             }
             h3,a{
-                color: #0094FF;
+                color: var(--cor-botao);
                 font-size: 19.8px;
                 cursor: pointer;
                 text-align: justify;
@@ -304,7 +307,7 @@
     gap: 10px;
     transition: all 0.2s;
                 h1{
-                    color: #0094FF;
+                    color: var(--cor-botao);
                     font-size: 19.5px;
                     font-weight: 800;
                     letter-spacing: 0.5px;
@@ -446,7 +449,7 @@
     }
 }
  
-
+/* Ajustes específicos para elementos críticos */
 @media screen and (max-width: 320px) {
     .adm-ong-vision-default-button {
         width: 110px;
