@@ -155,7 +155,7 @@
                             
 
                         </div>
-                        <div class="container-observacao">
+                        <div class="container-observacao-input">
                                 <input type="text" class="input-observacao" placeholder="Digite sua observação:">
                             </div>
                         <div class="botao-observacao">

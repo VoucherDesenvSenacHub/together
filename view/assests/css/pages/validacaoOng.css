@@ -1,3 +1,7 @@
+:root{
+    --input-background: rgb(208, 206, 206);
+
+}
 .validacao-ong-h1{
     font-size: 50px;
     background: var(--gradient);
@@ -29,12 +33,13 @@
 .container-valida-ong{
     z-index: 1;
     width: 500px;
-    height: 750px;
+    height: 550px;
     border-radius: 25px;    
     top: calc((100vh - 520px)/2);
     border: 3px solid #8B1CD3;
     box-shadow: 5px 5px 35px black;
-    background-color: rgb(208, 206, 206);
+    background-color: white;
+    
     
 }
 
@@ -69,12 +74,14 @@
 .container-botao-fechar-dialog{
     font-size: 20px;
     cursor:pointer;
+    background-color: rgb(208, 206, 206);
 }
 
 .input-cnpj{
     width: 100%;
     border-radius: 25px;
     height: 40px;
+    background-color: var(--input-background);
 }
 
 .container-data-telefone{
@@ -85,24 +92,28 @@
 .container-data{
     display: inline;
     border-radius: 20px;
+    background-color: var(--input-background);
    
 }
 
 .container-telefone{
     display: inline;
     border-radius: 20px;
+    background-color: var(--input-background);
 
 }
 
 .input-endereco{
     width: 100%;
     border-radius: 18px;
+    background-color: var(--input-background);
 }
 
 .input-data-fundacao{
     border-radius: 25px;
     height: 40px;
     width: 155px;
+    background-color: var(--input-background);
 }
 
 
@@ -110,11 +121,13 @@
 .input-telefone{
     border-radius: 25px;
     height: 40px;
+    background-color: var(--input-background);
 }
 
 .input-endereco{
     height: 40px;
     border-radius: 25px;
+    background-color: var(--input-background);
 }
 
 .botap-fechar-pop{
@@ -263,27 +276,46 @@
     width: 500px;
     height: 450px;
     border-radius: 25px;    
-    top: calc((100vh - 520px)/2);
+    top: 0; /*calc(100vh - 520px); */
     border: 2px solid #8B1CD3;
     box-shadow: 5px 5px 35px black;
-    background-color: rgb(208, 206, 206);
+    background-color: white;
     position: relative;
     left: 40px;
 }
 
+.container-observacao{
+    height: 100%;
+}
+
+.form-observacao-ong{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100%; padding: 5px;
+}
+
 .botao-fechar-dialog-observacao{
     cursor:pointer;
+    color: var(--gradient);
     font-size: 20px;
+}
+
+.container-observacao-input{
+    width: 97%;
 }
 
 .input-observacao{
     width: 100%;
-    height: 360px;
-    border-radius: 45px;
+    height: 200px;
+    border-radius: 40px;
     border: none;
+    background-color: rgb(208, 206, 206);
+    font-size: 20px;
+    padding: 5px;
+    text-align: left;
+    vertical-align: top; 
 }
-
-
 
 
 .botao-observacao{
@@ -294,8 +326,8 @@
 }
 
 .botao-enviar-observacao{
-    width: 100%;
-    height: 33px;
+    width: 250px;
+    height: 70px;   
     border-radius: 27px;
     border: none;
     color:white;    
@@ -314,7 +346,7 @@
     width: 95%;
     padding-left:6.235px;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 40px;
     background: var(--gradient);
     background-clip: text;
     -webkit-text-fill-color: transparent;
