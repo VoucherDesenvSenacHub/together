@@ -26,7 +26,7 @@
                         <td>
                             <button class="validacao-ong-botao-visualizar">
                                 <span class="material-symbols-outlined">
-                                    <a href="https://google.com"><i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i></a>
+                                    <i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i>
                                 </span>
                             </button>
                         </td>
@@ -38,7 +38,7 @@
                         <td>
                             <button class="validacao-ong-botao-visualizar">
                                 <span class="material-symbols-outlined">
-                                    <a href="https://google.com"><i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i></a>
+                                    <i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i>
                                 </span>
                             </button>
                         </td>
@@ -50,7 +50,7 @@
                         <td>
                             <button class="validacao-ong-botao-visualizar">
                                 <span class="material-symbols-outlined">
-                                    <a href="https://google.com"><i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i></a>
+                                    <i class="fa-regular fa-eye validacao-ong-icone-visualizar"></i>   
                                 </span>
                             </button>
                         </td>
@@ -58,7 +58,7 @@
                 </tbody>
             </table>
             
-            <dialog open="open" class="container-valida-ong">
+            <dialog class="container-valida-ong">
                 <div class="container-formulario">
                     <form class="form-valida-ong" action="">
                         <div class="cabecalho-formulario">
@@ -67,7 +67,7 @@
                                 <h1 class="titulo-nome" >XXXXXXXXXXXX</h1>
                             </div>
                             <div class="container-botao-fechar-dialog">
-                                <button class="botao-fechar-dialog" >X</button> 
+                                <span class="botao-fechar-dialog" >X</span> 
                             </div>
                         </div>                        
                         <div class="conteudo-formulario">
@@ -90,8 +90,7 @@
                             
                             </div>
 
-                        </div>
-                        
+                        </div>                       
 
 
                             <label for="" class="label-endereco">Endereço</label>
@@ -141,7 +140,7 @@
                 </div>
             </dialog>
 
-            <dialog open="open" class="container-observacao-ong">
+            <dialog class="container-observacao-ong">
                 <div class="container-observacao">
                     <form class="form-observacao-ong" action="">
                         <div  class="cabecalho-observacao" >  
@@ -149,15 +148,15 @@
                                 <h4 class="observacao-nome" >Observação</h4>
                             </div>
                             <div class="container-botao-fechar-observacao">
-                            <button>X</button>
+                            <span class="botao-fechar-dialog-observacao">
+                                X
+                            </span>
                             </div>
                             
 
                         </div>
                         <div class="container-observacao">
-
                                 <input type="text" class="input-observacao" placeholder="Digite sua observação:">
-
                             </div>
                         <div class="botao-observacao">
                             <button class="botao-enviar-observacao" type="submit" >Enviar</button>
@@ -171,7 +170,9 @@
 
         
     </main>
+    <?php require_once './../../components/footer.php'?>
 
     
         
 </body>
+

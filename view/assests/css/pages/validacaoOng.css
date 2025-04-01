@@ -10,6 +10,7 @@
 .validacao-ong-botao-visualizar{
     background: none;
     border: none;
+    cursor:pointer;
 }
 .fa-regular.fa-eye.validacao-ong-icone-visualizar{
     color: black;
@@ -31,7 +32,7 @@
     height: 750px;
     border-radius: 25px;    
     top: calc((100vh - 520px)/2);
-    border: 2px solid #8B1CD3;
+    border: 3px solid #8B1CD3;
     box-shadow: 5px 5px 35px black;
     background-color: rgb(208, 206, 206);
     
@@ -66,7 +67,8 @@
 
 
 .container-botao-fechar-dialog{
-    font-size: 20px
+    font-size: 20px;
+    cursor:pointer;
 }
 
 .input-cnpj{
@@ -269,6 +271,10 @@
     left: 40px;
 }
 
+.botao-fechar-dialog-observacao{
+    cursor:pointer;
+    font-size: 20px;
+}
 
 .input-observacao{
     width: 100%;
