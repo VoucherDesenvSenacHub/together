@@ -58,9 +58,9 @@
                     <div class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="POST">
                         <div class="div-fechar-validacao-atualizacao">
                             <h2 class="h2-validacao-atualizacao">Observação</h2>
-                            <i class="fechar-validacao-atualizacao" id="validacao-atualizacao-botao-fechar">
+                            <button class="fechar-validacao-atualizacao" id="validacao-atualizacao-botao-fechar">
                                 <img class="icon-fechar-validacao-atualizacao" src="../../../view/assests/images/adm/fechar.png" alt="">
-                            </i>
+                            </button>
                         </div>
                         <textarea class="textarea-validacao-atualizacao" name="observacao-validacao-atualizacao" placeholder="Digite sua observação!" required rows="10" cols="30 ">
                         </textarea>
