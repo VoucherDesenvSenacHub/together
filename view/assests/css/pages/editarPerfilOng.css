@@ -1,0 +1,27 @@
+.container-titulo,
+.container-subtitulo,
+.container-descricao {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+.titulo-label,
+.container-subtitulo label,
+.container-descricao label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.entrada-titulo,
+.entrada-subtitulo,
+.entrada-descricao {
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
