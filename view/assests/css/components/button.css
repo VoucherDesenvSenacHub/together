@@ -38,3 +38,11 @@
     outline: none;
     box-shadow: var(--botao-box-shadow);
   }
+
+  @media screen and (max-width: 395px){
+    .botao {
+      font-size: 10px;
+      width: 70px;
+      height: 44px;
+    }
+};
