@@ -6,7 +6,6 @@
 @import url(components/dialog.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
-@import url(pages/criarPostagemOng.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
 @import url(pages/telaLoginAdm.css);
@@ -27,12 +26,15 @@
 @import url(pages/validacaoAtualizacao.css);
 @import url(pages/editarPerfilOng.css);
 @import url(components/upload.css);
+@import url(components/input.css);
+@import url(pages/postagemGeral.css);
 
 :root {
     font-size: 16px;
     font-family: "Roboto", sans-serif;
     --cor-font-preto: #000000;
     --cor-font-branco: #FFFFFF;
+    --cor-branco: #FFFFFF;
     --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
     --cor-roxo-claro: #b56ad0d2;
     --cor-roxo-escuro: #7608a5;
