@@ -21,6 +21,7 @@
 @import url(components/main.css);
 @import url(components/footer.css);
 @import url(pages/emDesenvolvimento.css);
+@import url(pages/usuarioGerenciarConta.css);
 
 :root {
     font-size: 16px;
