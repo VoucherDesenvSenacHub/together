@@ -10,7 +10,7 @@
             <form action="">
                 <div class="formulario-linha-superior">
                     <div class="formulario-imagem-preview">
-                        <?php require_once "./../../components/"?>
+                        <?php require_once "./../../components/upload.php"?>
                     </div>
                     <div class="formulario-campos">
                         <label class="formulario-label" for="titulo">Título</label>
@@ -48,20 +48,6 @@
             </form>
         </div>
     </main>
-    <div class="container-titulo">
-        <label class="titulo-label" for="">Titulo</label> 
-        <input class="entrada-titulo" type="text" placeholder=""> 
-    </div>
-
-    <div class="container-subtitulo" >
-        <label for="">Subtitulo</label>
-        <input  class="entrada-subtitulo" type="text" placeholder="">
-    </div>
-
-    <div class="container-descricao" >
-        <label for="">Descrição</label>
-        <input  class="entrada-descricao" type="text" placeholder="">
-    </div>
-
+    
 
 </body>
