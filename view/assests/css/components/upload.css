@@ -38,3 +38,23 @@
   .custum-file-upload input {
     display: none;
   }
+
+  @media (max-width: 600px) {
+    .custum-file-upload {
+      width: 50%;
+      /* max-width: 100px; */
+      height: auto;
+      padding: 1rem;
+      gap: 10px;
+    }
+  
+    .custum-file-upload .icon svg {
+      height: 60px;
+    }
+  
+    .custum-file-upload .text span {
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  
