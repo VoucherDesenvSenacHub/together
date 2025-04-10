@@ -24,7 +24,7 @@
 @import url(pages/visualizarPerfis.css);
 @import url(pages/emDesenvolvimento.css);
 @import url(pages/validacaoAtualizacao.css);
-
+@import url(pages/relatorioOng.css);
 :root {
     font-size: 16px;
     font-family: "Roboto", sans-serif;
@@ -46,4 +46,9 @@
     --cor-title-card: rgba(55, 65, 81, 1);
     --cor-container-painel: #F6F6F6;
     --cor-form: #f0f0f0; 
+
+
+    --nova-cor-murilo: #7152f3;
+    --card-relatorio: #111E5F;
+    --card-neon-green-text: #82ffb7;
 }
