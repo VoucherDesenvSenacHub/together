@@ -1,12 +1,12 @@
-.form-label {
+.formulario-label {
     display: block;
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: bold;
 }
 
-.form-input,
-.form-textarea {
+.formulario-input,
+.formulario-textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;

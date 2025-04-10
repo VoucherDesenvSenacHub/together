@@ -6,7 +6,6 @@
 @import url(components/dialog.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
-@import url(pages/postagemOngGeral.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
 @import url(pages/telaLoginAdm.css);
@@ -28,6 +27,7 @@
 @import url(pages/editarPerfilOng.css);
 @import url(components/upload.css);
 @import url(components/input.css);
+@import url(pages/postagemGeral.css);
 
 :root {
     font-size: 16px;
