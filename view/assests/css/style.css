@@ -25,6 +25,8 @@
 @import url(pages/emDesenvolvimento.css);
 @import url(pages/visaoSobreaOng.css);
 @import url(pages/validacaoAtualizacao.css);
+@import url(pages/editarPerfilOng.css);
+@import url(components/upload.css);
 
 :root {
     font-size: 16px;
