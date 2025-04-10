@@ -1,3 +1,10 @@
+<?php
+$usuario = [
+    "id"
+]
+
+?>
+
 <?php require_once "../../../view/components/head.php"?>
   <body>
   <?php require_once './../../components/navbar.php' ?>
@@ -38,16 +45,37 @@
         
         <div class="dados_usuario">
           <img
-          class="foto_usuario"
-          src="/together/view/assests/images/Usuario/usuario-user-foto.png"
-          alt="foto Usuario"
+            class="foto_usuario"
+            src="/together/view/assests/images/Usuario/usuario-user-foto.png"
+            alt="foto Usuario"
           />
+          
+          <h4>Sua localização</h4>
+          
           <div class="dados">
-            <h4>Sua localização</h4>
-            <h3><strong>Nome do Usuario</strong></h3>
-            <h3><strong>Telefone do Usuario</strong></h3>
-            <h3><strong>Email do Usuario</strong></h3>
-            <h3><strong>Cpf do Usuario</strong></h3>
+            <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
+
+            <div class="input-group">
+              <label for="nome">Nome do Usuário</label>
+              <input type="text" id="nome" name="nome" placeholder="Digite seu nome" value="">
+            </div>
+            
+            <div class="input-group">
+              <label for="tel">Telefone</label>
+              <input type="tel" id="tel" name="tel" placeholder="Digite seu telefone">
+            </div>
+            
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Digite seu email">
+            </div>
+            
+            <div class="input-group">
+              <label for="cpf">CPF</label>
+              <input type="text" id="cpf" name="cpf" 
+                    pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
+                    placeholder="Digite seu CPF">
+            </div>
           </div>
         </div>
       </div>
