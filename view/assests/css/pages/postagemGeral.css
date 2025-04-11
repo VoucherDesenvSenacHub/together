@@ -13,6 +13,10 @@
     }
 }
 
+.postagem-geral-a {
+    text-decoration: none;
+}
+
 .postagem-geral-btn-group {
     display: flex;
     flex-flow: row nowrap;
