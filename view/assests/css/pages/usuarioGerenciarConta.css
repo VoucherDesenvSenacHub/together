@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
+:root {
+  --cor-fundo: #ffffff;
+  --cor-texto: #8b1cd3;
+  --cor-fundo-card: #8b1cd3;
+  --cor-roxa-degrade: linear-gradient(45deg, #3e00a3, #da70ff);
+  --cor-texto-input: #b6b6b6;
+  --cor-texto-padrao: #000000;
+  font-size: 16px;
+}
+
+.Reset {
+    margin: 0px;
+    padding: 0px;
+    height: 0px;
+}
+
+.main{
+    position: relative;
+    margin: 32px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.main > * {
+    margin: auto;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.gerenciar-conta {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  display: flex;
+  margin-top: -2%;
+}
+
+.imagem {
+  width: 95px;
+  height: 98px;
+  border-radius: 300px;
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
+.button-perfil {
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  color: var(--cor-fundo);
+  border-radius: 300px;
+  border-color: none;
+  border: 1px solid;
+  width: 475px;
+  height: 100px;
+  font-size: 16px;
+}
+p {
+  position: absolute;
+  left: 25%;
+  top: 40%;
+}
+
+.button-perfil:hover {
+  cursor: pointer;
+}
+
+.material-symbols-outlined {
+  position: absolute;
+  left: 90%;
+  top: 35%;
+}
+
+.leftSide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.conjunto_botoes {
+  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  color: var(--cor-fundo);
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: none;
+  position: relative;
+  margin: 10px;
+  font-size: 16px;
+  .material-symbols-outlined {
+    font-size: 25px;
+    position: absolute;
+    left: 90%;
+    top: 30%;
+  }
+}
+
+.format_p {
+  position: absolute;
+  left: 15%;
+  top: 30%;
+  font-size: 17px;
+}
+
+#icone_2 {
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  font-size: 30px;
+}
+
+.conjunto_botoes:hover {
+  cursor: pointer;
+}
+
+hr {
+  border-left: solid 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  height: 560px;
+  position: relative;
+}
+
+.foto_usuario {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.dados_usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.dados_usuario h4 {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: var(--cor-texto-padrao);
+}
+
+.dados {
+  width: 320px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: var(--cor-texto-padrao);
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #4a90e2; /* Or your preferred focus color */
+  box-shadow: 0 0 0 2px rgba(74,144,226,0.2); /* Optional focus effect */
+}
+/* @media (max-width: 790px) {
+  html {
+    position: absolute;
+  }
+  .Reset {
+    flex-direction: column;
+    display: block;
+    margin-left: 4.5%;
+  }
+  body {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+  hr {
+    display: none;
+  }
+  .dados {
+    display: none;
+  }
+  .dados_usuario {
+    position: relative;
+    left: 75%;
+  }
+  .gerenciar-conta {
+    position: relative;
+    left: 46%;
+    top: 390px;
+  }
+  .imagem {
+    width: 90px;
+    height: 95px;
+  }
+  .button-perfil {
+    width: 375px;
+    height: 97px;
+  }
+  .material-symbols-outlined {
+    position: relative;
+    left: 85%;
+    top: 35%;
+  }
+  .conjunto_botoes {
+    position: relative;
+    left: 40%;
+    top: 450px;
+    width: 370px;
+  }
+}
+@media (max-width: 480px) {
+  html {
+    position: absolute;
+  }
+  .Reset {
+    flex-direction: column;
+    display: block;
+    margin-left: 4.5%;
+  }
+  body {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px;
+  }
+  hr {
+    display: none;
+  }
+  .dados {
+    display: none;
+  }
+  .dados_usuario {
+    position: relative;
+    left: 50%;
+    translate: (-50%);
+  }
+  .gerenciar-conta {
+    position: relative;
+    left: 23%;
+    top: 390px;
+  }
+  .imagem {
+    width: 80px;
+    height: 83px;
+  }
+  .button-perfil {
+    width: 375px;
+    height: 82px;
+  }
+  .material-symbols-outlined {
+    position: relative;
+    left: 85%;
+    top: 35%;
+  }
+  .conjunto_botoes {
+    position: relative;
+    left: 15%;
+    translate: (-15%);
+    top: 450px;
+    width: 370px;
+  }
+} */

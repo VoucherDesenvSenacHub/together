@@ -29,6 +29,7 @@
 @import url(components/input.css);
 @import url(pages/postagemGeral.css);
 @import url(components/formContainer.css);
+@import url(pages/usuarioGerenciarConta.css);
 
 :root {
     font-size: 16px;
