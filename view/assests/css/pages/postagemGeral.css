@@ -1,0 +1,21 @@
+.postagem-geral-div-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.postagem-geral-div-excluir {
+    display: flex;
+    align-items: center;
+
+    .postagem-geral-excluir {
+        width: 30px;
+    }
+}
+
+.postagem-geral-btn-group {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: end;
+    gap: 20px;
+} 
