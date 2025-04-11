@@ -13,11 +13,11 @@
                         <div class="relatorio-ong-statistic-cards-div">
                             <div class="relatorio-ong-card-clicks-1">
                                 <div title="+1,0 mil Clicks" class="relatorio-ong-card-text-value">
-                                    <h3>Clicks para Doação</h3>
-                                    <h2>2,2 mil</h2>
+                                    <h3 class="h3-relatorio-ong">Clicks para Doação</h3>
+                                    <h2 class="h2-relatorio-ong">2,2 mil</h2>
                                     <div class="relatorio-ong-statistic-green-text">
                                         <i class="fa-solid fa-arrow-up"></i>
-                                        <p>1,0 mil em Junho</p>
+                                        <p class="p-relatorio-ong">1,0 mil em Junho</p>
                                     </div>
                                 </div>
                                 <div class="relatorio-ong-card-icon-div">
@@ -26,11 +26,11 @@
                             </div>
                             <div class="relatorio-ong-card-acess-2">
                                 <div title="+1,0 mil Acessos" class="relatorio-ong-card-text-value">
-                                    <h3>Acessos na Página</h3>
-                                    <h2>1,6 mil</h2>
+                                    <h3 class="h3-relatorio-ong">Acessos na Página</h3>
+                                    <h2 class="h2-relatorio-ong">1,6 mil</h2>
                                     <div class="relatorio-ong-statistic-green-text">
                                         <i class="fa-solid fa-arrow-up"></i>
-                                        <p>1,0 mil em Junho</p>
+                                        <p class="p-relatorio-ong">1,0 mil em Junho</p>
                                     </div>
                                 </div>
                                 <div class="relatorio-ong-card-icon-div">
@@ -39,11 +39,11 @@
                             </div>
                             <div class="relatorio-ong-card-volunters-3">
                                 <div title="+100 Voluntários" class="relatorio-ong-card-text-value">
-                                    <h3>Adesão de Voluntários</h3>
-                                    <h2>215,0</h2>
+                                    <h3 class="h3-relatorio-ong">Adesão de Voluntários</h3>
+                                    <h2 class="h2-relatorio-ong">215,0</h2>
                                     <div class="relatorio-ong-statistic-green-text">
                                         <i class="fa-solid fa-arrow-up"></i>
-                                        <p>100 em Junho</p>
+                                        <p class="p-relatorio-ong">100 em Junho</p>
                                     </div>
                                 </div>
                                 <div class="relatorio-ong-card-icon-div">
