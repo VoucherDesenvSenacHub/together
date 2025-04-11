@@ -1,3 +1,4 @@
+<?php require_once "../../components/button.php" ?>
 <?php require_once "../../../view/components/head.php"; ?>
 
 <body>
@@ -9,9 +10,7 @@
         <div class="formulario-perfil">
             <form action="">
                 <div class="formulario-linha-superior">
-                    <div class="formulario-imagem-preview">
-                        <?php require_once "./../../components/upload.php"?>
-                    </div>
+                    <?php require_once "./../../components/upload.php"?>
                     <div class="formulario-campos">
                         <label class="formulario-label" for="titulo">Título</label>
                         <input class="formulario-input" type="text" id="titulo" />
@@ -41,8 +40,8 @@
                     </div>
 
                     <div class="formulario-buttons">
-                        <button class="botao salvar" type="submit">Salvar</button>
-                        <button class="botao cancelar" type="reset">Cancelar</button>
+                        <?= botao('primary', 'Salvar') ?>
+                        <?= botao('secondary', 'Cancelar') ?>
                     </div>
                 </div>
             </form>

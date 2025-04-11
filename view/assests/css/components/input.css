@@ -14,3 +14,16 @@
     border-radius: 4px;
     resize: none;
 }
+
+@media (max-width: 600px) {
+    .formulario-label {
+      font-size: 13px;
+    }
+  
+    .formulario-input,
+    .formulario-textarea {
+      padding: 6px;
+      font-size: 14px;
+    }
+  }
+  

@@ -45,7 +45,10 @@
     --cor-amarelo: #ffd94d;
     --cor-cinza-claro: #D9D9D9;
     --cor-cinza-escuro: #00000087;
-    --cor-botao: #7152f3;
+    --cor-botao-primary: #7152f3;
+    --cor-borda-botao-primary:#ffffff;
+    --cor-botao-secondary: #ffffff;
+    --cor-borda-botao-secondary:#7152f3;
     --cor-botao-hover: #5f3ee0;
     --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
     0px 2px 4px -2px rgba(59, 130, 246, 0.2);
