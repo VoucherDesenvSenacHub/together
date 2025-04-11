@@ -10,6 +10,7 @@ $usuario = [
 ?>
 
 <?php require_once "../../../view/components/head.php"?>
+<?php require_once "../../../view/components/button.php"?>
   <body>
   <?php require_once './../../components/navbar.php' ?>
     <section class="Reset">
@@ -80,6 +81,8 @@ $usuario = [
                     pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
                     value="<?=$usuario['cpf']?>" disabled>
             </div>
+            <?= botao('primary', 'Editar') ?>
+            
           </div>
         </div>
       </div>
