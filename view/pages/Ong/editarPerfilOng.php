@@ -9,9 +9,7 @@
         <div class="formulario-perfil">
             <form action="">
                 <div class="formulario-linha-superior">
-                    <div class="formulario-imagem-preview">
-                        <?php require_once "./../../components/upload.php"?>
-                    </div>
+                    <?php require_once "./../../components/upload.php"?>
                     <div class="formulario-campos">
                         <label class="formulario-label" for="titulo">Título</label>
                         <input class="formulario-input" type="text" id="titulo" />

@@ -13,7 +13,7 @@
 }
 
 .formulario-campos {
-  flex: 1;
+  width: 100%;
 }
 
 .formulario-redes-sociais {
@@ -53,7 +53,16 @@
   padding-top: 20px;
 }
 
-@media (max-width: 768px) {
+.formulario-buttons {
+  display: flex;
+}
+
+.formulario-buttons .botao {
+  width: 100%;
+  margin: 0 10px;
+}
+
+@media (max-width: 576px) {
   .formulario-perfil {
     padding: 40px 20px;
   }
@@ -63,7 +72,7 @@
   }
 
   .formulario-imagem-preview {
-    width: 95%;
+    /* width: 95%; */
     height: auto;
     display: flex;
     justify-content: center;
@@ -82,9 +91,7 @@
   }
 
   .formulario-buttons {
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
+    display: flex;
   }
 
   .formulario-buttons .botao {
@@ -110,7 +117,4 @@
   }
 }
 
-.formulario-input,
-  .formulario-textarea {
-    width: 90%;
-  }
+  
