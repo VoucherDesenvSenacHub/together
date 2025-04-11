@@ -133,3 +133,53 @@
         color: var(--card-relatorio);
     }
 }
+
+@media screen and (max-width: 1194px) and (min-height: 834px) {
+    .h1-relatorio-ong{
+        text-align: center;
+    }
+    .relatorio-ong-title-div {
+        width: 60%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+    }
+    .relatorio-ong-area-limiter {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .relatorio-ong-card-clicks-1,
+    .relatorio-ong-card-acess-2,
+    .relatorio-ong-card-volunters-3 {
+        width: 225px;
+        height: 100px;
+    }
+    .relatorio-ong-card-icon-div{
+        display: none;
+    }
+    .relatorio-ong-box{
+        width: 800px;
+        height: 650px;
+        background-color: aqua;
+    }
+    .relatorio-ong-statistic-cards-div{
+        display: flex;
+        justify-content:space-around ;
+        flex-direction: row;
+    }
+    .relatorio-ong-ong-options-4 {
+        width: 550px;
+        height: 35px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+    .relatorio-ong-graphic-div {
+        width: 700px;
+        height: 340px;
+        text-align: center;
+    }
+  }
