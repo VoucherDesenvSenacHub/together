@@ -1,3 +1,4 @@
+<?php require_once "../../components/button.php" ?>
 <?php require_once "../../../view/components/head.php"; ?>
 
 <body>
@@ -39,8 +40,8 @@
                     </div>
 
                     <div class="formulario-buttons">
-                        <button class="botao salvar" type="submit">Salvar</button>
-                        <button class="botao cancelar" type="reset">Cancelar</button>
+                        <?= botao('primary', 'Salvar') ?>
+                        <?= botao('secondary', 'Cancelar') ?>
                     </div>
                 </div>
             </form>
