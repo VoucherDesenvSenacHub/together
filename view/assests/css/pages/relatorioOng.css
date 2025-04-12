@@ -134,7 +134,7 @@
     }
 }
 
-@media screen and (max-width: 1194px) and (min-height: 834px) {
+@media screen and (min-width: 1194px) and (max-height: 834px) {
     .relatorio-ong-box{
         width: 800px;
         height: 650px;
@@ -213,21 +213,22 @@
     }
     .relatorio-ong-statistic-cards-div{
         display: flex;
-        justify-content:space-around ;
-        flex-direction: column;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: inherit;
     }  
     .relatorio-ong-card-clicks-1,
     .relatorio-ong-card-acess-2,
     .relatorio-ong-card-volunters-3 {
-        width: 170px;
-        height: 90px;
+        width: 115px;
+        height: 60px;
     }
-    /* .h1-relatorio-ong,
-    .h2-relatorio-ong,
-    .p-relatorio-ong{
-        font-size: 15px;
-    } */
     .relatorio-ong-card-text-value{
         font-size: 10px;
+
+        .h2-relatorio-ong{
+            font-size: 10px;
+        }
     }
 }
