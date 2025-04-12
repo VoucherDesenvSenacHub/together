@@ -8,28 +8,31 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="formulario-perfil">
-            <form action="">
-                <div class="formulario-linha-superior">
+            <form action="" method="POST">
+                <div class="postagem-geral-form-linha-superior">
                     <?php require_once "./../../components/upload.php" ?>
-                    <div class="formulario-campos">
+                    <div class="postagem-geral-input-text">
                         <label class="formulario-label" for="titulo">Título</label>
-                        <input class="formulario-input" type="text" id="titulo" />
+                        <input class="formulario-input" type="text" id="titulo" name="titulo" />
 
                         <label class="formulario-label" for="link">Link</label>
-                        <input class="formulario-input" id="link"></input>
+                        <input class="formulario-input" id="link" name="link" ></input>
                     </div>
                 </div>
-
-                <label class="formulario-label" for="descricao">Descrição</label>
-                <textarea class="formulario-textarea" id="descricao" rows="4"></textarea>
-
-                <div class="postagem-geral-div-group">
-                    <div class="postagem-geral-div-excluir">
-                        <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir" class="postagem-geral-excluir">
+                <div class="postagem-geral-linha-inferior">
+                    <div class="postagem-geral-input-text">
+                        <label class="formulario-label" for="descricao">Descrição</label>
+                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao" ></textarea>
                     </div>
-                    <div class="postagem-geral-btn-group">
-                        <?= botao('primary', 'Salvar') ?>
-                        <?= botao('secondary', 'Cancelar') ?>
+                </div>
+                <div class="postagem-geral-btn-group">
+                    <button class="postagem-geral-div-excluir" formaction="ongAdmin.php?editar=excluir">
+                        <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir"
+                            class="postagem-geral-excluir">
+                    </button>
+                    <div class="postagem-geral-div-btn">
+                        <?= botao('primary', 'Salvar', 'ongAdmin.php?editar=salvar') ?>
+                        <?= botao('secondary', 'Cancelar', 'ongAdmin.php?editar=cancelar') ?>
                     </div>
                 </div>
             </form>

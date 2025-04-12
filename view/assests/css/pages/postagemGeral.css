@@ -4,9 +4,30 @@
     justify-content: space-between;
 }
 
+.postagem-geral-form-linha-superior {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    margin: 0 0 20px 0;
+    align-items: center;
+}
+
+.postagem-geral-input-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .postagem-geral-div-excluir {
     display: flex;
+    justify-content: center;
     align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 4px;
+    background-color: var(--cor-vermelho);
+    box-shadow: var(--botao-box-shadow);
+    border: none;
 
     .postagem-geral-excluir {
         width: 30px;
@@ -20,6 +41,12 @@
 .postagem-geral-btn-group {
     display: flex;
     flex-flow: row nowrap;
+    justify-content: space-between;
+} 
+
+.postagem-geral-div-btn {
+    display: flex;
+    flex-direction: row;
     justify-content: end;
     gap: 20px;
-} 
+}

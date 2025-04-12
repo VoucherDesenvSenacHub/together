@@ -8,28 +8,30 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="formulario-perfil">
-            <form action="">
-                <div class="formulario-linha-superior">
+            <form action="" method="POST">
+                <div class="postagem-geral-form-linha-superior">
                     <?php require_once "./../../components/upload.php" ?>
-                    <div class="formulario-campos">
+                    <div class="postagem-geral-input-text">
                         <label class="formulario-label" for="titulo">Título</label>
-                        <input class="formulario-input" type="text" id="titulo" required/>
+                        <input class="formulario-input" type="text" id="titulo" name="titulo"/>
 
                         <label class="formulario-label" for="link">Link</label>
-                        <input class="formulario-input" id="link" required>
+                        <input class="formulario-input" id="link" name="link">
                     </div>
                 </div>
-
-                <label class="formulario-label" for="descricao">Descrição</label>
-                <textarea class="formulario-textarea" id="descricao" rows="4"></textarea>
-
-                <div class="postagem-geral-btn-group">
-                    <?= botao('primary', 'Salvar') ?>
-                    <?= botao('secondary', 'Cancelar') ?>
+                <div class="postagem-geral-linha-inferior">
+                    <div class="postagem-geral-input-text">
+                        <label class="formulario-label" for="descricao">Descrição</label>
+                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao"></textarea>
+                    </div>
+                </div>
+                <div class="postagem-geral-div-btn">
+                    <?= botao('primary', 'Salvar', 'ongAdmin.php?criar=salvar') ?>
+                    <?= botao('secondary', 'Cancelar', 'ongAdmin.php?criar=cancelar') ?>
                 </div>
             </form>
         </div>
-    </main>
 
+    </main>
 
 </body>
