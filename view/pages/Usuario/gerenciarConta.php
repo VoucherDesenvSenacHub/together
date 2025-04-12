@@ -81,7 +81,12 @@ $usuario = [
                     pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
                     value="<?=$usuario['cpf']?>" disabled>
             </div>
-            <?= botao('primary', 'Editar') ?>
+
+            <div class="botoes">
+              <div id="btn-editar-container">
+                  <?= botao('primary', 'Editar') ?>
+              </div>
+            </div>
             
           </div>
         </div>
@@ -91,11 +96,9 @@ $usuario = [
   <script>
 function formatarCPF(campo) {
     let value = campo.value.replace(/\D/g, '');
-    
     if (value.length > 11) {
         value = value.substring(0, 11);
     }
-    
     campo.value = value.replace(/(\d{3})(\d)/, '$1.$2')
                       .replace(/(\d{3})(\d)/, '$1.$2')
                       .replace(/(\d{3})(\d)/, '$1-$2');
@@ -108,5 +111,6 @@ function formatarCPF(campo) {
     formatarCPF(campoCPF);
     campoCPF.addEventListener('input', () => formatarCPF(campoCPF));
 })();
+
   </script>
 </html>

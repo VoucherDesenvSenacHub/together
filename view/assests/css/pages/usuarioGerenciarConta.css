@@ -1,16 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
-:root {
-  --cor-fundo: #ffffff;
-  --cor-texto: #8b1cd3;
-  --cor-fundo-card: #8b1cd3;
-  --cor-roxa-degrade: linear-gradient(45deg, #3e00a3, #da70ff);
-  --cor-texto-input: #b6b6b6;
-  --cor-texto-padrao: #000000;
-  font-size: 16px;
-}
-
 .Reset {
     margin: 0px;
     padding: 0px;
@@ -44,15 +34,15 @@ body {
   width: 95px;
   height: 98px;
   border-radius: 300px;
-  background: linear-gradient(45deg, #3e00a3, #da70ff);
+  background: var(--gradient);
   position: absolute;
   left: 0%;
   top: 0%;
 }
 
 .button-perfil {
-  background: linear-gradient(45deg, #3e00a3, #da70ff);
-  color: var(--cor-fundo);
+  background: var(--gradient);
+  color: var(--cor-form);
   border-radius: 300px;
   border-color: none;
   border: 1px solid;
@@ -83,8 +73,8 @@ p {
 }
 
 .conjunto_botoes {
-  background: linear-gradient(45deg, #3e00a3, #da70ff);
-  color: var(--cor-fundo);
+  background: var(--gradient);
+  color: var(--cor-form);
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -95,11 +85,17 @@ p {
   position: relative;
   margin: 10px;
   font-size: 16px;
+  transition: ease 0.2s all;
+
   .material-symbols-outlined {
     font-size: 25px;
     position: absolute;
     left: 90%;
     top: 30%;
+  }
+
+  &:hover {
+    scale: 1.02;
   }
 }
 
@@ -122,7 +118,7 @@ p {
 }
 
 hr {
-  border-left: solid 3px rgba(0, 0, 0, 0.3);
+  border-left: solid 3px var(--painel-box-shadow);
   border-radius: 5px;
   height: 560px;
   position: relative;
@@ -136,7 +132,7 @@ hr {
   display: block;
   margin: 0 auto 15px;
   border: 3px solid #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px var(--painel-box-shadow);
 }
 
 .dados_usuario {
@@ -173,15 +169,14 @@ hr {
 .input-group input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--cor-cinza-claro);
   border-radius: 5px;
   font-size: 14px;
 }
 
-.input-group input:focus {
-  outline: none;
-  border-color: #4a90e2; /* Or your preferred focus color */
-  box-shadow: 0 0 0 2px rgba(74,144,226,0.2); /* Optional focus effect */
+.botoes {
+  display: flex;
+  justify-content: space-between;
 }
 /* @media (max-width: 790px) {
   html {
