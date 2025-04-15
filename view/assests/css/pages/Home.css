@@ -1,14 +1,15 @@
-.home-banner-together {
+/* .home-banner-together {
     width: 100%;
-    background-image: url("/together/view/assests/images/Geral/together-banner-better.png");
+    background-image: url("/together/view/assests/images/Geral/together-banner_home.png");
     height: 495px;
-    /* background-color: purple; */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1539px 493px;
+    background-size: 1400px 400px;
+
+    background-color: red;
     
-    /* background-attachment: fixed; */
-}
+
+} */
 
 .home-title-favorite {
     font-size: 44px;

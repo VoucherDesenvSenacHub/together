@@ -1,10 +1,15 @@
 /* Box/Containers */
 .ong-admin-container {
-    width: 100%;
+    width: 70%;
     height: 83dvh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--cor-container-painel);
+    margin: 0 auto;
+    margin-top: 30px;
+    box-shadow: inset 0px 4px 10px var(--painel-box-shadow);
+    border-radius: 30px;
 }
 
 .ong-admin-box {

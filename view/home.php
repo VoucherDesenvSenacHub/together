@@ -14,19 +14,24 @@
                 <?php for ($i = 0; $i < 5; $i++) { ?>
                     <article class="card-container">
                         <div class="card-wrapper">
-                            <img src="./assests/images/ong/ong_background-better.png" class="card-image"
-                                alt="Card featured image" />
-                            <h2 class="card-title">Tailwind card</h2>
-                            <p class="card-description">
-                                Lorem ipsum dolor sit amet,
-                                <br />
-                                consectetur adipiscing elit. Nunc felis
-                                <br />
-                                ligula.
-                            </p>
-                            <button class="read-more-button">
-                                <p class="home-button-text">Descobrir</p>
-                            </button>
+                            <div class="card-wrapper-top">
+                                <img src="./assests/images/ong/ong_background-better.png" class="card-image" alt="Card featured image" />
+
+                            </div>
+                            <div class="card-wrapper-botton">
+                                <h2 class="card-title">Tailwind card</h2>
+                                
+                                <p class="card-description">
+                                    Lorem ipsum dolor sit amet,
+                                    <br />
+                                    consectetur adipiscing elit. Nunc felis
+                                    <br />
+                                    ligula.
+                                </p>
+                                <button class="read-more-button">
+                                    <p class="home-button-text">Descobrir</p>
+                                </button>
+                            </div>
                         </div>
                     </article>
                 <?php }

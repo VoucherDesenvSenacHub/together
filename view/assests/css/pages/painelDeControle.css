@@ -2,13 +2,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 75%;
     height: 83vh;
+    background-color: var(--cor-container-painel);
+    margin: 0 auto;
+    margin-top: 30px;
+    box-shadow: inset 0px 4px 10px var(--painel-box-shadow);
+    border-radius: 30px;
 }
 
 .painel-de-controle-icone-conteudo {
     padding: 20px;
-    width: 80px;
+    width: 65px;
 }
 
 .box-painel-de-controle-adm {
@@ -47,17 +52,16 @@
 }
 
 .painel-de-controle-titulo-conteudo {
-    font-family: "Roboto", serif; 
     font-size: 18px;
     font-weight: bold;
     margin-top: 25px;
     margin-bottom: 15px;
+    color: var(--cor-roxo-escuro);
 }
 
 .painel-de-controle-desc-conteudo {
-    font-family: "Roboto", serif;   
     font-size: 11px;
-    color: black;
+    color: var(--cor-font-preto);
     opacity: 50%;
 }
 

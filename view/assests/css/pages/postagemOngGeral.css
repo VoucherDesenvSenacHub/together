@@ -1,0 +1,124 @@
+.postagem-ong-geral-form {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    grid-template-rows: 1fr 50px;
+    gap: 20px;   
+    padding: 10px 0 0 0;
+}
+
+.postagem-ong-geral-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.postagem-ong-geral-btn-div {
+    display: flex;
+    gap: 30px;
+    justify-content: start;
+    flex-direction: row;
+}
+
+
+.postagem-ong-geral-titulo-postagem {
+    font-weight: bold;
+}
+
+.postagem-ong-geral-paragrafo-postagem {
+    color: var(--cor-font-preto);
+    font-size: 14px;
+    z-index: 1;
+}
+
+.postagem-ong-geral-tag-obrigatorio {
+    color: var(--cor-vermelho);
+}
+
+.postagem-ong-geral-input-postagem {
+    width: calc(100% - 20px);
+    height: 55px;
+    border-radius: 5px;
+    border: none;
+    background-color: var(--cor-branco);
+    border: 1px solid black;
+    padding: 0 10px 0 10px;
+}   
+
+.postagem-ong-geral-textarea-postagem {
+    resize: none;
+    width: calc(100% - 20px);
+    /* height: 55px; */
+    border-radius: 5px;
+    border: none;
+    background-color: var(--cor-branco);
+    border: 1px solid black;
+    padding: 10px 10px 10px 10px;
+}   
+
+.postagem-ong-geral-input-file {
+    display: none;
+}
+
+.postagem-ong-geral-label-img {
+    display: flex;
+    align-items: end;
+    width: 350px;
+    height: 250px;
+    border-radius: 5px;
+    background-color: var(--cor-branco);
+    border: 1px solid black;
+    text-align: center;
+    display: block;
+    position: relative;
+    cursor: pointer;
+
+    .postagem-ong-geral-label-icon {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    #postagem-ong-geral-num-de-arquivos {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding: 5px 0 0 0;
+        font-size: 0.9rem;
+        color: var(--cor-cinza-escuro);
+    }
+}
+
+#postagem-ong-geral-images {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 20px;
+}
+
+.postagem-ong-geral-img-postagem {
+    width: 212px;
+    height: 125px;
+    border-radius: 5px;
+}
+
+.postagem-ong-geral-figcaption-postagem {
+    text-align: center;
+    height: 25px;
+}
+
+.postagem-ong-geral-div-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: end;
+}
+
+.postagem-ong-geral-titulo-group {
+    display: flex;
+    justify-content: space-between;
+
+}
