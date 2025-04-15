@@ -1,3 +1,15 @@
+CREATE TABLE enderecos(
+    cep varchar(10), 
+    logradouro varchar(255),
+    numero int,
+    complemento text,
+    bairro varchar(255),
+    id_cidade int,
+    id_uf int,
+    foreign key(id_cidade) references cidades(id),
+    foreign key(id_uf) references cidades(id_uf)
+);
+
 CREATE TABLE ongs(
 	id int not null auto_increment primary key,
     razao_social varchar(60) not null,
@@ -5,20 +17,13 @@ CREATE TABLE ongs(
     email varchar(50),
     dt_fundacao date not null,
     conselho_fiscal text,
-    cep varchar(10), 
-    logradouro varchar(255),
-    numero int,
-    complemento text,
-    bairro varchar(255),
     foto_de_perfil text,
     status_validacao bool,
     ativo bool,
-    id_cidade int,
-    id_uf int,
     id_categoria int,
-    foreign key(id_cidade) references cidades(id),
-    foreign key(id_uf) references cidades(id_uf),
-    foreign key(id_categoria) references categorias_ongs(id)
+    id_endereco int,
+    foreign key(id_categoria) references categorias_ongs(id),
+    foreign key(id_endereco) references enderecos(id)
 );
 
 CREATE TABLE usuarios (
@@ -31,10 +36,8 @@ CREATE TABLE usuarios (
     email varchar(50) not null,
     senha varchar(8) not null,
     ativo bool,
-    id_cidade int,
-    id_uf int,
-    foreign key(id_cidade) references cidades(id),
-	foreign key(id_cidade) references cidades(id_uf)
+    id_endereco int,
+    foreign key(id_endereco) references enderecos(id)
 );
 
 CREATE TABLE categorias_ongs(
