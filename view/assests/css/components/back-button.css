@@ -12,3 +12,8 @@
     font-size: 35px;
 }
 
+@media (max-width: 768px) {
+    .component-back-button{
+        margin-bottom: 20px;
+    }
+}
