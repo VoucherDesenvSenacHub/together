@@ -1,6 +1,6 @@
 <?php
 
-function botao($tipo, $texto, $formaction){
+function botao($tipo, $texto, $formaction = true){
     switch ($tipo) {
         case 'primary':
             $class = 'botao botao-primary';

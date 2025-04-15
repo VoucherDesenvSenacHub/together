@@ -16,13 +16,13 @@
                         <input class="formulario-input" type="text" id="titulo" name="titulo" />
 
                         <label class="formulario-label" for="link">Link</label>
-                        <input class="formulario-input" id="link" name="link" ></input>
+                        <input class="formulario-input" id="link" name="link"></input>
                     </div>
                 </div>
                 <div class="postagem-geral-linha-inferior">
                     <div class="postagem-geral-input-text">
                         <label class="formulario-label" for="descricao">Descrição</label>
-                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao" ></textarea>
+                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao"></textarea>
                     </div>
                 </div>
                 <div class="postagem-geral-btn-group">

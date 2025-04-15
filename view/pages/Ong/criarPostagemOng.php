@@ -13,7 +13,7 @@
                     <?php require_once "./../../components/upload.php" ?>
                     <div class="postagem-geral-input-text">
                         <label class="formulario-label" for="titulo">Título</label>
-                        <input class="formulario-input" type="text" id="titulo" name="titulo"/>
+                        <input class="formulario-input" type="text" id="titulo" name="titulo" />
 
                         <label class="formulario-label" for="link">Link</label>
                         <input class="formulario-input" id="link" name="link">

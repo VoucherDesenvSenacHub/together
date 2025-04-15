@@ -22,8 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     border-radius: 4px;
     background-color: var(--cor-vermelho);
     box-shadow: var(--botao-box-shadow);
@@ -40,8 +40,10 @@
 
 .postagem-geral-btn-group {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 } 
 
 .postagem-geral-div-btn {
@@ -50,3 +52,26 @@
     justify-content: end;
     gap: 20px;
 }
+
+@media screen and (max-width: 505px) {
+    .postagem-geral-div-btn {
+        justify-content: space-evenly;
+        gap: 10px;
+    }
+
+    .postagem-geral-btn-group {
+        justify-content: center;
+    }
+
+    .postagem-geral-form-linha-superior {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .postagem-geral-div-excluir {
+        position: absolute;
+        top: 185px;
+        left: 40px;
+    }
+
+} 
