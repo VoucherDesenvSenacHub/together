@@ -1,0 +1,29 @@
+.formulario-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.formulario-input,
+.formulario-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-cinza-escuro);
+    border-radius: 4px;
+    resize: none;
+}
+
+@media (max-width: 600px) {
+    .formulario-label {
+      font-size: 13px;
+    }
+  
+    .formulario-input,
+    .formulario-textarea {
+      padding: 6px;
+      font-size: 14px;
+    }
+  }
+  
