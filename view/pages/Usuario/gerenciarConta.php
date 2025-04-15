@@ -13,19 +13,9 @@ $usuario = [
 <?php require_once "../../../view/components/button.php"?>
   <body>
   <?php require_once './../../components/navbar.php' ?>
+    <main class="main-container">
     <section class="Reset">
-      <!-- <div class="gerenciar-conta
-        <a href="#" class="button-perfil">
-          <img
-            class="imagem"
-            src="/together/view/assests/images/Usuario/usuario-user-foto.png"
-            alt="foto Usuario"
-          />
-          <p>Editar Usuario</p>
-          <span class="material-symbols-outlined"> arrow_forward_ios </span>
-        </a>
-      </div> -->
-      <div class="main">
+      <div class="main-gerenciar-conta">
         <div class="leftSide">
           <a href="#" class="conjunto_botoes">
             <p class="format_p">Ongs em que eu sou voluntário</p>
@@ -92,6 +82,7 @@ $usuario = [
         </div>
       </div>
     </section>
+    </main>
   </body>
   <script>
 function formatarCPF(campo) {
