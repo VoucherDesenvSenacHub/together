@@ -11,7 +11,6 @@
     position: relative;
     margin: auto;
     display: flex;
-    align-items: center;
 }
 
 .main-gerenciar-conta > * {
@@ -121,7 +120,7 @@ p {
 hr {
   border-left: solid 3px var(--painel-box-shadow);
   border-radius: 5px;
-  height: 560px;
+  height: 480px;
   position: relative;
 }
 
@@ -131,7 +130,6 @@ hr {
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 15px;
   border: 3px solid #fff;
   box-shadow: 0 2px 5px var(--painel-box-shadow);
 }
@@ -147,7 +145,7 @@ hr {
 .dados_usuario h4 {
   text-align: center;
   font-size: 16px;
-  margin-bottom: 20px;
+  padding: 8px;
   color: var(--cor-texto-padrao);
 }
 
@@ -171,7 +169,7 @@ hr {
 
 .input-group input {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   border: 1px solid var(--cor-cinza-claro);
   border-radius: 5px;
   font-size: 14px;
@@ -211,10 +209,11 @@ hr {
 
   .conjunto_botoes{
     width: 218px;
-    font-size: 12px;
   }
   .format_p{
-    width: 80%;
+    left: 25%;
+    font-size: 12px;
+    width: 60%;
     text-align: center;
     margin: auto;
   }

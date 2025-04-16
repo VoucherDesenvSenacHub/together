@@ -105,8 +105,3 @@ function formatarCPF(campo) {
 
   </script>
 </html>
-
-
-<!-- na responsividade diminuir o fonte-size
-     mudar a cor dos botoes e arrumar o espaço entre as info do user 
--->
