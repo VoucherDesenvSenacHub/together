@@ -1,0 +1,108 @@
+:root {
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    --cor-font-preto: #000000;
+    --cor-font-branco: #ffffff;
+    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+    --cor-roxo-claro: #b56ad0d2;
+    --cor-roxo-escuro: #b56ad0d2;
+    --cor-vermelho: #c63637;
+    --cor-verde: #118211;
+    --cor-amarelo: #ffd94d;
+  }
+  
+  .titulo-pay-user {
+    font-size: 40px;
+    font-weight: bold;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px; /* Espaço entre título e formulário */
+  }
+  
+  .formulario-pay {
+    margin-top: 20px;
+  }
+  
+  .form-pagamento {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-pagamento input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .form-pagamento button {
+    padding: 12px;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  /* Estilo do botão toggle */
+  .anonimo-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+  }
+  
+  input:checked + .slider {
+    background-color: #6a1b9a;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+  
+  .anonimo-text {
+    font-size: 1rem;
+  }
+  
