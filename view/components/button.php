@@ -1,6 +1,6 @@
 <?php
 
-function botao($tipo, $texto){
+function botao($tipo, $texto, $formaction = true){
     switch ($tipo) {
         case 'primary':
             $class = 'botao botao-primary';
@@ -13,5 +13,5 @@ function botao($tipo, $texto){
             break;
     }
 
-    return "<button class='$class'>$texto</button>";
+    return "<button formaction='$formaction 'class='$class'>$texto</button>";
 }

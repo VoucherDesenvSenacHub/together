@@ -1,4 +1,5 @@
 <?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../components/button.php" ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -7,29 +8,37 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="formulario-perfil">
-            <form action="">
-                <div class="formulario-linha-superior">
-                    <?php require_once "./../../components/upload.php"?>
-                    <div class="formulario-campos">
-                        <label class="form-label" for="titulo">Título</label>
-                        <input class="form-input" type="text" id="titulo" />
+            <form action="" method="POST">
+                <div class="postagem-geral-form-linha-superior">
+                    <?php require_once "./../../components/upload.php" ?>
+                    <div class="postagem-geral-input-text">
+                        <label class="formulario-label" for="titulo">Título</label>
+                        <input class="formulario-input" type="text" id="titulo" name="titulo" />
 
-                        <label class="form-label" for="link">Link</label>
-                        <input class="form-input" id="link"></input>
+                        <label class="formulario-label" for="link">Link</label>
+                        <input class="formulario-input" id="link" name="link"></input>
                     </div>
                 </div>
-
-                <label class="form-label" for="descricao">Descrição</label>
-                <textarea class="form-textarea" id="descricao" rows="4"></textarea>
-
-                    <div class="formulario-buttons">
-                        <button class="botao salvar" type="submit">Salvar</button>
-                        <button class="botao cancelar" type="reset">Cancelar</button>
+                <div class="postagem-geral-linha-inferior">
+                    <div class="postagem-geral-input-text">
+                        <label class="formulario-label" for="descricao">Descrição</label>
+                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao"></textarea>
+                    </div>
+                </div>
+                <div class="postagem-geral-btn-group">
+                    <button class="postagem-geral-div-excluir" formaction="ongAdmin.php?editar=excluir">
+                        <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir"
+                            class="postagem-geral-excluir">
+                    </button>
+                    <div class="postagem-geral-div-btn">
+                        <?= botao('primary', 'Salvar', 'ongAdmin.php?editar=salvar') ?>
+                        <?= botao('secondary', 'Cancelar', 'ongAdmin.php?editar=cancelar') ?>
                     </div>
                 </div>
             </form>
         </div>
-    </main>
-    
 
+    </main>
+
+    <?php require_once './../../components/footer.php' ?>
 </body>

@@ -6,12 +6,6 @@
   align-items: center;
 }
 
-.formulario-imagem-preview {
-  width: 200px;
-  height: 150px;
-  border: 1px solid var(--cor-cinza-escuro);
-}
-
 .formulario-campos {
   width: 100%;
 }
@@ -69,13 +63,6 @@
 
   .formulario-linha-superior {
     flex-direction: column;
-  }
-
-  .formulario-imagem-preview {
-    /* width: 95%; */
-    height: auto;
-    display: flex;
-    justify-content: center;
   }
 
   .formulario-redes-buttons {
