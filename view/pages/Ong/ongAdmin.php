@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-page-card">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/Ong/editarPerfilOng.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-ong-page.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Página</strong>
