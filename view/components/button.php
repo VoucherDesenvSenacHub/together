@@ -13,5 +13,5 @@ function botao($tipo, $texto, $formaction = true){
             break;
     }
 
-    return "<button formaction='$formaction 'class='$class'>$texto</button>";
+    return "<button formaction='$formaction' class='$class'>$texto</button>";
 }

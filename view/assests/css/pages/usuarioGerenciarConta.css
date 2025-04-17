@@ -50,11 +50,6 @@ body {
   font-size: 16px;
   transition: background-color 0.2s ease;
 }
-p {
-  position: absolute;
-  left: 25%;
-  top: 40%;
-}
 
 .button-perfil:hover {
   cursor: pointer;
@@ -100,10 +95,10 @@ p {
 }
 
 .format_p {
-  position: absolute;
-  left: 15%;
-  top: 30%;
   font-size: 17px;
+  left: 25%;
+  top: 40%;
+  position: absolute;
 }
 
 #icone_2 {
