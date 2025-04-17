@@ -4,7 +4,6 @@
   <?php require_once "../../../view/components/navbar.php"; ?>
 
   <main class="main-container">
-    <!-- <?php require_once './../../components/back-button.php'?> -->
     <div class="container-pay-user">
       <div class="pay-user-box">
         <h3 class="titulo-pay-user">Pagamento</h3>
@@ -23,7 +22,6 @@
 
         <!-- Formulário de pagamento -->
         <form action="pagamento_Usuario.php" method="POST" class="form-pagamento">
-
           <label for="nome_cartao">Nome no cartão</label>
           <input type="text" id="nome_cartao" name="nome_cartao" required>
 
@@ -37,7 +35,6 @@
           <input type="password" id="cvv" name="cvv" maxlength="4" required>
 
           <button type="submit">Pagar</button>
-
         </form>
 
       </div>
@@ -45,5 +42,6 @@
   </main>
 
   <?php require_once "../../../view/components/footer.php"; ?>
+
 </body>
 </html>
