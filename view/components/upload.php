@@ -15,5 +15,6 @@
          <span>Selecionar Imagem</span>
       </div>
       <input type="file" id="file">
+      <img id="preview" src="#" alt=""/>
    </label>
 </div>

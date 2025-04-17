@@ -10,7 +10,8 @@ $usuario = [
 ?>
 
 <?php require_once "../../../view/components/head.php"?>
-<?php require_once "../../../view/components/button.php"?>
+<?php require_once "../../components/button.php" ?>
+
   <body>
   <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
@@ -49,35 +50,36 @@ $usuario = [
 
           <div class="dados">
             <input type="hidden" name="id" value="<?=$usuario['id'] ?>">
-
+            
             <div class="input-group">
               <label for="nome">Nome do Usuário</label>
               <input type="text" id="nome" name="nome" value="<?=$usuario['nome']?>" disabled>
             </div>
-
+            
             <div class="input-group">
               <label for="tel">Telefone</label>
               <input type="tel" id="tel" name="tel" value="<?=$usuario['telefone']?>" disabled>
             </div>
-
+            
             <div class="input-group">
               <label for="email">Email</label>
               <input type="email" id="email" name="email" value="<?=$usuario['email']?>" disabled>
             </div>
-
+            
             <div class="input-group">
               <label for="cpf">CPF</label>
               <input type="text" id="cpf" name="cpf" 
-                    pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
-                    value="<?=$usuario['cpf']?>" disabled>
+              pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
+              value="<?=$usuario['cpf']?>" disabled>
             </div>
 
-            <div class="botoes">
-              <div id="btn-editar-container">
-                  <?= botao('primary', 'Editar') ?>
-              </div>
+            <form>
+              <div class="botoes">
+                <div id="btn-editar-container">
+                  <?= botao('primary', 'Editar', 'editarInformacoes.php') ?>
+                </div>
+            </form>
             </div>
-            
           </div>
         </div>
       </div>
@@ -105,8 +107,3 @@ function formatarCPF(campo) {
 
   </script>
 </html>
-
-
-<!-- na responsividade diminuir o fonte-size
-     mudar a cor dos botoes e arrumar o espaço entre as info do user 
--->

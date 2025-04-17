@@ -7,8 +7,9 @@
 
 .formulario-input,
 .formulario-textarea {
-    width: 100%;
-    padding: 8px;
+    width: calc(100% - 16px);
+    height: 40px;
+    padding: 0px 8px;
     margin-bottom: 15px;
     border: 1px solid var(--cor-cinza-escuro);
     border-radius: 4px;
@@ -22,7 +23,7 @@
   
     .formulario-input,
     .formulario-textarea {
-      padding: 6px;
+      padding: 0px 6px;
       font-size: 14px;
     }
   }

@@ -1,3 +1,4 @@
+<?php require_once "../../components/button.php" ?>
 <?php require_once './components/head.php' ?>
 
 <body>
@@ -14,23 +15,18 @@
                 <?php for ($i = 0; $i < 5; $i++) { ?>
                     <article class="card-container">
                         <div class="card-wrapper">
-                            <div class="card-wrapper-top">
-                                <img src="./assests/images/ong/ong_background-better.png" class="card-image" alt="Card featured image" />
-
-                            </div>
-                            <div class="card-wrapper-botton">
-                                <h2 class="card-title">Tailwind card</h2>
-                                
-                                <p class="card-description">
-                                    Lorem ipsum dolor sit amet,
-                                    <br />
-                                    consectetur adipiscing elit. Nunc felis
-                                    <br />
-                                    ligula.
-                                </p>
-                                <button class="read-more-button">
-                                    <p class="home-button-text">Descobrir</p>
-                                </button>
+                            <img src="./assests/images/ong/ong_background-better.png" class="card-image"
+                                alt="Card featured image" />
+                            <h2 class="card-title">Tailwind card</h2>
+                            <p class="card-description">
+                                Lorem ipsum dolor sit amet,
+                                <br />
+                                consectetur adipiscing elit. Nunc felis
+                                <br />
+                                ligula.
+                            </p>
+                            <div class="formulario-buttons">
+                                <?= botao('primary', 'Ver Mais') ?>
                             </div>
                         </div>
                     </article>
@@ -111,7 +107,7 @@
                         disponíveis, participe de ações ou ajude a divulgar a causa que mais lhe toca.</p>
                 </div>
             </div>
-            
+
         </div>
     </main>
 
