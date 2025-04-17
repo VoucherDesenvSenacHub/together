@@ -1,3 +1,4 @@
+<?php require_once "../../components/button.php" ?>
 <?php require_once './components/head.php' ?>
 
 <body>
@@ -24,9 +25,9 @@
                                 <br />
                                 ligula.
                             </p>
-                            <button class="read-more-button">
-                                <p class="home-button-text">Descobrir</p>
-                            </button>
+                            <div class="formulario-buttons">
+                                <?= botao('primary', 'Ver Mais') ?>
+                            </div>
                         </div>
                     </article>
                 <?php }
@@ -106,7 +107,7 @@
                         disponíveis, participe de ações ou ajude a divulgar a causa que mais lhe toca.</p>
                 </div>
             </div>
-            
+
         </div>
     </main>
 
