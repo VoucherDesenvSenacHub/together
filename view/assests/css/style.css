@@ -23,6 +23,13 @@
 @import url(pages/visualizarPerfis.css);
 @import url(pages/emDesenvolvimento.css);
 @import url(pages/usuarioGerenciarConta.css);
+@import url(pages/visaoSobreaOng.css);
+@import url(pages/validacaoAtualizacao.css);
+@import url(pages/editarPerfilOng.css);
+@import url(components/upload.css);
+@import url(components/input.css);
+@import url(pages/postagemOngGeral.css);
+@import url(components/formContainer.css);
 
 :root {
     font-size: 16px;

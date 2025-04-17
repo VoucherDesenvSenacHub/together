@@ -1,3 +1,4 @@
+<?php require_once "../../components/button.php" ?>
 <?php require_once "../../../view/components/head.php"; ?>
 
 <body class="body-login-da-ong">
@@ -20,7 +21,9 @@
             <p class="agree-text">Não tem uma conta?</p>
             <a id="create-account" href="" class="terms-link">Crie uma agora</a>
           </div>
-          <input href="/together/view/pages/ongadmin.php" class="login-button" type="button" value="Enviar">
+          <div class="formulario-buttons login-button">
+                        <?= botao('primary', 'Login') ?>
+                    </div>
         </form>
       </div>
     </div>

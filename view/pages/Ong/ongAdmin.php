@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-page-card">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/Ong/editarPerfilOng.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-ong-page.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Página</strong>
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-post">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="editarPostagemOng.php">
                         <img id="ong-admin-edit-post" class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-post.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Postagem</strong>
