@@ -17,42 +17,10 @@
   background: var(--gradient);
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 30px; /* Espaço entre título e formulário */
+  margin-bottom: 30px;
+  text-align: left;
 }
 
-.formulario-pay {
-  margin-top: 20px;
-}
-
-.form-pagamento {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  gap: 15px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.form-pagamento input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.form-pagamento button {
-  padding: 12px;
-  background: var(--gradient);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-/* Estilo do botão toggle */
 .anonimo-toggle {
   display: flex;
   align-items: center;
@@ -107,13 +75,74 @@ input:checked + .slider:before {
 
 .anonimo-text {
   font-size: 1rem;
+  color: black;
 }
 
 .modo-anonimo {
-  background-color: #1e1e2f; /* Cor escura ou qualquer outra que você quiser */
-  color: black; /* Para ajustar o texto no fundo escuro */
+  background-color: #1e1e2f;
 }
 
 .modo-anonimo .anonimo-text {
-  color: white; /* ou qualquer cor que você preferir */
+  color: white;
+}
+
+/* FORMULÁRIO */
+
+.formulario-pay {
+  margin-top: 20px;
+}
+
+.form-pagamento {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 15px;
+  padding: 20px;
+  background: var(--gradient);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-pagamento input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-pagamento button {
+  padding: 12px;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* LAYOUT GERAL */
+
+.lado-esquerdo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  margin-left: 40px; /* <-- empurra tudo um pouco pra esquerda */
+}
+
+.formulario-e-imagem {
+  display: flex;
+  justify-content: flex-start; /* <-- alinha à esquerda */
+  align-items: flex-start;
+  width: 100%;
+  gap: 40px;
+}
+
+#imagem-doacao {
+  max-width: 100%;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  
 }
