@@ -4,48 +4,54 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
+ 
 .relatorio-ong-box {
-    position: relative;
+    width: 100%;
+    max-width: 1090px;
+    height: auto;
     background-color: var(--cor-font-branco);
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 1090px;
-    height: 585px;
-    justify-content: center;
-    flex-direction: column;
-    border-radius: 15px;
+    padding: 30px;
+    box-sizing: border-box;
 }
-
+ 
 .relatorio-ong-area-limiter {
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    gap: 23px;
-    border-radius: 15px;
+    gap: 30px;
 }
-
+ 
 .relatorio-ong-title-div {
     width: 100%;
-    height: 60px;
+    height: auto;
     display: flex;
-    align-items: center;
-
-    .h1-relatorio-ong {
-        font-size: 43px;
-        font-weight: 900;
-        color: var(--nova-cor-murilo);
-    }
+ 
+   
 }
-
+ 
+.h1-relatorio-ong {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--nova-cor-murilo);
+    text-align: center;
+}
+ 
 .relatorio-ong-statistic-cards-div {
     width: 100%;
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
 }
-
+ 
 .relatorio-ong-card-clicks-1,
 .relatorio-ong-card-acess-2,
 .relatorio-ong-card-volunters-3 {
@@ -53,194 +59,150 @@
     height: 100px;
     background-color: var(--card-relatorio);
     border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    display: flex;
-    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
 }
-
+ 
 .relatorio-ong-ong-options-4 {
-    width: 245px;
-    height: 100px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
 }
-
+ 
 .relatorio-ong-card-text-value {
-    margin-left: 10px;
-    width: 100%;
     color: var(--cor-font-branco);
-
+    flex: 1;
+ 
     .h2-relatorio-ong {
-        font-size: 30px;
+        font-size: 1.5rem;
         font-weight: 800;
     }
-
+ 
     .relatorio-ong-statistic-green-text {
         display: flex;
         gap: 5px;
         color: var(--card-neon-green-text);
     }
 }
-
-.relatorio-ong-default-icon-div {
+ 
+.relatorio-ong-card-icon-div {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
+}
+.relatorio-ong-default-icon-div{
+    display: flex;
     color: var(--card-relatorio);
-
     text-decoration: none;
-
+    align-items: center;
+    
     #relatorio-ong-yey-icon {
         font-size: 25px;
     }
 }
-
+ 
 .relatorio-ong-icon-card-1 {
     font-size: 35px;
     margin-right: 8px;
     color: var(--cor-font-branco);
 }
-
+ 
 .relatorio-ong-icon-card-2 {
     font-size: 35px;
     margin-right: 8px;
     color: var(--cor-font-branco);
 }
-
+ 
 .relatorio-ong-icon-card-3 {
     font-size: 35px;
     margin-right: 10px;
     color: var(--cor-font-branco);
 }
-
+ 
 .relatorio-ong-graphic-div {
-    width: 990px;
-    height: 340px;
+    width: 100%;
+    max-width: 990px;
+    height: auto;
+    min-height: 300px;
     border-radius: 15px;
     border: 5px solid var(--nova-cor-murilo);
     background-image: url("../../images/Ong/ong_relatorio.png");
     background-size: 980px auto;
     background-position: bottom;
     background-repeat: no-repeat;
-
-    h1 {
-        margin-top: 10px;
-        margin-left: 15px;
-        font-weight: 600;
-        font-size: 25px;
-        color: var(--card-relatorio);
-    }
+    padding: 15px;
+    box-sizing: border-box;
 }
-
-@media screen and (max-width: 1194px) and (max-height: 834px) {
-    .relatorio-ong-box{
-        width: 800px;
-        height: 650px;
+ 
+.relatorio-ong-graphic-div h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--card-relatorio);
+}
+ 
+/* RESPONSIVIDADE INTERMEDIÁRIA */
+@media screen and (max-width: 768px) {
+    .relatorio-ong-box {
+        padding: 20px;
     }
-    .h1-relatorio-ong{
-        text-align: center;
+ 
+    .h1-relatorio-ong {
+        font-size: 1.8rem;
     }
-    .relatorio-ong-title-div {
-        width: 60%;
-        height: 60px;
-        display: flex;
+ 
+    .relatorio-ong-statistic-cards-div {
+        flex-direction: column;
         align-items: center;
     }
-    .relatorio-ong-area-limiter {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
+ 
     .relatorio-ong-card-clicks-1,
     .relatorio-ong-card-acess-2,
     .relatorio-ong-card-volunters-3 {
-        width: 225px;
-        height: 100px;
+        width: 90%;
     }
-    .relatorio-ong-card-icon-div{
-        display: none;
-    }
-    .relatorio-ong-statistic-cards-div{
-        display: flex;
-        justify-content:space-around ;
-        flex-direction: row;
-    }
-    .relatorio-ong-ong-options-4 {
-        width: 550px;
-        height: 35px;
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-    }
+ 
     .relatorio-ong-graphic-div {
-        width: 700px;
-        height: 340px;
-        text-align: center;
+        background-size: contain;
+        padding: 10px;
     }
 }
-
-@media screen and (max-width: 375px) and (max-height: 430px) {
-    .relatorio-ong-box{
-        width: 300px;
-        height: 375px;
+ 
+/* RESPONSIVIDADE MOBILE PEQUENO */
+@media screen and (max-width: 425px) {
+    .relatorio-ong-box {
+        padding: 15px;
+        min-width: 140%;
     }
-    .relatorio-ong-title-div {
-        width: 100%;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+ 
+    .h1-relatorio-ong {
+        font-size: 1.5rem;
     }
-    .h1-relatorio-ong{
-        font-size: 20px !important;
-    }
-    .relatorio-ong-area-limiter {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    .relatorio-ong-ong-options-4 {
-        display: none;
-    }
-    .relatorio-ong-card-icon-div{
-        display: none;
-    }
-    .relatorio-ong-statistic-cards-div{
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        row-gap: 5px;
-    }  
+ 
     .relatorio-ong-card-clicks-1,
     .relatorio-ong-card-acess-2,
     .relatorio-ong-card-volunters-3 {
-        width: 115px;
-        height: 50px;
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
     }
-    .relatorio-ong-card-text-value{
-        font-size: 10px;
-
-        .h2-relatorio-ong{
-            font-size: 10px;
-            padding: 2px;
-        }
+ 
+    .relatorio-ong-ong-options-4 {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
     }
+ 
+    .relatorio-ong-graphic-div h1 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+ 
     .relatorio-ong-graphic-div {
-        width: 95%;
-        height: 50%;
-        border: 2px solid var(--nova-cor-murilo);
-        background-size: 550px;
-        margin: 10px 0px 0px 0px;
-
-        h1{
-            font-size: 15px;
-            text-align: center;
-        }
+        min-height: 200px;
     }
 }

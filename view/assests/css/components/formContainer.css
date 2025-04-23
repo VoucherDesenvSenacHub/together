@@ -4,3 +4,11 @@
     border: 1px solid var(--cor-cinza-escuro);
     padding: 70px 70px 35px 70px;
   }
+
+@media screen and (max-width: 425px) {
+  .formulario-perfil {
+    padding: 50px 50px 35px 50px;
+
+  }
+
+} 
