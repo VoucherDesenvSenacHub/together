@@ -13,12 +13,14 @@
 
 .titulo-pay-user {
   font-size: 40px;
+  height: 70px;
   font-weight: bold;
   background: var(--gradient);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 30px;
   text-align: left;
+  z-index: 999;
 }
 
 .anonimo-toggle {
@@ -99,9 +101,9 @@ input:checked + .slider:before {
   max-width: 400px;
   gap: 15px;
   padding: 20px;
-  background: var(--gradient);
+  background: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form-pagamento input {
@@ -122,27 +124,117 @@ input:checked + .slider:before {
 
 /* LAYOUT GERAL */
 
-.lado-esquerdo {
+.layout-geral {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   max-width: 900px;
   margin-left: 40px; /* <-- empurra tudo um pouco pra esquerda */
 }
 
+
+
 .formulario-e-imagem {
   display: flex;
-  justify-content: flex-start; /* <-- alinha à esquerda */
-  align-items: flex-start;
+  justify-content: center; 
+  align-items: center;
   width: 100%;
   gap: 40px;
+  flex-direction: column;
+}
+.anonimo-div-box{
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
 }
 
 #imagem-doacao {
   max-width: 100%;
-  width: 400px;
+  width: 400px; /* Aumenta a largura da imagem */
   height: auto;
   object-fit: contain;
-  
+  position: relative;
+  left: 300px; 
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+
 }
+
+.container-pay-user{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1024px) {
+  .layout-geral {
+    margin-left: 0;
+    padding: 0 20px;
+    align-items: center;
+  }
+
+  .formulario-e-imagem {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #imagem-doacao {
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-pay-user {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .form-pagamento {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .anonimo-div-box {
+    justify-content: center;
+  }
+
+  .switch {
+    width: 45px;
+    height: 25px;
+  }
+
+  .slider:before {
+    height: 18px;
+    width: 18px;
+    left: 3.5px;
+    bottom: 3.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-pagamento {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .form-pagamento input,
+  .form-pagamento button {
+    font-size: 14px;
+  }
+
+  .anonimo-text {
+    font-size: 0.9rem;
+  }
+
+  #imagem-doacao {
+    max-width: 100%;
+  }
+}
+
+

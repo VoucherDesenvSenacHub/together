@@ -4,23 +4,25 @@
   <?php require_once "../../../view/components/navbar.php"; ?>
 
   <main class="main-container">
+    <h3 class="titulo-pay-user">Pagamento</h3>
+
     <div class="container-pay-user">
 
       <!-- Lado esquerdo com título, botão e formulário -->
-      <div class="lado-esquerdo">
-        <h3 class="titulo-pay-user">Pagamento</h3>
+      <div class="layout-geral">
 
-        <!-- Botão liga/desliga -->
-        <div class="anonimo-toggle">
-          <label class="switch">
-            <input type="checkbox" name="pagamento_anonimo" id="pagamento_anonimo">
-            <span class="slider"></span>
-          </label>
-          <span class="anonimo-text">Doação anônima</span>
+        <div class="anonimo-div-box">
+          <div class="anonimo-toggle">
+            <label class="switch">
+              <input type="checkbox" name="pagamento_anonimo" id="pagamento_anonimo">
+              <span class="slider"></span>
+            </label>
+            <span class="anonimo-text">Doação anônima</span>
+          </div>
         </div>
-
-        <!-- Formulário + imagem -->
+        
         <div class="formulario-e-imagem">
+
           <form action="pagamento_Usuario.php" method="POST" class="form-pagamento">
             <label for="nome_cartao">Nome no cartão</label>
             <input type="text" id="nome_cartao" name="nome_cartao" required>
@@ -37,7 +39,7 @@
             <button type="submit">Pagar</button>
           </form>
 
-          <img id="imagem-doacao" src="/together/view/assests/images/Usuario/doação.png" alt="Imagem de doação" />
+          <!-- <img id="imagem-doacao" src="/together/view/assests/images/Usuario/doação.png" alt="Imagem de doação" /> -->
         </div>
       </div>
     </div>
