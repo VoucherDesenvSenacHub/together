@@ -13,7 +13,17 @@
     margin-bottom: 15px;
     border: 1px solid var(--cor-cinza-escuro);
     border-radius: 4px;
-    resize: none;
+    resize: vertical;
+}
+
+.formulario-select {
+  width: 100%;
+  height: 40px;
+  padding: 0px 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--cor-cinza-escuro);
+  border-radius: 4px;
+  resize: vertical;
 }
 
 @media (max-width: 600px) {

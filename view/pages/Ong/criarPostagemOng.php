@@ -1,5 +1,8 @@
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
+<?php require_once "../../components/label.php" ?>
+<?php require_once "../../components/input.php" ?>
+<?php require_once "../../components/textarea.php" ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -12,17 +15,17 @@
                 <div class="postagem-geral-form-linha-superior">
                     <?php require_once "./../../components/upload.php" ?>
                     <div class="postagem-geral-input-text">
-                        <label class="formulario-label" for="titulo">Título</label>
-                        <input class="formulario-input" type="text" id="titulo" name="titulo" />
+                        <?= label("titulo", "Título")?>
+                        <?= input("text","titulo","titulo",true) ?>
 
-                        <label class="formulario-label" for="link">Link</label>
-                        <input class="formulario-input" id="link" name="link">
+                        <?= label("link","Link") ?>
+                        <?= input("text","link","link", true) ?>
                     </div>
                 </div>
                 <div class="postagem-geral-linha-inferior">
                     <div class="postagem-geral-input-text">
-                        <label class="formulario-label" for="descricao">Descrição</label>
-                        <textarea class="formulario-textarea" id="descricao" rows="4" name="descricao"></textarea>
+                        <?= label("descricao","Descrição") ?>
+                        <?= textarea("descricao","descricao", true) ?>
                     </div>
                 </div>
                 <div class="postagem-geral-div-btn">

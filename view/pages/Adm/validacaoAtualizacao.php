@@ -1,4 +1,9 @@
 <?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../components/button.php" ?>
+<?php require_once "../../components/label.php" ?>
+<?php require_once "../../components/input.php" ?>
+<?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../components/select.php" ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -6,32 +11,30 @@
         <div class="btn-voltar-validacao-atualizacao">
             <?php require_once './../../components/back-button.php'?>
         </div>
-        <section class="section-validacao-atualizacao">
-            <aside class="div-aside-validacao-atualizacao">
-                <h1 class="h1-validacao-atualizacao">Atualização Cadastral</h1>
-                <img class="img-validacao-atualizacao" src="\together\view\assests\images\components\togetherBlack.png" alt="">
-            </aside>
-            <form class="form-validacao-atualizacao" action="validarAtualizacaoOng.php" method="GET">
+        <div class="formulario-perfil">
+
+            <form action="validarAtualizacaoOng.php" method="GET">
                 <div class="div-group-validacao-atualizacao">
                     <div class="div-validacao-atualizacao">
-                        <label class="label-validacao-atualizacao" for="nome">Nome</label>
-                        <input class="input-validacao-atualizacao" type="text" id="nome" value="SAÚDE É VIDA" readonly/>
+                        <?= label("nome","Nome:")?>
+                        <?= input("text","nome","nome", false, true, "SAÚDE É VIDA")?>
                     </div>
                     <div class="div-validacao-atualizacao">
-                        <label class="label-validacao-atualizacao" for="telefone">Telefone</label>
-                        <input class="input-validacao-atualizacao" type="text" id="telefone" value="+55 (67) 99342-8593" readonly/>
+                        <?= label("telefone","Telefone:")?>
+                        <?= input("text","telefone","telefone", false, true, "+55 (67) 99342-8593")?>
                     </div>
                     <div class="div-validacao-atualizacao">
                         <label class="label-validacao-atualizacao" for="tipo-ong">Tipo da ONG</label>
-                        <input class="input-validacao-atualizacao" type="text" id="tipo-ong" value="Ex: Saúde e Bem-Estar" readonly/>
+                        <?= label("tipo-ong","")?>
+                        <?= select("","tipo-ong",["Erradicação da Pobreza","Fome Zero e Agricultura Sustentável","Saúde e Bem-Estar","Educação de Qualidade","Igualdade de Gênero","Água Potável e Saneamento","Energia Acessível e Limpa","Trabalho Decente e Crescimento Econômico","Indústria, Inovação e Infraestrutura","Redução das Desigualdades","Cidades e Comunidades Sustentáveis","Consumo e Produção Responsáveis","Ação contra a Mudança Global do Clima","Vida na Água","Vida Terrestre","Paz, Justiça e Instituições Eficazes","Parcerias e Meios de Implementação"], true )?>
                     </div>
                     <div class="div-validacao-atualizacao">
-                        <label class="label-validacao-atualizacao" for="email">Email</label>
-                        <input class="input-validacao-atualizacao" type="email" id="email" value="saudeevida@outlook.com" readonly/>
+                        <?= label("email","E-mail:")?>
+                        <?= input("email","email","email", false, true, "saudeevida@outlook.com")?>
                     </div>
                     <div class="div-validacao-atualizacao">
-                        <label class="label-validacao-atualizacao" for="endereco">Endereço</label>
-                        <input class="input-validacao-atualizacao" type="text" id="endereco" value="Rua Olivia 3999" readonly/>
+                        <?= label("endereco","Endereço:")?>
+                        <?= input("text","endereco","endereco", false, true, "Rua Olivia 3999")?>
                     </div>
                     <div class="div-validacao-atualizacao">
                         <span class="label-validacao-atualizacao">Conselho Fiscal</span>
@@ -50,6 +53,8 @@
                         <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*"  disabled/>
                     </div>
                     <div class="div-botao-validacao-atualizacao">
+                        <?php botao("secondary","Recusar")?>
+                        <?php botao("primary","Aceitar")?>
                         <button class="botao" id="validacao-atualizacao-botao-recusar" type="button">Recusar</button>
                         <button class="botao" id="validacao-atualizacao-botao-aceitar" type="button">Aceitar</button>
                     </div>
@@ -70,7 +75,7 @@
                     </div>
                 </dialog>
             </form>
-        </section>
+        </div>
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
