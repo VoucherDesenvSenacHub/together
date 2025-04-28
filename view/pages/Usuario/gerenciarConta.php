@@ -53,22 +53,22 @@ $usuario = [
             
             <div class="input-group">
               <label for="nome">Nome do Usuário</label>
-              <input type="text" id="nome" name="nome" value="<?=$usuario['nome']?>" disabled>
+              <input type="text" id="nome" name="nome" class="formulario-input" value="<?=$usuario['nome']?>" disabled>
             </div>
             
             <div class="input-group">
               <label for="tel">Telefone</label>
-              <input type="tel" id="tel" name="tel" value="<?=$usuario['telefone']?>" disabled>
+              <input type="tel" id="tel" name="tel" class="formulario-input" value="<?=$usuario['telefone']?>" disabled>
             </div>
             
             <div class="input-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" value="<?=$usuario['email']?>" disabled>
+              <input type="email" id="email" name="email" class="formulario-input" value="<?=$usuario['email']?>" disabled>
             </div>
             
             <div class="input-group">
               <label for="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" 
+              <input type="text" id="cpf" name="cpf" class="formulario-input"
               pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
               value="<?=$usuario['cpf']?>" disabled>
             </div>
