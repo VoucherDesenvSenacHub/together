@@ -108,17 +108,17 @@
 .dialog-obs-validacao-atualizacao {
     display: none;
     border: none;
-    background-color: transparent;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--cor-cinza-escuro);
+    padding: 70px 70px 35px 70px;
 
     .obs-validacao-atualizacao {
         display: flex;
         flex-direction: column;
         gap: 20px;
-        background-color: var(--cor-form);
         padding: 20px;
         box-shadow: 0 5px 10px var(--painel-box-shadow);
         height: 300px;
@@ -129,7 +129,6 @@
             resize: none;
             border-radius: 5px;
             border: none;
-            box-shadow: 0 5px 10px var(--painel-box-shadow);
             outline-color: var(--cor-cinza-claro);
     
         }
@@ -174,7 +173,8 @@
     }
 
     .dialog-obs-validacao-atualizacao {
-
+        padding: 50px 50px 35px 50px;
+    
         .obs-validacao-atualizacao {
             height: 250px;
         }
