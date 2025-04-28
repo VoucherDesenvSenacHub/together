@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnAbrir = document.querySelector("#validacao-atualizacao-botao-recusar"); 
     var btnFechar = document.querySelector("#validacao-atualizacao-botao-fechar");
     var dialog = document.querySelector(".dialog-obs-validacao-atualizacao"); 
-    var form = document.querySelector(".form-validacao-atualizacao");
+    var form = document.querySelector("#form-validacao-atualizacao");
     var divGroup = document.querySelector(".div-group-validacao-atualizacao");
 
     function abrirDialog() {

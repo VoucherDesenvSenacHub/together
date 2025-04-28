@@ -4,6 +4,7 @@
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/select.php" ?>
+<?php require_once "../../components/upload.php" ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -12,8 +13,7 @@
             <?php require_once './../../components/back-button.php'?>
         </div>
         <div class="formulario-perfil">
-
-            <form action="validarAtualizacaoOng.php" method="GET">
+            <form action="validarAtualizacaoOng.php" method="GET" id="form-validacao-atualizacao">
                 <div class="div-group-validacao-atualizacao">
                     <div class="div-validacao-atualizacao">
                         <?= label("nome","Nome:")?>
@@ -37,42 +37,35 @@
                         <?= input("text","endereco","endereco", false, true, "Rua Olivia 3999")?>
                     </div>
                     <div class="div-validacao-atualizacao">
-                        <span class="label-validacao-atualizacao">Conselho Fiscal</span>
-                        <label class="label-validacao-atualizacao validacao-label" for="conselho-fiscal-novo">
-                            <img class="validacao-atualizacao-icon" src="./../../assests/images/adm/anexo.png" alt="">
-                            <p id="validacao-atualizacao-conselho-fiscal-file-novo" class="validacao-atualizacao-file"></p>
-                        </label>
-                        <input class="input-validacao-atualizacao validacao-file" type="file" id="conselho-fiscal-novo" accept="image/*" disabled/>
+                        <?= label("","Conselho Fiscal") ?>
+                        <!-- O upload nao vai funcionar aqui pq vai bugar com o upload de baixo -->
                     </div>
                     <div class="div-validacao-atualizacao">
-                        <span class="label-validacao-atualizacao">Logo da ONG</span>
-                        <label class="label-validacao-atualizacao validacao-label" for="logo-ong-novo" id="">
-                            <img class="validacao-atualizacao-icon" src="./../../assests/images/adm/anexo.png" alt="">
-                            <p id="validacao-atualizacao-logo-file-novo" class="validacao-atualizacao-file"></p>
-                        </label>
-                        <input class="input-validacao-atualizacao validacao-file" type="file" id="logo-ong-novo" accept="image/*"  disabled/>
+                        <?= label("","Logo da ONG") ?>
+                        <?= upload("Insira uma imagem") ?>
                     </div>
                     <div class="div-botao-validacao-atualizacao">
-                        <?php botao("secondary","Recusar")?>
-                        <?php botao("primary","Aceitar")?>
-                        <button class="botao" id="validacao-atualizacao-botao-recusar" type="button">Recusar</button>
-                        <button class="botao" id="validacao-atualizacao-botao-aceitar" type="button">Aceitar</button>
+                        <?= botao("secondary","Recusar","validacao-atualizacao-botao-recusar")?>
+                        <?= botao("primary","Aceitar","validacao-atualizacao-botao-aceitar")?>
                     </div>
                 </div>
                 <dialog class="dialog-obs-validacao-atualizacao">
-                    <div class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="POST">
+                    <form class="obs-validacao-atualizacao" action="validarAtualizacaoOng.php" method="POST">
                         <div class="div-fechar-validacao-atualizacao">
                             <h2 class="h2-validacao-atualizacao">Observação</h2>
                             <button class="fechar-validacao-atualizacao" id="validacao-atualizacao-botao-fechar">
                                 <img class="icon-fechar-validacao-atualizacao" src="../../../view/assests/images/adm/fechar.png" alt="">
                             </button>
                         </div>
+                        <?= textarea("observacao-validacao-atualizacao","observacao-validacao-atualizacao", true, false, "Digite sua observação!") ?>
+
                         <textarea class="textarea-validacao-atualizacao" name="observacao-validacao-atualizacao" placeholder="Digite sua observação!" required rows="10" cols="30 ">
                         </textarea>
+
                         <div class="div-botao-validacao-atualizacao">
-                            <button class="botao" id="validacao-atualizacao-botao-obs"  type="button">Enviar</button>
+                            <?= botao("primary","Enviar", "validacao-atualizacao-botao-obs")?>
                         </div>
-                    </div>
+                    </form>
                 </dialog>
             </form>
         </div>
