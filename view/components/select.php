@@ -6,8 +6,6 @@
      * @param string $name - é através do name que pegamos o value desse select com o PHP;
      * @param string $id - é utilizado para atribuir uma identificação única **ADICIONAR ESSE ID NO FOR DO LABEL**;
      * @param array $listaOptions - é utilizado para criar options;
-     * @param boolean $readonly - Bool para determinar se o select é somente de leitura;
-     * @param boolean $required - Bool para determinar se o input precisa ser obrigatóriamente preenchido;
      * 
      * @return string - HTML para renderizar o select;
      */
