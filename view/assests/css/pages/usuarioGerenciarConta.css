@@ -2,19 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
 
 .Reset {
-    margin: 0px;
-    padding: 0px;
-    height: 0px;
+  margin: 0px;
+  padding: 0px;
+  height: 0px;
 }
 
-.main-gerenciar-conta{
-    position: relative;
-    margin: auto;
-    display: flex;
+.main-gerenciar-conta {
+  position: relative;
+  margin: auto;
+  display: flex;
 }
 
 .main-gerenciar-conta > * {
-    margin: auto;
+  margin: auto;
 }
 
 body {
@@ -62,9 +62,9 @@ body {
 }
 
 .leftSide {
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .conjunto_botoes {
@@ -137,18 +137,10 @@ hr {
   margin: 0 auto;
 }
 
-.dados_usuario h4 {
-  text-align: center;
+.dados_usuario {
   font-size: 16px;
   padding: 8px;
   color: var(--cor-texto-padrao);
-}
-
-.dados {
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .input-group {
@@ -170,14 +162,13 @@ hr {
   font-size: 14px;
 }
 
-
 .input-group input:focus {
   outline: none;
   border-color: #4a90e2;
 }
 
 @media (max-width: 925px) {
-  .conjunto_botoes{
+  .conjunto_botoes {
     width: 320px;
   }
 }
@@ -195,17 +186,16 @@ hr {
 @media (max-width: 680px) {
   .main-gerenciar-conta {
     flex-direction: column-reverse;
-
   }
 
-  hr{
+  hr {
     display: none;
   }
 
-  .conjunto_botoes{
+  .conjunto_botoes {
     width: 218px;
   }
-  .format_p{
+  .format_p {
     left: 25%;
     font-size: 12px;
     width: 60%;
