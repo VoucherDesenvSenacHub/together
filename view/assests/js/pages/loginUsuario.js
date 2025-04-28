@@ -1,116 +1,158 @@
-if (window.location.pathname.includes("loginUsuario.php")) {
+// Função para verificar se o elemento existe antes de manipular
+function verificarElemento(elementoId) {
+    const elemento = document.getElementById(elementoId);
+    return elemento ? elemento : null;
+}
 
-    // Alternar para tela de registro
-    document.getElementById('criar-conta-usuario-button').addEventListener('click', function (event) {
-        event.preventDefault();
-  
-        const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
-        const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
-        const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
-  
+// Ajustando os eventos de clique com validação de elementos
+document.getElementById('criar-conta-usuario-button')?.addEventListener('click', function (event) {
+    event.preventDefault(); // Previne o comportamento padrão do botão
+
+    const loginConteudoUsuario = verificarElemento('loginConteudoUsuario');
+    const recuperarConteudoUsuario = verificarElemento('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = verificarElemento('registrarConteudoUsuario');
+
+    if (loginConteudoUsuario) {
         loginConteudoUsuario.classList.remove('show');
         loginConteudoUsuario.classList.add('hidden');
-  
+    }
+
+    if (recuperarConteudoUsuario) {
         recuperarConteudoUsuario.classList.add('hidden');
-  
+    }
+
+    if (registrarConteudoUsuario) {
         registrarConteudoUsuario.classList.remove('hidden');
         registrarConteudoUsuario.classList.add('show');
-  
         setTimeout(() => {
             registrarConteudoUsuario.style.right = '50px';
         }, 10); 
-    });
-  
-    // Alternar para tela de recuperar senha
-    document.getElementById('esqueci-senha-button').addEventListener('click', function (event) {
-        event.preventDefault();
-  
-        const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
-        const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
-        const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
-  
+    }
+});
+
+document.getElementById('esqueci-senha-button')?.addEventListener('click', function (event) {
+    event.preventDefault(); // Previne o comportamento padrão do botão
+
+    const loginConteudoUsuario = verificarElemento('loginConteudoUsuario');
+    const recuperarConteudoUsuario = verificarElemento('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = verificarElemento('registrarConteudoUsuario');
+
+    if (loginConteudoUsuario) {
         loginConteudoUsuario.classList.remove('show');
         loginConteudoUsuario.classList.add('hidden');
-  
+    }
+
+    if (recuperarConteudoUsuario) {
         recuperarConteudoUsuario.classList.add('show');
         recuperarConteudoUsuario.classList.remove('hidden');
-        
+        setTimeout(() => {
+            recuperarConteudoUsuario.style.right = '50px'; // Changed to recuperarConteudoUsuario
+        }, 10); 
+    }
+
+    if (registrarConteudoUsuario) {
         registrarConteudoUsuario.classList.add('hidden');
         registrarConteudoUsuario.classList.remove('show');
-  
-        setTimeout(() => {
-            recuperarConteudoUsuario.style.right = '50px';
-        }, 10); 
-    });
-  
-    // Botão "casinha" do login
-    document.getElementById('house-button-login-usuario').addEventListener('click', function (event) {
-        event.preventDefault();
-  
-        const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
-        const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
-        const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
-  
+    }
+});
+
+// Validando o botão da casa para o login
+document.getElementById('house-button-login-usuario')?.addEventListener('click', function (event) {
+    event.preventDefault(); // Previne o comportamento padrão do botão
+
+    const loginConteudoUsuario = verificarElemento('loginConteudoUsuario');
+    const recuperarConteudoUsuario = verificarElemento('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = verificarElemento('registrarConteudoUsuario');
+
+    if (loginConteudoUsuario) {
         loginConteudoUsuario.classList.add('show');
         loginConteudoUsuario.classList.remove('hidden');
+    }
+
+    if (recuperarConteudoUsuario) {
         recuperarConteudoUsuario.classList.add('hidden');
         recuperarConteudoUsuario.classList.remove('show');
+    }
+
+    if (registrarConteudoUsuario) {
         registrarConteudoUsuario.classList.add('hidden');
         registrarConteudoUsuario.classList.remove('show');
-  
-        setTimeout(() => {
-            loginConteudoUsuario.style.right = '50px';
-        }, 10); 
-    });
-  
-    // Submissão do formulário de login (impede envio por padrão)
-    document.addEventListener('DOMContentLoaded', function () {
-        const form = document.querySelector('.login-usuario');
-        if (form) {
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-            });
+    }
+
+    setTimeout(() => {
+        if (loginConteudoUsuario) {
+            loginConteudoUsuario.style.right = '50px'; // Changed to loginConteudoUsuario
         }
-    });
-  
-    // Botão "casinha" da recuperação
-    document.getElementById('house-button-recuperar-usuario').addEventListener('click', function (event) {
-        event.preventDefault();
-  
-        const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
-        const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
-        const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
-  
+    }, 10); 
+});
+
+// Validando o botão da casa para o recuperar
+document.getElementById('house-button-recuperar-usuario')?.addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    const loginConteudoUsuario = verificarElemento('loginConteudoUsuario');
+    const recuperarConteudoUsuario = verificarElemento('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = verificarElemento('registrarConteudoUsuario');
+
+    if (loginConteudoUsuario) {
         loginConteudoUsuario.classList.add('show');
         loginConteudoUsuario.classList.remove('hidden');
+    }
+
+    if (recuperarConteudoUsuario) {
         recuperarConteudoUsuario.classList.add('hidden');
         recuperarConteudoUsuario.classList.remove('show');
+    }
+
+    if (registrarConteudoUsuario) {
         registrarConteudoUsuario.classList.add('hidden');
         registrarConteudoUsuario.classList.remove('show');
-  
-        setTimeout(() => {
+    }
+
+    setTimeout(() => {
+        if (loginConteudoUsuario) {
             loginConteudoUsuario.style.right = '50px';
-        }, 10);
-    });
-  
-    // Botão "casinha" do registro
-    document.getElementById('house-button-registrar-usuario').addEventListener('click', function (event) {
-        event.preventDefault();
-  
-        const loginConteudoUsuario = document.getElementById('loginConteudoUsuario');
-        const recuperarConteudoUsuario = document.getElementById('recuperarConteudoUsuario');
-        const registrarConteudoUsuario = document.getElementById('registrarConteudoUsuario');
-  
+        }
+    }, 10);
+});
+
+// Validando o botão da casa para o registrar
+document.getElementById('house-button-registrar-usuario')?.addEventListener('click', function (event) {
+    event.preventDefault();
+    
+    const loginConteudoUsuario = verificarElemento('loginConteudoUsuario');
+    const recuperarConteudoUsuario = verificarElemento('recuperarConteudoUsuario');
+    const registrarConteudoUsuario = verificarElemento('registrarConteudoUsuario');
+
+    if (loginConteudoUsuario) {
         loginConteudoUsuario.classList.add('show');
         loginConteudoUsuario.classList.remove('hidden');
+    }
+
+    if (recuperarConteudoUsuario) {
         recuperarConteudoUsuario.classList.add('hidden');
         recuperarConteudoUsuario.classList.remove('show');
+    }
+
+    if (registrarConteudoUsuario) {
         registrarConteudoUsuario.classList.add('hidden');
         registrarConteudoUsuario.classList.remove('show');
-  
-        setTimeout(() => {
+    }
+
+    setTimeout(() => {
+        if (loginConteudoUsuario) {
             loginConteudoUsuario.style.right = '50px';
-        }, 10);
-    });
-  }
-  
+        }
+    }, 10);
+});
+
+// Garantir que o evento de clique no botão de login seja tratado corretamente
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('.login-usuario');
+
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Impede que o formulário seja enviado
+        });
+    }
+});

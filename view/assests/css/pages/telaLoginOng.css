@@ -153,16 +153,11 @@
 }
 
 .login-button, .login-button-registro-ong, .button-lost-pass {
-    color: white;
-    background: var(--gradient);
     font-weight: bold;
     font-size: 20px;
     min-height: 50px;
-    border: none;
-    border-radius: 30px;
     position: absolute;
-    transition: 0.2s;
-}
+    }
 
 .login-button {
     width: 180px;
@@ -181,11 +176,6 @@
     width: 180px;
     height: 50px;
     top: 350px;
-}
-
-.login-button:hover,.login-button-registro-ong:hover, .button-lost-pass:hover {
-    scale: 105%;
-    box-shadow: 1px 3px 1px var(--shadow);
 }
 
 #house-icon, #house-icon-registro, #home-icon-lost-pass {

@@ -28,9 +28,15 @@
                         <?= textarea("descricao","descricao", true) ?>
                     </div>
                 </div>
-                <div class="postagem-geral-div-btn">
-                    <?= botao('primary', 'Salvar', 'ongAdmin.php?criar=salvar') ?>
-                    <?= botao('secondary', 'Cancelar', 'ongAdmin.php?criar=cancelar') ?>
+                <div class="postagem-geral-btn-group">
+                    <button class="postagem-geral-div-excluir" formaction="ongAdmin.php?editar=excluir">
+                        <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir"
+                            class="postagem-geral-excluir">
+                    </button>
+                    <div class="postagem-geral-div-btn">
+                        <?= botao('primary', 'Salvar', 'ongAdmin.php?editar=salvar') ?>
+                        <?= botao('secondary', 'Cancelar', 'ongAdmin.php?editar=cancelar') ?>
+                    </div>
                 </div>
             </form>
         </div>

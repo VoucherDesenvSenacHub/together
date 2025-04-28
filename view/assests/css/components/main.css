@@ -2,3 +2,9 @@
     /* max-width: 83vw; */
     padding: 80px 80px;
 }
+
+@media (max-width: 768px) {
+    .main-container{
+        padding: 30px 30px;
+    }
+}

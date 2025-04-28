@@ -1,0 +1,81 @@
+.formulario-imagem-preview {
+  width: 200px;
+  height: 148px;
+  border: 1px solid var(--cor-cinza-escuro);
+  position: relative;
+}
+
+#preview {
+  display: none; 
+  max-width: 200px; 
+  max-height: 148px;;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* From Uiverse.io by Yaya12085 */ 
+.custum-file-upload {
+    height: 100px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-font-branco);
+    padding: 1.5rem;
+    margin: 0 auto;
+  }
+  
+  .custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custum-file-upload .icon svg {
+    height: 80px;
+    fill: var(--cor-cinza-escuro);
+  }
+  
+  .custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custum-file-upload .text span {
+    font-weight: 400;
+    color: var(--cor-cinza-escuro);
+  }
+  
+  .custum-file-upload input {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    .custum-file-upload {
+      width: 50%;
+      height: auto;
+      padding: 1rem;
+      gap: 10px;
+    }
+  
+    .custum-file-upload .icon svg {
+      height: 60px;
+    }
+  
+    .custum-file-upload .text span {
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .formulario-imagem-preview {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  
