@@ -12,55 +12,52 @@
      * @return string - HTML para renderizar o select;
      */
 
-function select($name, $id, $listaOptions = [], $required = false, $readonly = false) {
-    if ($required and $readonly) {
-        return "ERRO! as variáveis 'required' e 'readonly' não podem ser true ao mesmo tempo! ";
 
-    } elseif ($readonly) {
-        $select = "
-        <select name='$name' id='$id' class='formulario-select' readonly>
-        ";
-
-        foreach($listaOptions as $option) {
-            $select .= "<option value='$option'>$option</option>";
+     function selectReadonly($name, $id, $listaOptions = []) {
+            $select = "
+            <select name='$name' id='$id' class='formulario-select' readonly>
+            ";
+    
+            foreach($listaOptions as $option) {
+                $select .= "<option value='$option'>$option</option>";
+            }
+    
+            $select .= "
+            </select>
+            ";
+    
+            return $select;
         }
 
-        $select .= "
-        </select>
-        ";
-
-        return $select;
-
-    } elseif ($required) {
-        $select = "
-        <select name='$name' id='$id' class='formulario-select' required>
-        ";
-
-        foreach($listaOptions as $option) {
-            $select .= "<option value='$option'>$option</option>";
+        function selectRequired($name, $id, $listaOptions = []) {
+            $select = "
+            <select name='$name' id='$id' class='formulario-select' required>
+            ";
+    
+            foreach($listaOptions as $option) {
+                $select .= "<option value='$option'>$option</option>";
+            }
+    
+            $select .= "
+            </select>
+            ";
+    
+            return $select;
         }
 
-        $select .= "
-        </select>
-        ";
+    function selectDefault($name, $id, $listaOptions = []) {
+            $select = "
+            <select name='$name' id='$id' class='formulario-select'>
+            ";
 
-        return $select;
+            foreach($listaOptions as $option) {
+                $select .= "<option value='$option'>$option</option>";
+            }
 
-    } else {
-        $select = "
-        <select name='$name' id='$id' class='formulario-select'>
-        ";
+            $select .= "
+            </select>
+            ";
 
-        foreach($listaOptions as $option) {
-            $select .= "<option value='$option'>$option</option>";
+            return $select;
         }
-
-        $select .= "
-        </select>
-        ";
-
-        return $select;
-    };
-};
-
 ?>
