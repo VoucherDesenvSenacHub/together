@@ -8,7 +8,7 @@
     <main class="main-container">
         <h3 class="home-title-favorite">Destaques</h3>
         <div class="home-div-botao">
-            <button class="botao">Ver Mais</button>
+            <?= botao("primary","Ver Mais") ?>
         </div>
         <div class="card-container">
             <?php for ($i = 0; $i < 5; $i++) { ?>
