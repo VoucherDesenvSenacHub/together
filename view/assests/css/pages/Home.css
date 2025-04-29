@@ -1,11 +1,10 @@
 .home-banner-together {
-    width: 100%;
+    height: 100vh;
     background-image: url("/together/view/assests/images/Geral/together-banner-better.png");
-    height: 495px;
     /* background-color: purple; */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 1539px 493px;
+    background-size: 100vw 100%;
     
     /* background-attachment: fixed; */
 }

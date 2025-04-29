@@ -1,37 +1,20 @@
 <?php require_once './view/components/head.php' ?>
+<?php require_once './view/components/card.php' ?>
+<?php require_once './view/components/button.php' ?>
 
 <body>
     <?php require_once './view/components/navbar.php' ?>
-
+    <div class="home-banner-together"></div>
     <main class="main-container">
-        <div class="home-banner-together"></div>
-        <div class="home-card-box">
-            <h3 class="home-title-favorite">Destaques</h3>
-            <div class="home-div-botao">
-                <button class="botao">Ver Mais</button>
-            </div>
-            <div class="home-scroll-area">
-                <?php for ($i = 0; $i < 5; $i++) { ?>
-                    <article class="card-container">
-                        <div class="card-wrapper">
-                            <img src="./view/assests/images/ong/ong_background-better.png" class="card-image"
-                                alt="Card featured image" />
-                            <h2 class="card-title">Tailwind card</h2>
-                            <p class="card-description">
-                                Lorem ipsum dolor sit amet,
-                                <br />
-                                consectetur adipiscing elit. Nunc felis
-                                <br />
-                                ligula.
-                            </p>
-                            <button class="read-more-button">
-                                <p class="home-button-text">Descobrir</p>
-                            </button>
-                        </div>
-                    </article>
-                <?php }
-                ; ?>
-            </div>
+        <h3 class="home-title-favorite">Destaques</h3>
+        <div class="home-div-botao">
+            <button class="botao">Ver Mais</button>
+        </div>
+        <div class="card-container">
+            <?php for ($i = 0; $i < 5; $i++) { ?>
+                <?= card("view\assests\images\Geral\ImageONG.png","Salva Vidas!","Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa") ?>
+            <?php }
+            ; ?>
         </div>
         <div class="sobre-nos-section" id="sobre-nos">
             <div class="sobre-nos-text-container">
@@ -109,6 +92,5 @@
             
         </div>
     </main>
-
     <?php require_once './view/components/footer.php' ?>
 </body>
