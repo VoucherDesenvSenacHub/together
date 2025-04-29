@@ -1,0 +1,240 @@
+:root {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  --cor-font-preto: #000000;
+  --cor-font-branco: #ffffff;
+  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+  --cor-roxo-claro: #b56ad0d2;
+  --cor-roxo-escuro: #b56ad0d2;
+  --cor-vermelho: #c63637;
+  --cor-verde: #118211;
+  --cor-amarelo: #ffd94d;
+}
+
+.titulo-pay-user {
+  font-size: 40px;
+  height: 70px;
+  font-weight: bold;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  text-align: left;
+  z-index: 999;
+}
+
+.anonimo-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #6a1b9a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.anonimo-text {
+  font-size: 1rem;
+  color: black;
+}
+
+.modo-anonimo {
+  background-color: #1e1e2f;
+}
+
+.modo-anonimo .anonimo-text {
+  color: white;
+}
+
+/* FORMULÁRIO */
+
+.formulario-pay {
+  margin-top: 20px;
+}
+
+.form-pagamento {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-pagamento input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-pagamento button {
+  padding: 12px;
+  background: var(--gradient);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* LAYOUT GERAL */
+
+.layout-geral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-left: 40px; /* <-- empurra tudo um pouco pra esquerda */
+}
+
+
+
+.formulario-e-imagem {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+  flex-direction: column;
+}
+.anonimo-div-box{
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  align-items: center;
+}
+
+#imagem-doacao {
+  max-width: 100%;
+  width: 400px; /* Aumenta a largura da imagem */
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  left: 300px; 
+  box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.container-pay-user{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1024px) {
+  .layout-geral {
+    margin-left: 0;
+    padding: 0 20px;
+    align-items: center;
+  }
+
+  .formulario-e-imagem {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #imagem-doacao {
+    left: 0;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .titulo-pay-user {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .form-pagamento {
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .anonimo-div-box {
+    justify-content: center;
+  }
+
+  .switch {
+    width: 45px;
+    height: 25px;
+  }
+
+  .slider:before {
+    height: 18px;
+    width: 18px;
+    left: 3.5px;
+    bottom: 3.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-pagamento {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .form-pagamento input,
+  .form-pagamento button {
+    font-size: 14px;
+  }
+
+  .anonimo-text {
+    font-size: 0.9rem;
+  }
+
+  #imagem-doacao {
+    max-width: 100%;
+  }
+}
+
+

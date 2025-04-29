@@ -10,15 +10,15 @@
                     <a href="/together/view/pages/emDesenvolvimento.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/volunters.png" alt="">
                     </a>
-                    <strong class="ong-admin-strong-config">Voluntários da Ong</strong>
+                    <strong class="ong-admin-strong-config">Voluntários</strong>
                     <p class="ong-admin-default-p-tag">Veja por aqui quem são os voluntários da sua ONG.</p>
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-page-card">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/Ong/editarPerfilOng.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-ong-page.png" alt="">
                     </a>
-                    <strong class="ong-admin-strong-config">Editar Página da ONG</strong>
+                    <strong class="ong-admin-strong-config">Editar Página</strong>
                     <p class="ong-admin-default-p-tag">Edite como quiser a pagina da sua ONG aqui !</p>
                 </div>
 
@@ -26,7 +26,7 @@
                     <a href="/together/view/pages/emDesenvolvimento.php">
                         <img class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/ong-relatory.png" alt="">
                     </a>
-                    <strong class="ong-admin-strong-config">Relatório da Ong</strong>
+                    <strong class="ong-admin-strong-config">Relatório</strong>
                     <p class="ong-admin-default-p-tag">Veja por aqui um relatório completo da sua ONG.</p>
                 </div>
 
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-edit-post">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="editarPostagemOng.php">
                         <img id="ong-admin-edit-post" class="ong-admin-default-img-config" src="./../../assests/images/Ong/ongAdmin/edit-post.png" alt="">
                     </a>
                     <strong class="ong-admin-strong-config">Editar Postagem</strong>

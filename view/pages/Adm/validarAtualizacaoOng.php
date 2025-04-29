@@ -1,10 +1,7 @@
-<?php
-require_once "../../../view/components/head.php";
-?>
+<?php require_once "../../../view/components/head.php"; ?>
 
-<body class="body-page-validarong">
+<body>
     <?php require_once "../../../view/components/navbar.php"; ?>
-
     <main class="main-container">
         <?php require_once './../../components/back-button.php'?>
         <section class="validar-atualizacao-ong-section">
@@ -27,7 +24,7 @@ require_once "../../../view/components/head.php";
                             <td class="row-body-table">Vida pet</td>
                             <td class="status-aguardando">Aguardando</td>
                             <td>
-                                <form action="" method="get">
+                                <form action="validacaoAtualizacao.php" method="get">
                                     <button class="buttom-visibility-ong-status">
                                         <img class="exibicao-visualizar-ong" src="../../assests/images/ong/eye.png" alt="visualizar">
                                     </button>
@@ -38,6 +35,8 @@ require_once "../../../view/components/head.php";
                 </table>
             </div>
         </section>
+        <div class="notification-validacao-atualizacao">
+        </div>
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
