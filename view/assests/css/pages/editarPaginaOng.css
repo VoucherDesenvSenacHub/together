@@ -49,11 +49,11 @@
 
 .formulario-buttons {
   display: flex;
+  gap: 20px;
 }
 
 .formulario-buttons .botao {
-  width: 100%;
-  margin: 0 10px;
+  display: flex;
 }
 
 @media (max-width: 576px) {

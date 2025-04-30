@@ -10,7 +10,7 @@
      * @return string - HTML para renderizar o card;
      */
 
-  function card($imagem,$titulo,$descricao) {
+  function cardOng($imagem,$titulo,$descricao) {
     return 
     "
     <div class='card-group'>
@@ -26,6 +26,18 @@
                 botao('primary','Descobrir') .
             "</div>
         </div>
+    </div>
+    ";
+  }
+
+  function cardSobreNos($titulo,$descricao,$descricao2 = "",$descricao3 = "") {
+    return 
+    "
+    <div class='sobre-nos-card'>
+        <h2>$titulo</h2>
+        <p>$descricao</p>
+        <p>$descricao2</p>
+        <p>$descricao3</p>
     </div>
     ";
   }

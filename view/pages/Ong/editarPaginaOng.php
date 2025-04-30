@@ -1,5 +1,8 @@
+<?php require_once "../../components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
-<?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../components/label.php" ?>
+<?php require_once "../../components/input.php" ?>
+<?php require_once "../../components/textarea.php" ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -12,16 +15,16 @@
                 <div class="formulario-linha-superior">
                     <?php require_once "./../../components/upload.php"?>
                     <div class="formulario-campos">
-                        <label class="formulario-label" for="titulo">Título</label>
-                        <input class="formulario-input" type="text" id="titulo" />
-
-                        <label class="formulario-label" for="subtitulo">Subtítulo</label>
-                        <textarea class="formulario-textarea" id="subtitulo" rows="3"></textarea>
+                        <?= label("titulo","Título")?>
+                        <?= inputRequired("text","titulo","titulo") ?>
+                        
+                        <?= label("subtitulo","Subtítulo")?>
+                        <?= textareaRequired("subtitulo","subtitulo") ?>
                     </div>
                 </div>
 
-                <label class="formulario-label" for="descricao">Descrição</label>
-                <textarea class="formulario-textarea" id="descricao" rows="4"></textarea>
+                <?= label("descricao","Descrição")?>
+                <?= textareaRequired("descricao","descricao") ?>
 
                 <div class="formulario-redes-buttons">
                     <div class="formulario-redes-sociais">

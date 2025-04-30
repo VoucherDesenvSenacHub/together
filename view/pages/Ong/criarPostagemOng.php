@@ -1,4 +1,4 @@
-<?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
@@ -16,16 +16,16 @@
                     <?php require_once "./../../components/upload.php" ?>
                     <div class="postagem-geral-input-text">
                         <?= label("titulo", "Título")?>
-                        <?= input("text","titulo","titulo",true) ?>
+                        <?= inputRequired("text","titulo","titulo") ?>
 
                         <?= label("link","Link") ?>
-                        <?= input("text","link","link", true) ?>
+                        <?= inputRequired("text","link","link") ?>
                     </div>
                 </div>
                 <div class="postagem-geral-linha-inferior">
                     <div class="postagem-geral-input-text">
                         <?= label("descricao","Descrição") ?>
-                        <?= textarea("descricao","descricao", true) ?>
+                        <?= textareaRequired("descricao","descricao") ?>
                     </div>
                 </div>
                 <div class="postagem-geral-div-btn">

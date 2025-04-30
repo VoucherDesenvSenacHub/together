@@ -13,7 +13,12 @@
     margin-bottom: 15px;
     border: 1px solid var(--cor-cinza-escuro);
     border-radius: 4px;
-    resize: vertical;
+    resize: none;
+}
+
+.formulario-textarea {
+  height: 80px;
+  line-height: normal;
 }
 
 .formulario-select {
