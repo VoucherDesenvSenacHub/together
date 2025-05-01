@@ -12,12 +12,11 @@
 }
 
 .home-banner-together {
-    height: 100vh;
-    background-image: url("/together/view/assests/images/Geral/together-banner-better.png");
-    /* background-color: purple; */
-    background-position: center;
+    height: 85vh;
+    background-image: url("/together/view/assests/images/Geral/newImg.jpg");
+    background-position-x: 50%;
+    background-position-Y: 45%;
     background-repeat: no-repeat;
-    background-size: 100vw 100%;
 }
 
 .home-title-favorite {
