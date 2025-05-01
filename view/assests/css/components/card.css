@@ -63,13 +63,6 @@
 
 @media (min-width: 1600px) {
   .card-group .card-bottom .card-info .card-description {
-    width: 250px;
+    width: 220px;
   } 
-}
-
-@media (min-width: 2100px) {
-    .card-group .card-bottom .card-info .card-description {
-      width: 350px;
-    }
-  
 }
