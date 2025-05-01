@@ -1,87 +1,50 @@
-.validar-atualizacao-ong-section {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-  gap: 20px;
-  height: 100%;
-  position: relative;
+:root {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  --cor-font-preto: #000000;
+  --cor-font-branco: #ffffff;
+  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
+  --cor-roxo-claro: #b56ad0d2;
+  --cor-roxo-escuro: #b56ad0d2;
+  --cor-vermelho: #c63637;
+  --cor-verde: #118211;
+  --cor-amarelo: #ffd94d;
 }
 
-.title-page-validarong{
-  margin-left: 20px;
+.title-atualizar-ong {
   font-size: 40px;
+  height: 70px;
   font-weight: bold;
-  background: var(--cor-roxo-escuro);
-  -webkit-background-clip: text;
-  color: transparent;
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  text-align: left;
+  z-index: 999;
 }
 
-.buttom-visibility-ong-status{
-  background: none;
-  border: none;
+/* Estilos para os ícones de status */
+i.fa-hourglass-half {
+  color: orange; /* Cor para Aguardando */
 }
 
-.exibicao-visualizar-ong{
-  height: 25px;
-  color: var(--cor-font-preto)
+i.fa-check {
+  color: green; /* Cor para Aprovada */
 }
 
-.buttom-visibility-ong-status:hover{
-  cursor: pointer;
-  height: 25px;
+i.fa-times {
+  color: red; /* Cor para Rejeitada */
 }
 
-.status-aguardando{
-  color: var(--cor-amarelo);
+/* Estilizando o ícone de olhinho */
+i.fas.fa-eye {
+  font-size: 1.5rem; /* Aumenta o tamanho do ícone */
+  color: #333; /* Cor inicial do ícone */
+  transition: color 0.3s, transform 0.3s; /* Transições suaves para cor e transformação */
 }
 
-.row-body-table{
-  color: var(--cor-font-preto);
-}
-
-.notification-validacao-atualizacao {
-  width: 300px;
-  position: absolute;
-  right: 10px;
-  top: 100px;
-}
-
-@media (max-width: 790px) {
- 
-
-  .title-page-validarong{
-    position: relative;
-    top: 10rem;
-    left: 4rem;
-    font-size: 39px;
-    font-weight: bold;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
-  .body-page-validarong{
-    font-size: 15px;
-    min-height: 100vh;
-  }
-}
-
-
-@media (max-width: 480px) {
-
-  .title-page-validarong{
-    position: relative;
-    top: 9rem;
-    left: 2.2rem;
-    font-size: 20px;
-    font-weight: bold;
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-
-  .body-page-validarong{
-    font-size: 15px;
-    min-height: 50vh;
-  }
+/* Efeito ao passar o mouse (hover) */
+i.fas.fa-eye:hover {
+  color: #007bff; /* Cor azul quando passar o mouse */
+  transform: scale(1.2); /* Aumenta um pouco o tamanho do ícone */
 }

@@ -20,22 +20,9 @@
 @import url(pages/visaoDoUsuario.css);
 @import url(components/main.css);
 @import url(components/footer.css);
-<<<<<<< HEAD
 @import url(pages/validacaoOng.css);
 @import url(pages/emDesenvolvimento.css);
 @import url(pages/relatorioOng.css);
-=======
-@import url(pages/visualizarPerfis.css);
-@import url(pages/emDesenvolvimento.css);
-@import url(pages/pagamento_Usuario.css);
-@import url(pages/visaoSobreaOng.css);
-@import url(pages/validacaoAtualizacao.css);
-@import url(pages/editarPaginaOng.css);
-@import url(components/upload.css);
-@import url(components/input.css);
-@import url(pages/postagemOngGeral.css);
-@import url(components/formContainer.css);
->>>>>>> 38e46b23bafd83f0bb521fb80457b7063f377726
 
 :root {
     font-size: 16px;
@@ -57,14 +44,6 @@
     --cor-borda-botao-secondary:#7152f3;
     --cor-botao-hover: #5f3ee0;
     --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
-<<<<<<< HEAD
         0px 2px 4px -2px rgba(59, 130, 246, 0.2);
     --cor-title-card: rgba(55, 65, 81, 1);
-=======
-    0px 2px 4px -2px rgba(59, 130, 246, 0.2);
-    --painel-box-shadow: rgba(0, 0, 0, 0.2);
-    --cor-title-card: rgba(55, 65, 81, 1);
-    --cor-container-painel: #F6F6F6;
-    --cor-form: #f0f0f0; 
->>>>>>> 38e46b23bafd83f0bb521fb80457b7063f377726
 }
