@@ -63,7 +63,7 @@
     font-weight: 700;
     font-size: 44px;
     line-height: 25px;
-    color: var(--cor-roxo-claro);
+    color: var(--cor-cinza-novo);
 }
  
 .sobre-nos-text-container p{
@@ -113,7 +113,7 @@
  
 .sobre-nos-card h2 {
     font-family: 'roboto', sans-serif;
-    color: var(--cor-roxo-escuro);
+    color: var(--cor-cinza-novo);
     margin-top: 10px;
 }
 .sobre-nos-card p {
