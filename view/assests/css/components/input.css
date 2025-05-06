@@ -10,7 +10,6 @@
     width: calc(100% - 16px);
     height: 40px;
     padding: 0px 8px;
-    margin-bottom: 15px;
     border: 1px solid var(--cor-cinza-escuro);
     border-radius: 4px;
     resize: none;

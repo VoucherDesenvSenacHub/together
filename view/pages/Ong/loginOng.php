@@ -1,4 +1,6 @@
 <?php require_once "../../components/button.php" ?>
+<?php require_once "../../components/label.php" ?>
+<?php require_once "../../components/input.php" ?>
 <?php require_once "../../../view/components/head.php"; ?>
 
 <body class="body-login-da-ong">
@@ -14,16 +16,22 @@
           <div class="user-moldure">
             <img class="user-icon" src="../../assests/images/Ong/Ong_icon.png" alt="house">
           </div>
-          <input required type="text" placeholder="Digite seu CNPJ" class="text-input" id="cnpj-input">
-          <input required type="password" placeholder="Digite sua Senha" class="text-input" id="password-input">
+          <div>
+            <?= label('email','asod') ?>
+            <?= inputRequired('email', 'email', 'email') ?>
+          </div>
+          <div>
+            label
+            input
+          </div>
           <a id="lost-pass" href="" class="lost-pass">Esqueci a senha</a>
           <div class="terms-area">
             <p class="agree-text">Não tem uma conta?</p>
             <a id="create-account" href="" class="terms-link">Crie uma agora</a>
           </div>
           <div class="formulario-buttons login-button">
-                        <?= botao('primary', 'Login') ?>
-                    </div>
+              <?= botao('primary', 'Login') ?>
+          </div>
         </form>
       </div>
     </div>
