@@ -3,7 +3,8 @@
 }
 
 .botao {
-    color: var(--cor-font-branco);
+    background-color: var(--cor-botao-primary);
+    color: var(--cor-font-preto);
     text-align: center;
     font-family: Roboto, sans-serif;
     font-size: 12px;
