@@ -12,7 +12,7 @@
  
   .card-wrapper {
     border-radius: 12px;
-    background-color: var(--cor-font-branco);
+    background-color: var(--cor-fundo-card);
     border: 1px solid var(--cor-font-preto);
     display: flex;
     width: 100%;
@@ -53,9 +53,9 @@
   .read-more-button {
     background-blend-mode: normal;
     border-radius: 8px;
-    background-color: var(--cor-botao);
+    background-color: var(--cor-botao-secundary);
     box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2);
-    border: 2px solid var(--cor-font-branco);
+    border: 2px solid var(--cor-font-preto);
     margin-top: 45px;
     margin-left: 13px;
     width: 118px;
@@ -63,7 +63,7 @@
     /* padding: 10px 43px; */
     overflow: hidden;
     font-size: 12px;
-    color: var(--cor-font-branco);
+    color: var(--cor-font-preto);
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
