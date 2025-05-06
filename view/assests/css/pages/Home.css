@@ -1,12 +1,16 @@
 .home-main {
-    width: 100%;
+    width: calc(1200px - 160px);
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 
     .home-container {
+        width: calc(1200px - 160px);
         display: flex;
         flex-direction: column;
-        max-width: 1366px;
+        max-width: 1200px;
         gap: 30px;
     }
 }
@@ -40,14 +44,13 @@
 
 /* SOBRE NOS  ----------------------------------------------------------------------------*/ 
 .sobre-nos-section{
-    background-color: #6ba03d;
-    width: 100%;
-    height: 654px;   
+    justify-content: center;
     display: flex;
     align-items: center;
 }
 
 .sobre-nos-container{
+    padding: 20px 0;
     display: flex;
     align-items: center;
     height: 100%;
@@ -72,13 +75,12 @@
 }
 
 .sobre-nos-content{
+    width: calc(1200px - 160px);
     display: flex;
     justify-content: center;
     text-align: justify;
     flex-direction: column;
-    height: 100%;
     gap: 20px;
-    width: calc(100% - 160px);
 
     hr {
         width: 100%;
@@ -107,14 +109,15 @@
     width: 100%;
     height: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
     align-items: center;
+    padding: 20px 0;
 }
  
 .sobre-nos-card{
-    flex-basis: calc(100% / 4);
+    width: calc(100% / 4);
     height: fit-content;
     display: flex;
     align-items: center;
@@ -138,7 +141,29 @@
 }
 
 .home-div-botao {
+    width: calc(1200px - 160px);
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+@media (max-width: 440px) {
+    .home-main {
+        width: calc(440px - 60px);
+        overflow: hidden;
+    }
+    .home-container {
+        width: calc(440px - 60px);
+
+    }
+    .sobre-nos-card {
+        flex-direction: column;
+    }
+    .sobre-nos-cards-container {
+        justify-content: center;
+        flex-direction: column;
+    }
+    .sobre-nos-content {
+        width: calc(440px - 60px);
+    }
 }

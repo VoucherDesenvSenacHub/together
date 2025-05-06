@@ -13,7 +13,7 @@
                     <?= botao("primary","Ver Mais") ?>
                 </div>
                 <div class="card-container">
-                    <?php for ($i = 0; $i < 5; $i++) { ?>
+                    <?php for ($i = 0; $i < 4; $i++) { ?>
                         <?= cardOng("view\assests\images\Geral\ImageONG.png","Salva Vidas!","Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
                     <?php }
                     ; ?>
@@ -36,10 +36,6 @@
                             </p>
                             <hr>
                         </div>
-                    </div>
-                    <div class="sobre-nos-container">
-                        <img class="sobre-nos-image" src="/together/view/assests/images/Geral/img-sobre-nos.png"
-                            alt="Imagem sobre nós">
                     </div>
                 </div>
                 <div class="sobre-nos-cards-section">
