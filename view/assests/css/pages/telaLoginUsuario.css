@@ -34,7 +34,7 @@
 }
 
 .body-login-usuario {
-    background-image: url("../../images/Usuario/background_login_usuario.jpg");
+    background-image: url("../../images/Usuario/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
     font-family: "Roboto", serif;
@@ -102,7 +102,7 @@
     height: 320px;
     background-color: rgba(255, 255, 255, 0.532);
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -149,7 +149,7 @@
 
 /* --------------------Login Usuario-------------------- */
 .esqueci-senha-login-usuario {
-    color: #5287DE;
+    color: var(--cor-cinza-novo);
     font-size: 10px;
     /* position: absolute; */
     top: 335px;
@@ -181,7 +181,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: #5287DE;
+    color: var(--cor-cinza-novo);
     text-decoration: underline;
     font-weight: bold;
     top: 360px;
@@ -277,7 +277,7 @@
     margin: 0 0 0 3px;
     font-size: 12px;
     font-weight: bold;
-    color: var(--cor-font-azul);
+    color: var(---cor-cinza-novo);
 }
 
 .botao-registrar-login-usuario {
@@ -310,7 +310,7 @@
     position: absolute;
     top: 50px;
     font-size: 36px;
-    color: var(--cor-font-azul);
+    color: var(--cor-cinza-novo);
 }
 
 .sub-titulo-login-usuario {
@@ -341,7 +341,7 @@
     justify-content: top;
     z-index: 2;
     margin: 0 230px 0 0;
-    color: var(--cor-font-azul);
+    color: #844c4c;
 }
 
 
