@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="botao-login-usuario">
-                            <?= botao('primary', 'Entrar',"","../../home.php") ?>
+                            <?= botao('primary', 'Entrar') ?>
                         </div>
                     </div>
                 </form><!--login-->
