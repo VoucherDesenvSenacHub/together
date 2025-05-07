@@ -15,11 +15,15 @@
                 <div class="formulario-linha-superior">
                     <?php require_once "./../../components/upload.php"?>
                     <div class="formulario-campos">
-                        <?= label("titulo","Título")?>
-                        <?= inputRequired("text","titulo","titulo") ?>
+                        <div>
+                            <?= label("titulo","Título")?>
+                            <?= inputRequired("text","titulo","titulo") ?>
+                        </div>
                         
-                        <?= label("subtitulo","Subtítulo")?>
-                        <?= textareaRequired("subtitulo","subtitulo") ?>
+                        <div>
+                            <?= label("subtitulo","Subtítulo")?>
+                            <?= textareaRequired("subtitulo","subtitulo") ?>
+                        </div>
                     </div>
                 </div>
 

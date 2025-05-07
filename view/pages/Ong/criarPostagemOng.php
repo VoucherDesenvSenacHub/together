@@ -15,22 +15,28 @@
                 <div class="postagem-geral-form-linha-superior">
                     <?php require_once "./../../components/upload.php" ?>
                     <div class="postagem-geral-input-text">
-                        <?= label("titulo", "Título")?>
-                        <?= inputRequired("text","titulo","titulo") ?>
+                        <div>
+                            <?= label("titulo", "Título")?>
+                            <?= inputRequired("text","titulo","titulo") ?>
+                        </div>
 
-                        <?= label("link","Link") ?>
-                        <?= inputRequired("text","link","link") ?>
+                        <div>
+                            <?= label("link","Link") ?>
+                            <?= inputRequired("text","link","link") ?>
+                        </div>
                     </div>
                 </div>
                 <div class="postagem-geral-linha-inferior">
                     <div class="postagem-geral-input-text">
-                        <?= label("descricao","Descrição") ?>
-                        <?= textareaRequired("descricao","descricao") ?>
+                        <div>
+                            <?= label("descricao","Descrição") ?>
+                            <?= textareaRequired("descricao","descricao") ?>
+                        </div>
                     </div>
                 </div>
                 <div class="postagem-geral-div-btn">
-                    <?= botao('primary', 'Salvar', 'ongAdmin.php?criar=salvar') ?>
-                    <?= botao('secondary', 'Cancelar', 'ongAdmin.php?criar=cancelar') ?>
+                    <?= botao('primary', 'Salvar', "",'ongAdmin.php?criar=salvar') ?>
+                    <?= botao('secondary', 'Cancelar', "",'ongAdmin.php?criar=cancelar') ?>
                 </div>
             </form>
         </div>

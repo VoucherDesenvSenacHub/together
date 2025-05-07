@@ -7,6 +7,9 @@
 }
 
 .formulario-campos {
+  flex-direction: column;
+  display: flex;
+  gap: 20px;
   width: 100%;
 }
 
