@@ -70,7 +70,7 @@
         font-weight: 700;
         font-size: 44px;
         line-height: 25px;
-        color: #590AB4;
+        color: var(--cor-cinza-novo);
     }
 }
 
@@ -129,7 +129,8 @@
     
     h2 {
         font-family: 'roboto', sans-serif;
-        color: #590AB4;
+        color: var(--cor-cinza-novo);
+        font-weight: bold;
     }
 
     p {
