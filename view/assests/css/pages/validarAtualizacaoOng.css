@@ -9,8 +9,10 @@
   --cor-vermelho: #c63637;
   --cor-verde: #118211;
   --cor-amarelo: #ffd94d;
+  --cor-body: #FCF1D3; /* Cor de fundo */
 }
 
+/* Título da página */
 .title-atualizar-ong {
   font-size: 40px;
   height: 70px;
@@ -38,13 +40,85 @@ i.fa-times {
 
 /* Estilizando o ícone de olhinho */
 i.fas.fa-eye {
-  font-size: 1.5rem; /* Aumenta o tamanho do ícone */
-  color: #333; /* Cor inicial do ícone */
-  transition: color 0.3s, transform 0.3s; /* Transições suaves para cor e transformação */
+  font-size: 1.5rem;
+  color: #333;
+  transition: color 0.3s, transform 0.3s;
 }
 
 /* Efeito ao passar o mouse (hover) */
 i.fas.fa-eye:hover {
-  color: #007bff; /* Cor azul quando passar o mouse */
-  transform: scale(1.2); /* Aumenta um pouco o tamanho do ícone */
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: var(--cor-body);
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Grid dentro do modal */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.modal-info-grid div {
+  background-color: var(--cor-body);
+  padding: 0.8rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-info-grid .full-width {
+  grid-column: span 2; /* Faz com que ocupe toda a largura disponível */
+}
+
+.modal-info-grid .logo {
+  grid-column: span 2; /* Faz com que o logo ocupe toda a largura disponível */
+  justify-self: center;
+}
+
+.modal-info-grid strong {
+  display: block;
+  color: #333;
+  margin-bottom: 0.3rem;
+}
+
+.modal-info-grid img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 8px;
+  justify-self: center;
 }

@@ -1,73 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const parametros = new URLSearchParams(window.location.search);
-    const tipoMensagem = parametros.get("msg");
-    const notificationContainer = document.querySelector(".notification-validacao-atualizacao");
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.fa-eye').forEach(function (eyeIcon) {
+      eyeIcon.addEventListener('click', function (e) {
+        e.preventDefault();
+        const modal = document.getElementById('modal');
 
-    if (!notificationContainer) {
-        // console.error("Elemento .notification-validacao-atualizacao não encontrado.");
-        return;
-    }
+        // Simulação dos dados da ONG (em um cenário real, você pode buscar via AJAX/PHP)
+        const info = {
+          nome: "ONG Cachorrinho",
+          cnpj: "12.345.678/0001-90",
+          fundacao: "15/03/2010",
+          telefone: "(11) 98765-4321",
+          endereco: "Rua Exemplo, 123 - São Paulo - SP",
+          conselho: "Sim",
+          tipo: "Proteção Animal",
+          logo: "https://via.placeholder.com/150", // Substitua pelo caminho real da logo
+          email: "contato@ongcachorrinho.org"
+        };
 
-    function createNotification(type, message) {
-        if (!type || !message) {
-            console.error("Tipo ou mensagem inválidos para notificação.");
-            return;
-        }
-
-        // Verifica se já existe uma notificação do mesmo tipo
-        if (document.querySelector(`.notification-item.${type}`)) {
-            return;
-        }
-
-        // Criando o elemento da notificação
-        const notification = document.createElement("span");
-        notification.classList.add("notification-item", type);
-
-        // Criando o conteúdo da notificação
-        notification.innerHTML = `
-            <div class="notification-content">
-                <div class="notification-icon">
-                    <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
-                        ${
-                            type === "success"
-                            ? `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>`
-                            : `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>`
-                        }
-                    </svg>
-                </div>
-                <div class="notification-text">${message}</div>
-            </div>
-            <div class="notification-icon notification-close">
-                <svg aria-hidden="true" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"></path>
-                </svg>
-            </div>
-            <div class="notification-progress-bar"></div>
+        document.getElementById('modal-info').innerHTML = `
+          <div><strong>Nome:</strong> ${info.nome}</div>
+          <div><strong>CNPJ:</strong> ${info.cnpj}</div>
+          <div class="full-width"><strong>Data de Fundação:</strong> ${info.fundacao}</div>
+          <div class="full-width"><strong>Telefone:</strong> ${info.telefone}</div>
+          <div class="full-width"><strong>Endereço:</strong> ${info.endereco}</div>
+          <div><strong>Conselho Fiscal:</strong> ${info.conselho}</div>
+          <div><strong>Tipo da ONG:</strong> ${info.tipo}</div>
+          <div class="logo"><img src="${info.logo}" alt="Logo da ONG"></div>
+          <div class="full-width"><strong>Email:</strong> ${info.email}</div>
         `;
 
-        // Adiciona evento para fechar a notificação
-        notification.querySelector(".notification-close").addEventListener("click", function () {
-            notification.remove();
-        });
+        modal.style.display = 'flex';
+      });
+    });
 
-        // Adiciona a notificação ao container
-        notificationContainer.appendChild(notification);
+    // Fechar o modal ao clicar no botão de fechar
+    document.querySelector('.close-btn').addEventListener('click', function () {
+      document.getElementById('modal').style.display = 'none';
+    });
 
-        // Remove a notificação automaticamente após 5 segundos
-        setTimeout(() => {
-            notification.remove();
-        }, 5000);
-    }
+    // Fechar o modal ao clicar fora do conteúdo
+    window.addEventListener('click', function (event) {
+      const modal = document.getElementById('modal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
 
-    if (tipoMensagem) {
-        if (tipoMensagem === "atualizacaoAceita") {
-            createNotification("success", "Validação Aceita!");
-        } else if (tipoMensagem === "atualizacaoRecusada") {
-            createNotification("error", "Validação Recusada!");
-        }
-    }
+    // Adicionando funcionalidades para os botões de Aceitar e Rejeitar
+    document.getElementById('aceitar-btn').addEventListener('click', function () {
+      alert('ONG Aceita!');
+      document.getElementById('modal').style.display = 'none';
+    });
 
-    // Remove os parâmetros da URL, voltando para a URL base
-    const urlSemParametro = window.location.pathname;
-    window.history.replaceState(null, "", urlSemParametro);
+    document.getElementById('rejeitar-btn').addEventListener('click', function () {
+      alert('ONG Rejeitada!');
+      document.getElementById('modal').style.display = 'none';
+    });
 });

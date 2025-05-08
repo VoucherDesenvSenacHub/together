@@ -1,5 +1,40 @@
+.container-input-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 50px;
+    p{
+        margin: 5px 0;
+        float: right;
+    }
+}
+
+.botao-resgistar-usuario{
+    margin-top: 20px;
+}
+
+.input-esquecer-senha{
+    margin-top: 100px;
+}
+
+.container-input-esquecer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botao-esquecer-senha{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.margin-input{
+    margin: 10px;
+}
+
 .body-login-usuario {
-    background-image: url("../../images/Usuario/background_login_usuario.jpg");
+    background-image: url("../../images/Usuario/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
     font-family: "Roboto", serif;
@@ -37,10 +72,6 @@
     transition: right 0.5s ease-in-out;
 }
 
-:root {
-    --gradient: linear-gradient(49deg, hsl(263, 100%, 32%) 0%, rgba(218, 112, 255, 1) 100%);
-    --shadow: rgba(0, 0, 0, 0.75);
-}
 
 .logo-login-usuario {
     display: flex;
@@ -63,14 +94,15 @@
 .login-usuario {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     /* gap: 30px; */
     padding: 30px;
-    width: 280px;
-    height: 420px;
+    width: 30%;
+    height: 320px;
     background-color: rgba(255, 255, 255, 0.532);
     border: none;
-    border-radius: 30px;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -92,13 +124,14 @@
 }
 
 .botao-login-usuario {
-    position: absolute;
-    top: 410px;
-    transition: 0.2s;
-    cursor: pointer;
-    a{
-        text-decoration: none;
-    }
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    /* top: 410px; */
+    /* transition: 0.2s;
+    cursor: pointer; */
+    margin-top: 40px;
+    
 }
 
 .botao-login:hover {
@@ -116,12 +149,13 @@
 
 /* --------------------Login Usuario-------------------- */
 .esqueci-senha-login-usuario {
-    color: #7608a5;
+    color: var(--cor-cinza-novo);
     font-size: 10px;
-    position: absolute;
+    /* position: absolute; */
     top: 335px;
     right: 50px;
     font-weight: bold;
+    text-decoration: underline;
 }
 
 .criar-conta-area-login-usuario {
@@ -129,8 +163,9 @@
     width: 250px;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 360px;
+    margin-top: 10px;
+    /* position: absolute; */
+    /* top: 360px; */
 
 }
 
@@ -146,7 +181,7 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: var(--cor-roxo-escuro);
+    color: var(--cor-cinza-novo);
     text-decoration: underline;
     font-weight: bold;
     top: 360px;
@@ -220,8 +255,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 389px;
+    /* position: absolute; */
+    /* top: 389px; */
+    margin-top: 20px;
 }
 
 #checkbox-login-usuario {
@@ -241,7 +277,7 @@
     margin: 0 0 0 3px;
     font-size: 12px;
     font-weight: bold;
-    color: #7608a5;
+    color: var(---cor-cinza-novo);
 }
 
 .botao-registrar-login-usuario {
@@ -274,7 +310,7 @@
     position: absolute;
     top: 50px;
     font-size: 36px;
-    color: #7608a5;
+    color: var(--cor-cinza-novo);
 }
 
 .sub-titulo-login-usuario {
@@ -305,7 +341,7 @@
     justify-content: top;
     z-index: 2;
     margin: 0 230px 0 0;
-    color: #7608a5;
+    color: #844c4c;
 }
 
 

@@ -1,19 +1,17 @@
 .home-banner-together {
-    width: 100%;
+    width: 100vw;
     background-image: url("/together/view/assests/images/Geral/together-banner-better.png");
-    height: 495px;
-    /* background-color: purple; */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 1539px 493px;
-    
-    /* background-attachment: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    object-fit: contain;
 }
 
 .home-title-favorite {
     font-size: 44px;
     font-weight: 700;
-    color: #590AB4;
+    color: var(--cor-cinza-novo);
 }
 
 .home-scroll-area{
@@ -63,20 +61,20 @@
     font-weight: 700;
     font-size: 44px;
     line-height: 25px;
-    color: #590AB4;
+    color: var(--cor-roxo-claro);
 }
  
 .sobre-nos-text-container p{
     font-weight: 400;
     font-size: 20px;
     line-height: 30px;
-    color: gray;
+    color: var(--cor-cinza-claro);
     letter-spacing: -0.5px;
 }
 .sobre-nos-content hr {
     width: 100%;
     height: 1px;
-    background-color: #dddddd;
+    background-color: var(--cor-branco);
 }
  
 .sobre-nos-image-container{
@@ -103,7 +101,7 @@
  
 .sobre-nos-card{
     display: flex;
-    color: black;
+    color: var(--cor-font-preto);
     width: 460px;
     height: auto;
     align-items: center;
@@ -113,13 +111,13 @@
  
 .sobre-nos-card h2 {
     font-family: 'roboto', sans-serif;
-    color: #590AB4;
+    color: var(--cor-roxo-escuro);
     margin-top: 10px;
 }
 .sobre-nos-card p {
     font-family: 'roboto', sans-serif;
     font-size: 16px;
-    color: gray;
+    color: var(--cor-cinza-claro);
     text-align: center;
     margin-top: 10px;
     text-align: justify;
@@ -142,4 +140,107 @@
 
 .home-div-botao{
     margin: 20px 0;
+}
+
+@media (max-width: 1200px) {
+    .home-scroll-area {
+        gap: 40px;
+    }
+    .sobre-nos-section {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+    .sobre-nos-text-container, .sobre-nos-image-container {
+        width: 90%;
+        margin: 20px 0;
+    }
+    .sobre-nos-content {
+        width: 100%;
+        height: auto;
+    }
+    .sobre-nos-image {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+/* Para telas menores que 768px (celulares) */
+@media (max-width: 768px) {
+    .home-banner-together {
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+    }
+    .home-title-favorite {
+        font-size: 32px;
+    }
+    .home-scroll-area {
+        flex-direction: column;
+        height: auto;
+        overflow-x: hidden;
+        gap: 20px;
+        align-items: center;
+    }
+    .card-container {
+        width: 90%;
+    }
+    .card-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .home-card-box {
+        margin-left: 10px;
+        width: 95%;
+    }
+    .sobre-nos-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .sobre-nos-text-container {
+        width: 100%;
+        text-align: center;
+    }
+    .sobre-nos-text-container h1 {
+        font-size: 32px;
+    }
+    .sobre-nos-text-container p {
+        font-size: 18px;
+    }
+    .sobre-nos-content {
+        width: 100%;
+        margin-left: 0;
+    }
+    .sobre-nos-image {
+        width: 90%;
+        max-width: 400px;
+    }
+    .sobre-nos-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sobre-nos-card {
+        width: 90%;
+    }
+}
+
+/* Para telas muito pequenas (até 480px) */
+@media (max-width: 480px) {
+    .home-title-favorite {
+        font-size: 24px;
+    }
+    .sobre-nos-text-container h1 {
+        font-size: 28px;
+    }
+    .sobre-nos-text-container p {
+        font-size: 16px;
+    }
+    .sobre-nos-card h2 {
+        font-size: 20px;
+    }
+    .sobre-nos-card p {
+        font-size: 14px;
+    }
 }

@@ -1,5 +1,5 @@
 .navbar-group {
-    background: var(--gradient);
+    background: var(--cor-navbar);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -25,7 +25,7 @@
 }
 
 .a-navbar {
-    color: var(--cor-font-branco);
+    color: var( --cor-cinza-novo);
     text-decoration: none;
     transition: 0.4s;
 }
