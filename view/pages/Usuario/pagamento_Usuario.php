@@ -1,4 +1,7 @@
 <?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../../view/components/input.php"; ?>
+<?php require_once "../../../view/components/label.php"; ?>
+<?php require_once "../../../view/components/button.php"; ?>
 
 <body class="user_pay">
   <?php require_once "../../../view/components/navbar.php"; ?>
@@ -20,23 +23,35 @@
             <span class="anonimo-text">Doação anônima</span>
           </div>
         </div>
-        
+
         <div class="formulario-e-imagem">
 
           <form action="pagamento_Usuario.php" method="POST" class="form-pagamento">
-            <label for="nome_cartao">Nome no cartão</label>
-            <input type="text" id="nome_cartao" name="nome_cartao" required>
 
-            <label for="numero_cartao">Número do cartão</label>
-            <input type="text" id="numero_cartao" name="numero_cartao" maxlength="19" required>
+            <div>
+              <?= label('nome', 'Nome (como está no cartão)') ?>
+              <?= inputRequired('text', 'nome', 'nome') ?>
+            </div>
 
-            <label for="validade">Validade (MM/AA)</label>
-            <input type="text" id="validade" name="validade" maxlength="5" placeholder="MM/AA" required>
+            <div>
+              <?= label('numero', 'Número do cartão') ?>
+              <?= inputRequired('text', 'numero', 'numero') ?>
+            </div>
 
-            <label for="cvv">CVV</label>
-            <input type="password" id="cvv" name="cvv" maxlength="4" required>
+            <div>
+              <?= label('validade', 'Validade') ?>
+              <?= inputRequired('text', 'validade', 'validade') ?>
+            </div>
 
-            <button type="submit">Pagar</button>
+            <div>
+              <?= label('cvv', 'CVV') ?>
+              <?= inputRequired('number', 'cvv', 'cvv') ?>
+            </div>
+
+            <div class="container-botao-pagamento">
+              <?=  botao('primary', 'Realizar Pagamento') ?>
+            </div>
+            
           </form>
 
           <!-- <img id="imagem-doacao" src="/together/view/assests/images/Usuario/doação.png" alt="Imagem de doação" /> -->
@@ -47,4 +62,5 @@
 
   <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>

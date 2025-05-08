@@ -1,19 +1,17 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const toggleAnonimo = document.getElementById("pagamento_anonimo");
-  const body = document.querySelector("body");
-  const imagemDoacao = document.getElementById("imagem-doacao");
+const toggle = document.getElementById('pagamento_anonimo');
+const mainContainer = document.querySelector('.main-container');
+const footer = document.querySelector('footer');
 
-  if (toggleAnonimo) {
-    toggleAnonimo.addEventListener("change", () => {
-      // Altera a classe do corpo para o modo anônimo
-      body.classList.toggle("modo-anonimo", toggleAnonimo.checked);
-
-      // Altera a imagem dependendo do estado do toggle
-      // if (toggleAnonimo.checked) {
-      //   imagemDoacao.src = '/together/view/assests/images/Usuario/doação_anonima.png';  // Imagem quando a doação é anônima
-      // } else {
-      //   imagemDoacao.src = '/together/view/assests/images/Usuario/doação.png';  // Imagem quando a doação não é anônima
-      // }
-    });
-  }
-});
+if (toggle && mainContainer && footer) {
+  toggle.addEventListener('change', function () {
+    if (this.checked) {
+      mainContainer.classList.add('modo-anonimo');
+      footer.classList.add('modo-anonimo');
+    } else {
+      mainContainer.classList.remove('modo-anonimo');
+      footer.classList.remove('modo-anonimo'); 
+    }
+  });
+} else {
+  console.log('Elemento não encontrado. Certifique-se de que todos os elementos estão no DOM.');
+}
