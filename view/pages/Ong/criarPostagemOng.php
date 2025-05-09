@@ -11,7 +11,7 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="formulario-perfil">
-            <form action="" method="POST">
+            <form action="" method="POST" class="postagem-geral-form">
                 <div class="postagem-geral-form-linha-superior">
                     <?php require_once "./../../components/upload.php" ?>
                     <div class="postagem-geral-input-text">
