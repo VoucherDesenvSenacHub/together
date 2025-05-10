@@ -4,8 +4,9 @@
     border-radius: 100%;
     background-color: transparent;
     border: none;
-    color: blueviolet;
+    color: var(--cor-cinza-novo);
     cursor: pointer;
+    margin: 0 0 15px 10px;
 }
 #component-back-icon{
     
