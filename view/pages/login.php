@@ -30,14 +30,10 @@
                             <?= label('senha', 'Senha') ?>
                             <?= inputRequired('password', 'senha', 'senha') ?>
 
-                            <a href="#">
-                                <p id="esqueci-senha-button" class="esqueci-senha-login-usuario">Esqueci a senha</p>
-                            </a>
+                            <a href="redefinirSenha.php" class="esqueci-senha-login-usuario">Esqueci a senha</a>
                         </div>
                         <div class="criar-conta-area-login-usuario">
-                            <p class="pergunta-login-usuario">Nao possui uma conta?</p>
-                            <button class="criar-conta-login-usuario" id="criar-conta-usuario-button">Crie uma
-                                agora</button>
+                            <p class="pergunta-login-usuario">Nao possui uma conta? <a href="criarConta.php">Crie uma agora</a> </p>
                         </div>
 
                         <div class="botao-login-usuario">
