@@ -24,7 +24,7 @@
             </li>
 
             <li>
-                <a class="a-navbar" href="/together/view/pages/usuario/loginUsuario.php">Entrar</a>
+                <a class="a-navbar" href="/together/view/pages/login.php">Entrar</a>
             </li>
         </ul>
         <div class="search-button-area">

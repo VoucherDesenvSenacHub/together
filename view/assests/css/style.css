@@ -8,9 +8,7 @@
 @import url(components/tabela.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
-@import url(pages/telaLoginAdm.css);
-@import url(pages/telaLoginOng.css);
-@import url(pages/telaLoginUsuario.css);
+@import url(pages/login.css);
 @import url(pages/validacaoVoluntario.css);
 @import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);

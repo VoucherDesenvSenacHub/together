@@ -1,0 +1,394 @@
+.container-input-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    p{
+        margin: 5px 0;
+        float: right;
+    }
+}
+
+.login-icon-group {
+    position: absolute;
+    margin: 20px;
+    left: 0;
+    top: 0; 
+}
+
+.botao-resgistar-usuario{
+    margin-top: 20px;
+}
+
+.input-esquecer-senha{
+    margin-top: 100px;
+}
+
+.container-input-esquecer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botao-esquecer-senha{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.margin-input{
+    margin: 10px;
+}
+
+.body-login-usuario {
+    background-image: url("../../images/Usuario/fundo_tela_login.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Roboto", serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-login-usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.conteudo-login-usuario {
+    width: 100%;
+}
+
+.recuperar-conta-login-usuario {
+    width: 100%;
+}
+
+.registrar-conta-login-usuario {
+    width: 100%;
+    transition: right 0.5s ease-in-out;
+}
+
+
+.logo-login-usuario {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-imagem-login-usuario {
+    width: 50%;
+}
+
+.box-login-usuario {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 30px; */
+    padding: 30px;
+    width: 30%;
+    height: 320px;
+    background-color: rgba(255, 255, 255, 0.532);
+    border: none;
+    border-radius: 10px;
+    position: relative;
+}
+
+.text-input-login-usuario {
+    width: 250px;
+    height: 50px;
+    min-height: 50px;
+    border: none;
+    border-radius: 30px;
+    padding: 0 0 0 15px;
+    font-family: "Roboto", serif;
+    margin: 30px 0 0 0;
+    box-shadow: 23px 22px 41px -24px var(--shadow);
+}
+
+
+::placeholder {
+    color: #a4a4a4;
+}
+
+.botao-login-usuario {
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    /* top: 410px; */
+    /* transition: 0.2s;
+    cursor: pointer; */
+    margin-top: 40px;
+    
+}
+
+.botao-login:hover {
+    width: 185px;
+    height: 55px;
+    transition: 0.2s;
+}
+
+.foto-perfil-login-usuario {
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* --------------------Login Usuario-------------------- */
+.esqueci-senha-login-usuario {
+    color: var(--cor-cinza-novo);
+    font-size: 10px;
+    /* position: absolute; */
+    top: 335px;
+    right: 50px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.criar-conta-area-login-usuario {
+    display: flex;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    /* position: absolute; */
+    /* top: 360px; */
+
+}
+
+.pergunta-login-usuario {
+    font-size: 13px;
+}
+
+.criar-conta-login-usuario {
+    display: flex;
+    font-size: 13px;
+    border: none;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--cor-cinza-novo);
+    text-decoration: underline;
+    font-weight: bold;
+    top: 360px;
+    gap: 5px;
+}
+
+
+/* --------------------Registrar Usuario-------------------- */
+.registrar-box-login-usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    width: 280px;
+    height: 455px;
+    background-color: rgba(255, 255, 255, 0.532);
+    border: none;
+    border-radius: 30px;
+    position: relative;
+}
+
+.register-input-login-usuario {
+    width: 250px;
+    height: 40px;
+    min-height: 40px;
+    border: none;
+    border-radius: 30px;
+    padding: 0 0 0 15px;
+    font-family: "Roboto", serif;
+    margin: 30px 0 0 0;
+    box-shadow: 23px 22px 41px -24px var(--shadow);
+}
+
+#nome-input {
+    position: absolute;
+    top: 30px;
+}
+
+#cpf-input {
+    position: absolute;
+    top: 85px;
+}
+
+#telefone-input {
+    position: absolute;
+    top: 140px;
+}
+
+#email-input {
+    position: absolute;
+    top: 195px;
+}
+
+#senha-input {
+    position: absolute;
+    top: 250px;
+}
+
+#senha-registrar-input {
+    position: absolute;
+    top: 250px;
+}
+
+#confirme-senha-input {
+    position: absolute;
+    top: 305px;
+}
+
+.termos-area-login-usuario {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    /* top: 389px; */
+    margin-top: 20px;
+}
+
+#checkbox-login-usuario {
+    height: 30px;
+    width: 20px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+.concordo-login-usuario {
+    font-size: 12px;
+
+}
+
+.termos-login-usuario {
+    margin: 0 0 0 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(---cor-cinza-novo);
+}
+
+.botao-registrar-login-usuario {
+    width: 180px;
+    /* margin: 60px 0 0 0; */
+    color: white;
+    background: var(--gradient);
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+    min-height: 50px;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    top: 435px;
+    transition: 0.2s;
+}
+
+.botao-registrar:hover {
+    width: 185px;
+    height: 55px;
+    transition: 0.2s;
+}
+
+
+
+/* --------------------Recuperar Senha-------------------- */
+
+.titulo-login-usuario {
+    position: absolute;
+    top: 50px;
+    font-size: 36px;
+    color: var(--cor-cinza-novo);
+}
+
+.sub-titulo-login-usuario {
+    position: absolute;
+    top: 110px;
+    font-size: 10.4px;
+    font-weight: bold;
+}
+
+#email-esqueci-senha-input {
+    position: absolute;
+    top: 195px;
+}
+
+/* ------------------------------------------------------ */
+#house-button-login-usuario, #house-button-recuperar-usuario, #house-button-registrar-usuario {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#login-icon-inicio {
+    color: #844c4c;
+}  
+
+
+@media screen and (max-width: 768px) {
+    .container-login-usuario {
+        display: flex;
+        flex-direction: column;
+        background-image: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .round-image {
+        width: 90px;
+        height: 180px;
+        min-height: 50px;
+        min-width: 90px;
+    }
+
+    .logo {
+        width: 440px;
+    }
+
+    input {
+        height: 50px;
+    }
+
+    .botao-login {
+        height: 50px;
+    }
+
+    .login {
+        min-width: 230px;
+        width: 230px;
+        max-width: 230px;
+        height: 50vh;
+    }
+
+    #house-icon-login-usuario {
+        position: absolute;
+        display: flex;
+        justify-content: top;
+        z-index: 2;
+        margin: 0 180px 0 0;
+        color: #7608a5
+    }
+
+}
