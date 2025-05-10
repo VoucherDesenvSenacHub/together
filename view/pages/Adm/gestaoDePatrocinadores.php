@@ -1,6 +1,8 @@
 <?php require_once './../../components/head.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/button.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/label.php' ?>
 
 <body>
     <header>
@@ -11,7 +13,11 @@
 
         <div class="container-botao-patrocinadores">
             <?php require_once './../../components/back-button.php' ?>
-            <?= botao('primary', 'Novo', 'modalPatrocinadores') ?>        </div>
+            <div class="filtro-botao-patrocinador">
+                <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?>
+                <?= botao('primary', 'Novo', 'abrir-patrocinadores') ?>
+            </div>
+        </div>
 
         <table class="tabela">
             <thead>
@@ -39,6 +45,31 @@
 
             </tbody>
         </table>
+
+        <div class="modal-overlay" id="modal-overlay-patrocinadores">
+            <div class="modal">
+                <div class="inserir-patrocinadores">
+                    <div class="inputs-patrocinadores">
+                        <div>
+                            <?= label('patrocinador', 'Patrocinador') ?>
+                            <?= inputRequired('text', 'patrocinador', 'patrocinador') ?>
+                        </div>
+                        <div>
+                            <?= label('redePatrocinador', 'Rede Social') ?>
+                            <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador') ?>
+                        </div>
+                    </div>
+                    <div>
+                        <?php require_once './../../components/upload.php' ?>
+                    </div>
+                </div>
+                <div class="botao-modal-patrocinadores">
+                    <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                </div>
+            </div>
+
+        </div>
+        </div>
 
     </main>
     <?php require_once './../../components/footer.php' ?>
