@@ -4,7 +4,7 @@
     border-radius: 100%;
     background-color: transparent;
     border: none;
-    color: blueviolet;
+    color: var(--cor-fundo-card);
     cursor: pointer;
 }
 #component-back-icon{

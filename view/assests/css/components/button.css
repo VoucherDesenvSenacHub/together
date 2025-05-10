@@ -3,7 +3,7 @@
 }
 
 .botao {
-    background-color: var(--cor-botao-primary);
+    background-color: var(--cor-button-salvar);
     color: var(--cor-font-preto);
     text-align: center;
     font-family: Roboto, sans-serif;
@@ -36,13 +36,13 @@
   }
 
   .botao-primary{
-    background-color: var(--cor-botao-primary);
-    border: 2px solid var(--cor-borda-botao-primary);
+    background-color: var(--cor-button-salvar);
+    border: 2px solid var(--cor-borda-botao);
   }
 
   .botao-secondary{
-    background-color: var(--cor-botao-secondary);
-    border: 2px solid var(--cor-borda-botao-secondary);
+    background-color: var(--cor-button-cancelar);
+    border: 2px solid var(--cor-borda-botao);
     color: var(--cor-font-preto);
   }
 
