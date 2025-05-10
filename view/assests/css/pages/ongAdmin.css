@@ -56,7 +56,7 @@
 }
 
 .ong-admin-default-img-config{
-
+    background-color : var(--cor-botao-primary-);
 }
 
 
@@ -81,6 +81,7 @@
 .ong-admin-strong-config{
     margin-top: 20px;
     font-weight: 600;
+    color: var(--cor-cinza-novo);
 }
 
 #ong-admin-edit-post{

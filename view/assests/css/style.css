@@ -44,7 +44,7 @@
     --cor-vermelho: #c63637;
     --cor-verde: #118211;
     --cor-amarelo: #ffd94d;
-    --cor-cinza-claro: #958f8f;
+    --cor-cinza-claro: #c3c3c3;
     --cor-cinza-escuro: #00000087;
     --cor-botao-primary: #278EA5;
     --cor-borda-botao-primary:#ffffff;
@@ -57,6 +57,7 @@
     --cor-container-painel: #F6F6F6;
     --cor-form: #f0f0f0; 
     
+    --cor-card: #fff;
     --cor-cinza-novo: #986c6c;
     --cor-navbar: #F4C489;
     --cor-body: #FCF1D3;
