@@ -37,32 +37,38 @@
     font-family: "Roboto", sans-serif;
     --cor-font-preto: #000000;
     --cor-font-branco: #ffffff;
-    --cor-branco: #FFFFFF;
     /* --gradient: linear-gradient(54deg, rgb(30, 100, 75) 0%, rgb(103 , 174 , 110) 100%); */
-    --cor-roxo-claro: #11698E;
-    --cor-roxo-escuro: #19456B;
-    --cor-vermelho: #c63637;
-    --cor-verde: #118211;
     --cor-amarelo: #ffd94d;
     --cor-cinza-claro: #c3c3c3;
     --cor-cinza-escuro: #00000087;
-    --cor-botao-primary: #278EA5;
-    --cor-borda-botao-primary:#ffffff;
-    --cor-botao-secondary: #21E6C1;
-    --cor-borda-botao-secondary:#11698E;
     --cor-botao-hover: #19456B;
     --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
     0px 2px 4px -2px rgba(59, 130, 246, 0.2);
     --painel-box-shadow: rgba(0, 0, 0, 0.2);
     --cor-title-card: rgba(55, 65, 81, 1);
-    --cor-container-painel: #F6F6F6;
     --cor-form: #f0f0f0; 
     
+
+    /*
+    *   Novas variaveis(root), 
+    todos abaixo em utilização!!
+    *
+    */
+    
+    --cor-branco: #FFFFFF;
+    --cor-cinza-p: gray;
+    --cor-container-painel: #F6F6F6;
     --cor-card: #fff;
-    --cor-cinza-novo: #986c6c;
+    --cor-titles: #986c6c;
+    --cor-p: #000;
     --cor-navbar: #F4C489;
     --cor-body: #FCF1D3;
     --cor-fundo-card: #f08a50;
-    --cor-botao-primary: #ee8d7e;
+    
+    /* BOTOES */
+    --cor-botao-primary: #d2a680;
     --cor-botao-secundary: #FCF1D3;
+    --cor-botao-salvar: #b0ca7f;
+    --cor-botao-cancelar: #ee8d7e;
+    --cor-borda-botao:#ffffff;
 }
