@@ -25,34 +25,28 @@
 
                     <div class="container-input-login">
                         <div>
-                            <?= label('cep', 'CEP') ?>
-                            <?= inputRequired('text', 'cep', 'cep') ?>
+                            <?= label('nome', 'Nome') ?>
+                            <?= inputRequired('text', 'nome', 'nome') ?>
                         </div>
                         <div>
-                            <?= label('logradouro', 'Logradouro') ?>
-                            <?= inputRequired('text', 'logradouro', 'logradouro') ?>
+                            <?= label('cpf', 'CPF') ?>
+                            <?= inputRequired('text', 'cpf', 'cpf') ?>
                         </div>
                         <div>
-                            <?= label('bairro', 'Bairro') ?>
-                            <?= inputRequired('text', 'bairro', 'bairro') ?>
+                            <?= label('telefone', 'Telefone') ?>
+                            <?= inputRequired('text', 'telefone', 'telefone') ?>
                         </div>
                         <div>
-                            <?= label('numero', 'Número') ?>
-                            <?= inputRequired('number', 'numero', 'numero') ?>
+                            <?= label('email', 'E-mail') ?>
+                            <?= inputRequired('text', 'email', 'email') ?>
                         </div>
                         <div>
-                            <?= label('complemento', 'Complemento') ?>
-                            <?= inputRequired('text', 'complemento', 'complemento') ?>
+                            <?= label('senha', 'Senha') ?>
+                            <?= inputRequired('number', 'senha', 'senha') ?>
                         </div>
-                        <div class="div-input-login">
-                            <div class="input-login">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?= inputRequired('text', 'cidade', 'cidade') ?>
-                            </div>
-                            <div class="input-login">
-                                <?= label('estado', 'Estado') ?>
-                                <?= selectRequired('estado', 'estado', ['Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Distrito Federal', 'Espírito Santo','Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul', 'Minas Gerais', 'Pará', 'Paraíba','Paraná', 'Pernambuco', 'Piauí', 'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul','Rondônia', 'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins']) ?>
-                            </div>
+                        <div>
+                            <?= label('confirmar_senha', 'Confirmar Senha') ?>
+                            <?= inputRequired('text', 'confirmar_senha', 'confirmar_senha') ?>
                         </div>
                         <div class="botao-login">
                             <?= botao('salvar', 'Cadastre-se',"","../home.php") ?>
