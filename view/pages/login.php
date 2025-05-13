@@ -3,47 +3,47 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
 
-<body class="body-login-usuario">
+<body class="body-login">
 
-    <div class="container-login-usuario">
+    <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php'?>
+            <?php require_once './../components/back-button.php' ?>
         </div>
 
 
-        <div class="conteudo-login-usuario show" id="loginConteudoUsuario">
+        <div class="conteudo-login">
 
-            <div class="logo-login-usuario">
-                <img src="../assests/images/components/Together.png" alt="logo" class="logo-imagem-login-usuario">
+            <div class="logo-login">
+                <img src="../assests/images/components/Together.png" alt="logo" class="logo-imagem-login">
             </div>
 
-            <div class="box-login-usuario">
+            <div class="box-login">
 
-                <form class="login-usuario">
+                <form class="login" method="POST">
 
                     <div class="container-input-login">
-                        <div class="margin-input">
+                        <div>
                             <?= label('email', 'Email') ?>
-                            <?= inputRequired('email', 'email', 'email') ?>
+                            <?= inputDefault('email', 'email', 'email') ?>
                         </div>
-                        <div class="margin-input">
+                        <div>
                             <?= label('senha', 'Senha') ?>
-                            <?= inputRequired('password', 'senha', 'senha') ?>
+                            <?= inputDefault('password', 'senha', 'senha') ?>
 
-                            <a href="redefinirSenha.php" class="esqueci-senha-login-usuario">Esqueci a senha</a>
                         </div>
-                        <div class="criar-conta-area-login-usuario">
-                            <p class="pergunta-login-usuario">Nao possui uma conta? <a href="criarConta.php">Crie uma agora</a> </p>
+                        <div class="botao-login">
+                            <?= botao('salvar', 'Entrar',"","../home.php") ?>
+                        </div>
+                        <div class="criar-conta-area-login">
+                            <a href="redefinirSenha.php" class="text-login link-login">Esqueceu a senha?</a>
+                            <p class="text-login">Não possui uma conta? <a href="criarConta.php" class="text-login link-login">Criar nova conta</a> </p>
                         </div>
 
-                        <div class="botao-login-usuario">
-                            <?= botao('primary', 'Entrar') ?>
-                        </div>
                     </div>
-                </form><!--login-->
-            </div><!--box-->
-        </div><!--login-content-->
-    </div><!--container-->
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 

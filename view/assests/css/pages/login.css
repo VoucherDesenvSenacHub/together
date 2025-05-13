@@ -3,6 +3,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    gap: 10px;
     p{
         margin: 5px 0;
         float: right;
@@ -16,7 +17,7 @@
     top: 0; 
 }
 
-.botao-resgistar-usuario{
+.botao-resgistar{
     margin-top: 20px;
 }
 
@@ -36,11 +37,7 @@
     justify-content: center;
 }
 
-.margin-input{
-    margin: 10px;
-}
-
-.body-login-usuario {
+.body-login {
     background-image: url("../../images/Usuario/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
@@ -51,14 +48,14 @@
     display: none;
 }
 
-.show {
+.conteudo-login {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.container-login-usuario {
+.container-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,54 +63,48 @@
     height: 100vh;
 }
 
-.conteudo-login-usuario {
+.recuperar-conta-login {
     width: 100%;
 }
 
-.recuperar-conta-login-usuario {
-    width: 100%;
-}
-
-.registrar-conta-login-usuario {
+.registrar-conta-login {
     width: 100%;
     transition: right 0.5s ease-in-out;
 }
 
 
-.logo-login-usuario {
+.logo-login {
     display: flex;
     width: 50%;
     align-items: center;
     justify-content: center;
 }
 
-.logo-imagem-login-usuario {
+.logo-imagem-login {
     width: 50%;
 }
 
-.box-login-usuario {
+.box-login {
     width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.login-usuario {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* gap: 30px; */
+    gap: 30px;
     padding: 30px;
     width: 30%;
-    height: 320px;
     background-color: rgba(255, 255, 255, 0.532);
     border: none;
     border-radius: 10px;
-    position: relative;
 }
 
-.text-input-login-usuario {
+.text-input-login {
     width: 250px;
     height: 50px;
     min-height: 50px;
@@ -130,57 +121,45 @@
     color: #a4a4a4;
 }
 
-.botao-login-usuario {
-    /* position: absolute; */
+.botao-login {
+    margin: 10px 0  ;
     display: flex;
     justify-content: center;
-    /* top: 410px; */
-    /* transition: 0.2s;
-    cursor: pointer; */
-    margin-top: 40px;
-    
+    cursor: pointer;    
 }
 
-.botao-login:hover {
-    width: 185px;
-    height: 55px;
-    transition: 0.2s;
-}
-
-.foto-perfil-login-usuario {
+.foto-perfil-login {
     border-radius: 100%;
     width: 150px;
     height: 150px;
     object-fit: cover;
 }
 
-/* --------------------Login Usuario-------------------- */
-.esqueci-senha-login-usuario {
+/* --------------------Login-------------------- */
+.text-login {
     color: var(--cor-cinza-novo);
-    font-size: 10px;
-    /* position: absolute; */
-    top: 335px;
-    right: 50px;
     font-weight: bold;
-    text-decoration: underline;
+    font-size: 12px;
+
+    &.link-login {
+        font-size: 12px;
+        color: var(--cor-font-link);
+    }
+    
 }
 
-.criar-conta-area-login-usuario {
+
+.criar-conta-area-login {
     display: flex;
-    width: 250px;
+    width: 100%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
-    /* position: absolute; */
-    /* top: 360px; */
+    gap: 10px;
 
 }
 
-.pergunta-login-usuario {
-    font-size: 13px;
-}
-
-.criar-conta-login-usuario {
+.criar-conta-login {
     display: flex;
     font-size: 13px;
     border: none;
@@ -196,8 +175,8 @@
 }
 
 
-/* --------------------Registrar Usuario-------------------- */
-.registrar-box-login-usuario {
+/* --------------------Registrar-------------------- */
+.registrar-box-login {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,7 +189,7 @@
     position: relative;
 }
 
-.register-input-login-usuario {
+.register-input-login {
     width: 250px;
     height: 40px;
     min-height: 40px;
@@ -257,7 +236,7 @@
     top: 305px;
 }
 
-.termos-area-login-usuario {
+.termos-area-login {
     width: 300px;
     display: flex;
     justify-content: center;
@@ -267,7 +246,7 @@
     margin-top: 20px;
 }
 
-#checkbox-login-usuario {
+#checkbox-login {
     height: 30px;
     width: 20px;
     text-decoration: none;
@@ -275,19 +254,19 @@
     outline: none;
 }
 
-.concordo-login-usuario {
+.concordo-login {
     font-size: 12px;
 
 }
 
-.termos-login-usuario {
+.termos-login {
     margin: 0 0 0 3px;
     font-size: 12px;
     font-weight: bold;
     color: var(---cor-cinza-novo);
 }
 
-.botao-registrar-login-usuario {
+.botao-registrar-login {
     width: 180px;
     /* margin: 60px 0 0 0; */
     color: white;
@@ -313,14 +292,14 @@
 
 /* --------------------Recuperar Senha-------------------- */
 
-.titulo-login-usuario {
+.titulo-login {
     position: absolute;
     top: 50px;
     font-size: 36px;
     color: var(--cor-cinza-novo);
 }
 
-.sub-titulo-login-usuario {
+.sub-titulo-login {
     position: absolute;
     top: 110px;
     font-size: 10.4px;
@@ -333,7 +312,7 @@
 }
 
 /* ------------------------------------------------------ */
-#house-button-login-usuario, #house-button-recuperar-usuario, #house-button-registrar-usuario {
+#house-button-login, #house-button-recuperar, #house-button-registrar {
     position: absolute;
     top: 30px;
     left: 25px;
@@ -348,7 +327,7 @@
 
 
 @media screen and (max-width: 768px) {
-    .container-login-usuario {
+    .container-login {
         display: flex;
         flex-direction: column;
         background-image: none;
@@ -382,7 +361,7 @@
         height: 50vh;
     }
 
-    #house-icon-login-usuario {
+    #house-icon-login {
         position: absolute;
         display: flex;
         justify-content: top;
