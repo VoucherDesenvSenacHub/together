@@ -20,15 +20,16 @@
             <div class="box-login">
 
                 <form class="login" method="POST">
+                    <h1 class="titulo-login">Entrar no Together</h1>
 
                     <div class="container-input-login">
                         <div>
                             <?= label('email', 'Email') ?>
-                            <?= inputDefault('email', 'email', 'email') ?>
+                            <?= inputRequired('email', 'email', 'email') ?>
                         </div>
                         <div>
                             <?= label('senha', 'Senha') ?>
-                            <?= inputDefault('password', 'senha', 'senha') ?>
+                            <?= inputRequired('password', 'senha', 'senha') ?>
 
                         </div>
                         <div class="botao-login">
