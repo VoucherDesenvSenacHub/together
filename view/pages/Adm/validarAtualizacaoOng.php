@@ -1,5 +1,9 @@
-<?php require_once "../../../view/components/head.php"; ?>
-<?php require_once "../../../view/components/acoes.php"; ?>
+<?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/button.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/label.php' ?>
+
 
 <body class="validar-ong">
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -7,7 +11,7 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="titulo-pagina-tabela">
-            <h1>Atualização Cadastral</h1>
+            <h1>Validação de ONGs</h1>
         </div>
 
 
@@ -24,7 +28,7 @@
                 <?php for ($i = 0; $i < 10; $i++): ?>
                     <tr>
                         <td>xx/xx/xxxx</td>
-                        <td>Vida Pet</td>
+                        <td>ONG Cachorrinho</td>
                         <td>Aguardando</td>
                         <td>
                             <?= renderAcao('visualizar') ?>
@@ -35,58 +39,29 @@
             </tbody>
         </table>
     </main>
-    <?php require_once "../../../view/components/footer.php"; ?>
-</body>
 
-    <main class="main-container">
-        <h3 class="title-atualizar-ong">Validação de ONGs</h3>
+<div class="modal-overlay" id="modal-overlay-validar-ong">
+    <div class="modal">
+        <div class="conteudo-modal-validar">
+            <h2>Detalhes da ONG</h2>
+            <p><strong>Nome:</strong> ONG Cachorrinho</p>
+            <p><strong>Data da solicitação:</strong> xx/xx/xxxx</p>
+            <p><strong>Status:</strong> Aguardando</p>
+            <p><strong>Descrição:</strong> Uma ONG destinada a ajudar cachorrinhos</p>
+        </div>
+        
+        <!-- Mensagem de Status -->
+        <div id="mensagem-status" class="mensagem-status"></div>
 
-        <section class="tabela-validacao">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Nome da ONG</th>
-                        <th>Status</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-cnpj="12.345.678/0001-90" 
-                        data-fundacao="10/03/2010"
-                        data-telefone="(11) 99999-9999"
-                        data-endereco="Rua Exemplo, 123"
-                        data-conselho="Sim"
-                        data-tipo="Ambiental"
-                        data-logo="/caminho/para/logo.png"
-                        data-email="email@ongcachorrinho.org">
-                        <td>30/04/2025</td>
-                        <td>ONG Cachorrinho</td>
-                        <td><i class="fas fa-hourglass-half" title="Aguardando"></i></td> 
-                        <td><a href="#"><i class="fas fa-eye"></i></a></td> 
-                    </tr>
-                    <!-- Repetir a estrutura de tr para outras ONGs -->
-                </tbody>
-            </table>
-        </section>
-    </main>
-
-    <!-- Modal -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3>Detalhes da ONG</h3>
-            <div class="modal-info-grid" id="modal-info">
-            <!-- conteúdo preenchido via JS -->
-            </div>
-            <div class="modal-buttons">
-                <button id="aceitar-btn" class="accept-btn">Aceitar</button>
-                <button id="rejeitar-btn" class="reject-btn">Rejeitar</button>
-            </div>
+        <div class="botao-modal-validar">
+            <button class="btn primary" id="aceitar-ong">Aceitar</button>
+            <button class="btn danger" id="rejeitar-ong">Rejeitar</button>
+            <button class="btn primary" id="fechar-modal-ong">Fechar</button>
         </div>
     </div>
+</div>
 
-    <?php require_once "../../../view/components/footer.php"; ?>
 
-</body>
+        <?php require_once "../../../view/components/footer.php"; ?>
+    </body>
 </html>

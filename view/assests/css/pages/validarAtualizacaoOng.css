@@ -1,124 +1,85 @@
-:root {
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  --cor-font-preto: #000000;
-  --cor-font-branco: #ffffff;
-  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-  --cor-roxo-claro: #b56ad0d2;
-  --cor-roxo-escuro: #b56ad0d2;
-  --cor-vermelho: #c63637;
-  --cor-verde: #118211;
-  --cor-amarelo: #ffd94d;
-  --cor-body: #FCF1D3; /* Cor de fundo */
-}
-
-/* Título da página */
-.title-atualizar-ong {
-  font-size: 40px;
-  height: 70px;
-  font-weight: bold;
-  background: var(--gradient);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 30px;
-  text-align: left;
-  z-index: 999;
-}
-
-/* Estilos para os ícones de status */
-i.fa-hourglass-half {
-  color: orange; /* Cor para Aguardando */
-}
-
-i.fa-check {
-  color: green; /* Cor para Aprovada */
-}
-
-i.fa-times {
-  color: red; /* Cor para Rejeitada */
-}
-
-/* Estilizando o ícone de olhinho */
-i.fas.fa-eye {
-  font-size: 1.5rem;
-  color: #333;
-  transition: color 0.3s, transform 0.3s;
-}
-
-/* Efeito ao passar o mouse (hover) */
-i.fas.fa-eye:hover {
-  color: #007bff;
-  transform: scale(1.2);
-}
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: var(--cor-body);
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #333;
-}
-
-/* Grid dentro do modal */
-.modal-info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.modal-info-grid div {
-  background-color: var(--cor-body);
-  padding: 0.8rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.modal-info-grid .full-width {
-  grid-column: span 2; /* Faz com que ocupe toda a largura disponível */
-}
-
-.modal-info-grid .logo {
-  grid-column: span 2; /* Faz com que o logo ocupe toda a largura disponível */
-  justify-self: center;
-}
-
-.modal-info-grid strong {
-  display: block;
-  color: #333;
-  margin-bottom: 0.3rem;
-}
-
-.modal-info-grid img {
+/* Conteúdo interno do modal de validação */
+.conteudo-modal-validar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 100%;
   width: 100%;
-  max-width: 150px;
-  border-radius: 8px;
-  justify-self: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.conteudo-modal-validar h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.conteudo-modal-validar p {
+  margin: 5px 0;
+}
+
+/* Botão de fechar alinhado com espaçamento consistente */
+.botao-modal-validar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.botao-modal-validar {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.botao-modal-validar button {
+  padding: 10px 60px;       /* Aumenta o espaço interno horizontal */
+  min-width: 120px;         /* Garante que todos tenham pelo menos essa largura */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+/* Cores dos botões */
+#aceitar-ong {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#rejeitar-ong {
+  background-color: #f44336;
+  color: white;
+}
+
+#fechar-modal-ong {
+  background-color: #2196F3;
+  color: white;
+}
+
+/* Mensagens */
+.mensagem-status {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: none;
+  text-align: center;
+  font-size: 16px;
+}
+
+.mensagem-aceita {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.mensagem-rejeitada {
+  background-color: #f44336;
+  color: white;
 }
