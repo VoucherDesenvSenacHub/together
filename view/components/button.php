@@ -8,6 +8,12 @@ function botao($tipo, $texto, $id = "", $formaction = ""){
         case 'secondary':
             $class = 'botao botao-secondary';
             break;
+        case 'salvar':
+            $class = 'botao botao-salvar';
+            break;
+        case 'cancelar':
+            $class = 'botao botao-cancelar';
+            break;
         default:
             $class = 'botao botao-primary';
             break;

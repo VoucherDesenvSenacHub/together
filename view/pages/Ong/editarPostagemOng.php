@@ -39,9 +39,10 @@
                         <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir"
                             class="postagem-geral-excluir">
                     </button>
+
                     <div class="postagem-geral-div-btn">
-                        <?= botao('primary', 'Salvar', "",'ongAdmin.php?editar=salvar') ?>
-                        <?= botao('secondary', 'Cancelar', "",'ongAdmin.php?editar=cancelar') ?>
+                        <?= botao('salvar', 'Salvar', "",'ongAdmin.php?editar=salvar') ?>
+                        <?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?editar=cancelar') ?>
                     </div>
                 </div>
             </form>
@@ -51,3 +52,4 @@
 
     <?php require_once './../../components/footer.php' ?>
 </body>
+

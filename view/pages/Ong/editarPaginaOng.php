@@ -47,8 +47,8 @@
                     </div>
 
                     <div class="formulario-buttons">
-                        <?= botao('primary', 'Salvar') ?>
-                        <?= botao('secondary', 'Cancelar') ?>
+                        <?= botao('salvar', 'Salvar') ?>
+                        <?= botao('cancelar', 'Cancelar') ?>
                     </div>
                 </div>
             </form>
