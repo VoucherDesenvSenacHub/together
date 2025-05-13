@@ -3,7 +3,7 @@
 @import url(components/back-button.css);
 @import url(components/button.css);
 @import url(components/card.css);
-@import url(components/dialog.css);
+@import url(components/modal.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
 @import url(pages/gestaoDePatrocinadores.css);
@@ -50,21 +50,25 @@
     
 
     /*
-    *   Novos em root, todos abaixo em utilização
+    *   Novas variaveis(root), 
+    todos abaixo em utilização!!
     *
     */
     
     --cor-branco: #FFFFFF;
     --cor-cinza-p: gray;
     --cor-container-painel: #F6F6F6;
-    --cor-borda-botao:#ffffff;
-    --cor-button-salvar: #b0ca7f;
-    --cor-button-cancelar: #ee8d7e;
     --cor-card: #fff;
     --cor-titles: #986c6c;
     --cor-p: #000;
     --cor-navbar: #F4C489;
     --cor-body: #FCF1D3;
     --cor-fundo-card: #f08a50;
+    
+    /* BOTOES */
+    --cor-botao-primary: #d2a680;
     --cor-botao-secundary: #FCF1D3;
+    --cor-botao-salvar: #b0ca7f;
+    --cor-botao-cancelar: #ee8d7e;
+    --cor-borda-botao:#ffffff;
 }

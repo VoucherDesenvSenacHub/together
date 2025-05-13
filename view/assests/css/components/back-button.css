@@ -4,7 +4,7 @@
     border-radius: 100%;
     background-color: transparent;
     border: none;
-    color: var(--cor-fundo-card);
+    color: var(--cor-titles);
     cursor: pointer;
 }
 #component-back-icon{

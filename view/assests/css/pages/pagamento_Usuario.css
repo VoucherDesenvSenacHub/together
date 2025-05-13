@@ -1,21 +1,16 @@
-:root {
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  --cor-font-preto: #000000;
-  --cor-font-branco: #ffffff;
-  --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-  --cor-roxo-claro: #b56ad0d2;
-  --cor-roxo-escuro: #b56ad0d2;
-  --cor-vermelho: #c63637;
-  --cor-verde: #118211;
-  --cor-amarelo: #ffd94d;
+.modo-anonimo footer {
+  background-color: var(--cor-body);
+}
+
+.modo-anonimo .titulo-pay-user {
+  -webkit-text-fill-color: var(--cor-body); 
 }
 
 .titulo-pay-user {
   font-size: 40px;
   height: 70px;
   font-weight: bold;
-  background: var(--gradient);
+  background: var(--cor-roxo-escuro);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 30px;
@@ -68,7 +63,10 @@
 }
 
 input:checked + .slider {
-  background-color: #6a1b9a;
+  .main-container{
+    background-color: #6a1b9a;
+
+  }
 }
 
 input:checked + .slider:before {
@@ -81,7 +79,7 @@ input:checked + .slider:before {
 }
 
 .modo-anonimo {
-  background-color: #1e1e2f;
+  background-color: var(--cor-roxo-escuro);
 }
 
 .modo-anonimo .anonimo-text {
@@ -101,26 +99,14 @@ input:checked + .slider:before {
   max-width: 400px;
   gap: 15px;
   padding: 20px;
-  background: white;
   border-radius: 8px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  background-color: #e1d0a37a;
 }
 
-.form-pagamento input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
 
-.form-pagamento button {
-  padding: 12px;
-  background: var(--gradient);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
+
+
 
 /* LAYOUT GERAL */
 
