@@ -47,9 +47,10 @@
 .botoes-validar-atualizacao{
     display: flex;
     justify-content: end;
-    button{
-        margin-left: 15px;
-    }
+    width: 100%;
+    gap: 10px;
+    margin-top: 10px;
+    
 }
 
 .titulo-validar-atualizacao{
@@ -59,4 +60,22 @@
 .container-uper-readonly-footer{
     display: flex;
     justify-content: row;
+}
+
+.container-endereco-atualizacao-cadastral{
+    display: flex;
+    gap: 20px;
+}
+
+.container-input-atualizacao-cadastral{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.titulo-endereco-atualizacao{
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
