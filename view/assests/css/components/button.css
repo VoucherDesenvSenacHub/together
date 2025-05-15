@@ -3,7 +3,7 @@
 }
 
 .botao {
-    background-color: var(--cor-botao-primary);
+    background-color: var(--cor-botao-salvar);
     color: var(--cor-font-preto);
     text-align: center;
     font-family: Roboto, sans-serif;
@@ -37,13 +37,23 @@
 
   .botao-primary{
     background-color: var(--cor-botao-primary);
-    border: 2px solid var(--cor-borda-botao-primary);
+    border: 2px solid var(--cor-borda-botao);
   }
 
   .botao-secondary{
-    background-color: var(--cor-botao-secondary);
-    border: 2px solid var(--cor-borda-botao-secondary);
+    background-color: var(--cor-botao-secundary);
+    border: 2px solid var(--cor-borda-botao);
     color: var(--cor-font-preto);
+  }
+
+  .botao-salvar{
+    background-color: var(--cor-botao-salvar);
+    border: 2px solid var(--cor-borda-botao);
+  }
+
+  .botao-cancelar{
+    background-color: var(--cor-botao-cancelar);
+    border: 2px solid var(--cor-borda-botao);
   }
 
   @media screen and (max-width: 395px){

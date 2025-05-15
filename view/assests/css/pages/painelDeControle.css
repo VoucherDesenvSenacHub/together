@@ -56,7 +56,10 @@
     font-weight: bold;
     margin-top: 25px;
     margin-bottom: 15px;
-    color: var(--cor-roxo-escuro);
+    
+    b{
+        color: var(--cor-titles);
+    }
 }
 
 .painel-de-controle-desc-conteudo {
