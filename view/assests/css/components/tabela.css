@@ -1,7 +1,7 @@
 .titulo-pagina-tabela{
   font-size: 3rem;
   font-weight: bold;
-  color: var(--cor-roxo-escuro);
+  color: var(--cor-titulo-de-pagina);
   margin: 20px;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .tabela th {
-  background-color: var(--cor-roxo-escuro);
+  background-color: var(--cor-titulo-de-pagina);
   color: var(--cor-font-branco);
   padding: 15px;
   border-right: 1px solid var(--cor-font-branco);

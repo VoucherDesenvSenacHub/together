@@ -1,19 +1,26 @@
 <?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/label.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/acoes.php' ?>
+
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
 
-    <h1 class="titulo-visualizarPerfis">Ongs e Usuários Cadastrados</h1>
+    <h1 class="titulo-pagina-tabela">Ongs e Usuários Cadastrados</h1>
 
         <form action="" class="form-filtro-data">
-            <h3>Período</h3>
-            <div class="filtro-mes">
-                <input type="date">
-                <input type="date">
+            <div class="filtro-por-mes">
+                <?= label('periodo', 'Período') ?>
+                <div class="input-filtro-por-mes">
+                    <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                    <?=  inputFilter('date', 'data-final', 'data-final') ?>
+                </div>
             </div>
         </form>
-        <table>
+
+        <table class="tabela">
             <thead>
                 <tr class="row-head">
                     <th>Data de Cadastro</th>
@@ -23,19 +30,16 @@
                 </tr>
             </thead>
             <tbody class="body-table">
+            <?php for ($i = 0; $i < 10; $i++): ?>
                 <tr>
                     <td class="row-body-table">XX/XX/XXXX</td>
-                    <td class="row-body-table">XXXXX</td>
+                    <td class="row-body-table">Saúde é Vida</td>
                     <td>Ong</td>
                     <td>
-                        <form action="" method="get">
-                            <button class="buttom-visibility-ong-status">
-                                <img class="exibicao-visualizar-ong" src="../../assests/images/ong/eye.png"
-                                    alt="visualizar">
-                            </button>
-                        </form>
+                        <?= renderAcao('visualizar') ?>
                     </td>
                 </tr>
+            <?php endfor ?>
             </tbody>
         </table>
     </main>

@@ -63,11 +63,13 @@
     --cor-navbar: #F4C489;
     --cor-body: #FCF1D3;
     --cor-fundo-card: #f08a50;
-    
+    --cor-titulo-de-pagina:#19456B;
+
     /* BOTOES */
     --cor-botao-primary: #d2a680;
     --cor-botao-secundary: #FCF1D3;
     --cor-botao-salvar: #b0ca7f;
     --cor-botao-cancelar: #ee8d7e;
     --cor-borda-botao:#ffffff;
+    --cor-botao-entrar: #5c3a21;
 }

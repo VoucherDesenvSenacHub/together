@@ -33,7 +33,7 @@
 
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar',"","../home.php") ?>
+                            <?= botao('salvar', 'Entrar',   '','../../controler/entrar.php') ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="redefinirSenha.php" class="text-login link-login">Esqueceu a senha?</a>
