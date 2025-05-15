@@ -1,5 +1,3 @@
-<?php require_once  "./head.php" ?>
-
 <header>
     <nav class="navbar-group">
         <div class="logo-area">
