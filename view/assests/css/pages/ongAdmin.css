@@ -81,7 +81,7 @@
 .ong-admin-strong-config{
     margin-top: 20px;
     font-weight: 600;
-    color: var(--cor-cinza-novo);
+    color: var(--cor-titles);
 }
 
 #ong-admin-edit-post{

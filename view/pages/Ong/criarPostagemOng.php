@@ -35,8 +35,8 @@
                     </div>
                 </div>
                 <div class="postagem-geral-div-btn">
-                    <?= botao('primary', 'Salvar', "",'ongAdmin.php?criar=salvar') ?>
-                    <?= botao('secondary', 'Cancelar', "",'ongAdmin.php?criar=cancelar') ?>
+                    <?= botao('salvar', 'Salvar', "",'ongAdmin.php?criar=salvar') ?>
+                    <?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?criar=cancelar') ?>
                 </div>
             </form>
         </div>

@@ -31,7 +31,9 @@
                         <td>ONG Cachorrinho</td>
                         <td>Aguardando</td>
                         <td>
+                            <a href="\together\view\pages\Adm\validacaoAtualizacao.php">
                             <?= renderAcao('visualizar') ?>
+                            </a>
                         </td>
                     </tr>
                 <?php endfor; ?>
@@ -39,28 +41,6 @@
             </tbody>
         </table>
     </main>
-
-<div class="modal-overlay" id="modal-overlay-validar-ong">
-    <div class="modal">
-        <div class="conteudo-modal-validar">
-            <h2>Detalhes da ONG</h2>
-            <p><strong>Nome:</strong> ONG Cachorrinho</p>
-            <p><strong>Data da solicitação:</strong> xx/xx/xxxx</p>
-            <p><strong>Status:</strong> Aguardando</p>
-            <p><strong>Descrição:</strong> Uma ONG destinada a ajudar cachorrinhos</p>
-        </div>
-        
-        <!-- Mensagem de Status -->
-        <div id="mensagem-status" class="mensagem-status"></div>
-
-        <div class="botao-modal-validar">
-            <button class="btn primary" id="aceitar-ong">Aceitar</button>
-            <button class="btn danger" id="rejeitar-ong">Rejeitar</button>
-            <button class="btn primary" id="fechar-modal-ong">Fechar</button>
-        </div>
-    </div>
-</div>
-
 
         <?php require_once "../../../view/components/footer.php"; ?>
     </body>

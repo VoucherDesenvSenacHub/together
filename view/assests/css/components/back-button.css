@@ -4,9 +4,8 @@
     border-radius: 100%;
     background-color: transparent;
     border: none;
-    color: var(--cor-cinza-novo);
+    color: var(--cor-titles);
     cursor: pointer;
-    margin: 0 0 15px 10px;
 }
 #component-back-icon{
     

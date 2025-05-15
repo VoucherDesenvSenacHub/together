@@ -15,7 +15,7 @@
             <?php require_once './../../components/back-button.php' ?>
             <div class="filtro-botao-patrocinador">
                 <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?>
-                <?= botao('primary', 'Novo', 'abrir-patrocinadores') ?>
+                <?= botao('salvar', 'Novo', 'abrir-patrocinadores') ?>
             </div>
         </div>
 
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="botao-modal-patrocinadores">
-                    <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                    <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
                 </div>
             </div>
 
