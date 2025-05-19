@@ -65,7 +65,7 @@
                         </a>
                     </div>
                 </div>
-                <div title="Gráfico do projeto" class="relatorio-ong-graphic-div">
+                <!-- <div title="Gráfico do projeto" class="relatorio-ong-graphic-div"> -->
                 <table class="tabela">
                     <thead>
                         <tr>
