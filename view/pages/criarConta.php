@@ -15,7 +15,7 @@
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assests/images/components/Together.png" alt="logo" class="logo-imagem-login">
+                <img src="../assests/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
             <div class="box-login">
@@ -49,7 +49,7 @@
                             <?= inputRequired('text', 'confirmar_senha', 'confirmar_senha') ?>
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Cadastre-se',"","../home.php") ?>
+                            <?= botao('salvar', 'Cadastre-se',"","login.php") ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="login.php" class="text-login link-login">Já tem uma conta?</a>

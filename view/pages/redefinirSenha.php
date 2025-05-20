@@ -14,7 +14,8 @@
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assests/images/components/Together.png" alt="logo" class="logo-imagem-login">
+                <img src="../assests/images/components/logoTogetherLoginMobile.png" alt="logoMobile" class="logo-imagem-login-mobile">
+                <img src="../assests/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
             <div class="box-login">

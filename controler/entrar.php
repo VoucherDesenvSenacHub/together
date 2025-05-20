@@ -1,43 +1,40 @@
 <?php 
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
     $emailForm = $_POST['email'];
     $senhaForm = $_POST['senha'];
     if (!empty($emailForm) && !empty($senhaForm)) {
-        $emailCorretoAdm = 'adm@email.com'; 
-        $senhaCorretoAdm = password_hash('12345678',PASSWORD_BCRYPT);  
-        $perfilAdm = 'Administrador';
+        $usuarios = [
 
-        $emailCorretoUsuario = 'usuario@email.com'; 
-        $senhaCorretoUsuario = password_hash('12345678',PASSWORD_BCRYPT);  
-        $perfilUsuario = 'Usuario';
+            [
+                'email' => 'adm@email.com',
+                'senha' => password_hash('12345678',PASSWORD_BCRYPT),
+                'perfil' => 'Administrador',
+            ],
+            [
+                'email' => 'ong@email.com',
+                'senha' => password_hash('12345678',PASSWORD_BCRYPT),
+                'perfil' => 'Ong',
+            ],
+            [
+                'email' => 'usuario@email.com',
+                'senha' => password_hash('12345678',PASSWORD_BCRYPT),
+                'perfil' => 'Usuario',
+            ],
+        ];
+        foreach ($usuarios as $usuario) {
+            if ($emailForm === $usuario['email'] && password_verify($senhaForm, $usuario['senha'])) {
+                $_SESSION['email'] = $usuario['email'];
+                $_SESSION['perfil'] = $usuario['perfil'];
 
-        $emailCorretoOng = 'ong@email.com';
-        $senhaCorretoOng = password_hash('12345678',PASSWORD_BCRYPT);   
-        $perfilOng = 'Ong';
-
-        if ($emailForm === $emailCorretoAdm && password_verify($senhaForm, $senhaCorretoAdm)) {
-            $_SESSION['email'] = $emailForm;
-            $_SESSION['perfil'] = $perfilAdm;
-
-            header ('Location: ../index.php');
-
-        } elseif ($emailForm === $emailCorretoUsuario && password_verify($senhaForm, $senhaCorretoUsuario)) {
-            $_SESSION['email'] = $emailForm;
-            $_SESSION['perfil'] = $perfilUsuario;
-
-            header ('Location: ../index.php');
-        
-        } elseif ($emailForm === $emailCorretoOng && password_verify($senhaForm, $senhaCorretoOng)) {
-            $_SESSION['email'] = $emailForm;
-            $_SESSION['perfil'] = $perfilOng;
-
-            header ('Location: ../index.php');
-
-        } else {
-            header ('Location: ../view/pages/login.php');
+                return header ('Location: ../index.php');
+            } else {
+                header ('Location: ../view/pages/login.php');
+            }
         }
     }
 }
+
 ?>

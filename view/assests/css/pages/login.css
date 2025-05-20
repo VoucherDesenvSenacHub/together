@@ -17,12 +17,11 @@
     background-image: url("../../images/Usuario/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
-    font-family: "Roboto", serif;
 }
 
 .conteudo-login {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;;
     align-items: center;
     width: 100%;
 }
@@ -37,13 +36,15 @@
 
 .logo-login {
     display: flex;
-    width: 30%;
     align-items: center;
     justify-content: center;
 }
 
+.logo-imagem-login-mobile {
+    display: none;
+}
+
 .box-login {
-    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,49 +143,38 @@
     margin-top: 20px;
 }
 
-@media screen and (max-width: 768px) {
-    .container-login {
-        display: flex;
-        flex-direction: column;
-        background-image: none;
-        justify-content: center;
-        align-items: center;
+@media (max-width: 400px) {
+    .conteudo-login {
+        margin-top: 100px;
+        width: 110%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .titulo-login {
+        font-size: 26px;
     }
 
-    .round-image {
-        width: 90px;
-        height: 180px;
-        min-height: 50px;
-        min-width: 90px;
-    }
-
-    .logo {
-        width: 440px;
-    }
-
-    input {
-        height: 50px;
-    }
-
-    .botao-login {
-        margin: 10px 0px;
-        height: 50px;
+    .body-login {
+        background-position-x: 50%;
     }
 
     .login {
-        min-width: 230px;
-        width: 230px;
-        max-width: 230px;
-        height: 50vh;
+        width: 250px;
+        gap: 20px;
     }
 
-    #house-icon-login {
-        position: absolute;
-        display: flex;
-        justify-content: top;
-        z-index: 2;
-        margin: 0 180px 0 0;
-        color: #7608a5
+    .logo-imagem-login-mobile {
+        display: block;
     }
+    .logo-imagem-login {
+        display: none;
+    }
+}
 
+@media (max-width: 991.98px) {
+    .conteudo-login {
+        gap: 30px;
+        flex-direction: column;
+    }
 }
