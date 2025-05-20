@@ -1,64 +1,39 @@
-<?php
-
-require_once __DIR__ . '/../../components/head.php';
-
-?>
-
+<<?php require_once "./../../components/head.php"; ?>
+<?php require_once "./../../components/acoes.php"; ?>
 
 <body>
-    <?php require_once __DIR__ . '/../../components/navbar.php'; ?>
+    <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
-        <h1 class="titulo-pagina-tabela">Historico</h1>
+        <?php require_once './../../components/back-button.php' ?>
+        <div class="titulo-pagina-tabela">
+            <h1>Historico de Doações</h1>
+        </div>
 
         <table class="tabela">
             <thead>
                 <tr>
-                    <th>
-
-                    </th>
-                    <th>
-
-                    </th>
-                    <th>
-
-                    </th>
-                    <th>
-
-                    </th>
+                    <th>Data</th>
+                    <th>ONGS</th>
+                    <th>Doações</th>
+                    <th>Comprovante</th>
                 </tr>
             </thead>
-
             <tbody>
-                <tr>
-                    <td>
+                <?php for ($i = 0; $i < 10; $i++): ?>
+                    <tr>
+                        <td>xx/xx/xxxx</td>
+                        <td>xxxxxxxxx</td>
+                        <td>xxxxxxxxx</td>
+                        <td>
+                            <?= renderAcao('baixar') ?>
+                        </td>
+                    </tr>
+                <?php endfor; ?>
 
-                    </td>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                    <td>
-
-                    </td>
-                </tr>
             </tbody>
         </table>
     </main>
-    <?php require_once __DIR__ . '/../../components/footer.php'; ?>
+    <?php require_once "./../../components/footer.php"; ?>
 </body>
+
+</html>
