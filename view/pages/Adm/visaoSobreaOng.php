@@ -1,5 +1,6 @@
 <?php
 require_once "../../../view/components/head.php";
+require_once "../../../view/components/button.php";
 ?>
 
 <body>
@@ -27,8 +28,8 @@ require_once "../../../view/components/head.php";
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
                             </div>
                             <div class="adm-ong-vision-button-div">
-                                <input class="adm-ong-vision-default-button" type="button" value="Fazer Doação">
-                                <input class="adm-ong-vision-default-button" type="button" value="Voluntariar-se">
+                                <?= botao('primary', 'Fazer Doação'); ?>
+                                <?= botao('primary', 'Voluntariar-se'); ?>
                             </div>
                             <div>
                                 <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text"><i>* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</i></p>
@@ -109,7 +110,7 @@ require_once "../../../view/components/head.php";
                                 </div>
 
                                 <div class="adm-ong-vision-social-text">
-                                    <p>Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
+                                    <p class="adm-ong-vision-social-p">Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
                                 </div>
                             </div>
                         </div>
