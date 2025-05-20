@@ -10,7 +10,7 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="titulo-pagina-tabela">
-            <h1>Voluntarios da ONG</h1>
+            <h1>Voluntários da ONG</h1>
         </div>
 
         <table class="tabela">
