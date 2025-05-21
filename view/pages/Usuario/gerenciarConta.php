@@ -1,4 +1,7 @@
 <?php
+require_once "../../../view/components/label.php";
+require_once "../../../view/components/input.php";
+
 $usuario = [
   "id" => 0,
   "nome" => "User Padrão",
@@ -16,7 +19,8 @@ $usuario = [
   <?php require_once './../../components/navbar.php' ?>
   <main class="main-container">
     <section class="Reset">
-      <div class="formulario-perfil">
+      <form class="formulario-perfil" action="" method="GET">
+
         <img class="formulario-imagem-preview" src="/together/view/assests/images/Usuario/usuario-user-foto.png"
           alt="foto Usuario" />
 
@@ -25,61 +29,33 @@ $usuario = [
         <div class="dados">
           <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
 
-          <div class="input-group">
-            <label class="formulario-label " for="nome">Nome do Usuário</label>
-            <input type="text" id="nome" name="nome" class="formulario-input formulario-textarea"
-              value="<?= $usuario['nome'] ?>" disabled>
+          <div>
+            <?= label('nomeUsuario', 'Nome') ?>
+            <?= inputReadonly('text', 'nomeUsuario', 'nomeUsuario', $usuario['nome']) ?>
           </div>
 
-          <div class="input-group">
-            <label class="formulario-label" for="tel">Telefone</label>
-            <input type="tel" id="tel" name="tel" class="formulario-input formulario-textarea"
-              value="<?= $usuario['telefone'] ?>" disabled>
+          <div>
+            <?= label('telefoneUsuario', 'telefone') ?>
+            <?= inputReadonly('text', 'telefoneUsuario', 'telefoneUsuario', $usuario['telefone']) ?>
           </div>
 
-          <div class="input-group">
-            <label class="formulario-label" for="email">Email</label>
-            <input type="email" id="email" name="email" class="formulario-input formulario-textarea"
-              value="<?= $usuario['email'] ?>" disabled>
+          <div>
+            <?= label('emailUsuario', 'Email') ?>
+            <?= inputReadonly('text', 'emailUsuario', 'emailUsuario', $usuario['email']) ?>
           </div>
 
-          <div class="input-group">
-            <label class="formulario-label" for="cpf">CPF</label>
-            <input type="text" id="cpf" name="cpf" class="formulario-input formulario-textarea"
-              pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"
-              value="<?= $usuario['cpf'] ?>" disabled>
+          <div>
+            <?= label('cpfUsuario', 'Cpf') ?>
+            <?= inputReadonly('text', 'cpfUsuario', 'cpfUsuario', $usuario['cpf']) ?>
           </div>
-
-          <form>
+          <div>
             <div class="botoes">
               <div id="btn-editar-container">
                 <?= botao('primary', 'Editar', 'editarInformacoes.php') ?>
               </div>
-          </form>
-        </div>
-        <div class="main-gerenciar-conta">
-          <div class="leftSide">
-            <a href="#" class="conjunto_botoes">
-              <p class="format_p">Ongs em que eu sou voluntário</p>
-              <span class="material-symbols-outlined"> chevron_right </span>
-              <span id="icone_2" class="material-symbols-outlined">
-                handshake
-              </span>
-            </a>
-            <a href="#" class="conjunto_botoes">
-              <span id="icone_2" class="material-symbols-outlined"> favorite </span>
-              <p class="format_p">Favoritos</p>
-              <span class="material-symbols-outlined"> chevron_right </span>
-            </a>
-            <a href="#" class="conjunto_botoes">
-              <p class="format_p">Historico de doação</p>
-              <span id="icone_2" class="material-symbols-outlined"> schedule </span>
-              <span class="material-symbols-outlined"> chevron_right </span>
-            </a>
+            </div>
           </div>
-        </div>
-      </div>
-      </div>
+      </form>
     </section>
   </main>
 </body>
@@ -95,7 +71,7 @@ $usuario = [
   }
 
   (function initCPFFormatter() {
-    const campoCPF = document.getElementById('cpf');
+    const campoCPF = document.getElementById('cpfUsuario');
     if (!campoCPF) return;
 
     formatarCPF(campoCPF);

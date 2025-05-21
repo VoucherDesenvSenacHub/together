@@ -1,35 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
-
-.Reset {
-  margin: 0px;
-  padding: 0px;
-  height: 0px;
-}
-
-.main-gerenciar-conta {
-  position: relative;
-  margin: auto;
-  display: flex;
-}
-
-.main-gerenciar-conta > * {
-  margin: auto;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-}
-
-.gerenciar-conta {
-  position: absolute;
-  top: 25%;
-  left: 5%;
-  display: flex;
-  margin-top: -2%;
-}
-
-.imagem {
+/* .imagem {
   width: 95px;
   height: 98px;
   border-radius: 300px;
@@ -110,13 +79,6 @@ body {
 
 .conjunto_botoes:hover {
   cursor: pointer;
-}
-
-hr {
-  border-left: solid 3px var(--painel-box-shadow);
-  border-radius: 5px;
-  height: 480px;
-  position: relative;
 }
 
 .foto_usuario {
@@ -202,4 +164,4 @@ hr {
     text-align: center;
     margin: auto;
   }
-}
+} */
