@@ -43,7 +43,10 @@
         </div>
 
         <div class="login-botao-area-navbar">
-            <?php botao('entrar','Entrar','','') ?>
+            <form action="">
+                <?= botao('entrar','Entrar','','view/pages/login.php') ?>
+            </form>
+            
         </div>
         
 </header>

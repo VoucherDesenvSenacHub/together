@@ -54,12 +54,9 @@
     todos abaixo em utilização!!
     *
     */
-<<<<<<< HEAD
     --cor-login: #000;
     --cor-font-link: #355D8C;
-=======
     /*GERAL*/
->>>>>>> 37f242ea497523e20905b9e6f1302a7cf7b73827
     --cor-branco: #FFFFFF;
     
     --cor-cinza-p: gray;
@@ -84,4 +81,5 @@
     --cor-botao-cancelar: #ee8d7e;
     --cor-borda-botao:#ffffff;
     --cor-botao-entrar: #5c3a21;
+    --cor-botao-letra-entrar: #fff;
 }
