@@ -1,7 +1,7 @@
 .titulo-pagina-tabela{
   font-size: 3rem;
   font-weight: bold;
-  color: var(--cor-titulo-de-pagina);
+  color: var(--cor-fundo-titulo-tabela);
   margin: 20px;
 }
 
@@ -16,7 +16,7 @@
 .tabela td,
 .tabela th {
   padding: 9px;
-  border: 1px solid var(--cor-font-branco);
+  border: 1px solid var(--cor-branco);
   text-align: center;
   vertical-align: middle;
   color: #797777;
@@ -25,15 +25,15 @@
 }
 
 .tabela th {
-  background-color: var(--cor-titulo-de-pagina);
-  color: var(--cor-font-branco);
+  background-color: var(--cor-fundo-titulo-tabela);
+  color: var(--cor-branco);
   padding: 15px;
-  border-right: 1px solid var(--cor-font-branco);
-  border-left: 1px solid var(--cor-font-branco);
+  border-right: 1px solid var(--cor-branco);
+  border-left: 1px solid var(--cor-branco);
 }
 
 .tabela tr:nth-child(even) {
-  background: #E1D0A3 ;
+  background: var(--cor-fundo-linha-tabela) ;
 }
 
 .icon-btn {
