@@ -11,7 +11,7 @@
     font-weight: 700;
     line-height: 16px;
     text-transform: uppercase;
-    width: 118px;
+    width: 100%;
     height: 44px;
     padding: 15px 26px;
     border-radius: 8px;
@@ -56,10 +56,14 @@
     border: 2px solid var(--cor-borda-botao);
   }
 
+  .botao-entrar{
+    background-color: var(--cor-botao-entrar);
+    border: none;
+  }
+
   @media screen and (max-width: 395px){
     .botao {
       font-size: 10px;
-      width: 70px;
       height: 44px;
     }
 };
