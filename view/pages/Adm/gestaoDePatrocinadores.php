@@ -7,17 +7,20 @@
 <body>
     <header>
         <?php require_once './../../components/navbar.php' ?>
-
     </header>
+
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
+
         <div class="container-botao-patrocinadores">
             <div class="titulo-pagina-tabela">
                 <h1>Patrocinadores</h1>
             </div>
             <div class="filtro-botao-patrocinador">
                 <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?>
-                <div class="div-btn-patrocinador"><?= botao('primary', 'Novo', 'abrir-patrocinadores') ?></div>
+                <div class="div-btn-patrocinador">
+                    <?= botao('primary', 'Novo', 'abrir-patrocinadores') ?>
+                </div>
             </div>
         </div>
 
@@ -38,13 +41,12 @@
                         <td class="nome-patrocinador">Senac Hub Academy</td>
                         <td>
                             <div class="acoes-container">
-                                <?= renderAcao('editar') ?>
+                                <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
                                 <?= renderAcao('deletar') ?>
                             </div>
                         </td>
                     </tr>
                 <?php endfor; ?>
-
             </tbody>
         </table>
 
@@ -66,16 +68,16 @@
                     </div>
                 </div>
                 <div class="botao-modal-patrocinadores">
-                    <div class="div-btn-patrocinador"><?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?></div>
+                    <div class="div-btn-patrocinador">
+                        <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                    </div>
                 </div>
             </div>
-
         </div>
-        </div>
-
     </main>
+
     <?php require_once './../../components/footer.php' ?>
 
+    
 </body>
-
 </html>
