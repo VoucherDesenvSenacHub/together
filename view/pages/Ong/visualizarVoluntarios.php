@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="container-input-email-voluntario">
                             <?= label('email', 'Email') ?>
                             <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
