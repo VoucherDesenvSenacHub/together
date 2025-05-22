@@ -6,7 +6,7 @@
 
 import "./components/navbar.js";
 import "./pages/gestaoDePatrocinadores.js";
-import "./pages/loginUsuario.js";
+// import "./pages/loginUsuario.js";
 import "./pages/pagamento_Usuario.js";
 import "./pages/validacaoAtualizacao.js";
 import "./pages/validarAtualizacaoOng.js";
