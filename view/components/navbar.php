@@ -1,3 +1,5 @@
+<?php require_once "button.php" ?>
+
 <header>
     <nav class="navbar-group">
         <div class="logo-area">
@@ -41,9 +43,7 @@
         </div>
 
         <div class="login-botao-area-navbar">
-            <button class="login-botao-navbar">
-                Entrar
-            </button>
+            <?php botao('entrar','Entrar','','') ?>
         </div>
         
 </header>

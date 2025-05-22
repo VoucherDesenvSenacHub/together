@@ -13,6 +13,12 @@
     border: 1px solid var(--cor-cinza-escuro);
     border-radius: 4px;
     resize: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.formulario-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 .formulario-textarea {
@@ -22,9 +28,8 @@
 
 .formulario-select {
   width: 100%;
-  height: 40px;
+  height: 42px;
   padding: 0px 8px;
-  margin-bottom: 15px;
   border: 1px solid var(--cor-cinza-escuro);
   border-radius: 4px;
   resize: vertical;

@@ -35,14 +35,9 @@
                     </div>
                 </div>
                 <div class="postagem-geral-btn-group">
-                    <button class="postagem-geral-div-excluir" formaction="ongAdmin.php?editar=excluir">
-                        <img src="./../../assests/images/geral/lixeira.png" alt="icon excluir"
-                            class="postagem-geral-excluir">
-                    </button>
-
                     <div class="postagem-geral-div-btn">
-                        <?= botao('salvar', 'Salvar', "",'ongAdmin.php?editar=salvar') ?>
-                        <?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?editar=cancelar') ?>
+                        <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', "",'ongAdmin.php?editar=salvar') ?></div>
+                        <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?editar=cancelar') ?></div>
                     </div>
                 </div>
             </form>
