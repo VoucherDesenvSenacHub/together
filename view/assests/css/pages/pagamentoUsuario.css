@@ -7,15 +7,10 @@
 }
 
 .titulo-pay-user {
-  font-size: 40px;
-  height: 70px;
+  font-size: 3rem;
   font-weight: bold;
-  background: var(--cor-roxo-escuro);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 30px;
-  text-align: left;
-  z-index: 999;
+  color: var(--cor-fundo-titulo-tabela);
+  margin: 20px;
 }
 
 .anonimo-toggle {
@@ -75,15 +70,15 @@ input:checked + .slider:before {
 
 .anonimo-text {
   font-size: 1rem;
-  color: black;
+  color: var(--cor-p);
 }
 
 .modo-anonimo {
-  background-color: var(--cor-roxo-escuro);
+  background-color: var(--cor-modo-anonimo);
 }
 
 .modo-anonimo .anonimo-text {
-  color: white;
+  color: var(--cor-body);
 }
 
 /* FORMULÁRIO */

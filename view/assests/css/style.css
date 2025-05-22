@@ -10,9 +10,7 @@
 @import url(components/tabela.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
-@import url(pages/telaLoginAdm.css);
-@import url(pages/telaLoginOng.css);
-@import url(pages/telaLoginUsuario.css);
+@import url(pages/login.css);
 @import url(pages/validacaoVoluntario.css);
 @import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);
@@ -24,7 +22,7 @@
 @import url(components/footer.css);
 @import url(pages/visualizarPerfis.css);
 @import url(pages/emDesenvolvimento.css);
-@import url(pages/pagamento_Usuario.css);
+@import url(pages/pagamentoUsuario.css);
 @import url(pages/visaoSobreaOng.css);
 @import url(pages/validacaoAtualizacao.css);
 @import url(pages/editarPaginaOng.css);
@@ -56,6 +54,8 @@
     todos abaixo em utilização!!
     *
     */
+    --cor-login: #000;
+    --cor-font-link: #355D8C;
     /*GERAL*/
     --cor-branco: #FFFFFF;
     
@@ -68,7 +68,9 @@
     --cor-body: #FCF1D3;
     --cor-fundo-card: #f08a50;
     --card-neon-text: #5EE6EB;
-    
+    --cor-modo-anonimo: #19456b;
+
+
     /* TABELA*/
     --cor-fundo-titulo-tabela: #19456b;
     --cor-fundo-linha-tabela: #E1D0A3;
@@ -78,4 +80,5 @@
     --cor-botao-salvar: #b0ca7f;
     --cor-botao-cancelar: #ee8d7e;
     --cor-borda-botao:#ffffff;
+    --cor-botao-entrar: #5c3a21;
 }
