@@ -1,4 +1,4 @@
-<<?php require_once "./../../components/head.php"; ?>
+<?php require_once "./../../components/head.php"; ?>
 <?php require_once "./../../components/acoes.php"; ?>
 
 <body>
