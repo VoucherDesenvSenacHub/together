@@ -5,7 +5,7 @@ function renderAcao($action, $extraClasses = '') {
         'visualizar' => ['eye', 'fa-regular', 'color: #000000;'],
         'editar'     => ['pen-to-square', 'fa-solid', ''],
         'deletar'    => ['trash', 'fa-solid', ''],
-        'baixar'     => ['down-long','fa-solid','color: #000000;']
+        'baixar'     => ['download','fa-solid','color: #000000;']
     ];
 
     if (isset($icons[$action])) {
