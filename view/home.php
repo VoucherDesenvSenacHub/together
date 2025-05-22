@@ -11,7 +11,7 @@
             <div class="home-container">
                 <div class="home-div-botao">
                     <h3 class="home-title-favorite">Destaques</h3>
-                    <?= botao("primary","Ver Mais") ?>
+                    <div class="btn-destaque-home"><?= botao("primary","Ver Mais") ?></div>
                 </div>
                 <div class="card-container">
                     <?php for ($i = 0; $i < 4; $i++) { ?>
