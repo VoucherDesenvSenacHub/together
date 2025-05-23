@@ -17,6 +17,7 @@
     appearance: textfield;
 }
 
+
 .formulario-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
