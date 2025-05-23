@@ -105,8 +105,8 @@
                 <div class="container-uper-readonly-footer">
 
                     <div class="botoes-validar-atualizacao">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Validar', '', 'voluntariosOng.php') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Recusar', '', 'voluntariosOng.php') ?></div>
                     </div>
 
                 </div>
