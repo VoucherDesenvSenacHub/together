@@ -24,10 +24,12 @@
                 <?php for ($i = 0; $i < 10; $i++): ?>
                     <tr>
                         <td>xx/xx/xxxx</td>
-                        <td>Vida Pet</td>
+                        <td>Saúde é vida</td>
                         <td>Aguardando</td>
                         <td>
+                            <a href="\together\view\pages\Adm\validacaoAtualizacao.php">
                             <?= renderAcao('visualizar') ?>
+                            </a>
                         </td>
                     </tr>
                 <?php endfor; ?>

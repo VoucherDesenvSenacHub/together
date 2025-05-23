@@ -42,6 +42,10 @@
     width: 97%;
 }
 
+.btn-destaque-home {
+    width: 150px;
+}
+
 /* SOBRE NOS  ----------------------------------------------------------------------------*/ 
 .sobre-nos-section{
     justify-content: center;
