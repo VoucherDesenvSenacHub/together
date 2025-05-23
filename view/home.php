@@ -15,7 +15,9 @@
                 </form>
                 <div class="card-container">
                     <?php for ($i = 0; $i < 4; $i++) { ?>
-                        <?= cardOng("./../view\assests\images\Geral\ImageONG.png","Salva Vidas!","Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
+                        <form>
+                            <?= cardOng("./../view\assests\images\Geral\ImageONG.png","Salva Vidas!","Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.",) ?>
+                        </form>
                     <?php }
                     ; ?>
                 </div>

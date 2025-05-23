@@ -5,13 +5,13 @@ require_once "../../../view/components/button.php";
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
-    <main class="main-container">
+
+        <main class="main-container">
+            <?php require_once './../../components/back-button.php' ?>
+
         <div class="adm-ong-vision-container">
 
             <form method="post" action="#" class="adm-ong-vision-form-box">
-                <div class="adm-ong-vision-back-button-div">
-                    <?php require_once './../../components/back-button.php' ?>
-                </div>
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
@@ -104,7 +104,7 @@ require_once "../../../view/components/button.php";
                                         <h1>@PratoCheio_Ms</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.webp" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>

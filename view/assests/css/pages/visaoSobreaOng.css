@@ -24,11 +24,7 @@
     border-radius: 15px;
 }
  
-.adm-ong-vision-back-button-div{
-    width: 92%;
-    display: flex;
-    align-items: center;
-}
+
  
 /* Tags de filtro */
 .adm-ong-vision-filter-tags {
