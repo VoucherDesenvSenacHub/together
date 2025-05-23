@@ -8,7 +8,7 @@ $usuario = [
   "telefone" => "(67)99876-5432",
   "email" => "emaildouser@together.com",
   "cpf" => "12345678910",
-]
+];
 
   ?>
 
@@ -58,26 +58,6 @@ $usuario = [
       </form>
     </section>
   </main>
+  <?php require_once "../../components/footer.php" ?>
 </body>
-<script>
-  function formatarCPF(campo) {
-    let value = campo.value.replace(/\D/g, '');
-    if (value.length > 11) {
-      value = value.substring(0, 11);
-    }
-    campo.value = value.replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1-$2');
-  }
-
-  (function initCPFFormatter() {
-    const campoCPF = document.getElementById('cpfUsuario');
-    if (!campoCPF) return;
-
-    formatarCPF(campoCPF);
-    campoCPF.addEventListener('input', () => formatarCPF(campoCPF));
-  })();
-
-</script>
-
 </html>
