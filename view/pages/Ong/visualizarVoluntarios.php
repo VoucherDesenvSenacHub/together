@@ -15,7 +15,7 @@
         </div>
 
         <div class="formulario-perfil">
-            <form action="">
+            <form action="" method="POST">
                 <div class="container-perfil-ong-atualizado">
                     <img src="\together\view\assests\images\Ong\perfil-user.png" alt="Logo da ONG" class="logo">
                     <div class="container-uper-readonly">
@@ -70,7 +70,7 @@
 
                         <div class="container-input-atualizacao-cadastral">
                             <?= label('logradouro', 'Logradouro') ?>
-                            <?= inputReadonly('text', 'logradouro', 'logradouro', 'Logradouro') ?>
+                            <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
                         </div>
                     </div>
 
@@ -78,12 +78,12 @@
 
                         <div class="container-input-atualizacao-cadastral">
                             <?= label('complemento', 'Complemento') ?>
-                            <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital municipal') ?>
+                            <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
                         </div>
 
                         <div class="container-input-atualizacao-cadastral">
                             <?= label('numero', 'Número') ?>
-                            <?= inputReadonly('text', 'numero', 'numero', '99') ?>
+                            <?= inputReadonly('text', 'numero', 'numero', '0') ?>
                         </div>
                     </div>
 
