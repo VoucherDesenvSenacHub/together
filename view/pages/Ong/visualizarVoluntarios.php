@@ -98,15 +98,13 @@
                         </div>
 
                     </div>
-
-                    <div class="container-uper-readonly-secondary"></div>
                 </div>
 
                 <div class="container-uper-readonly-footer">
 
                     <div class="botoes-validar-atualizacao">
-                        <?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?>
-                        <?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?></div>
                     </div>
 
                 </div>
