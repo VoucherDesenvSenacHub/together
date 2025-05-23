@@ -32,6 +32,7 @@
 @import url(components/formContainer.css);
 @import url(components/body.css);
 @import url(pages/relatorioOng.css);
+@import url(pages/usuariosCadastrados.css);
 
 :root {
     font-size: 16px;
