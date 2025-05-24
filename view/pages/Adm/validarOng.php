@@ -7,10 +7,11 @@
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
+        <?php require_once './../../components/back-button.php' ?>
 
-    <h1 class="titulo-pagina-tabela">Ongs e Usuários Cadastrados</h1>
+    <h1 class="titulo-pagina-tabela">Validar Ongs</h1>
 
-        <form action="" class="form-filtro-data">
+        <form action="" class="">
             <div class="filtro-por-mes">
                 <?= label('periodo', 'Período') ?>
                 <div class="input-filtro-por-mes">
@@ -23,21 +24,40 @@
         <table class="tabela">
             <thead>
                 <tr class="row-head">
-                    <th>Data de Cadastro</th>
-                    <th>Nome dos Perfis</th>
-                    <th>Tipo de Perfil</th>
+                    <th>Data de Envio</th>
+                    <th>Nome das ONGs</th>
+                    <th>Status</th>
                     <th>Visualizar</th>
                 </tr>
             </thead>
             <tbody class="body-table">
-            <?php for ($i = 0; $i < 10; $i++): ?>
+            <?php for ($i = 0; $i < 3; $i++): ?>
                 <tr>
                     <td class="row-body-table">XX/XX/XXXX</td>
-                    <td class="row-body-table">Saúde é Vida</td>
-                    <td>Ong</td>
+                    <td class="row-body-table">Habitat Brasil</td>
+                    <td>Pendente</td>
                     <td>
                         <?= renderAcao('visualizar') ?>
                     </td>
+                    
+                </tr>
+                <tr>
+                    <td class="row-body-table">XX/XX/XXXX</td>
+                    <td class="row-body-table">WWF-Brasil</td>
+                    <td>Aprovado</td>
+                    <td>
+                        <?= renderAcao('visualizar') ?>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td class="row-body-table">XX/XX/XXXX</td>
+                    <td class="row-body-table">Mata-Atlantica-SOS</td>
+                    <td>Recusado</td>
+                    <td>
+                        <?= renderAcao('visualizar') ?>
+                    </td>
+                    
                 </tr>
             <?php endfor ?>
             </tbody>

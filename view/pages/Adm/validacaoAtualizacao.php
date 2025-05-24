@@ -89,8 +89,8 @@
                 </div>
                 <div class="container-uper-readonly-footer">
                     <div class="botoes-validar-atualizacao">
-                        <?= botao('salvar', 'Validar') ?>
-                        <?= botao('cancelar', 'Recusar') ?>
+                        <?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?>
+                        <?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?>
                     </div>
                 </div>
             </form>

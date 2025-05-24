@@ -35,9 +35,6 @@
     box-shadow: var(--botao-box-shadow);
     border: none;
 
-    .postagem-geral-excluir {
-        width: 30px;
-    }
 }
 
 .postagem-geral-a {
@@ -47,10 +44,14 @@
 .postagem-geral-btn-group {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
     gap: 10px;
 } 
+
+.postagem-geral-btn {
+    width: 120px;
+}
 
 .postagem-geral-div-btn {
     display: flex;
