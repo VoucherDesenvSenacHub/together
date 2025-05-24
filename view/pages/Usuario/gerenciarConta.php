@@ -1,83 +1,68 @@
-<?php
-require_once "../../../view/components/label.php";
-require_once "../../../view/components/input.php";
-
-$usuario = [
-  "id" => 0,
-  "nome" => "User Padrão",
-  "telefone" => "(67)99876-5432",
-  "email" => "emaildouser@together.com",
-  "cpf" => "12345678910",
-]
-
-  ?>
-
-<?php require_once "../../../view/components/head.php" ?>
-<?php require_once "../../components/button.php" ?>
+<?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../../view/components/label.php"; ?>
+<?php require_once "../../../view/components/input.php"; ?>
+<?php require_once "../../../view/components/button.php"; ?>
 
 <body>
-  <?php require_once './../../components/navbar.php' ?>
+  <?php require_once "../../../view/components/navbar.php"; ?>
   <main class="main-container">
-    <section class="Reset">
-      <form class="formulario-perfil" action="" method="GET">
+    <div class="btn-voltar-validacao-atualizacao">
+      <?php require_once './../../components/back-button.php' ?>
+    </div>
 
-        <img class="formulario-imagem-preview" src="/together/view/assests/images/Usuario/usuario-user-foto.png"
-          alt="foto Usuario" />
+    <div class="titulo-validar-atualizacao">
+      <h1 class="titulo-pagina-tabela">Dados do usuário</h1>
+    </div>
 
-        <h4 class="dados_usuario">Sua localização</h4>
+    <div class="formulario-perfil">
+      <form action="">
+        <div class="container-perfil-ong-atualizado">
+          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Logo da ONG" class="logo">
+          <div class="container-uper-readonly">
+            <div class="container-uper-readonly-primary">
 
-        <div class="dados">
-          <input type="hidden" name="id" value="<?= $usuario['id'] ?>">
+              <div class="form-row">
+                <div>
+                  <?= label('nome', 'Nome') ?>
+                  <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                </div>
 
-          <div>
-            <?= label('nomeUsuario', 'Nome') ?>
-            <?= inputReadonly('text', 'nomeUsuario', 'nomeUsuario', $usuario['nome']) ?>
-          </div>
+                <div>
+                  <?= label('telefone', 'Telefone') ?>
+                  <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                </div>
+              </div>
 
-          <div>
-            <?= label('telefoneUsuario', 'telefone') ?>
-            <?= inputReadonly('text', 'telefoneUsuario', 'telefoneUsuario', $usuario['telefone']) ?>
-          </div>
+              <div class="form-row">
 
-          <div>
-            <?= label('emailUsuario', 'Email') ?>
-            <?= inputReadonly('text', 'emailUsuario', 'emailUsuario', $usuario['email']) ?>
-          </div>
+                <div>
+                  <?= label('cpf', 'CPF') ?>
+                  <?= inputReadonly('text', 'cpf', 'cpf', '00000000000') ?>
+                </div>
 
-          <div>
-            <?= label('cpfUsuario', 'Cpf') ?>
-            <?= inputReadonly('text', 'cpfUsuario', 'cpfUsuario', $usuario['cpf']) ?>
-          </div>
-          <div>
-            <div class="botoes">
-              <div id="btn-editar-container">
-                <?= botao('primary', 'Editar', 'editarInformacoes.php') ?>
+                <div>
+                  <?= label('data', 'Data de nascimento') ?>
+                  <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                </div>
               </div>
             </div>
+
+            <div class="container-input-email-voluntario">
+              <?= label('email', 'Email') ?>
+              <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+            </div>
           </div>
+        </div>
+        <div class="container-uper-readonly-footer">
+          <div class="botoes-validar-atualizacao">
+            <?= botao('salvar', 'Editar', '', 'editarInformacoes.php') ?>
+          </div>
+
+        </div>
       </form>
-    </section>
+    </div>
   </main>
+  <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-<script>
-  function formatarCPF(campo) {
-    let value = campo.value.replace(/\D/g, '');
-    if (value.length > 11) {
-      value = value.substring(0, 11);
-    }
-    campo.value = value.replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1-$2');
-  }
-
-  (function initCPFFormatter() {
-    const campoCPF = document.getElementById('cpfUsuario');
-    if (!campoCPF) return;
-
-    formatarCPF(campoCPF);
-    campoCPF.addEventListener('input', () => formatarCPF(campoCPF));
-  })();
-
-</script>
 
 </html>
