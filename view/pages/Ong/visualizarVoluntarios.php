@@ -10,16 +10,16 @@
             <?php require_once './../../components/back-button.php' ?>
         </div>
 
-        <div class="titulo-validar-atualizacao">
+        <div class="titulo-visualizar-voluntario">
             <h1 class="titulo-pagina-tabela">Dados do voluntário</h1>
         </div>
 
         <div class="formulario-perfil">
             <form action="" method="POST">
-                <div class="container-perfil-ong-atualizado">
-                    <img src="\together\view\assests\images\Ong\perfil-user.png" alt="Logo da ONG" class="logo">
-                    <div class="container-uper-readonly">
-                        <div class="container-uper-readonly-primary">
+                <div class="container-perfil-voluntario">
+                    <img src="\together\view\assests\images\Ong\perfil-user.png" alt="Foto do usuário" class="logo-user">
+                    <div class="container-readonly">
+                        <div class="container-readonly-primary">
 
                             <div class="form-row">
                                 <div>
@@ -55,46 +55,46 @@
 
                 </div>
 
-                <div class="container-endereco container-uper-readonly-secondary">
+                <div class="container-endereco container-readonly-secondary">
 
-                    <div class="titulo-endereco-atualizacao">
+                    <div class="titulo-endereco-voluntario">
                         <h1>Endereço</h1>
                     </div>
 
-                    <div class="container-endereco-atualizacao-cadastral">
+                    <div class="container-endereco-voluntario">
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('cep', 'CEP') ?>
                             <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
                         </div>
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('logradouro', 'Logradouro') ?>
                             <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
                         </div>
                     </div>
 
-                    <div class="container-endereco-atualizacao-cadastral">
+                    <div class="container-endereco-voluntario">
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('complemento', 'Complemento') ?>
                             <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
                         </div>
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('numero', 'Número') ?>
                             <?= inputReadonly('text', 'numero', 'numero', '0') ?>
                         </div>
                     </div>
 
-                    <div class="container-endereco-atualizacao-cadastral">
+                    <div class="container-endereco-voluntario">
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('bairro', 'Bairro') ?>
                             <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
                         </div>
 
-                        <div class="container-input-atualizacao-cadastral">
+                        <div class="container-input-endereco-voluntario">
                             <?= label('cidade', 'Cidade') ?>
                             <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
                         </div>
@@ -102,17 +102,30 @@
                     </div>
                 </div>
 
-                <div class="container-uper-readonly-footer">
+                <div class="container-readonly-footer">
 
-                    <div class="botoes-validar-atualizacao">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Excluir', '', 'voluntariosOng.php') ?></div>
+                    <div class="botao-excluir-voluntario">
+                        <div class="botao-excluir"><?= botao('excluir', 'Excluir', 'btnExcluirVoluntario', 'voluntariosOng.php') ?></div>
                     </div>
 
                 </div>
             </form>
         </div>
     </main>
+    
+    <div id="modalConfirmacao" class="modal-overlay">
+    <div class="modal-content">
+        <p>Tem certeza que deseja excluir este voluntário?</p>
+        <div class="modal-botoes">
+        <button id="btnConfirmarExclusao" class="botao botao-excluir">Sim</button>
+        <button id="btnCancelarExclusao" class="botao botao-cancelar">Cancelar</button>
+        </div>
+    </div>
+    </div>
+
+
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
 
 </html>
+

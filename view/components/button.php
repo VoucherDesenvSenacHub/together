@@ -17,6 +17,9 @@ function botao($tipo, $texto, $id = "", $formaction = ""){
         case 'entrar':
             $class = 'botao botao-entrar';
             break;
+        case 'excluir':
+            $class = 'botao botao-excluir';
+            break;
         default:
             $class = 'botao botao-primary';
             break;
