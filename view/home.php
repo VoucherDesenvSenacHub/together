@@ -9,10 +9,10 @@
     <main class="main-container">
         <section class="home-main">
             <div class="home-container">
-                <div class="home-div-botao">
+                <form class="home-div-botao">
                     <h3 class="home-title-favorite">Destaques</h3>
                     <div class="btn-destaque-home"><?= botao("primary","Ver Mais") ?></div>
-                </div>
+                </form>
                 <div class="card-container">
                     <?php for ($i = 0; $i < 4; $i++) { ?>
                         <?= cardOng("./../view\assests\images\Geral\ImageONG.png","Salva Vidas!","Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
