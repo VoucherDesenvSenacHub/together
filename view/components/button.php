@@ -23,5 +23,5 @@ function botao($tipo, $texto, $id = "", $formaction = "")
             break;
     }
 
-    return "<button formaction='$formaction' class='$class' id='$id'>$texto</button>";
+    return "<button formaction='$formaction' class='$class' id='$id' type='submit'>$texto</button>";
 }

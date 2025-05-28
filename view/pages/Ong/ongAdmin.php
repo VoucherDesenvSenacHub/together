@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="ong-admin-default-card-config" id="ong-admin-report-card">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/ong/relatorioOng.php">
                         <i class="fa-solid fa-book fa-6x" style="color: #ee8d7e;"></i>
                     </a>
                     <strong class="ong-admin-strong-config">Relatório</strong>
