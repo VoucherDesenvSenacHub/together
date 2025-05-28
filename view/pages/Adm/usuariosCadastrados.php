@@ -1,7 +1,14 @@
 <?php
+
 require_once './../../components/head.php';
 
 require_once "./../../components/acoes.php";
+
+$meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+$tiposUsuarios = ['Usuário', 'Ong', 'Adm'];
+
+
 ?>
 
 <body>
@@ -39,18 +46,11 @@ require_once "./../../components/acoes.php";
                         <div class="elementos-formulario">
                             <!-- <label for="" class="formulario-label">Mês</label> -->
                             <select name="meses" id="meses" class="formulario-select">
-                                <option value="1">Janeiro</option>
-                                <option value="2">Fevereiro</option>
-                                <option value="3">Março</option>
-                                <option value="4">Abril</option>
-                                <option value="5">Maio</option>
-                                <option value="6">Junho</option>
-                                <option value="7">Julho</option>
-                                <option value="8">Agosto</option>
-                                <option value="9">Setembro</option>
-                                <option value="10">Outubro</option>
-                                <option value="11">Novembro</option>
-                                <option value="12">Dezembro</option>
+                                <?php for ($i = 0; $i < count($meses); $i++):  ?>
+                                <option value="<?= $i ?>"><?= $meses[$i] ?></option>
+                                <?php 
+                                endfor; 
+                                ?>
                             </select>
                         </div>
                         <div class="elementos-formulario">
@@ -79,14 +79,22 @@ require_once "./../../components/acoes.php";
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i<10; $i++):
+                        <?php for ($i = 1; $i<=10; $i++):
                             ?>
                          <tr>
                             <td>XXXXXXXXX</td>
-                            <td>XXXXXXXX</td>
-                            <td>XX/XX/XXXXX</td>
+                            <td><?php
+                            echo $tiposUsuarios[($i%3)];
+                            ?></td>
+                            <td>XX/XX/XXXX</td>
                             <td>
-                                <?php renderAcao('visualizar'); ?>
+                                <?php if($tiposUsuarios[($i%3)] == 'Ong'):   ?>
+                                    <a href="./../Adm/visaoSobreaOng.php">
+                                        <?php renderAcao('visualizar'); ?></a>
+                                <?php else: ?>
+                                    <a href="./../Adm/visaoDoUsuario.php">
+                                        <?php renderAcao('visualizar'); ?></a>
+                               <?php endif; ?>
                             </td>
                          </tr>
                         <?php
