@@ -45,11 +45,12 @@
                   <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                 </div>
               </div>
-            </div>
-
-            <div class="container-input-email-voluntario">
-              <?= label('email', 'Email') ?>
-              <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+              <div class="form-row">
+                <div class="container-input-email-voluntario">
+                  <?= label('email', 'Email') ?>
+                  <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                </div>
+              </div>
             </div>
           </div>
         </div>
