@@ -7,15 +7,20 @@
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
+    <div class="btn-voltar-validacao-atualizacao">
+        <?php require_once './../../components/back-button.php' ?>
+    </div>
 
-    <h1 class="titulo-pagina-tabela">Ongs e Usuários Cadastrados</h1>
-
-        <form action="" class="form-filtro-data">
-            <div class="filtro-por-mes">
-                <?= label('periodo', 'Período') ?>
-                <div class="input-filtro-por-mes">
-                    <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                    <?=  inputFilter('date', 'data-final', 'data-final') ?>
+    
+    <form action="" class="form-filtro-data">
+            <div class="superior-pagina-tabela">
+                <h1 class="titulo-pagina-tabela">Ongs Cadastrados</h1>
+                <div class="filtro-por-mes">
+                    <?= label('periodo', 'Período') ?>
+                    <div class="input-filtro-por-mes">
+                        <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        <?=  inputFilter('date', 'data-final', 'data-final') ?>
+                    </div>
                 </div>
             </div>
         </form>
@@ -24,17 +29,15 @@
             <thead>
                 <tr class="row-head">
                     <th>Data de Cadastro</th>
-                    <th>Nome dos Perfis</th>
-                    <th>Tipo de Perfil</th>
+                    <th>Razão Social</th>
                     <th>Visualizar</th>
                 </tr>
             </thead>
             <tbody class="body-table">
             <?php for ($i = 0; $i < 10; $i++): ?>
                 <tr>
-                    <td class="row-body-table">XX/XX/XXXX</td>
+                    <td class="row-body-table">10/09/2025</td>
                     <td class="row-body-table">Saúde é Vida</td>
-                    <td>Ong</td>
                     <td>
                         <?= renderAcao('visualizar') ?>
                     </td>
