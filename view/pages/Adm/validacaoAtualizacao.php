@@ -3,6 +3,8 @@
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
 
+<!-- ESSA TELA VAI SER ALTERADA ELA VAI SER SOMENTE PARA ACEITAR O CADASTRO DA ONG -->
+
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
@@ -15,7 +17,7 @@
         </div>
 
         <div class="formulario-perfil">
-            <form action="">
+            <form action="" method="POST">
                 <div class="container-perfil-ong-atualizado">
                     <img src="\together\view\assests\images\Ong\Ong_icon.png" alt="Logo da ONG" class="logo">
                     <div class="container-uper-readonly">
@@ -41,6 +43,14 @@
                                     <?= inputReadonly('text', 'email', 'email', 'ong@email.com') ?>
                                 </div>
                             </div>
+
+                            <div class="form-row">
+                                <div class="container-input-atualizacao-cadastral">
+                                    <?= label('fiscal', 'Conselho Fiscal') ?>
+                                    <?= inputReadonly('text', 'fiscal', 'fiscal', 'Conselho Fiscal') ?>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -52,8 +62,8 @@
                     </div>
                     <div class="container-endereco-atualizacao-cadastral">
                         <div class="container-input-atualizacao-cadastral">
-                        <?= label('cep', 'CEP') ?>
-                        <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                            <?= label('cep', 'CEP') ?>
+                            <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
                         </div>
                         <div class="container-input-atualizacao-cadastral">
                             <?= label('logradouro', 'Logradouro') ?>
@@ -71,27 +81,30 @@
                         </div>
                     </div>
                     <div class="container-endereco-atualizacao-cadastral">
-                    <div class="container-input-atualizacao-cadastral">
-                        <?= label('bairro', 'Bairro') ?>
-                        <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
-                    </div>
+                        <div class="container-input-atualizacao-cadastral">
+                            <?= label('bairro', 'Bairro') ?>
+                            <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                        </div>
                         <div class="container-input-atualizacao-cadastral">
                             <?= label('cidade', 'Cidade') ?>
                             <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
                         </div>
                     </div>
                     <div class="container-uper-readonly-secondary">
+                        <?= label('complemento', 'Complemento') ?>
+                        <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital municipal') ?>
                     </div>
                 </div>
-                <div class="container-input-atualizacao-cadastral">
-                    <?= label('fiscal', 'Conselho Fiscal') ?>
-                    <?= inputReadonly('text', 'fiscal', 'fiscal', 'Conselho Fiscal') ?>
-                </div>
+
                 <div class="container-uper-readonly-footer">
-                    <div class="botoes-validar-atualizacao">
-                        <?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?>
-                        <?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?>
+                    <div class="postagem-geral-div-btn">
+                           
+                           
                     </div>
+                </div>
+                <div class="postagem-geral-div-btn">
+                    <div class="postagem-geral-btn"> <?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?></div>
+                    <div class="postagem-geral-btn"> <?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?></div>
                 </div>
             </form>
         </div>
