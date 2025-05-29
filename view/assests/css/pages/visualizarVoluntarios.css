@@ -54,8 +54,9 @@
   flex-direction: row;
   gap: 20px;
   margin-bottom: 15px;
+  margin-right: 20px;
   position: relative;
-  left: 40px;
+  /* left: 0px; */
 }
 
 .container-readonly-secondary{
@@ -118,7 +119,8 @@
   margin-left: 20px;
   margin-right: 20px;
   position: relative;
-  left: 40px;}
+  /* /* left: 40px; */
+}
 
 .botao-excluir {
   width: 120px;
