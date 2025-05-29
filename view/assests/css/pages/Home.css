@@ -173,3 +173,105 @@
         width: calc(440px - 60px);
     }
 }
+
+
+.banner-secondary {
+    position: relative;
+    height: 300px;
+    background-image: url('./../../images/Usuario/fundo_tela_login.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    margin-top: 100px;
+    left: calc(-1 * (100vw - 100%) / 2);
+    width: 99.5vw;
+
+  }
+  
+  
+  .content-secondary {
+    text-align: center;
+    color: var(--cor-body);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    width: 100%;
+    height: 300px;
+  }
+  
+  .content-secondary h1{
+    float: left;
+    margin: 40px 0 0 50px;
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .content-secondary p {
+    width: 50%;
+    margin-left:100px;
+    margin-top: 150px;
+    font-size: 20px;
+  }
+  
+  .pessoa-secondary {
+    position: absolute;
+    bottom: 0;
+    right: 150px; 
+    max-height: 500px;
+    z-index: 10;
+  }
+
+
+  .banner-primary {
+    position: relative;
+    height: 300px;
+    background-image: url('./../../images/Usuario/fundo_tela_login.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    margin-top: 100px;
+    left: calc(-1 * (100vw - 100%) / 2);
+    width: 99.5vw;
+
+  }
+  
+  
+  .content-primary {
+    text-align: center;
+    color: var(--cor-body);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    width: 100%;
+    height: 300px;
+  }
+  
+  .content-primary h1{
+    float: right;
+    margin: 40px 50px 0 0;
+    font-size: 35px;
+    margin-bottom: 10px;
+  }
+  
+  .content-primary p {
+    width: 50%;
+    margin-right:30px;
+    margin-top: 50px;
+    font-size: 17px;
+    float: right;
+  }
+  
+  .pessoa-primary {
+    position: absolute;
+    bottom: 0;
+    left: 30px; 
+    max-height: 500px;
+    z-index: 10;
+    width: 45%;
+  }
