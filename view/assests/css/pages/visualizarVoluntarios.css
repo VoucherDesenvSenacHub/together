@@ -1,5 +1,5 @@
 .formulario-perfil {
-  display: flex;
+  displey: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
@@ -94,7 +94,6 @@
 .container-endereco-voluntario{
   display: flex;
   gap: 20px;
-  margin-bottom: 15;
 }
 
 .container-input-endereco-voluntario{
