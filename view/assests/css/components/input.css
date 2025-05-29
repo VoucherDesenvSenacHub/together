@@ -17,6 +17,16 @@
     appearance: textfield;
 }
 
+.formulario-input-checkbox{
+  position: relative;
+  display: block;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #808080;
+  content: "";
+  background: #FFF;
+}
+
 
 .formulario-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
