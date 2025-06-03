@@ -10,13 +10,18 @@
         <section class="home-main">
             <div class="home-container">
 
-            <section class="banner-primary">
-                    <div class="content-primary">
-                        <h1>Seja a Mudança Que Você Quer Ver no Mundo!</h1>
-                        <p>Doe seu tempo, seu talento e seu coração. Encontre causas que combinam com você e faça parte de projetos que realmente transformam vidas. Ser voluntário é mais do que ajudar — é crescer, aprender e fazer a diferença todos os dias. Cadastre-se e comece sua jornada de impacto!</p>
-                    </div>
-                    <img src="Design sem nome (8).png" alt="Pessoa" class="pessoa-primary">
-                </section>
+                <a href="" class="link-banner">
+                    <section class="banner-primary">
+                        <div class="content-primary">
+                            <h1>Seja a Mudança Que Você Quer Ver no Mundo!</h1>
+                            <p>Doe seu tempo, seu talento e seu coração. Encontre causas que combinam com você e faça
+                                parte de projetos que realmente transformam vidas. Ser voluntário é mais do que ajudar —
+                                é crescer, aprender e fazer a diferença todos os dias. Cadastre-se e comece sua jornada
+                                de impacto!</p>
+                        </div>
+                        <img src="Design sem nome (8).png" alt="Pessoa" class="pessoa-primary">
+                    </section>
+                </a>
                 <form class="home-div-botao">
                     <h3 class="home-title-favorite">Destaques</h3>
                     <div class="btn-destaque-home"><?= botao("primary", "Ver Mais") ?></div>
@@ -30,13 +35,17 @@
                     ; ?>
                 </div>
 
+                <a href="" class="link-banner">
                 <section class="banner-secondary">
                     <div class="content-secondary">
                         <h1>Divulgue Sua Causa e Conquiste Mais Apoio!</h1>
-                        <p>Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer a diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!</p>
+                        <p>Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer a
+                            diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar
+                            ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!</p>
                     </div>
                     <img src="banner-cadastrar.png" alt="Pessoa" class="pessoa-secondary">
                 </section>
+                </a>
 
                 <div class="sobre-nos-section" id="sobre-nos">
                     <div class="sobre-nos-container">
@@ -63,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="sobre-nos-cards-section">
+                <div class="sobre-nos-cards-section" id="sobre-nos">
                     <div class="sobre-nos-cards-container">
                         <?= cardSobreNos("Introdução ao Projeto", "Bem-vindo ao nosso site, um espaço dedicado a conectar e promover ONGs de todo o país! Nossa missão é criar uma plataforma colaborativa que ajude organizações não governamentais a compartilhar seus projetos, ampliar sua visibilidade e alcançar mais pessoas e parceiros que possam apoiar suas causas.") ?>
                         <?= cardSobreNos("Nossos Valores", "Transparência: Acreditamos na importância da honestidade e clareza nas informações,tanto sobre as ONGs quanto seus projetos.", "Colaboração: Fomentamos a parceria entre organizações, voluntários, doadores e qualquer pessoa interessada em causar um impacto positivo.", "Acessibilidade: Queremos que todos, independentemente de sua localização ou condição, possam acessar e contribuir com iniciativas sociais.") ?>
