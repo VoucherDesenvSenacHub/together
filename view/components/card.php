@@ -22,9 +22,9 @@
                 <h3 class='card-title'>$titulo</h3>
                 <p class='card-description'>$descricao</p>
             </div>
-            <form class='card-btn'>" .
-                botao('primary','Descobrir') .
-            "</form>
+            <div class='card-btn'>" .
+                botao('primary','Descobrir','','view\pages\Adm\visaoSobreaOng.php') .
+            "</div>
         </div>
     </div>
     ";

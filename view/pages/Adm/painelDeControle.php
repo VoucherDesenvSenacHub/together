@@ -23,14 +23,14 @@
                         solicitação.</span>
                 </div>
                 <div class="conteudo-interno-painel-de-controle">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/Adm/visualizarOngs.php">
                         <i class="fa-solid fa-building fa-6x" style="color: #ee8d7e;"></i>
                     </a>
                     <h2 class="painel-de-controle-titulo-conteudo"><b>ONGs Cadastradas</b></h2>
                     <span class="painel-de-controle-desc-conteudo">Veja por aqui as ONGs que estão permitidas pelo sistema.</span>
                 </div>
                 <div class="conteudo-interno-painel-de-controle">
-                    <a href="/together/view/pages/emDesenvolvimento.php">
+                    <a href="/together/view/pages/Adm/visualizarUsuario.php">
                         <i class="fa-solid fa-user fa-6x" style="color: #ee8d7e;"></i>
                     </a>
                     <h2 class="painel-de-controle-titulo-conteudo"><b>Usuários Cadastrados</b></h2>
