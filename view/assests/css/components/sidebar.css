@@ -1,0 +1,61 @@
+ADM APAGAR
+
+Editar
+Atualizações Cadastrais
+
+
+
+body {
+    font-family: "Roboto";
+}
+
+.aside-area {
+    height: 90vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.aside-content {
+    width: 100px;
+    height: 65vh;
+    background: var(--cor-navbar);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+}
+
+.aside-button {
+    text-decoration: none;
+    color: #5c3a21;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+#userIcon, #editarPaginaIcon, #criarIcon, #relatorioIcon, #editarPostagemIcon {
+    font-size: 23px;
+}
+
+#validarOngsIcon, #ongsCadastradasIcon, #patrocinadoresIcon, #usuariosCadastradosIcon {
+    font-size: 23px;
+}
+
+#usuarioEdtarIcon, #userFavoritadasIcon, #userVoluntariadoIcon, #historicoIcon {
+    font-size: 23px;
+}
+
+.aside-button:hover {
+    background-color: #bd986a80;
+    transition: 0.2s;
+}
