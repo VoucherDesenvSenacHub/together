@@ -39,7 +39,9 @@
                     <td class="row-body-table">15/03/1986</td>
                     <td class="row-body-table">Kauan Pereira</td>
                     <td>
-                        <?= renderAcao('visualizar') ?>
+                        <a href="visaoDoUsuario.php">
+                            <?= renderAcao('visualizar') ?>
+                        </a>
                     </td>
                 </tr>
             <?php endfor ?>
