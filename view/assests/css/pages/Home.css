@@ -1,4 +1,9 @@
 /* ---------------------------- HOME --------------------------------------- */
+
+.link-banner{
+    text-decoration: none;
+}
+
 .home-main {
     width: calc(1200px - 160px);
     max-width: 1200px;
@@ -247,6 +252,9 @@
     margin-top: 100px;
     left: calc(-1 * (100vw - 100%) / 2);
     width: 99.5vw;
+    a{
+        text-decoration: none;
+    }
 }
 
 .content-primary,
@@ -257,6 +265,7 @@
     border-radius: 10px;
     width: 100%;
     height: 300px;
+
 }
 
 .content-primary h1 {
@@ -268,8 +277,8 @@
 
 .content-secondary h1 {
     float: left;
-    margin: 40px 0 0 50px;
-    font-size: 40px;
+    margin: 40px 0 0 160px;
+    font-size: 30px;
     margin-bottom: 10px;
 }
 
@@ -283,7 +292,7 @@
 
 .content-secondary p {
     width: 50%;
-    margin-left: 100px;
+    margin-left: 160px;
     margin-top: 150px;
     font-size: 20px;
 }
