@@ -41,7 +41,7 @@
                                 </div>
 
                                 <div>
-                                    <?= label('data', 'Data de nascimento') ?>
+                                    <?= label('data', 'Nascimento') ?>
                                     <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                                 </div>
                             </div>
