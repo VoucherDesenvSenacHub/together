@@ -1,8 +1,14 @@
+.superior-pagina-tabela {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .titulo-pagina-tabela{
   font-size: 3rem;
   font-weight: bold;
   color: var(--cor-fundo-titulo-tabela);
-  margin: 20px;
+  margin: 20px 0;
 }
 
 .tabela {

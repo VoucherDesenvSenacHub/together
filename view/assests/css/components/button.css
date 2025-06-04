@@ -56,9 +56,16 @@
     border: 2px solid var(--cor-borda-botao);
   }
 
+  .botao-excluir{
+    background-color: var(--cor-botao-cancelar);
+    border: 2px solid var(--cor-borda-botao);
+  }
+
   .botao-entrar{
     background-color: var(--cor-botao-entrar);
+    color: var(--cor-botao-letra-entrar);
     border: none;
+    letter-spacing: 2px;
   }
 
   @media screen and (max-width: 395px){
