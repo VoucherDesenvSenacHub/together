@@ -1,13 +1,13 @@
 <?php
-require_once "../../../view/components/head.php";
-require_once "../../../view/components/button.php";
+require_once "./../components/head.php";
+require_once "./../components/button.php";
 ?>
 
 <body>
-    <?php require_once './../../components/navbar.php' ?>
+    <?php require_once './../components/navbar.php' ?>
 
         <main class="main-container">
-            <?php require_once './../../components/back-button.php' ?>
+            <?php require_once './../components/back-button.php' ?>
 
         <div class="adm-ong-vision-container">
 
@@ -20,7 +20,7 @@ require_once "../../../view/components/button.php";
                     <div class="adm-ong-vision-title-options">
 
                         <div class="adm-ong-vision-title-img-div">
-                            <img class="adm-ong-vision-img" src="./../../assests/images/Adm/adm-vision-ong.png" alt="ong-img">
+                            <img class="adm-ong-vision-img" src="./../assests/images/Adm/adm-vision-ong.png" alt="ong-img">
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">Associação Prato Cheio</strong>
@@ -68,7 +68,7 @@ require_once "../../../view/components/button.php";
 
                                     <li class="adm-ong-vision-post-card">
                                         <div class="adm-ong-vision-post-img-moldure">
-                                            <img class="adm-ong-vision-post-img" src="./../../assests/images/Adm/adm-vision-ong-post1.png" alt="">
+                                            <img class="adm-ong-vision-post-img" src="./../assests/images/Adm/adm-vision-ong-post1.png" alt="">
                                         </div>
                                         <div class="adm-ong-vision-post-text-div">
                                             <h1>Instagram</h1>
@@ -96,15 +96,15 @@ require_once "../../../view/components/button.php";
 
                                 <div class="adm-ong-vision-perfil-area">
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_instagram.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_instagram.png" alt="">
                                         <h1>/PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/devicon_facebook.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/devicon_facebook.png" alt="">
                                         <h1>@PratoCheio_Ms</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.webp" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_twitter.webp" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@ require_once "../../../view/components/button.php";
             </form>
         </div>
     </main>
-    <?php require_once "../../../view/components/footer.php"; ?>
+    <?php require_once "../../view/components/footer.php"; ?>
 </body>
 
 </html>
