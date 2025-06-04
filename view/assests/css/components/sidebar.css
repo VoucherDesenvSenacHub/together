@@ -29,6 +29,7 @@ body {
     justify-content: center;
     margin: 0 0 0 10px;
     border-radius: 15px;
+    box-shadow: 7px 10px 5px 0px rgba(0, 0, 0, 0.119);
 }
 
 .aside-button {
