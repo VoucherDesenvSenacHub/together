@@ -1,6 +1,7 @@
 <?php
 
-function botao($tipo, $texto, $id = "", $formaction = ""){
+function botao($tipo, $texto, $id = "", $formaction = "")
+{
     switch ($tipo) {
         case 'primary':
             $class = 'botao botao-primary';
@@ -14,10 +15,16 @@ function botao($tipo, $texto, $id = "", $formaction = ""){
         case 'cancelar':
             $class = 'botao botao-cancelar';
             break;
+        case 'entrar':
+            $class = 'botao botao-entrar';
+            break;
+        case 'excluir':
+            $class = 'botao botao-excluir';
+            break;
         default:
             $class = 'botao botao-primary';
             break;
     }
 
-    return "<button formaction='$formaction' class='$class' id='$id'>$texto</button>";
+    return "<button formaction='$formaction' class='$class' id='$id' type='submit'>$texto</button>";
 }

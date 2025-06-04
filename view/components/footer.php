@@ -1,5 +1,33 @@
-<footer class="footer-container">
+<footer class="footer" id="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <div class="footer-about">
+                <img src="\together\view\assests\images\components\logo_nova_together.png" alt="Logo da Empresa" class="footer-logo">
+            </div>
 
+        </div>
+
+        <div class="footer-links">
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="\together\index.php#sobre-nos">Sobre</a></li>
+                <li><a href="/servicos">Descobrir</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4>Contatos</h4>
+            <div class="contatos">
+                <p>+55 (67) 9 9999-9999</p>
+                <p>together@email.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Together. Todos os direitos reservados.</p>
+    </div>
 </footer>
+
 
 <script src="/together/view/assests/js/main.js" type="module"></script>

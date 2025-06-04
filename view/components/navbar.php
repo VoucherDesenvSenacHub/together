@@ -1,3 +1,5 @@
+<?php require_once "button.php" ?>
+
 <header>
     <nav class="navbar-group">
         <div class="logo-area">
@@ -13,11 +15,11 @@
             </li>
 
             <li class="li-navbar">
-                <a class="a-navbar" href="/together/view/pages/ong/ongAdmin.php">Sobre Nós</a>
+                <a class="a-navbar" href="\together\index.php#sobre-nos">Sobre Nós</a>
             </li>
 
             <li class="li-navbar">
-                <a class="a-navbar" href="/together/index.php#sobre-nos">Contate-nos</a>    
+                <a class="a-navbar" href="\together\index.php#footer">Contate-nos</a>    
             </li>
 
             <li class="li-navbar-mobile hidden">
@@ -41,9 +43,10 @@
         </div>
 
         <div class="login-botao-area-navbar">
-            <button class="login-botao-navbar">
-                Entrar
-            </button>
+            <form action="">
+                <?= botao('entrar','Entrar','','view/pages/login.php') ?>
+            </form>
+            
         </div>
         
 </header>

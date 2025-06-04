@@ -1,16 +1,17 @@
 <?php
 require_once "../../../view/components/head.php";
+require_once "../../../view/components/button.php";
 ?>
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
-    <main class="main-container">
+
+        <main class="main-container">
+            <?php require_once './../../components/back-button.php' ?>
+
         <div class="adm-ong-vision-container">
 
             <form method="post" action="#" class="adm-ong-vision-form-box">
-                <div class="adm-ong-vision-back-button-div">
-                    <?php require_once './../../components/back-button.php' ?>
-                </div>
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
@@ -27,8 +28,8 @@ require_once "../../../view/components/head.php";
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
                             </div>
                             <div class="adm-ong-vision-button-div">
-                                <input class="adm-ong-vision-default-button" type="button" value="Fazer Doação">
-                                <input class="adm-ong-vision-default-button" type="button" value="Voluntariar-se">
+                                <?= botao('primary', 'Fazer Doação'); ?>
+                                <?= botao('primary', 'Voluntariar-se'); ?>
                             </div>
                             <div>
                                 <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text"><i>* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</i></p>
@@ -103,13 +104,13 @@ require_once "../../../view/components/head.php";
                                         <h1>@PratoCheio_Ms</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../../assests/images/Adm/skill-icons_twitter.webp" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>
 
                                 <div class="adm-ong-vision-social-text">
-                                    <p>Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
+                                    <p class="adm-ong-vision-social-p">Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
                                 </div>
                             </div>
                         </div>
