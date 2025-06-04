@@ -1,7 +1,12 @@
-<?php require_once './../../components/head.php'?>
+<?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/button.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/label.php' ?>
 
 <body>
     <header>
+<<<<<<< HEAD
         <?php require_once './../../components/navbar.php'?>
 
     <section class="sec1">
@@ -92,72 +97,80 @@
             
         </div>
         <div class="content">
+=======
+        <?php require_once './../../components/navbar.php' ?>
+    </header>
 
-                <div class="content-info">
+    <main class="main-container">
+        <?php require_once './../../components/back-button.php' ?>
 
-                    <div class="logo-patrocinador">
-                        <img src="" alt="logo-patrocinador.png">
-                    </div>
-                    <div class="nome-patrocinador">
-                        <h5 class="nome-patrocinador-h5">XXXXXXXXXXXXXXX</h5>
-                    </div>
-
+        <div class="container-botao-patrocinadores">
+            <div class="titulo-pagina-tabela">
+                <h1>Patrocinadores</h1>
+            </div>
+            <div class="filtro-botao-patrocinador">
+                <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?>
+                <div class="div-btn-patrocinador">
+                    <?= botao('primary', 'Novo', 'abrir-patrocinadores') ?>
                 </div>
-                <div class="content-botoes">
+            </div>
+        </div>
+>>>>>>> 2962f672661f301bfcac8bcf3c0ecb2b31315a55
 
-                    <div class="div-botao-cancelar">
-                        <button class="botao-cancelar-remove-patrocinador" type="button"> Cancelar </button>
-                    </div>
-                    <div class="div-botao-remover">
-                        <button class="botao-remover" type="button"> Remover </button>
-                    </div>
-
-                </div>                
-
-            </div>        
-        </dialog>
-        <dialog class="container-adiciona-patrocinador">
-                <div class="content-top">
-                    <h1 class="titulo-add-patrocinador">Adicionar Patrocinador</h1>
-                    <div class="div-botao-fechar">
-                        <button class="botao-fechar">
-                            <svg class="icone-fechar-adidiona-patrocinador" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
-                        </button>
-                    </div>
-                    
-                </div>
-                <div class="content">
-                    <form action="" class="form-adiciona-patrocinador">
-
-                        <div class="div-info-patrocinador">
-                                <input type="text" placeholder="Rede Social">
-                                <input type="text" placeholder="Nome do patrocinador">
-
-                        </div>
-                        <div class="div-info-patrocinio">
-                            <div class="data-vencimento">
-                                <input placeholder="Data de vencimento" id="data-patrocinio" type="date"  placeholder="Data de vencimento" required>
+        <table class="tabela">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php for ($i = 0; $i < 10; $i++): ?>
+                    <tr>
+                        <td>
+                            <img src="\together\view\assests\images\Adm\image.png" alt="" class="logo-patrocinador">
+                        </td>
+                        <td class="nome-patrocinador">Senac Hub Academy</td>
+                        <td>
+                            <div class="acoes-container">
+                                <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
+                                <?= renderAcao('deletar') ?>
                             </div>
-                            <div class="logo-upload">
-                                <label for="logo">Logotipo do patrocinador</label>
-                                <input type="file" id="logo" name="logo" accept="image*/" required>
-                            </div>
-                        </div>
-                        
-                        <div class="div-botao-adicionar">
-                            <button class="botao-enviar" onclick="checkDate()" type="button"> Adicionar </button>
-                        </div>
+                        </td>
+                    </tr>
+                <?php endfor; ?>
+            </tbody>
+        </table>
 
-                    </form>
-
+        <div class="modal-overlay" id="modal-overlay-patrocinadores">
+            <div class="modal-content">
+                <div class="inserir-patrocinadores">
+                    <div class="inputs-patrocinadores">
+                        <div>
+                            <?= label('patrocinador', 'Patrocinador') ?>
+                            <?= inputRequired('text', 'patrocinador', 'patrocinador') ?>
+                        </div>
+                        <div>
+                            <?= label('redePatrocinador', 'Rede Social') ?>
+                            <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador') ?>
+                        </div>
+                    </div>
+                    <div>
+                        <?php require_once './../../components/upload.php' ?>
+                    </div>
                 </div>
-                
-        </dialog>
-
-
+                <div class="botao-modal-patrocinadores">
+                    <div class="modal-botoes">
+                        <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
-<?php require_once './../../components/footer.php'?>
 
+    <?php require_once './../../components/footer.php' ?>
+
+    
 </body>
-
 </html>

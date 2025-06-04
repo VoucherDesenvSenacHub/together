@@ -1,35 +1,70 @@
-table {
-    text-align: center;
-    margin: 0 auto;
-    width: 98%;
-   
-    td {
-      padding: 5px;
-      border: 1px solid var(--cor-font-branco);
-    }
-   
-    th {
-      background-color: var(--cor-roxo-escuro);
-      color: var(--cor-font-branco);
-      padding: 7px;
-      border-right: 1px solid var(--cor-font-branco);
-      border-left: 1px solid var(--cor-font-branco);
-    }
-   
-  }
-   
-  tr:nth-child(even) {
-    background: var(--cor-roxo-claro);
-  }
-
-  .icon-btn {
-    border: none;
-    background-color: transparent;
+.superior-pagina-tabela {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.titulo-pagina-tabela{
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--cor-fundo-titulo-tabela);
+  margin: 20px 0;
+}
+
+.tabela {
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.tabela td,
+.tabela th {
+  padding: 9px;
+  border: 1px solid var(--cor-branco);
+  text-align: center;
+  vertical-align: middle;
+  color: #797777;
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.tabela th {
+  background-color: var(--cor-fundo-titulo-tabela);
+  color: var(--cor-branco);
+  padding: 15px;
+  border-right: 1px solid var(--cor-branco);
+  border-left: 1px solid var(--cor-branco);
+}
+
+.tabela tr:nth-child(even) {
+  background: var(--cor-fundo-linha-tabela) ;
+}
+
+.icon-btn {
+  border: none;
+  background-color: transparent;
+  display: block;
+  margin: 0 auto;
+}
+
 .icon {
-    cursor: pointer;
-    position: relative;
-    margin: 0 auto;
-    width: 30px;
-    object-fit: contain;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 30px;
+  object-fit: contain;
+}
+
+.acoes-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.acao{
+  font-size: 150%;
 }

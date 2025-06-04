@@ -1,4 +1,11 @@
 .main-container{
     /* max-width: 83vw; */
-    padding: 80px 80px;
+    padding: 20px 80px;
+    background-color: var(--cor-body);
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 30px 20px;
+    }
 }
