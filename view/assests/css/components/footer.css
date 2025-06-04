@@ -2,6 +2,7 @@
     background-color: var(--cor-navbar);
     color: var(--cor-font-preto);
     padding: 40px 20px 20px;
+    margin-top: 50px;
   }
   
   .footer-container {

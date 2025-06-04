@@ -31,7 +31,7 @@
                         <td>ONG Cachorrinho</td>
                         <td>Aguardando</td>
                         <td>
-                            <a href="\together\view\pages\Adm\validacaoAtualizacao.php">
+                            <a href="validarCadastroOng.php">
                             <?= renderAcao('visualizar') ?>
                             </a>
                         </td>
