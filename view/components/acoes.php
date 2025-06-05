@@ -12,7 +12,7 @@ function renderAcao($action, $extraClasses = '', $id = '') {
 
     if (isset($icons[$action])) {
         [$iconName, $styleClass, $inlineStyle] = $icons[$action];
-        echo "<i id=\"$id\" class=\"{$styleClass} fa-{$iconName} acao {$extraClasses}\"" . 
+        echo "<i id=\"$id\" class=\"icon {$styleClass} fa-{$iconName} acao {$extraClasses}\"" . 
              (!empty($inlineStyle) ? " style=\"{$inlineStyle}\"" : "") . 
              "></i>";   
     } else {

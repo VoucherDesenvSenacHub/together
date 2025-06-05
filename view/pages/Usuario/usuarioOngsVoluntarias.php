@@ -38,7 +38,9 @@
                     <td class="row-body-table">10/09/2025</td>
                     <td class="row-body-table">Saúde é Vida</td>
                     <td>
-                        <?= renderAcao('visualizar') ?>
+                        <a href="\together\view\pages\visaoSobreaOng.php">
+                            <?= renderAcao('visualizar') ?>
+                        </a>
                     </td>
                 </tr>
             <?php endfor ?>

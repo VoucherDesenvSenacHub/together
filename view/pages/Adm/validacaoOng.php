@@ -42,7 +42,7 @@ require_once "./../../components/acoes.php";
                 </tbody>
             </table>        
     </main>
-    <?php require_once '    ./../../components/footer.php'?>
+    <?php require_once './../../components/footer.php'?>
 
     
         
