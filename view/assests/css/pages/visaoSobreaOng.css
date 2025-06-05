@@ -322,6 +322,13 @@
 .adm-ong-vision-area-div-perfil:hover {
     scale: 1.03;
 }
+
+.icon-visao-sobre-ong {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
 @media screen and (max-width: 1024px) {
     .adm-ong-vision-area-limiter {
         width: 90%;

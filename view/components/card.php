@@ -23,7 +23,7 @@
                 <p class='card-description'>$descricao</p>
             </div>
             <div class='card-btn'>" .
-                botao('primary','Descobrir','','view\pages\Adm\visaoSobreaOng.php') .
+                botao('primary','Descobrir','','/together/view/pages/visaoSobreaOng.php') .
             "</div>
         </div>
     </div>

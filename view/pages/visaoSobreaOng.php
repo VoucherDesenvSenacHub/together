@@ -1,6 +1,7 @@
 <?php
 require_once "./../components/head.php";
 require_once "./../components/button.php";
+require_once "./../components/acoes.php";
 ?>
 
 <body>
@@ -74,6 +75,7 @@ require_once "./../components/button.php";
                                             <h1>Instagram</h1>
                                             <p>https://www.instagram.com > PratoCheio</p>
                                             <h3><a href="https://www.instagram.com/ongmissaoafrica/p/CsHzIbtPSp8/?img_index=1">Compartilhando Alimento, Nutrindo Esperança: Sua Doação Faz a Diferença na Vida dos Moradores de Rua</a></h3>
+                                            <a class="icon-visao-sobre-ong" href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
                                         </div>
                                     </li>
 
