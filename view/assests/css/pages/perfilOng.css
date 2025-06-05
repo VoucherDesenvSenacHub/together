@@ -1,5 +1,6 @@
-.logo {
+.logo-ong {
     max-width: 250px;
+    max-height: 212px;
 }
 
 .container-perfil-ong-atualizado {
@@ -14,10 +15,10 @@
     flex-wrap: wrap;
 }
 
-.container-uper-readonly-primary {
+.container-uper-readonly-primary-ong {
     margin-left: 20px;
     input{
-        width: 340px;
+        width: 240px;
     }
 }
 
@@ -25,7 +26,7 @@
     margin-left: 50px;
 }
 
-.form-row {
+.form-ong {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -44,8 +45,8 @@
     margin-top: 20px;
 }
 
-.titulo-validar-atualizacao{
-    margin-left: 90px;
+.titulo-validar-atualizacao-ong{
+    margin-left: 177px;
 }
 
 .container-uper-readonly-footer{
