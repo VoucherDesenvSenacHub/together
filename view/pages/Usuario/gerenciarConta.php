@@ -10,16 +10,16 @@
       <?php require_once './../../components/back-button.php' ?>
     </div>
 
-    <div class="titulo-validar-atualizacao">
+    <div class="titulo-validar-atualizacao-ong">
       <h1 class="titulo-pagina-tabela">Dados do usuário</h1>
     </div>
 
     <div class="formulario-perfil">
       <form action="">
         <div class="container-perfil-ong-atualizado">
-          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Logo da ONG" class="logo">
+          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Logo da ONG" class="logo-ong">
           <div class="container-uper-readonly">
-            <div class="container-uper-readonly-primary">
+            <div class="container-uper-readonly-primary-ong">
 
               <div class="form-row">
                 <div>
@@ -45,8 +45,8 @@
                   <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                 </div>
               </div>
-              <div class="form-row">
-                <div class="container-input-email-voluntario">
+              <div class="form-ong">
+                <div class="container-input-email-voluntario-ong">
                   <?= label('email', 'Email') ?>
                   <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
                 </div>
