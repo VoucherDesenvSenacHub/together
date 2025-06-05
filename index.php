@@ -19,7 +19,7 @@
                                 é crescer, aprender e fazer a diferença todos os dias. Cadastre-se e comece sua jornada
                                 de impacto!</p>
                         </div>
-                        <img src="Design sem nome (8).png" alt="Pessoa" class="pessoa-primary">
+                        <img src="\together\view\assests\images\Geral\Design sem nome (8) (1).png" alt="Pessoa" class="pessoa-primary">
                     </section>
                 </a>
                 <form class="home-div-botao">
@@ -43,7 +43,7 @@
                             diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar
                             ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!</p>
                     </div>
-                    <img src="banner-cadastrar.png" alt="Pessoa" class="pessoa-secondary">
+                    <img src="\together\view\assests\images\Geral\banner-cadastrar.png" alt="Pessoa" class="pessoa-secondary">
                 </section>
                 </a>
 
