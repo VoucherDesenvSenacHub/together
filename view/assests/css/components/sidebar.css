@@ -21,7 +21,7 @@ body {
 
 .aside-content {
     width: 100px;
-    height: 65vh;
+    height: 55vh;
     background: var(--cor-navbar);
     display: flex;
     flex-direction: column;
@@ -30,6 +30,14 @@ body {
     margin: 0 0 0 10px;
     border-radius: 15px;
     box-shadow: 7px 10px 5px 0px rgba(0, 0, 0, 0.119);
+}
+
+#sideAdministrador {
+    height: 50vh;
+}
+
+#sideUsuario {
+    height: 40vh;
 }
 
 .aside-button {
@@ -44,7 +52,7 @@ body {
     transition: 0.2s;
 }
 
-#userIcon, #editarPaginaIcon, #criarIcon, #relatorioIcon, #editarPostagemIcon {
+#userIcon, #editarPaginaIcon, #criarIcon, #relatorioIcon, #voluntariosPendentes {
     font-size: 23px;
 }
 
