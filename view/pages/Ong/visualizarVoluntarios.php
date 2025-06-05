@@ -10,7 +10,7 @@
             <?php require_once './../../components/back-button.php' ?>
         </div>
 
-        <div class="titulo-visualizar-voluntario">
+        <div class="titulo-pagina-tabela">
             <h1 class="titulo-pagina-tabela">Dados do voluntário</h1>
         </div>
 
