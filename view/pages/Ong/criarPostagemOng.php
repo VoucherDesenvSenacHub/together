@@ -10,6 +10,10 @@
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
 
+        
+    <div>
+    <h1 class="titulo-pagina-tabela">Criar Postagem</h1>
+    
         <div class="formulario-perfil">
             <form action="" method="POST" class="postagem-geral-form">
                 <div class="postagem-geral-form-linha-superior">
@@ -40,6 +44,7 @@
                 </div>
             </form>
         </div>
+    </div>
 
     </main>
 
