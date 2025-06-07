@@ -8,7 +8,7 @@
   font-size: 3rem;
   font-weight: bold;
   color: var(--cor-fundo-titulo-tabela);
-  margin: 20px 0;
+  margin: 20px 80px;
 }
 
 .tabela {
@@ -53,7 +53,7 @@
   cursor: pointer;
   position: relative;
   display: block;
-  margin: 0 auto;
+  margin: 0;
   width: 30px;
   object-fit: contain;
 }

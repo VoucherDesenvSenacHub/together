@@ -16,7 +16,7 @@
         <aside class="aside-area" >
         <div class="aside-content" id="sideOng">
                 <a href="/together/view/pages/Ong/voluntariosOng.php" class="aside-button"> <i id="userIcon" class="fa-solid fa-users"></i> </a>
-                <a href="/together/view/pages/Ong/editarPaginaOng.php" class="aside-button" id="categoriaButton"> <i id="editarPaginaIcon" class="fa-solid fa-file-pen"></i> </a>
+                <a href="/together/view/pages/visaoSobreaOng.php" class="aside-button" id="categoriaButton"> <i id="visaoSobreOng" class="fa-solid fa-address-card"></i> </a>
                 <a href="/together/view/pages/Ong/criarPostagemOng.php" class="aside-button"> <i id="criarIcon" class="fa-solid fa-square-plus"></i> </a>
                 <a href="/together/view/pages/Ong/relatorioOng.php" class="aside-button"> <i id="relatorioIcon" class="fa-solid fa-book"></i> </a>
                 <a href="/together/view/pages/Ong/validacaoVoluntario.php" class="aside-button"> <i id="voluntariosPendentes" class="fa-solid fa-user-clock"></i> </a>

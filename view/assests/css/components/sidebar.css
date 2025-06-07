@@ -52,7 +52,7 @@ body {
     transition: 0.2s;
 }
 
-#userIcon, #editarPaginaIcon, #criarIcon, #relatorioIcon, #voluntariosPendentes {
+#userIcon, #visaoSobreOng, #criarIcon, #relatorioIcon, #voluntariosPendentes {
     font-size: 23px;
 }
 

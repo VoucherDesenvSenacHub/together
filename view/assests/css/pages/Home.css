@@ -23,10 +23,12 @@
 
 .home-banner-together {
     height: 85vh;
-    background-image: url("/together/view/assests/images/Geral/newImg.jpg");
+    background-image: url("/together/view/assests/images/Geral/newImg.png");
     background-position-x: 50%;
     background-position-Y: 45%;
     background-repeat: no-repeat;
+    background-size: 150%;
+    
 }
 
 .home-title-favorite {

@@ -1,21 +1,36 @@
 <?php
 require_once "./../components/head.php";
 require_once "./../components/button.php";
+require_once "./../components/acoes.php";
 ?>
+
+<?php if(isset($_SESSION['perfil'])) { ?>
+    <?php if($_SESSION['perfil'] === 'Ong') { ?>
+        <style>
+            .sessionOng {
+                display: block;
+            }
+        </style>
+    <?php } ?>
+<?php }?>
 
 <body>
     <?php require_once './../components/navbar.php' ?>
 
-        <main class="main-container">
-            <?php require_once './../components/back-button.php' ?>
+    <main class="main-container">
+        <?php require_once './../components/back-button.php' ?>
 
         <div class="adm-ong-vision-container">
 
             <form method="post" action="#" class="adm-ong-vision-form-box">
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
-                        <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
-                        <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">Fome Zero e Agricultura Sustentavel</h3>
+                        <div class="adm-ong-group-filter-tag">
+                            <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
+                            <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">Fome Zero e Agricultura Sustentavel</h3>
+                        </div>
+                        <a class="sessionOng icon-sobreaong" href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+
                     </div>
                     <div class="adm-ong-vision-title-options">
 
@@ -74,6 +89,10 @@ require_once "./../components/button.php";
                                             <h1>Instagram</h1>
                                             <p>https://www.instagram.com > PratoCheio</p>
                                             <h3><a href="https://www.instagram.com/ongmissaoafrica/p/CsHzIbtPSp8/?img_index=1">Compartilhando Alimento, Nutrindo Esperança: Sua Doação Faz a Diferença na Vida dos Moradores de Rua</a></h3>
+                                            <div class="icon-visao-sobre-ong">
+                                                <a class="sessionOng" href=""><?= renderAcao('deletar') ?></a>
+                                                <a class="sessionOng" href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                            </div>
                                         </div>
                                     </li>
 
@@ -97,11 +116,11 @@ require_once "./../components/button.php";
                                 <div class="adm-ong-vision-perfil-area">
                                     <div class="adm-ong-vision-area-div-perfil">
                                         <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_instagram.png" alt="">
-                                        <h1>/PratoCheioOfc</h1>
+                                        <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
                                         <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/devicon_facebook.png" alt="">
-                                        <h1>@PratoCheio_Ms</h1>
+                                        <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
                                         <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_twitter.webp" alt="">
@@ -109,9 +128,6 @@ require_once "./../components/button.php";
                                     </div>
                                 </div>
 
-                                <div class="adm-ong-vision-social-text">
-                                    <p class="adm-ong-vision-social-p">Acompanhe as ações do Prato Cheio e fique por dentro das principais notícias sobre a luta contra a fome e a promoção da solidariedade em sua comunidade.</p>
-                                </div>
                             </div>
                         </div>
                     </div>
