@@ -25,7 +25,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 preview.setAttribute('src', '#');
             }
         });
-    } else {
-        console.error('Algum dos elementos necessários não foi encontrado no DOM.');
     }
 });
