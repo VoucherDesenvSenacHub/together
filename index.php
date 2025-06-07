@@ -35,7 +35,7 @@
                     ; ?>
                 </div>
 
-                <a href="" class="link-banner">
+                <a href="/together/view/pages/cadastrarOng.php" class="link-banner">
                 <section class="banner-secondary">
                     <div class="content-secondary">
                         <h1>Divulgue Sua Causa e Conquiste Mais Apoio!</h1>
