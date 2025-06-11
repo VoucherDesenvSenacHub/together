@@ -10,16 +10,17 @@
       <?php require_once './../../components/back-button.php' ?>
     </div>
 
-    <div class="titulo-validar-atualizacao-ong">
+    <div class="titulo-pagina-tabela">
       <h1 class="titulo-pagina-tabela">Dados do usuário</h1>
     </div>
 
     <div class="formulario-perfil">
-      <form action="">
-        <div class="container-perfil-ong-atualizado">
-          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Logo da ONG" class="logo-ong">
-          <div class="container-uper-readonly">
-            <div class="container-uper-readonly-primary-ong">
+      <form action="" method="POST">
+        <div class="container-perfil-voluntario">
+          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Foto do usuário"
+            class="logo-user">
+          <div class="container-readonly">
+            <div class="container-readonly-primary">
 
               <div class="form-row">
                 <div>
@@ -37,7 +38,7 @@
 
                 <div>
                   <?= label('cpf', 'CPF') ?>
-                  <?= inputReadonly('text', 'cpf', 'cpf', '00000000000') ?>
+                  <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
                 </div>
 
                 <div>
@@ -45,24 +46,86 @@
                   <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                 </div>
               </div>
-              <div class="form-ong">
-                <div class="container-input-email-voluntario-ong">
-                  <?= label('email', 'Email') ?>
-                  <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-        <div class="container-uper-readonly-footer">
-          <div class="botoes-validar-atualizacao">
-            <?= botao('salvar', 'Editar', '', 'editarInformacoes.php') ?>
+
+            <div class="container-input-email-voluntario">
+              <?= label('email', 'Email') ?>
+              <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+            </div>
           </div>
 
         </div>
-      </form>
+
+        <div class="container-endereco container-readonly-secondary">
+
+          <div class="titulo-endereco-voluntario">
+            <h1>Endereço</h1>
+          </div>
+
+          <div class="container-endereco-voluntario">
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('cep', 'CEP') ?>
+              <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+            </div>
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('logradouro', 'Logradouro') ?>
+              <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+            </div>
+          </div>
+
+          <div class="container-endereco-voluntario">
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('complemento', 'Complemento') ?>
+              <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+            </div>
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('numero', 'Número') ?>
+              <?= inputReadonly('text', 'numero', 'numero', '0') ?>
+            </div>
+          </div>
+
+          <div class="container-endereco-voluntario">
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('bairro', 'Bairro') ?>
+              <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+            </div>
+
+            <div class="container-input-endereco-voluntario">
+              <?= label('cidade', 'Cidade') ?>
+              <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container-readonly-footer">
+
+          <div class="botao-excluir-voluntario">
+            <div class="postagem-geral-btn"><?= botao('salvar', 'Editar', "", '') ?></div>
+          </div>
+        </div>
+
+    </div>
+    </form>
     </div>
   </main>
+
+  <div id="modalConfirmacao" class="modal-overlay">
+    <div class="modal-content">
+      <p>Tem certeza que deseja excluir este voluntário?</p>
+      <div class="modal-botoes">
+        <button id="btnConfirmarExclusao" class="botao botao-excluir">Sim</button>
+        <button id="btnCancelarExclusao" class="botao botao-cancelar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+
   <?php require_once "../../../view/components/footer.php"; ?>
 </body>
 
