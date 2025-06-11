@@ -111,7 +111,7 @@
                             </div>
                             <div>
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputRequired('text', 'complemento', 'complemento') ?>
+                                <?= inputDefault('text', 'complemento', 'complemento') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn3.1','','button') ?>
@@ -131,7 +131,7 @@
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn4.1','','button') ?>
-                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/view/pages/login.php') ?>
+                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/index.php') ?>
                             </div>
                         </div>
                     </div>
