@@ -44,7 +44,7 @@
 
         <div class="login-botao-area-navbar">
             <form action="">
-                <?= botao('entrar','Entrar','','view/pages/login.php') ?>
+                <?= botao('entrar','Entrar','','\together\view\pages\login.php') ?>
             </form>
             
         </div>

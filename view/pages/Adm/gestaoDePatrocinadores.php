@@ -162,7 +162,8 @@
                 </div>
                 <div class="botao-modal-patrocinadores">
                     <div class="modal-botoes">
-                        <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                        <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
+                        <?= botao('salvar', 'Salvar', 'fechar-patrocinadores') ?>
                     </div>
                 </div>
             </div>
