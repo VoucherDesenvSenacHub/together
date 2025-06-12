@@ -107,6 +107,8 @@
 
           <div class="botao-excluir-voluntario">
             <div class="postagem-geral-btn"><?= botao('salvar', 'Editar', "", '') ?></div>
+            <div class="postagem-geral-btn"><?= botao('prev', 'Cancelar', "", '') ?></div>
+
           </div>
         </div>
 
