@@ -7,7 +7,7 @@
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
-    <main class="main-container">
+    <main class="main-container main-min">
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="formulario-perfil">

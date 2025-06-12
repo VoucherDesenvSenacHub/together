@@ -5,6 +5,7 @@
 
 <body>
     <?php require_once './view/components/navbar.php' ?>
+    <?php require_once './view/components/sidebar.php' ?>
     <div class="home-banner-together"></div>
     <main class="main-container">
         <section class="home-main">
