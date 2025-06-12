@@ -21,7 +21,7 @@
             <div class="box-login">
 
                 <form class="login" method="POST" action="">
-                    <h1 class="titulo-login">Criar uma ONG</h1>
+                    <h1 class="titulo-login">Cadastrar ONG</h1>
                     <div class="step active">
                         <div class="container-input-login">
                             <div>

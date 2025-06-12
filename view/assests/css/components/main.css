@@ -4,6 +4,10 @@
     background-color: var(--cor-body);
 }
 
+.main-min {
+    min-height: calc(100vh - 363px);
+}
+
 @media (max-width: 768px) {
     .main-container {
         padding: 30px 20px;
