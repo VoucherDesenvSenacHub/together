@@ -6,6 +6,98 @@
 
 <body>
     <header>
+<<<<<<< HEAD
+        <?php require_once './../../components/navbar.php'?>
+
+    <section class="sec1">
+        <div class="lista-patrocinadores texto-gradient">  
+            <h1 class="">Lista Patrocinadores</h1>
+      
+            <ul>
+                <li>
+                    <div>
+                        <img src="" alt="logo imagem">
+                    <p>XXXXXXXXXXXXX</p>
+                    </div>
+                    <label class="container-check">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <img src="" alt="logo imagem">
+                    <p>XXXXXXXXXXXXX</p>
+                    </div>
+                    <label class="container-check">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <img src="" alt="logo imagem">
+                    <p>XXXXXXXXXXXXX</p>
+                    </div>
+                    <label class="container-check">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <img src="" alt="logo imagem">
+                    <p>XXXXXXXXXXXXX</p>
+                    </div>
+                    <label class="container-check">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <img src="" alt="logo imagem">
+                    <p>XXXXXXXXXXXXX</p>
+                    </div>
+                    <label class="container-check">
+                        <input checked="checked" type="checkbox">
+                        <div class="checkmark"></div>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="sec2">
+        <div class="btn-delete-add">
+            <div>
+                <label class="container-ad">
+                    <div class="deletar-patrocinador">
+                        <span class="uil--trash"></span>
+                    </div>
+                </label>
+            </div>
+            <div>
+                <label class="container-ad">
+                    <div class="adicionar-patrocinador">
+                        <span class="uil--plus"></span>
+                    </div>
+                </label>
+            </div>
+        </div>
+        </section>
+    </section>
+    <dialog class="container-remove-patrocinador">
+        <div class="content-top">
+            <h1 class="titulo-remove-patrocinador">Remover Patrocinador</h1>
+            <div class="div-botao-fechar">
+                <button class="botao-fechar">
+                    <svg class="icone-fechar-remove-patrocinador" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M20 20L4 4m16 0L4 20"/></svg>
+                </button>
+            </div>
+            
+        </div>
+        <div class="content">
+=======
         <?php require_once './../../components/navbar.php' ?>
     </header>
 
@@ -23,6 +115,7 @@
                 </div>
             </div>
         </div>
+>>>>>>> 2962f672661f301bfcac8bcf3c0ecb2b31315a55
 
         <table class="tabela">
             <thead>

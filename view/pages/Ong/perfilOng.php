@@ -11,14 +11,13 @@
     </div>
 
     <div class="titulo-pagina-tabela">
-      <h1 class="titulo-pagina-tabela">Dados do usuário</h1>
+      <h1 class="titulo-pagina-tabela">Dados da Ong</h1>
     </div>
 
     <div class="formulario-perfil">
       <form action="" method="POST">
         <div class="container-perfil-voluntario">
-          <img src="\together\view\assests\images\Usuario\usuario-user-foto.png" alt="Foto do usuário"
-            class="logo-user">
+          <img src="\together\view\assests\images\Ong\perfil-user.png" alt="Foto do usuário" class="logo-user">
           <div class="container-readonly">
             <div class="container-readonly-primary">
 
@@ -37,12 +36,12 @@
               <div class="form-row">
 
                 <div>
-                  <?= label('cpf', 'CPF') ?>
-                  <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                  <?= label('cnpj', 'CPNJ') ?>
+                  <?= inputReadonly('text', 'cnpj', 'cnpj', '00.000.000/0000-00') ?>
                 </div>
 
                 <div>
-                  <?= label('data', 'Data de nascimento') ?>
+                  <?= label('data', 'Data da fundação') ?>
                   <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                 </div>
               </div>
@@ -108,7 +107,6 @@
           <div class="botao-excluir-voluntario">
             <div class="postagem-geral-btn"><?= botao('salvar', 'Editar', "", '') ?></div>
             <div class="postagem-geral-btn"><?= botao('prev', 'Cancelar', "", '') ?></div>
-
           </div>
         </div>
 
