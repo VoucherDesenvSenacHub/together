@@ -61,6 +61,16 @@
 
 }
 
+.editar-informacoes {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.editar-informacoes-input {
+    width: calc(100% / 2);
+}
+
 @media screen and (max-width: 505px) {
     .postagem-geral-div-btn {
         justify-content: space-evenly;

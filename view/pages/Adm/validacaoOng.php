@@ -33,7 +33,7 @@ require_once "./../../components/acoes.php";
                                 renderAcao('aceitar'); 
                                 renderAcao('recusar'); 
                             ?>
-                            <a href="\together\view\pages\visaoSobreaOng.php">
+                            <a href="/together/view/pages/visaoSobreaOng.php">
                                 <?php renderAcao('visualizar');?> 
                             </a>
                         </td>
