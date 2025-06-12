@@ -51,7 +51,7 @@
         </table>
 
         <div class="modal-overlay" id="modal-overlay-patrocinadores">
-            <div class="modal">
+            <div class="modal-content">
                 <div class="inserir-patrocinadores">
                     <div class="inputs-patrocinadores">
                         <div>
@@ -68,8 +68,9 @@
                     </div>
                 </div>
                 <div class="botao-modal-patrocinadores">
-                    <div class="div-btn-patrocinador">
-                        <?= botao('primary', 'Cancelar', 'fechar-patrocinadores') ?>
+                    <div class="modal-botoes">
+                        <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
+                        <?= botao('salvar', 'Salvar', 'fechar-patrocinadores') ?>
                     </div>
                 </div>
             </div>

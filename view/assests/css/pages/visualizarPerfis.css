@@ -1,12 +1,6 @@
 .input-filtro-por-mes{
     display: flex;
     gap: 10px;
-    width: 30%;
-    margin: 0 0 15px 15px ;
-}
-
-.filtro-por-mes{
-    label{
-        margin-left: 15px;
-    }
+    margin: 0 0 15px 0 ;
+    
 }
