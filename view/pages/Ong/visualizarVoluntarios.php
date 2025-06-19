@@ -9,7 +9,7 @@
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="div-wrap-width">
-            <h1 class="titulo-pagina">Dados do voluntário</h1>
+            <h1 class="titulo-pagina">Dados do Voluntário</h1>
             <div class="formulario-perfil">
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
@@ -37,11 +37,11 @@
                                     </div>
                                 </div>
                             </div>
-            
+
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
                                 <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
-                           </div>
+                            </div>
                         </div>
                     </div>
                     <div class="container-endereco container-readonly-secondary">
@@ -81,22 +81,23 @@
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="botao-excluir"><?= botao('excluir', 'Excluir', 'btnExcluirVoluntario', 'voluntariosOng.php') ?></div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', 'voluntariosOng.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', 'voluntariosOng.php') ?> </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-    
+
     <div id="modalConfirmacao" class="modal-overlay">
-    <div class="modal-content">
-        <p>Tem certeza que deseja excluir este voluntário?</p>
-        <div class="modal-botoes">
-        <button id="btnConfirmarExclusao" class="botao botao-excluir">Sim</button>
-        <button id="btnCancelarExclusao" class="botao botao-cancelar">Cancelar</button>
+        <div class="modal-content">
+            <p>Tem certeza que deseja recusar este voluntário?</p>
+            <div class="modal-botoes">
+                <div class="postagem-geral-btn"><?= botao('salvar', 'Sim', "btnConfirmarExclusao")?> </div>
+                <div class="postagem-geral-btn"><?= botao('excluir', 'Cancelar', "btnCancelarExclusao")?> </div>
+            </div>
         </div>
-    </div>
     </div>
 
 
@@ -104,4 +105,3 @@
 </body>
 
 </html>
-
