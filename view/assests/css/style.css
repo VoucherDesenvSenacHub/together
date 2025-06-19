@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url(reset.css);
 @import url(components/back-button.css);
 @import url(components/button.css);
@@ -33,7 +31,7 @@
 @import url(components/sidebar.css);
 @import url(pages/voluntariosOng.css);
 @import url(pages/relatorioOng.css);
-@import url(pages/visualizarPerfis.css);
+@import url(pages/visualizarOs.css);
 @import url(components/icon.css);
 @import url(pages/cadastrarOng.css);
 

@@ -25,15 +25,6 @@
     margin-left: 50px;
 }
 
-.form-row {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    margin-bottom: 15px;
-}
-
-
-
 .container-uper-readonly-secondary{
     input{
         margin-bottom: 10px;

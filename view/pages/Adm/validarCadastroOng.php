@@ -13,7 +13,7 @@
         </div>
 
         <div class="titulo-validar-atualizacao">
-            <h1 class="titulo-pagina-tabela">Validar Cadastro Ong</h1>
+            <h1 class="titulo-pagina">Validar Cadastro Ong</h1>
         </div>
 
         <div class="formulario-perfil">

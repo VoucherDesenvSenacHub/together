@@ -13,7 +13,7 @@
         
         <form action="" class="form-filtro-data">
             <div class="superior-pagina-tabela">
-                <h1 class="titulo-pagina-tabela">Voluntariado</h1>
+                <h1 class="titulo-pagina">Voluntariado</h1>
                 <div class="filtro-por-mes">
                     <?= label('periodo', 'Período') ?>
                     <div class="input-filtro-por-mes">

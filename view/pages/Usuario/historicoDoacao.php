@@ -5,7 +5,7 @@
     <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
-        <div class="titulo-pagina-tabela">
+        <div class="titulo-pagina">
             <h1>Historico de Doações</h1>
         </div>
 

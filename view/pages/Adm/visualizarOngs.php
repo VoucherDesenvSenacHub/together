@@ -7,46 +7,46 @@
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
-    <div class="btn-voltar-validacao-atualizacao">
         <?php require_once './../../components/back-button.php' ?>
-    </div>
 
-    
-    <form action="" class="form-filtro-data">
-            <div class="superior-pagina-tabela">
-                <h1 class="titulo-pagina-tabela">Ongs Cadastrados</h1>
-                <div class="filtro-por-mes">
-                    <?= label('periodo', 'Período') ?>
-                    <div class="input-filtro-por-mes">
-                        <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                        <?=  inputFilter('date', 'data-final', 'data-final') ?>
+        <div class="div-wrap-width">
+            <form action="" class="form-filtro-data">
+                <div class="superior-pagina-tabela">
+                    <h1 class="titulo-pagina">Ongs Cadastrados</h1>
+                    <div class="filtro-por-mes">
+                        <?= label('periodo', 'Período') ?>
+                        <div class="input-filtro-por-mes">
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Data de Cadastro</th>
+                        <th>Razão Social</th>
+                        <th>Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php for ($i = 0; $i < 10; $i++): ?>
+                        <tr>
+                            <td>10/09/2025</td>
+                            <td>Saúde é Vida</td>
+                            <td>
+                                <a href="\together\view\pages\visaoSobreaOng.php">
+                                    <?= renderAcao('visualizar') ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endfor ?>
+                </tbody>
+            </table>
+        </div>
 
-        <table class="tabela">
-            <thead>
-                <tr class="row-head">
-                    <th>Data de Cadastro</th>
-                    <th>Razão Social</th>
-                    <th>Visualizar</th>
-                </tr>
-            </thead>
-            <tbody class="body-table">
-            <?php for ($i = 0; $i < 10; $i++): ?>
-                <tr>
-                    <td class="row-body-table">10/09/2025</td>
-                    <td class="row-body-table">Saúde é Vida</td>
-                    <td>
-                        <a href="\together\view\pages\visaoSobreaOng.php">
-                            <?= renderAcao('visualizar') ?>
-                        </a>
-                    </td>
-                </tr>
-            <?php endfor ?>
-            </tbody>
-        </table>
     </main>
+
     <?php require_once './../../components/footer.php' ?>
 </body>

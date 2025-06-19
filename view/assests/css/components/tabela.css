@@ -1,10 +1,14 @@
+.div-wrap-width {
+  margin: 0px 50px;
+}
+
 .superior-pagina-tabela {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.titulo-pagina-tabela{
+.titulo-pagina{
   font-size: 3rem;
   font-weight: bold;
   color: var(--cor-fundo-titulo-tabela);

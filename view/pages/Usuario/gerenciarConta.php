@@ -10,8 +10,8 @@
       <?php require_once './../../components/back-button.php' ?>
     </div>
 
-    <div class="titulo-pagina-tabela">
-      <h1 class="titulo-pagina-tabela">Dados do usuário</h1>
+    <div class="titulo-pagina">
+      <h1 class="titulo-pagina">Dados do usuário</h1>
     </div>
 
     <div class="formulario-perfil">
