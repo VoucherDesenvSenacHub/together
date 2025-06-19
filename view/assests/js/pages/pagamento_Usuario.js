@@ -12,6 +12,4 @@ if (toggle && mainContainer && footer) {
       footer.classList.remove('modo-anonimo'); 
     }
   });
-} else {
-  console.log('Elemento não encontrado. Certifique-se de que todos os elementos estão no DOM.');
-}
+} 

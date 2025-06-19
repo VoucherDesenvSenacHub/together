@@ -20,7 +20,6 @@
 @import url(pages/visaoDoUsuario.css);
 @import url(components/main.css);
 @import url(components/footer.css);
-@import url(pages/validacaoOng.css);
 @import url(pages/emDesenvolvimento.css);
 @import url(pages/pagamentoUsuario.css);
 @import url(pages/visaoSobreaOng.css);
@@ -33,6 +32,9 @@
 @import url(components/body.css);
 @import url(pages/voluntariosOng.css);
 @import url(pages/relatorioOng.css);
+@import url(pages/visualizarPerfis.css);
+@import url(components/icon.css);
+@import url(pages/cadastrarOng.css);
 @import url(pages/pesquisarOng.css);
 
 :root {

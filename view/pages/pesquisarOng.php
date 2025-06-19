@@ -4,16 +4,18 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/textarea.php" ?>
 <?php require_once './../components/card.php' ?>
+
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
 
 
+        <?php require_once './../components/back-button.php' ?>
         <div class="ong-search-screen">
 
+            <!-- Areá de Filtro -->
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
-                    <?php require_once './../components/back-button.php' ?>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>
                     </div>
@@ -157,16 +159,24 @@
                 </div>
             </div>
 
-
+            <!-- Área de Conteúdo -->
             <div class="ong-search-screen-content">
+
+                <div class="ong-search-screen-mobile-filter-container">
+                    <div class="ong-search-screen-mobile-filter">
+                        <?= botao("primary", "Adicionar Filtros", "filter-mobile-button-id") ?>
+                    </div>
+                </div>
+
                 <div class="ong-search-screen-content-align-itens">
-                    <?php for($i=0; $i<25; $i++): ?>
+                    <?php for ($i = 0; $i < 40; $i++): ?>
                         <form action="">
                             <?= cardOng("https://img.cdndsgni.com/preview/10592521.jpg", "Salva Vidas!", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
                         </form>
-                    <?php endfor?>
+                    <?php endfor ?>
                 </div>
             </div>
+
         </div>
     </main>
 </body>

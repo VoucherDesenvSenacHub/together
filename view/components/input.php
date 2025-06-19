@@ -11,8 +11,8 @@
      * @return string - HTML para renderizar o input;
      */
 
-     function inputRequired($type, $id, $name) {
-        return " <input class='formulario-input' type='$type' id='$id' name='$name' required> ";
+     function inputRequired($type, $id, $name, $value = "") {
+        return " <input class='formulario-input' type='$type' id='$id' name='$name' required value='$value'> ";
      }
 
      function inputReadonly($type, $id, $name, $value = "") {

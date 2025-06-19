@@ -2,7 +2,6 @@
     display: flex;
     background-color: var(--cor-container-painel);
     border-radius: 10px;
-    
 }
 
 
@@ -23,12 +22,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     .ong-search-screen-content-align-itens{
         width: 98.5%;
-        height: 98.5%;
+        margin-top: 45px;
+        margin-bottom: 45px;
         display: flex;
         gap: 18px;
         flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
@@ -116,6 +118,7 @@
     flex-direction: column;
     gap: 10px;
     margin-left: 10px;
+
 }
 
 .filter-expandable.expanded {
@@ -165,3 +168,29 @@
 }
 
 /* End - Filter Input Area */
+
+.ong-search-screen-mobile-filter{
+    display: none;
+}
+
+.ong-search-screen-mobile-filter-container{
+    width: 100%;
+}
+
+@media (max-width:768px) {
+    .ong-search-screen-filter-container{
+        display: none;
+    }
+    .ong-search-screen-content-align-itens{
+        gap: 30px;
+    }
+    .ong-search-screen-mobile-filter{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        margin-left: 30px;
+        margin-top: 10px;
+    }
+}
+

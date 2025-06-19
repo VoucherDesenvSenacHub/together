@@ -70,3 +70,15 @@
     width: 220px;
   } 
 }
+
+@media (max-width:768px) {
+  .card-group .card-bottom .card-info .card-description {
+    width: 100px;
+  }
+  .card-description{
+    font-size: 10px;
+  }
+  .card-group{
+    width: 150px;
+  } 
+}

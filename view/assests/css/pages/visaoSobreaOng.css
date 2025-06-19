@@ -32,6 +32,11 @@
     height: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+}
+
+.adm-ong-group-filter-tag {
+    display: flex;
 }
  
 #adm-ong-vision-filter-tag-title {
@@ -121,9 +126,8 @@
     text-align: justify;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 50px;
+    margin: 30px 0 50px 0;
     gap: 30px;
-    padding: 0 50px 0 50px;
 }
  
 .adm-ong-vision-default-text {
@@ -306,6 +310,7 @@
     height: 120px;
     gap: 10px;
     transition: all 0.2s;
+    justify-content: space-around;
     
     h1{
         color: var(--cor-titles);
@@ -322,6 +327,14 @@
 .adm-ong-vision-area-div-perfil:hover {
     scale: 1.03;
 }
+
+.icon-visao-sobre-ong {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    gap: 10px;
+}
+
 @media screen and (max-width: 1024px) {
     .adm-ong-vision-area-limiter {
         width: 90%;
