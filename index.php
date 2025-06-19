@@ -5,23 +5,28 @@
 
 <body>
     <?php require_once './view/components/navbar.php' ?>
+    <?php require_once './view/components/sidebar.php' ?>
     <div class="home-banner-together"></div>
     <main class="main-container">
         <section class="home-main">
             <div class="home-container">
 
-                <a href="" class="link-banner">
-                    <section class="banner-primary">
-                        <div class="content-primary">
+                <section class="banner-primary">
+                    <div class="content-primary">
+                        <div class="texto-banner texto-primary">
                             <h1>Seja a Mudança Que Você Quer Ver no Mundo!</h1>
                             <p>Doe seu tempo, seu talento e seu coração. Encontre causas que combinam com você e faça
                                 parte de projetos que realmente transformam vidas. Ser voluntário é mais do que ajudar —
                                 é crescer, aprender e fazer a diferença todos os dias. Cadastre-se e comece sua jornada
                                 de impacto!</p>
+                            <?= botao('enviar', 'Voluntariar-se') ?>
                         </div>
-                        <img src="\together\view\assests\images\Geral\Design sem nome (8) (1).png" alt="Pessoa" class="pessoa-primary">
-                    </section>
-                </a>
+                    </div>
+                    <img src="\together\view\assests\images\Geral\Design sem nome (8) (1).png" alt="Pessoa"
+                        class="pessoa-primary">
+                </section>
+
+
                 <form class="home-div-botao">
                     <h3 class="home-title-favorite">Destaques</h3>
                     <div class="btn-destaque-home"><?= botao("primary", "Ver Mais") ?></div>
@@ -35,17 +40,20 @@
                     ; ?>
                 </div>
 
-                <a href="/together/view/pages/cadastrarOng.php" class="link-banner">
-                <section class="banner-secondary">
-                    <div class="content-secondary">
-                        <h1>Divulgue Sua Causa e Conquiste Mais Apoio!</h1>
-                        <p>Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer a
-                            diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar
-                            ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!</p>
-                    </div>
-                    <img src="\together\view\assests\images\Geral\banner-cadastrar.png" alt="Pessoa" class="pessoa-secondary">
-                </section>
-                </a>
+                    <section class="banner-secondary">
+                        <div class="content-secondary">
+                            <div class="texto-banner">
+                                <h1>Divulgue Sua Causa e Conquiste Mais Apoio!</h1>
+                                <p>Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer
+                                a
+                                diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar
+                                ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!</p>
+                                <?= botao('enviar', 'Cadastrar') ?>  
+                                </div>
+                        </div>
+                        <img src="\together\view\assests\images\Geral\banner-cadastrar.png" alt="Pessoa"
+                            class="pessoa-secondary">
+                    </section>
 
                 <div class="sobre-nos-section" id="sobre-nos">
                     <div class="sobre-nos-container">

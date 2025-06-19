@@ -21,20 +21,15 @@
             <div class="box-login">
 
                 <form class="login" method="POST" action="">
-                    <h1 class="titulo-login">Redefinir Senha</h1>
+                    <h1 class="titulo-login">Redefinir senha</h1>
 
                     <div class="container-input-login">
                         <div>
-                            <?= label('senha', 'Senha') ?>
-                            <?= inputRequired('password', 'senha', 'senha') ?>
-                        </div>
-                        <div>
-                            <?= label('confirmar_senha', 'Confirmar Senha') ?>
-                            <?= inputDefault('password', 'confirmar_senha', 'confirmar_senha') ?>
-
+                            <?= label('email', 'Email') ?>
+                            <?= inputRequired('email', 'email', 'email') ?>
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Redefinir','','login.php') ?>
+                            <?= botao('salvar', 'Enviar','','login.php') ?>
                         </div>
 
                     </div>
