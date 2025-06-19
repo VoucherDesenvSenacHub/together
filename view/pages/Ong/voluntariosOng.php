@@ -27,7 +27,7 @@
                             <td>Jhon F. Kennedy</td>
                             <td>Aguardando</td>
                             <td>
-                                <a href="\together\view\pages\Ong\visualizarVoluntarios.php">
+                                <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
                                 <?= renderAcao('visualizar') ?>
                                 </a>
                             </td>

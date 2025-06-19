@@ -14,7 +14,7 @@
                 <div class="superior-pagina-tabela">
                     <h1 class="titulo-pagina">Ongs Cadastrados</h1>
                     <div class="filtro-por-mes">
-                        <?= label('periodo', 'Período') ?>
+                        <?= label('data-inicio', 'Período') ?>
                         <div class="input-filtro-por-mes">
                             <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
                             <?= inputFilter('date', 'data-final', 'data-final') ?>
@@ -36,7 +36,7 @@
                             <td>10/09/2025</td>
                             <td>Saúde é Vida</td>
                             <td>
-                                <a href="\together\view\pages\visaoSobreaOng.php">
+                                <a href="/together/view/pages/visaoSobreaOng.php">
                                     <?= renderAcao('visualizar') ?>
                                 </a>
                             </td>
