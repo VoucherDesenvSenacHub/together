@@ -1,5 +1,5 @@
 .div-wrap-width {
-  margin: 0px 50px;
+  margin: 0px 0px;
 }
 
 .superior-pagina-tabela {
@@ -31,7 +31,6 @@
   vertical-align: middle;
   color: #797777;
   font-weight: bold;
-  font-size: 120%;
 }
 
 .tabela th {
