@@ -1,9 +1,10 @@
-ADM APAGAR
+.hidden {
+    display: none;
+}
 
-Editar
-Atualizações Cadastrais
-
-
+.show {
+    display: block;
+}
 
 body {
     font-family: "Roboto";
@@ -52,19 +53,56 @@ body {
     transition: 0.2s;
 }
 
-#userIcon, #visaoSobreOng, #criarIcon, #relatorioIcon, #voluntariosPendentes {
+#userIcon,
+#visaoSobreOng,
+#criarIcon,
+#relatorioIcon,
+#voluntariosPendentes {
     font-size: 23px;
 }
 
-#validarOngsIcon, #ongsCadastradasIcon, #patrocinadoresIcon, #usuariosCadastradosIcon {
+#validarOngsIcon,
+#ongsCadastradasIcon,
+#patrocinadoresIcon,
+#usuariosCadastradosIcon {
     font-size: 23px;
 }
 
-#usuarioEdtarIcon, #userFavoritadasIcon, #userVoluntariadoIcon, #historicoIcon {
+#usuarioEdtarIcon,
+#userFavoritadasIcon,
+#userVoluntariadoIcon,
+#historicoIcon {
     font-size: 23px;
 }
 
 .aside-button:hover {
     background-color: #bd986a80;
     transition: 0.2s;
+}
+
+
+@media screen and (max-width: 768px) {
+    .side-container-area {
+        display: none;
+    }
+
+    .button-side-mobile-div {
+        height: 80vh;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10000;
+        margin: 0 0 0 10px;
+    }
+
+    .button-side-mobile {
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        border: 1px solid #5d380b;
+        background-color: #bd986a;
+        color: white;
+    }
 }

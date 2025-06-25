@@ -5,6 +5,7 @@
 // import verOngs from "./pages/verOngs";
 
 import "./components/navbar.js";
+import "./components/sidebar.js";
 import "./pages/gestaoDePatrocinadores.js";
 // import "./pages/loginUsuario.js";
 import "./pages/pagamento_Usuario.js";
