@@ -8,19 +8,26 @@ function addClickEvent(id, callback) {
     }
 }
 
-addClickEvent('buttonSideMobile', function(event) {
-    const sideContainerMobileArea = document.getElementById ('sideContainerMobileArea');
-    const buttonSideMobile = document.getElementById ('buttonSideMobile')
+addClickEvent('buttonSideMobile', function (event) {
+    const buttonSideMobile = document.getElementById('buttonSideMobile');
+    const sideContainerMobileArea = document.getElementById('sideContainerMobileArea');
 
-    if(sideContainerMobileArea.classList.contains('hidden')){
-        sideContainerMobileArea.classList.remove('hidden')
-        sideContainerMobileArea.classList.add('show')
-        buttonSideMobile.classList.add('hidden')
-    }
-    
-    if(!sideContainerMobileArea.contains(event.target)) {
-        buttonSideMobile.classList.remove('hidden')
-        sideContainerMobileArea.classList.remove('show')
-        sideContainerMobileArea.classList.add('hidden')
-    }
-}) 
+    // Abrir menu
+    buttonSideMobile.addEventListener('click', function () {
+        sideContainerMobileArea.classList.remove('hidden');
+        sideContainerMobileArea.classList.add('show');
+        buttonSideMobile.classList.add('hidden');
+    });
+
+    // Fechar menu ao clicar fora
+    document.addEventListener('click', function (event) {
+        const isClickInside = sideContainerMobileArea.contains(event.target);
+        const isClickOnButton = buttonSideMobile.contains(event.target);
+
+        if (!isClickInside && !isClickOnButton && sideContainerMobileArea.classList.contains('show')) {
+            sideContainerMobileArea.classList.remove('show');
+            sideContainerMobileArea.classList.add('hidden');
+            buttonSideMobile.classList.remove('hidden');
+        };
+    });
+})

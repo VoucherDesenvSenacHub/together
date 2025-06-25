@@ -1,4 +1,4 @@
-<div class="button-side-mobile-div">
+<div class="button-side-mobile-div hidden">
     <button class="button-side-mobile" id="buttonSideMobile">
         <i class="fa-solid fa-bars" id="barsIcon"></i>
     </button>
