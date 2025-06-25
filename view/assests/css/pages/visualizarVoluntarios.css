@@ -1,0 +1,182 @@
+<<<<<<< HEAD
+=======
+.div-logo {
+  display: flex;
+  align-self: center;
+}
+
+.logo-user {
+  max-width: 250px;
+  height: auto;
+}
+
+.container-perfil-voluntario {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+  /* align-items: flex-start; */
+}
+
+.container-readonly {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.container-readonly-primary input,
+.container-input-email-voluntario input,
+.container-input-endereco-voluntario input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.form-row > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.container-readonly-secondary{
+  margin-top: 20px;
+  width: 100%;
+}
+
+.container-readonly-secondary input {
+  margin-bottom: 10px;
+}
+
+.container-endereco{
+  margin-top: 20px;
+}
+
+.botao-excluir-voluntario{
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  gap: 20px;
+  margin-top: 10px;
+  
+}
+
+.titulo-visualizar-voluntario{
+  margin-left: 90px;
+  width: 100%;
+}
+
+.container-readonly-footer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.container-endereco-voluntario{
+  display: flex;
+  gap: 20px;
+}
+
+.container-input-endereco-voluntario{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+
+.titulo-endereco-voluntario{
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.container-input-email-voluntario
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.botao-excluir {
+  width: 120px;
+}
+
+@media (max-width: 768px) {
+  .formulario-perfil {
+    padding: 10px;
+  }
+  
+  .container-perfil-voluntario {
+    flex-direction: column;
+    /* align-items: center; */
+    gap: 15px;
+  }
+  
+  .logo-user {
+    max-width: 200px;
+  }
+  
+  .container-readonly-primary,
+  .container-input-email-voluntario {
+    margin-left: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    left: 0;
+    gap: 10px;
+  }
+  
+  .container-endereco-voluntario {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .titulo-visualizar-voluntario {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .botao-excluir-voluntario {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario-perfil {
+    padding: 5px;
+  }
+  
+  .logo-user {
+    max-width: 150px;
+  }
+  
+  .titulo-endereco-voluntario {
+    font-size: 20px;
+    text-align: center;
+  }
+  
+  .botao-excluir {
+    width: 100px;
+  }
+}
+
+/* Ajustes adicionais para inputs muito pequenos */
+@media (max-width: 320px) {
+  .container-input-endereco-voluntario input,
+  .container-readonly-primary input,
+  .container-input-email-voluntario input {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+>>>>>>> 4131658d4515e2e0732ab7f0cc7325d987dfd9ff

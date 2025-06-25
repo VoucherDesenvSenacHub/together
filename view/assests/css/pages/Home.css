@@ -161,7 +161,7 @@
 .banner-secondary {
     position: relative;
     height: 300px;
-    background-image: url('./../../images/Usuario/fundo_tela_login.jpg');
+    background-image: url('./../../images/components/fundo_tela_login.jpg');
     background-size: cover;
     background-position: center;
     display: flex;

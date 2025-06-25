@@ -4,6 +4,16 @@ require_once "./../components/button.php";
 require_once "./../components/acoes.php";
 ?>
 
+<?php if(isset($_SESSION['perfil'])) { ?>
+    <?php if($_SESSION['perfil'] === 'Ong') { ?>
+        <style>
+            .sessionOng {
+                display: block;
+            }
+        </style>
+    <?php } ?>
+<?php }?>
+
 <body>
     <?php require_once './../components/navbar.php' ?>
 
@@ -19,7 +29,7 @@ require_once "./../components/acoes.php";
                             <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
                             <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">Fome Zero e Agricultura Sustentavel</h3>
                         </div>
-                        <a href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+                        <a class="sessionOng icon-sobreaong" href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
 
                     </div>
                     <div class="adm-ong-vision-title-options">
@@ -80,8 +90,8 @@ require_once "./../components/acoes.php";
                                             <p>https://www.instagram.com > PratoCheio</p>
                                             <h3><a href="https://www.instagram.com/ongmissaoafrica/p/CsHzIbtPSp8/?img_index=1">Compartilhando Alimento, Nutrindo Esperança: Sua Doação Faz a Diferença na Vida dos Moradores de Rua</a></h3>
                                             <div class="icon-visao-sobre-ong">
-                                                <a href=""><?= renderAcao('deletar') ?></a>
-                                                <a href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                <a class="sessionOng" href=""><?= renderAcao('deletar') ?></a>
+                                                <a class="sessionOng" href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
                                             </div>
                                         </div>
                                     </li>

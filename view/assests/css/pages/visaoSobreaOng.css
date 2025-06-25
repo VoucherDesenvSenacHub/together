@@ -24,8 +24,6 @@
     border-radius: 15px;
 }
  
-
- 
 /* Tags de filtro */
 .adm-ong-vision-filter-tags {
     width: 100%;
@@ -266,7 +264,6 @@
 }
  
 .adm-ong-vision-post-text-div{
- 
  height: 110px;
  width: 350px;
  text-align: left;
@@ -286,6 +283,17 @@
                 cursor: pointer;
                 text-align: justify;
             }
+}
+
+.icon-sobreaong{
+                color: var(--cor-cinza-p);
+                font-size: 19.8px;
+                cursor: pointer;
+                text-align: justify;
+            }
+
+.sessionOng{
+    display: none;
 }
  
  

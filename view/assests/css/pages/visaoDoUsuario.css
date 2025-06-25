@@ -1,3 +1,8 @@
+.img-usuario {
+    width: 150px;
+    height: 200px;
+}
+
 .container-visao-usuario {
     display: flex;
     width: 100%;
