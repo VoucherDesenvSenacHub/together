@@ -12,7 +12,7 @@
         <div class="div-wrap-width">
             <form action="" class="form-filtro-data">
                 <div class="superior-pagina-tabela">
-                    <h1 class="titulo-pagina">Ongs Cadastrados</h1>
+                    <h1 class="titulo-pagina">Ongs Cadastradas</h1>
                     <div class="filtro-por-mes">
                         <?= label('data-inicio', 'Período') ?>
                         <div class="input-filtro-por-mes">
