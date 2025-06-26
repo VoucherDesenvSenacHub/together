@@ -1,11 +1,50 @@
 .main-container{
-    /* max-width: 83vw; */
-    padding: 20px 80px;
+    /* max-width: 1200px; */
+    padding: 20px 0px;
+    margin: 0 auto;
     background-color: var(--cor-body);
 }
 
-@media (max-width: 768px) {
+.main-min {
+    min-height: calc(100vh - 363px);
+}
+
+/* @media (max-width: 768px) {
     .main-container {
         padding: 30px 20px;
+    }
+} */
+
+@media (max-width: 575.98px) {
+    .main-container{
+        max-width: 575px;
+        margin: auto 0;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .main-container{
+        max-width: 768px;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .main-container{
+        max-width: 990px;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .main-container{
+        max-width: 1200px;
+    } 
+}
+
+@media (min-width: 1400px) {
+    .main-container{
+        max-width: 1400px;
     }
 }

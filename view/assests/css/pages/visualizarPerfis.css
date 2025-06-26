@@ -1,6 +1,10 @@
 .input-filtro-por-mes{
     display: flex;
-    gap: 10px;
-    margin: 0 0 15px 0 ;
-    
+    gap: 20px;
+}
+
+.filtro-por-mes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

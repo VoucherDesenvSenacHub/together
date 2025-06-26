@@ -1,0 +1,7 @@
+.acoes-validar-usuario{
+    display: flex;
+    justify-content: space-around;
+}
+.acoes-validar-usuario::hover{
+    cursor: pointer;
+}
