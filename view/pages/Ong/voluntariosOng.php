@@ -16,7 +16,6 @@
                     <tr>
                         <th>Data</th>
                         <th>Nome do voluntário</th>
-                        <th>Status</th>
                         <th>Visualizar</th>
                     </tr>
                 </thead>
@@ -25,9 +24,8 @@
                         <tr>
                             <td>01/01/2025</td>
                             <td>Jhon F. Kennedy</td>
-                            <td>Aguardando</td>
                             <td>
-                                <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
+                                <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
                                 <?= renderAcao('visualizar') ?>
                                 </a>
                             </td>

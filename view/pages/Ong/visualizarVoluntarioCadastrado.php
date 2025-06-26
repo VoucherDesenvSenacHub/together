@@ -87,24 +87,13 @@
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', 'voluntariosOng.php') ?> </div>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </main>
-
-    <!-- <div id="modalConfirmacao" class="modal-overlay">
-        <div class="modal-content">
-            <p>Tem certeza que deseja recusar este voluntário?</p>
-            <div class="modal-botoes">
-                <div class="postagem-geral-btn"><?= botao('salvar', 'Sim', "btnConfirmarExclusao")?> </div>
-                <div class="postagem-geral-btn"><?= botao('excluir', 'Cancelar', "btnCancelarExclusao")?> </div>
-            </div>
-        </div>
-    </div> -->
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>

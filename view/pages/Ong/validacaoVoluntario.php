@@ -23,7 +23,9 @@
                         <td>João Silva</td>
                         <td>Aguardando</td>
                         <td>
+                            <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
                             <?= renderAcao('visualizar') ?>
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -31,7 +33,9 @@
                         <td>João Silva</td>
                         <td>Aguardando</td>
                         <td>
+                            <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
                             <?= renderAcao('visualizar') ?>
+                            </a>
                         </td>
                     </tr>
                     <?php for ($i = 0; $i < 10; $i++): ?>
@@ -40,7 +44,9 @@
                             <td>João Silva</td>
                             <td>Aguardando</td>
                             <td>
+                                <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
                                 <?= renderAcao('visualizar') ?>
+                                </a>
                             </td>
                         </tr>
                     <?php endfor; ?>

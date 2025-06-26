@@ -11,7 +11,7 @@
             <div class="relatorio-ong-box">
                 <div class="relatorio-ong-area-limiter">
                     <div class="relatorio-ong-title-div">
-                        <h1 class="h1-relatorio-ong">Relatórios</h1>
+                        <h1 class="titulo-pagina">Relatórios</h1>
                     </div>
                     <div class="relatorio-ong-statistic-cards-div">
                         <div class="relatorio-ong-card-clicks-1">
