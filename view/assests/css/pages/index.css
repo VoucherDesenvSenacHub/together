@@ -1,0 +1,51 @@
+.landing-home {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-card-home {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 1200px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.linha-home {
+    margin-top: 20px;
+    width: 40%;
+    height: 2px;
+    background-color: var(--cor-botao-entrar);
+}
+
+.home-banner-together {
+    height: 80vmin;
+    background-image: url("/together/view/assests/images/Geral/newImg.png");
+    background-position-x: 50%;
+    background-position-Y: 45%;
+    background-repeat: no-repeat;
+    background-size: 130%;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}
+
+@media (min-width: 1400px) {
+
+}

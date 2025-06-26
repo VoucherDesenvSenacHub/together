@@ -32,6 +32,7 @@
 @import url(components/icon.css);
 @import url(pages/cadastrarOng.css);
 @import url(pages/visualizarPerfis.css);
+@import url(pages/index.css);
 
 :root {
   font-size: 16px;

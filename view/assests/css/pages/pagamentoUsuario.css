@@ -1,7 +1,3 @@
-.modo-anonimo footer {
-  background-color: var(--cor-body);
-}
-
 .modo-anonimo .titulo-pay-user {
   -webkit-text-fill-color: var(--cor-body); 
 }
@@ -143,7 +139,7 @@ input:checked + .slider:before {
 }
 
 .container-pay-user{
-
+  margin: 30px 0; 
   display: flex;
   justify-content: center;
   width: 100%;
