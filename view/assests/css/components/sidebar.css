@@ -21,7 +21,7 @@ body {
 }
 
 .aside-content {
-    width: 100px;
+    width: 65px;
     height: 55vh;
     background: var(--cor-navbar);
     display: flex;
