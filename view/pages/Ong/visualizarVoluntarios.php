@@ -3,6 +3,8 @@
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
 
+<!-- ESSA TELA VAI SER ALTERADA ELA VAI SER SOMENTE PARA ACEITAR O CADASTRO DA ONG -->
+
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
