@@ -38,7 +38,7 @@
                             <td>
                                 <img src="\together\view\assests\images\Adm\senac.png" alt="" class="logo-patrocinador">
                             </td>
-                            <td class="nome-patrocinador">Senac Hub Academy</td>
+                            <td>Senac Hub Academy</td>
                             <td>
                                 <div class="acoes-container">
                                     <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
