@@ -29,7 +29,7 @@
                             <?= inputRequired('text', 'nome', 'nome') ?>
                         </div>
                         <div>
-                            <?= label('cpf', 'CPF | CNPJ') ?>
+                            <?= label('cpf', 'CPF') ?>
                             <?= inputRequired('text', 'cpf', 'cpf') ?>
                         </div>
                         <div>

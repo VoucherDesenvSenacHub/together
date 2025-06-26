@@ -10,7 +10,6 @@
 @import url(pages/painelDeControle.css);
 @import url(pages/login.css);
 @import url(pages/validacaoVoluntario.css);
-@import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);
 @import url(pages/visualizarVoluntarios.css);
 @import url(pages/Home.css);
@@ -29,9 +28,7 @@
 @import url(components/formContainer.css);
 @import url(components/body.css);
 @import url(components/sidebar.css);
-@import url(pages/voluntariosOng.css);
 @import url(pages/relatorioOng.css);
-@import url(pages/visualizarOs.css);
 @import url(components/icon.css);
 @import url(pages/cadastrarOng.css);
 @import url(pages/visualizarPerfis.css);

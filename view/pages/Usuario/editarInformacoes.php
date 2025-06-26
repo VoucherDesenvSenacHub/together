@@ -14,28 +14,76 @@
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
                 <form action="" method="POST" class="postagem-geral-form editar-informacoes-form">
-                    <div class="postagem-geral-form-linha-superior">
-                        <?php require_once "./../../components/upload.php" ?>
-                        <div class="postagem-geral-input-text">
-                            <div class="editar-informacoes">
-                                <div class="editar-informacoes-input">
-                                    <?= label("nome", "Nome") ?>
-                                    <?= inputRequired("text", "nome", "nome",'Usuario') ?>
+                    <div class="container-perfil-voluntario">
+                        <div class="div-logo">
+                            <?php require_once "./../../components/upload.php" ?>
+                        </div>
+                        <div class="container-readonly">
+                            <div class="container-readonly-primary">
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('nome', 'Nome') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('telefone', 'Telefone') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                    </div>
                                 </div>
-                                <div class="editar-informacoes-input">
-                                    <?= label("email", "E-mail") ?>
-                                    <?= inputRequired("text", "email", "email","usuario@email.com") ?>
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('cpf', 'CPF') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('data_nascimento', 'Data de Nascimento') ?>
+                                        <?= inputFilter('date', 'data_nascimento', 'data_nascimento') ?>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="editar-informacoes">
-                                <div class="editar-informacoes-input">
-                                    <?= label("telefone", "Telefone") ?>
-                                    <?= inputRequired("text", "telefone", "telefone","(67) 99999-9999") ?>
-                                </div>
-                                <div class="editar-informacoes-input">
-                                    <?= label("cpf", "CPF") ?>
-                                    <?= inputReadonly("text", "cpf", "cpf","999.999.999-99") ?>
-                                </div>
+                            <div class="container-input-email-voluntario">
+                                <?= label('email', 'Email') ?>
+                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-endereco container-readonly-secondary">
+                        <div class="titulo-endereco-voluntario">
+                            <h1>Endereço</h1>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cep', 'CEP') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', '') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', '') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('estado', 'Estado') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', '') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('bairro', 'Bairro') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', '') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('logradouro', 'Logradouro') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', '') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('numero', 'Número') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', '') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('complemento', 'Complemento') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', '') ?>
                             </div>
                         </div>
                     </div>

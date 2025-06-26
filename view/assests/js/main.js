@@ -10,7 +10,7 @@ import "./pages/gestaoDePatrocinadores.js";
 // import "./pages/loginUsuario.js";
 import "./pages/pagamento_Usuario.js";
 import "./pages/validacaoAtualizacao.js";
-import "./pages/validarAtualizacaoOng.js";
+// import "./pages/validarAtualizacaoOng.js";
 import "./pages/postagemOng.js";
 import "./pages/visualizarVoluntarios.js"
 import "./pages/gerenciarConta.js";
