@@ -20,23 +20,25 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
                     <?php for ($i = 0; $i < 10; $i++): ?>
                         <tr>
-                            <td>01/01/2025</td>
-                            <td>Jhon F. Kennedy</td>
+                            <td><?= $i + 10 ?>/05/2025</td>
+                            <td><?= $lista[$i] ?></td>
                             <td>
                                 <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
-                                <?= renderAcao('visualizar') ?>
+                                    <?= renderAcao('visualizar') ?>
                                 </a>
                             </td>
                         </tr>
                     <?php endfor; ?>
                 </tbody>
-            
+
             </table>
         </div>
     </main>
 
-        <?php require_once "../../../view/components/footer.php"; ?>
-    </body>
+    <?php require_once "../../../view/components/footer.php"; ?>
+</body>
+
 </html>

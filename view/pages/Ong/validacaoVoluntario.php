@@ -5,7 +5,7 @@
     <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
-        
+
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Validação de Voluntários</h1>
             <table class="tabela">
@@ -18,34 +18,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>12/03/2024</td>
-                        <td>João Silva</td>
-                        <td>Aguardando</td>
-                        <td>
-                            <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
-                            <?= renderAcao('visualizar') ?>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12/03/2024</td>
-                        <td>João Silva</td>
-                        <td>Aguardando</td>
-                        <td>
-                            <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
-                            <?= renderAcao('visualizar') ?>
-                            </a>
-                        </td>
-                    </tr>
+                    <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
                     <?php for ($i = 0; $i < 10; $i++): ?>
                         <tr>
-                            <td>12/03/2024</td>
-                            <td>João Silva</td>
+                            <td><?= $i + 10 ?>/05/2025</td>
+                            <td><?= $lista[$i] ?></td>
                             <td>Aguardando</td>
                             <td>
                                 <a href="/together/view/pages/Ong/visualizarVoluntarios.php">
-                                <?= renderAcao('visualizar') ?>
+                                    <?= renderAcao('visualizar') ?>
                                 </a>
                             </td>
                         </tr>

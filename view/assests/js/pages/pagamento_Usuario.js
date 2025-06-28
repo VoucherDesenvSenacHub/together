@@ -1,15 +1,15 @@
 const toggle = document.getElementById('pagamento_anonimo');
 const mainContainer = document.querySelector('.main-container');
-const footer = document.querySelector('footer');
+const body = document.querySelector('.user_pay');
 
-if (toggle && mainContainer && footer) {
+if (toggle && mainContainer && body) {
   toggle.addEventListener('change', function () {
     if (this.checked) {
       mainContainer.classList.add('modo-anonimo');
-      footer.classList.add('modo-anonimo');
+      body.classList.add('modo-anonimo');
     } else {
       mainContainer.classList.remove('modo-anonimo');
-      footer.classList.remove('modo-anonimo'); 
+      body.classList.remove('modo-anonimo'); 
     }
   });
 } 

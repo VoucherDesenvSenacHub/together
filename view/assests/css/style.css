@@ -31,6 +31,7 @@
 @import url(pages/relatorioOng.css);
 @import url(components/icon.css);
 @import url(pages/cadastrarOng.css);
+@import url(pages/pesquisarOng.css);
 @import url(pages/visualizarPerfis.css);
 
 :root {
