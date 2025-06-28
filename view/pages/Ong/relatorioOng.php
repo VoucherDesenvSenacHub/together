@@ -3,15 +3,15 @@
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
-    
+
     <main class="main-container">
-    <?php require_once '../../components/back-button.php'?>
+        <?php require_once '../../components/back-button.php' ?>
 
         <div class="relatorio-ong-container">
             <div class="relatorio-ong-box">
                 <div class="relatorio-ong-area-limiter">
                     <div class="relatorio-ong-title-div">
-                        <h1 class="h1-relatorio-ong">Relatórios</h1>
+                        <h1 class="titulo-pagina">Relatórios</h1>
                     </div>
                     <div class="relatorio-ong-statistic-cards-div">
                         <div class="relatorio-ong-card-clicks-1">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assests/images/Ong/relatorio.jpg"download>
+                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assests/images/Ong/relatorio.jpg" download>
                             <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
                             <p>Baixar Relatório</p>
                         </a>
@@ -71,20 +71,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
                         <?php for ($i = 0; $i < 10; $i++): ?>
                             <tr>
-                                <td>xx/xx/xxxx</td>
-                                <td>Lucas Andrade</td>
-                                <td>R$50,00</td>
+                                <td><?= $i+10?>/05/2025</td>
+                                <td><?= $lista[$i] ?></td>
+                                <td><?= "R$" . ($i+2) * 10 ?></td>
                             </tr>
                         <?php endfor; ?>
                     </tbody>
                 </table>
-                </div>
             </div>
-        </div>
         </div>
     </main>
     <?php require_once "./../../components/footer.php"; ?>
 </body>
+
 </html>

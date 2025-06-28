@@ -44,7 +44,13 @@
 
         <div class="login-botao-area-navbar">
             <form action="">
-                <?= botao('entrar','Entrar','','\together\view\pages\login.php') ?>
+            <?php if(isset($_SESSION['perfil'])) { 
+                echo botao('entrar','Sair','','\together\controller\sair.php');
+            }
+            else {
+                echo botao('entrar','Entrar','','\together\view\pages\login.php');
+            }
+            ?>
             </form>
             
         </div>

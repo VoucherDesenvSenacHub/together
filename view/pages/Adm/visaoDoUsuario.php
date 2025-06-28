@@ -1,94 +1,101 @@
-<?php require_once "../../../view/components/head.php" ?>
+<?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../../view/components/label.php"; ?>
+<?php require_once "../../../view/components/input.php"; ?>
+<?php require_once "../../../view/components/button.php"; ?>
 
-<body class="body-visao-usuario">
+<body>
     <?php require_once "../../../view/components/navbar.php"; ?>
-
     <main class="main-container">
+        <?php require_once './../../components/back-button.php' ?>
 
-        <div class="container-visao-usuario">
-
-            <div class="image-area-visao-usuario">
-                <img class="image-usuario-visao-usuario"
-                    src="../../../view/assests/images/components/usuario-user-foto.png" alt="foto-usuario">
-                <button class="botao-inativar-visao-usuario">
-                    Inativar
-                    <i class="fa-solid fa-trash" id="trash-icon-visao-usuario"></i>
-                </button>
-            </div>
-
-
-            <div class="info-area-visao-usuario">
-                <form action="#" method="post" class="form-area-visao-do-usuario">
-
-                    <div class="form-visao-do-usuario">
-                        <label for="nome" class="descricao">Nome</label>
-                        <div class="form-group-v_d_u">
-                            <i class="fa-solid fa-user"></i>
-                            <input class="input-visao-usuario" type="text" id="nome" name="nome" autocomplete="off"
-                                disabled placeholder="xxxxxxxxxxxx">
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Dados do Usuário</h1>
+            <div class="formulario-perfil">
+                <form action="" method="POST">
+                    <div class="container-perfil-voluntario">
+                        <div class="div-logo">
+                            <img src="/together/view/assests/images/Ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
                         </div>
-                    </div>
-
-                    <div class="form-visao-do-usuario">
-                        <label for="cpf" class="descricao">CPF</label>
-                        <div class="form-group-v_d_u">
-                            <i class="fa-solid fa-id-card"></i>
-                            <input class="input-visao-usuario" type="text" id="cpf" name="cpf" autocomplete="off"
-                                disabled placeholder="xxx.xxx.xxx-xx">
-                        </div>
-                    </div>
-
-                    <div class="divisao-visao-do-usuario">
-                        <div class="data-nasc-visao-do-usuario">
-                            <label for="data" class="descricao">Data de Nascimento</label>
-                            <div class="form-group-v_d_u">
-                                <i class="fa-solid fa-cake-candles"></i>
-                                <input class="input-visao-usuario" type="text" id="data" name="data" autocomplete="off"
-                                    placeholder="xx/xx/xxxx" disabled>
+                        <div class="container-readonly">
+                            <div class="container-readonly-primary">
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('nome', 'Nome') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('telefone', 'Telefone') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('cpf', 'CPF') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('data', 'Data de nascimento') ?>
+                                        <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="tel-visao-do-usuario">
-                            <label for="telefone" class="descricao">Telefone</label>
-                            <div class="form-group-v_d_u">
-                                <i class="fa-solid fa-phone"></i>
-                                <input class="input-visao-usuario" type="tel" id="telefone" name="telefone"
-                                    autocomplete="off" disabled placeholder="+55 (xx)xxxx-xxxx">
+                            <div class="container-input-email-voluntario">
+                                <?= label('email', 'Email') ?>
+                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-visao-do-usuario">
-                        <label for="endereco" class="descricao">Endereço</label>
-                        <div class="form-group-v_d_u">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <input class="input-visao-usuario" type="text" id="endereco" name="endereco"
-                                autocomplete="off" disabled placeholder="xxxxxxxxxx">
+                    <div class="container-endereco container-readonly-secondary">
+                        <div class="titulo-endereco-voluntario">
+                            <h1>Endereço</h1>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cep', 'CEP') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('estado', 'Estado') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', 'Mato Grosso do Sul') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('bairro', 'Bairro') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('logradouro', 'Logradouro') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('numero', 'Número') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', '4444') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('complemento', 'Complemento') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="form-visao-do-usuario">
-                        <label for="email" class="descricao">Email</label>
-                        <div class="form-group-v_d_u">
-                            <i class="fa-solid fa-envelope"></i>
-                            <input class="input-visao-usuario" type="text" id="email" name="email" autocomplete="off"
-                                disabled placeholder="xxxxxxxxxxx">
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/Adm/visualizarUsuario.php') ?> </div>
                         </div>
                     </div>
                 </form>
             </div>
-
-            <div class="mobile-button-area-v-d-u">
-                <button class="botao-mobile-inativar-v-d-u">
-                    Inativar
-                    <i class="fa-solid fa-trash" id="trash-icon-visao-usuario"></i>
-                </button>
-            </div>
-
-
-            <!-- <div class="confirmacao-area-visao-usuario"></div> -->
-
         </div>
-
     </main>
+
+    <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
+</html>

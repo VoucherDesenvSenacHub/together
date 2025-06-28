@@ -1,3 +1,8 @@
+.img-usuario {
+    width: 150px;
+    height: 200px;
+}
+
 .container-visao-usuario {
     display: flex;
     width: 100%;
@@ -10,11 +15,7 @@
 .image-area-visao-usuario {
     display: flex;
     flex-direction: column;
-<<<<<<< Updated upstream
     width: 50%;
-=======
-    width: 35%;
->>>>>>> Stashed changes
     gap: 100px;
 }
 

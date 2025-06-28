@@ -10,48 +10,48 @@
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
 
-        <div class="formulario-perfil">
-            <form action="">
-                <div class="formulario-linha-superior">
-                    <?php require_once "./../../components/upload.php"?>
-                    <div class="formulario-campos">
-                        <div>
-                            <?= label("titulo","Título")?>
-                            <?= inputRequired("text","titulo","titulo") ?>
-                        </div>
-                        
-                        <div>
-                            <?= label("subtitulo","Subtítulo")?>
-                            <?= textareaRequired("subtitulo","subtitulo") ?>
-                        </div>
-                    </div>
-                </div>
-
-                <?= label("descricao","Descrição")?>
-                <?= textareaRequired("descricao","descricao") ?>
-
-                <div class="formulario-redes-buttons">
-                    <div class="formulario-redes-sociais">
-                        <div class="formulario-rede-social">
-                            <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
-                            <input type="text" placeholder="@" />
-                        </div>
-                        <div class="formulario-rede-social">
-                            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
-                            <input type="text" placeholder="@" />
-                        </div>
-                        <div class="formulario-rede-social">
-                            <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
-                            <input type="text" placeholder="@" />
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Editar Página</h1>
+            <div class="formulario-perfil">
+                <form action="">
+                    <div class="formulario-linha-superior">
+                        <?php require_once "./../../components/upload.php"?>
+                        <div class="formulario-campos">
+                            <div>
+                                <?= label("titulo","Título")?>
+                                <?= inputRequired("text","titulo","titulo") ?>
+                            </div>
+            
+                            <div>
+                                <?= label("subtitulo","Subtítulo")?>
+                                <?= textareaRequired("subtitulo","subtitulo") ?>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="formulario-buttons">
-                        <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar') ?></div>
-                        <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar') ?></div>
+                    <?= label("descricao","Descrição")?>
+                    <?= textareaRequired("descricao","descricao") ?>
+                    <div class="formulario-redes-buttons">
+                        <div class="formulario-redes-sociais">
+                            <div class="formulario-rede-social">
+                                <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+                                <input type="text" placeholder="@" />
+                            </div>
+                            <div class="formulario-rede-social">
+                                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                                <input type="text" placeholder="@" />
+                            </div>
+                            <div class="formulario-rede-social">
+                                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                                <input type="text" placeholder="@" />
+                            </div>
+                        </div>
+                        <div class="formulario-buttons">
+                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar') ?></div>
+                            <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar') ?></div>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </main>
     

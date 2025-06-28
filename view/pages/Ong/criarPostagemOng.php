@@ -10,41 +10,38 @@
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
 
-        
-    <div>
-    <h1 class="titulo-pagina-tabela">Criar Postagem</h1>
-    
-        <div class="formulario-perfil">
-            <form action="" method="POST" class="postagem-geral-form">
-                <div class="postagem-geral-form-linha-superior">
-                    <?php require_once "./../../components/upload.php" ?>
-                    <div class="postagem-geral-input-text">
-                        <div>
-                            <?= label("titulo", "Título")?>
-                            <?= inputRequired("text","titulo","titulo") ?>
-                        </div>
-
-                        <div>
-                            <?= label("link","Link") ?>
-                            <?= inputRequired("text","link","link") ?>
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Criar Postagem</h1>
+            <div class="formulario-perfil">
+                <form action="" method="POST" class="postagem-geral-form">
+                    <div class="postagem-geral-form-linha-superior">
+                        <?php require_once "./../../components/upload.php" ?>
+                        <div class="postagem-geral-input-text">
+                            <div>
+                                <?= label("titulo", "Título") ?>
+                                <?= inputRequired("text", "titulo", "titulo") ?>
+                            </div>
+                            <div>
+                                <?= label("link", "Link") ?>
+                                <?= inputRequired("text", "link", "link") ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="postagem-geral-linha-inferior">
-                    <div class="postagem-geral-input-text">
-                        <div>
-                            <?= label("descricao","Descrição") ?>
-                            <?= textareaRequired("descricao","descricao") ?>
+                    <div class="postagem-geral-linha-inferior">
+                        <div class="postagem-geral-input-text">
+                            <div>
+                                <?= label("descricao", "Descrição") ?>
+                                <?= textareaRequired("descricao", "descricao") ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="postagem-geral-div-btn">
-                    <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', "",'ongAdmin.php?criar=salvar') ?></div>
-                    <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?criar=cancelar') ?></div>
-                </div>
-            </form>
+                    <div class="postagem-geral-div-btn">
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', "", 'ongAdmin.php?criar=salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", 'ongAdmin.php?criar=cancelar') ?></div>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
 
     </main>
 
