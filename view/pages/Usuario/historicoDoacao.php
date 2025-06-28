@@ -20,9 +20,9 @@
                     <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
                     <?php for ($i = 0; $i < 10; $i++): ?>
                         <tr>
-                            <td><?php echo $i+10?>/4/2025</td>
-                            <td><?php echo $lista[$i]?></td>
-                            <td><?php echo ($i+4)*10 ?></td>
+                            <td><?=  $i+10?>/8/2025</td>
+                            <td><?=  $lista[$i]?></td>
+                            <td><?=  "R$" . ($i+4)*10 ?></td>
                             <td>
                                 <a href="assests/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
                                     <?= renderAcao('baixar') ?>
