@@ -7,11 +7,9 @@ if (toggle && mainContainer && body) {
     if (this.checked) {
       mainContainer.classList.add('modo-anonimo');
       body.classList.add('modo-anonimo');
-      // footer.classList.add('modo-anonimo');
     } else {
       mainContainer.classList.remove('modo-anonimo');
-      body.classList.remove('modo-anonimo');
-      // footer.classList.remove('modo-anonimo'); 
+      body.classList.remove('modo-anonimo'); 
     }
   });
 } 

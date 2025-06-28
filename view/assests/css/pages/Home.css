@@ -95,7 +95,7 @@
 }
 
 /* ---------------------- CARDS SOBRE NÓS -------------------------- */
-.sobre-nos-cards-section {
+/* .sobre-nos-cards-section {
     width: 100%;
     height: auto;
     display: flex;
@@ -111,33 +111,9 @@
     gap: 20px;
     align-items: center;
     padding: 20px 0;
-}
+} */
 
-.sobre-nos-card {
-    width: calc(100% / 4);
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background-color: var(--cor-card);
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
-                rgba(0, 0, 0, 0.23) 0px 6px 6px;
-}
 
-.sobre-nos-card h2 {
-    font-family: 'roboto', sans-serif;
-    color: var(--cor-titles);
-    font-weight: bold;
-}
-
-.sobre-nos-card p {
-    font-family: 'roboto', sans-serif;
-    font-size: 16px;
-    color: var(--cor-cinza-p);
-    text-align: justify;
-}
 
 .home-div-botao {
     width: calc(1200px - 160px);

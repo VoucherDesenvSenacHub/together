@@ -107,7 +107,8 @@ input:checked + .slider:before {
   align-items: center;
   width: 100%;
   max-width: 900px;
-  margin-left: 40px; /* <-- empurra tudo um pouco pra esquerda */
+  margin: 20px 0;
+  /* margin-left: 40px; <-- empurra tudo um pouco pra esquerda */
 }
 
 

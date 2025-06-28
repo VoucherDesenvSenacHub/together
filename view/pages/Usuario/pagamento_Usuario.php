@@ -40,9 +40,9 @@
                 <?= inputRequired('number', 'cvv', 'cvv') ?>
               </div>
               <div class="container-botao-pagamento">
-                <?=  botao('primary', 'Realizar Pagamento') ?>
+                <?= botao('primary', 'Realizar Pagamento') ?>
               </div>
-      
+
             </form>
             <!-- <img id="imagem-doacao" src="/together/view/assests/images/Usuario/doação.png" alt="Imagem de doação" /> -->
           </div>

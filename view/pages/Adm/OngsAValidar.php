@@ -24,10 +24,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
                     <?php for ($i = 0; $i < 10; $i++): ?>
                         <tr>
-                            <td>12/04/2025</td>
-                            <td>ONG Cachorrinho</td>
+                            <td><?php echo $i + 10 ?>/09/2025</td>
+                            <td><?php echo $lista[$i]?></td>
                             <td>Aguardando</td>
                             <td>
                                 <a href="validarCadastroOng.php">

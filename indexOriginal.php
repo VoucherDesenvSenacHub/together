@@ -55,7 +55,7 @@
                             class="pessoa-secondary">
                     </section>
 
-                <div class="sobre-nos-section" id="sobre-nos">
+                <div class="sobre-nos-section">
                     <div class="sobre-nos-container">
                         <div class="sobre-nos-content">
                             <h1>Sobre Nós</h1>
