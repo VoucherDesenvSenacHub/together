@@ -142,15 +142,15 @@ require_once "./../components/acoes.php";
 
                                 <div class="adm-ong-vision-perfil-area">
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_instagram.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/instagram.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/devicon_facebook.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/facebook.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_twitter.webp" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/X.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>

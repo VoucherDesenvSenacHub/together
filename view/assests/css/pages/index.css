@@ -115,7 +115,7 @@
     }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 540px) {
 
     .container-home {
         &.card-sobre-nos-home {
