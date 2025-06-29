@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('file');
     const preview = document.getElementById('preview');
     const text = document.querySelector('.text');
-    const icon = document.querySelector('.icon');
+    const icon = document.querySelector('.icon-upload');
     const formPreview = document.querySelector('.formulario-imagem-preview');
     
     if (fileInput && preview && text && icon && formPreview) {

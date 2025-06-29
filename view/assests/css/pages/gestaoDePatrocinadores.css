@@ -35,13 +35,14 @@
     display: flex;
     flex-direction: row;
     margin-top: 40px;
+    gap: 20px;
 }
 
 .inputs-patrocinadores{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-right: 50px;
+    /* margin-right: 50px; */
     
 }
 

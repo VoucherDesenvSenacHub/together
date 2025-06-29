@@ -24,30 +24,31 @@
                     </div>
                 </div>
             </form>
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Data de Cadastro</th>
-                        <th>Razão Social Da Ong</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-
-                    <?php for ($i = 0; $i < 10; $i++): ?>
+            <div class="formulario-perfil">
+                <table class="tabela">
+                    <thead>
                         <tr>
-                            <td><?php echo $i + 10 ?>/09/2025</td>
-                            <td><?php echo $lista[$i]?></td>
-                            <td>
-                                <a href="\together\view\pages\visaoSobreaOng.php">
-                                    <?= renderAcao('visualizar') ?>
-                                </a>
-                            </td>
+                            <th>Data de Cadastro</th>
+                            <th>Razão Social Da Ong</th>
+                            <th>Visualizar</th>
                         </tr>
-                    <?php endfor ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
+                        <?php for ($i = 0; $i < 10; $i++): ?>
+                            <tr>
+                                <td><?php echo $i + 10 ?>/09/2025</td>
+                                <td><?php echo $lista[$i]?></td>
+                                <td>
+                                    <a href="\together\view\pages\visaoSobreaOng.php">
+                                        <?= renderAcao('visualizar') ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endfor ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     <?php require_once './../../components/footer.php' ?>
