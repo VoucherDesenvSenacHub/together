@@ -16,6 +16,9 @@
             </div>
         </div>
     </div>
+    <div class="">
+        <?= botao('primary','Ver Mais ONGs') ?>
+    </div>
     <div class="landing-home">
         <div class="container-home card-ong">
             <?php for ($i = 0; $i < 4; $i++) { ?>

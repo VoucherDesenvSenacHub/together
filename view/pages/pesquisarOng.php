@@ -170,9 +170,7 @@
 
                 <div class="ong-search-screen-content-align-itens">
                     <?php for ($i = 0; $i < 40; $i++): ?>
-
                         <?= cardOng("https://img.cdndsgni.com/preview/10592521.jpg", "Salva Vidas!", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
-
                     <?php endfor ?>
                 </div>
             </div>
