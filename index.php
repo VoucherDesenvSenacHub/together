@@ -16,10 +16,12 @@
             </div>
         </div>
     </div>
-    <div class="">
-        <?= botao('primary','Ver Mais ONGs') ?>
-    </div>
     <div class="landing-home">
+        <div class="container-home">
+            <div class="container-ver-mais-ongs">
+                <div class="tamanho-btn-ver-mais"><?= botao('primary', 'Ver Mais ONGs') ?></div>
+            </div>
+        </div>
         <div class="container-home card-ong">
             <?php for ($i = 0; $i < 4; $i++) { ?>
                 <?= cardOng("/together/view/assests/images/Adm/adm-vision-ong.png", "Associação Prato Cheio", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
