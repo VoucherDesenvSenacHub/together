@@ -122,6 +122,9 @@
             max-width: 260px;
             flex-wrap: wrap;
         }
+        .container-ver-mais-ongs {
+            max-width: 260px;
+        }
     }
 
     .sobre-nos-card {
