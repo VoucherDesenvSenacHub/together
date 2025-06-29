@@ -1,4 +1,10 @@
 /* Container principal e limitador */
+.span-msg {
+    color: red;
+    font-weight: 500;
+    display: none;
+}
+
 .adm-ong-vision-container {
     width: 100%;
     display: flex;

@@ -1,6 +1,6 @@
 <div class='formulario-imagem-preview'>
    <label class='custum-file-upload' for='file'>
-      <div class='icon'>
+      <div class='icon-upload'>
          <svg xmlns='http://www.w3.org/2000/svg' fill='' viewBox='0 0 24 24'>
             <g stroke-width='0' id='SVGRepo_bgCarrier'></g>
             <g stroke-linejoin='round' stroke-linecap='round' id='SVGRepo_tracerCarrier'></g>

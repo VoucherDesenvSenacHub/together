@@ -1,7 +1,8 @@
 .ong-search-screen {
     display: flex;
-    background-color: var(--cor-container-painel);
-    border-radius: 10px;
+    /* background-color: var(--cor-container-painel); */
+    background-color: var(--cor-font-branco);
+    border-radius: 15px;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -236,8 +237,8 @@
 
 .ong-search-screen {
     display: flex;
-    background-color: var(--cor-container-painel);
-    border-radius: 10px;
+    /* background-color: var(--cor-container-painel); */
+    border-radius: 15px;
 }
 
 

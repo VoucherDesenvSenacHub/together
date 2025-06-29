@@ -7,7 +7,9 @@
 </body>
 <?php require_once './view/components/navbar.php' ?>
 <?php require_once './view/components/sidebar.php' ?>
-
+<div class="modal-notificacao">
+  Voluntário enviado com sucesso!
+</div>
 <main>
     <div class="home-banner-together">
         <div class="camada2">
@@ -19,7 +21,11 @@
     <div class="landing-home">
         <div class="container-home">
             <div class="container-ver-mais-ongs">
-                <div class="tamanho-btn-ver-mais"><?= botao('primary', 'Ver Mais ONGs') ?></div>
+                <div class="btn-home-acao">
+                    <a href="/together/view/pages/pesquisarOng.php">
+                        <?= botao('primary', 'Ver Mais ONGs') ?>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="container-home card-ong">

@@ -85,11 +85,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container-readonly-footer">
+                    <!-- <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
                             <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/Adm/visualizarUsuario.php') ?> </div>
                         </div>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>

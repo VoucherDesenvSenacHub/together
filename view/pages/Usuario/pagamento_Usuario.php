@@ -40,7 +40,7 @@
                 <?= inputRequired('number', 'cvv', 'cvv') ?>
               </div>
               <div class="container-botao-pagamento">
-                <?= botao('primary', 'Realizar Pagamento') ?>
+                <?= botao('salvar', 'Realizar Pagamento') ?>
               </div>
 
             </form>

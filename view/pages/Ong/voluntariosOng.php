@@ -11,30 +11,31 @@
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Nome do voluntário</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                    <?php for ($i = 0; $i < 10; $i++): ?>
+            <div class="formulario-perfil">
+                <table class="tabela">
+                    <thead>
                         <tr>
-                            <td><?= $i + 10 ?>/05/2025</td>
-                            <td><?= $lista[$i] ?></td>
-                            <td>
-                                <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
-                                    <?= renderAcao('visualizar') ?>
-                                </a>
-                            </td>
+                            <th>Data</th>
+                            <th>Nome do voluntário</th>
+                            <th>Visualizar</th>
                         </tr>
-                    <?php endfor; ?>
-                </tbody>
-
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                        <?php for ($i = 0; $i < 10; $i++): ?>
+                            <tr>
+                                <td><?= $i + 10 ?>/05/2025</td>
+                                <td><?= $lista[$i] ?></td>
+                                <td>
+                                    <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
+                                        <?= renderAcao('visualizar') ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endfor; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 
