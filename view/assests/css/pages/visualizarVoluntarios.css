@@ -102,10 +102,6 @@
   flex-direction: column;
 }
 
-.botao-excluir {
-  width: 120px;
-}
-
 @media (max-width: 768px) {
   .formulario-perfil {
     padding: 10px;
@@ -163,9 +159,6 @@
     text-align: center;
   }
   
-  .botao-excluir {
-    width: 100px;
-  }
 }
 
 /* Ajustes adicionais para inputs muito pequenos */

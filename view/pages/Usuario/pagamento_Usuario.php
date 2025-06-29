@@ -40,7 +40,7 @@
                 <?= inputRequired('number', 'cvv', 'cvv') ?>
               </div>
               <div class="container-botao-pagamento">
-                <?= botao('salvar', 'Realizar Pagamento') ?>
+                <?= botao('salvar', 'Realizar Pagamento','','/together/index.php?msg=voluntarioenviado') ?>
               </div>
 
             </form>

@@ -46,6 +46,19 @@
     
 }
 
+@media (max-width: 440px) {
+    .container-botao-patrocinadores {
+        flex-wrap: wrap;
+    }
+    .filtro-botao-patrocinador {
+        margin-bottom: 10px;
+
+        input {
+            width: 230px;
+        }
+    }
+}
+
 <<<<<<< HEAD
 .lista-patrocinadores {
     width: 70vw;

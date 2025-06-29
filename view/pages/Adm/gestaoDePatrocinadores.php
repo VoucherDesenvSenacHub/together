@@ -25,31 +25,33 @@
                 </div>
             </div>
             <div class="formulario-perfil">
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Logo</th>
-                            <th>Nome</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php for ($i = 0; $i < 10; $i++): ?>
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
                             <tr>
-                                <td>
-                                    <img src="\together\view\assests\images\Adm\senac.png" alt="" class="logo-patrocinador">
-                                </td>
-                                <td>Senac Hub Academy</td>
-                                <td>
-                                    <div class="acoes-container">
-                                        <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
-                                        <?= renderAcao('deletar') ?>
-                                    </div>
-                                </td>
+                                <th>Logo</th>
+                                <th>Nome</th>
+                                <th>Ações</th>
                             </tr>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td>
+                                        <img src="\together\view\assests\images\Adm\senac.png" alt="" class="logo-patrocinador">
+                                    </td>
+                                    <td>Senac Hub Academy</td>
+                                    <td>
+                                        <div class="acoes-container">
+                                            <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
+                                            <?= renderAcao('deletar') ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endfor; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">

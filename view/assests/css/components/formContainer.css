@@ -9,10 +9,9 @@
     border-radius: 15px;
   }
 
-@media screen and (max-width: 425px) {
-  .formulario-perfil {
-    padding: 50px 50px 35px 50px;
-
-  }
+@media screen and (max-width: 440px) {
+    .formulario-perfil {
+        padding: 40px 20px;
+    }
 
 } 
