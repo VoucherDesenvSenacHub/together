@@ -6,11 +6,11 @@
 @import url(components/modal.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
+@import url(components/modalNotificacao.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
 @import url(pages/login.css);
 @import url(pages/validacaoVoluntario.css);
-@import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);
 @import url(pages/visualizarVoluntarios.css);
 @import url(pages/Home.css);
@@ -29,12 +29,11 @@
 @import url(components/formContainer.css);
 @import url(components/body.css);
 @import url(components/sidebar.css);
-@import url(pages/voluntariosOng.css);
 @import url(pages/relatorioOng.css);
-@import url(pages/visualizarOs.css);
 @import url(components/icon.css);
 @import url(pages/cadastrarOng.css);
-@import url(pages/visualizarPerfis.css);
+@import url(pages/pesquisarOng.css);
+@import url(pages/index.css);
 
 :root {
   font-size: 16px;
@@ -69,7 +68,7 @@
   --cor-body: #fcf1d3;
   --cor-fundo-card: #f08a50;
   --card-neon-text: #5ee6eb;
-  --cor-modo-anonimo: #19456b;
+  --cor-modo-anonimo: grey;
 
   /* TABELA*/
   --cor-fundo-titulo-tabela: #19456b;

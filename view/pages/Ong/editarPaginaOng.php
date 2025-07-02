@@ -33,15 +33,15 @@
                     <div class="formulario-redes-buttons">
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+                                <img src="/together/view/assests/images/Adm/facebook.png" alt="Facebook">
                                 <input type="text" placeholder="@" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                                <img src="/together/view/assests/images/Adm/instagram.png" alt="Instagram">
                                 <input type="text" placeholder="@" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="X">
+                                <img src="/together/view/assests/images/Adm/X.png" alt="X">
                                 <input type="text" placeholder="@" />
                             </div>
                         </div>

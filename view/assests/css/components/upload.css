@@ -30,13 +30,14 @@
     margin: 0 auto;
   }
   
-  .custum-file-upload .icon {
+  .custum-file-upload .icon-upload {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 30px;
   }
   
-  .custum-file-upload .icon svg {
+  .custum-file-upload .icon-upload svg {
     height: 80px;
     fill: var(--cor-cinza-escuro);
   }
@@ -64,7 +65,7 @@
       gap: 10px;
     }
   
-    .custum-file-upload .icon svg {
+    .custum-file-upload .icon-upload svg {
       height: 60px;
     }
   

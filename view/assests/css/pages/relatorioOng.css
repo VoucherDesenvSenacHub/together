@@ -25,7 +25,7 @@
  
 .relatorio-ong-area-limiter {
     width: 100%;
-    max-width: 1000px;
+    /* max-width: 1000px; */
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -71,7 +71,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    margin: 0 0 15px 10px;
+    margin: 0 0 15px 0;
     
     i, p{
         color: var(--cor-botao-primary);
@@ -104,6 +104,7 @@
     color: var(--cor-card);
     text-decoration: none;
     align-items: center;
+    gap: 10px;
     
     #relatorio-ong-yey-icon {
         font-size: 25px;

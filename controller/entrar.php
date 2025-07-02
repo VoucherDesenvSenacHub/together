@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+$_SERVER['perfil'] = "Visitante";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $emailForm = $_POST['email'];

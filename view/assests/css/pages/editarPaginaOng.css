@@ -53,6 +53,7 @@
 .formulario-buttons {
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 
 .formulario-buttons .botao {

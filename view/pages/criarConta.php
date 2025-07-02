@@ -20,49 +20,58 @@
 
             <div class="box-login">
 
-                <form class="login" method="POST">
+                <form class="login" method="POST" action="">
                     <h1 class="titulo-login">Criar uma nova conta</h1>
 
-                    <div class="container-input-login">
-                        <div>
-                            <?= label('nome', 'Nome') ?>
-                            <?= inputRequired('text', 'nome', 'nome') ?>
+                    <div class="step active">
+                        <div class="container-input-login">
+                            <div>
+                                <?= label('nome', 'Nome') ?>
+                                <?= inputRequired('text', 'nome', 'nome') ?>
+                            </div>
+                            <div>
+                                <?= label('cpf', 'CPF') ?>
+                                <?= inputRequired('text', 'cpf', 'cpf') ?>
+                            </div>
+                            <div>
+                                <?= label('telefone', 'Telefone') ?>
+                                <?= inputRequired('text', 'telefone', 'telefone') ?>
+                            </div>
+                            <div>
+                                <?= label('email', 'E-mail') ?>
+                                <?= inputRequired('text', 'email', 'email') ?>
+                            </div>
+                            <div class="botao-login group-btn-cadastro-ong">
+                                <?= botao('next', 'Próximo','btn','','button') ?>
+                            </div>
+                            <div class="criar-conta-area-login">
+                                <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
+                            </div>
                         </div>
-                        <div>
-                            <?= label('cpf', 'CPF | CNPJ') ?>
-                            <?= inputRequired('text', 'cpf', 'cpf') ?>
-                        </div>
-                        <div>
-                            <?= label('telefone', 'Telefone') ?>
-                            <?= inputRequired('text', 'telefone', 'telefone') ?>
-                        </div>
-                        <div>
-                            <?= label('email', 'E-mail') ?>
-                            <?= inputRequired('text', 'email', 'email') ?>
-                        </div>
-                        <div>
-                            <?= label('senha', 'Senha') ?>
-                            <?= inputRequired('number', 'senha', 'senha') ?>
-                        </div>
-                        <div>
-                            <?= label('confirmar_senha', 'Confirmar Senha') ?>
-                            <?= inputRequired('text', 'confirmar_senha', 'confirmar_senha') ?>
-                        </div>
-                        <div class="botao-login">
-                            <?= botao('salvar', 'Cadastre-se',"","login.php") ?>
-                        </div>
-                        <div class="criar-conta-area-login">
-                            <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
-                        </div>
-
                     </div>
+                    <div class="step">
+                        <div class="container-input-login">
+                            <div>
+                                <?= label('senha', 'Senha') ?>
+                                <?= inputRequired('number', 'senha', 'senha') ?>
+                            </div>
+                            <div>
+                                <?= label('confirmar_senha', 'Confirmar Senha') ?>
+                                <?= inputRequired('text', 'confirmar_senha', 'confirmar_senha') ?>
+                            </div>
+                            <div class="botao-login group-btn-cadastro-ong">
+                                <?= botao('prev', 'Voltar', 'btn1','','button') ?>
+                                <?= botao('salvar', 'Cadastre-se',"","login.php") ?>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
     </div>
 
+    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
 </body>
-
-<!-- <?php require_once "../../view/components/footer.php" ?> -->
 
 </html>

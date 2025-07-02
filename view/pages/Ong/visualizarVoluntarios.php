@@ -13,7 +13,9 @@
             <div class="formulario-perfil">
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
-                        <img src="/together/view/assests/images/Ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
+                        <div class="div-logo">
+                            <img src="/together/view/assests/images/Ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
+                        </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
@@ -32,7 +34,7 @@
                                         <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
                                     </div>
                                     <div>
-                                        <?= label('data', 'Data de nascimento') ?>
+                                        <?= label('data', 'Data de Nascimento') ?>
                                         <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
                                     </div>
                                 </div>
@@ -54,18 +56,12 @@
                                 <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
-                            </div>
-                        </div>
-                        <div class="container-endereco-voluntario">
-                            <div class="container-input-endereco-voluntario">
-                                <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', '0') ?>
+                                <?= label('estado', 'Estado') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', 'Mato Grosso do Sul') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
@@ -74,15 +70,25 @@
                                 <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                                <?= label('logradouro', 'Logradouro') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('numero', 'Número') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', '4444') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('complemento', 'Complemento') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
                             </div>
                         </div>
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', 'voluntariosOng.php') ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', 'voluntariosOng.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
                         </div>
                     </div>
                 </form>
@@ -90,7 +96,7 @@
         </div>
     </main>
 
-    <div id="modalConfirmacao" class="modal-overlay">
+    <!-- <div id="modalConfirmacao" class="modal-overlay">
         <div class="modal-content">
             <p>Tem certeza que deseja recusar este voluntário?</p>
             <div class="modal-botoes">
@@ -98,8 +104,7 @@
                 <div class="postagem-geral-btn"><?= botao('excluir', 'Cancelar', "btnCancelarExclusao")?> </div>
             </div>
         </div>
-    </div>
-
+    </div> -->
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>

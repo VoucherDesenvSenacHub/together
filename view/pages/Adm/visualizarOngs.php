@@ -12,7 +12,7 @@
         <div class="div-wrap-width">
             <form action="" class="form-filtro-data">
                 <div class="superior-pagina-tabela">
-                    <h1 class="titulo-pagina">Ongs Cadastrados</h1>
+                    <h1 class="titulo-pagina">Ongs Cadastradas</h1>
                     <div class="filtro-por-mes">
                         <?= label('data-inicio', 'Período') ?>
                         <div class="input-filtro-por-mes">
@@ -22,28 +22,33 @@
                     </div>
                 </div>
             </form>
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Data de Cadastro</th>
-                        <th>Razão Social</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php for ($i = 0; $i < 10; $i++): ?>
-                        <tr>
-                            <td>10/09/2025</td>
-                            <td>Saúde é Vida</td>
-                            <td>
-                                <a href="/together/view/pages/visaoSobreaOng.php">
-                                    <?= renderAcao('visualizar') ?>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endfor ?>
-                </tbody>
-            </table>
+            <div class="formulario-perfil">
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Data de Cadastro</th>
+                                <th>Razão Social</th>
+                                <th>Visualizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td><?php echo $i + 10 ?>/03/2025</td>
+                                    <td><?php echo $lista[$i]?></td>
+                                    <td>
+                                        <a href="/together/view/pages/visaoSobreaOng.php">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endfor ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
     </main>

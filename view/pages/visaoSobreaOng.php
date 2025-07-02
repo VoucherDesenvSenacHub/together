@@ -5,13 +5,39 @@ require_once "./../components/acoes.php";
 ?>
 
 <?php if(isset($_SESSION['perfil'])) { ?>
-    <?php if($_SESSION['perfil'] === 'Ong') { ?>
+    <?php if($_SESSION['perfil'] === 'Administrador' || $_SESSION['perfil'] === 'Ong') { ?>
         <style>
-            .sessionOng {
+            .span-msg {
                 display: block;
             }
         </style>
+        <?php 
+            $urlDoacao = '';
+            $urlVoluntario = ''
+        ?>
+        <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
+            <?php $usuario = 'Administrador'?>
+        <?php } elseif ($_SESSION['perfil'] === 'Ong') { ?>
+            <?php $usuario = 'Ong'?>
+            <style>
+                .sessionOng {
+                    display: block;
+                }
+            </style>
+        <?php } ?>
+        
     <?php } ?>
+    <?php if($_SESSION['perfil'] === 'Usuario') { ?>
+        <?php 
+        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
+        ?>
+    <?php } ?>
+<?php } else {?>
+    <?php 
+        $urlDoacao = "/together/view/pages/login.php";
+        $urlVoluntario = '/together/view/pages/login.php'
+    ?>
 <?php }?>
 
 <body>
@@ -22,7 +48,7 @@ require_once "./../components/acoes.php";
 
         <div class="adm-ong-vision-container">
 
-            <form method="post" action="#" class="adm-ong-vision-form-box">
+            <form method="POST" action="" class="adm-ong-vision-form-box">
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
                         <div class="adm-ong-group-filter-tag">
@@ -43,9 +69,10 @@ require_once "./../components/acoes.php";
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
                             </div>
                             <div class="adm-ong-vision-button-div">
-                                <?= botao('primary', 'Fazer Doação'); ?>
-                                <?= botao('primary', 'Voluntariar-se'); ?>
+                                <?= botao('primary', 'Fazer Doação','',$urlDoacao); ?>
+                                <?= botao('primary', 'Voluntariar-se','',$urlVoluntario); ?>
                             </div>
+                            <span class="span-msg">Não é possível executar essa ação como <?=$usuario?>!</span>
                             <div>
                                 <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text"><i>* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</i></p>
                             </div>
@@ -115,15 +142,15 @@ require_once "./../components/acoes.php";
 
                                 <div class="adm-ong-vision-perfil-area">
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_instagram.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/instagram.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/devicon_facebook.png" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/facebook.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/skill-icons_twitter.webp" alt="">
+                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/X.png" alt="">
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>

@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
       document.querySelector('form').submit();
 
       // Ou redirecionar para página que processa a exclusão
-      window.location.href = 'voluntariosOng.php?acao=excluir&id=ID_DO_VOLUNTARIO'; 
+      window.location.href = 'voluntariosOng.php?'; 
 
       modal.style.display = 'none';
     });

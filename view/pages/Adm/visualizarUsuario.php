@@ -14,7 +14,7 @@
                 <div class="superior-pagina-tabela">
                     <h1 class="titulo-pagina">Usuários Cadastrados</h1>
                     <div class="filtro-por-mes">
-                        <?= label('periodo', 'Período') ?>
+                        <?= label('data-inicio', 'Período') ?>
                         <div class="input-filtro-por-mes">
                             <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
                             <?= inputFilter('date', 'data-final', 'data-final') ?>
@@ -22,31 +22,36 @@
                     </div>
                 </div>
             </form>
-            <table class="tabela">
-                <thead>
-                    <tr>
-                        <th>Data de Cadastro</th>
-                        <th>Nome do Perfil</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php for ($i = 0; $i < 10; $i++): ?>
-                        <tr>
-                            <td>15/03/1986</td>
-                            <td>Kauan Pereira</td>
-                            <td>
-                                <a href="visaoDoUsuario.php">
-                                    <?= renderAcao('visualizar') ?>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php endfor ?>
-                </tbody>
-            </table>
+            <div class="formulario-perfil">
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Data de Cadastro</th>
+                                <th>Nome do Perfil</th>
+                                <th>Visualizar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td><?= $i + 10 ?>/05/2025</td>
+                                    <td><?= $lista[$i] ?></td>
+                                    <td>
+                                        <a href="visaoDoUsuario.php">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endfor ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
 
     </main>
-    
+
     <?php require_once './../../components/footer.php' ?>
 </body>

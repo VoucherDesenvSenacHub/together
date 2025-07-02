@@ -1,114 +1,102 @@
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
+<?php require_once "../../../view/components/select.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-
-<!-- ESSA TELA VAI SER ALTERADA ELA VAI SER SOMENTE PARA ACEITAR O CADASTRO DA ONG -->
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <div class="btn-voltar-validacao-atualizacao">
-            <?php require_once './../../components/back-button.php' ?>
-        </div>
+        <?php require_once './../../components/back-button.php' ?>
 
-        <div class="titulo-validar-atualizacao">
-            <h1 class="titulo-pagina">Validar Cadastro Ong</h1>
-        </div>
-
-        <div class="formulario-perfil">
-            <form action="" method="POST">
-                <div class="container-perfil-ong-atualizado">
-                    <img src="\together\view\assests\images\Ong\Ong_icon.png" alt="Logo da ONG" class="logo">
-                    <div class="container-uper-readonly">
-                        <div class="container-uper-readonly-primary">
-                            <div class="form-row">
-                                <div>
-                                    <?= label('nome', 'Nome') ?>
-                                    <?= inputReadonly('text', 'nome', 'nome', 'Saúde é vida') ?>
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Validar Cadastro ONG</h1>
+            <div class="formulario-perfil">
+                <form action="" method="POST">
+                    <div class="container-perfil-voluntario">
+                        <div class="div-logo">
+                            <img src="/together/view/assests/images/Ong/Ong_icon.png" alt="Foto do usuário" class="logo-user">
+                        </div>
+                        <div class="container-readonly">
+                            <div class="container-readonly-primary">
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('razao_social', 'Razão Social') ?>
+                                        <?= inputReadonly('text', 'razao_social', 'razao_social', 'Saúde é vida') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('telefone', 'Telefone') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                    </div>
                                 </div>
-                                <div>
-                                    <?= label('telefone', 'Telefone') ?>
-                                    <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div>
-                                    <?= label('ods', 'ODS') ?>
-                                    <?= inputReadonly('text', 'ods', 'ods', 'Saúde e bem estar') ?>
-                                </div>
-                                <div>
-                                    <?= label('email', 'Email') ?>
-                                    <?= inputReadonly('text', 'email', 'email', 'ong@email.com') ?>
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('cnpj', 'CNPJ') ?>
+                                        <?= inputReadonly('text', 'cnpj', 'cnpj', '99.999.999/9999-99') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('ods', 'Tipo da ONG') ?>
+                                        <?= inputReadonly('text', 'ods', 'ods', 'Saúde e bem-estar') ?>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="form-row">
-                                <div class="container-input-atualizacao-cadastral">
-                                    <?= label('fiscal', 'Conselho Fiscal') ?>
-                                    <?= inputReadonly('text', 'fiscal', 'fiscal', 'Conselho Fiscal') ?>
-                                </div>
+                            <div class="container-input-email-voluntario">
+                                <?= label('email', 'Email') ?>
+                                <?= inputReadonly('text', 'email', 'email', 'ongsalvavidas@email.com') ?>
                             </div>
-
                         </div>
                     </div>
-
-                </div>
-
-                <div class="container-endereco container-uper-readonly-secondary">
-                    <div class="titulo-endereco-atualizacao">
-                        <h1>Endereço</h1>
-                    </div>
-                    <div class="container-endereco-atualizacao-cadastral">
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('cep', 'CEP') ?>
-                            <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                    <div class="container-endereco container-readonly-secondary">
+                        <div class="titulo-endereco-voluntario">
+                            <h1>Endereço</h1>
                         </div>
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('logradouro', 'Logradouro') ?>
-                            <?= inputReadonly('text', 'logradouro', 'logradouro', 'Logradouro') ?>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cep', 'CEP') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('estado', 'Estado') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', 'Mato Grosso do Sul') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('bairro', 'Bairro') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('logradouro', 'Logradouro') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('numero', 'Número') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', '4444') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('complemento', 'Complemento') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="container-endereco-atualizacao-cadastral">
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('complemento', 'Complemento') ?>
-                            <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital municipal') ?>
-                        </div>
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('numero', 'Número') ?>
-                            <?= inputReadonly('text', 'numero', 'numero', '99') ?>
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/adm/OngsAValidar.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '','/together/view/pages/adm/OngsAValidar.php') ?> </div>
                         </div>
                     </div>
-                    <div class="container-endereco-atualizacao-cadastral">
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('bairro', 'Bairro') ?>
-                            <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
-                        </div>
-                        <div class="container-input-atualizacao-cadastral">
-                            <?= label('cidade', 'Cidade') ?>
-                            <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
-                        </div>
-                    </div>
-                    <div class="container-uper-readonly-secondary">
-                        <?= label('complemento', 'Complemento') ?>
-                        <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital municipal') ?>
-                    </div>
-                </div>
-
-                <div class="container-uper-readonly-footer">
-                    <div class="postagem-geral-div-btn">
-                           
-                           
-                    </div>
-                </div>
-                <div class="postagem-geral-div-btn">
-                    <div class="postagem-geral-btn"> <?= botao('salvar', 'Validar', '', 'validarAtualizacaoOng.php') ?></div>
-                    <div class="postagem-geral-btn"> <?= botao('cancelar', 'Recusar', '', 'validarAtualizacaoOng.php') ?></div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </main>
+
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
 

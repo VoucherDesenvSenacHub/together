@@ -22,22 +22,20 @@
                 <h3 class='card-title'>$titulo</h3>
                 <p class='card-description'>$descricao</p>
             </div>
-            <div class='card-btn'>" .
-                botao('primary','Descobrir','','/together/view/pages/visaoSobreaOng.php') .
-            "</div>
+            <a class='card-btn' href='/together/view/pages/visaoSobreaOng.php''>" .
+                botao('primary','Descobrir') .
+            "</a>
         </div>
     </div>
     ";
   }
 
-  function cardSobreNos($titulo,$descricao,$descricao2 = "",$descricao3 = "") {
+  function cardSobreNos($titulo,$descricao) {
     return 
     "
     <div class='sobre-nos-card'>
         <h2>$titulo</h2>
         <p>$descricao</p>
-        <p>$descricao2</p>
-        <p>$descricao3</p>
     </div>
     ";
   }

@@ -1,5 +1,6 @@
 .div-wrap-width {
-  margin: 0px 0px;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .superior-pagina-tabela {
@@ -70,4 +71,33 @@
 
 .acao{
   font-size: 150%;
+}
+
+.input-filtro-por-mes{
+    display: flex;
+    gap: 20px;
+}
+
+.filtro-por-mes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media (max-width: 440px) {
+  .table-mobile {
+    overflow-x: scroll;
+  }
+
+  .titulo-pagina{
+    font-size: 2.0rem;
+  }
+
+  .superior-pagina-tabela {
+    flex-wrap: wrap;
+  }
+
+  .filtro-por-mes{
+    margin-bottom: 20px;
+  }
 }

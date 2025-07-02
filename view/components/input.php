@@ -23,6 +23,10 @@
         return " <input class='formulario-input' type='$type' id='$id' name='$name'> ";
     };
 
+    function inputCheckBox($type, $id, $name) {
+        return " <input class='formulario-input-checkbox' type='$type' id='$id' name='$name'> ";
+    };
+
     function inputFilter($type, $id, $name, $placeholder = "") {
         return " <input class='formulario-input' type='$type' id='$id' name='$name' placeholder='$placeholder'> ";
     };
