@@ -36,7 +36,7 @@
         </div>
 
         <div id="barraPesquisa" class="div-barra-pesquisa">
-            <input class="barra-pesquisa-input" type="text">
+            <input class="barra-pesquisa-input" type="text" placeholder="Pesquisar Ong's">
             <button class="submit-lente">
                 <i class="fa fa-search" id="lente-icon"></i>
             </button>
