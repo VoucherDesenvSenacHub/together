@@ -5,7 +5,7 @@ require_once "./../components/acoes.php";
 ?>
 
 <?php if(isset($_SESSION['perfil'])) { ?>
-    <?php if($_SESSION['perfil'] === 'Administrador' || $_SESSION['perfil'] === 'Ong') { ?>
+    <?php if($_SESSION['perfil'] === 'Administrador') { ?>
         <style>
             .span-msg {
                 display: block;
@@ -17,17 +17,10 @@ require_once "./../components/acoes.php";
         ?>
         <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
             <?php $usuario = 'Administrador'?>
-        <?php } elseif ($_SESSION['perfil'] === 'Ong') { ?>
-            <?php $usuario = 'Ong'?>
-            <style>
-                .sessionOng {
-                    display: block;
-                }
-            </style>
-        <?php } ?>
+        <?php }?>;
         
     <?php } ?>
-    <?php if($_SESSION['perfil'] === 'Usuario') { ?>
+    <?php if($_SESSION['perfil'] === 'Usuario' || $_SESSION['perfil'] === 'Ong') { ?>
         <?php 
         $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
