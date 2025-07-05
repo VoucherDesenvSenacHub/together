@@ -30,7 +30,7 @@
                             </div>
                             <div>
                                 <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('text', 'email', 'email') ?>
+                                <?= inputRequired('email', 'email', 'email') ?>
                             </div>
                             <div>
                                 <?= label('telefone', 'Telefone') ?>

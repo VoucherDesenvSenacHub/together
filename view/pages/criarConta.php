@@ -39,7 +39,7 @@
                             </div>
                             <div>
                                 <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('text', 'email', 'email') ?>
+                                <?= inputRequired('email', 'email', 'email') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('next', 'Próximo','btn','','button') ?>
@@ -57,7 +57,7 @@
                             </div>
                             <div>
                                 <?= label('confirmar_senha', 'Confirmar Senha') ?>
-                                <?= inputRequired('text', 'confirmar_senha', 'confirmar_senha') ?>
+                                <?= inputRequired('number', 'confirmar_senha', 'confirmar_senha') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn1','','button') ?>
