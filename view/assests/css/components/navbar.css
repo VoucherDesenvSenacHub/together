@@ -24,6 +24,11 @@
     /* animation: RODA 3s linear infinite; */
 }
 
+#btn-circular {
+    font-size: 20px;
+    color: #5c3a21;
+}
+
 @keyframes RODA {
     0% {
         transform: rotateZ(0deg);
