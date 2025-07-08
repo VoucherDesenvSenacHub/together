@@ -9,7 +9,7 @@
   justify-content: space-between;
 }
 
-.titulo-pagina{
+.titulo-pagina {
   font-size: 3rem;
   font-weight: bold;
   color: var(--cor-fundo-titulo-tabela);
@@ -43,7 +43,7 @@
 }
 
 .tabela tr:nth-child(even) {
-  background: var(--cor-fundo-linha-tabela) ;
+  background: var(--cor-fundo-linha-tabela);
 }
 
 .icon-btn {
@@ -62,42 +62,58 @@
   object-fit: contain;
 }
 
-.acoes-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+.acoes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
 
-.acao{
+.acao {
   font-size: 150%;
 }
 
-.input-filtro-por-mes{
-    display: flex;
-    gap: 20px;
+.formulario-perfil {
+  margin-top: 20px;
 }
 
-.filtro-por-mes {
-    display: flex;
+.filtro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 80px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.bloco-datas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bloco-pesquisa {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.input-filtro-por-mes input {
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
+  .filtro {
     flex-direction: column;
-    justify-content: center;
-}
-
-@media (max-width: 440px) {
-  .table-mobile {
-    overflow-x: scroll;
+    align-items: stretch;
+    gap: 20px;
   }
 
-  .titulo-pagina{
-    font-size: 2.0rem;
+  .bloco-datas {
+    flex-direction: column;
   }
 
-  .superior-pagina-tabela {
-    flex-wrap: wrap;
-  }
-
-  .filtro-por-mes{
-    margin-bottom: 20px;
+  .bloco-pesquisa {
+    width: 100%;
   }
 }
