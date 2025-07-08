@@ -21,7 +21,7 @@ body {
 }
 
 .aside-content {
-    width: 65px;
+    width: 60px;
     /* height: 55vh; */
     padding: 10px 0;
     background: var(--cor-navbar);
