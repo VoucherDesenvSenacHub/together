@@ -21,8 +21,9 @@ body {
 }
 
 .aside-content {
-    width: 100px;
-    height: 55vh;
+    width: 65px;
+    /* height: 55vh; */
+    padding: 10px 0;
     background: var(--cor-navbar);
     display: flex;
     flex-direction: column;
@@ -33,19 +34,11 @@ body {
     box-shadow: 7px 10px 5px 0px rgba(0, 0, 0, 0.119);
 }
 
-#sideAdministrador {
-    height: 50vh;
-}
-
-#sideUsuario {
-    height: 40vh;
-}
-
 .aside-button {
     text-decoration: none;
     color: #5c3a21;
-    height: 70px;
-    width: 70px;
+    height: 65px;
+    width: 65px;
     display: flex;
     justify-content: center;
     align-items: center;
