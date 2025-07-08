@@ -34,6 +34,7 @@
 @import url(pages/cadastrarOng.css);
 @import url(pages/pesquisarOng.css);
 @import url(pages/index.css);
+@import url(components/paginacao.css);
 
 :root {
   font-size: 16px;

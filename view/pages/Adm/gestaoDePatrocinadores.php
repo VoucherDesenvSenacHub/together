@@ -52,6 +52,7 @@
                         </tbody>
                     </table>
                 </div>
+                <?php require_once './../../components/paginacao.php' ?>
             </div>
             <div class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">

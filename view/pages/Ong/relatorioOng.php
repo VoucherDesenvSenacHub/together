@@ -81,6 +81,7 @@
                         <?php endfor; ?>
                     </tbody>
                 </table>
+                <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>
     </main>
