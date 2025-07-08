@@ -27,11 +27,15 @@
                             <?= label('data-final', '&nbsp;') ?>
                             <?= inputFilter('date', 'data-final', 'data-final') ?>
                         </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
                     </div>
 
                     <div class="bloco-pesquisa">
-                        <?= label('pesquisar', 'Pesquisar') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar') ?>
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
                     </div>
                 </div>
 

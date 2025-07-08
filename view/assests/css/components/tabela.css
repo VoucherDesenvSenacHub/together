@@ -96,11 +96,14 @@
   display: flex;
   flex-direction: column;
   min-width: 200px;
+  
 }
 
-.input-filtro-por-mes input {
+.input-filtro-por-mes input{
   min-width: 140px;
 }
+
+
 
 @media (max-width: 768px) {
   .filtro {
