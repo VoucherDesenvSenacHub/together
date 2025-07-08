@@ -36,7 +36,7 @@
         </div>
 
         <div id="barraPesquisa" class="div-barra-pesquisa">
-            <input class="barra-pesquisa-input" type="text">
+            <input class="barra-pesquisa-input" type="text" placeholder="Pesquisar Ong's">
             <button class="submit-lente">
                 <i class="fa fa-search" id="lente-icon"></i>
             </button>
@@ -45,7 +45,9 @@
         <div class="login-botao-area-navbar">
             <form action="">
             <?php if(isset($_SESSION['perfil'])) { 
-                echo botao('entrar','Sair','','/together/controller/sair.php');
+                echo '<a href="/together/controller/sair.php">
+                        <i class="fa-solid fa-right-from-bracket icone-sair" id="btn-circular"></i>
+                    </a>';
             }
             else {
                 echo botao('entrar','Entrar','','/together/view/pages/login.php');

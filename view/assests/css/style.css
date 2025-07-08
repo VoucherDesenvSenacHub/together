@@ -34,6 +34,7 @@
 @import url(pages/cadastrarOng.css);
 @import url(pages/pesquisarOng.css);
 @import url(pages/index.css);
+@import url(components/paginacao.css);
 
 :root {
   font-size: 16px;
@@ -71,7 +72,7 @@
   --cor-modo-anonimo: grey;
 
   /* TABELA*/
-  --cor-fundo-titulo-tabela: #19456b;
+  --cor-fundo-titulo-tabela: #A16D28;
   --cor-fundo-linha-tabela: #e1d0a3;
   /* BOTOES */
   --cor-botao-primary: #d2a680;

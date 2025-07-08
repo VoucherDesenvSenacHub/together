@@ -50,6 +50,7 @@
                         </tbody>
                     </table>
                 </div>
+                <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>
     </main>

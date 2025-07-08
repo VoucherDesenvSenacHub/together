@@ -18,9 +18,9 @@
                     <h1>Patrocinadores</h1>
                 </div>
                 <div class="filtro-botao-patrocinador">
-                    <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?>
+                    <!-- <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?> -->
                     <div class="div-btn-patrocinador">
-                        <?= botao('primary', 'Novo', 'abrir-patrocinadores') ?>
+                        <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,7 @@
                         </tbody>
                     </table>
                 </div>
+                <?php require_once './../../components/paginacao.php' ?>
             </div>
             <div class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
