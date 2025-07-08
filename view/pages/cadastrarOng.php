@@ -30,7 +30,7 @@
                             </div>
                             <div>
                                 <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('text', 'email', 'email') ?>
+                                <?= inputRequired('email', 'email', 'email') ?>
                             </div>
                             <div>
                                 <?= label('telefone', 'Telefone') ?>
@@ -39,9 +39,7 @@
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('next', 'Próximo', 'btn1.1','','button') ?>
                             </div>
-                            <div class="criar-conta-area-login">
-                                <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="step">
@@ -112,22 +110,6 @@
                             <div>
                                 <?= label('complemento', 'Complemento') ?>
                                 <?= inputDefault('text', 'complemento', 'complemento') ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn3.1','','button') ?>
-                                <?= botao('next', 'Próximo', 'btn3.2','','button') ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('senha', 'Senha') ?>
-                                <?= inputRequired('number', 'senha', 'senha') ?>
-                            </div>
-                            <div>
-                                <?= label('confirmar_senha', 'Confirmar Senha') ?>
-                                <?= inputRequired('number', 'confirmar_senha', 'confirmar_senha') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn4.1','','button') ?>
