@@ -46,7 +46,7 @@
             <form action="">
             <?php if(isset($_SESSION['perfil'])) { 
                 echo '<a href="/together/controller/sair.php">
-                        <i class="fa-solid fa-right-from-bracket icone-sair" id="btn-circular"></i>
+                        <i class="fa-solid fa-right-from-bracket icone-sair" title="Sair" id="btn-circular"></i>
                     </a>';
             }
             else {
