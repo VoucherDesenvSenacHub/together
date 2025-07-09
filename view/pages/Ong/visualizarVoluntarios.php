@@ -1,81 +1,133 @@
-<?php require_once "../../../view/components/head.php";?>
+<?php require_once "../../../view/components/head.php"; ?>
+<?php require_once "../../../view/components/label.php"; ?>
+<?php require_once "../../../view/components/input.php"; ?>
+<?php require_once "../../../view/components/button.php"; ?>
 
-<body class="body-visualizar-voluntarios">
-  <?php require_once "../../../view/components/navbar.php";?>
+<body>
+    <?php require_once "../../../view/components/navbar.php"; ?>
+    <main class="main-container">
+        <?php require_once './../../components/back-button.php' ?>
 
-  <main class="main-container">
-  <?php require_once './../../components/back-button.php'?>
-  <div class="container-visualizar-voluntarios">
-    <div class="validation-area-visualizar-voluntarios">
-      <div class="area-imagem-visualizar-voluntarios">
-        <img class="imagem-perfil-visualizar-voluntarios"
-          src="../../../view//assests/images/Usuario/usuario-user-foto.png" alt="foto_perfil">
-      </div>
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Dados do Voluntário</h1>
+            <div class="formulario-perfil">
+            <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
 
-      <div class="confirmacao-area-visualizar-voluntarios">
-        <h3 class="pergunta-confirmacao-visualizar-voluntarios">Aceitar Voluntario?</h3>
-        <div class="button-area-visualizar-voluntarios">
-          <button class="validation-button-visualizar-voluntarios" id="check-button"><i class="fa-solid fa-check"
-              id="check-icon"></i></button>
-          <button class="validation-button-visualizar-voluntarios" id="recuse-button"><i class="fa-solid fa-xmark"
-              id="recuse-icon"></i></button>
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    <div class="container-perfil-voluntario">
+                        <div class="div-logo">
+                            <img src="/together/view/assests/images/Ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
+                        </div>
+                        <div class="container-readonly">
+                            <div class="container-readonly-primary">
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('nome', 'Nome') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('telefone', 'Telefone') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div>
+                                        <?= label('cpf', 'CPF') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                    </div>
+                                    <div>
+                                        <?= label('data', 'Data de Nascimento') ?>
+                                        <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container-input-email-voluntario">
+                                <?= label('email', 'Email') ?>
+                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-endereco container-readonly-secondary">
+                        <div class="titulo-endereco-voluntario">
+                            <h1>Endereço</h1>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cep', 'CEP') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('estado', 'Estado') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', 'Mato Grosso do Sul') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('bairro', 'Bairro') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('logradouro', 'Logradouro') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('numero', 'Número') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', '4444') ?>
+                            </div>
+                        </div>
+                        <div class="container-endereco-voluntario">
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('complemento', 'Complemento') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
+    </main>
 
-    <div class="infomation-visualizar-voluntarios">
-
-      <h3 class="info-title-visualizar-voluntarios">Dados do Voluntario</h3>
-
-      <form class="info-area-visualizar-voluntarios">
-        <div class="inputs-area-visualizar-voluntarios">
-          <label class="label-visu-voluntarios" for="nome">Nome:</label>
-          <input class="input-visu-voluntarios" type="text" name="nome" id="nome" value="XXXXXXXXXXXX"
-            placeholder="Nome de usuario" readonly>
+    <!-- <div id="modalConfirmacao" class="modal-overlay">
+        <div class="modal-content">
+            <p>Tem certeza que deseja recusar este voluntário?</p>
+            <div class="modal-botoes">
+                <div class="postagem-geral-btn"><?= botao('salvar', 'Sim', "btnConfirmarExclusao")?> </div>
+                <div class="postagem-geral-btn"><?= botao('excluir', 'Cancelar', "btnCancelarExclusao")?> </div>
+            </div>
         </div>
+    </div> -->
 
-        <div class=" inputs-area-visualizar-voluntarios">
-          <label class="label-visu-voluntarios" id="cpf-label">CPF:</label>
-          <input class="input-visu-voluntarios" type="cpf" name="cpf" id="cpf" value="XXX.XXX.XXX-XX" placeholder="CPF"
-            readonly>
-        </div>
-
-        <div class="metade-input-area-visualizar-voluntarios">
-
-          <div class="inputs-area">
-            <label class="label-visu-voluntarios" id="data-label">Data de Nascimento:</label>
-            <input class="input-visu-voluntarios" type="date" name="data" value="XX/XX/XXXX"
-              placeholder="Data de nascimento" readonly>
-          </div>
-
-          <div class="inputs-area">
-            <label class="label-visu-voluntarios" for="telefone">Telefone:</label>
-            <input class="input-visu-voluntarios" type="text" name="telefone" value="+XX (XX) XXXXXXXXXX"
-              placeholder="Telefone" readonly>
-          </div>
-
-        </div>
-
-        <div class="inputs-area-visualizar-voluntarios">
-          <label class="label-visu-voluntarios" for="endereco">Endereço:</label>
-          <input class="input-visu-voluntarios" type="text" name="endereco" id="endereco-input" value="XXXXXXXXXXX"
-            placeholder="Endereço" readonly>
-        </div>
-
-        <div class="inputs-area-visualizar-voluntarios">
-          <label class="label-visu-voluntarios" for="email">Email:</label>
-          <input class="input-visu-voluntarios" type="email" name="email" value="XXXXXXXXXXX" placeholder="Email"
-            readonly>
-        </div>
-      </form>
-      <div>
-        <ul class="notification-container">
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  </main>
-  <?php require_once "../../../view/components/footer.php"; ?>
+    <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>

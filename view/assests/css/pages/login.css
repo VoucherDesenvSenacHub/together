@@ -1,0 +1,182 @@
+.container-input-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.login-icon-group {
+    position: absolute;
+    margin: 20px;
+    left: 0;
+    top: 0; 
+}
+
+.body-login {
+    background-image: url("../../images/components/fundo_tela_login.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.conteudo-login {
+    display: flex;
+    justify-content: space-evenly;;
+    align-items: center;
+    width: 100%;
+}
+
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+
+}
+
+.logo-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-imagem-login-mobile {
+    display: none;
+}
+
+.box-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.532);
+    border: none;
+    border-radius: 10px;
+}
+
+.botao-login {
+    margin: 10px 0px;
+}
+
+.div-input-login {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.input-login {
+    width: 50%;
+}
+
+/* --------------------Login-------------------- */
+.text-login {
+    color: var(--cor-login);
+    font-weight: bold;
+    font-size: 14px;
+
+    &.link-login {
+        font-size: 14px;
+        color: var(--cor-font-link);
+    }  
+}
+
+.criar-conta-area-login {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --------------------Recuperar Senha-------------------- */
+
+.titulo-login {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--cor);
+}
+
+.sub-titulo-login {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ------------------------------------------------------ */
+
+.termos-area-login {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    /* top: 389px; */
+    margin-top: 20px;
+}
+
+.concordo-login {
+    font-size: 12px;
+}
+
+.termos-login {
+    margin: 0 0 0 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(---cor-cinza-novo);
+}
+
+.registrar-conta-login {
+    width: 100%;
+    transition: right 0.5s ease-in-out;
+}
+
+.botao-resgistar{
+    margin-top: 20px;
+}
+
+@media (max-width: 400px) {
+    .conteudo-login {
+        /* margin-top: 100px; */
+        width: 110%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .titulo-login {
+        font-size: 26px;
+    }
+
+    .body-login {
+        background-position-x: 50%;
+    }
+
+    .login {
+        width: 250px;
+        gap: 20px;
+    }
+
+    .logo-imagem-login-mobile {
+        display: block;
+    }
+    .logo-imagem-login {
+        display: none;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .conteudo-login {
+        gap: 30px;
+        flex-direction: column;
+    }
+}

@@ -1,44 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 @import url(reset.css);
 @import url(components/back-button.css);
 @import url(components/button.css);
 @import url(components/card.css);
-@import url(components/dialog.css);
+@import url(components/modal.css);
 @import url(components/navbar.css);
 @import url(components/tabela.css);
-@import url(pages/criarPostagemOng.css);
+@import url(components/modalNotificacao.css);
 @import url(pages/gestaoDePatrocinadores.css);
 @import url(pages/painelDeControle.css);
-@import url(pages/telaLoginAdm.css);
-@import url(pages/telaLoginOng.css);
-@import url(pages/telaLoginUsuario.css);
+@import url(pages/login.css);
 @import url(pages/validacaoVoluntario.css);
-@import url(pages/validarAtualizacaoOng.css);
 @import url(pages/verOngs.css);
 @import url(pages/visualizarVoluntarios.css);
 @import url(pages/Home.css);
 @import url(pages/ongAdmin.css);
+@import url(pages/visaoDoUsuario.css);
 @import url(components/main.css);
 @import url(components/footer.css);
 @import url(pages/emDesenvolvimento.css);
+@import url(pages/pagamentoUsuario.css);
+@import url(pages/visaoSobreaOng.css);
+@import url(pages/validacaoAtualizacao.css);
+@import url(pages/editarPaginaOng.css);
+@import url(components/upload.css);
+@import url(components/input.css);
+@import url(pages/postagemOngGeral.css);
+@import url(components/formContainer.css);
+@import url(components/body.css);
+@import url(components/sidebar.css);
+@import url(pages/relatorioOng.css);
+@import url(components/icon.css);
+@import url(pages/cadastrarOng.css);
+@import url(pages/pesquisarOng.css);
+@import url(pages/index.css);
+@import url(components/paginacao.css);
 
 :root {
-    font-size: 16px;
-    font-family: "Roboto", sans-serif;
-    --cor-font-preto: #000000;
-    --cor-font-branco: #FFFFFF;
-    --gradient: linear-gradient(54deg, rgba(62, 0, 163, 1) 0%, rgba(218, 112, 255, 1) 100%);
-    --cor-roxo-claro: #b56ad0d2;
-    --cor-roxo-escuro: #7608a5;
-    --cor-vermelho: #c63637;
-    --cor-verde: #118211;
-    --cor-amarelo: #ffd94d;
-    --cor-cinza-claro: #D9D9D9;
-    --cor-cinza-escuro: #00000087;
-    --cor-botao: #7152f3;
-    --cor-botao-hover: #5f3ee0;
-    --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  --cor-font-preto: #000000;
+  --cor-font-branco: #ffffff;
+  /* --gradient: linear-gradient(54deg, rgb(30, 100, 75) 0%, rgb(103 , 174 , 110) 100%); */
+  --cor-amarelo: #ffd94d;
+  --cor-cinza-claro: #c3c3c3;
+  --cor-cinza-escuro: #00000087;
+  --botao-box-shadow: 0px 4px 6px -1px rgba(59, 130, 246, 0.2),
     0px 2px 4px -2px rgba(59, 130, 246, 0.2);
-    --cor-title-card: rgba(55, 65, 81, 1);
-    
+  --cor-title-card: rgba(55, 65, 81, 1);
+  --cor-form: #f0f0f0;
+
+  /*
+    *   Novas variaveis(root), 
+    todos abaixo em utilização!!
+    *
+    */
+  --cor-login: #000;
+  --cor-font-link: #355d8c;
+  /*GERAL*/
+  --cor-branco: #ffffff;
+
+  --cor-cinza-p: gray;
+  --cor-container-painel: #f6f6f6;
+  --cor-card: #fff;
+  --cor-titles: #986c6c;
+  --cor-p: #000;
+  --cor-navbar: #f4c489;
+  --cor-body: #fcf1d3;
+  --cor-fundo-card: #f08a50;
+  --card-neon-text: #5ee6eb;
+  --cor-modo-anonimo: grey;
+
+  /* TABELA*/
+  --cor-fundo-titulo-tabela: #A16D28;
+  --cor-fundo-linha-tabela: #e1d0a3;
+  /* BOTOES */
+  --cor-botao-primary: #d2a680;
+  --cor-botao-secundary: #fcf1d3;
+  --cor-botao-salvar: #b0ca7f;
+  --cor-botao-cancelar: #ee8d7e;
+  --cor-borda-botao: #ffffff;
+  --cor-botao-entrar: #5c3a21;
+  --cor-botao-excluir: #ee8d7e;
+  --cor-botao-letra-entrar: #fff;
 }

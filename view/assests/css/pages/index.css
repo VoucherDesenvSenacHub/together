@@ -1,0 +1,147 @@
+.landing-home {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-ver-mais-ongs {
+    justify-content: start;
+    width: 100vw;
+    margin-bottom: 20px;
+}
+
+/* BANNER DO INDEX */
+.home-banner-together {
+    height: 90vmin;
+    background-image: url("/together/view/assests/images/Geral/imgHome.jpg");
+    background-position-x: 50%;
+    background-position-Y: 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+
+    .home-banner-img-together {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}
+
+/* SERVE PARA DEIXAR AS IMAGENS MAIS ESCURAS */
+.camada2 {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* DIV PADRAO */
+.container-home {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    max-width: 1100px;
+    justify-content: center;
+
+    /* CARDS DAS ONGS */
+    &.card-ong {
+        flex-wrap: wrap;
+    }
+
+    /* CARDS SOBRE NOS */
+    &.card-sobre-nos-home {
+        margin-top: 40px;
+    }
+}
+
+/* ESTILIZACAO PARA VOLUNTARIAR-SE E CADASTRAR ONG */
+.img-home-acao {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+
+    &.ong {
+        background-image: url("/together/view/assests/images/Geral/imgOng.jpg");
+    }
+
+    &.voluntario {
+        background-image: url("/together/view/assests/images/Geral/imgVoluntariar.jpg");
+    }
+}
+.btn-home-acao{
+    width: fit-content;
+    justify-content: center;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+
+/* INICIO LINHA MARROM NA INDEX */
+.linha-home {
+    margin-top: 20px;
+    width: 40%;
+    height: 2px;
+    background-color: var(--cor-botao-entrar);
+
+    &.bottom {
+        margin: 40px 0 0px 0;
+    }
+}
+
+/* ESTILIZACAO DO CARD SOBRE NOS */
+.sobre-nos-card {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h2 {
+        font-family: 'roboto', sans-serif;
+        color: var(--cor-titles);
+        font-weight: bold;
+        font-size: 2.0rem;
+    }
+
+    p {
+        font-family: 'roboto', sans-serif;
+        font-size: 1.3rem;
+        color: var(--cor-cinza-p);
+        text-align: start;
+    }
+}
+
+@media (max-width: 540px) {
+
+    .container-home {
+        &.card-sobre-nos-home {
+            max-width: 260px;
+            flex-wrap: wrap;
+        }
+        .container-ver-mais-ongs {
+            max-width: 260px;
+        }
+    }
+
+    .sobre-nos-card {
+        h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+    .img-together {
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 1400px) {}
