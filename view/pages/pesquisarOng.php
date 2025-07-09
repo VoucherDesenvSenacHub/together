@@ -16,6 +16,10 @@
             <!-- Areá de Filtro -->
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>
                     </div>
