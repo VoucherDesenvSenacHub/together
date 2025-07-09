@@ -15,6 +15,27 @@
                 <h1>Validação de ONGs</h1>
             </div>
             <div class="formulario-perfil">
+            <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>

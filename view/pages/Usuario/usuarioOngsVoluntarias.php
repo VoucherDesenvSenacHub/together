@@ -15,16 +15,30 @@
             <form action="" class="form-filtro-data">
                 <div class="superior-pagina-tabela">
                     <h1 class="titulo-pagina">Voluntariado</h1>
-                    <div class="filtro-por-mes">
-                        <?= label('periodo', 'Período') ?>
-                        <div class="input-filtro-por-mes">
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                    </div>
                 </div>
             </form>
             <div class="formulario-perfil">
+            <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>

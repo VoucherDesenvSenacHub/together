@@ -1,5 +1,7 @@
-<?php require_once "./../../components/head.php"; ?>
-<?php require_once "./../../components/acoes.php"; ?>
+<?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/label.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/acoes.php' ?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -9,6 +11,28 @@
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Validação de Voluntários</h1>
             <div class="formulario-perfil">
+            <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
+                
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
