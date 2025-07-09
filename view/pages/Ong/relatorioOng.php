@@ -85,25 +85,27 @@
                 </div>
                 </div>
                 <!-- <div title="Gráfico do projeto" class="relatorio-ong-graphic-div"> -->
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Doador</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                        <?php for ($i = 0; $i < 10; $i++): ?>
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
                             <tr>
-                                <td><?= $i+10?>/05/2025</td>
-                                <td><?= $lista[$i] ?></td>
-                                <td><?= "R$" . ($i+2) * 10 ?></td>
+                                <th>Data</th>
+                                <th>Doador</th>
+                                <th>Valor</th>
                             </tr>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td><?= $i+10?>/05/2025</td>
+                                    <td><?= $lista[$i] ?></td>
+                                    <td><?= "R$" . ($i+2) * 10 ?></td>
+                                </tr>
+                            <?php endfor; ?>
+                        </tbody>
+                    </table>
+                </div>
                 <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>
