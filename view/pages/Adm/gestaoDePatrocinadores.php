@@ -17,18 +17,18 @@
                 <div class="titulo-pagina">
                     <h1>Patrocinadores</h1>
                 </div>
-                <div class="filtro-botao-patrocinador">
-                    <!-- <?= inputFilter('text', 'filtroPatrocinador', 'filtroPatrocinador', "BUSCAR") ?> -->
-                    <div class="div-btn-patrocinador">
-                        <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
-                    </div>
-                </div>
             </div>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <div class="filtro">
+
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                    <div class="filtro-botao-patrocinador">
+                        <div class="div-btn-patrocinador">
+                            <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
+                        </div>
                     </div>
                 </div>
                 <div class="table-mobile">
@@ -91,6 +91,7 @@
 
     <?php require_once './../../components/footer.php' ?>
 
-    
+
 </body>
+
 </html>
