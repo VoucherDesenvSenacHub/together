@@ -25,6 +25,12 @@
                 </div>
             </div>
             <div class="formulario-perfil">
+            <div class="filtro">
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>

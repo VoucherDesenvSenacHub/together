@@ -1,5 +1,7 @@
-<?php require_once "./../../components/head.php"; ?>
-<?php require_once "./../../components/acoes.php"; ?>
+<?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/label.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/acoes.php' ?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -60,6 +62,27 @@
                             <p>Baixar Relatório</p>
                         </a>
                     </div>
+                    <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                    </div>
+                </div>
                 </div>
                 <!-- <div title="Gráfico do projeto" class="relatorio-ong-graphic-div"> -->
                 <table class="tabela">
