@@ -11,27 +11,6 @@
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Dados do Voluntário</h1>
             <div class="formulario-perfil">
-            <div class="filtro">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
-                        </div>
-                    </div>
-
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
-                    </div>
-                </div>
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
