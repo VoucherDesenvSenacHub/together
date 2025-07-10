@@ -9,8 +9,8 @@
 
         <div class="footer-links">
             <ul>
-                <li><a href="/">Início</a></li>
-                <li><a href="\together\index.php#sobre-nos">Sobre</a></li>
+                <li><a href="/together/index.php">Início</a></li>
+                <li><a href="/together/index.php#sobre-nos">Sobre</a></li>
                 <li><a href="/servicos">Descobrir</a></li>
             </ul>
         </div>
