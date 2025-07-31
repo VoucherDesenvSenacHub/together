@@ -5,16 +5,14 @@
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
-
     <main class="main-container">
-        <?php require_once '../../components/back-button.php' ?>
+        <?php require_once './../../components/back-button.php' ?>
 
-        <div class="relatorio-ong-container">
-            <div class="relatorio-ong-box">
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Relatórios</h1>
+
+            <div class="formulario-perfil">
                 <div class="relatorio-ong-area-limiter">
-                    <div class="relatorio-ong-title-div">
-                        <h1 class="titulo-pagina">Relatórios</h1>
-                    </div>
                     <div class="relatorio-ong-statistic-cards-div">
                         <div class="relatorio-ong-card-clicks-1">
                             <div title="+1,0 mil Clicks" class="relatorio-ong-card-text-value">
@@ -63,52 +61,51 @@
                         </a>
                     </div>
                     <div class="filtro">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        <div class="bloco-datas">
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
                         </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
+
+                        <div class="bloco-pesquisa">
+                            <?= label('pesquisar', '&nbsp;') ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
                         </div>
                     </div>
 
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
-                    </div>
-                </div>
-                </div>
-                <!-- <div title="Gráfico do projeto" class="relatorio-ong-graphic-div"> -->
-                <div class="table-mobile">
-                    <table class="tabela">
-                        <thead>
-                            <tr>
-                                <th>Data</th>
-                                <th>Doador</th>
-                                <th>Valor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                    <div class="table-mobile">
+                        <table class="tabela">
+                            <thead>
                                 <tr>
-                                    <td><?= $i+10?>/05/2025</td>
-                                    <td><?= $lista[$i] ?></td>
-                                    <td><?= "R$" . ($i+2) * 10 ?></td>
+                                    <th>Data</th>
+                                    <th>Doador</th>
+                                    <th>Valor</th>
                                 </tr>
-                            <?php endfor; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                                <?php for ($i = 0; $i < 10; $i++): ?>
+                                    <tr>
+                                        <td><?= $i + 10 ?>/05/2025</td>
+                                        <td><?= $lista[$i] ?></td>
+                                        <td><?= "R$" . ($i + 2) * 10 ?></td>
+                                    </tr>
+                                <?php endfor; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <?php require_once './../../components/paginacao.php' ?>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
             </div>
-        </div>
     </main>
     <?php require_once "./../../components/footer.php"; ?>
 </body>
