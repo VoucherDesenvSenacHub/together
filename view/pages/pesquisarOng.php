@@ -18,7 +18,7 @@
                 <div class="ong-search-screen-​​ngo-type">
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
                     </div>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>

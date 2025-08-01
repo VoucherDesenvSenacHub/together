@@ -28,7 +28,7 @@
 
                         <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar', "Pesquisar Ong&#39s") ?>
                         </div>
                     </div>
                 <div class="table-mobile">

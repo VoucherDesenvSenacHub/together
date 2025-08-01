@@ -35,7 +35,7 @@
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                         <thead>
                             <tr>
                                 <th>Data de Cadastro</th>
-                                <th>Nome do Perfil</th>
+                                <th>Nome</th>
                                 <th>Visualizar</th>
                             </tr>
                         </thead>

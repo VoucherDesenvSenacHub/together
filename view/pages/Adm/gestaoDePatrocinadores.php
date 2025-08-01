@@ -23,7 +23,7 @@
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
                     </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
