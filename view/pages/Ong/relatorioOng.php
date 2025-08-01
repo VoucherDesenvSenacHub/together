@@ -60,52 +60,53 @@
                             <p>Baixar Relatório</p>
                         </a>
                     </div>
-                    <div class="filtro">
-                        <div class="bloco-datas">
-                            <div class="filtro-por-mes">
-                                <?= label('data-inicio', 'Período') ?>
-                                <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                            </div>
-                            <div class="filtro-por-mes">
-                                <?= label('data-final', '&nbsp;') ?>
-                                <?= inputFilter('date', 'data-final', 'data-final') ?>
-                            </div>
-                            <div class="filtro-por-mes">
-                                <?= label('data-final', '&nbsp;') ?>
-                                <?= botao('primary', '✔') ?>
-                            </div>
-                        </div>
-
-                        <div class="bloco-pesquisa">
-                            <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Doador') ?>
-                        </div>
-                    </div>
-
-                    <div class="table-mobile">
-                        <table class="tabela">
-                            <thead>
-                                <tr>
-                                    <th>Data</th>
-                                    <th>Doador</th>
-                                    <th>Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                                <?php for ($i = 0; $i < 10; $i++): ?>
-                                    <tr>
-                                        <td><?= $i + 10 ?>/05/2025</td>
-                                        <td><?= $lista[$i] ?></td>
-                                        <td><?= "R$" . ($i + 2) * 10 ?></td>
-                                    </tr>
-                                <?php endfor; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <?php require_once './../../components/paginacao.php' ?>
                 </div>
+                <div class="filtro">
+                    <div class="bloco-datas">
+                        <div class="filtro-por-mes">
+                            <?= label('data-inicio', 'Período') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                        </div>
+                        <div class="filtro-por-mes">
+                            <?= label('data-final', '&nbsp;') ?>
+                            <?= botao('primary', '✔') ?>
+                        </div>
+                    </div>
+
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Doador') ?>
+                    </div>
+                </div>
+
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Doador</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td><?= $i + 10 ?>/05/2025</td>
+                                    <td><?= $lista[$i] ?></td>
+                                    <td><?= "R$" . ($i + 2) * 10 ?></td>
+                                </tr>
+                            <?php endfor; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php require_once './../../components/paginacao.php' ?>
             </div>
+        </div>
     </main>
     <?php require_once "./../../components/footer.php"; ?>
 </body>
