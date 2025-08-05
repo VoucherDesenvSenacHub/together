@@ -23,7 +23,7 @@
             <aside class="aside-area">
                 <div class="aside-content" id="sideOng">
                     <a href="/together/view/pages/visaoSobreaOng.php" class="aside-button" id="categoriaButton"> <i id="visaoSobreOng" class="fa-solid fa-address-card"></i> </a>
-                    <a href="/together/view/pages/Usuario/editarInformacoes.php" class="aside-button"> <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i></i> </a>
+                    <a href="/together/view/pages/Ong/editarInformacoesOng.php" class="aside-button"> <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i></i> </a>
                     <a href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php" class="aside-button"> <i id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i> </a>
                     <a href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button"> <i id="historicoIcon" class="fa-solid fa-clock"></i> </a>
                     <a href="/together/view/pages/Ong/criarPostagemOng.php" class="aside-button"> <i id="criarIcon" class="fa-solid fa-square-plus"></i> </a>
