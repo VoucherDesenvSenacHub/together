@@ -1,14 +1,16 @@
+--DROP DATABASE IF EXISTS together;
+
 CREATE DATABASE together;
  
 USE together;
  
 CREATE TABLE ufs(
-	id int not null auto_increment primary key,
+	id int auto_increment primary key,
     nome varchar(50)
 );
  
 CREATE TABLE cidades(
-	id int not null auto_increment primary key,
+	id int auto_increment primary key,
     nome varchar(50),
     id_uf int not null,
     foreign key(id_uf) references ufs(id)
@@ -16,9 +18,8 @@ CREATE TABLE cidades(
  
 CREATE TABLE categorias_ongs(
 	id int primary key auto_increment,
-	nome not null varchar(50),
-	ativo not null bool
- 
+	nome varchar(50) not null,
+	ativo bool not null
 );
  
 CREATE TABLE patrocinadores(
@@ -31,17 +32,17 @@ CREATE TABLE patrocinadores(
 );
  
 CREATE TABLE usuarios(
- 
 	id int primary key auto_increment,
 	nome varchar(60) not null,
 	cpf varchar(11) not null unique,
-	data_nascimento date not null,
+    email varchar(50) unique not null,
+    senha varchar(255) not null,
+	data_nascimento date,
 	foto_de_perfil text,
 	telefone varchar (18) not null,
-	email varchar(50) not null,
 	ativo bool not null,
-	id_uf int not null,
-	id_cidade int not null,
+	id_uf int,
+	id_cidade int,
 	foreign key(id_uf) references ufs(id),
 	foreign key(id_cidade) references cidades(id)
 );
@@ -52,8 +53,8 @@ CREATE TABLE ongs(
 	razao_social varchar(60) not null,
 	cnpj varchar(14) not null,
 	email varchar(50) not null,
-	dt_fundacao date not null,
-	conselho_fiscal text not null,
+	dt_fundacao date,
+	conselho_fiscal text,
 	cep varchar(10) not null,
 	logradouro varchar(255) not null,
 	numero int not null,
@@ -67,8 +68,7 @@ CREATE TABLE ongs(
 	id_categoria int not null,
 	foreign key(id_cidade) references cidades(id),
 	foreign key(id_uf) references ufs(id),
-	foreign key(id_categoria) references categorias_ongs(id),
- 
+	foreign key(id_categoria) references categorias_ongs(id) 
 );
  
 CREATE TABLE favoritos(
@@ -80,7 +80,7 @@ CREATE TABLE favoritos(
 );
  
 CREATE TABLE doacoes(
-	id int not primary key auto_increment,
+	id int primary key auto_increment,
 	valor float not null,
 	anonimo bool not null,
 	id_usuario int not null,
@@ -102,57 +102,21 @@ CREATE TABLE patrocinios(
 CREATE TABLE voluntarios(
 	id int primary key auto_increment,
 	dt_associacao date not null,
-	status_validacao bool not null,
+	status_validacao varchar(30) not null,
 	ativo bool not null,
 	id_usuario int not null,
 	id_ong int not null,
-	foreign key(id_ususario) references usuarios(id)
+	foreign key(id_usuario) references usuarios(id)
 ); 
  
 CREATE TABLE postagens(
 	id int primary key auto_increment,
 	titulo varchar(50) not null,
 	dt_postagem date not null,
-	descricao text,
+	descricao text not null,
 	imagem_1 text,
 	imagem_2 text,
 	imagem_3 text,
 	id_ong int not null,
 	foreign key(id_ong) references ongs(id)
 );
-
-CREATE TABLE ongs(
-	id int not null auto_increment primary key,
-    razao_social varchar(60) not null,
-    cnpj varchar(14) not null,
-    email varchar(50),
-    dt_fundacao date not null,
-    conselho_fiscal text,
-    foto_de_perfil text,
-    status_validacao bool,
-    ativo bool,
-    id_categoria int,
-    id_endereco int,
-    foreign key(id_categoria) references categorias_ongs(id),
-    foreign key(id_endereco) references enderecos(id)
-);
- 
-CREATE TABLE usuarios (
-	id int not null auto_increment,
-    nome varchar(60) not null,
-    cpf varchar(14) not null,
-    data_nascimento date not null,
-    foto_de_perfil text,
-    telefone varchar(16) not null,
-    email varchar(50) not null primary key,
-    senha varchar(8) not null,
-    ativo bool,
-    id_endereco int,
-    foreign key(id_endereco) references enderecos(id)
-);
- 
-CREATE TABLE categorias_ongs(
-	id int not null auto_increment primary key,
-    nome varchar(50),
-    ativo bool
-); 
