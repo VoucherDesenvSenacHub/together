@@ -138,13 +138,13 @@ CREATE TABLE ongs(
 );
  
 CREATE TABLE usuarios (
-	id int not null auto_increment primary key,
+	id int not null auto_increment,
     nome varchar(60) not null,
     cpf varchar(14) not null,
     data_nascimento date not null,
     foto_de_perfil text,
     telefone varchar(16) not null,
-    email varchar(50) not null,
+    email varchar(50) not null primary key,
     senha varchar(8) not null,
     ativo bool,
     id_endereco int,
