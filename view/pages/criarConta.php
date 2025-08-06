@@ -56,8 +56,8 @@
                                 <?= inputRequired('number', 'senha', 'senha') ?>
                             </div>
                             <div>
-                                <?= label('confirmar_senha', 'Confirmar Senha') ?>
-                                <?= inputRequired('number', 'confirmar_senha', 'confirmar_senha') ?>
+                                <?= label('confirmar_senha_nova_conta', 'Confirmar Senha') ?>
+                                <?= inputRequired('number', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn1','','button') ?>

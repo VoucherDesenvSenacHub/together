@@ -20,25 +20,16 @@
 
             <div class="box-login">
 
-                <form class="login" method="POST">
-                    <h1 class="titulo-login">Entrar no Together</h1>
+                <form class="login" method="POST" action="">
+                    <h1 class="titulo-login">Redefinir senha</h1>
 
                     <div class="container-input-login">
                         <div>
                             <?= label('email', 'Email') ?>
                             <?= inputRequired('email', 'email', 'email') ?>
                         </div>
-                        <div>
-                            <?= label('senha', 'Senha') ?>
-                            <?= inputRequired('password', 'senha', 'senha') ?>
-
-                        </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar',   '','../../controller/entrar.php') ?>
-                        </div>
-                        <div class="criar-conta-area-login">
-                            <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
-                            <p class="text-login">Não possui uma conta? <a href="criarConta.php" class="text-login link-login">Criar nova conta</a> </p>
+                            <?= botao('salvar', 'Enviar','','login.php') ?>
                         </div>
 
                     </div>
