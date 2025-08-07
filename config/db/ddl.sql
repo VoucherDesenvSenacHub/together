@@ -56,7 +56,7 @@ CREATE TABLE ongs(
     id_usuario int,
     razao_social varchar(255) not null,
     cnpj varchar(14) not null,
-    dt_fundacao varchar(50),
+    dt_fundacao date not null,
     conselho_fiscal text,
     status_validacao bool,
     ativo bool,
