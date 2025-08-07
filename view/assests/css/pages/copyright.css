@@ -1,0 +1,33 @@
+.container
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 30px;
+}
+
+.image-copyright
+{
+    height: 50px;
+    width: 50px;
+}
+
+.card-title
+{
+    text-align: center;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#linksCopyright
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}

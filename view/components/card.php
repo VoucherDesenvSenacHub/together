@@ -40,4 +40,34 @@
     ";
   }
 
+  function cardCopyright($imagem, $nome, $github='', $linkedin=''){
+    return 
+    "
+    <div class='card-group'>
+        <div class='card-top'>
+            <img class='card-image' src='$imagem' alt='Imagem do Dev'>
+        </div>
+        <div class='card-bottom'>
+            <div class='card-info'>
+                <h3 class='card-title'>$nome</h3>
+                <div id='linksCopyright'>
+                    <div>
+                        <img class='image-copyright' src='../assests/images/Copyright/github.png' alt='Imagem GitHub'>
+                        <a class='card-btn' href='$github' target='_blank'>
+                            Github
+                        </a>
+                    </div>
+                    <div>
+                        <img class='image-copyright' src='../assests/images/Copyright/linkedin.png' alt='Imagem GitHub'>
+                        <a class='card-btn' href='$linkedin' target='_blank'>
+                            Linkedin
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    ";
+  }
+
 ?>
