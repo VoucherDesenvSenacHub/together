@@ -30,7 +30,7 @@ INSERT INTO imagens (link) VALUES
 INSERT INTO usuarios (nome, cpf, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES
   ('João Silva','11122233344','(67)99999-0001','joao@example.com','senha1', true, 1, 1, 'voluntario'),
   ('Maria Souza','22233344455','(67)99999-0002','maria@example.com','senha2', true, 2, 2, 'ong'),
-  ('Carlos Pereira','33344455566','(11)98888-0003','carlos@example.com','senha3', false, 3, 3, 'voluntario'),
+  ('Carlos Pereira','33344455566','(11)98888-0003','carlos@example.com','senha3', false, 3, 3, 'adm'),
   ('Ana Costa','44455566677','(31)97777-0004','ana@example.com','senha4', true, 4, 4, 'ong');
 
 -- 6) Categorias de ONGs
