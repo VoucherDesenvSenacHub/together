@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../../model/EnderecoModel.php";
+require_once "../../../model/enderecoModel.php";
 
 class EnderecoController
 {
