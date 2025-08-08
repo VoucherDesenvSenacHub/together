@@ -2,6 +2,11 @@
 <?php require_once "./../../components/acoes.php"; ?>
 <?php require_once "./../../components/label.php"; ?>
 <?php require_once "./../../components/input.php"; ?>
+<?php require_once "./../../../model/DoacaoModel.php"; ?>
+
+<?php $doacaoModel = new DoacaoModel(); 
+$doacoes = $doacaoModel->BuscarDoacoesPorID(1);
+?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -43,18 +48,18 @@
                         </thead>
                         <tbody>
                             <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php foreach ($doacoes as $doacao){ ?>
                                 <tr>
-                                    <td><?=  $i+10?>/8/2025</td>
-                                    <td><?=  $lista[$i]?></td>
-                                    <td><?=  "R$" . ($i+4)*10 ?></td>
+                                    <td><?= $doacao['dt_doacao'] ?></td>
+                                    <td><?= $doacao['razao_social']?></td>
+                                    <td><?=  "R$" . $doacao['valor'] ?></td>
                                     <td>
                                         <a href="assests/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
                                             <?= renderAcao('baixar') ?>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
