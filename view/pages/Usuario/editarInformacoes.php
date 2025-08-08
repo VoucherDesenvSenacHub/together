@@ -3,6 +3,10 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../../model/EnderecoController.php" ?>
+<?php 
+$enderecoController = new $enderecoController;
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -55,35 +59,35 @@
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputReadonly('text', 'cep', 'cep', '') ?>
+                                <?= inputDefault('text', 'cep', 'cep', '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', '') ?>
+                                <?= inputDefault('text', 'cidade', 'cidade', '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', '') ?>
+                                <?= inputDefault('text', 'estado', 'estado', '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputReadonly('text', 'bairro', 'bairro', '') ?>
+                                <?= inputDefault('text', 'bairro', 'bairro', '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', '') ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro', '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', '') ?>
+                                <?= inputDefault('text', 'numero', 'numero', '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', '') ?>
+                                <?= inputDefault('text', 'complemento', 'complemento', '') ?>
                             </div>
                         </div>
                     </div>
