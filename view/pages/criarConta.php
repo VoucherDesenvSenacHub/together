@@ -4,6 +4,17 @@
 <?php require_once "./../components/label.php" ?>
 <?php require_once "./../components/select.php" ?>
 
+<?php
+    $usuario = [
+        'nome' => '',
+        'cpf' => '',
+        'telefone' => '',
+        'email' => '',
+        'senha' => '',
+        'confirmar_senha' => ''   
+    ]
+?>
+
 <body class="body-login">
 
     <div class="container-login">
@@ -20,7 +31,7 @@
 
             <div class="box-login">
 
-                <form class="login" method="POST" action="">
+                <form class='login' method="POST" action="../../controller/UsuarioController.php">
                     <h1 class="titulo-login">Criar uma nova conta</h1>
 
                     <div class="step active">
@@ -53,15 +64,15 @@
                         <div class="container-input-login">
                             <div>
                                 <?= label('senha', 'Senha') ?>
-                                <?= inputRequired('number', 'senha', 'senha') ?>
+                                <?= inputRequired('text', 'senha', 'senha') ?>
                             </div>
                             <div>
                                 <?= label('confirmar_senha_nova_conta', 'Confirmar Senha') ?>
-                                <?= inputRequired('number', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
+                                <?= inputRequired('text', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn1','','button') ?>
-                                <?= botao('salvar', 'Cadastre-se',"","login.php") ?>
+                                <?= botao('salvar', 'Cadastre-se',"btn2",'../../controller/UsuarioController.php' ,'submit') ?>
                             </div>
                         </div>
                     </div>

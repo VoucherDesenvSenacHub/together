@@ -16,8 +16,8 @@ class UsuarioModel {
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':cpf', $telefone);
-        $stmt->bindParam(':cpf', $email);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':senha', var: password_hash($senha, PASSWORD_BCRYPT));
         
         return $stmt->execute();
@@ -27,6 +27,15 @@ class UsuarioModel {
         $sql = "SELECT * FROM usuarios WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function findUsuarioByCpf($cpf) {
+        $sql = "SELECT * FROM usuarios WHERE cpf = :cpf";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':cpf', $cpf);
         $stmt->execute();
         
         return $stmt->fetch(PDO::FETCH_ASSOC);
