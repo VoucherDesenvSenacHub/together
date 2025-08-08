@@ -23,17 +23,17 @@
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                        <?= inputRequired('text', 'nome', 'nome' ) ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                        <?= inputRequired('text', 'telefone', 'telefone') ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                        <?= inputRequired('text', 'cpf', 'cpf') ?>
                                     </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                                <?= inputRequired('text', 'email', 'email') ?>
                             </div>
                         </div>
                     </div>
@@ -55,35 +55,35 @@
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputReadonly('text', 'cep', 'cep', '') ?>
+                                <?= inputRequired('text', 'cep', 'cep') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', '') ?>
+                                <?= inputRequired('text', 'cidade', 'cidade') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', '') ?>
+                                <?= inputRequired('text', 'estado', 'estado') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputReadonly('text', 'bairro', 'bairro', '') ?>
+                                <?= inputRequired('text', 'bairro', 'bairro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', '') ?>
+                                <?= inputRequired('text', 'logradouro', 'logradouro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', '') ?>
+                                <?= inputRequired('text', 'numero', 'numero') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', '') ?>
+                                <?= inputRequired('text', 'complemento', 'complemento') ?>
                             </div>
                         </div>
                     </div>
