@@ -12,13 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Entrou no primeiro if";
 
         $loginModel = new LoginModel();
-        if ($loginModel->LoginModelUsuario($emailForm, $senhaForm)) {
-            echo "Entrou no if";
-            $_SESSION['emailForm'] = $usuario['emailForm'];
-            $_SESSION['perfil'] = $usuario['perfil'];
-            return header('Location: ../index.php');
-        } else
-            return header('Location: ../view/pages/login.php');
+        $usuarioLogin = $loginModel->LoginModelUsuario($emailForm, $senhaForm);
+
+        if ($usuarioLogin) {
+            $_SESSION['email'] = $usuarioLogin['email'];
+            $_SESSION['perfil'] = $usuarioLogin['perfil'];
+            header('Location: ../index.php');
+            exit();
+        } else {
+            header('Location: ../view/pages/login.php');
+            exit();
+        }
 
         // $erro = "Email ou senha incorretos";
 

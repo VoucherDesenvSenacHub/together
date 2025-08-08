@@ -17,21 +17,20 @@ class LoginModel
 
     public function LoginModelUsuario($email, $senha)
     {
-        $sql = "SELECT senha FROM $this->tabela WHERE email = :email";
+        $sql = "SELECT * FROM $this->tabela WHERE email = :email LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":senha", $senha);
         $stmt->execute();
 
-        // if ($stmt->rowCount() > 0) {
-        //     $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-        //     $hash = $usuario['senha'];
+        if ($stmt->rowCount() > 0) {
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+            $hash = $usuario['senha'];
 
-        //     if (password_verify($senha, $hash)) {
-        //         return true; // Senha confere
-        //     }
-        // }
-        // return false;
+            if (password_verify($senha, $hash)) {
+                return $usuario; // retorna todos os dados do usuário
+            }
+        }
+        return false;
     }
 
 }
