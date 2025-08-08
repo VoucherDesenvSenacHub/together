@@ -40,9 +40,12 @@
     ";
   }
 
-  function cardCopyright($imagem, $nome, $github='', $linkedin=''){
-    return 
-    "
+  function cardCopyright($imagem, $nome, $github = '', $linkedin = '') {
+    // Verificações
+    $semGithub = empty($github) || $github === "?=usuarioNãoPossuiGithub";
+    $semLinkedin = empty($linkedin) || $linkedin === "?=usuarioNãoPossuiLinkedin";
+
+    return "
     <div class='card-group'>
         <div class='card-top'>
             <img class='card-image' src='$imagem' alt='Imagem do Dev'>
@@ -51,23 +54,31 @@
             <div class='card-info'>
                 <h3 class='card-title'>$nome</h3>
                 <div id='linksCopyright'>
-                    <div>
-                        <img class='image-copyright' src='../assests/images/Copyright/github.png' alt='Imagem GitHub'>
-                        <a class='card-btn' href='$github' target='_blank'>
+                    <div class='text-align'>
+                        " . (
+                            !$semGithub
+                            ? "<a class='card-btn' href='$github' target='_blank'>
+                            <i class='fa-brands fa-github fa-2xl'></i>
                             Github
-                        </a>
+                            </a>"
+                            : "<span class='card-btn'>GitHub não disponível</span>"
+                        ) . "
                     </div>
-                    <div>
-                        <img class='image-copyright' src='../assests/images/Copyright/linkedin.png' alt='Imagem GitHub'>
-                        <a class='card-btn' href='$linkedin' target='_blank'>
-                            Linkedin
-                        </a>
+                    <div class='text-align'>
+                        <i class='fa-brands fa-square-linkedin fa-2xl'></i>
+                        " . (
+                            !$semLinkedin
+                            ? "<a class='card-btn' href='$linkedin' target='_blank'>
+                                LinkedIn
+                                </a>"
+                            : "<span class='card-btn'>Não disponivel</span>"
+                        ) . "
                     </div>
                 </div>
             </div>
         </div>
     </div>
     ";
-  }
+    }
 
 ?>
