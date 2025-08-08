@@ -1,21 +1,6 @@
--- DROP DATABASE IF EXISTS together;
-
 CREATE DATABASE together;
  
 USE together;
-
-CREATE TABLE estados(
-	id int primary key auto_increment,
-    nome varchar(255),
-    sigla int not null
-);
-
-CREATE TABLE cidades(
-	id int primary key  auto_increment,
-    nome varchar(255),
-    id_estado int,
-    foreign key(id_estado) references estados(id)
-);
 
 CREATE TABLE enderecos(
 	id int primary key auto_increment,
@@ -24,8 +9,8 @@ CREATE TABLE enderecos(
     cep varchar(8),
     complemento text,
     bairro varchar(255),
-    id_cidade int,
-    foreign key (id_cidade) references cidades(id)
+    cidade varchar(255),
+    estado varchar(255)
 );
 
 CREATE TABLE imagens(
@@ -58,7 +43,7 @@ CREATE TABLE ongs(
     id_usuario int,
     razao_social varchar(255) not null,
     cnpj varchar(14) not null,
-    dt_fundacao varchar(50),
+    dt_fundacao date not null,
     conselho_fiscal text,
     status_validacao bool,
     ativo bool,
