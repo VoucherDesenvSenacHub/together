@@ -3,6 +3,7 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../components/select.php" ?>
 <?php require_once "../../../controller/EnderecoController.php" ?>
 <?php 
 $enderecoController = new EnderecoController();
@@ -64,11 +65,11 @@ $endereco = $enderecoController->endereco();
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputDefault('text', 'cidade', 'cidade',  $endereco['id_cidade']) ?>
+                                <?= inputDefault('text', 'cidade', 'cidade',  $endereco['cidade']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputDefault('text', 'estado', 'estado', /*inner join*/) ?>
+                                <?= inputDefault('text', 'estado', 'estado', $endereco['estado']) ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
