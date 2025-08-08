@@ -135,19 +135,18 @@ require_once "./../components/acoes.php";
 
                                 <div class="adm-ong-vision-perfil-area">
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/instagram.png" alt="">
+                                        <i class="fa-brands fa-instagram fa-2xl"></i>
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/facebook.png" alt="">
+                                        <i class="fa-brands fa-square-facebook fa-2xl"></i>
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                     <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon" src="./../assests/images/Adm/X.png" alt="">
+                                        <i class="fa-brands fa-square-x-twitter fa-2xl"></i>
                                         <h1>@PratoCheioOfc</h1>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
