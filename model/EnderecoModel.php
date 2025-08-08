@@ -40,6 +40,7 @@ class EnderecoModel
         $stmt->bindParam(':complemento', $endereco["complemento"]);
         $stmt->bindParam(':bairro', $endereco["bairro"]);
         $stmt->bindParam(':id_cidade', $endereco["id_cidade"]);
+        /*inner join do estado*/
         return $stmt->execute();
     }
 }

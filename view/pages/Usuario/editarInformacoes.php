@@ -3,9 +3,10 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
-<?php require_once "../../../model/EnderecoController.php" ?>
+<?php require_once "../../../controller/EnderecoController.php" ?>
 <?php 
-$enderecoController = new $enderecoController;
+$enderecoController = new EnderecoController();
+$endereco = $enderecoController->endereco();
 ?>
 
 <body>
@@ -59,35 +60,35 @@ $enderecoController = new $enderecoController;
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputDefault('text', 'cep', 'cep', '') ?>
+                                <?= inputDefault('text', 'cep', 'cep', $endereco['cep']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputDefault('text', 'cidade', 'cidade', '') ?>
+                                <?= inputDefault('text', 'cidade', 'cidade',  $endereco['id_cidade']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputDefault('text', 'estado', 'estado', '') ?>
+                                <?= inputDefault('text', 'estado', 'estado', /*inner join*/) ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputDefault('text', 'bairro', 'bairro', '') ?>
+                                <?= inputDefault('text', 'bairro', 'bairro',  $endereco['bairro']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputDefault('text', 'logradouro', 'logradouro', '') ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro',  $endereco['logradouro']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputDefault('text', 'numero', 'numero', '') ?>
+                                <?= inputDefault('text', 'numero', 'numero',  $endereco['numero']) ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento', '') ?>
+                                <?= inputDefault('text', 'complemento', 'complemento',  $endereco['complemento']) ?>
                             </div>
                         </div>
                     </div>
