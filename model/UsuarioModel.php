@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../config/database.php';
+require_once __DIR__ . '/../config/database.php';
 
 class UsuarioModel {
     private $conn;
@@ -29,6 +29,40 @@ class UsuarioModel {
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
+    public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil) {
+        $sql = "UPDATE usuarios 
+                SET nome = :nome, 
+                    telefone = :telefone, 
+                    email = :email, 
+                    cpf = :cpf, 
+                    tipo_perfil = :tipo_perfil,
+                    id_imagem_de_perfil = :id_imagem_de_perfil
+                WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':cpf', $cpf);
+        $stmt->bindParam(':tipo_perfil', $tipo_perfil);
+        $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        
+        return $stmt->execute();
+    }
+
+    public function buscarUsuarioId($id) {
+        $sql = "SELECT * AS caminho_imagem
+                FROM usuarios u
+                LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id
+                WHERE u.id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
