@@ -26,9 +26,9 @@ class LoginModel
             $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
             $hash = $usuario['senha'];
 
-            if (password_verify($senha, $hash)) {
-                return $usuario; // retorna todos os dados do usuário
-            }
+            // if (password_verify($senha, $hash)) {
+            //     return $usuario; // retorna todos os dados do usuário
+            // }
         }
         return false;
     }
