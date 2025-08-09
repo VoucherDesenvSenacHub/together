@@ -5,7 +5,7 @@
 <?php require_once "./../../../model/DoacaoModel.php"; ?>
 
 <?php $doacaoModel = new DoacaoModel(); 
-$doacoes = $doacaoModel->BuscarDoacoesPorID(1);
+$doacoes = $doacaoModel->BuscarDoacoesPorID(2, 1);
 ?>
 
 <body>
