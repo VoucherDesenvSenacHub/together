@@ -55,13 +55,13 @@ class UsuarioModel {
         return $stmt->execute();
     }
 
-    public function buscarUsuarioId($id) {
-        $sql = "SELECT * AS caminho_imagem
+    public function buscarUsuarioId($idUsuario) {
+        $sql = "SELECT * 
                 FROM usuarios u
                 LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id
                 WHERE u.id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $idUsuario, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
