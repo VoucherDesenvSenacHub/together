@@ -5,10 +5,12 @@
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/select.php" ?>
 <?php require_once "../../../controller/EnderecoController.php" ?>
-<?php 
+<?php
 $enderecoController = new EnderecoController();
-$endereco = $enderecoController->endereco();
+$endereco = $enderecoController->carregarEnderecoPorUsuario(3);
+$enderecoController->atualizarEnderecoDoUsuario(3, $endereco);
 ?>
+
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -94,7 +96,7 @@ $endereco = $enderecoController->endereco();
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '/together/controller/enderecoController.php') ?></div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>

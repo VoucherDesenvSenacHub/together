@@ -1,21 +1,44 @@
 <?php
 
-require_once "../../../model/enderecoModel.php";
+require_once __DIR__ . "/../model/enderecoModel.php";
+require_once __DIR__ . "/../model/usuarioModel.php";
 
 class EnderecoController
 {
-    public $enderecoModel;
-    public $enderecos;
+    private $enderecoModel;
+    private $usuarioModel;
+    private $endereco;
 
     public function __construct()
     {
         $this->enderecoModel = new EnderecoModel();
-        $this->enderecos = $this->enderecoModel->buscarEnderecoPorId(1);
-        /*preciso pegar o $id*/
+        $this->usuarioModel = new UsuarioModel();
     }
 
-    public function endereco()
+    public function carregarEnderecoPorUsuario($idUsuario)
     {
-        return $this->enderecos;
+        $idEndereco = $this->usuarioModel->buscarEnderecoIdPorUsuarioId($idUsuario);
+ 
+        if (!$idEndereco) {
+            return null;
+        }
+
+        $this->endereco = $this->enderecoModel->buscarEnderecoPorId($idEndereco);
+ 
+        return $this->endereco;
     }
+ 
+    public function atualizarEnderecoDoUsuario($idUsuario, $dadosEndereco)
+    {
+        $idEndereco = $this->usuarioModel->buscarEnderecoIdPorUsuarioId($idUsuario);
+ 
+        if (!$idEndereco) {
+            return false;
+        }
+ 
+        $dadosEndereco['id'] = $idEndereco;
+ 
+        return $this->enderecoModel->editar($dadosEndereco);
+    }
+
 }
