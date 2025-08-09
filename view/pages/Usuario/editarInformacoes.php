@@ -3,6 +3,30 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../../model/UsuarioModel.php" ?>
+
+<?php
+$model = new UsuarioModel(); 
+$usuario = $model->buscarUsuarioId(2); 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = 2; 
+    $nome = $_POST['nome'] ?? '';
+    $telefone = $_POST['telefone'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $cpf = $_POST['cpf'] ?? '';
+    $tipo_perfil = $_POST['tipo_perfil'] ?? '';
+    $id_imagem_de_perfil = $_POST['id_imagem_de_perfil'] ?? null;
+
+    $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
+
+    if ($sucesso) {
+        echo "Usuário atualizado com sucesso!";
+    } else {
+        echo "Erro ao atualizar usuário.";
+    }
+}
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -23,17 +47,17 @@
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputRequired('text', 'nome', 'nome' ) ?>
+                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome'] ) ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputRequired('text', 'telefone', 'telefone') ?>
+                                        <?= inputRequired('text', 'telefone', 'telefone', $usuario['telefone']) ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputRequired('text', 'cpf', 'cpf') ?>
+                                        <?= inputRequired('text', 'cpf', 'cpf', $usuario['cpf']) ?>
                                     </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
@@ -44,7 +68,7 @@
                             </div>
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputRequired('text', 'email', 'email') ?>
+                                <?= inputRequired('text', 'email', 'email', $usuario['email']) ?>
                             </div>
                         </div>
                     </div>
@@ -55,35 +79,35 @@
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputRequired('text', 'cep', 'cep') ?>
+                                <?= inputDefault('text', 'cep', 'cep') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputRequired('text', 'cidade', 'cidade') ?>
+                                <?= inputDefault('text', 'cidade', 'cidade') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputRequired('text', 'estado', 'estado') ?>
+                                <?= inputDefault('text', 'estado', 'estado') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputRequired('text', 'bairro', 'bairro') ?>
+                                <?= inputDefault('text', 'bairro', 'bairro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputRequired('text', 'logradouro', 'logradouro') ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputRequired('text', 'numero', 'numero') ?>
+                                <?= inputDefault('text', 'numero', 'numero') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputRequired('text', 'complemento', 'complemento') ?>
+                                <?= inputDefault('text', 'complemento', 'complemento') ?>
                             </div>
                         </div>
                     </div>
