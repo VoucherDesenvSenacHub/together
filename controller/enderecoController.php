@@ -1,6 +1,6 @@
 <?php
 
-require_once "../../../model/EnderecoModel.php";
+require_once "../../../model/enderecoModel.php";
 
 class EnderecoController
 {
@@ -10,7 +10,7 @@ class EnderecoController
     public function __construct()
     {
         $this->enderecoModel = new EnderecoModel();
-        $this->enderecos = $this->enderecoModel->buscarEnderecoPorId(2);
+        $this->enderecos = $this->enderecoModel->buscarEnderecoPorId(1);
         /*preciso pegar o $id*/
     }
 
