@@ -3,39 +3,6 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
 
-<?php
-require_once "./../../model/LoginModel.php";
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $emailForm = trim($_POST['emailForm'] ?? '');
-    $senhaForm = trim($_POST['senhaForm'] ?? '');
-    $erro = "";
-
-    if (!empty($emailForm) && !empty($senhaForm)) {
-        $loginModel = new LoginModel();
-        $usuario = $loginModel->LoginModelUsuario($emailForm, $senhaForm);
-
-        if ($usuario) {
-            // Guarda informações do usuário na sessão
-            $_SESSION['email'] = $usuario['email'];
-            $_SESSION['perfil'] = $usuario['perfil'];
-            header('Location: ./index.php', true);
-            exit();
-        } else {
-            // Login inválido
-            $_SESSION['erro_login'] = "Email ou senha incorretos";
-            $erro = "Email ou senha incorretos";
-            header('Location: ./login.php', true);
-            exit();
-        }
-    } else {
-        $_SESSION['erro_login'] = "Preencha todos os campos";
-        $erro = "Campos estão vazios";
-        header('Location: ./login.php', true);
-        exit();
-    }
-}
-?>
 
 
 
@@ -74,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                             <span class="mensagem-erro"><?php echo $erro; ?></span>
                         <?php endif ?>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar', '', "", "submit") ?>
+                            <?= botao('salvar', 'Entrar', '', "./../../controller/entrar.php", "submit") ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
