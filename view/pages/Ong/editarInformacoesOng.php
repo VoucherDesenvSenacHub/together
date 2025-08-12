@@ -4,6 +4,46 @@
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/select.php" ?>
+<?php require_once "../../components/selectEndereco.php" ?>
+<?php require_once "../../../controller/EnderecoController.php" ?>
+
+<?php
+$enderecoController = new EnderecoController();
+$endereco = $enderecoController->endereco();
+// $controller->salvarEdicao();
+?>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar'])) {
+    // Monta array do endereço vindo do formulário
+    $endereco = [
+        'id' => $_POST['id'], // tem que garantir que o id vem do form, talvez input hidden
+        'logradouro' => $_POST['logradouro'] ?? '',
+        'numero' => $_POST['numero'] ?? '',
+        'cep' => $_POST['cep'] ?? '',
+        'complemento' => $_POST['complemento'] ?? '',
+        'bairro' => $_POST['bairro'] ?? '',
+        'cidade' => $_POST['cidade'] ?? '',
+        'estado' => $_POST['estado'] ?? ''
+    ];
+
+    // Instancia sua model (ajuste conforme seu código)
+    require_once '../../../model/EnderecoModel.php';
+    $enderecoModel = new EnderecoModel();
+
+    // Chama o método editar
+    $sucesso = $enderecoModel->editar($endereco);
+
+    if ($sucesso) {
+        // Redireciona ou mostra mensagem de sucesso
+        header('Location: /caminho/para/pagina_de_sucesso.php');
+        exit;
+    } else {
+        echo "<p>Erro ao salvar as informações.</p>";
+    }
+}
+?>
+
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -80,12 +120,13 @@
                                 <?= inputReadonly('text', 'cep', 'cep', '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', '') ?>
-                            </div>
-                            <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', '') ?>
+                                <?php renderSelectEstado($endereco['estado'] ?? ''); ?>
+                            </div>
+
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
@@ -110,7 +151,7 @@
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar') ?></div>
+                        <?= botao('salvar', 'Salvar', 'btnSalvar', '', 'submit', 'salvar') ?>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>
