@@ -6,28 +6,73 @@
 <?php require_once "../../../model/UsuarioModel.php" ?>
 
 <?php
+$id = 1;
 $model = new UsuarioModel(); 
-$usuario = $model->buscarUsuarioId(2); 
+$usuario = $model->buscarUsuarioId(1); 
+$mensagemErro = null;
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = 2; 
+
     $nome = $_POST['nome'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
     $email = $_POST['email'] ?? '';
     $cpf = $_POST['cpf'] ?? '';
+
+    // tirar a mascara
+    $cpf = preg_replace('/\D/', '', $cpf); 
+
+    // Oii bb Vitoorrr uwu games 2.0, ent aqui eu tô usando essa função para tirar a máscara e verificar se o CPF é real.  
+    function validarCpf($cpf) {
+        
+        // ver se o cpf não é apenas uma sequencia aleatoria
+        if (strlen($cpf) !== 11 || preg_match('/^(\d)\1{10}$/', $cpf)) {
+            return false;
+        }
+
+        // sei la qq é isso eu pesquisei no chat esse cálculo
+        for ($t = 9; $t < 11; $t++) {
+            $soma = 0;
+            for ($i = 0; $i < $t; $i++) {
+                $soma += $cpf[$i] * (($t + 1) - $i);
+            }
+            $digito = ((10 * $soma) % 11) % 10;
+            if ($cpf[$t] != $digito) {
+                return false;
+            }
+        }
+    
+        return true;
+    }
+
+    // PRECISA DE UMA CAIXA DE WARNING OU ALERT PARA AVISAR QUE DEU CERTO/ERRADO OU QUALQUER OUTRA COISA AO INVES DE ECHO 
+
     $tipo_perfil = $_POST['tipo_perfil'] ?? '';
     $id_imagem_de_perfil = $_POST['id_imagem_de_perfil'] ?? null;
-
+    
     $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
-
-    if ($sucesso) {
-        echo "Usuário atualizado com sucesso!";
+    
+    // estrutura de IF caso o usuário já tenha um CPF cadastrado ou Telefone cadastrado no banco
+    if (!validarCpf($cpf)) {
+        echo "CPF inválido.";
     } else {
-        echo "Erro ao atualizar usuário.";
+        $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
+    
+        if ($sucesso === true) {
+            // caso de tudo certo ele recarrega a página para mostrar as novas edições
+            header("Location: editarInformacoes.php");
+            exit;
+        } elseif ($sucesso === 'cpf_duplicado') {
+            echo "CPF já cadastrado para outro usuário.";
+        } elseif ($sucesso === 'telefone_duplicado') {
+            echo "Telefone já cadastrado para outro usuário.";
+        } else {
+            echo "Erro ao atualizar o usuário.";
+        }
     }
+    
 }
 ?>
-
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
