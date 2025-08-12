@@ -14,16 +14,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
     $confirmarSenha = $_POST['confirmar_senha'];
 
+    if (empty($nome) || empty($cpf) || empty($telefone) || empty($email) || empty($senha)) {
+        return header("Location: ../view/pages/criarConta.php?error=empty_fields");
+    }
+
     if ($usuarioModel->findUsuarioByEmail($email)) {
         return header("Location: ../view/pages/criarConta.php?error=email_existe");
     }
 
     if ($usuarioModel->findUsuarioByCpf($cpf)) {
         return header("Location: ../view/pages/criarConta.php?error=cpf_existe");
-    }
-
-    if (empty($nome) || empty($cpf) || empty($telefone) || empty($email) || empty($senha)) {
-        return header("Location: ../view/pages/criarConta.php?error=empty_fields");
     }
 
     if (strlen($nome) > 50) {
@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         return header("Location: ../view/pages/criarConta.php?error=email_invalido");
     }  
     
-    if (strlen($senha) > 60 || strlen($senha) < 4) {
+    if (strlen($senha) > 60 || strlen($senha) < 8) {
         return header("Location: ../view/pages/criarConta.php?error=senha_invalida");
     }
     
