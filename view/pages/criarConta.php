@@ -31,7 +31,7 @@
 
             <div class="box-login">
 
-                <form class='login' method="POST" action="../../controller/UsuarioController.php">
+                <form class='login' method="POST" action="../../controller/UsuarioCriarController.php">
                     <h1 class="titulo-login">Criar uma nova conta</h1>
 
                     <div class="step active">
@@ -72,7 +72,7 @@
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn1','','button') ?>
-                                <?= botao('salvar', 'Cadastre-se',"btn2",'../../controller/UsuarioController.php' ,'submit') ?>
+                                <?= botao('salvar', 'Cadastre-se',"btn2",'../../controller/UsuarioCriarController.php' ,'submit') ?>
                             </div>
                         </div>
                     </div>

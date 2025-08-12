@@ -42,8 +42,8 @@ class UsuarioModel
 
             $enderecoId = $this->conn->lastInsertId();
 
-            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, endereco_id, ativo, tipo_perfil)
-                       VALUES (:nome, :cpf, :telefone, :email, :senha, :endereco_id, true, 'PESSOAL')";
+            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, id_endereco, ativo, tipo_perfil)
+                       VALUES (:nome, :cpf, :telefone, :email, :senha, :id_endereco, true, 'PESSOAL')";
             $stmtUsuario = $this->conn->prepare($sqlUsuario);
             $stmtUsuario->bindParam(':nome', $nome);
             $stmtUsuario->bindParam(':cpf', $cpf);
@@ -51,7 +51,7 @@ class UsuarioModel
             $stmtUsuario->bindParam(':email', $email);
             $senhaHash = password_hash($senha, PASSWORD_BCRYPT);
             $stmtUsuario->bindParam(':senha', $senhaHash);
-            $stmtUsuario->bindParam(':endereco_id', $enderecoId);
+            $stmtUsuario->bindParam(':id_endereco', $enderecoId);
 
             $stmtUsuario->execute();
 
