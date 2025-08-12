@@ -14,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Guarda informações do usuário na sessão
             $_SESSION['id'] = $usuarioLogin['id'];     // ID do usuário
             $_SESSION['email'] = $usuarioLogin['email'];
-            $_SESSION['perfil'] = $usuarioLogin['perfil'];
 
             header('Location: ../index.php');
             exit();
