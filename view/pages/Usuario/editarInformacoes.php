@@ -72,7 +72,7 @@ $endereco = $enderecoController->endereco();
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?php renderSelectEstado($endereco['estado'] ?? ''); ?>
+                                <?php renderSelectEstado($endereco['estado'] ?? '', ); ?>
                             </div>
 
                             <div class="container-input-endereco-voluntario">
@@ -108,11 +108,7 @@ $endereco = $enderecoController->endereco();
                     </div>
 
                     <div class="postagem-geral-div-btn">
-<<<<<<< HEAD
                     <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
-=======
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '/together/controller/enderecoController.php') ?></div>
->>>>>>> 109a39d378e9408529d2763689f00d84702273dd
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>
