@@ -1,44 +1,83 @@
 <?php
-
-require_once __DIR__ . "/../model/enderecoModel.php";
-require_once __DIR__ . "/../model/usuarioModel.php";
-
+ 
+require_once "../../../model/enderecoModel.php";
+ 
 class EnderecoController
+
 {
-    private $enderecoModel;
-    private $usuarioModel;
-    private $endereco;
 
+    public $enderecoModel;
+
+    public $enderecos;
+ 
     public function __construct()
+
     {
+
         $this->enderecoModel = new EnderecoModel();
-        $this->usuarioModel = new UsuarioModel();
-    }
 
-    public function carregarEnderecoPorUsuario($idUsuario)
-    {
-        $idEndereco = $this->usuarioModel->buscarEnderecoIdPorUsuarioId($idUsuario);
- 
-        if (!$idEndereco) {
-            return null;
-        }
+        $this->enderecos = $this->enderecoModel->buscarEnderecoPorId(1);
 
-        $this->endereco = $this->enderecoModel->buscarEnderecoPorId($idEndereco);
- 
-        return $this->endereco;
+        /*preciso pegar o $id*/
+
     }
  
-    public function atualizarEnderecoDoUsuario($idUsuario, $dadosEndereco)
+    public function endereco()
+
     {
-        $idEndereco = $this->usuarioModel->buscarEnderecoIdPorUsuarioId($idUsuario);
+
+        return $this->enderecos;
+
+    }
  
-        if (!$idEndereco) {
-            return false;
+    public function salvarEdicao()
+
+    {
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar'])) {
+
+            $endereco = [
+
+                'id' => $_POST['id'],
+
+                'logradouro' => $_POST['logradouro'],
+
+                'numero' => $_POST['numero'],
+
+                'cep' => $_POST['cep'],
+
+                'complemento' => $_POST['complemento'],
+
+                'bairro' => $_POST['bairro'],
+
+                'cidade' => $_POST['cidade'],
+
+                'estado' => $_POST['estado'],
+
+            ];
+ 
+            $resultado = $this->enderecoModel->editar($endereco);
+ 
+            if ($resultado) {
+
+                // Por exemplo, redirecionar para página de perfil ou listar
+
+                header('Location: editarInformacoes.php');
+
+                exit;
+
+            } else {
+
+                // Pode setar um erro pra exibir na view
+
+                return false;
+
+            }
+
         }
- 
-        $dadosEndereco['id'] = $idEndereco;
- 
-        return $this->enderecoModel->editar($dadosEndereco);
+
     }
 
 }
+
+ 
