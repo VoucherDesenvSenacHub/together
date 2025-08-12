@@ -8,10 +8,12 @@
 <?php require_once "../../../controller/EnderecoController.php" ?>
 
 <?php
-$enderecoController = new EnderecoController();
+$id = $_GET['id'] ?? 1;
+
+$enderecoController = new EnderecoController($id);
 $enderecoController->salvarEdicao();
 
-$endereco = $enderecoController->endereco();
+$endereco = $enderecoController->getEnderecos();
 
 ?>
 
