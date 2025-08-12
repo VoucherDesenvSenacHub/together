@@ -3,9 +3,16 @@
 <?php require_once "./../../components/label.php"; ?>
 <?php require_once "./../../components/input.php"; ?>
 <?php require_once "./../../../model/DoacaoModel.php"; ?>
+<?php require_once './../../components/paginacao.php'; ?>
+<?php
+$idUsuario = 1;
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; ?>
+
 
 <?php $doacaoModel = new DoacaoModel(); 
-$doacoes = $doacaoModel->BuscarDoacoesPorID(2, 1);
+$quantidadeDePaginas = ceil(count($doacaoModel->BuscarDoacoesPorID($idUsuario))/15);
+$doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
+var_dump($pagina);
 ?>
 
 <body>
@@ -63,7 +70,10 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID(2, 1);
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+
+                <?php 
+                criarPaginacao($quantidadeDePaginas);
+                ?>
             </div>
         </div>
     </main>
