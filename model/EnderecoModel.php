@@ -42,6 +42,4 @@ class EnderecoModel
         $stmt->bindParam(':estado', $endereco["estado"]);
         return $stmt->execute();
     }
-
-
 }

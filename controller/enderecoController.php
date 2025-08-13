@@ -1,21 +1,18 @@
 <?php
 
-require_once "../../../model/enderecoModel.php";
+require_once "../../../model/EnderecoModel.php";
+require_once "../../../model/UsuarioModel.php";
 
 class EnderecoController
 {
     private $enderecoModel;
-    private $enderecos;
+    private $endereco;
+    private $usuarioModel;
 
-    public function __construct($id)
+    public function __construct()
     {
+        $this->usuarioModel = new UsuarioModel();
         $this->enderecoModel = new EnderecoModel();
-        $this->enderecos = $this->enderecoModel->buscarEnderecoPorId($id);
-    }
-
-    public function getEnderecos()
-    {
-        return $this->enderecos;
     }
 
     public function carregarEnderecoPorUsuario($idUsuario)
@@ -31,8 +28,6 @@ class EnderecoController
 
         return $this->endereco;
     }
-
-
 
     public function salvarEdicao()
     {

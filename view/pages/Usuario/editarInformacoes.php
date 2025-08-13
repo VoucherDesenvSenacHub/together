@@ -10,10 +10,10 @@
 <?php
 $id = $_GET['id'] ?? 1;
 
-$enderecoController = new EnderecoController($id);
+$enderecoController = new EnderecoController();
 $enderecoController->salvarEdicao();
 
-$endereco = $enderecoController->getEnderecos();
+$endereco = $enderecoController->carregarEnderecoPorUsuario($id);
 
 ?>
 
