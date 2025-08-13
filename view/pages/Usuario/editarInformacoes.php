@@ -97,7 +97,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputDefault('text', 'numero', 'numero', $endereco['numero']) ?>
+                                <?= inputDefault('number', 'numero', 'numero', $endereco['numero']) ?>
                             </div>
                         </div>
 
