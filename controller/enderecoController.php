@@ -18,19 +18,35 @@ class EnderecoController
         return $this->enderecos;
     }
 
+    public function carregarEnderecoPorUsuario($idUsuario)
+    {
+
+        $idEndereco = $this->usuarioModel->buscarEnderecoIdPorUsuarioId($idUsuario);
+
+        if (!$idEndereco) {
+            return null;
+        }
+
+        $this->endereco = $this->enderecoModel->buscarEnderecoPorId($idEndereco);
+
+        return $this->endereco;
+    }
+
+
+
     public function salvarEdicao()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar'])) {
 
             $endereco = [
-                'id'          => $_POST['id'] ?? null,
-                'logradouro'  => $_POST['logradouro'] ?? '',
-                'numero'      => $_POST['numero'] ?? '',
-                'cep'         => $_POST['cep'] ?? '',
+                'id' => $_POST['id'] ?? null,
+                'logradouro' => $_POST['logradouro'] ?? '',
+                'numero' => $_POST['numero'] ?? '',
+                'cep' => $_POST['cep'] ?? '',
                 'complemento' => $_POST['complemento'] ?? '',
-                'bairro'      => $_POST['bairro'] ?? '',
-                'cidade'      => $_POST['cidade'] ?? '',
-                'estado'      => $_POST['estado'] ?? ''
+                'bairro' => $_POST['bairro'] ?? '',
+                'cidade' => $_POST['cidade'] ?? '',
+                'estado' => $_POST['estado'] ?? ''
             ];
 
             $resultado = $this->enderecoModel->editar($endereco);
