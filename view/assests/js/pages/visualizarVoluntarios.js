@@ -75,3 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applySanitizer();
 });
+
+// proibir uso de caracteres especiais no input nome
+document.getElementById('nome').addEventListener('input', function(event) {
+    // Remove tudo que não for letra (incluindo letras acentuadas) e espaço
+    this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '');
+});
