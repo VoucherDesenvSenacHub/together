@@ -8,7 +8,7 @@
 <?php require_once "../../../controller/EnderecoController.php" ?>
 
 <?php
-$id = $_GET['id'] ?? 4                  ;
+$id = $_GET['id'] ?? 4;
 
 $enderecoController = new EnderecoController();
 $enderecoController->salvarEdicao();
@@ -73,7 +73,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?php renderSelectEstado($endereco['estado'] ?? '', ); ?>
+                                <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
                             </div>
 
                             <div class="container-input-endereco-voluntario">
@@ -109,7 +109,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                     </div>
 
                     <div class="postagem-geral-div-btn">
-                    <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', '', 'editarInformacoes.php') ?></div>
                     </div>
                 </form>
