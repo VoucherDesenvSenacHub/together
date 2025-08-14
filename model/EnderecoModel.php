@@ -42,7 +42,7 @@ class EnderecoModel
             $stmt->bindParam(':cidade', $endereco["cidade"]);
             $stmt->bindParam(':estado', $endereco["estado"]);
 
-            if ($stmt->execute()) {
+            if ($stmt->execute() && $stmt->rowCount() > 0) {
                 $_SESSION['statusCode'] = 200;
                 $_SESSION['message'] = 'Update Endereço';
                 return $stmt->execute();
