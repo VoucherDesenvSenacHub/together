@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $telefone = trim($_POST['telefone'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $data_nascimento = trim($_POST['data_nascimento'] ?? '');
+    $data_formatada = date('d/m/Y', strtotime($data_nascimento));
     $cpf = trim($_POST['cpf'] ?? '');
     $tipo_perfil = $_POST['tipo_perfil'] ?? '';
     $id_imagem_de_perfil = $_POST['id_imagem_de_perfil'] ?? null;
