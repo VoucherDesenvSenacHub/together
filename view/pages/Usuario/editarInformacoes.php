@@ -8,7 +8,8 @@
 <?php require_once "../../../controller/EnderecoController.php" ?>
 
 <?php
-$id = $_GET['id'] ?? 1;
+var_dump($_SESSION);
+$id = $_GET['id'] ?? 4                  ;
 
 $enderecoController = new EnderecoController();
 $enderecoController->salvarEdicao();
@@ -16,7 +17,6 @@ $enderecoController->salvarEdicao();
 $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
 
 ?>
-
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -35,7 +35,6 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
-                                    <input type="hidden" name="id" value="<?= htmlspecialchars($endereco['id'] ?? '') ?>">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
                                         <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
@@ -111,7 +110,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
 
                     <div class="postagem-geral-div-btn">
                     <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', '', 'editarInformacoes.php') ?></div>
                     </div>
                 </form>
             </div>

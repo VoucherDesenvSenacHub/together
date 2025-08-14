@@ -29,17 +29,31 @@ class EnderecoModel
 
     public function editar($endereco)
     {
-        $query = "UPDATE $this->tabela SET logradouro=:logradouro, numero=:numero, cep=:cep, complemento=:complemento, bairro=:bairro,  cidade=:cidade, estado=:estado WHERE id = :id";
+        try {
+            $query = "UPDATE $this->tabela SET logradouro=:logradouro, numero=:numero, cep=:cep, complemento=:complemento, bairro=:bairro,  cidade=:cidade, estado=:estado WHERE id = :id";
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $endereco["id"]);
-        $stmt->bindParam(':logradouro', $endereco["logradouro"]);
-        $stmt->bindParam(':numero', $endereco["numero"]);
-        $stmt->bindParam(':cep', $endereco["cep"]);
-        $stmt->bindParam(':complemento', $endereco["complemento"]);
-        $stmt->bindParam(':bairro', $endereco["bairro"]);
-        $stmt->bindParam(':cidade', $endereco["cidade"]);
-        $stmt->bindParam(':estado', $endereco["estado"]);
-        return $stmt->execute();
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $endereco["id"]);
+            $stmt->bindParam(':logradouro', $endereco["logradouro"]);
+            $stmt->bindParam(':numero', $endereco["numero"]);
+            $stmt->bindParam(':cep', $endereco["cep"]);
+            $stmt->bindParam(':complemento', $endereco["complemento"]);
+            $stmt->bindParam(':bairro', $endereco["bairro"]);
+            $stmt->bindParam(':cidade', $endereco["cidade"]);
+            $stmt->bindParam(':estado', $endereco["estado"]);
+
+            if ($stmt->execute()) {
+                $_SESSION['statusCode'] = 200;
+                $_SESSION['message'] = 'Update Endereço';
+            } else {
+                $_SESSION['statusCode'] = 400;
+                $_SESSION['message'] = 'Erro Update Endereço';
+            }
+
+        } catch (PDOException $e) {
+            $_SESSION['statusCode'] = 500;
+            $_SESSION['message'] = 'Erro no servidor: ' . $e->getMessage();
+        }
+        
     }
 }
