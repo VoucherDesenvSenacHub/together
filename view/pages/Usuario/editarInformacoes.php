@@ -4,13 +4,18 @@
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/select.php" ?>
+<?php require_once "../../components/selectEndereco.php" ?>
 <?php require_once "../../../controller/EnderecoController.php" ?>
-<?php
-$enderecoController = new EnderecoController();
-$endereco = $enderecoController->carregarEnderecoPorUsuario(3);
-$enderecoController->atualizarEnderecoDoUsuario(3, $endereco);
-?>
 
+<?php
+$id = $_GET['id'] ?? 4                  ;
+
+$enderecoController = new EnderecoController();
+$enderecoController->salvarEdicao();
+
+$endereco = $enderecoController->carregarEnderecoPorUsuario($id);
+
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -46,7 +51,6 @@ $enderecoController->atualizarEnderecoDoUsuario(3, $endereco);
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
                                         <?= inputFilter('date', 'data_nascimento', 'data_nascimento') ?>
-
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +60,7 @@ $enderecoController->atualizarEnderecoDoUsuario(3, $endereco);
                             </div>
                         </div>
                     </div>
+
                     <div class="container-endereco container-readonly-secondary">
                         <div class="titulo-endereco-voluntario">
                             <h1>Endereço</h1>
@@ -66,43 +71,49 @@ $enderecoController->atualizarEnderecoDoUsuario(3, $endereco);
                                 <?= inputDefault('text', 'cep', 'cep', $endereco['cep']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?= inputDefault('text', 'cidade', 'cidade',  $endereco['cidade']) ?>
-                            </div>
-                            <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputDefault('text', 'estado', 'estado', $endereco['estado']) ?>
+                                <?php renderSelectEstado($endereco['estado'] ?? '', ); ?>
                             </div>
+
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
+                            </div>
+
                         </div>
+
+
+
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputDefault('text', 'bairro', 'bairro',  $endereco['bairro']) ?>
+                                <?= inputDefault('text', 'bairro', 'bairro', $endereco['bairro']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputDefault('text', 'logradouro', 'logradouro',  $endereco['logradouro']) ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro', $endereco['logradouro']) ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputDefault('text', 'numero', 'numero',  $endereco['numero']) ?>
+                                <?= inputDefault('number', 'numero', 'numero', $endereco['numero']) ?>
                             </div>
                         </div>
+
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento',  $endereco['complemento']) ?>
+                                <?= inputDefault('text', 'complemento', 'complemento', $endereco['complemento']) ?>
                             </div>
                         </div>
                     </div>
+
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '/together/controller/enderecoController.php') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
+                    <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', '', 'editarInformacoes.php') ?></div>
                     </div>
                 </form>
             </div>
         </div>
-
     </main>
 
     <?php require_once './../../components/footer.php' ?>
