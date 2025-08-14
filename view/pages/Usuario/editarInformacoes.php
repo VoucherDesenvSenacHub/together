@@ -8,7 +8,6 @@
 <?php require_once "../../../controller/EnderecoController.php" ?>
 
 <?php
-var_dump($_SESSION);
 $id = $_GET['id'] ?? 4                  ;
 
 $enderecoController = new EnderecoController();
