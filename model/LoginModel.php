@@ -26,12 +26,7 @@ class LoginModel
 
             // Verifica o hash
             if (password_verify($senha, $usuario['senha'])) {
-                if (session_status() === PHP_SESSION_NONE) {
-                    session_start();
-                }
-                $_SESSION['usuario_id'] = $usuario['id'];
-                $_SESSION['usuario_email'] = $usuario['email'];
-
+             
                 return true;
             } else {
                 return false; // Senha incorreta
