@@ -3,8 +3,11 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
 
-
-
+<?php
+// Pega a mensagem de erro e já limpa a sessão
+$erro = $_SESSION['erro_login'] ?? '';
+unset($_SESSION['erro_login']);
+?>
 
 <body class="body-login">
 
@@ -30,16 +33,13 @@
                     <div class="container-input-login">
                         <div>
                             <?= label('email', 'Email') ?>
-                            <?= inputRequired('email', 'email', 'emailForm') ?>
+                            <?= inputRequired('email', 'email', 'email') ?>
                         </div>
                         <div>
                             <?= label('senha', 'Senha') ?>
-                            <?= inputRequired('password', 'senha', 'senhaForm') ?>
+                            <?= inputRequired('password', 'senha', 'senha') ?>
 
                         </div>
-                        <?php if (!empty($erro)): ?>
-                            <span class="mensagem-erro"><?php echo $erro; ?></span>
-                        <?php endif ?>
                         <div class="botao-login">
                             <?= botao('salvar', 'Entrar', '', "./../../controller/entrar.php", "submit") ?>
                         </div>
@@ -54,7 +54,11 @@
             </div>
         </div>
     </div>
-
+    <?php if ($erro): ?>
+        <script>
+            alert("<?= addslashes($erro) ?>");
+        </script>
+    <?php endif; ?>
 </body>
 
 <!-- <?php require_once "../../view/components/footer.php" ?> -->

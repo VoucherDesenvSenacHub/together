@@ -12,7 +12,7 @@ class LoginModel
         $this->conn = $db->conectar();
     }
 
-    public function login($email, $senha)
+    public function login($email, $senha): bool
     {
         // Busca só pelo email
         $sql = "SELECT id, email, senha FROM usuarios WHERE email = :email LIMIT 1";
