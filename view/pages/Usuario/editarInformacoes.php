@@ -109,7 +109,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                     </div>
 
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'submit', 'salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'salvar') ?></div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', '', 'editarInformacoes.php') ?></div>
                     </div>
                 </form>
