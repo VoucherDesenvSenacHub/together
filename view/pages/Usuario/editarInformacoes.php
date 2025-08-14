@@ -34,6 +34,7 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
+                                    <input type="hidden" name="id" value="<?= htmlspecialchars($endereco['id'] ?? '') ?>">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
                                         <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>

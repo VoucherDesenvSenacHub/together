@@ -45,9 +45,11 @@ class EnderecoModel
             if ($stmt->execute()) {
                 $_SESSION['statusCode'] = 200;
                 $_SESSION['message'] = 'Update Endereço';
+                return $stmt->execute();
             } else {
                 $_SESSION['statusCode'] = 400;
                 $_SESSION['message'] = 'Erro Update Endereço';
+                return $stmt->execute();
             }
 
         } catch (PDOException $e) {
