@@ -58,9 +58,6 @@ try {
         header('Location: ../index.php');
         exit();
     }
-
-
-
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
     header('Location: ../view/pages/login.php');
