@@ -1,6 +1,6 @@
 <?php
 
-function botao($tipo, $texto, $id = "", $formaction = "", $type = "submit",)
+function botao($tipo, $texto, $id = "", $formaction = "", $name = "")
 {
     switch ($tipo) {
         case 'primary':
@@ -32,5 +32,7 @@ function botao($tipo, $texto, $id = "", $formaction = "", $type = "submit",)
             break;
     }
 
-    return "<button formaction='$formaction' class='$class' type='$type' id='$id'>$texto</button>";
+    $nameAttr = $name ? "name='$name'" : "";
+
+    return "<button $nameAttr formaction='$formaction' class='$class' id='$id'>$texto</button>";
 }
