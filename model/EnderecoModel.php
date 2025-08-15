@@ -29,17 +29,27 @@ class EnderecoModel
 
     public function editar($endereco)
     {
-        $query = "UPDATE $this->tabela SET logradouro=:logradouro, numero=:numero, cep=:cep, complemento=:complemento, bairro=:bairro,  cidade=:cidade, estado=:estado WHERE id = :id";
+        try {
+            $query = "UPDATE $this->tabela SET logradouro=:logradouro, numero=:numero, cep=:cep, complemento=:complemento, bairro=:bairro,  cidade=:cidade, estado=:estado WHERE id = :id";
 
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $endereco["id"]);
-        $stmt->bindParam(':logradouro', $endereco["logradouro"]);
-        $stmt->bindParam(':numero', $endereco["numero"]);
-        $stmt->bindParam(':cep', $endereco["cep"]);
-        $stmt->bindParam(':complemento', $endereco["complemento"]);
-        $stmt->bindParam(':bairro', $endereco["bairro"]);
-        $stmt->bindParam(':cidade', $endereco["cidade"]);
-        $stmt->bindParam(':estado', $endereco["estado"]);
-        return $stmt->execute();
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $endereco["id"]);
+            $stmt->bindParam(':logradouro', $endereco["logradouro"]);
+            $stmt->bindParam(':numero', $endereco["numero"]);
+            $stmt->bindParam(':cep', $endereco["cep"]);
+            $stmt->bindParam(':complemento', $endereco["complemento"]);
+            $stmt->bindParam(':bairro', $endereco["bairro"]);
+            $stmt->bindParam(':cidade', $endereco["cidade"]);
+            $stmt->bindParam(':estado', $endereco["estado"]);
+            $stmt->execute();
+            return [
+                'response' => true
+            ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
     }
 }
