@@ -55,13 +55,13 @@
                 <h3 class='card-title'>$nome</h3>
                 <div id='linksCopyright'>
                     <div class='text-align'>
+                        <i class='fa-brands fa-github fa-2xl'></i>  
                         " . (
                             !$semGithub
                             ? "<a class='card-btn' href='$github' target='_blank'>
-                            <i class='fa-brands fa-github fa-2xl'></i>
                             Github
                             </a>"
-                            : "<span class='card-btn'>GitHub não disponível</span>"
+                            : "<span class='card-btn'>Não disponível</span>"
                         ) . "
                     </div>
                     <div class='text-align'>

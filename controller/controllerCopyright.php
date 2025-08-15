@@ -30,10 +30,12 @@
             "linkedin" => "https://www.linkedin.com/in/luan-m-26b8342bb/",
             "imagem" => "../assests/images/Copyright/togetherteam/mendes.jpg"
         ],
-        [
+        [   
+            // https://github.com/GabrielleFaus
+            // https://www.linkedin.com/in/gabrielle-faustino-025aa1264/
             "nome" => "Gabrielle Faustino",
-            "github" => "https://github.com/GabrielleFaus",
-            "linkedin" => "https://www.linkedin.com/in/gabrielle-faustino-025aa1264/",
+            "github" => "?=usuarioNãoPossuiGithub",
+            "linkedin" => "?=usuarioNãoPossuiLinkedin",
             "imagem" => "../assests/images/Copyright/faustino.png"
         ],
         [
