@@ -50,8 +50,10 @@ class EnderecoController
                 $_SESSION['message'] = 'Atualizado com sucesso';
                 $_SESSION['type'] = 'sucesso';
                 header('Location: editarInformacoes.php');
+                exit;
             } else {
                 $_SESSION['type'] = 'erro';
+                $_SESSION['message'] = 'Ocorreu um erro ao salvar as alterações';
             }
         }
     }
