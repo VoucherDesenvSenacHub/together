@@ -48,7 +48,7 @@ if (isset($_SESSION['erro'], $erro)) {
 
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar', '', "./../../controller/Entrar.php", "submit") ?>
+                            <?= botao('salvar', 'Entrar', '', "./../../controller/EntrarController.php", "submit") ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
