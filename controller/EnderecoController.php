@@ -46,7 +46,7 @@ class EnderecoController
 
             $resultado = $this->enderecoModel->editar($endereco);
 
-            if ($resultado) {
+            if ($resultado['response']) {
                 $_SESSION['message'] = 'Atualizado com sucesso';
                 $_SESSION['type'] = 'sucesso';
                 header('Location: editarInformacoes.php');
@@ -54,6 +54,7 @@ class EnderecoController
             } else {
                 $_SESSION['type'] = 'erro';
                 $_SESSION['message'] = 'Ocorreu um erro ao salvar as alterações';
+                $_SESSION['erro'] = $resultado['erro'];
             }
         }
     }
