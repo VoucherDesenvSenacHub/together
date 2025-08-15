@@ -6,6 +6,7 @@
 <?php require_once "../../components/select.php" ?>
 <?php require_once "../../components/selectEndereco.php" ?>
 <?php require_once "../../../controller/EnderecoController.php" ?>
+<?php require_once '../../components/alert.php'; ?>
 
 <?php
 $id = $_GET['id'] ?? 4;
@@ -15,6 +16,11 @@ $enderecoController->salvarEdicao();
 
 $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
 
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+var_dump($_SESSION);
 ?>
 
 <body>
