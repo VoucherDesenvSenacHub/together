@@ -8,6 +8,7 @@ import "./components/navbar.js";
 import "./components/sidebar.js";
 import "./components/modalNotificacao.js";
 import "./pages/gestaoDePatrocinadores.js";
+import "./components/alert.js";
 // import "./pages/loginUsuario.js";
 import "./pages/pagamento_Usuario.js";
 import "./pages/validacaoAtualizacao.js";
