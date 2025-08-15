@@ -5,8 +5,8 @@
 
 <?php
 // Pega a mensagem de erro e já limpa a sessão
-$erro = $_SESSION['erro_login'] ?? '';
-unset($_SESSION['erro_login']);
+$erro = $_SESSION['erro'] ?? '';
+unset($_SESSION['erro']);
 ?>
 
 <body class="body-login">
@@ -41,7 +41,7 @@ unset($_SESSION['erro_login']);
 
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar', '', "./../../controller/entrar.php", "submit") ?>
+                            <?= botao('salvar', 'Entrar', '', "./../../controller/Entrar.php", "submit") ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
