@@ -17,6 +17,8 @@ import "./pages/visualizarVoluntarios.js"
 import "./pages/gerenciarConta.js";
 import "./pages/cadastrarOng.js";
 import "./pages/carrossel.js";
+import "./components/selectEndereco.js";
+import "./components/endereco.js";
 
 // Arquivos que de acordo com o Luan nao existem mais por isso comentamos, 
 // porque tambemd e acordo com ele o rhyam era quem estava fazendo e nao esta presente na aula

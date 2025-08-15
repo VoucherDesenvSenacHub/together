@@ -19,8 +19,8 @@
         return " <input class='formulario-input' type='$type' id='$id' name='$name' readonly value='$value'> ";
     }
 
-    function inputDefault($type, $id, $name) {
-        return " <input class='formulario-input' type='$type' id='$id' name='$name'> ";
+    function inputDefault($type, $id, $name, $value = "") {
+        return " <input class='formulario-input' type='$type' id='$id' name='$name' value='$value'> ";
     };
 
     function inputCheckBox($type, $id, $name) {
