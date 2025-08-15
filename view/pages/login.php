@@ -2,11 +2,18 @@
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
+<?php require_once "./../components/alert.php" ?>
 
 <?php
 // Pega a mensagem de erro e já limpa a sessão
-$erro = $_SESSION['erro_login'] ?? '';
-unset($_SESSION['erro_login']);
+$erro = $_SESSION['erro'] ?? '';
+
+if (isset($_SESSION['erro'], $erro)) {
+    showPopup($_SESSION['erro'], $erro);
+    unset($_SESSION['erro'], $erro);
+}
+
+
 ?>
 
 <body class="body-login">
@@ -41,7 +48,7 @@ unset($_SESSION['erro_login']);
 
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar', '', "./../../controller/entrar.php", "submit") ?>
+                            <?= botao('salvar', 'Entrar', '', "./../../controller/Entrar.php", "submit") ?>
                         </div>
                         <div class="criar-conta-area-login">
                             <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
@@ -54,11 +61,6 @@ unset($_SESSION['erro_login']);
             </div>
         </div>
     </div>
-    <?php if ($erro): ?>
-        <script>
-            alert("<?= addslashes($erro) ?>");
-        </script>
-    <?php endif; ?>
 </body>
 
 <!-- <?php require_once "../../view/components/footer.php" ?> -->
