@@ -1,7 +1,7 @@
 <?php
 function criarPaginacao(int $quantidadeDePaginas)
 {
-    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
     ?>
     <nav aria-label="pagination" class="nav-pagination">
         <ul class="pagination">
@@ -11,13 +11,19 @@ function criarPaginacao(int $quantidadeDePaginas)
                     <span class="visuallyhidden">Página anterior</span>
                 </a>
             </li>
-            <?php for ($i = 1; $i <= $quantidadeDePaginas; $i++): ?>
-                <li>
-                    <a href="?pagina=<?= $i ?>"
-                       <?= $i === $paginaAtual ? 'aria-current="page" class="active"' : '' ?>>
-                        <span class="visuallyhidden">Página </span><?= $i ?>
-                    </a>
-                </li>
+            <?php for ($i = $paginaAtual - 2; $i <= $quantidadeDePaginas; $i++): ?>
+
+                    <?php if ($i <= 0) {
+
+                    } else if ($i > $paginaAtual + 2) {
+
+                    } else { ?>
+                        <li>
+                            <a href="?pagina=<?= $i ?>" <?= $i === $paginaAtual ? 'aria-current="page" class="active"' : '' ?>>
+                                <span class="visuallyhidden">Página </span><?= $i ?>
+                            </a>
+                        </li>
+                <?php } ?>
             <?php endfor; ?>
             <li class="<?= $paginaAtual >= $quantidadeDePaginas ? 'disabled' : '' ?>">
                 <a href="?pagina=<?= min($quantidadeDePaginas, $paginaAtual + 1) ?>">
@@ -28,6 +34,6 @@ function criarPaginacao(int $quantidadeDePaginas)
 
         </ul>
     </nav>
-<?php
+    <?php
 }
 ?>
