@@ -83,8 +83,6 @@ $endereco = $enderecoController->carregarEnderecoPorUsuario($id);
 
                         </div>
 
-
-
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
