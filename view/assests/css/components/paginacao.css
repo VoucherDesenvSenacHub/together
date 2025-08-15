@@ -44,4 +44,8 @@
     background-color: var(--cor-botao-entrar);
     color: #fff;
   }
+
+  .disabled {
+    display: none;
+  }
   
