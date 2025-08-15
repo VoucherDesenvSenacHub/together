@@ -2,6 +2,18 @@
 <?php require_once "./../../components/acoes.php"; ?>
 <?php require_once "./../../components/label.php"; ?>
 <?php require_once "./../../components/input.php"; ?>
+<?php require_once "./../../../model/DoacaoModel.php"; ?>
+<?php require_once './../../components/paginacao.php'; ?>
+<?php
+$idUsuario = 1;
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; ?>
+
+
+<?php $doacaoModel = new DoacaoModel(); 
+$quantidadeDePaginas = ceil(count($doacaoModel->BuscarDoacoesPorID($idUsuario))/15);
+$doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
+var_dump($pagina);
+?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -28,7 +40,7 @@
 
                         <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar', "Pesquisar Ong&#39s") ?>
                         </div>
                     </div>
                 <div class="table-mobile">
@@ -43,22 +55,25 @@
                         </thead>
                         <tbody>
                             <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php foreach ($doacoes as $doacao){ ?>
                                 <tr>
-                                    <td><?=  $i+10?>/8/2025</td>
-                                    <td><?=  $lista[$i]?></td>
-                                    <td><?=  "R$" . ($i+4)*10 ?></td>
+                                    <td><?= $doacao['dt_doacao'] ?></td>
+                                    <td><?= $doacao['razao_social']?></td>
+                                    <td><?=  "R$" . $doacao['valor'] ?></td>
                                     <td>
                                         <a href="assests/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
                                             <?= renderAcao('baixar') ?>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+
+                <?php 
+                criarPaginacao($quantidadeDePaginas);
+                ?>
             </div>
         </div>
     </main>

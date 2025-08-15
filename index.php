@@ -81,6 +81,18 @@
         <div class="linha-home bottom"></div>
 
     </div>
+    <div class="logos">
+        <div class="logos-slide">
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+            <img src="\together\view\assests\images\Adm\senac.png" />
+        </div>
+    </div>
 
 </main>
 

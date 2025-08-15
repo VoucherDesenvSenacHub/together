@@ -33,7 +33,7 @@
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
                     </div>
                 </div>
                 <div class="table-mobile">
@@ -41,7 +41,7 @@
                         <thead>
                             <tr>
                                 <th>Data</th>
-                                <th>Nome das Ongs</th>
+                                <th>Nome</th>
                                 <th>Status</th>
                                 <th>Visualizar</th>
                             </tr>

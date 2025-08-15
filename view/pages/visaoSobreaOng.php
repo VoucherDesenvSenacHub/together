@@ -17,8 +17,15 @@ require_once "./../components/acoes.php";
         ?>
         <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
             <?php $usuario = 'Administrador'?>
-        <?php }?>;
+        <?php }?>
         
+    <?php } ?>
+    <?php if($_SESSION['perfil'] === 'Ong') { ?>
+        <style>
+            .sessionOng {
+                display: block;
+            }
+        </style>
     <?php } ?>
     <?php if($_SESSION['perfil'] === 'Usuario' || $_SESSION['perfil'] === 'Ong') { ?>
         <?php 

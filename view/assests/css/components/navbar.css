@@ -184,10 +184,11 @@
 
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 821px) {
     .navbar-group {
         height: 50px;
         padding: 0 35px 0 35px;
+        gap: 0px;
     }    
 
     .logo-navbar {
