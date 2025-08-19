@@ -85,4 +85,5 @@ class UsuarioModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    // Encontrar usuário por CPF
 }
