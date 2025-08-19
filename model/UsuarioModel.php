@@ -12,18 +12,58 @@ class UsuarioModel
         $this->conn = $database->conectar();
     }
 
-    public function registrarUsuario($nome, $cpf, $telefone, $email, $senha)
-    {
-        $sql = "INSERT INTO usuarios (nome, cpf, telefone, email, senhas) VALUES (
-            :nome, :cpf, :telefone, :email, :senha)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':cpf', $telefone);
-        $stmt->bindParam(':cpf', $email);
-        $stmt->bindParam(':senha', var: password_hash($senha, PASSWORD_BCRYPT));
+    public function registrarUsuarioComEndereco(
+        $nome,
+        $cpf,
+        $telefone,
+        $email,
+        $senha,
+        $logradouro,
+        $numero,
+        $bairro,
+        $cidade,
+        $estado,
+        $cep,
+        $complemento
+    ) {
+        try {
+            $this->conn->beginTransaction();
+            $sqlEndereco = "INSERT INTO enderecos (logradouro, numero, bairro, cidade, estado, cep, complemento)
+                        VALUES (:logradouro, :numero, :bairro, :cidade, :estado, :cep, :complemento)";
+            $stmtEndereco = $this->conn->prepare($sqlEndereco);
+            $stmtEndereco->bindParam(':logradouro', $logradouro);
+            $stmtEndereco->bindParam(':numero', $numero);
+            $stmtEndereco->bindParam(':cep', $cep);
+            $stmtEndereco->bindParam(':complemento', $complemento);
+            $stmtEndereco->bindParam(':bairro', $bairro);
+            $stmtEndereco->bindParam(':cidade', $cidade);
+            $stmtEndereco->bindParam(':estado', $estado);
+            $stmtEndereco->execute();
 
-        return $stmt->execute();
+            $enderecoId = $this->conn->lastInsertId();
+
+            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, id_endereco, ativo, tipo_perfil)
+                       VALUES (:nome, :cpf, :telefone, :email, :senha, :id_endereco, true, 'PESSOAL')";
+            $stmtUsuario = $this->conn->prepare($sqlUsuario);
+            $stmtUsuario->bindParam(':nome', $nome);
+            $stmtUsuario->bindParam(':cpf', $cpf);
+            $stmtUsuario->bindParam(':telefone', $telefone);
+            $stmtUsuario->bindParam(':email', $email);
+            $senhaHash = password_hash($senha, PASSWORD_BCRYPT);
+            $stmtUsuario->bindParam(':senha', $senhaHash);
+            $stmtUsuario->bindParam(':id_endereco', $enderecoId);
+
+            $stmtUsuario->execute();
+
+            $this->conn->commit();
+            return true;
+            
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            echo "Erro ao registrar usuário: " . $e->getMessage();
+            return false;
+        }
+
     }
 
     public function findUsuarioByEmail($email)
@@ -36,51 +76,14 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-
-    public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil)
+    public function findUsuarioByCpf($cpf)
     {
-        $sql = "UPDATE usuarios 
-                SET nome = :nome, 
-                    telefone = :telefone, 
-                    email = :email, 
-                    cpf = :cpf, 
-                    tipo_perfil = :tipo_perfil,
-                    id_imagem_de_perfil = :id_imagem_de_perfil
-                WHERE id = :id";
-
+        $sql = "SELECT * FROM usuarios WHERE cpf = :cpf";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':tipo_perfil', $tipo_perfil);
-        $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-        return $stmt->execute();
-    }
-
-    public function buscarUsuarioId($idUsuario)
-    {
-        $sql = "SELECT * 
-                FROM usuarios u
-                LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id
-                WHERE u.id = :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $idUsuario, PDO::PARAM_INT);
         $stmt->execute();
+
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-    public function buscarEnderecoIdPorUsuarioId($idUsuario)
-    {
-        $query = "SELECT id_endereco FROM usuarios WHERE id = :id LIMIT 1";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $idUsuario);
-        $stmt->execute();
-
-        $result = $stmt->fetch();
-        return $result ? $result['id_endereco'] : null;
-    }
+    // Encontrar usuário por CPF
 }
