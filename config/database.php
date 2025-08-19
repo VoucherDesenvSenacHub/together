@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
     class Database {
@@ -9,13 +9,14 @@
         private $password = "12345678";
 
 
-        public function conectar() {
-            $url ="mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
-            $conn = new PDO($url, $this->user, $this->password);
-            
-            return $conn;
-        }
-    } 
+    public function conectar()
+    {
+        $url = "mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
+        $conn = new PDO($url, $this->user, $this->password);
+
+        return $conn;
+    }
+}
 
 
 ?>
