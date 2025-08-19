@@ -46,7 +46,7 @@ CREATE TABLE ongs(
     cnpj varchar(14) not null,
     dt_fundacao date not null,
     conselho_fiscal text,
-    status_validacao bool,
+    status_validacao ENUM('pendente', 'aprovado', 'reprovado') DEFAULT 'pendente', 
     ativo bool,
     id_endereco int,
     id_categoria int,
