@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . "/../model/LoginModel.php";
 
+
 try {
     // Verifica se a requisão é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
