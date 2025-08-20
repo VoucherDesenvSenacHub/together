@@ -1,13 +1,11 @@
 <?php
-// PRECISA DE UMA CAIXA DE WARNING OU ALERT PARA AVISAR QUE DEU CERTO/ERRADO OU QUALQUER OUTRA COISA AO INVES DE ECHO 
+include_once "../model/UsuarioModel.php";
 
-$id = 1;
-$model = new UsuarioModel(); 
-$usuario = $model->buscarUsuarioId($id); 
+ 
 $sucesso = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = trim($_POST['nome'] ?? '');
+    $nome = trim($_POST['nome'] ?? ''); 
     $telefone = trim($_POST['telefone'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $data_nascimento = trim($_POST['data_nascimento'] ?? '');
@@ -15,7 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cpf = trim($_POST['cpf'] ?? '');
     $tipo_perfil = $_POST['tipo_perfil'] ?? '';
     $id_imagem_de_perfil = $_POST['id_imagem_de_perfil'] ?? null;
-
     // Limpar máscara
     $cpf = preg_replace('/\D/', '', $cpf);
     $telefone = preg_replace('/\D/', '', $telefone);
@@ -34,7 +31,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $nomeSanitizado = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
-    echo $nomeSanitizado;
 
     if (!preg_match('/^\d{10,11}$/', $telefone)) {
         $_SESSION['mensagem'] = "Telefone inválido. Deve conter 10 ou 11 dígitos.";
@@ -70,18 +66,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     //     }
     // }
 
-    // Tudo ok, editar usuário
-    $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
 
-    if ($sucesso) {
-        $_SESSION['mensagem'] = "Usuário editado com sucesso!";
-    } else {
-        $_SESSION['mensagem'] = "Erro ao editar usuário.";
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
+        // nome temporario da imagem salvo no local temporario do xamp
+        $imagemTmp = $_FILES['imagem']['tmp_name'];
+        var_dump($imagemTmp);
+        // pega o nome original que no caso é o nome que o usuario entrega da foto
+        $nomeOriginal = $_FILES['imagem']['name'];
+        var_dump($nomeOriginal);
+        // extensao padrao para todas as imagens 'jpg'
+        $extensao = pathinfo($nomeOriginal, PATHINFO_EXTENSION);
+        var_dump($extensao);
+        // nome unico que é criado para cada foto
+        $nomeFinal = uniqid('img_', true) . '.' . $extensao;
+        var_dump($nomeFinal);
+        // o diretório aonde está sendo salvo as imagens enviadas dos usuários;
+        $diretorioDestino = __DIR__ . '/upload/';
+        var_dump($diretorioDestino);
+
+        // caso o diretório não exista ele cria
+        if (!is_dir($diretorioDestino)) {
+            mkdir($diretorioDestino, 0755, true);
+        }
+
+        // no fim de tudo ele entrega o caminho completo da imagem
+        $caminhoFinal = $diretorioDestino . $nomeFinal;
+        var_dump($caminhoFinal);
+
+
+
+        if (move_uploaded_file($imagemTmp, $caminhoFinal)) {
+            $caminhoNoBanco = 'upload/' . $nomeFinal;
+
+            $imagem = $model->inserirImagem($caminhoNoBanco,$nomeFinal,$nomeOriginal); 
+    
+            if (!is_uploaded_file($imagemTmp)) {
+                echo "Arquivo temporário inválido.";
+                exit;
+            }
+
+        }
+    
+        // Tudo ok, editar usuário
+
+        
+        $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
+
+        if ($sucesso) {
+            $_SESSION['mensagem'] = "Usuário editado com sucesso!";
+        } else {
+            $_SESSION['mensagem'] = "Erro ao editar usuário.";
+        }
+
+        header("Location: editarInformacoes.php");
+        exit;
     }
-
-    header("Location: editarInformacoes.php");
-    exit;
 }
+
 ?>
 
 <!-- HTML para exibir a mensagem -->

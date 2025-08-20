@@ -14,7 +14,7 @@
       <div class='text'>
          <span>Insira uma imagem</span>
       </div>
-      <input type='file' id='file' accept='image/*'>
+      <input type='file' id='file' name='imagem' accept='image/*'>
       <img id='preview' src='#' alt=''/>
    </label>
 </div>

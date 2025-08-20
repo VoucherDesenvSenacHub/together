@@ -3,8 +3,17 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
-<?php require_once "../../../model/UsuarioModel.php" ?>
-<?php require_once "../../../controller/UsuarioEditarController.php" ?>
+<?php
+
+require_once "../../../model/UsuarioModel.php";
+
+$id = 9;
+$model = new UsuarioModel(); 
+$usuario = $model->buscarUsuarioId($id);
+
+?>
+
+
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -15,7 +24,7 @@
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form action="" method="POST" class="postagem-geral-form editar-informacoes-form">
+                <form enctype="multipart/form-data" action="" method="POST" class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
                             <?php require_once "./../../components/upload.php" ?>
@@ -25,7 +34,7 @@
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome'] ) ?>
+                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome']) ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
@@ -89,7 +98,7 @@
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar') ?></div>
+                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', formaction: '../../../controller/UsuarioEditarController.php') ?></div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>
