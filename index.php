@@ -2,7 +2,6 @@
 <?php require_once './view/components/head.php' ?>
 <?php require_once './view/components/card.php' ?>
 
-
 <body>
 
 </body>
