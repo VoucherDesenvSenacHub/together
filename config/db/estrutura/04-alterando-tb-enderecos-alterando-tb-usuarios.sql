@@ -50,7 +50,7 @@ CREATE TABLE ongs(
     ativo bool,
     id_endereco int,
     id_categoria int,
-    id_imagem_de_perfil int,
+    id_imagem_de_perfil int NULL DEFAULT NULL
     foreign key(id_usuario) references usuarios(id),
     foreign key(id_endereco) references enderecos(id),
     foreign key(id_categoria) references categorias_ongs(id),
