@@ -59,7 +59,7 @@
             <?= cardSobreNos("História do projeto", "Nosso site foi idealizado com o objetivo de criar um ponto de encontro virtual para ONGs que buscam ampliar seu impacto. Ao longo do tempo, trabalhamos para conectar as organizações com as pessoas certas, oferecendo uma plataforma simples, eficiente e de fácil acesso.") ?>
         </div>
         <div class="container-home card-sobre-nos-home">
-            <?= cardSobreNos("Nossos valores", "Valorizamos a transparência, com informações claras sobre ONGs e seus projetos.<br>Incentivamos a colaboração entre todos que queiram causar impacto positivo.<br>Defendemos a acessibilidade, permitindo que qualquer pessoa participe das ações sociais.", ) ?>
+            <?= cardSobreNos("Nossos valores", "Valorizamos a transparência, com informações claras sobre ONGs e seus projetos.<br>Incentivamos a colaboração entre todos que queiram causar impacto positivo.<br>Defendemos a acessibilidade, permitindo que qualquer pessoa participe das ações sociais.",) ?>
             <?= cardSobreNos("Junte-se a nós", "Queremos fazer parte da transformação social. Se você é uma ONG, um voluntário ou um doador, convidamos você a se conectar conosco e fazer parte dessa rede de apoio. Explore os projetos disponíveis, participe de ações ou ajude a divulgar a causa que mais lhe toca.") ?>
         </div>
         <div class="linha-home"></div>
