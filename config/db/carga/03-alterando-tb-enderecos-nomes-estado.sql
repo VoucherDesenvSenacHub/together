@@ -14,10 +14,10 @@ INSERT INTO imagens (link) VALUES
 
 -- 3) Usuários 
 INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES
-('João Silva', '11122233344', '1990-05-10', '(67)99999-0001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'voluntario'),
-('Maria Souza', '22233344455', '1988-09-22', '(67)99999-0002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'ong'),
-('Carlos Pereira', '33344455566', '1985-12-15', '(11)98888-0003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'adm'),
-('Ana Costa', '44455566677', '1992-03-28', '(31)97777-0004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'ong');
+('João Silva', '11122233344', '1990-05-10', '(67)99999-0001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
+('Maria Souza', '22233344455', '1988-09-22', '(67)99999-0002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Ong'),
+('Carlos Pereira', '33344455566', '1985-12-15', '(11)98888-0003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Administrador'),
+('Ana Costa', '44455566677', '1992-03-28', '(31)97777-0004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'Ong');
 
 
 -- 4) Categorias de ONGs
