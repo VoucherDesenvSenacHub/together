@@ -14,7 +14,7 @@ class LoginModel
 
     public function Login($email, $senha)
     {
-        $sql = "SELECT id, email, senha FROM {$this->tabela} WHERE email = :email LIMIT 1";
+        $sql = "SELECT id,tipo_perfil, email, senha FROM {$this->tabela} WHERE email = :email LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->execute();

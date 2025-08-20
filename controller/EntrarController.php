@@ -2,6 +2,7 @@
 session_start();
 require_once __DIR__ . "/../model/LoginModel.php";
 
+
 try {
     // Verifica se a requisão é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -49,7 +50,7 @@ try {
     } else {
         // Login válido → salva dados na sessão
         $_SESSION['id'] = $usuarioLogin->id;
-        $_SESSION['email'] = $usuarioLogin->email;
+        $_SESSION['perfil'] = $usuarioLogin->tipo_perfil;
 
         // Reseta tentativas
         $_SESSION['loginTentativas'] = 0;
