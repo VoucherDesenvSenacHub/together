@@ -49,7 +49,7 @@ try {
     } else {
         // Login válido → salva dados na sessão
         $_SESSION['id'] = $usuarioLogin->id;
-        $_SESSION['email'] = $usuarioLogin->email;
+        $_SESSION['perfil'] = $usuarioLogin->tipo_perfil;
 
         // Reseta tentativas
         $_SESSION['loginTentativas'] = 0;
