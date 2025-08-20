@@ -29,9 +29,9 @@ INSERT INTO categorias_ongs (nome) VALUES
 
 -- 5) ONGs
 INSERT INTO ongs (id_usuario, razao_social, cnpj, dt_fundacao, conselho_fiscal, status_validacao, ativo, id_endereco, id_categoria, id_imagem_de_perfil) VALUES
-  (2, 'ONG Verde', '12345678000100','2010-05-20','Fulano; Beltrano', true, true, 1, 1, 1),
-  (4, 'Educar Todos','98765432000199','2015-09-10','Cicrano', false, true, 2, 2, 2),
-  (2, 'Saúde para Todos','11122233000155','2012-03-15','Dana; Ely', true, false, 3, 3, 3),
+  (1, 'ONG Verde', '12345678000100','2010-05-20','Fulano; Beltrano', true, true, 1, 1, 1),
+  (2, 'Educar Todos','98765432000199','2015-09-10','Cicrano', false, true, 2, 2, 2),
+  (3, 'Saúde para Todos','11122233000155','2012-03-15','Dana; Ely', true, false, 3, 3, 3),
   (4, 'Inclusão Já','44455566000177','2018-11-05',NULL, false, false, 4, 4, 4);
 
 -- 6) Postagens 
