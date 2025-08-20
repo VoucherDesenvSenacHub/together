@@ -14,10 +14,10 @@ INSERT INTO imagens (nome, nome_original, caminho) VALUES
 
 -- 3) Usuários 
 INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES
-('João Silva', '11122233344', '1990-05-10', '(67)99999-0001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'voluntario'),
-('Maria Souza', '22233344455', '1988-09-22', '(67)99999-0002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'ong'),
-('Carlos Pereira', '33344455566', '1985-12-15', '(11)98888-0003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'adm'),
-('Ana Costa', '44455566677', '1992-03-28', '(31)97777-0004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'ong');
+('João Silva', '11122233344', '1990-05-10', '(67)99999-0001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
+('Maria Souza', '22233344455', '1988-09-22', '(67)99999-0002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Ong'),
+('Carlos Pereira', '33344455566', '1985-12-15', '(11)98888-0003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Administrador'),
+('Ana Costa', '44455566677', '1992-03-28', '(31)97777-0004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'Ong');
 
 
 -- 4) Categorias de ONGs
@@ -29,9 +29,9 @@ INSERT INTO categorias_ongs (nome) VALUES
 
 -- 5) ONGs
 INSERT INTO ongs (id_usuario, razao_social, cnpj, dt_fundacao, conselho_fiscal, status_validacao, ativo, id_endereco, id_categoria, id_imagem_de_perfil) VALUES
-  (2, 'ONG Verde', '12345678000100','2010-05-20','Fulano; Beltrano', true, true, 1, 1, 1),
-  (4, 'Educar Todos','98765432000199','2015-09-10','Cicrano', false, true, 2, 2, 2),
-  (2, 'Saúde para Todos','11122233000155','2012-03-15','Dana; Ely', true, false, 3, 3, 3),
+  (1, 'ONG Verde', '12345678000100','2010-05-20','Fulano; Beltrano', true, true, 1, 1, 1),
+  (2, 'Educar Todos','98765432000199','2015-09-10','Cicrano', false, true, 2, 2, 2),
+  (3, 'Saúde para Todos','11122233000155','2012-03-15','Dana; Ely', true, false, 3, 3, 3),
   (4, 'Inclusão Já','44455566000177','2018-11-05',NULL, false, false, 4, 4, 4);
 
 -- 6) Postagens 
