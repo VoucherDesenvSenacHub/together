@@ -89,7 +89,8 @@ class UsuarioModel
 
 
     public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil) {
-        $verificaCpf = $this->conn->prepare("SELECT id FROM usuarios WHERE cpf = :cpf AND id != :id");
+        try {
+            $verificaCpf = $this->conn->prepare("SELECT id FROM usuarios WHERE cpf = :cpf AND id != :id");
         $verificaCpf->bindParam(':cpf', $cpf);
         $verificaCpf->bindParam(':id', $id, PDO::PARAM_INT);
         $verificaCpf->execute();
@@ -117,12 +118,20 @@ class UsuarioModel
                 WHERE id = :id";
     
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':telefone', $telefone);
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':cpf', $cpf);
         $stmt->bindParam(':tipo_perfil', $tipo_perfil);
         $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
-        return $stmt->execute();
+        $stmt->execute();
+
+        return json_encode(["message" => "teste"]);
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
     }
     
     public function buscarUsuarioId($idUsuario) {
@@ -138,9 +147,9 @@ class UsuarioModel
     }
 
     public function inserirImagem($caminhoNoBanco, $nomeFinal, $nomeOriginal) {
-        $sql = "INSERT
-                INTO imagens (nome_enviado, nome_original, caminho)
+        $sql = "INSERT INTO imagens (nome_enviado, nome_original, caminho)
                 VALUES (:nome_enviado, :nome_original, :caminho)";
+        
         $stmt = $this->conn->prepare($sql);
         $executou = $stmt->execute([
             ':nome_enviado' => $nomeFinal,
@@ -148,9 +157,11 @@ class UsuarioModel
             ':caminho' => $caminhoNoBanco
         ]);
     
-        $id_imagem_de_perfil = $this->conn->lastInsertId();
-    
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($executou) {
+            return $this->conn->lastInsertId();
+        } else {
+            return false; 
+        }
     }
 }
 

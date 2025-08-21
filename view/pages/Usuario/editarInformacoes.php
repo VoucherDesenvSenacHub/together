@@ -3,17 +3,16 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../../model/UsuarioModel.php"; ?>    
 <?php
+$model = new UsuarioModel();
+$usuarioId = $_SESSION['id'];
+// var_dump($_SESSION['id']);
+// var_dump($usuarioId);
+$usuario = $model->buscarUsuarioId($usuarioId);
 
-require_once "../../../model/UsuarioModel.php";
-
-$id = 9;
-$model = new UsuarioModel(); 
-$usuario = $model->buscarUsuarioId($id);
 
 ?>
-
-
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -25,7 +24,8 @@ $usuario = $model->buscarUsuarioId($id);
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
                 <form enctype="multipart/form-data" action="" method="POST" class="postagem-geral-form editar-informacoes-form">
-                    <div class="container-perfil-voluntario">
+                <div class="container-perfil-voluntario">
+                    <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
                         <div class="div-logo">
                             <?php require_once "./../../components/upload.php" ?>
                         </div>

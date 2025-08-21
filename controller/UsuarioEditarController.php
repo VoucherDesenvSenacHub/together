@@ -1,10 +1,16 @@
 <?php
 include_once "../model/UsuarioModel.php";
 
- 
 $sucesso = false;
+$imagem = false;
+$model = new UsuarioModel();
+$models = new UsuarioModel();
+
+var_dump($_POST['id']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $id = $_POST['id'];
     $nome = trim($_POST['nome'] ?? ''); 
     $telefone = trim($_POST['telefone'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -70,19 +76,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
         // nome temporario da imagem salvo no local temporario do xamp
         $imagemTmp = $_FILES['imagem']['tmp_name'];
-        var_dump($imagemTmp);
-        // pega o nome original que no caso é o nome que o usuario entrega da foto
+  
+        // pega o nome original que no caso é o nome que o usuario entrega da foto\
         $nomeOriginal = $_FILES['imagem']['name'];
-        var_dump($nomeOriginal);
+    
         // extensao padrao para todas as imagens 'jpg'
         $extensao = pathinfo($nomeOriginal, PATHINFO_EXTENSION);
-        var_dump($extensao);
+       
         // nome unico que é criado para cada foto
         $nomeFinal = uniqid('img_', true) . '.' . $extensao;
-        var_dump($nomeFinal);
+
         // o diretório aonde está sendo salvo as imagens enviadas dos usuários;
         $diretorioDestino = __DIR__ . '/upload/';
-        var_dump($diretorioDestino);
+      
 
         // caso o diretório não exista ele cria
         if (!is_dir($diretorioDestino)) {
@@ -91,35 +97,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // no fim de tudo ele entrega o caminho completo da imagem
         $caminhoFinal = $diretorioDestino . $nomeFinal;
-        var_dump($caminhoFinal);
+   
 
 
 
         if (move_uploaded_file($imagemTmp, $caminhoFinal)) {
             $caminhoNoBanco = 'upload/' . $nomeFinal;
 
-            $imagem = $model->inserirImagem($caminhoNoBanco,$nomeFinal,$nomeOriginal); 
-    
-            if (!is_uploaded_file($imagemTmp)) {
-                echo "Arquivo temporário inválido.";
-                exit;
-            }
-
         }
     
         // Tudo ok, editar usuário
 
-        
-        $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil);
+        $imagem = $model->inserirImagem($caminhoNoBanco,$nomeFinal,$nomeOriginal); 
+        $sucesso = $models->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $imagem);
 
+        
         if ($sucesso) {
             $_SESSION['mensagem'] = "Usuário editado com sucesso!";
         } else {
             $_SESSION['mensagem'] = "Erro ao editar usuário.";
         }
 
-        header("Location: editarInformacoes.php");
-        exit;
+        // header("Location: ../../../together/view/pages/Usuario/editarInformacoes.php");
+        // exit;
     }
 }
 
