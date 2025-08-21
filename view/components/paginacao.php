@@ -2,32 +2,44 @@
 function criarPaginacao(int $quantidadeDePaginas)
 {
     $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+    $paginaAtual = max(1, min($paginaAtual, $quantidadeDePaginas));
     ?>
     <nav aria-label="pagination" class="nav-pagination">
         <ul class="pagination">
+
+            <!-- Primeira página -->
             <li class="<?= $paginaAtual <= 1 ? 'disabled' : '' ?>">
-                <a href="?pagina=<?= max(1, $paginaAtual - 1) ?>">
+                <a href="?pagina=1">
                     <span aria-hidden="true">&laquo;</span>
-                    <span class="visuallyhidden">Página anterior</span>
                 </a>
             </li>
-            <?php for ($i = $paginaAtual - 2; $i <= $quantidadeDePaginas; $i++): ?>
 
-                    <?php if ($i <= 0) {
+            <!-- Página anterior -->
+            <li class="<?= $paginaAtual <= 1 ? 'disabled' : '' ?>">
+                <a href="?pagina=<?= max(1, $paginaAtual - 1) ?>">
+                    <span aria-hidden="true">&lsaquo;</span>
+                </a>
+            </li>
 
-                    } else if ($i > $paginaAtual + 2) {
-
-                    } else { ?>
-                        <li>
-                            <a href="?pagina=<?= $i ?>" <?= $i === $paginaAtual ? 'aria-current="page" class="active"' : '' ?>>
-                                <span class="visuallyhidden">Página </span><?= $i ?>
-                            </a>
-                        </li>
-                <?php } ?>
+            <!-- Números -->
+            <?php for ($i = max(1, $paginaAtual - 2); $i <= min($quantidadeDePaginas, $paginaAtual + 2); $i++): ?>
+                <li>
+                    <a href="?pagina=<?= $i ?>" <?= $i === $paginaAtual ? 'aria-current="page" class="active"' : '' ?>>
+                        <?= $i ?>
+                    </a>
+                </li>
             <?php endfor; ?>
+
+            <!-- Próxima página -->
             <li class="<?= $paginaAtual >= $quantidadeDePaginas ? 'disabled' : '' ?>">
                 <a href="?pagina=<?= min($quantidadeDePaginas, $paginaAtual + 1) ?>">
-                    <span class="visuallyhidden">Próxima página</span>
+                    <span aria-hidden="true">&rsaquo;</span>
+                </a>
+            </li>
+
+            <!-- Última página -->
+            <li class="<?= $paginaAtual >= $quantidadeDePaginas ? 'disabled' : '' ?>">
+                <a href="?pagina=<?= $quantidadeDePaginas ?>">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
