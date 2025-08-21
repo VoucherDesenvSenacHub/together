@@ -3,6 +3,12 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
 <?php require_once "./../components/select.php" ?>
+<?php require_once "./../../model/CategoriaOngModel.php";
+?>
+<?php
+$categoriaModel = new CategoriaOngModel();
+$categorias = $categoriaModel->getAll();
+?>
 
 <body class="body-login">
 
@@ -21,16 +27,16 @@
             <div class="box-login">
 
                 <form class="login" method="POST" action="">
-                    <h1 class="titulo-login">Cadastrar ONG</h1>
+                    <h1 class="titulo-login">Criar uma ONG</h1>
                     <div class="step active">
                         <div class="container-input-login">
                             <div>
-                                <?= label('razao_social', 'Razão Social') ?>
-                                <?= inputRequired('text', 'razao_social', 'razao_social') ?>
+                                <?= label('cnpj', 'CNPJ') ?>
+                                <?= inputRequired('text', 'cnpj', 'cnpj') ?>
                             </div>
                             <div>
                                 <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('email', 'email', 'email') ?>
+                                <?= inputRequired('text', 'email', 'email') ?>
                             </div>
                             <div>
                                 <?= label('telefone', 'Telefone') ?>
@@ -39,37 +45,23 @@
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('next', 'Próximo', 'btn1.1', '', 'button') ?>
                             </div>
-
+                            <div class="criar-conta-area-login">
+                                <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
+                            </div>
                         </div>
                     </div>
                     <div class="step">
                         <div class="container-input-login">
                             <div>
-                                <?= label('cnpj', 'CNPJ') ?>
-                                <?= inputRequired('text', 'cnpj', 'cnpj') ?>
+                                <?= label('razao_social', 'Razão Social') ?>
+                                <?= inputRequired('text', 'razao_social', 'razao_social') ?>
                             </div>
+
                             <div>
-                                <?= label('ods', 'Tipo da Ong') ?>
-                                <?= selectRequired('ods', 'ods', [
-                                    "Erradicação da pobreza",
-                                    "Fome zero e agricultura sustentável",
-                                    "Saúde e bem-estar",
-                                    "Educação de qualidade",
-                                    "Igualdade de gênero",
-                                    "Água potável e saneamento",
-                                    "Energia limpa e acessível",
-                                    "Trabalho decente e crescimento econômico",
-                                    "Indústria, inovação e infraestrutura",
-                                    "Redução das desigualdades",
-                                    "Cidades e comunidades sustentáveis",
-                                    "Consumo e produção responsáveis",
-                                    "Ação contra a mudança global do clima",
-                                    "Vida na água",
-                                    "Vida terrestre",
-                                    "Paz, justiça e instituições eficazes",
-                                    "Parcerias e meios de implementação"
-                                ]) ?>
+                                <?= label('id_categoria', 'Categoria da ONG') ?>
+                                <?= selectRequired('id_categoria', 'id_categoria', $categorias) ?>
                             </div>
+
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn2.1', '', 'button') ?>
                                 <?= botao('next', 'Próximo', 'btn2.2', '', 'button') ?>
@@ -98,20 +90,22 @@
                                 <?= inputRequired('text', 'bairro', 'bairro') ?>
                             </div>
                             <div class="cadastrar-ong-row-endereco">
-                            <div>
-                                    <?= renderSelectEstado(''); ?>
+                                <div>
+                                    <?= label('estado', 'Estado (UF)') ?>
+                                    <?= inputRequired('text', 'estado', 'estado') ?>
                                 </div>
                                 <div>
-                                    <?= renderSelectCidade('', ''); ?>
+                                    <?= label('cidade', 'Cidade') ?>
+                                    <?= inputRequired('text', 'cidade', 'cidade') ?>
                                 </div>
                             </div>
                             <div>
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento') ?>
+                                <?= inputRequired('text', 'complemento', 'complemento') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn4.1', '', 'button') ?>
-                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/index.php') ?>
+                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/view/pages/login.php') ?>
                             </div>
                         </div>
                     </div>
@@ -119,7 +113,6 @@
             </div>
         </div>
     </div>
-    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
 </body>
 
 </html>
