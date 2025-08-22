@@ -6,27 +6,18 @@ require "./../view/components/head.php";
     <?php require_once "./../view/components/acoes.php"; ?>
     <?php require_once "./../view/components/label.php"; ?>
     <?php require_once "./../view/components/input.php"; ?>
-    <?php require "./VisualizarUsuarioModel.php"; ?>
     <?php require_once './../view/components/paginacao.php'; ?>
+    <?php require_once './../view/components/alert.php'; ?>
+    <?php require_once './../controller/VisualizarUsuarioController.php'; ?>
 
     <?php
-    // $idUsuario = (int) $_SESSION['id'];
-    $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+    $erro = $_SESSION['erro'] ?? '';
 
-    $VisualizarUsuario = new UsuarioModel();
+    if (isset($_SESSION['erro'], $erro)) {
+        showPopup($_SESSION['erro'], $erro);
+        unset($_SESSION['erro'], $erro);
+    }
 
-    // quantidade total de registros
-    // $totalDoacoes = count($doacaoModel->BuscarDoacoesPorID($idUsuario));
-    // $quantidadeDePaginas = ceil($totalDoacoes / 15);
-    
-    // corrige número da página
-    // if ($quantidadeDePaginas > 0) {
-    //     $pagina = max(1, min($pagina, $quantidadeDePaginas));
-    // } else {
-    //     $pagina = 1;
-    // }
-    
-    $visualizar = $VisualizarUsuario->DataNomeUsuario();
     ?>
 
     <body>
@@ -69,7 +60,7 @@ require "./../view/components/head.php";
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($visualizar as $visualizacao) { ?>
+                                <?php foreach ($VisualizarUsuarios as $visualizacao) { ?>
                                     <tr>
                                     <td><?= date("d/m/Y", strtotime($visualizacao['dt_nascimento'])) ?></td>
                                         <td><?= $visualizacao['nome'] ?></td>
