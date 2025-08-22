@@ -2,17 +2,17 @@
 
 
     class Database {
-        private $host = "10.78.0.215";
+        private $host = "localhost";
         private $port = "3306";
         private $dbName = "together";
         private $user = "root";
-        private $password = "12345678";
+        private $password = "";
 
 
     public function conectar()
     {
         $url = "mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
-        $conn = new PDO($url, $this->user, $this->password);
+        $conn = new PDO($url, $this->user);
 
         return $conn;
     }
