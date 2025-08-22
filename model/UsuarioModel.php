@@ -54,7 +54,7 @@ class UsuarioModel
             $stmtUsuario->bindParam(':id_endereco', $enderecoId);
 
             $stmtUsuario->execute();
-
+            
             $this->conn->commit();
             return true;
             
@@ -127,8 +127,6 @@ class UsuarioModel
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     
         $stmt->execute();
-
-        return json_encode(["message" => "teste"]);
         } catch (\Throwable $th) {
             echo $th->getMessage();
         }

@@ -7,13 +7,12 @@
 <?php
 $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
+$usuario = $model->buscarUsuarioId($usuarioId);
 // var_dump($_SESSION['id']);
 // var_dump($usuarioId);
-$usuario = $model->buscarUsuarioId($usuarioId);
 
 
 ?>
-
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
@@ -26,6 +25,7 @@ $usuario = $model->buscarUsuarioId($usuarioId);
                 <form enctype="multipart/form-data" action="" method="POST" class="postagem-geral-form editar-informacoes-form">
                 <div class="container-perfil-voluntario">
                     <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
+                    <input type="text" name="id" value="<?= htmlspecialchars($imagemAtualId); var_dump($imagemAtualId);?>" hidden>
                         <div class="div-logo">
                             <?php require_once "./../../components/upload.php" ?>
                         </div>
