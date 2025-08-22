@@ -35,36 +35,22 @@ $categorias = $categoriaModel->getAll();
                                 <?= inputRequired('text', 'cnpj', 'cnpj') ?>
                             </div>
                             <div>
-                                <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('text', 'email', 'email') ?>
+                                <?= label('razao_social', 'Razão Social') ?>
+                                <?= inputRequired('text', 'razao_social', 'razao_social') ?>
                             </div>
                             <div>
                                 <?= label('telefone', 'Telefone') ?>
                                 <?= inputRequired('text', 'telefone', 'telefone') ?>
+                            </div>
+                            <div>
+                                <?= label('id_categoria', 'Categoria da ONG') ?>
+                                <?= selectRequired('id_categoria', 'id_categoria', $categorias) ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('next', 'Próximo', 'btn1.1', '', 'button') ?>
                             </div>
                             <div class="criar-conta-area-login">
                                 <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('razao_social', 'Razão Social') ?>
-                                <?= inputRequired('text', 'razao_social', 'razao_social') ?>
-                            </div>
-
-                            <div>
-                                <?= label('id_categoria', 'Categoria da ONG') ?>
-                                <?= selectRequired('id_categoria', 'id_categoria', $categorias) ?>
-                            </div>
-
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn2.1', '', 'button') ?>
-                                <?= botao('next', 'Próximo', 'btn2.2', '', 'button') ?>
                             </div>
                         </div>
                     </div>

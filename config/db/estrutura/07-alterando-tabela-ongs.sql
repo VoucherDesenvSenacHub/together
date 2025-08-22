@@ -45,6 +45,7 @@ CREATE TABLE ongs (
     id_usuario INT UNIQUE,
     razao_social VARCHAR(255) UNIQUE NOT NULL,
     cnpj VARCHAR(14) UNIQUE NOT NULL,
+    telefone varchar(18) not null,
     dt_criacao DATE NOT NULL DEFAULT (CURDATE()),
     status_validacao ENUM('pendente', 'aprovado', 'rejeitado') DEFAULT 'pendente',
     ativo BOOLEAN DEFAULT TRUE,

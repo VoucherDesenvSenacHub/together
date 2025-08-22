@@ -113,15 +113,16 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function cnpjExiste($cnpj, $idOng = null)
+    public function existeCnpjRazaoSocialOng($cnpj, $razao_social, $idOng = null)
     {
-        $sql = "SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj";
+        $sql = "SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj AND razao_social = :razao_social";
         if ($idOng) {
             $sql .= " AND id <> :id";
         }
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':cnpj', $cnpj);
+        $stmt->bindParam(':razao_social', $razao_social);
         if ($idOng) {
             $stmt->bindParam(':id', $idOng, PDO::PARAM_INT);
         }

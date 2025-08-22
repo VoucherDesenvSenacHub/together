@@ -20,7 +20,8 @@ class OngController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cnpj'])) {
             $cnpj = trim($_POST['cnpj']);
-            $existe = $this->ongModel->cnpjExiste($cnpj);
+            $razao_social = trim($_POST['razao_social']);
+            $existe = $this->ongModel->existeCnpjRazaoSocialOng($cnpj, $razao_social);
 
             header('Content-Type: application/json');
             echo json_encode(['existe' => $existe]);
