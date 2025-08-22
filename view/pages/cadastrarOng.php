@@ -113,6 +113,7 @@ $categorias = $categoriaModel->getAll();
             </div>
         </div>
     </div>
+    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
 </body>
 
 </html>
