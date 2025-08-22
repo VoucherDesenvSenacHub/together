@@ -47,7 +47,7 @@ $usuario = $model->buscarUsuarioId($usuarioId);
                                         </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
-                                        <?= inputFilter('date', 'data_nascimento', 'data_nascimento', $usuario['dt_nascimento']) ?>
+                                        <?= inputFilter('date', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
                                     </div>
                                 </div>
                             </div>

@@ -91,47 +91,48 @@ class UsuarioModel
     public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil) {
         try {
             $verificaCpf = $this->conn->prepare("SELECT id FROM usuarios WHERE cpf = :cpf AND id != :id");
-        $verificaCpf->bindParam(':cpf', $cpf);
-        $verificaCpf->bindParam(':id', $id, PDO::PARAM_INT);
-        $verificaCpf->execute();
-    
-        if ($verificaCpf->fetch()) {
-            return 'cpf_duplicado';
-        }
+            $verificaCpf->bindParam(':cpf', $cpf);
+            $verificaCpf->bindParam(':id', $id, PDO::PARAM_INT);
+            $verificaCpf->execute();
+        
+            if ($verificaCpf->fetch()) {
+                return 'cpf_duplicado';
+            }
 
-        $verificaTelefone = $this->conn->prepare("SELECT id FROM usuarios WHERE telefone = :telefone AND id != :id");
-        $verificaTelefone->bindParam(':telefone', $telefone);
-        $verificaTelefone->bindParam(':id', $id, PDO::PARAM_INT);
-        $verificaTelefone->execute();
+            $verificaTelefone = $this->conn->prepare("SELECT id FROM usuarios WHERE telefone = :telefone AND id != :id");
+            $verificaTelefone->bindParam(':telefone', $telefone);
+            $verificaTelefone->bindParam(':id', $id, PDO::PARAM_INT);
+            $verificaTelefone->execute();
 
-        if ($verificaTelefone->fetch()) {
-            return 'telfone_duplicado';
-        }
+            if ($verificaTelefone->fetch()) {
+                return 'telfone_duplicado';
+            }
 
-        $sql = "UPDATE usuarios 
-                SET nome = :nome, 
-                    telefone = :telefone, 
-                    email = :email, 
-                    cpf = :cpf, 
-                    tipo_perfil = :tipo_perfil,
-                    ";     
-        if (!empty($id_imagem_de_perfil)){
-            $sql .= " id_imagem_de_perfil = :id_imagem_de_perfil ";
-        }
-        $sql .= " WHERE id = :id";
-    
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':telefone', $telefone);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':tipo_perfil', $tipo_perfil);
-        if(!empty($id_imagem_de_perfil)){
-            $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
-        }
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-    
-        $stmt->execute();
+            $sql = "UPDATE usuarios 
+                    SET nome = :nome, 
+                        telefone = :telefone, 
+                        email = :email, 
+                        cpf = :cpf, 
+                        tipo_perfil = :tipo_perfil
+                        ";     
+            if (!empty($id_imagem_de_perfil)){
+                $sql .= " id_imagem_de_perfil = :id_imagem_de_perfil ";
+            }
+
+            $sql .= " WHERE id = :id";
+        
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':telefone', $telefone);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':cpf', $cpf);
+            $stmt->bindParam(':tipo_perfil', $tipo_perfil);
+            if(!empty($id_imagem_de_perfil)){
+                $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
+            }
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        
+            $stmt->execute();
         } catch (\Throwable $th) {
             echo $th->getMessage();
         }
