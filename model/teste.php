@@ -71,7 +71,7 @@ require "./../view/components/head.php";
                             <tbody>
                                 <?php foreach ($visualizar as $visualizacao) { ?>
                                     <tr>
-                                        <td><?= $visualizacao['dt_nascimento'] ?></td>
+                                    <td><?= date("d/m/Y", strtotime($visualizacao['dt_nascimento'])) ?></td>
                                         <td><?= $visualizacao['nome'] ?></td>
                                         <td>
                                             <a href="assests/images/usuario/historicoDoacoes.jpg" download
