@@ -16,7 +16,7 @@
                 </div>
             </form>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <div class="filtro">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -47,11 +47,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
+                            <?php $lista = ["Médicos Sem Fronteiras", "Greenpeace", "Amnesty International", "WWF", "Aldeias Infantis SOS", "Cruz Vermelha", "Instituto Ayrton Senna", "Projeto Tamar", "Fundação Abrinq", "GRAACC"] ?>
                             <?php for ($i = 0; $i < 10; $i++): ?>
                                 <tr>
                                     <td><?php echo $i + 10 ?>/03/2025</td>
-                                    <td><?php echo $lista[$i]?></td>
+                                    <td><?php echo $lista[$i] ?></td>
                                     <td>
                                         <a href="/together/view/pages/visaoSobreaOng.php">
                                             <?= renderAcao('visualizar') ?>

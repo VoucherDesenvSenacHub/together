@@ -1,4 +1,3 @@
-
 <?php
 
 require_once __DIR__ . '/../config/database.php';
@@ -6,7 +5,7 @@ require_once __DIR__ . '/../config/database.php';
 class UsuarioModel
 {
     private $conn;
-    protected $tabela = "ongs";
+    protected $tabela = "usuarios";
 
     public function __construct()
     {
@@ -14,21 +13,19 @@ class UsuarioModel
         $this->conn = $database->conectar();
     }
 
-    public function DataNomeUsuario(
-        $razao_social,
-        $dt_fundacao
-    ){
-        try{
-
-            $query = "SELECT * FROM $this->tabela razao_social, dt_fundacao VALUES(razao_social, dt_fundacao)" ;
+    public function DataNomeUsuario()
+    {
+        try {
+            $query = "SELECT dt_nascimento, nome FROM $this->tabela";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':razao_social', $razao_social["razao_social"]);
-            $stmt->bindParam(':dt_fundacao', $dt_fundacao["dt_fundacao"]);
             $stmt->execute();
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            
+        } catch (Exception $e) {
+
+            echo "Erro na consulta DataNomeUsuario: " . $e->getMessage();
+            return [];
         }
     }
 }
