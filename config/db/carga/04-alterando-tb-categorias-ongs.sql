@@ -42,8 +42,11 @@ INSERT INTO categorias_ongs (nome) VALUES
 
 
 -- 5) ONGs
-INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone) 
-VALUES (1, 'Associação Solidária', '98765432000155', '(21) 98888-7777');
+INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria) VALUES 
+	(1, 'ONG Verde', '98765432000155', '67988887777', 1, 2),
+	(2, 'Educar Todos', '98765432000164', '67988887745', 2, 5),
+	(3, 'Saúde para Todos', '98765432000173', '67988887799', 3, 6),
+	(4, 'Associação Solidária', '98765432000182', '67988887712', 4, 7);
 
 -- 6) Postagens 
 INSERT INTO postagens (titulo, dt_postagem, descricao, id_imagem, id_ong) VALUES
