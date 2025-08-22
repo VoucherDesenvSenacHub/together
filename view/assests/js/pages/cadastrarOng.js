@@ -34,7 +34,7 @@ btnNextStep1.addEventListener('click', async () => {
     const cnpj = document.querySelector('#cnpj').value.trim();
 
     try {
-        const res = await fetch('/together/controller/OngController.php?action=verificarCnpj', {
+        const res = await fetch('/together/controller/OngController.php?action=verificarCnpjRazaoSocial', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams({ cnpj })

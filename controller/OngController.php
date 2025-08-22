@@ -13,7 +13,7 @@ class OngController
         $this->ongModel = new OngModel();
     }
 
-    public function verificarCnpj()
+    public function verificarCnpjRazaoSocial()
     {
         if (ob_get_level()) ob_end_clean();
         error_reporting(E_ERROR | E_PARSE);
@@ -38,5 +38,5 @@ class OngController
 // Roteamento AJAX
 $controller = new OngController();
 if (isset($_GET['action']) && $_GET['action'] === 'verificarCnpj') {
-    $controller->verificarCnpj();
+    $controller->verificarCnpjRazaoSocial();
 }

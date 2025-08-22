@@ -91,7 +91,7 @@ $categorias = $categoriaModel->getAll();
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('prev', 'Voltar', 'btn4.1', '', 'button') ?>
-                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/view/pages/login.php') ?>
+                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/controller/O') ?>
                             </div>
                         </div>
                     </div>
