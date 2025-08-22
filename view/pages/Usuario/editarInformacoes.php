@@ -25,7 +25,6 @@ $usuario = $model->buscarUsuarioId($usuarioId);
                 <form enctype="multipart/form-data" action="" method="POST" class="postagem-geral-form editar-informacoes-form">
                 <div class="container-perfil-voluntario">
                     <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
-                    <input type="text" name="id" value="<?= htmlspecialchars($imagemAtualId); var_dump($imagemAtualId);?>" hidden>
                         <div class="div-logo">
                             <?php require_once "./../../components/upload.php" ?>
                         </div>
