@@ -63,7 +63,13 @@
             "github" => "https://github.com/All4nFernandes",
             "linkedin" => "https://www.linkedin.com/in/allan-fernandes-665396230",
             "imagem" => "../assests/images/Copyright/togetherteam/fernandes.jpg"
-        ],     
+        ], 
+        [
+            "nome" => "Murilo Dias",
+            "github" => "https://github.com/Murilo460",
+            "linkedin" => "https://www.linkedin.com/in/murilo-rocha-4953a3333/",
+            "imagem" => "../assests/images/Copyright/togetherteam/dias.jpg"
+        ],    
     ]
 
 ?>
