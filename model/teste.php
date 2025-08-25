@@ -60,10 +60,10 @@ require "./../view/components/head.php";
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($VisualizarUsuarios as $visualizacao) { ?>
+                                <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
                                     <tr>
-                                    <td><?= date("d/m/Y", strtotime($visualizacao['dt_nascimento'])) ?></td>
-                                        <td><?= $visualizacao['nome'] ?></td>
+                                        <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                        <td><?= $visualizacoes['nome'] ?></td>
                                         <td>
                                             <a href="assests/images/usuario/historicoDoacoes.jpg" download
                                                 style="color: #797777;">
@@ -73,7 +73,7 @@ require "./../view/components/head.php";
                                     </tr>
                                 <?php } ?>
 
-                                <?php if (empty($visualizacao)) { ?>
+                                <?php if (empty($visualizacoes)) { ?>
                                     <tr>
                                         <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
                                     </tr>
