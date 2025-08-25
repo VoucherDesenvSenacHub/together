@@ -116,7 +116,7 @@ class UsuarioModel
                         tipo_perfil = :tipo_perfil
                         ";     
             if (!empty($id_imagem_de_perfil)){
-                $sql .= " id_imagem_de_perfil = :id_imagem_de_perfil ";
+                $sql .= ", id_imagem_de_perfil = :id_imagem_de_perfil ";
             }
 
             $sql .= " WHERE id = :id";

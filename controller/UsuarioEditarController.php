@@ -47,57 +47,61 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // validar data
-    if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data_nascimento)) {
-        $_SESSION['mensagem'] = "Data de nascimento deve estar no formato AAAA-MM-DD.";
-    } else {
-        $data_parts = explode('-', $data_nascimento);
-        if (!checkdate((int)$data_parts[1], (int)$data_parts[2], (int)$data_parts[0])) {
-            $_SESSION['mensagem'] = "Data de nascimento inválida.";
-        }
-    }
-
-
-    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK){
-        // nome temporario da imagem salvo no local temporario do xamp
-        $imagemTmp = $_FILES['imagem']['tmp_name'];
-  
-        // pega o nome original que no caso é o nome que o usuario entrega da foto\
-        $nomeOriginal = $_FILES['imagem']['name'];
+    // if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data_nascimento)) {
+    //     $_SESSION['mensagem'] = "Data de nascimento deve estar no formato AAAA-MM-DD.";
+    // } else {
+    //     $data_parts = explode('-', $data_nascimento);
+    //     if (!checkdate((int)$data_parts[1], (int)$data_parts[2], (int)$data_parts[0])) {
+    //         $_SESSION['mensagem'] = "Data de nascimento inválida.";
+    //     }
+    // }
     
-        // extensao padrao para todas as imagens 'jpg'
-        $extensao = pathinfo($nomeOriginal, PATHINFO_EXTENSION);
-       
-        // nome unico que é criado para cada foto
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === UPLOAD_ERR_OK) {
+        $imagemTmp = $_FILES['imagem']['tmp_name'];
+        $nomeOriginal = $_FILES['imagem']['name'];
+        $tamanho = $_FILES['imagem']['size'];
+        $tipoImagem = $_FILES['imagem']['type'];
+    
+        $extensao = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
         $nomeFinal = uniqid('img_', true) . '.' . $extensao;
-
-        // o diretório aonde está sendo salvo as imagens enviadas dos usuários;
+        $tamanhoMaximo = 2 * 1024 * 1024;
         $diretorioDestino = __DIR__ . '/upload/';
-      
-
-        // caso o diretório não exista ele cria
+    
+        // Verifica se diretório existe
         if (!is_dir($diretorioDestino)) {
             mkdir($diretorioDestino, 0755, true);
         }
-
-        // no fim de tudo ele entrega o caminho completo da imagem
-        $caminhoFinal = $diretorioDestino . $nomeFinal;
-   
-
-
-
-        if (move_uploaded_file($imagemTmp, $caminhoFinal)) {
-            $caminhoNoBanco = 'upload/' . $nomeFinal;
-
+    
+        // Verifica extensões permitidas
+        $extensoesPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        $typesPermitidos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    
+        // Verifica se a extensão é permitida
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            die('Extensão de imagem não permitida.');
         }
     
-        // Tudo ok, editar usuário
-
-        $imagem = $model->inserirImagem($caminhoNoBanco,$nomeFinal,$nomeOriginal); 
+        // Verifica tamanho
+        if($tamanho > $tamanhoMaximo){
+            die('Arquivo muito grande.');
+        }
+        
+    
+        $caminhoFinal = $diretorioDestino . $nomeFinal;
+    
+        if (move_uploaded_file($imagemTmp, $caminhoFinal)) {
+            $caminhoNoBanco = 'upload/' . $nomeFinal;
+    
+            // Insere no banco usando seu model
+            $imagem = $model->inserirImagem($caminhoNoBanco, $nomeFinal, $nomeOriginal);
+        }
+    
     }
+
     $sucesso = $model->editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $imagem);
 }
-// header("Location: ../../../together/view/pages/Usuario/editarInformacoes.php");
-// exit;
+header("Location: ../../../together/view/pages/Usuario/editarInformacoes.php");
+exit;
 ?>
 
 <!-- HTML para exibir a mensagem -->

@@ -8,9 +8,6 @@
 $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
 $usuario = $model->buscarUsuarioId($usuarioId);
-// var_dump($_SESSION['id']);
-// var_dump($usuarioId);
-
 
 ?>
 <body>
