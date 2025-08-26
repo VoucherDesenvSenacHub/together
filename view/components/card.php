@@ -41,7 +41,6 @@
   }
 
   function cardCopyright($imagem, $nome, $github = '', $linkedin = '') {
-    // Verificações
     $semGithub = empty($github) || $github === "?=usuarioNãoPossuiGithub";
     $semLinkedin = empty($linkedin) || $linkedin === "?=usuarioNãoPossuiLinkedin";
 
