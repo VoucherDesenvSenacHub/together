@@ -66,7 +66,7 @@ $categorias = $categoriaModel->getAll();
                                     <?= selectCategoriasOng('id_categoria', 'id_categoria', $categorias) ?>
                                 </div>
                                 <div class="botao-login group-btn-cadastro-ong">
-                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '') ?>
+                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '/together/controller/OngController.php') ?>
                                 </div>
                             </div>
                         </div>
