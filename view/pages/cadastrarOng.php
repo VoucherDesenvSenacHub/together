@@ -93,6 +93,7 @@ $categorias = $categoriaModel->getAll();
                                     <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
                                 </div>
                                 <div>
+                                    <!-- NAO ESTA FUNCIONANDO -->
                                     <?= label('cidade', 'Cidade') ?>
                                     <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
                                 </div>

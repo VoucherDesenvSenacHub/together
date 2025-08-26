@@ -11,13 +11,12 @@ class OngModel
     }
 
     // olhar se precisa adicionar email
-    public function registrarOng($id_usuario, $razao_social, $cnpj, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado, $id_categoria)
+    public function registrarOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
     {
         try {
             $this->conn->beginTransaction();
 
-            $sqlEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado)
-                            VALUES (:logradouro, :numero, :cep, :complemento, :bairro, :cidade, :estado)";
+            $sqlEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES (:logradouro, :numero, :cep, :complemento, :bairro, :cidade, :estado)";
             $stmt = $this->conn->prepare($sqlEndereco);
             $stmt->execute([
                 ':logradouro' => $logradouro,
@@ -30,13 +29,13 @@ class OngModel
             ]);
             $id_endereco = $this->conn->lastInsertId();
 
-            $sqlOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, dt_criacao, status_validacao, ativo, id_endereco, id_categoria)
-                        VALUES (:id_usuario, :razao_social, :cnpj, NOW(), 'pendente', 1, :id_endereco, :id_categoria)";
+            $sqlOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria, id_imagem_de_perfil) VALUES (:id_usuario, :razao_social, :cnpj,:telefone, :id_endereco, :id_categoria)";
             $stmt = $this->conn->prepare($sqlOng);
             $stmt->execute([
                 ':id_usuario' => $id_usuario,
                 ':razao_social' => $razao_social,
                 ':cnpj' => $cnpj,
+                ':telefone' => $telefone,
                 ':id_endereco' => $id_endereco,
                 ':id_categoria' => $id_categoria
             ]);
