@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: /together/view/pages/cadastrarOng.php");
         } else {
             $_SESSION['step'] = $_SESSION['step'] + 1;
-            registrar();
+            registrarDados();
             header("Location: /together/view/pages/cadastrarOng.php");
         }
     } elseif ($acao === "prev" && $_SESSION['step'] > 1) {
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION['message'] = 'Os dados informados já estão cadastrados.';
             header("Location: /together/view/pages/cadastrarOng.php");
         } else {
-            registrar();
+            registrarEndereco();
             unset($_SESSION['step']);
             header("Location: /together/index.php");
         }
@@ -38,11 +38,11 @@ function verificarDadosOng()
     // talvez verificar o numero na tb usuarios e o mesmo com email
 
     $ongModel = new OngModel();
-    $cnpjLimpo = preg_replace('/\D/', '', $_POST['cnpj']);
-    $telefoneLimpo = preg_replace('/\D/', '', $_POST['telefone']);
-    if (!empty($cnpjLimpo)) {
+    $_POST['cnpj'] = preg_replace('/\D/', '', $_POST['cnpj']);
+    $_POST['telefone'] = preg_replace('/\D/', '', $_POST['telefone']);
+    if (!empty($_POST['cnpj'] && $_POST['telefone'])) {
         // echo ($cnpjLimpo);
-        $existe = $ongModel->verificaExisteDadosOng($cnpjLimpo, $_POST['razao_social'], $telefoneLimpo, $_POST['email']);
+        $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['razao_social'], $_POST['telefone'], $_POST['email']);
         // var_dump($existe);
         return $existe;
     }
@@ -50,73 +50,81 @@ function verificarDadosOng()
 function verificarCepOng()
 {
     $ongModel = new OngModel();
-    $cepLimpo = preg_replace('/\D/', '', $_POST['cep']);
-    if (!empty($cepLimpo)) {
+    $_POST['cep'] = preg_replace('/\D/', '', $_POST['cep']);
+    if (!empty($_POST['cep'])) {
         // echo ($cepLimpo);
-        $existe = $ongModel->verificaExisteCepOng($cepLimpo);
+        $existe = $ongModel->verificaExisteCepOng($_POST['cep']);
         // var_dump($existe);
         return $existe;
     }
 }
 
-// Cadastro final da ONG
-function registrar()
+function registrarDados()
 {
     $ongModel = new OngModel();
 
-    // Verifica se todos os dados do passo 1 estão preenchidos
-    if ($_SESSION['step'] === 1) {
-        $id_usuario    = $_SESSION['id'] ?? null;
-        $cnpj          = $_POST['cnpj'] ?? '';
-        $razao_social  = $_POST['razao_social'] ?? '';
-        $telefone      = $_POST['telefone'] ?? '';
-        $id_categoria  = $_POST['id_categoria'] ?? '';
-        echo($razao_social);
-
-    } else if ($_SESSION['step'] === 2) {
-        $cep        = $_POST['cep'] ?? '';
-        $logradouro = $_POST['logradouro'] ?? '';
-        $bairro     = $_POST['bairro'] ?? '';
-        $estado     = $_POST['estado'] ?? '';
-        $cidade     = $_POST['cidade'] ?? '';
-        $numero     = $_POST['numero'] ?? '';
-        $complemento= $_POST['complemento'] ?? '';
-
-    }
-
     // Só entra no try se todos os dados estiverem preenchidos
     try {
-        $ok = $ongModel->registrarOng(
-            $id_usuario ?? null,
-            $razao_social ?? null,
-            $cnpj ?? null,
-            $telefone ?? null,
-            $id_categoria ?? null,
-            $logradouro ?? null,
-            $numero ?? null,
-            $cep ?? null,
-            $complemento ?? null,
-            $bairro ?? null,
-            $cidade ?? null,
-            $estado ?? null
+        $ok = $ongModel->registrarDadosOng(
+            $_SESSION['id'] ?? null,
+            $_POST['razao_social'] ?? null,
+            $_POST['cnpj'] ?? null,
+            $_POST['telefone'] ?? null,
+            $_POST['id_categoria'] ?? null,
         );
 
-        if ($ok) {
-            $_SESSION['type'] = 'successo';
-            $_SESSION['message'] = 'ONG cadastrada com sucesso!';
-        } else {
+        if (!$ok['response']) {
             $_SESSION['type'] = 'erro';
-            $_SESSION['message'] = 'Erro ao cadastrar ONG.';
+            $_SESSION['message'] = 'Erro ao cadastrar dados da ONG.';
+            $_SESSION['step'] = $_SESSION['step'] - 1;
         }
+
+        $_SESSION['id_endereco'] = $ok['id_endereco'];
 
         header("Location: /together/view/pages/cadastrarOng.php");
         exit;
-
     } catch (Exception $e) {
-        $_SESSION['type'] = 'error';
-        $_SESSION['message'] = 'Erro: ' . $e->getMessage();
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Ocorreu um erro!';
+        $_SESSION['step'] = $_SESSION['step'] - 1;
+        $_SESSION['erro'] = 'Erro: ' . $e->getMessage();
         header("Location: /together/view/pages/cadastrarOng.php");
         exit;
     }
 }
 
+function registrarEndereco()
+{
+    $ongModel = new OngModel();
+
+    // Só entra no try se todos os dados estiverem preenchidos
+    try {
+        $id_endereco = $_SESSION['id_endereco'];
+        $ok = $ongModel->editarEnderecoOng(
+            $id_endereco ?? null,
+            $_POST['logradouro'] ?? null,
+            $_POST['numero'] ?? null,
+            $_POST['cep'] ?? null,
+            $_POST['complemento'] ?? null,
+            $_POST['bairro'] ?? null,
+            $_POST['cidade'] ?? null,
+            $_POST['estado'] ?? null,
+        );
+
+        if ($ok['response']) {
+            $_SESSION['type'] = 'sucesso';
+            $_SESSION['message'] = 'ONG cadastrada com sucesso!';
+        } else {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Erro ao cadastrar endereço ONG.';
+            header("Location: /together/view/pages/cadastrarOng.php");
+            exit;
+        }
+    } catch (Exception $e) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Ocorreu um erro!';
+        $_SESSION['erro'] = 'Erro: ' . $e->getMessage();
+        header("Location: /together/view/pages/cadastrarOng.php");
+        exit;
+    }
+}

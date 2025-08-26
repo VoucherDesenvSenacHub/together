@@ -11,40 +11,68 @@ class OngModel
     }
 
     // olhar se precisa adicionar email
-    public function registrarOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
+    public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
         try {
+            // Inicia a transação
             $this->conn->beginTransaction();
 
-            $sqlEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES (:logradouro, :numero, :cep, :complemento, :bairro, :cidade, :estado)";
-            $stmt = $this->conn->prepare($sqlEndereco);
-            $stmt->execute([
-                ':logradouro' => $logradouro,
-                ':numero' => $numero,
-                ':cep' => $cep,
-                ':complemento' => $complemento,
-                ':bairro' => $bairro,
-                ':cidade' => $cidade,
-                ':estado' => $estado
-            ]);
+            // Insere endereço vazio
+            $queryEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES ('', 0, '', '', '', '', '')";
+            $stmt = $this->conn->prepare($queryEndereco);
+            $stmt->execute();
             $id_endereco = $this->conn->lastInsertId();
 
-            $sqlOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria, id_imagem_de_perfil) VALUES (:id_usuario, :razao_social, :cnpj,:telefone, :id_endereco, :id_categoria)";
-            $stmt = $this->conn->prepare($sqlOng);
-            $stmt->execute([
-                ':id_usuario' => $id_usuario,
-                ':razao_social' => $razao_social,
-                ':cnpj' => $cnpj,
-                ':telefone' => $telefone,
-                ':id_endereco' => $id_endereco,
-                ':id_categoria' => $id_categoria
-            ]);
-
+            // Insere a ONG vinculada ao endereço
+            $queryOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria) VALUES (:id_usuario, :razao_social, :cnpj, :telefone, :id_endereco, :id_categoria)";
+            $stmt = $this->conn->prepare($queryOng);
+            $stmt->bindParam(':id_usuario', $id_usuario);
+            $stmt->bindParam(':razao_social', $razao_social);
+            $stmt->bindParam(':cnpj', $cnpj);
+            $stmt->bindParam(':telefone', $telefone);
+            $stmt->bindParam(':id_endereco', $id_endereco);
+            $stmt->bindParam(':id_categoria', $id_categoria);
+            $stmt->execute();
+            
+            // Confirma transação
             $this->conn->commit();
-            return true;
+            return [
+                'response' => true,
+                'id_endereco' => $id_endereco
+            ];
         } catch (Exception $e) {
+            // Em caso de erro, desfaz tudo
             $this->conn->rollBack();
-            throw $e;
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function editarEnderecoOng($id_endereco, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
+    {
+        try {
+            $query = "UPDATE enderecos SET logradouro=:logradouro, numero=:numero, cep=:cep, complemento=:complemento, bairro=:bairro,  cidade=:cidade, estado=:estado WHERE id = :id";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id_endereco);
+            $stmt->bindParam(':logradouro', $logradouro);
+            $stmt->bindParam(':numero', $numero);
+            $stmt->bindParam(':cep', $cep);
+            $stmt->bindParam(':complemento', $complemento);
+            $stmt->bindParam(':bairro', $bairro);
+            $stmt->bindParam(':cidade', $cidade);
+            $stmt->bindParam(':estado', $estado);
+            $stmt->execute();
+            return [
+                'response' => true
+            ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
         }
     }
 
