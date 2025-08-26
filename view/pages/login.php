@@ -6,11 +6,15 @@
 
 <?php
 // Pega a mensagem de erro e já limpa a sessão
-$erro = $_SESSION['erro'] ?? '';
-
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
+}
+
+//verifica se está logado e redireciona para o index
+if ($_SESSION == true) {
+    header("location: /together/index.php");
+    exit;
 }
 
 
