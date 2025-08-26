@@ -72,10 +72,8 @@ if (isset($_SESSION['erro'], $erro)) {
                                     <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
                                     <td><?= $visualizacoes['nome'] ?></td>
                                     <td>
-                                        <a href="assests/images/usuario/historicoDoacoes.jpg" download
-                                            style="color: #797777;">
-                                            <?= renderAcao('baixar') ?>
-                                        </a>
+                                    <a href="visaoDoUsuario.php">
+                                            <?= renderAcao('visualizar') ?>
                                     </td>
                                 </tr>
                             <?php } ?>
