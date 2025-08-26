@@ -1,98 +1,71 @@
 const btnNextStep1 = document.querySelector('#btn1\\.1');
-const btnNextStep2 = document.querySelector('#btn2\\.2');
-const btnNextStep3 = document.querySelector('#btn3\\.2');
-const steps = document.querySelectorAll('.step'); 
+const steps = document.querySelectorAll('.step');
 let currentStep = 0;
 
-// Função para validar inputs do step atual
+// Valida inputs do step atual
 function validarStep(step) {
     const inputs = step.querySelectorAll('input, select');
     let valido = true;
-
     inputs.forEach(input => {
-        if (!input.value.trim()) {
+        if(!input.value.trim()) {
             valido = false;
-            input.classList.add('erro'); // destaque visual
+            input.classList.add('erro');
         } else {
             input.classList.remove('erro');
         }
     });
-
     return valido;
 }
 
-// Step 1: verifica CNPJ
-btnNextStep1.addEventListener('click', async () => {
-    const stepAtual = steps[currentStep];
-
-    // Valida campos do step 1
-    if (!validarStep(stepAtual)) {
-        alert('Preencha todos os campos obrigatórios deste passo!');
-        return;
+// Avança / volta
+function avancarStep() {
+    if(currentStep < steps.length-1) {
+        steps[currentStep].classList.remove('active');
+        currentStep++;
+        steps[currentStep].classList.add('active');
     }
+}
+function voltarStep() {
+    if(currentStep>0){
+        steps[currentStep].classList.remove('active');
+        currentStep--;
+        steps[currentStep].classList.add('active');
+    }
+}
+
+// Verifica CNPJ via AJAX
+btnNextStep1.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    const stepAtual = steps[currentStep];
+    if(!validarStep(stepAtual)) return;
 
     const cnpj = document.querySelector('#cnpj').value.trim();
 
-    try {
-        const res = await fetch('/together/controller/OngController.php?action=verificarCnpjRazaoSocial', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ cnpj })
+    try{
+        const res = await fetch('/together/controller/OngController.php?action=verificarCnpj',{
+            method:'POST',
+            headers:{'Content-Type':'application/x-www-form-urlencoded'},
+            body:new URLSearchParams({cnpj})
         });
-
-        const text = await res.text();
-        let data;
-        try {
-            data = JSON.parse(text);
-        } catch {
-            console.error('Resposta não é JSON:', text);
-            throw new Error('Erro na resposta do servidor');
+        const data = await res.json();
+        if(data.existe){
+            // Mostra popup usando função JS
+            alert(data.message);
+            return;
         }
-
-        if (!res.ok) {
-            throw new Error(data.error || 'Erro na requisição');
-        }
-
-        if (data.existe) {
-            alert('CNPJ já cadastrado!');
-            return; 
-        }
-
-        // avança para o próximo step
-        stepAtual.classList.remove('active');
-        currentStep++;
-        steps[currentStep].classList.add('active');
-
-    } catch (err) {
-        console.error('Erro ao verificar o CNPJ:', err);
-        alert('Erro ao verificar o CNPJ. Tente novamente.');
+        avancarStep();
+    } catch(err){
+        console.error('Erro:',err);
     }
 });
 
-// Step 2
-btnNextStep2.addEventListener('click', () => {
-    const stepAtual = steps[currentStep];
-
-    if (!validarStep(stepAtual)) {
-        alert('Preencha todos os campos obrigatórios deste passo!');
-        return;
-    }
-
-    stepAtual.classList.remove('active');
-    currentStep++;
-    steps[currentStep].classList.add('active');
-});
-
-// Step 3
-btnNextStep3.addEventListener('click', () => {
-    const stepAtual = steps[currentStep];
-
-    if (!validarStep(stepAtual)) {
-        alert('Preencha todos os campos obrigatórios deste passo!');
-        return;
-    }
-
-    stepAtual.classList.remove('active');
-    currentStep++;
-    steps[currentStep].classList.add('active');
+// Botões prev / next restantes
+document.querySelectorAll('button[id^="btn"]').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+        if(btn.id.includes('prev')) voltarStep();
+        else if(btn.id.includes('next') && btn.id!=='btn1.1'){
+            const stepAtual = steps[currentStep];
+            if(validarStep(stepAtual)) avancarStep();
+        }
+    });
 });
