@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
-class VisualizarOngModel
+class VisualizarUsuarioModel
 {
     private $conn;
     protected $tabela = "usuarios";
@@ -12,10 +12,10 @@ class VisualizarOngModel
         $this->conn = $database->conectar();
     }
 
-    public function DataNomeUsuario()
+    public function ListarOngCadastradas()
     {
         try {
-            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
+            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Ong'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {

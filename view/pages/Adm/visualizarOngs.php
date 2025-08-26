@@ -2,6 +2,25 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/alert.php'; ?>
+<?php require_once './../../../controller/VisualizarUsuarioController.php'; ?>
+<?php
+
+// verifica se o perfil é de administrador
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
+    header('Location: /together/view/pages/login.php');
+    exit;
+}
+?>
+
+<?php
+if (isset($_SESSION['erro'], $erro)) {
+    showPopup($_SESSION['erro'], $erro);
+    unset($_SESSION['erro'], $erro);
+}
+
+?>
+
 
 
 <body>
@@ -46,19 +65,23 @@
                                 <th>Visualizar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php $lista = ["Médicos Sem Fronteiras", "Greenpeace", "Amnesty International", "WWF", "Aldeias Infantis SOS", "Cruz Vermelha", "Instituto Ayrton Senna", "Projeto Tamar", "Fundação Abrinq", "GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
-                                <tr>
-                                    <td><?php echo $i + 10 ?>/03/2025</td>
-                                    <td><?php echo $lista[$i] ?></td>
-                                    <td>
-                                        <a href="/together/view/pages/visaoSobreaOng.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endfor ?>
+                        <?php foreach ($VisualizarOngs as $visualizacoes) { ?>
+                            <tr>
+                                <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                <td><?= $visualizacoes['nome'] ?></td>
+                                <td>
+                                    <a href="/together/view/pages/visaoSobreaOng.php">
+                                        <?= renderAcao('visualizar') ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                        <?php if (empty($visualizacoes)) { ?>
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
+                            </tr>
+                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
