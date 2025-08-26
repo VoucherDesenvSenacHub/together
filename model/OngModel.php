@@ -10,6 +10,7 @@ class OngModel
         $this->conn = (new Database())->conectar();
     }
 
+    // olhar se precisa adicionar email
     public function registrarOng($id_usuario, $razao_social, $cnpj, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado, $id_categoria)
     {
         try {
@@ -19,8 +20,13 @@ class OngModel
                             VALUES (:logradouro, :numero, :cep, :complemento, :bairro, :cidade, :estado)";
             $stmt = $this->conn->prepare($sqlEndereco);
             $stmt->execute([
-                ':logradouro'=>$logradouro, ':numero'=>$numero, ':cep'=>$cep, ':complemento'=>$complemento,
-                ':bairro'=>$bairro, ':cidade'=>$cidade, ':estado'=>$estado
+                ':logradouro' => $logradouro,
+                ':numero' => $numero,
+                ':cep' => $cep,
+                ':complemento' => $complemento,
+                ':bairro' => $bairro,
+                ':cidade' => $cidade,
+                ':estado' => $estado
             ]);
             $id_endereco = $this->conn->lastInsertId();
 
@@ -28,8 +34,11 @@ class OngModel
                         VALUES (:id_usuario, :razao_social, :cnpj, NOW(), 'pendente', 1, :id_endereco, :id_categoria)";
             $stmt = $this->conn->prepare($sqlOng);
             $stmt->execute([
-                ':id_usuario'=>$id_usuario, ':razao_social'=>$razao_social, ':cnpj'=>$cnpj,
-                ':id_endereco'=>$id_endereco, ':id_categoria'=>$id_categoria
+                ':id_usuario' => $id_usuario,
+                ':razao_social' => $razao_social,
+                ':cnpj' => $cnpj,
+                ':id_endereco' => $id_endereco,
+                ':id_categoria' => $id_categoria
             ]);
 
             $this->conn->commit();
@@ -40,10 +49,32 @@ class OngModel
         }
     }
 
-    public function existeCnpj($cnpj)
+    public function verificaExisteDadosOng($cnpj, $razao_social, $telefone, $email)
     {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj");
-        $stmt->execute([':cnpj'=>$cnpj]);
+        // Validando se existe o email na tb ongs, mas nao sei se vai existir email na tabela ongs, perguntar para o rhyan 
+
+        // $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone or email = :email ");
+
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
+
+        $stmt->execute([
+            ':cnpj' => $cnpj,
+            ':razao_social' => $razao_social,
+            ':telefone' => $telefone,
+            // ':email' => $email
+        ]);
+
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $res['total'] > 0;
+    }
+
+    public function verificaExisteCepOng($cep)
+    {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM enderecos WHERE cep = :cep");
+        $stmt->execute([
+            ':cep' => $cep,
+        ]);
+
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
         return $res['total'] > 0;
     }

@@ -3,6 +3,7 @@ require_once "./../components/button.php";
 require_once "./../components/input.php";
 require_once "./../components/label.php";
 require_once "./../components/select.php";
+require_once "./../components/selectEndereco.php";
 require_once "./../components/alert.php";
 require_once "./../../model/CategoriaOngModel.php";
 
@@ -22,13 +23,11 @@ $categorias = $categoriaModel->getAll();
     if (!isset($_SESSION['step'])) {
         $_SESSION['step'] = 1;
     }
-
-    var_dump($_SESSION)
     ?>
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+            <?php $_SESSION['step'] === 2 ? '' : require_once './../components/back-button.php' ?>
         </div>
 
 
@@ -47,6 +46,10 @@ $categorias = $categoriaModel->getAll();
                         <div class="step active">
                             <div class="container-input-login">
                                 <div>
+                                    <?= label('email', 'E-mail') ?>
+                                    <?= inputRequired('email', 'email', 'email') ?>
+                                </div>
+                                <div>
                                     <?= label('cnpj', 'CNPJ') ?>
                                     <?= inputRequired('text', 'cnpj', 'cnpj') ?>
                                 </div>
@@ -55,19 +58,15 @@ $categorias = $categoriaModel->getAll();
                                     <?= inputRequired('text', 'razao_social', 'razao_social') ?>
                                 </div>
                                 <div>
-                                    <?= label('id_categoria', 'Categoria da ONG') ?>
-                                    <?= selectRequired('id_categoria', 'id_categoria', $categorias) ?>
-                                </div>
-                                <div>
-                                    <?= label('email', 'E-mail') ?>
-                                    <?= inputRequired('email', 'email', 'email') ?>
-                                </div>
-                                <div>
                                     <?= label('telefone', 'Telefone') ?>
                                     <?= inputRequired('text', 'telefone', 'telefone') ?>
                                 </div>
+                                <div>
+                                    <?= label('id_categoria', 'Categoria da ONG') ?>
+                                    <?= selectCategoriasOng('id_categoria', 'id_categoria', $categorias) ?>
+                                </div>
                                 <div class="botao-login group-btn-cadastro-ong">
-                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '/together/controller/OngController.php') ?>
+                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '') ?>
                                 </div>
                             </div>
                         </div>
@@ -76,15 +75,9 @@ $categorias = $categoriaModel->getAll();
                     <?php if ($_SESSION['step'] === 2): ?>
                         <div class="step active">
                             <div class="container-input-login">
-                                <div class="cadastrar-ong-row-endereco">
-                                    <div>
-                                        <?= label('cep', 'CEP') ?>
-                                        <?= inputRequired('text', 'cep', 'cep') ?>
-                                    </div>
-                                    <div>
-                                        <?= label('numero', 'Número') ?>
-                                        <?= inputRequired('number', 'numero', 'numero') ?>
-                                    </div>
+                                <div>
+                                    <?= label('cep', 'CEP') ?>
+                                    <?= inputRequired('text', 'cep', 'cep') ?>
                                 </div>
                                 <div>
                                     <?= label('logradouro', 'Logradouro') ?>
@@ -95,21 +88,27 @@ $categorias = $categoriaModel->getAll();
                                     <?= label('bairro', 'Bairro') ?>
                                     <?= inputRequired('text', 'bairro', 'bairro') ?>
                                 </div>
-                                <div class="cadastrar-ong-row-endereco">
-                                    <div>
-                                        <?= label('estado', 'Estado (UF)') ?>
-                                        <?= inputRequired('text', 'estado', 'estado') ?>
-                                    </div>
-                                    <div>
-                                        <?= label('cidade', 'Cidade') ?>
-                                        <?= inputRequired('text', 'cidade', 'cidade') ?> </div>
+                                <div>
+                                    <?= label('estado', 'Estado') ?>
+                                    <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
                                 </div>
                                 <div>
-                                    <?= label('complemento', 'Complemento') ?>
-                                    <?= inputRequired('text', 'complemento', 'complemento') ?>
+                                    <?= label('cidade', 'Cidade') ?>
+                                    <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
                                 </div>
+                                <div class="cadastrar-ong-row-endereco">
+                                    <div class="numero">
+                                        <?= label('numero', 'Número') ?>
+                                        <?= inputRequired('number', 'numero', 'numero') ?>
+                                    </div>
+                                    <div class="complemento" > 
+                                        <?= label('complemento', 'Complemento') ?>
+                                        <?= inputDefault('text', 'complemento', 'complemento') ?>
+                                    </div>
+                                </div>
+
                                 <div class="botao-login group-btn-cadastro-ong">
-                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '/together/controller/OngController.php' ) ?>
+                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '/together/controller/OngController.php') ?>
                                     <?= botao('salvar', 'Enviar', name: 'step_action', value: 'salvar', formaction: '/together/controller/OngController.php') ?>
                                 </div>
                             </div>

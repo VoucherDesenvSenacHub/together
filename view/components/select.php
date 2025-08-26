@@ -77,4 +77,19 @@ function selectDefault($name, $id, $listaOptions = [], $valorSelecionado = '')
     return $select;
 }
 
-?>
+function selectCategoriasOng($name, $id, $listaOptions = [])
+{
+    $select = "
+            <select name='$name' id='$id' class='formulario-select' required>
+            ";
+
+    foreach ($listaOptions as $option) {
+        $select .= "<option value='" . $option['id'] . "'>" . $option['nome'] . "</option>";
+    }
+
+    $select .= "
+            </select>
+            ";
+
+    return $select;
+}
