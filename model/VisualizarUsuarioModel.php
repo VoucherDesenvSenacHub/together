@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/database.php';
 
-class UsuarioModel
+class VisualizarUsuarioModel
 {
     private $conn;
     protected $tabela = "usuarios";
@@ -15,7 +15,7 @@ class UsuarioModel
     public function DataNomeUsuario()
     {
         try {
-            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Adminstrador'";
+            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {

@@ -2,6 +2,22 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/alert.php'; ?>
+<?php require_once './../../../controller/VisualizarUsuarioController.php'; ?>
+<?php  
+if (!isset($_SESSION['tipo_perfil']) || $_SESSION['tipo_perfil'] !== 'Administrador') {
+    header('Location: /together/index.php');
+    exit;
+}
+?>
+
+<?php
+    if (isset($_SESSION['erro'], $erro)) {
+        showPopup($_SESSION['erro'], $erro);
+        unset($_SESSION['erro'], $erro);
+    }
+
+    ?>
 
 
 <body>
@@ -49,18 +65,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
-                                <tr>
-                                    <td><?= $i + 10 ?>/05/2025</td>
-                                    <td><?= $lista[$i] ?></td>
-                                    <td>
-                                        <a href="visaoDoUsuario.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endfor ?>
+                        <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
+                                    <tr>
+                                        <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                        <td><?= $visualizacoes['nome'] ?></td>
+                                        <td>
+                                            <a href="assests/images/usuario/historicoDoacoes.jpg" download
+                                                style="color: #797777;">
+                                                <?= renderAcao('baixar') ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                                <?php if (empty($visualizacoes)) { ?>
+                                    <tr>
+                                        <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
+                                    </tr>
+                                <?php } ?>
                         </tbody>
                     </table>
                 </div>

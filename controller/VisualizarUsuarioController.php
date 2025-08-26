@@ -1,5 +1,5 @@
 <?php
-require "./../model/VisualizarUsuarioModel.php";
+require "../../../model/VisualizarUsuarioModel.php";
 
 try {
     // Verifica se a requisição é GET
@@ -7,7 +7,7 @@ try {
         throw new Exception("Método inválido para esta requisição");
     }
     // Executa a consulta no Model
-    $VisualizarUsuarioModel = new UsuarioModel();
+    $VisualizarUsuarioModel = new VisualizarUsuarioModel();
     $VisualizarUsuarios = $VisualizarUsuarioModel->DataNomeUsuario();
 
     // aqui deve conter os dois model, tanto do usuario quanto o da ong.
