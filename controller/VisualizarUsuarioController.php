@@ -13,7 +13,7 @@ try {
 
     // model para Ongs
     $VisualizarOngModel = new VisualizarOngModel();
-    $VisualizarUsuarios = $VisualizarOngModel->ListarOngCadastradas();
+    $VisualizarOngs = $VisualizarOngModel->ListarOngCadastradas();
 
     // aqui deve conter os dois model, tanto do usuario quanto o da ong.
 

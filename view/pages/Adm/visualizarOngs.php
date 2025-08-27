@@ -65,21 +65,21 @@ if (isset($_SESSION['erro'], $erro)) {
                                 <th>Visualizar</th>
                             </tr>
                         </thead>
-                        <?php foreach ($VisualizarOngs as $visualizacoes) { ?>
+                        <?php if (!empty($VisualizarOngs)) { ?>
+                            <?php foreach ($VisualizarOngs as $visualizacoes) { ?>
+                                <tr>
+                                    <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                    <td><?= $visualizacoes['nome'] ?></td>
+                                    <td>
+                                        <a href="/together/view/pages/visaoSobreaOng.php">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
                             <tr>
-                                <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
-                                <td><?= $visualizacoes['nome'] ?></td>
-                                <td>
-                                    <a href="/together/view/pages/visaoSobreaOng.php">
-                                        <?= renderAcao('visualizar') ?>
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-
-                        <?php if (empty($visualizacoes)) { ?>
-                            <tr>
-                                <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
+                                <td colspan="4" style="text-align:center;">Nenhuma ONG encontrada.</td>
                             </tr>
                         <?php } ?>
                         </tbody>
