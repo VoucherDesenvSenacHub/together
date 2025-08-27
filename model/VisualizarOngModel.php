@@ -15,7 +15,7 @@ class VisualizarOngModel
     public function ListarOngCadastradas(): array
     {
         try {
-            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Ong'";
+            $query = "SELECT dt_cadastro, nome FROM {$this->tabela} WHERE tipo_perfil = 'Ong'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {

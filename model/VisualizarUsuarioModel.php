@@ -15,7 +15,7 @@ class VisualizarUsuarioModel
     public function DataNomeUsuario()
     {
         try {
-            $query = "SELECT dt_nascimento, nome FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
+            $query = "SELECT dt_cadastro, nome FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {

@@ -4,7 +4,7 @@
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/alert.php'; ?>
 <?php require_once './../../components/paginacao.php'; ?>
-<?php require_once './../../../controller/VisualizarUsuarioController.php'; ?>
+<?php require_once './../../../controller/VisualizarUsuarioAdmController.php'; ?>
 <?php
 
 // verifica se o perfil é de administrador
