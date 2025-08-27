@@ -3,6 +3,7 @@
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/alert.php'; ?>
+<?php require_once './../../components/paginacao.php'; ?>
 <?php require_once './../../../controller/VisualizarUsuarioController.php'; ?>
 <?php
 
@@ -17,6 +18,15 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
+}
+
+$quantidadeDePaginas = ceil($totalDoacoes / 15);
+
+// corrige número da página
+if ($quantidadeDePaginas > 0) {
+    $pagina = max(1, min($pagina, $quantidadeDePaginas));
+} else {
+    $pagina = 1;
 }
 
 ?>
@@ -67,26 +77,32 @@ if (isset($_SESSION['erro'], $erro)) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
+                            <?php if (!empty($VisualizarUsuarios) && is_array($VisualizarUsuarios)) { ?>
+                                <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
+                                    <tr>
+                                        <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                        <td><?= $visualizacoes['nome'] ?></td>
+                                        <td>
+                                            <a href="visaoDoUsuario.php">
+                                                <?= renderAcao('visualizar') ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <tr>
-                                    <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
-                                    <td><?= $visualizacoes['nome'] ?></td>
-                                    <td>
-                                    <a href="visaoDoUsuario.php">
-                                            <?= renderAcao('visualizar') ?>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-
-                            <?php if (empty($visualizacoes)) { ?>
-                                <tr>
-                                    <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
+                                    <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
+                <?php
+                if ($quantidadeDePaginas > 1) {
+                    criarPaginacao($quantidadeDePaginas);
+                }
+                ?>
             </div>
         </div>
     </main>

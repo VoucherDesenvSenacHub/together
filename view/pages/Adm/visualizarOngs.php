@@ -65,23 +65,24 @@ if (isset($_SESSION['erro'], $erro)) {
                                 <th>Visualizar</th>
                             </tr>
                         </thead>
-                        <?php if (!empty($VisualizarOngs)) { ?>
-                            <?php foreach ($VisualizarOngs as $visualizacoes) { ?>
+                        <tbody>
+                            <?php if (!empty($VisualizarUsuarios) && is_array($VisualizarUsuarios)) { ?>
+                                <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
+                                    <tr>
+                                        <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
+                                        <td><?= $visualizacoes['nome'] ?></td>
+                                        <td>
+                                            <a href="visaoDoUsuario.php">
+                                                <?= renderAcao('visualizar') ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <tr>
-                                    <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
-                                    <td><?= $visualizacoes['nome'] ?></td>
-                                    <td>
-                                        <a href="/together/view/pages/visaoSobreaOng.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
+                                    <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
                                 </tr>
                             <?php } ?>
-                        <?php } else { ?>
-                            <tr>
-                                <td colspan="4" style="text-align:center;">Nenhuma ONG encontrada.</td>
-                            </tr>
-                        <?php } ?>
                         </tbody>
                     </table>
                 </div>
