@@ -6,6 +6,8 @@
 <body>
 
     <?php
+
+    var_dump($_SESSION);
     // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';

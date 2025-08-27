@@ -46,10 +46,6 @@ $categorias = $categoriaModel->getAll();
                         <div class="step active">
                             <div class="container-input-login">
                                 <div>
-                                    <?= label('email', 'E-mail') ?>
-                                    <?= inputRequired('email', 'email', 'email') ?>
-                                </div>
-                                <div>
                                     <?= label('cnpj', 'CNPJ') ?>
                                     <?= inputRequired('text', 'cnpj', 'cnpj') ?>
                                 </div>
@@ -93,7 +89,6 @@ $categorias = $categoriaModel->getAll();
                                     <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
                                 </div>
                                 <div>
-                                    <!-- NAO ESTA FUNCIONANDO -->
                                     <?= label('cidade', 'Cidade') ?>
                                     <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
                                 </div>
@@ -120,7 +115,9 @@ $categorias = $categoriaModel->getAll();
             </div>
         </div>
     </div>
+    <!-- Não Apagar -->
     <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/components/selectEndereco.js"></script>
 </body>
 
 </html>

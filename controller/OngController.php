@@ -14,22 +14,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: /together/view/pages/cadastrarOng.php");
         } else {
             $_SESSION['step'] = $_SESSION['step'] + 1;
-            registrarDados();
+            $_SESSION['razao_social'] = $_POST['razao_social'];
+            $_SESSION['cnpj'] = $_POST['cnpj'];
+            $_SESSION['telefone'] = $_POST['telefone'];
+            $_SESSION['id_categoria'] = $_POST['id_categoria'];
             header("Location: /together/view/pages/cadastrarOng.php");
         }
     } elseif ($acao === "prev" && $_SESSION['step'] > 1) {
         $_SESSION['step'] = $_SESSION['step'] - 1;
         header("Location: /together/view/pages/cadastrarOng.php");
     } elseif ($acao === "salvar") {
-        if (verificarCepOng()) {
-            $_SESSION['type'] = 'erro';
-            $_SESSION['message'] = 'Os dados informados já estão cadastrados.';
-            header("Location: /together/view/pages/cadastrarOng.php");
-        } else {
-            registrarEndereco();
-            unset($_SESSION['step']);
-            header("Location: /together/index.php");
-        }
+        registrarDados();
+        unset($_SESSION['razao_social']);
+        unset($_SESSION['cnpj']);
+        unset($_SESSION['telefone']);
+        unset($_SESSION['id_categoria']);
+        registrarEndereco();
+        unset($_SESSION['id_endereco']);
+        unset($_SESSION['step']);
+        header("Location: /together/index.php");
     }
 }
 
@@ -47,17 +50,6 @@ function verificarDadosOng()
         return $existe;
     }
 }
-function verificarCepOng()
-{
-    $ongModel = new OngModel();
-    $_POST['cep'] = preg_replace('/\D/', '', $_POST['cep']);
-    if (!empty($_POST['cep'])) {
-        // echo ($cepLimpo);
-        $existe = $ongModel->verificaExisteCepOng($_POST['cep']);
-        // var_dump($existe);
-        return $existe;
-    }
-}
 
 function registrarDados()
 {
@@ -67,10 +59,10 @@ function registrarDados()
     try {
         $ok = $ongModel->registrarDadosOng(
             $_SESSION['id'] ?? null,
-            $_POST['razao_social'] ?? null,
-            $_POST['cnpj'] ?? null,
-            $_POST['telefone'] ?? null,
-            $_POST['id_categoria'] ?? null,
+            $_SESSION['razao_social'] ?? null,
+            $_SESSION['cnpj'] ?? null,
+            $_SESSION['telefone'] ?? null,
+            $_SESSION['id_categoria'] ?? null,
         );
 
         if (!$ok['response']) {
@@ -80,9 +72,6 @@ function registrarDados()
         }
 
         $_SESSION['id_endereco'] = $ok['id_endereco'];
-
-        header("Location: /together/view/pages/cadastrarOng.php");
-        exit;
     } catch (Exception $e) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Ocorreu um erro!';
