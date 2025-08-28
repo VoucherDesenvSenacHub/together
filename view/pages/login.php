@@ -12,8 +12,8 @@ if (isset($_SESSION['erro'], $erro)) {
 }
 
 //verifica se está logado e redireciona para o index
-if ($_SESSION == true) {
-    header("location: /together/index.php");
+if (isset($_SESSION['id'])) {
+    header("Location: /together/index.php");
     exit;
 }
 
