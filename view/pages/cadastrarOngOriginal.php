@@ -37,7 +37,7 @@ $categorias = $categoriaModel->getAll();
             </div>
 
             <div class="box-login">
-                <form class="login" method="POST" action="/together/controller/OngController.php?action=registrar">
+                <form class="login" method="POST" action="/together/controller/OngCadastrarController.php?action=registrar">
                     <h1 class="titulo-login">Criar uma ONG</h1>
 
 

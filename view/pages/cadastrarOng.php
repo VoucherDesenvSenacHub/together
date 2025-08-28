@@ -62,7 +62,7 @@ $categorias = $categoriaModel->getAll();
                                     <?= selectCategoriasOng('id_categoria', 'id_categoria', $categorias) ?>
                                 </div>
                                 <div class="botao-login group-btn-cadastro-ong">
-                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '/together/controller/OngController.php') ?>
+                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '/together/controller/OngCadastrarController.php') ?>
                                 </div>
                             </div>
                         </div>
@@ -104,8 +104,8 @@ $categorias = $categoriaModel->getAll();
                                 </div>
 
                                 <div class="botao-login group-btn-cadastro-ong">
-                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '/together/controller/OngController.php') ?>
-                                    <?= botao('salvar', 'Enviar', name: 'step_action', value: 'salvar', formaction: '/together/controller/OngController.php') ?>
+                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '/together/controller/OngCadastrarController.php') ?>
+                                    <?= botao('salvar', 'Enviar', name: 'step_action', value: 'salvar', formaction: '/together/controller/OngCadastrarController.php') ?>
                                 </div>
                             </div>
                         </div>
