@@ -15,6 +15,7 @@ class UsuarioModel
     public function registrarUsuarioComEndereco(
         $nome,
         $cpf,
+        $dt_nascimento, 
         $telefone,
         $email,
         $senha,
@@ -42,11 +43,12 @@ class UsuarioModel
 
             $enderecoId = $this->conn->lastInsertId();
 
-            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, id_endereco, ativo, tipo_perfil)
-                       VALUES (:nome, :cpf, :telefone, :email, :senha, :id_endereco, true, 'PESSOAL')";
+            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, id_endereco, ativo, tipo_perfil)
+                       VALUES (:nome, :cpf, :dt_nascimento, :telefone, :email, :senha, :id_endereco, true, 'Usuario')";
             $stmtUsuario = $this->conn->prepare($sqlUsuario);
             $stmtUsuario->bindParam(':nome', $nome);
             $stmtUsuario->bindParam(':cpf', $cpf);
+            $stmtUsuario->bindParam(':dt_nascimento', $dt_nascimento);
             $stmtUsuario->bindParam(':telefone', $telefone);
             $stmtUsuario->bindParam(':email', $email);
             $senhaHash = password_hash($senha, PASSWORD_BCRYPT);
