@@ -32,7 +32,7 @@ class OngModel
             $stmt->bindParam(':id_endereco', $id_endereco);
             $stmt->bindParam(':id_categoria', $id_categoria);
             $stmt->execute();
-            
+
             // Confirma transação
             $this->conn->commit();
             return [
@@ -87,5 +87,18 @@ class OngModel
 
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
         return $res['total'] > 0;
+    }
+
+    public function verificarUsuarioTemOng($id)
+    {
+        $query = "SELECT o.razao_social
+        FROM usuarios u
+        INNER JOIN ongs o ON o.id_usuario = u.id
+        WHERE u.id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
     }
 }

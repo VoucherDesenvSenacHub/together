@@ -6,33 +6,40 @@ session_start();
 // Controla os steps do cadastrarOng.php
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST['step_action'] ?? null;
-
-    if ($acao === "next" && $_SESSION['step'] < 2) {
-        if (verificarDadosOng()) {
-            $_SESSION['type'] = 'erro';
-            $_SESSION['message'] = 'Os dados informados já estão cadastrados.';
+    $ongModel = new OngModel();
+    $usuarioTemOng = $ongModel->verificarUsuarioTemOng($_SESSION['id']);
+    if(!$usuarioTemOng) {
+        if ($acao === "next" && $_SESSION['step'] < 2) {
+            if (verificarDadosOng()) {
+                $_SESSION['type'] = 'erro';
+                $_SESSION['message'] = 'Os dados informados já estão cadastrados.';
+                header("Location: /together/view/pages/cadastrarOng.php");
+            } else {
+                $_SESSION['step'] = $_SESSION['step'] + 1;
+                $_SESSION['razao_social'] = $_POST['razao_social'];
+                $_SESSION['cnpj'] = $_POST['cnpj'];
+                $_SESSION['telefone'] = $_POST['telefone'];
+                $_SESSION['id_categoria'] = $_POST['id_categoria'];
+                header("Location: /together/view/pages/cadastrarOng.php");
+            }
+        } elseif ($acao === "prev" && $_SESSION['step'] > 1) {
+            $_SESSION['step'] = $_SESSION['step'] - 1;
             header("Location: /together/view/pages/cadastrarOng.php");
-        } else {
-            $_SESSION['step'] = $_SESSION['step'] + 1;
-            $_SESSION['razao_social'] = $_POST['razao_social'];
-            $_SESSION['cnpj'] = $_POST['cnpj'];
-            $_SESSION['telefone'] = $_POST['telefone'];
-            $_SESSION['id_categoria'] = $_POST['id_categoria'];
-            header("Location: /together/view/pages/cadastrarOng.php");
+        } elseif ($acao === "salvar") {
+            registrarDados();
+            unset($_SESSION['razao_social']);
+            unset($_SESSION['cnpj']);
+            unset($_SESSION['telefone']);
+            unset($_SESSION['id_categoria']);
+            registrarEndereco();
+            unset($_SESSION['id_endereco']);
+            unset($_SESSION['step']);
+            header("Location: /together/index.php");
         }
-    } elseif ($acao === "prev" && $_SESSION['step'] > 1) {
-        $_SESSION['step'] = $_SESSION['step'] - 1;
+    } else {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'O usuario já possue uma ONG!';
         header("Location: /together/view/pages/cadastrarOng.php");
-    } elseif ($acao === "salvar") {
-        registrarDados();
-        unset($_SESSION['razao_social']);
-        unset($_SESSION['cnpj']);
-        unset($_SESSION['telefone']);
-        unset($_SESSION['id_categoria']);
-        registrarEndereco();
-        unset($_SESSION['id_endereco']);
-        unset($_SESSION['step']);
-        header("Location: /together/index.php");
     }
 }
 
