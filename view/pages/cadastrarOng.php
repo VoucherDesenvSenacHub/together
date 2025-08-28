@@ -47,15 +47,15 @@ $categorias = $categoriaModel->getAll();
                             <div class="container-input-login">
                                 <div>
                                     <?= label('cnpj', 'CNPJ') ?>
-                                    <?= inputRequired('text', 'cnpj', 'cnpj') ?>
+                                    <?= inputRequired('text', 'cnpj', 'cnpj', $_SESSION['cnpj'] ?? '') ?>
                                 </div>
                                 <div>
                                     <?= label('razao_social', 'Razão Social') ?>
-                                    <?= inputRequired('text', 'razao_social', 'razao_social') ?>
+                                    <?= inputRequired('text', 'razao_social', 'razao_social', $_SESSION['razao_social'] ?? '') ?>
                                 </div>
                                 <div>
                                     <?= label('telefone', 'Telefone') ?>
-                                    <?= inputRequired('text', 'telefone', 'telefone') ?>
+                                    <?= inputRequired('text', 'telefone', 'telefone', $_SESSION['telefone'] ?? '') ?>
                                 </div>
                                 <div>
                                     <?= label('id_categoria', 'Categoria da ONG') ?>
