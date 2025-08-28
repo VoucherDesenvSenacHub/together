@@ -45,14 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 function verificarDadosOng()
 {
-    // talvez verificar o numero na tb usuarios e o mesmo com email
-
     $ongModel = new OngModel();
     $_POST['cnpj'] = preg_replace('/\D/', '', $_POST['cnpj']);
     $_POST['telefone'] = preg_replace('/\D/', '', $_POST['telefone']);
     if (!empty($_POST['cnpj'] && $_POST['telefone'])) {
         // echo ($cnpjLimpo);
-        $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['razao_social'], $_POST['telefone'], $_POST['email']);
+        $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['razao_social'], $_POST['telefone']);
         // var_dump($existe);
         return $existe;
     }

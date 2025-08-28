@@ -75,7 +75,7 @@ class OngModel
         }
     }
 
-    public function verificaExisteDadosOng($cnpj, $razao_social, $telefone, $email)
+    public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
     {
         $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
 
