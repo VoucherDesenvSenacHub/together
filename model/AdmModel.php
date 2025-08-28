@@ -23,34 +23,24 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function findUsuarioBySearch($data_cadastro, $nome_usuario){
-        $sql = "SELECT dt_criacao nome FROM usuarios WHERE nome LIKE :nome_usuario";
+    public function findUsuarioBySearch($nome_usuario){
+        $sql = "SELECT dt_criacao nome WHERE nome LIKE :nome_usuario";
         $stmt = $this->conn->prepare($sql);
-        $data_cadastro = '%' . $data_cadastro . '%';
         $nome_usuario = '%' . $nome_usuario . '%';
-        $stmt->bindParam(':data_cadastro', $data_cadastro);
         $stmt->bindParam(':nome_usuario', $nome_usuario);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findOngInValidationBySearch($nome_ong, $data_fundacao, $status)
+    public function findOngBySearch($nome_ong)
     {
-        $sql = "SELECT razao_social, dt_fundacao, status_validacao FROM ongs 
-            WHERE razao_social LIKE :nome_ong";
-
+        $sql = "SELECT razao_social, dt_fundacao, status_validacao FROM ongs WHERE razao_social LIKE :nome_ong";
         $stmt = $this->conn->prepare($sql);
-        $nome_ong = '%' . $nome_ong . '%';  
-        $data_fundacao = '%' . $data_fundacao . '%';
-        $status = '%' . $status . '%';
+        $nome_ong = '%' . $nome_ong . '%';
         $stmt->bindParam(':nome_ong', $nome_ong);
-        $stmt->bindParam(':data_fundacao', $data_fundacao);
-        $stmt->bindParam(':status', $status);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-
     
     
 }
