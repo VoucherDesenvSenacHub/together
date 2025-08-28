@@ -3,25 +3,26 @@
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/alert.php'; ?>
-<?php require_once './../../../controller/VisualizarUsuarioAdmController.php'; ?>
-<?php
+<?php require_once './../../components/paginacao.php'; ?>
+<?php require_once './../../../controller/VisualizarUsuariosAdmController.php'; ?>
 
+<?php
 // verifica se o perfil é de administrador
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     header('Location: /together/view/pages/login.php');
     exit;
 }
-?>
 
-<?php
+// mostra popup de erro se existir
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
 }
 
+// página atual e quantidade de páginas vindo do controller
+$pagina = isset($pagina) ? $pagina : 1;
+$quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
-
-
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
@@ -31,9 +32,10 @@ if (isset($_SESSION['erro'], $erro)) {
         <div class="div-wrap-width">
             <form action="" class="form-filtro-data">
                 <div class="superior-pagina-tabela">
-                    <h1 class="titulo-pagina">Ongs Cadastradas</h1>
+                    <h1 class="titulo-pagina">ONGs Cadastradas</h1>
                 </div>
             </form>
+
             <div class="formulario-perfil">
                 <div class="filtro">
                     <div class="bloco-datas">
@@ -56,6 +58,7 @@ if (isset($_SESSION['erro'], $erro)) {
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
                     </div>
                 </div>
+
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -66,13 +69,13 @@ if (isset($_SESSION['erro'], $erro)) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($VisualizarUsuarios) && is_array($VisualizarUsuarios)) { ?>
-                                <?php foreach ($VisualizarUsuarios as $visualizacoes) { ?>
+                            <?php if (!empty($VisualizarOngs) && is_array($VisualizarOngs)) { ?>
+                                <?php foreach ($VisualizarOngs as $ong) { ?>
                                     <tr>
-                                        <td><?= date("d/m/Y", strtotime($visualizacoes['dt_nascimento'])) ?></td>
-                                        <td><?= $visualizacoes['nome'] ?></td>
+                                        <td><?= date("d/m/Y", strtotime($ong['dt_cadastro'])) ?></td>
+                                        <td><?= $ong['nome'] ?></td>
                                         <td>
-                                            <a href="visaoDoUsuario.php">
+                                            <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
                                                 <?= renderAcao('visualizar') ?>
                                             </a>
                                         </td>
@@ -80,16 +83,20 @@ if (isset($_SESSION['erro'], $erro)) {
                                 <?php } ?>
                             <?php } else { ?>
                                 <tr>
-                                    <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
+                                    <td colspan="3" style="text-align:center;">Nenhuma ONG encontrada.</td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+
+                <!-- Paginação -->
+                <?php if ($quantidadeDePaginas > 1) { ?>
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+                <?php } ?>
+
             </div>
         </div>
-
     </main>
 
     <?php require_once './../../components/footer.php' ?>

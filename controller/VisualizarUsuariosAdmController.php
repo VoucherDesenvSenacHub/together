@@ -7,20 +7,35 @@ try {
     if ($_SERVER["REQUEST_METHOD"] !== "GET") {
         throw new Exception("Método inválido para esta requisição");
     }
-    // Executa a consulta no Model
+
+    // ===== Configuração da paginação =====
+    $porPagina = 15;
+    $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+    $pagina = max(1, $pagina); // nunca menor que 1
+    $offset = ($pagina - 1) * $porPagina;
+
+    // ===== Model Usuário =====
     $VisualizarUsuarioModel = new VisualizarUsuarioModel();
-    $VisualizarUsuarios = $VisualizarUsuarioModel->DataNomeUsuario();
+    $totalUsuarios = $VisualizarUsuarioModel->contarUsuarios();
+    $VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset);
+    $quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
 
-    // model para Ongs
+    // ===== Model Ong =====
     $VisualizarOngModel = new VisualizarOngModel();
-    $VisualizarOngs = $VisualizarOngModel->ListarOngCadastradas();
+    $totalOngs = $VisualizarOngModel->contarOngs();
+    $VisualizarOngs = $VisualizarOngModel->listarOngsPaginado($porPagina, $offset);
+    $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
 
-    // aqui deve conter os dois model, tanto do usuario quanto o da ong.
+    // ===== Define qual tabela tem mais páginas =====
+    $quantidadeDePaginas = max($quantidadeDePaginasUsuarios, $quantidadeDePaginasOngs);
 
-    if (!$VisualizarUsuarios) {
+    if (
+        (!$VisualizarUsuarios || count($VisualizarUsuarios) === 0)
+        && (!$VisualizarOngs || count($VisualizarOngs) === 0)
+    ) {
         throw new Exception("Nenhum dado encontrado.");
     }
+
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
 }
-

@@ -12,21 +12,23 @@ class VisualizarUsuarioModel
         $this->conn = $database->conectar();
     }
 
-    public function DataNomeUsuario()
+    // lista todos os usuários
+    public function DataNomeUsuario(): array
     {
         try {
-            $query = "SELECT dt_cadastro, nome FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
+            $query = "SELECT dt_cadastro, nome 
+                      FROM {$this->tabela} 
+                      WHERE tipo_perfil = 'Usuario'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {
-                // Se não executar, lança exceção
                 throw new Exception("Falha ao executar consulta.");
             }
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            $_SESSION['erro'] = "Erro no banco" . $e->getMessage();
+            $_SESSION['erro'] = "Erro no banco: " . $e->getMessage();
             return [];
 
         } catch (Exception $e) {
@@ -35,4 +37,28 @@ class VisualizarUsuarioModel
         }
     }
 
+    // contar total de usuários (para paginação)
+    public function contarUsuarios(): int
+    {
+        $query = "SELECT COUNT(*) as total FROM {$this->tabela} WHERE tipo_perfil = 'Usuario'";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['total'] ?? 0;
+    }
+
+    // listar usuários com limite e offset (para paginação)
+    public function listarUsuariosPaginado(int $limite, int $offset): array
+    {
+        $query = "SELECT dt_cadastro, nome 
+                  FROM {$this->tabela} 
+                  WHERE tipo_perfil = 'Usuario' 
+                  ORDER BY dt_cadastro DESC 
+                  LIMIT :limite OFFSET :offset";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
