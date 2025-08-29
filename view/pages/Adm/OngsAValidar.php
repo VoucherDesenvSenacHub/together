@@ -1,10 +1,20 @@
-<?php require_once './../../components/head.php' ?>
-<?php require_once './../../components/acoes.php' ?>
-<?php require_once './../../components/button.php' ?>
-<?php require_once './../../components/input.php' ?>
-<?php require_once './../../components/label.php' ?>
+<?php 
+require_once './../../components/head.php';
+require_once './../../components/acoes.php';
+require_once './../../components/button.php';
+require_once './../../components/input.php';
+require_once './../../components/label.php';
+require_once __DIR__. "/../../../model/BuscarOngsEmAnaliseModel.php";
 
+$buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
 
+// Captura filtros do formulário via GET
+$dataInicio = $_GET['data-inicio'] ?? null;
+$dataFim    = $_GET['data-final'] ?? null;
+$pesquisa   = $_GET['pesquisar'] ?? null;
+
+$ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa);
+?>
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
@@ -15,15 +25,15 @@
                 <h1>Validação de ONGs</h1>
             </div>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <form method="GET" class="filtro" id="filtro-form">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio', $dataInicio) ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                            <?= inputFilter('date', 'data-final', 'data-final', $dataFim) ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
@@ -33,9 +43,10 @@
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome', $pesquisa) ?>
                     </div>
-                </div>
+                </form>
+
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -47,29 +58,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php if (!empty($ongsEmAnalise)): ?>
+                                <?php foreach ($ongsEmAnalise as $ong): ?>
+                                    <tr>
+                                        <td>
+                                            <?= !empty($ong['dt_fundacao']) ? date('d/m/Y', strtotime($ong['dt_fundacao'])) : '-' ?>
+                                        </td>
+                                        <td><?= htmlspecialchars($ong['razao_social'], ENT_QUOTES, 'UTF-8') ?></td>
+                                        <td><?= htmlspecialchars($ong['status_validacao'], ENT_QUOTES, 'UTF-8') ?></td>
+                                        <td>
+                                            <a href="validarCadastroOng.php?id=<?= $ong['id'] ?>">
+                                                <?= renderAcao('visualizar') ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
                                 <tr>
-                                    <td><?php echo $i + 10 ?>/09/2025</td>
-                                    <td><?php echo $lista[$i]?></td>
-                                    <td>Aguardando</td>
-                                    <td>
-                                        <a href="validarCadastroOng.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
+                                    <td colspan="4">Nenhuma ONG em análise</td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>
-
     </main>
-
     <?php require_once "../../../view/components/footer.php"; ?>
-</body>
 
+    <script src="/together/view/assests/js/pages/ong-filtro.js"></script>
+
+</body>
 </html>
