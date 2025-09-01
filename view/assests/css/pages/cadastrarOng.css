@@ -17,5 +17,14 @@
 .cadastrar-ong-row-endereco {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     gap: 30px;
+
+    .numero {
+      width: calc(100% / 3);
+    }
+
+    .complemento {
+      width: calc(100% / 1);
+    }
 }
