@@ -3,19 +3,6 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
-<?php require_once __DIR__ . './../../../model/OngModel.php';
-$ongModel = new OngModel();
-
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-    $nome_usuario = $_GET['nome_usuario'] ?? '';
-    $listaVoluntarios = $ongModel->findVoluntarioBySearch($nome_usuario);
-}
- else {
-    $listaVoluntarios = "";
-}
-
-?>
 
 <body class="voluntario-ong">
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -25,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
             <div class="formulario-perfil">
-                <div class="filtro">
+            <div class="filtro">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -41,14 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                         </div>
                     </div>
 
-                    <form action="voluntariosOng.php" method="GET">
-
-                        <div class="bloco-pesquisa">
-                            <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'nome_usuario', 'Pesquisar Voluntário') ?>
-                        </div>
-
-                    </form>
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Voluntário') ?>
+                    </div>
                 </div>
                 <div class="table-mobile">
                     <table class="tabela">
@@ -60,21 +43,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            if ($listaVoluntarios) {
-                                foreach ($listaVoluntarios as $lv) { ?>
-                                    <tr>
-                                        <td><?= date('d/m/Y', strtotime($lv['dt_associacao'])) ?></td>
-                                        <td><?= $lv['nome'] ?></td>
-                                        <td>
-                                        </td>
-                                    </tr>
-                                <?php }
-                            } else { ?>
+                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
+                            <?php for ($i = 0; $i < 10; $i++): ?>
                                 <tr>
-                                    <td colspan="4">Nenhum Voluntario encontrado.</td>
+                                    <td><?= $i + 10 ?>/05/2025</td>
+                                    <td><?= $lista[$i] ?></td>
+                                    <td>
+                                        <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
                                 </tr>
-                            <?php } ?>
+                            <?php endfor; ?>
                         </tbody>
                     </table>
                 </div>
