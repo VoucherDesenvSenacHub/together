@@ -27,8 +27,8 @@
         return " <input class='formulario-input-checkbox' type='$type' id='$id' name='$name'> ";
     };
 
-    function inputFilter($type, $id, $name, $placeholder = "") {
-        return " <input class='formulario-input' type='$type' id='$id' name='$name' placeholder='$placeholder'> ";
+    function inputFilter($type, $id, $name, $placeholder = "", $value = "") {
+        return " <input class='formulario-input' type='$type' id='$id' name='$name' placeholder='$placeholder' value='$value'> ";
     };
 
 

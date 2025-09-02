@@ -1,22 +1,23 @@
-console.log("ong-filtro.js carregado");
-
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("ong-filtro.js carregado");
+
     const form = document.getElementById('filtro-form');
-    console.log("Form encontrado?", form); // vai mostrar o elemento ou null
+    console.log("Form encontrado?", form);
 
     if (!form) return;
 
     const inputs = form.querySelectorAll('input');
-    let timeout;
+    let debounceTimer;
 
     inputs.forEach(input => {
-        const eventType = input.type === 'date' ? 'change' : 'input';
-        input.addEventListener(eventType, () => {
-            console.log("Form submit disparado para input:", input.name);
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
+        input.addEventListener('input', () => {
+            clearTimeout(debounceTimer); // reseta o timer anterior
+
+            // espera 500ms sem digitar para enviar
+            debounceTimer = setTimeout(() => {
+                console.log("Form submit disparado para input:", input.name);
                 form.submit();
-            }, 300);
+            }, 1000);
         });
     });
 });

@@ -5,6 +5,8 @@ require_once './../../components/button.php';
 require_once './../../components/input.php';
 require_once './../../components/label.php';
 require_once __DIR__. "/../../../model/BuscarOngsEmAnaliseModel.php";
+require_once './../../components/paginacao.php';
+
 
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
 
@@ -15,6 +17,7 @@ $pesquisa   = $_GET['pesquisar'] ?? null;
 
 $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa);
 ?>
+
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
@@ -24,16 +27,17 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
             <div class="titulo-pagina">
                 <h1>Validação de ONGs</h1>
             </div>
+
             <div class="formulario-perfil">
                 <form method="GET" class="filtro" id="filtro-form">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio', $dataInicio) ?>
+                            <?= inputFilter('date', 'data-inicio', 'data-inicio', '', $dataInicio) ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final', $dataFim) ?>
+                            <?= inputFilter('date', 'data-final', 'data-final', '', $dataFim) ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
@@ -81,13 +85,15 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                         </tbody>
                     </table>
                 </div>
+
                 <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>
     </main>
+
     <?php require_once "../../../view/components/footer.php"; ?>
 
+    <!-- JS do filtro automático com debounce -->
     <script src="/together/view/assests/js/pages/ong-filtro.js"></script>
-
 </body>
 </html>
