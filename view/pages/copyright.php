@@ -2,7 +2,7 @@
 <?php require_once "../../view/components/head.php" ?>
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
-<?php require_once "./../../controller/controllerCopyright.php" ?>
+<?php require_once "./../../model/DevModel.php" ?>
 
 <link rel="stylesheet" href="../assests/css/reset.css">
 <link rel="stylesheet" href="../assests/css/style.css">
