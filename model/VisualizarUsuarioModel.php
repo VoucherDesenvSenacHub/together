@@ -16,7 +16,7 @@ class VisualizarUsuarioModel
     public function DataNomeUsuario(): array
     {
         try {
-            $query = "SELECT dt_cadastro, nome 
+            $query = "SELECT dt_criacao, nome 
                       FROM {$this->tabela} 
                       WHERE tipo_perfil = 'Usuario'";
             $stmt = $this->conn->prepare($query);
@@ -50,10 +50,10 @@ class VisualizarUsuarioModel
     // listar usuários com limite e offset (para paginação)
     public function listarUsuariosPaginado(int $limite, int $offset): array
     {
-        $query = "SELECT dt_cadastro, nome 
+        $query = "SELECT dt_criacao, nome 
                   FROM {$this->tabela} 
                   WHERE tipo_perfil = 'Usuario' 
-                  ORDER BY dt_cadastro DESC 
+                  ORDER BY dt_criacao DESC 
                   LIMIT :limite OFFSET :offset";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);

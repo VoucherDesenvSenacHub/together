@@ -72,7 +72,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                             <?php if (!empty($VisualizarOngs) && is_array($VisualizarOngs)) { ?>
                                 <?php foreach ($VisualizarOngs as $ong) { ?>
                                     <tr>
-                                        <td><?= date("d/m/Y", strtotime($ong['dt_cadastro'])) ?></td>
+                                        <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
                                         <td><?= $ong['nome'] ?></td>
                                         <td>
                                             <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
