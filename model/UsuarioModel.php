@@ -15,7 +15,6 @@ class UsuarioModel
     public function registrarUsuarioComEndereco(
         $nome,
         $cpf,
-        $dt_nascimento, 
         $telefone,
         $email,
         $senha,
@@ -43,12 +42,11 @@ class UsuarioModel
 
             $enderecoId = $this->conn->lastInsertId();
 
-            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, id_endereco, ativo, tipo_perfil)
-                       VALUES (:nome, :cpf, :dt_nascimento, :telefone, :email, :senha, :id_endereco, true, 'Usuario')";
+            $sqlUsuario = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, id_endereco, ativo, tipo_perfil)
+                       VALUES (:nome, :cpf, :telefone, :email, :senha, :id_endereco, true, 'PESSOAL')";
             $stmtUsuario = $this->conn->prepare($sqlUsuario);
             $stmtUsuario->bindParam(':nome', $nome);
             $stmtUsuario->bindParam(':cpf', $cpf);
-            $stmtUsuario->bindParam(':dt_nascimento', $dt_nascimento);
             $stmtUsuario->bindParam(':telefone', $telefone);
             $stmtUsuario->bindParam(':email', $email);
             $senhaHash = password_hash($senha, PASSWORD_BCRYPT);
@@ -87,5 +85,41 @@ class UsuarioModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    // Encontrar usuário por CPF
+
+    public function findDonationHistoryBySearch($userid, $nome_ong){
+    $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
+            FROM doacoes D
+            JOIN ongs O ON O.id = D.id_ong
+            JOIN usuarios U ON U.id = D.id_usuario
+            WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
+    
+    $stmt = $this->conn->prepare($sql);
+    
+    $nome_ong = '%' . $nome_ong . '%';
+    $stmt->bindParam(':nome_ong', $nome_ong);
+    $stmt->bindParam(':userid', $userid);
+    
+    $stmt->execute();
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findOngVolunteerBySearch($userid, $nome_ong){
+    $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social 
+            FROM voluntarios V
+            JOIN ongs O ON O.id = V.id_ong
+            WHERE V.id_usuario = :userid AND O.razao_social LIKE :nome_ong";
+
+    $stmt = $this->conn->prepare($sql);
+
+    $nome_ong = '%' . $nome_ong . '%';
+    $stmt->bindParam(':nome_ong', $nome_ong);
+    $stmt->bindParam(':userid', $userid);
+
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 }
