@@ -1,14 +1,33 @@
-<?php require_once "../../view/components/head.php" ?>
-<?php require_once "./../components/button.php" ?>
-<?php require_once "./../components/input.php" ?>
-<?php require_once "./../components/label.php" ?>
-<?php require_once "./../components/select.php" ?>
+<?php require_once "../../view/components/head.php";
+require_once "./../components/button.php";
+require_once "./../components/input.php";
+require_once "./../components/label.php";
+require_once "./../components/select.php";
+require_once "./../components/selectEndereco.php";
+require_once "./../components/alert.php";
+require_once "./../../model/CategoriaOngModel.php";
+
+$categoriaModel = new CategoriaOngModel();
+$categorias = $categoriaModel->getAll();
+?>
 
 <body class="body-login">
 
+    <?php
+    // Popup do session
+    if (isset($_SESSION['type'], $_SESSION['message'])) {
+        showPopup($_SESSION['type'], $_SESSION['message']);
+        unset($_SESSION['type'], $_SESSION['message']);
+    }
+
+    if (!isset($_SESSION['step'])) {
+        $_SESSION['step'] = 1;
+    }
+    ?>
+
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+            <?php $_SESSION['step'] === 2 ? '' : require_once './../components/back-button.php' ?>
         </div>
 
 
@@ -22,104 +41,83 @@
 
                 <form class="login" method="POST" action="">
                     <h1 class="titulo-login">Cadastrar ONG</h1>
-                    <div class="step active">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('razao_social', 'Razão Social') ?>
-                                <?= inputRequired('text', 'razao_social', 'razao_social') ?>
-                            </div>
-                            <div>
-                                <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('email', 'email', 'email') ?>
-                            </div>
-                            <div>
-                                <?= label('telefone', 'Telefone') ?>
-                                <?= inputRequired('text', 'telefone', 'telefone') ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('next', 'Próximo', 'btn1.1', '', 'button') ?>
-                            </div>
 
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('cnpj', 'CNPJ') ?>
-                                <?= inputRequired('text', 'cnpj', 'cnpj') ?>
-                            </div>
-                            <div>
-                                <?= label('ods', 'Tipo da Ong') ?>
-                                <?= selectRequired('ods', 'ods', [
-                                    "Erradicação da pobreza",
-                                    "Fome zero e agricultura sustentável",
-                                    "Saúde e bem-estar",
-                                    "Educação de qualidade",
-                                    "Igualdade de gênero",
-                                    "Água potável e saneamento",
-                                    "Energia limpa e acessível",
-                                    "Trabalho decente e crescimento econômico",
-                                    "Indústria, inovação e infraestrutura",
-                                    "Redução das desigualdades",
-                                    "Cidades e comunidades sustentáveis",
-                                    "Consumo e produção responsáveis",
-                                    "Ação contra a mudança global do clima",
-                                    "Vida na água",
-                                    "Vida terrestre",
-                                    "Paz, justiça e instituições eficazes",
-                                    "Parcerias e meios de implementação"
-                                ]) ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn2.1', '', 'button') ?>
-                                <?= botao('next', 'Próximo', 'btn2.2', '', 'button') ?>
+                    <?php if ($_SESSION['step'] === 1): ?>
+                        <div class="step active">
+                            <div class="container-input-login">
+                                <div>
+                                    <?= label('cnpj', 'CNPJ') ?>
+                                    <?= inputRequired('text', 'cnpj', 'cnpj', $_SESSION['cnpj'] ?? '') ?>
+                                </div>
+                                <div>
+                                    <?= label('razao_social', 'Razão Social') ?>
+                                    <?= inputRequired('text', 'razao_social', 'razao_social', $_SESSION['razao_social'] ?? '') ?>
+                                </div>
+                                <div>
+                                    <?= label('telefone', 'Telefone') ?>
+                                    <?= inputRequired('text', 'telefone', 'telefone', $_SESSION['telefone'] ?? '') ?>
+                                </div>
+                                <div>
+                                    <?= label('id_categoria', 'Categoria da ONG') ?>
+                                    <?= selectCategoriasOng('id_categoria', 'id_categoria', $categorias, $_SESSION['id_categoria'] ?? null) ?>
+                                </div>
+                                <div class="botao-login group-btn-cadastro-ong">
+                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '/together/controller/OngCadastrarController.php') ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="step">
-                        <div class="container-input-login">
-                            <div class="cadastrar-ong-row-endereco">
+                    <?php endif; ?>
+
+                    <?php if ($_SESSION['step'] === 2): ?>
+                        <div class="step active">
+                            <div class="container-input-login">
                                 <div>
                                     <?= label('cep', 'CEP') ?>
                                     <?= inputRequired('text', 'cep', 'cep') ?>
                                 </div>
                                 <div>
-                                    <?= label('numero', 'Número') ?>
-                                    <?= inputRequired('number', 'numero', 'numero') ?>
+                                    <?= label('logradouro', 'Logradouro') ?>
+                                    <?= inputRequired('text', 'logradouro', 'logradouro') ?>
                                 </div>
-                            </div>
-                            <div>
-                                <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputRequired('text', 'logradouro', 'logradouro') ?>
-                            </div>
 
-                            <div>
-                                <?= label('bairro', 'Bairro') ?>
-                                <?= inputRequired('text', 'bairro', 'bairro') ?>
-                            </div>
-                            <div class="cadastrar-ong-row-endereco">
-                            <div>
-                                    <?= renderSelectEstado(''); ?>
+                                <div>
+                                    <?= label('bairro', 'Bairro') ?>
+                                    <?= inputRequired('text', 'bairro', 'bairro') ?>
                                 </div>
                                 <div>
-                                    <?= renderSelectCidade('', ''); ?>
+                                    <?= label('estado', 'Estado') ?>
+                                    <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
+                                </div>
+                                <div>
+                                    <?= label('cidade', 'Cidade') ?>
+                                    <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
+                                </div>
+                                <div class="cadastrar-ong-row-endereco">
+                                    <div class="numero">
+                                        <?= label('numero', 'Número') ?>
+                                        <?= inputRequired('number', 'numero', 'numero') ?>
+                                    </div>
+                                    <div class="complemento" > 
+                                        <?= label('complemento', 'Complemento') ?>
+                                        <?= inputDefault('text', 'complemento', 'complemento') ?>
+                                    </div>
+                                </div>
+
+                                <div class="botao-login group-btn-cadastro-ong">
+                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '/together/controller/OngCadastrarController.php') ?>
+                                    <?= botao('salvar', 'Enviar', name: 'step_action', value: 'salvar', formaction: '/together/controller/OngCadastrarController.php') ?>
                                 </div>
                             </div>
-                            <div>
-                                <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento') ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn4.1', '', 'button') ?>
-                                <?= botao('salvar', 'Enviar', 'btn4.2', '/together/index.php') ?>
-                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
+
                 </form>
             </div>
         </div>
     </div>
+    <!-- Não Apagar -->
     <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/components/selectEndereco.js"></script>
 </body>
 
 </html>
