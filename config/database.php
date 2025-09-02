@@ -3,7 +3,7 @@
     class Database {
         private $host = "localhost";
         private $port = "3306";
-        private $dbName = "together";
+        private $dbName = "agua12";
         private $user = "root";
         private $password = "";
 
