@@ -36,5 +36,21 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     }
+
+    public function findDonorSearch($nome_doador)
+    {
+        $sql = "SELECT D.dt_doacao, U.nome, D.valor
+                      FROM doacoes D 
+                      JOIN usuarios U ON U.id = D.id_usuario 
+                      WHERE U.nome
+                      LIKE :nome_doador
+                      ORDER BY D.dt_doacao DESC";
+
+        $stmt = $this->conn->prepare($sql);
+        $nome_doador = '%' . $nome_doador . '%';
+        $stmt->bindParam(':nome_doador', $nome_doador);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
