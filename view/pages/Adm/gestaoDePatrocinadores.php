@@ -3,9 +3,6 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
-<?php require_once __DIR__ . './../../../model/AdmModel.php';
-    $admModel = new AdmModel();
-?>
 
 <body>
     <header>
@@ -23,21 +20,16 @@
             </div>
             <div class="formulario-perfil">
                 <div class="filtro">
-                    <form action="gestaoDePatrocinadores.php" method="GET">
 
-                        <div class="bloco-pesquisa">
-                            <?= label('pesquisar', '&nbsp;') ?>
-                            <?= $amongus = inputFilter('text', 'pesquisar', 'nome_patrocinador', 'Pesquisar Nome') ?>
-                        </div>
-
-                    </form>
-
+                    <div class="bloco-pesquisa">
+                        <?= label('pesquisar', '&nbsp;') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
+                    </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
                             <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
                         </div>
                     </div>
-
                 </div>
                 <div class="table-mobile">
                     <table class="tabela">
@@ -49,26 +41,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                                $patrocinador = $admModel->findPatrocinadoresBySearch(nome_patrocinador: $a['nome']);
-                                if ($patrocinador) {
-                                    foreach ($patrocinador as $p) { ?>
-                                        <tr>
-                                            <td>
-                                                <img src="<?= $p['logo'] ?>" alt="Logo" class="logo-patrocinador">
-                                            </td>
-                                            <td><?= $p['nome'] ?></td>
-                                            
-                                        </tr>
-                                    <?php }
-                                } else { ?>
-                                    <tr>
-                                        <td colspan="3">Nenhum patrocinador encontrado.</td>
-                                    </tr>
-                                <?php }
-                             ?>
-                                
-                            
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <tr>
+                                    <td>
+                                        <img src="\together\view\assests\images\Adm\senac.png" alt="" class="logo-patrocinador">
+                                    </td>
+                                    <td>Senac Hub Academy</td>
+                                    <td>
+                                        <div class="acoes-container">
+                                            <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
+                                            <?= renderAcao('deletar') ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endfor; ?>
                         </tbody>
                     </table>
                 </div>
