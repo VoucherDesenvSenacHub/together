@@ -12,21 +12,21 @@ class BuscarOngsEmAnaliseModel {
     public function BuscarOngsEmAnalise($dataInicio = null, $dataFim = null, $pesquisa = null){
         $query = "SELECT 
                     id, 
-                    dt_fundacao, 
+                    dt_criacao, 
                     razao_social, 
                     'Em análise...' AS status_validacao
                   FROM ongs
-                  WHERE status_validacao IS NULL";
+                  WHERE status_validacao = 'pendente'";
 
         $params = [];
 
         if ($dataInicio) {
-            $query .= " AND dt_fundacao >= :dataInicio";
+            $query .= " AND dt_criacao >= :dataInicio";
             $params[':dataInicio'] = $dataInicio;
         }
 
         if ($dataFim) {
-            $query .= " AND dt_fundacao <= :dataFim";
+            $query .= " AND dt_criacao <= :dataFim";
             $params[':dataFim'] = $dataFim;
         }
 
@@ -35,7 +35,7 @@ class BuscarOngsEmAnaliseModel {
             $params[':pesquisa'] = "%$pesquisa%";
         }
 
-        $query .= " ORDER BY dt_fundacao DESC"; // opcional, ordenar por data
+        $query .= " ORDER BY dt_criacao DESC"; // opcional, ordenar por data
 
         $stmt = $this->conn->prepare($query);
         $stmt->execute($params);

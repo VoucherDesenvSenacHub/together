@@ -66,7 +66,7 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                                 <?php foreach ($ongsEmAnalise as $ong): ?>
                                     <tr>
                                         <td>
-                                            <?= !empty($ong['dt_fundacao']) ? date('d/m/Y', strtotime($ong['dt_fundacao'])) : '-' ?>
+                                            <?= !empty($ong['dt_criacao']) ? date('d/m/Y', strtotime($ong['dt_criacao'])) : '-' ?>
                                         </td>
                                         <td><?= htmlspecialchars($ong['razao_social'], ENT_QUOTES, 'UTF-8') ?></td>
                                         <td><?= htmlspecialchars($ong['status_validacao'], ENT_QUOTES, 'UTF-8') ?></td>
