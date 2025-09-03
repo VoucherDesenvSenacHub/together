@@ -5,8 +5,10 @@
 <?php require_once './../../../model/OngModel.php' ?>
 
 <?php 
+// $idOng = $_SESSION['id_ong'] ?? null;
+$idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
-$lista = $ongModel->filtroDataHoraDoacoes('2025-01-01', '2025-12-31');
+$lista = $ongModel->filtroDataHoraDoacoes($idOng, '2025-01-01', '2025-12-31');
 
 ?>
 

@@ -53,15 +53,17 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroDataHoraDoacoes($data_inicio, $data_fim)
+    public function filtroDataHoraDoacoes($id_ong, $data_inicio, $data_fim)
     {
         $sql = "SELECT D.dt_doacao, U.nome, D.valor
                       FROM doacoes D 
                       JOIN usuarios U ON U.id = D.id_usuario 
                       WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
+                      AND D.id_ong = :id_ong
                       ORDER BY D.dt_doacao DESC";
 
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_ong', $id_ong);
         $stmt->bindParam(':data_inicio', $data_inicio);
         $stmt->bindParam(':data_fim', $data_fim);
         $stmt->execute();
