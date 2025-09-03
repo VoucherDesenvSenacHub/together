@@ -82,6 +82,8 @@
                     <?= cardSobreNos("Torne-se uma ONG", "Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer a diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!") ?>
                     <div class="btn-home-acao">
                         <a href="<?= ($_SESSION['perfil'] ?? '') === 'Usuario' ? '/together/view/pages/cadastrarOng.php' : '/together/index.php?redirect=cadastrarOng' ?>">
+                            <?= botao('entrar', 'Cadastrar-se') ?>
+                        </a>
                     </div>
                 </div>
                 <div class="sobre-nos-card">
