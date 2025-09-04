@@ -66,6 +66,7 @@ CREATE TABLE postagens(
     titulo varchar(50) not null,
     dt_postagem date,
     descricao text,
+    link text,
     id_imagem int,
     id_ong int,
     foreign key(id_imagem) references imagens(id),
