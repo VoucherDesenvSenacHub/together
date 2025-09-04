@@ -72,7 +72,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                             <?php if (!empty($VisualizarUsuarios)) { ?>
                                 <?php foreach ($VisualizarUsuarios as $usuario) { ?>
                                     <tr>
-                                        <td><?= date("d/m/Y", strtotime($usuario['dt_cadastro'])) ?></td>
+                                        <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
                                         <td><?= $usuario['nome'] ?></td>
                                         <td>
                                             <a href="visaoDoUsuario.php?id=<?= $usuario['id'] ?? '' ?>">

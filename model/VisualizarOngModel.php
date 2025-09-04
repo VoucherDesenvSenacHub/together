@@ -16,7 +16,7 @@ class VisualizarOngModel
     public function ListarOngCadastradas(): array
     {
         try {
-            $query = "SELECT dt_cadastro, nome FROM {$this->tabela} WHERE tipo_perfil = 'Ong'";
+            $query = "SELECT dt_criacao, nome FROM {$this->tabela} WHERE tipo_perfil = 'Ong'";
             $stmt = $this->conn->prepare($query);
 
             if (!$stmt->execute()) {
@@ -48,10 +48,10 @@ class VisualizarOngModel
     // listar Ongs com limite e offset (para paginação)
     public function listarOngsPaginado(int $limite, int $offset): array
     {
-        $query = "SELECT dt_cadastro, nome 
+        $query = "SELECT dt_criacao, nome 
                   FROM {$this->tabela} 
                   WHERE tipo_perfil = 'Ong' 
-                  ORDER BY dt_cadastro DESC 
+                  ORDER BY dt_criacao DESC 
                   LIMIT :limite OFFSET :offset";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
