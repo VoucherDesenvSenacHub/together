@@ -8,7 +8,14 @@
 // $idOng = $_SESSION['id_ong'] ?? null;
 $idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
-$lista = $ongModel->filtroDataHoraDoacoes($idOng, $_GET['dt_inicio'] ?? null, $_GET['dt_final'] ?? null);
+
+$dtInicio = $_GET['dt_inicio'] ?? null;
+$dtFinal = $_GET['dt_final'] ?? null;
+
+$dtInicio = !empty($dtInicio) ? $dtInicio : null;
+$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+
+$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
 ?>
 
 <body>

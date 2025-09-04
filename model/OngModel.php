@@ -79,5 +79,31 @@ class OngModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function filtroDataHoraVoluntarios($id_ong, $data_inicio=NULL, $data_fim=NULL){
+        if( is_null($data_inicio) || is_null($data_fim)) {
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+        } else{
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
+                          AND V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
