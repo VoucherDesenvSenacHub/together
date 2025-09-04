@@ -58,9 +58,6 @@ CREATE TABLE ongs (
     FOREIGN KEY(id_imagem_de_perfil) REFERENCES imagens(id)
 );
 
-
--- 8 
-
 CREATE TABLE postagens(
 	id int primary key auto_increment,
     titulo varchar(50) not null,
@@ -73,7 +70,19 @@ CREATE TABLE postagens(
     foreign key(id_ong) references ongs(id)
 );
 
--- 9
+CREATE TABLE paginas(
+	id int primary key auto_increment,
+    titulo varchar(100) not null,
+    subtitulo varchar(150) not null,
+    descricao text,
+    facebook text,
+    instagram text,
+    twitter text,
+    id_imagem int,
+    id_ong int,
+    foreign key(id_imagem) references imagens(id),
+    foreign key(id_ong) references ongs(id)
+);
 
 CREATE TABLE patrocinadores(
 	id int primary key auto_increment,
@@ -86,8 +95,6 @@ CREATE TABLE patrocinadores(
     foreign key(id_imagem_icon) references imagens(id)
 );
 
--- 10
-
 CREATE TABLE voluntarios(
 	id int primary key auto_increment,
     dt_associacao date,
@@ -99,8 +106,6 @@ CREATE TABLE voluntarios(
     foreign key(id_ong) references ongs(id)
 );
 
--- 11
-
 CREATE TABLE doacoes(
 	id int primary key auto_increment,
     valor float not null,
@@ -111,9 +116,6 @@ CREATE TABLE doacoes(
     foreign key(id_usuario) references usuarios(id),
     foreign key(id_ong) references ongs(id)
 );
-
-
--- 12 
 
 CREATE TABLE desenvolvedores(
     id int primary key,
