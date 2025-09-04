@@ -1,5 +1,5 @@
 <?php
-require_once "select.php"; // aqui está sua função selectDefault()
+require_once "select.php";
 
 function renderSelectEstado(string $estadoSelecionado = '') {
     $caminhoJson = __DIR__ . '/../../data/enderecos.json';
