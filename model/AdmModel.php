@@ -44,7 +44,7 @@ class AdmModel
     public function filtroOngsValidationByDataCriacao($data_inicio = NULL, $data_fim = NULL)
     {
         if (!is_null($data_inicio) && !is_null($data_fim)) {
-            $sql = "SELECT id, razao_social, cnpj, telefone, dt_criacao, status_validacao, ativo
+            $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
                     FROM ongs
                     WHERE dt_criacao BETWEEN :data_inicio AND :data_fim
                     ORDER BY dt_criacao DESC";
@@ -53,8 +53,30 @@ class AdmModel
             $stmt->bindParam(':data_inicio', $data_inicio);
             $stmt->bindParam(':data_fim', $data_fim);
         } else {
-            $sql = "SELECT id, razao_social, cnpj, telefone, dt_criacao, status_validacao, ativo
+            $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
                     FROM ongs
+                    ORDER BY dt_criacao DESC";
+            
+            $stmt = $this->conn->prepare($sql);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    public function filtroUsuariosCadastradosByDataCadastro($data_inicio = NULL, $data_fim = NULL){
+        if (!is_null($data_inicio) && !is_null($data_fim)) {
+            $sql = "SELECT id, nome, dt_criacao, ativo
+                    FROM usuarios
+                    WHERE dt_criacao BETWEEN :data_inicio AND :data_fim
+                    ORDER BY dt_criacao DESC";
+            
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        } else {
+            $sql = "SELECT id, nome, dt_criacao, ativo
+                    FROM usuarios
                     ORDER BY dt_criacao DESC";
             
             $stmt = $this->conn->prepare($sql);
