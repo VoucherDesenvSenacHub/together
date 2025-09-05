@@ -144,4 +144,33 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
     }
+
+    public function mostrarInformacoesPaginaOng($id)
+    {
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter FROM paginas p WHERE p.id_ong=:id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id',$id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao,$facebook,$instagram, $twitter)
+    {
+        $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter WHERE id=:id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':titulo', $titulo);
+        $stmt->bindParam(':subtitulo', $subtitulo);
+        $stmt->bindParam(':descricao', $descricao);
+        $stmt->bindParam(':facebook', $facebook);
+        $stmt->bindParam(':instagram', $instagram);
+        $stmt->bindParam(':twitter', $twitter);
+        $stmt->execute();
+        $rowCount = $stmt->rowCount(); 
+        if ($rowCount > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
