@@ -121,7 +121,7 @@ class UsuarioModel
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroOngVolunteerByDataHora($userid, $data_inicio = NULL, $data_fim = NULL)
+    public function filtroOngVolunteerByData($userid, $data_inicio = NULL, $data_fim = NULL)
 {
     if (!is_null($data_inicio) && !is_null($data_fim)) {
         $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social
@@ -140,6 +140,35 @@ class UsuarioModel
                 JOIN ongs O ON O.id = V.id_ong
                 WHERE V.id_usuario = :userid
                 ORDER BY V.dt_associacao DESC";
+        
+        $stmt = $this->conn->prepare($sql);
+    }
+
+    $stmt->bindParam(':userid', $userid);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+   public function filtroOngDonationHistoryByData($userid, $data_inicio = NULL, $data_fim = NULL)
+{
+    if (!is_null($data_inicio) && !is_null($data_fim)) {
+        $sql = "SELECT D.valor, D.anonimo, D.dt_doacao, O.razao_social, O.id as id_ong
+                FROM doacoes D
+                JOIN ongs O ON D.id_ong = O.id
+                WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
+                  AND D.id_usuario = :userid
+                ORDER BY D.dt_doacao DESC";
+        
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':data_inicio', $data_inicio);
+        $stmt->bindParam(':data_fim', $data_fim);
+    } else {
+        $sql = "SELECT D.valor, D.anonimo, D.dt_doacao, O.razao_social, O.id as id_ong
+                FROM doacoes D
+                JOIN ongs O ON D.id_ong = O.id
+                WHERE D.id_usuario = :userid
+                ORDER BY D.dt_doacao DESC";
         
         $stmt = $this->conn->prepare($sql);
     }
