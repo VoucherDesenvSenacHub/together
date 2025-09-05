@@ -4,7 +4,7 @@
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/alert.php'; ?>
 <?php require_once './../../components/paginacao.php'; ?>
-<?php require_once './../../../controller/VisualizarUsuariosAdmController.php'; ?>
+<?php require_once './../../../model/AdmModel.php'; ?>
 
 <?php
 // verifica se o perfil é de administrador
@@ -12,6 +12,12 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     header('Location: /together/view/pages/login.php');
     exit;
 }
+
+$VisualizarUsuarioModel = new AdmModel();
+$totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
+$VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
+$quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
+
 
 // mostra popup de erro se existir
 if (isset($_SESSION['erro'], $erro)) {

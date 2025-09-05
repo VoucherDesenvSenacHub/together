@@ -4,7 +4,7 @@
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/alert.php'; ?>
 <?php require_once './../../components/paginacao.php'; ?>
-<?php require_once './../../../controller/VisualizarUsuariosAdmController.php'; ?>
+<?php require_once './../../../model/AdmModel.php'; ?>
 
 <?php
 // verifica se o perfil é de administrador
@@ -18,6 +18,13 @@ if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
 }
+
+$VisualizarOngModel = new AdmModel();
+$totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
+$VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
+$quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
+
+
 
 // página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
