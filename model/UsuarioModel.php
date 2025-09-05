@@ -121,7 +121,7 @@ class UsuarioModel
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroOngVolunteerByDataHora($userid, $data_inicio = NULL, $data_fim = NULL)
+    public function filtroOngVolunteerByData($userid, $data_inicio = NULL, $data_fim = NULL)
 {
     if (!is_null($data_inicio) && !is_null($data_fim)) {
         $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social
@@ -150,7 +150,7 @@ class UsuarioModel
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-   public function filtroOngDonationHistoryByDataHora($userid, $data_inicio = NULL, $data_fim = NULL)
+   public function filtroOngDonationHistoryByData($userid, $data_inicio = NULL, $data_fim = NULL)
 {
     if (!is_null($data_inicio) && !is_null($data_fim)) {
         $sql = "SELECT D.valor, D.anonimo, D.dt_doacao, O.razao_social, O.id as id_ong
