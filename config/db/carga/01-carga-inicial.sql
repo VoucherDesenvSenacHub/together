@@ -22,7 +22,6 @@ INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, i
 ('Carla Mendes', '66677788899', '1989-11-12', '(41)97777-0006', 'carla@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Usuario'),
 ('Ricardo Gomes', '77788899900', '1987-04-20', '(51)96666-0007', 'ricardo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Usuario');
 
-
 -- 4) Categorias de ONGs
 INSERT INTO categorias_ongs (nome) VALUES
 ('Erradicação da pobreza'),
@@ -43,7 +42,6 @@ INSERT INTO categorias_ongs (nome) VALUES
 ('Paz, justiça e instituições eficazes'),
 ('Parcerias e meios de implementação');
 
-
 -- 5) ONGs
 INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria) VALUES 
 	(1, 'ONG Verde', '98765432000155', '67988887777', 1, 2),
@@ -58,21 +56,27 @@ INSERT INTO postagens (titulo, dt_postagem, descricao, id_imagem, id_ong) VALUES
   ('Feira de Saúde','2025-05-20','Atendimento gratuito',3,3),
   ('Projeto Inclusão','2025-04-10','Rodas de conversa',4,4);
 
--- 7) Patrocinadores
+-- 7) Paginas
+INSERT INTO paginas (titulo, subtitulo, descricao, facebook, instagram, twitter, id_imagem, id_ong) VALUES
+  ('Quem Somos', 'Conheça nossa história', 'Nossa ONG atua há mais de 10 anos promovendo ações sociais voltadas à educação e cidadania.', NULL, NULL, NULL, 1, 1),
+  ('Projetos', 'Nossas principais iniciativas', 'Temos projetos em diversas áreas: educação, cultura e meio ambiente. Participe e ajude a transformar vidas.', NULL, NULL, NULL, 2, 2),
+  ('Doe Agora', 'Sua ajuda faz a diferença', 'Com sua contribuição podemos ampliar nosso impacto e alcançar mais famílias em situação de vulnerabilidade.', NULL, NULL, NULL, 3, 3);
+
+-- 8) Patrocinadores
 INSERT INTO patrocinadores (nome, dt_validade, rede_social, ativo, id_imagem_icon) VALUES
   ('Patrocínio A','2025-12-31','@patroA', true, 1),
   ('Patrocínio B','2025-09-30','@patroB', true, 2),
   ('Apoio Saúde','2026-03-31','@apoioSaude', false, 3),
   ('Inclusão Coop','2025-11-15','@inclusaoCoop', true, 4);
 
--- 8) Voluntários 
+-- 9) Voluntários 
 INSERT INTO voluntarios (dt_associacao, status_validacao, ativo, id_usuario, id_ong) VALUES
   ('2024-01-10', true, true, 1, 1),
   ('2024-02-20', false, true, 3, 2),
   ('2023-08-15', true, true, 1, 3),
   ('2025-03-01', false, false, 2, 4);
 
--- 9) Doações 
+-- 10) Doações 
 INSERT INTO doacoes (valor, anonimo, dt_doacao, id_usuario, id_ong) VALUES
   (100.00, false, '2025-05-10', 1, 1),
   (250.50, true, '2025-06-15', 2, 2),
