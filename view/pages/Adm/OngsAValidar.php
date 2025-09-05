@@ -7,27 +7,30 @@ require_once './../../components/label.php';
 require_once __DIR__. "/../../../model/BuscarOngsEmAnaliseModel.php";
 require_once './../../components/paginacao.php';
 
-
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
 
 // Captura filtros do formulário via GET
 $dataInicio = $_GET['data-inicio'] ?? null;
 $dataFim    = $_GET['data-final'] ?? null;
-$pesquisa   = $_GET['pesquisar'] ?? null;
-
-$ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa);
+$pesquisa  = $_GET['pesquisar'] ?? null;
+// Página atual e itens por página para paginação
+$paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+$paginaAtual = max(1, $paginaAtual);  // Garante que o valor mínimo seja 1
+$itensPorPagina = 6;
+// Total de registros para cálculo da paginação
+$totalRegistros = $buscarOngsEmAnaliseModel->contarOngsEmAnalise($dataInicio, $dataFim, $pesquisa);
+$quantidadeDePaginas = ceil($totalRegistros / $itensPorPagina);
+// Busca os dados da página atual
+$ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa, $paginaAtual, $itensPorPagina);
 ?>
-
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
-
         <div class="div-wrap-width">
             <div class="titulo-pagina">
                 <h1>Validação de ONGs</h1>
             </div>
-
             <div class="formulario-perfil">
                 <form method="GET" class="filtro" id="filtro-form">
                     <div class="bloco-datas">
@@ -44,13 +47,11 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                             <?= botao('primary', '✔') ?>
                         </div>
                     </div>
-
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome', $pesquisa) ?>
                     </div>
                 </form>
-
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -85,15 +86,10 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                         </tbody>
                     </table>
                 </div>
-
-                <?php require_once './../../components/paginacao.php' ?>
+                <?php criarPaginacao($quantidadeDePaginas); ?>
             </div>
         </div>
     </main>
-
     <?php require_once "../../../view/components/footer.php"; ?>
-
-    <!-- JS do filtro automático com debounce -->
-    <script src="/together/view/assests/js/pages/ong-filtro.js"></script>
 </body>
 </html>
