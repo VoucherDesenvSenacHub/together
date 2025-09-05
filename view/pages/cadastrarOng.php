@@ -37,9 +37,9 @@
                                 <?= inputRequired('text', 'telefone', 'telefone') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('next', 'Próximo', 'btn1.1','','button') ?>
+                                <?= botao('next', 'Próximo', 'btn1.1', '', 'button') ?>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="step">
@@ -71,8 +71,8 @@
                                 ]) ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn2.1','','button') ?>
-                                <?= botao('next', 'Próximo', 'btn2.2','','button') ?>
+                                <?= botao('prev', 'Voltar', 'btn2.1', '', 'button') ?>
+                                <?= botao('next', 'Próximo', 'btn2.2', '', 'button') ?>
                             </div>
                         </div>
                     </div>
@@ -98,13 +98,11 @@
                                 <?= inputRequired('text', 'bairro', 'bairro') ?>
                             </div>
                             <div class="cadastrar-ong-row-endereco">
-                                <div>
-                                    <?= label('estado', 'Estado (UF)') ?>
-                                    <?= inputRequired('text', 'estado', 'estado') ?>
+                            <div>
+                                    <?= renderSelectEstado(''); ?>
                                 </div>
                                 <div>
-                                    <?= label('cidade', 'Cidade') ?>
-                                    <?= inputRequired('text', 'cidade', 'cidade') ?>
+                                    <?= renderSelectCidade('', ''); ?>
                                 </div>
                             </div>
                             <div>
@@ -112,7 +110,7 @@
                                 <?= inputDefault('text', 'complemento', 'complemento') ?>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn4.1','','button') ?>
+                                <?= botao('prev', 'Voltar', 'btn4.1', '', 'button') ?>
                                 <?= botao('salvar', 'Enviar', 'btn4.2', '/together/index.php') ?>
                             </div>
                         </div>

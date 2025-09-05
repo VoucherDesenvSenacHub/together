@@ -1,21 +1,25 @@
-<?php 
+<?php
 
 
     class Database {
-        private $host = "10.78.0.215";
+        // private $host = "10.78.0.215";
+        private $host = "localhost";
         private $port = "3306";
-        private $dbName = "together";
+        // private $dbName = "together";
+        private $dbName = "agua12";
         private $user = "root";
-        private $password = "12345678";
+        // private $password = "12345678";
+        private $password = "";
 
 
-        public function conectar() {
-            $url ="mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
-            $conn = new PDO($url, $this->user, $this->password);
-            
-            return $conn;
-        }
-    } 
+    public function conectar()
+    {
+        $url = "mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
+        $conn = new PDO($url, $this->user, $this->password);
+
+        return $conn;
+    }
+}
 
 
 ?>
