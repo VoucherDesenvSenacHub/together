@@ -21,8 +21,6 @@ if (!isset($_SESSION['step'])) {
 }
 ?>
 
-
-
 <body>
     <?php var_dump($_SESSION) ?>
     <?php require_once "../../../view/components/navbar.php"; ?>
