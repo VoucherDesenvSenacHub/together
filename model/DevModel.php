@@ -11,14 +11,14 @@ class DevModel{
     }
 
     public function devBuscar($nome){
-        $sql = "SELECT * FROM devs WHERE nome = :nome";
+        $sql = "SELECT * FROM desenvolvedores WHERE nome = :nome";
         $stmt = $this->conn->prepare($sql);
         $stmt ->bindParam("", $nome, PDO::PARAM_STR);
         $stmt ->execute();
     }
 
     public function devBuscarTudo(){
-        $sql = "SELECT * FROM devs";
+        $sql = "SELECT * FROM desenvolvedores";
         $stmt = $this->conn->prepare($sql);
         $stmt ->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -34,8 +34,8 @@ $vetor = [];
 foreach ($devList as $dev) {
     $vetor[] = [
         "nome" => $dev["nome"],
-        "linkedin" => $dev["linkedin"],
-        "github" => $dev["github"],
-        "imagem" => $dev["imagem"]
+        "linkedin" => $dev["link_linkedin"],
+        "github" => $dev["link_github"],
+        "imagem" => $dev["link_foto"]
     ];
 }
