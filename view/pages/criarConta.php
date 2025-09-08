@@ -3,6 +3,8 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
 <?php require_once "./../components/select.php" ?>
+<?php require_once "./../components/alert.php" ?>
+
 
 <?php
     $usuario = [
@@ -12,7 +14,15 @@
         'email' => '',
         'senha' => '',
         'confirmar_senha' => ''   
-    ]
+    ];
+
+$erro = $_SESSION['erro'] ?? '';
+
+if (isset($_SESSION['erro'], $erro)) {
+    showPopup($_SESSION['erro'], $erro);
+    unset($_SESSION['erro'], $erro);
+}
+
 ?>
 
 <body class="body-login">
@@ -31,7 +41,7 @@
 
             <div class="box-login">
 
-                <form class='login' method="POST" action="../../controller/UsuarioCriarController.php">
+                <form class='login' id='criar' method="POST" action="../../controller/UsuarioCriarController.php">
                     <h1 class="titulo-login">Criar uma nova conta</h1>
 
                     <div class="step active">
@@ -83,6 +93,7 @@
     </div>
 
     <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/pages/validacaoCriarUsuario.js"></script>
 </body>
 
 </html>
