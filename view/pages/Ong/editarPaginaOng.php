@@ -52,15 +52,15 @@ if (!isset($_SESSION['step'])) {
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">
                                 <img src="/together/view/assests/images/Adm/facebook.png" alt="Facebook">
-                                <input type="text" placeholder="@" name="facebook" value="<?= $pagina['facebook'] ?? '' ?>" />
+                                <input type="text" placeholder="@" name="Facebook" value="<?= $pagina['facebook'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
                                 <img src="/together/view/assests/images/Adm/instagram.png" alt="Instagram">
-                                <input type="text" placeholder="@" name="instagram" value="<?= $pagina['instagram'] ?? '' ?>" />
+                                <input type="text" placeholder="@" name="Instagram" value="<?= $pagina['instagram'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
                                 <img src="/together/view/assests/images/Adm/X.png" alt="X">
-                                <input type="text" placeholder="@" name="twitter" value="<?= $pagina['twitter'] ?? '' ?>" />
+                                <input type="text" placeholder="@" name="X" value="<?= $pagina['twitter'] ?? '' ?>" />
                             </div>
                         </div>
                         <div class="formulario-buttons">
