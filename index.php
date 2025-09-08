@@ -18,12 +18,8 @@
         unset($_SESSION['type'], $_SESSION['message']);
     }
     ?>
-
     <?php require_once './view/components/navbar.php' ?>
     <?php require_once './view/components/sidebar.php' ?>
-    <div class="modal-notificacao">
-        Enviado com sucesso!
-    </div>
     <main>
         <div class="home-banner-together">
             <div class="camada2">
