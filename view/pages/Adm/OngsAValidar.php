@@ -1,10 +1,29 @@
+<?php require_once './../../components/head.php' ?>
+<?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/button.php' ?>
+<?php require_once './../../components/input.php' ?>
+<?php require_once './../../components/label.php' ?>
+<?php require_once './../../../model/AdmModel.php';
+
+$admModel = new AdmModel();
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    $nome_ong = $_GET['nome_ong'] ?? '';
+    $listaOngs = $admModel->findOngBySearch($nome_ong);
+}
+ else {
+    $listaOngs = "";
+}
+?>
+
+
 <?php 
 require_once './../../components/head.php';
 require_once './../../components/acoes.php';
 require_once './../../components/button.php';
 require_once './../../components/input.php';
 require_once './../../components/label.php';
-require_once __DIR__. "/../../../model/BuscarOngsEmAnaliseModel.php";
+require_once __DIR__. "/../../../model/OngsEmAnaliseModel.php";
 require_once './../../components/paginacao.php';
 
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
@@ -32,6 +51,7 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                 <h1>Validação de ONGs</h1>
             </div>
             <div class="formulario-perfil">
+                <div class="filtro">
                 <form method="GET" class="filtro" id="filtro-form">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
@@ -47,6 +67,13 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                             <?= botao('primary', '✔') ?>
                         </div>
                     </div>
+                    <form action="OngsAValidar.php" method="GET">
+                        <div class="bloco-pesquisa">
+                            <?= label('nome_ong', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Nome') ?>
+                        </div>
+                    </form>
+                </div>
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome', $pesquisa) ?>
@@ -63,7 +90,10 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($ongsEmAnalise)): ?>
+                                <tr>
+                            <?php if (empty($ongsEmAnalise)): ?>
+                                <td colspan="4">Nenhuma ONG encontrada.</td>
+                            <?php else: ?>
                                 <?php foreach ($ongsEmAnalise as $ong): ?>
                                     <tr>
                                         <td>
@@ -78,10 +108,6 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="4">Nenhuma ONG em análise</td>
-                                </tr>
                             <?php endif; ?>
                         </tbody>
                     </table>

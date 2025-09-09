@@ -4,6 +4,7 @@
 <?php require_once "../../../view/components/select.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
 <?php require_once __DIR__ ."/../../../model/ValidarCadastroOngModel.php"; ?>
+<?php require_once __DIR__ ."/../../../"; ?>
 
 <?php 
 
@@ -99,8 +100,8 @@ if(isset($_GET['id'])){
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/adm/OngsAValidar.php') ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '','/together/view/pages/adm/OngsAValidar.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', "/together/controller/OngsEmAnaliseController.php?id=<?= $id ?>&tipo_alteracao=aprovado") ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '',"/together/controller/OngsEmAnaliseController.php?id=<?= $id ?>&tipo_alteracao=rejeitado") ?> </div>
                         </div>
                     </div>
                 </form>
