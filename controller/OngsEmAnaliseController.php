@@ -13,21 +13,25 @@ try {
     if(isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
     $database = new Database();
     $conn = $database->conectar();
-    $idOng = $_SESSION['idOngValidar'];
+    $idOng = $_POST["id"];
     $tipo = $_POST["tipo_alteracao"];
 
         $query = "UPDATE ongs SET status_validacao = :tipo 
-        WHERE id = :id;
+        WHERE id = :id;";
         
-        IF(:tipo = 'aprovado', UPDATE usuarios U SET U.tipo_perfil = 'Ong' 
-        JOIN ongs O
-        ON O.id_usuario = U.id
-        WHERE O.id = :id,'');";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":id", $idOng, PDO::PARAM_INT);
         $stmt->bindParam(":tipo", $tipo, PDO::PARAM_STR);        
         $stmt->execute();
+
+        if($tipo == "aprovado") {
+            $queryAtualizaUsuario = "UPDATE usuarios U SET U.tipo_perfil = 'Ong'
+            WHERE id =  (SELECT id_usuario FROM ongs WHERE id_usuario = :id)";
+            $stmtUser = $conn->prepare($queryAtualizaUsuario);
+            $stmtUser->bindParam(":id", $idOng, PDO::PARAM_INT);
+            $stmtUser->execute();
+        }
         
 
         header("Location: /together/view/pages/adm/OngsAValidar.php");
