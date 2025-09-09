@@ -1,4 +1,4 @@
-INSERT INTO devs(nome, linkedin, github, imagem) VALUES
+INSERT INTO desenvolvedores(nome, link_linkedin, link_github, link_foto) VALUES
 ('Eduardo Serafim', 'https://www.linkedin.com/in/eduardo-serafim-821649', 'https://github.com/eduardoserafiim', '../assets/images/Copyright/togetherteam/serafim.jpg'),
 ('Henrico Queiroz', 'https://www.linkedin.com/in/henrico-queiroz-7250073', 'https://github.com/HenricQ', '../assets/images/Copyright/togetherteam/queiroz.jpg'),
 ('Vitor Galvão', 'https://www.linkedin.com/in/vitor-galv%C3%A3o-29982a', 'https://github.com/vitorgalvao0', '../assets/images/Copyright/togetherteam/galvao.jpg'),
