@@ -32,17 +32,17 @@ $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
                   </div>
                   <div>
                     <?= label('telefone', 'Telefone') ?>
-                    <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                    <?= inputReadonly('text', 'telefone', 'telefone', $InformacoesOng['telefone']) ?>
                   </div>
                 </div>
                 <div class="form-row">
                   <div>
                     <?= label('cnpj', 'CNPJ') ?>
-                    <?= inputReadonly('text', 'cnpj', 'cnpj', '00.000.000/0000-00') ?>
+                    <?= inputReadonly('text', 'cnpj', 'cnpj', $InformacoesOng['cnpj']) ?>
                   </div>
                   <div>
                     <?= label('data', 'Data da Fundação') ?>
-                    <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                    <?= inputReadonly('text', 'data', 'data', $InformacoesOng['data']) ?>
                   </div>
                 </div>
               </div>
@@ -59,31 +59,31 @@ $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('cep', 'CEP') ?>
-                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                <?= inputReadonly('text', 'cep', 'cep', $InformacoesOng['cep']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('logradouro', 'Logradouro') ?>
-                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                <?= inputReadonly('text', 'logradouro', 'logradouro', $InformacoesOng['logradouro']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('complemento', 'Complemento') ?>
-                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                <?= inputReadonly('text', 'complemento', 'complemento', $InformacoesOng['complemento']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('numero', 'Número') ?>
-                <?= inputReadonly('text', 'numero', 'numero', '0') ?>
+                <?= inputReadonly('text', 'numero', 'numero', $InformacoesOng['numero']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('bairro', 'Bairro') ?>
-                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                <?= inputReadonly('text', 'bairro', 'bairro', $InformacoesOng['bairro']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('cidade', 'Cidade') ?>
-                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                <?= inputReadonly('text', 'cidade', 'cidade', $InformacoesOng['cidade']) ?>
               </div>
             </div>
           </div>
