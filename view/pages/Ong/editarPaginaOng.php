@@ -15,21 +15,23 @@
             <div class="formulario-perfil">
                 <form action="">
                     <div class="formulario-linha-superior">
-                        <?php require_once "./../../components/upload.php"?>
+                        <div class='formulario-imagem-preview'>
+                            <?php require_once "./../../components/upload.php" ?>
+                        </div>
                         <div class="formulario-campos">
                             <div>
-                                <?= label("titulo","Título")?>
-                                <?= inputRequired("text","titulo","titulo") ?>
+                                <?= label("titulo", "Título") ?>
+                                <?= inputRequired("text", "titulo", "titulo") ?>
                             </div>
-            
+
                             <div>
-                                <?= label("subtitulo","Subtítulo")?>
-                                <?= textareaRequired("subtitulo","subtitulo") ?>
+                                <?= label("subtitulo", "Subtítulo") ?>
+                                <?= textareaRequired("subtitulo", "subtitulo") ?>
                             </div>
                         </div>
                     </div>
-                    <?= label("descricao","Descrição")?>
-                    <?= textareaRequired("descricao","descricao") ?>
+                    <?= label("descricao", "Descrição") ?>
+                    <?= textareaRequired("descricao", "descricao") ?>
                     <div class="formulario-redes-buttons">
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">
@@ -54,6 +56,6 @@
             </div>
         </div>
     </main>
-    
-<?php require_once './../../components/footer.php'?>
+
+    <?php require_once './../../components/footer.php' ?>
 </body>

@@ -74,7 +74,9 @@
                             </div>
                         </div>
                         <div>
-                            <?php require_once './../../components/upload.php' ?>
+                            <div class='formulario-imagem-preview'>
+                                <?php require_once './../../components/upload.php' ?>
+                            </div>
                         </div>
                     </div>
                     <div class="botao-modal-patrocinadores">
