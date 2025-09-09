@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/pages/mascara.js"></script>
 </body>
 
 </html>

@@ -92,7 +92,7 @@ if (isset($_SESSION['erro'], $erro)) {
         </div>
     </div>
 
-    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/pages/mascara.js"></script>
     <script src="/together/view/assests/js/pages/validacaoCriarUsuario.js"></script>
 </body>
 
