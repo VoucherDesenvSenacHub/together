@@ -11,22 +11,29 @@ try {
         throw new Exception("Método inválido para esta requisição");
     }
     if(isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
-    $conn = new Database()->conectar();
-    $idOng = $_POST["id"];
+    $database = new Database();
+    $conn = $database->conectar();
+    $idOng = $_SESSION['idOngValidar'];
     $tipo = $_POST["tipo_alteracao"];
 
-        $query = "UPDATE ongs SET status_validacao = ':tipo' 
-        WHERE id = :id";
+        $query = "UPDATE ongs SET status_validacao = :tipo 
+        WHERE id = :id;
+        
+        IF(:tipo = 'aprovado', UPDATE usuarios U SET U.tipo_perfil = 'Ong' 
+        JOIN ongs O
+        ON O.id_usuario = U.id
+        WHERE O.id = :id,'');";
 
         $stmt = $conn->prepare($query);
         $stmt->bindParam(":id", $idOng, PDO::PARAM_INT);
         $stmt->bindParam(":tipo", $tipo, PDO::PARAM_STR);        
         $stmt->execute();
+        
 
         header("Location: /together/view/pages/adm/OngsAValidar.php");
         exit();
     }
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
-    header('Location: /view/pages/Adm/OngsAValidar.php');
+    header('Location: /together/view/pages/Adm/OngsAValidar.php');
 }

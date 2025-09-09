@@ -4,7 +4,6 @@
 <?php require_once "../../../view/components/select.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
 <?php require_once __DIR__ ."/../../../model/ValidarCadastroOngModel.php"; ?>
-<?php require_once __DIR__ ."/../../../"; ?>
 
 <?php 
 
@@ -12,6 +11,7 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
     $validarCadastroOng = new ValidarCadastroOngModel();
     $ong = $validarCadastroOng->BuscarCadastroOng($id);
+    $_SESSION['idOngValidar'] = $id;
 }
 
 ?>
@@ -32,6 +32,7 @@ if(isset($_GET['id'])){
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
+                                    <input type="hidden" name="id" value="<?= $id ?>">
                                     <div>
                                         <?= label('razao_social', 'Razão Social') ?>
                                         <?= inputReadonly('text', 'razao_social', 'razao_social', $ong['razao_social']) ?>
@@ -100,8 +101,8 @@ if(isset($_GET['id'])){
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', "/together/controller/OngsEmAnaliseController.php?id=<?= $id ?>&tipo_alteracao=aprovado") ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '',"/together/controller/OngsEmAnaliseController.php?id=<?= $id ?>&tipo_alteracao=rejeitado") ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', "/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "aprovado") ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '',"/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "rejeitado") ?> </div>
                         </div>
                     </div>
                 </form>

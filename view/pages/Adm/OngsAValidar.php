@@ -74,11 +74,6 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                         </div>
                     </form>
                 </div>
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome', $pesquisa) ?>
-                    </div>
-                </form>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
