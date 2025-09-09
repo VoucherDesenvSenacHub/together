@@ -3,6 +3,18 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
+<?php require_once './../../../model/AdmModel.php';
+
+$admModel = new AdmModel();
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    $nome_ong = $_GET['nome_ong'] ?? '';
+    $listaOngs = $admModel->findOngBySearch($nome_ong);
+}
+ else {
+    $listaOngs = "";
+}
+?>
 
 
 <body>
@@ -15,7 +27,7 @@
                 <h1>Validação de ONGs</h1>
             </div>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <div class="filtro">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -30,11 +42,12 @@
                             <?= botao('primary', '✔') ?>
                         </div>
                     </div>
-
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
-                    </div>
+                    <form action="OngsAValidar.php" method="GET">
+                        <div class="bloco-pesquisa">
+                            <?= label('nome_ong', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Nome') ?>
+                        </div>
+                    </form>
                 </div>
                 <div class="table-mobile">
                     <table class="tabela">
@@ -47,19 +60,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+
+                            <?php
+                            if ($listaOngs) {
+                                foreach ($listaOngs as $o) { ?>
+                                    <tr>
+                                        <td><?= date('d/m/Y', strtotime($o['dt_fundacao'])) ?></td>
+                                        <td><?= $o['razao_social'] ?></td>
+                                        <td>
+                                            <?php if ($o['status_validacao'] === '0'): ?>
+                                                Chico gay
+                                            <?php else: ?>
+                                                Chico Muito Gay
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                <?php }
+                            } else { ?>
                                 <tr>
-                                    <td><?php echo $i + 10 ?>/09/2025</td>
-                                    <td><?php echo $lista[$i]?></td>
-                                    <td>Aguardando</td>
-                                    <td>
-                                        <a href="validarCadastroOng.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
+                                    <td colspan="4">Nenhuma ONG encontrada.</td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

@@ -2,7 +2,33 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/alert.php'; ?>
+<?php require_once './../../components/paginacao.php'; ?>
+<?php require_once './../../../model/AdmModel.php'; ?>
 
+<?php
+// verifica se o perfil é de administrador
+if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
+    header('Location: /together/view/pages/login.php');
+    exit;
+}
+
+$VisualizarUsuarioModel = new AdmModel();
+$totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
+$VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
+$quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
+
+
+// mostra popup de erro se existir
+if (isset($_SESSION['erro'], $erro)) {
+    showPopup($_SESSION['erro'], $erro);
+    unset($_SESSION['erro'], $erro);
+}
+
+// página atual definida pelo controller
+$pagina = isset($pagina) ? $pagina : 1;
+$quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
+?>
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
@@ -49,22 +75,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php if (!empty($VisualizarUsuarios)) { ?>
+                                <?php foreach ($VisualizarUsuarios as $usuario) { ?>
+                                    <tr>
+                                        <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
+                                        <td><?= $usuario['nome'] ?></td>
+                                        <td>
+                                            <a href="visaoDoUsuario.php?id=<?= $usuario['id'] ?? '' ?>">
+                                                <?= renderAcao('visualizar') ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else { ?>
                                 <tr>
-                                    <td><?= $i + 10 ?>/05/2025</td>
-                                    <td><?= $lista[$i] ?></td>
-                                    <td>
-                                        <a href="visaoDoUsuario.php">
-                                            <?= renderAcao('visualizar') ?>
-                                        </a>
-                                    </td>
+                                    <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
                                 </tr>
-                            <?php endfor ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+
+                <!-- Paginação -->
+                <?php if ($quantidadeDePaginas > 1) { ?>
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+                <?php } ?>
+
             </div>
         </div>
     </main>
