@@ -40,11 +40,11 @@ $usuario = $model->buscarUsuarioId($usuarioId);
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf'], 'readonly') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf']) ?>
                                         </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
-                                        <?= inputFilter('date', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
+                                        <?= inputReadonly('text', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
                                     </div>
                                 </div>
                             </div>
