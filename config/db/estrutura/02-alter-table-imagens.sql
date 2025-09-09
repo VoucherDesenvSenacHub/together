@@ -1,4 +1,3 @@
-
 -- ALterando a tabela imagens e alterando os campos
 ALTER TABLE imagens
 CHANGE COLUMN link caminho VARCHAR(255) NOT NULL,

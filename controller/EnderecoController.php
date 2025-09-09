@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/OngModel.php";
+require_once __DIR__ . "/../model/OngModel.php";
 
 class OngController
 {
