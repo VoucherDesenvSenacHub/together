@@ -85,8 +85,41 @@ class UsuarioModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    // Encontrar usuário por CPF
 
+    public function findDonationHistoryBySearch($userid, $nome_ong){
+        $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
+                FROM doacoes D
+                JOIN ongs O ON O.id = D.id_ong
+                JOIN usuarios U ON U.id = D.id_usuario
+                WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
+        
+        $stmt = $this->conn->prepare($sql);
+        
+        $nome_ong = '%' . $nome_ong . '%';
+        $stmt->bindParam(':nome_ong', $nome_ong);
+        $stmt->bindParam(':userid', $userid);
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function findOngVolunteerBySearch($userid, $nome_ong){
+        $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social 
+                FROM voluntarios V
+                JOIN ongs O ON O.id = V.id_ong
+                WHERE V.id_usuario = :userid AND O.razao_social LIKE :nome_ong";
+
+        $stmt = $this->conn->prepare($sql);
+
+        $nome_ong = '%' . $nome_ong . '%';
+        $stmt->bindParam(':nome_ong', $nome_ong);
+        $stmt->bindParam(':userid', $userid);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 
     public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil) {
         try {
@@ -167,42 +200,6 @@ class UsuarioModel
             return false; 
         }
     }
-
-    public function findDonationHistoryBySearch($userid, $nome_ong){
-    $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
-            FROM doacoes D
-            JOIN ongs O ON O.id = D.id_ong
-            JOIN usuarios U ON U.id = D.id_usuario
-            WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
-    
-    $stmt = $this->conn->prepare($sql);
-    
-    $nome_ong = '%' . $nome_ong . '%';
-    $stmt->bindParam(':nome_ong', $nome_ong);
-    $stmt->bindParam(':userid', $userid);
-    
-    $stmt->execute();
-    
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function findOngVolunteerBySearch($userid, $nome_ong){
-    $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social 
-            FROM voluntarios V
-            JOIN ongs O ON O.id = V.id_ong
-            WHERE V.id_usuario = :userid AND O.razao_social LIKE :nome_ong";
-
-    $stmt = $this->conn->prepare($sql);
-
-    $nome_ong = '%' . $nome_ong . '%';
-    $stmt->bindParam(':nome_ong', $nome_ong);
-    $stmt->bindParam(':userid', $userid);
-
-    $stmt->execute();
-
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
 }
 
 ?>
