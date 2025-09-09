@@ -91,7 +91,8 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarOngPorId($id) {
+    public function buscarOngPorId($id)
+    {
         $query = "SELECT 
                     o.id, 
                     o.razao_social AS nome, 
@@ -104,8 +105,7 @@ class AdmModel
                     e.complemento, 
                     e.bairro, 
                     e.numero, 
-                    e.cidade,
-                    i.caminho AS imagem
+                    e.cidade
                 FROM 
                     ongs o
                 INNER JOIN 
@@ -116,14 +116,14 @@ class AdmModel
                     imagens i ON o.id_imagem_de_perfil = i.id
                 WHERE 
                     o.id = :id";
-        
+
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    
-    
+
+
 
 
 }

@@ -2,6 +2,13 @@
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
+<?php require_once './../../../model/AdmModel.php'; ?>
+
+<?php
+$OngModel = new AdmModel();
+$InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
+
+?>
 
 <body>
   <?php require_once "../../../view/components/navbar.php"; ?>
@@ -21,7 +28,7 @@
                 <div class="form-row">
                   <div>
                     <?= label('nome', 'Nome') ?>
-                    <?= inputReadonly('text', 'nome', 'nome', 'Associação Prato Cheio') ?>
+                    <?= inputReadonly('text', 'nome', 'nome', $InformacoesOng['nome']) ?>
                   </div>
                   <div>
                     <?= label('telefone', 'Telefone') ?>
@@ -41,7 +48,7 @@
               </div>
               <div class="container-input-email-voluntario">
                 <?= label('email', 'Email') ?>
-                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                <?= inputReadonly('text', 'email', 'email', $InformacoesOng['email']) ?>
               </div>
             </div>
           </div>
