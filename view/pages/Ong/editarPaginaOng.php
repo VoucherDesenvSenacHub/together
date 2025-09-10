@@ -40,6 +40,7 @@ if (!isset($_SESSION['step'])) {
                                 <?= inputRequiredMaxLength("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
                             </div>
 
+
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>
                                 <?= textareaRequiredMaxLength("subtitulo", "subtitulo", $pagina['subtitulo'], 150) ?>
@@ -72,6 +73,8 @@ if (!isset($_SESSION['step'])) {
             </div>
         </div>
     </main>
+
+    <?php require_once './../../components/footer.php' ?>
 
     <?php require_once './../../components/footer.php' ?>
 </body>
