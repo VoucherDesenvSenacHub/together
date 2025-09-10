@@ -42,7 +42,7 @@ $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
                   </div>
                   <div>
                     <?= label('data', 'Data da Fundação') ?>
-                    <?= inputReadonly('text', 'data', 'data', $InformacoesOng['data']) ?>
+                    <?= inputReadonly('text', 'data', 'data', $InformacoesOng['data_fundacao']) ?>
                   </div>
                 </div>
               </div>
