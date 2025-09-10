@@ -15,30 +15,32 @@
             <div class="formulario-perfil">
                 <form action="" method="POST" class="postagem-geral-form">
                     <div class="postagem-geral-form-linha-superior">
-                        <?php require_once "./../../components/upload.php" ?>
+                        <div class='formulario-imagem-preview'>
+                            <?php require_once "./../../components/upload.php" ?>
+                        </div>
                         <div class="postagem-geral-input-text">
                             <div>
-                                <?= label("titulo", "Título")?>
-                                <?= inputRequired("text","titulo","titulo") ?>
+                                <?= label("titulo", "Título") ?>
+                                <?= inputRequired("text", "titulo", "titulo") ?>
                             </div>
                             <div>
-                                <?= label("link","Link") ?>
-                                <?= inputRequired("text","link","link") ?>
+                                <?= label("link", "Link") ?>
+                                <?= inputRequired("text", "link", "link") ?>
                             </div>
                         </div>
                     </div>
                     <div class="postagem-geral-linha-inferior">
                         <div class="postagem-geral-input-text">
                             <div>
-                                <?= label("descricao","Descrição") ?>
-                                <?= textareaRequired("descricao","descricao") ?>
+                                <?= label("descricao", "Descrição") ?>
+                                <?= textareaRequired("descricao", "descricao") ?>
                             </div>
                         </div>
                     </div>
                     <div class="postagem-geral-btn-group">
                         <div class="postagem-geral-div-btn">
-                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', "",'ongAdmin.php?editar=salvar') ?></div>
-                            <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', "",'ongAdmin.php?editar=cancelar') ?></div>
+                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', "", 'ongAdmin.php?editar=salvar') ?></div>
+                            <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', "", 'ongAdmin.php?editar=cancelar') ?></div>
                         </div>
                     </div>
                 </form>
@@ -49,4 +51,3 @@
 
     <?php require_once './../../components/footer.php' ?>
 </body>
-

@@ -15,7 +15,9 @@
             <div class="formulario-perfil">
                 <form action="" method="POST" class="postagem-geral-form">
                     <div class="postagem-geral-form-linha-superior">
-                        <?php require_once "./../../components/upload.php" ?>
+                        <div class='formulario-imagem-preview'>
+                            <?php require_once "./../../components/upload.php" ?>
+                        </div>
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("titulo", "Título") ?>

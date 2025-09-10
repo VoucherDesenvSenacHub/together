@@ -9,6 +9,11 @@ $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
 $usuario = $model->buscarUsuarioId($usuarioId);
 
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+?>
 ?>
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>

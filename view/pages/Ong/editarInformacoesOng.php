@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar'])) {
                 <form action="" method="POST" class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
-                            <?php require_once "./../../components/upload.php" ?>
+                            <div class='formulario-imagem-preview'>
+                                <?php require_once "./../../components/upload.php" ?>
+                            </div>
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
