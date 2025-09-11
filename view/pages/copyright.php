@@ -4,10 +4,6 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../../model/DevModel.php" ?>
 
-<link rel="stylesheet" href="../assests/css/reset.css">
-<link rel="stylesheet" href="../assests/css/style.css">
-<link rel="stylesheet" href="../assests/css/pages/copyright.css">
-
 <body>
     <div class="global">
         <div class="login-icon-group">  
