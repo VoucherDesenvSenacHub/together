@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "../../components/head.php";
 require_once "../../components/button.php";
 require_once "../../components/label.php";
@@ -10,15 +10,16 @@ require_once "../../../model/OngModel.php";
 $ongModel = new OngModel();
 $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
 
+require_once "../../../model/ImagemModel.php";
+$imagemModel = new ImagemModel();
+$imagem = $imagemModel->buscarPorId($_SESSION['id']);
+
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
 
-if (!isset($_SESSION['step'])) {
-    $_SESSION['step'] = 1;
-}
 ?>
 
 <body>
@@ -31,9 +32,17 @@ if (!isset($_SESSION['step'])) {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Página</h1>
             <div class="formulario-perfil">
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="formulario-linha-superior">
-                        <?php require_once "./../../components/upload.php" ?>
+                        <div class='formulario-imagem-preview'>
+                            <?php if(!empty($imagem['caminho'])):?>
+                                <!-- <?php var_dump($imagem['caminho']) ?> -->
+                                <img class="img" src="<?= $imagem['caminho'] ?>" alt="<?= $arquivo['nome'] ?>" \>
+                            <?php else:?> 
+                                <input type="file" name="imagem">
+                                <!-- <?php require_once "./../../components/upload.php" ?> -->
+                            <?php endif; ?>
+                        </div>
                         <div class="formulario-campos">
                             <div>
                                 <?= label("titulo", "Título") ?>
@@ -65,7 +74,7 @@ if (!isset($_SESSION['step'])) {
                             </div>
                         </div>
                         <div class="formulario-buttons">
-                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPaginaOngController.php') ?></div>
+                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/UploadImagemController.php') ?></div>
                             <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', formaction: '') ?></div>
                         </div>
                     </div>
@@ -73,8 +82,6 @@ if (!isset($_SESSION['step'])) {
             </div>
         </div>
     </main>
-
-    <?php require_once './../../components/footer.php' ?>
 
     <?php require_once './../../components/footer.php' ?>
 </body>

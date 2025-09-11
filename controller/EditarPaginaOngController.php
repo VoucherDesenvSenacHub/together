@@ -42,12 +42,12 @@ function validarEdicaoOng()
         if (!$resultado) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao editar informações da página!';
-            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            // header('Location: /together/view/pages/Ong/editarPaginaOng.php');
             exit;   
         } else {
             $_SESSION['type'] = 'sucesso';
             $_SESSION['message'] = 'Dados da ONG atualizados com sucesso!';
-            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            // header('Location: /together/view/pages/Ong/editarPaginaOng.php');
             exit;   
         }
     }
