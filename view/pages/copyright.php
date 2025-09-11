@@ -3,7 +3,6 @@
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../../model/DevModel.php" ?>
-
 <body>
     <div class="global">
         <div class="login-icon-group">  
