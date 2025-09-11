@@ -172,6 +172,29 @@ class OngModel
         }
     }
 
+    public function editarPostagemDaOng($id_postagem,$titulo,$dt_postagem,$descricao, $link){
+        try{
+            // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
+            $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
+            $stmt = $this->conn->prepare($q);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':dt_postagem', $dt_postagem);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':link', $link);
+            $stmt->bindParam(':id_postagem', $id_postagem);
+            $stmt->execute();
+            return [
+                'response' => true
+            ];
+
+        } catch (Exception $e){
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
+    }
+
     public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
     {
         $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
