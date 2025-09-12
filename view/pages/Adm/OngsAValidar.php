@@ -3,7 +3,13 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
-<?php require_once './../../../model/AdmModel.php';
+<?php require_once './../../../model/AdmModel.php'; ?>
+<?php require_once '../../components/alert.php' ;
+
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
 
 $admModel = new AdmModel();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {

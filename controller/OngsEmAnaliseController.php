@@ -1,7 +1,9 @@
 <?php
 session_start();
-require_once __DIR__ . "/../model/LoginModel.php";
+require_once __DIR__ . "/../model/ValidarCadastroOngModel.php";
 require_once __DIR__ ."/../config/database.php";
+
+$validarCadastroOngModel = new ValidarCadastroOngModel();
 
 
 
@@ -10,34 +12,30 @@ try {
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         throw new Exception("Método inválido para esta requisição");
     }
-    if(isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
-    $database = new Database();
-    $conn = $database->conectar();
     $idOng = $_POST["id"];
     $tipo = $_POST["tipo_alteracao"];
+    $tipoUsuario = $validarCadastroOngModel->ValidarPerfilUsuario($idOng);
+    if($tipoUsuario['tipo_perfil'] == "Administrador" && $tipo == 'aprovado') {
+        $_SESSION["message"] = 'Não é possível transformar um usuário administrador em ong';
+        $_SESSION["type"] = 'erro';
+        header("Location: /together/view/pages/adm/OngsAValidar.php");
+        exit();
+    }
 
-        $query = "UPDATE ongs SET status_validacao = :tipo 
-        WHERE id = :id;";
-        
-
-        $stmt = $conn->prepare($query);
-        $stmt->bindParam(":id", $idOng, PDO::PARAM_INT);
-        $stmt->bindParam(":tipo", $tipo, PDO::PARAM_STR);        
-        $stmt->execute();
-
-        if($tipo == "aprovado") {
-            $queryAtualizaUsuario = "UPDATE usuarios U SET U.tipo_perfil = 'Ong'
-            WHERE id =  (SELECT id_usuario FROM ongs WHERE id_usuario = :id)";
-            $stmtUser = $conn->prepare($queryAtualizaUsuario);
-            $stmtUser->bindParam(":id", $idOng, PDO::PARAM_INT);
-            $stmtUser->execute();
+    if(isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
+        $validarCadastroOngModel->AtualizarStatusValidacao($idOng);
+        $validarCadastroOngModel->AtualizarTipoDeUsuario($tipo);
+        if($tipo == "aprovado"){
+            $_SESSION["message"] = 'Ong validada com sucesso!';
+        }else{
+            $_SESSION["message"] = 'Ong rejeitada!';
         }
-        
-
+        $_SESSION["type"] = 'sucesso';
         header("Location: /together/view/pages/adm/OngsAValidar.php");
         exit();
     }
 } catch (Exception $e) {
-    $_SESSION['erro'] = $e->getMessage();
+        $_SESSION[""] = 'erro';
+        $_SESSION["message"] = 'Algo deu errado!';
     header('Location: /together/view/pages/Adm/OngsAValidar.php');
 }

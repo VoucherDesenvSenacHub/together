@@ -40,4 +40,38 @@ class ValidarCadastroOngModel
         // fetchAll já retorna um array associativo com id e nome de cada linha
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function ValidarPerfilUsuario(int $idDaOng):array{
+        $queryConsultaUsuario = "SELECT U.tipo_perfil FROM ongs O JOIN usuarios U ON O.id_usuario = U.id WHERE O.id = :id";   
+        $stmt = $this->conn->prepare($queryConsultaUsuario);
+        $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);     
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+    public function AtualizarStatusValidacao(int $idDaOng){
+        try{
+            $queryAtualizaStatusValidacao = "UPDATE ongs SET status_validacao = :tipo 
+            WHERE id = :id;";        
+
+            $stmt = $this->conn->prepare($queryAtualizaStatusValidacao);
+            $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);
+            $stmt->bindParam(":tipo", $tipo_alteracao, PDO::PARAM_STR);        
+            $stmt->execute();
+        }catch(Exception $e){
+            throw new Exception($e->getMessage());
+        }
+    }
+    public function AtualizarTipoDeUsuario(string $statusAlteracao){
+        try{
+            if($statusAlteracao == "aprovado") {
+                $queryAtualizaUsuario = "UPDATE usuarios U SET U.tipo_perfil = 'Ong'
+                WHERE id =  (SELECT id_usuario FROM ongs WHERE id_usuario = :id)";
+                $stmtUser = $this->conn->prepare($queryAtualizaUsuario);
+                $stmtUser->bindParam(":id", $idDaOng, PDO::PARAM_INT);
+                $stmtUser->execute();
+            }
+        }catch(Exception $e){
+            throw new Exception($e->getMessage());
+        }
+    }
 }
