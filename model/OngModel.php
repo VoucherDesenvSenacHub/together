@@ -177,5 +177,64 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $bairro,  $cidade)
+    {
+        try{
+            $this->conn->beginTransaction();
 
-}
+            $queryOng = "UPDATE ongs
+            SET razao_social = :nome
+            telefone  = :telefone
+            cnpj = :cnpj
+            dt_criacao = :data_criacao
+            WHERE id = :id";
+
+            $stmtOng = $this->conn->prepare($queryOng);
+            $stmtOng->bindParam(':nome', $nome);
+            $stmtOng->bindParam(':telefone', $telefone);
+            $stmtOng->bindParam(':cnpj', $cnpj);
+            $stmtOng->bindParam(':dt_criacao', $data_fundacao);
+            $stmtOng->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtOng->execute();
+
+
+            $queryUsuario = "UPDATE usuarios
+            SET email = :email
+                WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+                 $stmtUsuario = $this->conn->prepare($queryUsuario);
+                 $stmtUsuario->bindParam(':email', $email);
+                 $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
+                 $stmtUsuario->execute();
+         
+                
+                 $queryEndereco = "UPDATE enderecos 
+                                     SET cep = :cep, 
+                                         logradouro = :logradouro, 
+                                         complemento = :complemento, 
+                                         numero = :numero, 
+                                         bairro = :bairro, 
+                                         cidade = :cidade
+                                   WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
+                 $stmtEndereco = $this->conn->prepare($queryEndereco);
+                 $stmtEndereco->bindParam(':cep', $cep);
+                 $stmtEndereco->bindParam(':logradouro', $logradouro);
+                 $stmtEndereco->bindParam(':complemento', $complemento);
+                 $stmtEndereco->bindParam(':bairro', $bairro);
+                 $stmtEndereco->bindParam(':numero', $numero);
+                 $stmtEndereco->bindParam(':cidade', $cidade);
+                 $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
+                 $stmtEndereco->execute();
+         
+                 $this->conn->commit();
+                 return true;
+             } catch (Exception $e) {
+                 $this->conn->rollBack();
+                 throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
+             }
+            
+
+        }
+    }
+
+
+
