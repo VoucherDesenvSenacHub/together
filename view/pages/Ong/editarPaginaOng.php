@@ -37,6 +37,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class='formulario-imagem-preview'>
                             <?php if(!empty($imagem['caminho'])):?>
                                 <!-- <?php var_dump($imagem['caminho']) ?> -->
+                                <input type="hidden" name="id_imagem" value="<?= $idImagemExistente ?? '' ?>">
                                 <img class="img" src="<?= $imagem['caminho'] ?>" alt="<?= $arquivo['nome'] ?>" \>
                             <?php else:?> 
                                 <input type="file" name="imagem">
@@ -74,7 +75,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             </div>
                         </div>
                         <div class="formulario-buttons">
-                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/UploadImagemController.php') ?></div>
+                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPaginaOngController.php') ?></div>
                             <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', formaction: '') ?></div>
                         </div>
                     </div>

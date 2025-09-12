@@ -153,7 +153,7 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter)
+    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
         try {
             $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter WHERE id=:id";

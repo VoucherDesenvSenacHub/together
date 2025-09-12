@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . "/../model/OngModel.php";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
@@ -35,23 +37,45 @@ function validarEdicaoOng()
         exit;
     } else {
         require_once __DIR__ . "/../model/OngModel.php";
-        $ongModel = new OngModel();
+        require_once __DIR__ . "/../model/ImagemModel.php";
+        require_once __DIR__ . "/../controller/UploadController.php";
 
-        $resultado = $ongModel->editarPaginaOng($_SESSION['id'], $_POST['titulo'], $_POST['subtitulo'], $_POST['descricao'], $_POST['Facebook'], $_POST['Instagram'], $_POST['X']);
+        $ongModel = new OngModel();
+        $imagemModel = new ImagemModel();
+
+        $idImagem = null;
+
+        // Se veio imagem no POST, processa o upload
+        if (!empty($_FILES['imagem']['name'])) {
+            $upload = new UploadController();
+            $idImagem = $upload->processar($_FILES['imagem'], $_POST['id_imagem'] ?? null);
+        }
+
+        $resultado = $ongModel->editarPaginaOng(
+            $_SESSION['id'],
+            $_POST['titulo'],
+            $_POST['subtitulo'],
+            $_POST['descricao'],
+            $_POST['Facebook'],
+            $_POST['Instagram'],
+            $_POST['X'],
+            $idImagem
+        );
 
         if (!$resultado) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao editar informações da página!';
-            // header('Location: /together/view/pages/Ong/editarPaginaOng.php');
-            exit;   
+            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            exit;
         } else {
             $_SESSION['type'] = 'sucesso';
             $_SESSION['message'] = 'Dados da ONG atualizados com sucesso!';
-            // header('Location: /together/view/pages/Ong/editarPaginaOng.php');
-            exit;   
+            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            exit;
         }
     }
 }
+
 
 function validarUrls()
 {

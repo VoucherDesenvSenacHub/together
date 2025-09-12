@@ -19,11 +19,13 @@ class ImagemModel
         
         // utilizar dentro do execulte no lugar de bindparam
 
-        return $stmt->execute([
+        $stmt->execute([
             ':nome_enviado' => $nome_enviado,
             ':nome_original' => $nome_original,
             ':caminho'=> $caminho
         ]);
+        
+        return $this->conn->lastInsertId();
     }
 
     public function listar() {
@@ -41,5 +43,15 @@ class ImagemModel
         $stmt->execute();
 
         return $stmt->fetch();
+    }
+
+    public function atualizar($id, $nome_enviado, $nome_original, $caminho) {
+        $query = "UPDATE imagens SET nome_enviado = :nome_enviado, nome_original = :nome_original, caminho = :caminho WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':nome_enviado', $nome_enviado);
+        $stmt->bindParam(':nome_original', $nome_original);
+        $stmt->bindParam(':caminho', $caminho);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
     }
 }
