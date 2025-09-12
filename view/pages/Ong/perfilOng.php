@@ -2,11 +2,25 @@
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-<?php require_once './../../../model/AdmModel.php'; ?>
-
+<?php require_once "../../../view/components/alert.php"; ?>
+<?php require_once './../../../model/OngModel.php'; ?>
 <?php
 $OngModel = new OngModel();
 $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
+
+if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
+  header("location: ./../login.php");
+  exit();
+}
+// mostra popup de erro se existir
+$tipos = ['erro', 'sucesso'];
+
+foreach ($tipos as $tipo) {
+  if (isset($_SESSION[$tipo])) {
+    showPopup($tipo, $_SESSION[$tipo]);
+    unset($_SESSION[$tipo]);
+  }
+}
 
 ?>
 
@@ -28,27 +42,27 @@ $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
                 <div class="form-row">
                   <div>
                     <?= label('nome', 'Nome') ?>
-                    <?= inputReadonly('text', 'nome', 'nome', $InformacoesOng['nome']) ?>
+                    <?= inputRequired('text', 'nome', 'nome', $InformacoesOng['nome']) ?>
                   </div>
                   <div>
                     <?= label('telefone', 'Telefone') ?>
-                    <?= inputReadonly('text', 'telefone', 'telefone', $InformacoesOng['telefone']) ?>
+                    <?= inputRequired('text', 'telefone', 'telefone', $InformacoesOng['telefone']) ?>
                   </div>
                 </div>
                 <div class="form-row">
                   <div>
                     <?= label('cnpj', 'CNPJ') ?>
-                    <?= inputReadonly('text', 'cnpj', 'cnpj', $InformacoesOng['cnpj']) ?>
+                    <?= inputRequired('text', 'cnpj', 'cnpj', $InformacoesOng['cnpj']) ?>
                   </div>
                   <div>
                     <?= label('data', 'Data da Fundação') ?>
-                    <?= inputReadonly('text', 'data', 'data', $InformacoesOng['data_fundacao']) ?>
+                    <?= inputRequired('text', 'data', 'data', $InformacoesOng['data_fundacao']) ?>
                   </div>
                 </div>
               </div>
               <div class="container-input-email-voluntario">
                 <?= label('email', 'Email') ?>
-                <?= inputReadonly('text', 'email', 'email', $InformacoesOng['email']) ?>
+                <?= inputRequired('text', 'email', 'email', $InformacoesOng['email']) ?>
               </div>
             </div>
           </div>
@@ -59,37 +73,39 @@ $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('cep', 'CEP') ?>
-                <?= inputReadonly('text', 'cep', 'cep', $InformacoesOng['cep']) ?>
+                <?= inputRequired('text', 'cep', 'cep', $InformacoesOng['cep']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('logradouro', 'Logradouro') ?>
-                <?= inputReadonly('text', 'logradouro', 'logradouro', $InformacoesOng['logradouro']) ?>
+                <?= inputRequired('text', 'logradouro', 'logradouro', $InformacoesOng['logradouro']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('complemento', 'Complemento') ?>
-                <?= inputReadonly('text', 'complemento', 'complemento', $InformacoesOng['complemento']) ?>
+                <?= inputDefault('text', 'complemento', 'complemento', $InformacoesOng['complemento']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('numero', 'Número') ?>
-                <?= inputReadonly('text', 'numero', 'numero', $InformacoesOng['numero']) ?>
+                <?= inputRequired('text', 'numero', 'numero', $InformacoesOng['numero']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('bairro', 'Bairro') ?>
-                <?= inputReadonly('text', 'bairro', 'bairro', $InformacoesOng['bairro']) ?>
+                <?= inputRequired('text', 'bairro', 'bairro', $InformacoesOng['bairro']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('cidade', 'Cidade') ?>
-                <?= inputReadonly('text', 'cidade', 'cidade', $InformacoesOng['cidade']) ?>
+                <?= inputRequired('text', 'cidade', 'cidade', $InformacoesOng['cidade']) ?>
               </div>
             </div>
           </div>
           <div class="container-readonly-footer">
             <div class="botao-excluir-voluntario">
-              <div class="postagem-geral-btn"><?= botao('salvar', 'Editar', "", '') ?></div>
+              <div class="postagem-geral-btn">
+                <?= botao('salvar', 'Editar', "", './../../../controller/EditarDadosOngController.php') ?>
+              </div>
               <div class="postagem-geral-btn"><?= botao('prev', 'Cancelar', "", '') ?></div>
             </div>
           </div>
