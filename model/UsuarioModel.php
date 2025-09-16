@@ -183,23 +183,6 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function inserirImagem($caminhoNoBanco, $nomeFinal, $nomeOriginal) {
-        $sql = "INSERT INTO imagens (nome_enviado, nome_original, caminho)
-                VALUES (:nome_enviado, :nome_original, :caminho)";
-        
-        $stmt = $this->conn->prepare($sql);
-        $executou = $stmt->execute([
-            ':nome_enviado' => $nomeFinal,
-            ':nome_original' => $nomeOriginal,
-            ':caminho' => $caminhoNoBanco
-        ]);
-    
-        if ($executou) {
-            return $this->conn->lastInsertId();
-        } else {
-            return false; 
-        }
-    }
 }
 
 ?>

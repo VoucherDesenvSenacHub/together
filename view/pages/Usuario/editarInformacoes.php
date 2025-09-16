@@ -1,22 +1,28 @@
-<?php require_once "../../components/head.php"; ?>
-<?php require_once "../../components/button.php" ?>
-<?php require_once "../../components/label.php" ?>
-<?php require_once "../../components/input.php" ?>
-<?php require_once "../../components/textarea.php" ?>
-<?php require_once "../../../model/UsuarioModel.php"; ?>    
-<?php
+<?php require_once "../../components/head.php";
+require_once "../../components/button.php";
+require_once "../../components/label.php";
+require_once "../../components/input.php";
+require_once "../../components/textarea.php";
+require_once "../../../model/UsuarioModel.php";
+
 $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
 $usuario = $model->buscarUsuarioId($usuarioId);
 
-if (isset($_SESSION['type'], $_SESSION['message'])) {
-    showPopup($_SESSION['type'], $_SESSION['message']);
-    unset($_SESSION['type'], $_SESSION['message']);
+if (isset($_SESSION['erro'])) {
+    showPopup('erro', $_SESSION['erro']);
+    unset($_SESSION['erro']);
+}
+
+if (isset($_SESSION['sucesso'])) {
+    showPopup('sucesso', $_SESSION['sucesso']);
+    unset($_SESSION['sucesso']);
 }
 ?>
-?>
+
+
 <body>
-    <?php require_once "../../../view/components/navbar.php"; ?>
+    <?= require_once "../../../view/components/navbar.php" ?>
 
     <main class="main-container main-min">
         <?php require_once './../../components/back-button.php' ?>
@@ -24,9 +30,9 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form enctype="multipart/form-data" action="" method="POST" class="postagem-geral-form editar-informacoes-form">
-                <div class="container-perfil-voluntario">
-                    <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
+                <form form enctype="multipart/form-data" action="../../../controller/UsuarioEditarController.php" method="POST" class="postagem-geral-form editar-informacoes-form">
+                    <div class="container-perfil-voluntario">
+                        <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
                         <div class="div-logo">
                             <?php require_once "./../../components/upload.php" ?>
                         </div>
@@ -46,7 +52,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
                                         <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf']) ?>
-                                        </div>
+                                    </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
                                         <?= inputReadonly('text', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
@@ -99,7 +105,9 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', formaction: '../../../controller/UsuarioEditarController.php') ?></div>
+                        <div class="postagem-geral-btn">
+                            <?= botao('salvar', 'Salvar', formaction: '../../../controller/UsuarioEditarController.php') ?>
+                        </div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>
