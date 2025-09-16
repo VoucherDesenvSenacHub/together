@@ -38,6 +38,54 @@ try {
         $erros[] = "Insira uma data válida!";
     }
 
+    // retira tudo que não for número do cnpj
+    $VerificarCnjp = preg_replace('/\d/', '', $_POST['cnjp']);
+    if (strlen($VerificarCnjp) != 14) { // verifica se tem 14 números 
+        $erros[] = 'Cnpj informado não é valido!';
+        return false;
+    }
+    if (preg_match('/(\d/)\1{13}/', $VerificarCnjp)) { // verifica se cnpj informa não tem números repetidos em excesso
+        $erros[] = 'Cnpj informado não é valido!';
+        return false;
+    }
+
+    // verficar se o cnpj é valido
+    $PesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    $PesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    $base = substr($VerificarCnjp, 0, 12);
+    $Soma = 0;
+    for ($i = 0; $i < 12; $i++) {
+        $soma += $base[$i] * $pesos[$i];
+    }
+    $resto = $soma % 11;
+
+    $dv1 = ($resto < 2) ? 0 : 11 - $resto;
+
+    // usando os 13 primeiros digitos do cnpj
+    $base13 = $base . $dvi;
+
+    $soma = 0;
+    for ($i = 0; $i < 13; $i++) {
+        $soma += $base13[$i] * $PesoVerificadorCnpj2[$i];
+    }
+    $resto = $soma % 11;
+    $dv2 = ($resto < 2) ? 0 : 11 - $resto;
+
+    if ($VerificarCnjp[12] != $dv1 || $VerificarCnjp[13] != $dv2) {
+        $erros[] = "CNPJ informado é invalido!";
+    }
+
+    $VerificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
+    if (strlen($VerificarTelefone) != 11) { // verifica se tem 11 números 
+        $erros[] = 'Número de telefone inválido: quantidade de dígitos insuficiente ';
+        return false;
+    }
+
+
+
+
+
+
     $ongModel = new OngModel();
     $_POST['cnpj'] = preg_replace('/\D/', '', $_POST['cnpj']);
     $_POST['telefone'] = preg_replace('/\D/', '', $_POST['telefone']);
