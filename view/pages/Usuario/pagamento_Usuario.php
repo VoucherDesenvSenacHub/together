@@ -2,6 +2,17 @@
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
+<?php require_once "./../../components/alert.php" ?>
+
+<?php
+$erro = $_SESSION['erro'] ?? '';
+
+if (isset($_SESSION['erro'], $erro)) {
+    showPopup($_SESSION['erro'], $erro);
+    unset($_SESSION['erro'], $erro);
+}
+
+?>
 
 <body class="user_pay">
   <?php require_once "../../../view/components/navbar.php"; ?>
@@ -23,7 +34,7 @@
             </div>
           </div>
           <div class="formulario-e-imagem">
-            <form action="pagamento_Usuario.php" method="POST" class="form-pagamento">
+            <form action="../../../controller/PagamentoUsuarioController.php" method="POST" class="form-pagamento" id="form-pagamento">
               <div>
                 <?= label('nome', 'Nome (como está no cartão)') ?>
                 <?= inputRequired('text', 'nome', 'nome') ?>
@@ -41,7 +52,7 @@
                 <?= inputRequired('number', 'cvv', 'cvv') ?>
               </div>
               <div class="container-botao-pagamento">
-                <?= botao('salvar', 'Realizar Pagamento','','/together/index.php?msg=voluntarioenviado') ?>
+                <?= botao('salvar', 'Realizar Pagamento','','../../../controller/PagamentoUsuarioController.php') ?>
               </div>
 
             </form>
@@ -53,6 +64,8 @@
   </main>
 
   <?php require_once "../../../view/components/footer.php"; ?>
+
+  <script src="/together/view/assests/js/pages/pagamentoUsuario.js"></script>
 </body>
 
 </html>
