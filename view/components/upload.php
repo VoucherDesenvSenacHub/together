@@ -17,14 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<form action="" method="POST" enctype="multipart/form-data">
-   <div class="formulario-imagem-preview">
-      <label class="custum-file-upload" for="file">
-         <div class="icon-upload"> ...svg aqui... </div>
-         <div class="text"><span>Insira uma imagem</span></div>
-         <input type="file" id="file" name="file" accept="image/*">
-         <img id="preview" src="#" alt="">
-      </label>
-   </div>
-   <button type="submit">Enviar</button>
-</form>
+<div class="formulario-imagem-preview">
+    <label class="custum-file-upload" for="file">
+        <div class="icon-upload"> ...svg aqui... </div>
+        <div class="text"><span>Insira uma imagem</span></div>
+        <input type="file" id="file" name="file" accept="image/*">
+        <img id="preview" src="#" alt="">
+    </label>
+</div>

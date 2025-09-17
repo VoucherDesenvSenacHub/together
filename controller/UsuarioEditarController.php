@@ -2,9 +2,15 @@
 session_start();
 require_once "../model/UsuarioModel.php";
 require_once "../model/ImagemModel.php";
+require_once "../config/database.php"; // <- importa a conexão
 
-$model1 = new UsuarioModel();
-$model2 = new ImagemModel();
+// cria conexão
+$db = new Database();
+$conn = $db->conectar();
+
+// passa conexão para os models
+$model1 = new UsuarioModel($conn);
+$model2 = new ImagemModel($conn);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? null;
@@ -35,14 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // 2️⃣ Upload de imagem
-    if(isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK){
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $arquivoTmp = $_FILES['file']['tmp_name'];
         $nomeOriginal = $_FILES['file']['name'];
         $ext = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
         $novoNome = uniqid('img_', true) . '.' . $ext;
 
         $diretorio = __DIR__ . '/../../uploads/';
-        if (!is_dir($diretorio)) mkdir($diretorio, 0755, true);
+        if (!is_dir($diretorio))
+            mkdir($diretorio, 0755, true);
         $caminhoFinal = $diretorio . $novoNome;
 
         if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
@@ -64,7 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensagem'] = "Erro: $resultado";
     }
 
-    header("Location: ../../../view/pages/Usuario/editarInformacoes.php");
+    header("Location: /together/view/pages/Usuario/editarInformacoes.php");
     exit;
 }
-?>

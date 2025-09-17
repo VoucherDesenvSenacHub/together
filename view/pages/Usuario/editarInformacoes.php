@@ -9,15 +9,15 @@ $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
 $usuario = $model->buscarUsuarioId($usuarioId);
 
-if (isset($_SESSION['erro'])) {
-    showPopup('erro', $_SESSION['erro']);
-    unset($_SESSION['erro']);
-}
+// if (isset($_SESSION['erro'])) {
+//     showPopup('erro', $_SESSION['erro']);
+//     unset($_SESSION['erro']);
+// }
 
-if (isset($_SESSION['sucesso'])) {
-    showPopup('sucesso', $_SESSION['sucesso']);
-    unset($_SESSION['sucesso']);
-}
+// if (isset($_SESSION['sucesso'])) {
+//     showPopup('sucesso', $_SESSION['sucesso']);
+//     unset($_SESSION['sucesso']);
+// }
 ?>
 
 
