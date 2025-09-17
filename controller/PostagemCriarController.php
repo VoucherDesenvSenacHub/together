@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } else {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao criar postagem!';
-            header("Location: /together/view/pages/ong/criarPostagem.php");
+            header("Location: /together/view/pages/ong/criarPostagemOng.php");
             exit;
         }
     } catch (Exception $e) {
