@@ -53,6 +53,60 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function filtroDataHoraDoacoes($id_ong, $data_inicio=NULL, $data_fim=NULL)
+    {
+        if (is_null($data_inicio) || is_null($data_fim)) {
+            $sql = "SELECT D.dt_doacao, U.nome, D.valor
+                          FROM doacoes D 
+                          JOIN usuarios U ON U.id = D.id_usuario 
+                          WHERE D.id_ong = :id_ong
+                          ORDER BY D.dt_doacao DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+        } else{
+            $sql = "SELECT D.dt_doacao, U.nome, D.valor
+                          FROM doacoes D 
+                          JOIN usuarios U ON U.id = D.id_usuario 
+                          WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
+                          AND D.id_ong = :id_ong
+                          ORDER BY D.dt_doacao DESC";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function filtroDataHoraVoluntarios($id_ong, $data_inicio=NULL, $data_fim=NULL){
+        if( is_null($data_inicio) || is_null($data_fim)) {
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+        } else{
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
+                          AND V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
         try {
@@ -111,6 +165,29 @@ class OngModel
                 'response' => true
             ];
         } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function editarPostagemDaOng($id_postagem,$titulo,$dt_postagem,$descricao, $link){
+        try{
+            // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
+            $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
+            $stmt = $this->conn->prepare($q);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':dt_postagem', $dt_postagem);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':link', $link);
+            $stmt->bindParam(':id_postagem', $id_postagem);
+            $stmt->execute();
+            return [
+                'response' => true
+            ];
+
+        } catch (Exception $e){
             return [
                 'response' => false,
                 'erro' => $e->getMessage()
