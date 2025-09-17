@@ -58,10 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (form) {
         form.addEventListener("submit", (e) => {
             const numero = campoCartao?.value.replace(/\D/g, "") || "";
-            const validade = campoValidade?.value.replace(/\D/g, "") || "";
+            // const validade = campoValidade?.value.replace(/\D/g, "") || "";
             const cvv = campoCVV?.value.replace(/\D/g, "") || "";
 
-            if (numero.length !== 16 || validade.length !== 4 || cvv.length !== 3) {
+            if (numero.length !== 16 || cvv.length !== 3 || (campoValidade && campoValidade.value.length !== 5)) {
                 e.preventDefault();
                 alert("Por favor, preencha todos os campos corretamente.");
                 return;
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Substitui valores com versões sem formatação
             if (campoCartao) campoCartao.value = numero;
-            if (campoValidade) campoValidade.value = validade;
+            // if (campoValidade) campoValidade.value = validade;
             if (campoCVV) campoCVV.value = cvv;
         });
     }

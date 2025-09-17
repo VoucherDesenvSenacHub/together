@@ -6,6 +6,8 @@
 
 <?php
 // Pega a mensagem de erro e já limpa a sessão
+$erro = $_SESSION['erro'] ?? '';
+
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
