@@ -38,50 +38,79 @@ try {
         $erros[] = "Insira uma data válida!";
     }
 
+    function VerificarNumerosRepetidos($NumeroVerificado, $QuantidadeDeDigitos, $QuantidadeDeDigitos2 = null)
+    {
+        // monta o intervalo do quantificador do regex
+        if ($QuantidadeDeDigitos2 !== null) {
+            $range = "{" . $QuantidadeDeDigitos . "," . $QuantidadeDeDigitos2 . "}";
+        } else {
+            $range = "{" . $QuantidadeDeDigitos . "}";
+        }
+
+        // monta o regex dinâmico
+        $pattern = '/^(\d)\1' . $range . '$/';
+
+        // verifica
+        return preg_match($pattern, $NumeroVerificado) === 1;
+    }
+
+
     // retira tudo que não for número do cnpj
-    $VerificarCnjp = preg_replace('/\d/', '', $_POST['cnjp']);
-    if (strlen($VerificarCnjp) != 14) { // verifica se tem 14 números 
-        $erros[] = 'Cnpj informado não é valido!';
-        return false;
+    $VerificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
+    if (strlen($VerificarCnpj) != 14) { // verifica se tem 14 números 
+        $erros[] = 'CNPJ informado não é valido!';
     }
-    if (preg_match('/(\d/)\1{13}/', $VerificarCnjp)) { // verifica se cnpj informa não tem números repetidos em excesso
+
+    if (VerificarNumerosRepetidos($VerificarCnpj, 13, null)) {
         $erros[] = 'Cnpj informado não é valido!';
-        return false;
     }
+
+
+
 
     // verficar se o cnpj é valido
     $PesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
     $PesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    $base = substr($VerificarCnjp, 0, 12);
-    $Soma = 0;
+    intval($VerificarCnpj);
+    $base = substr($VerificarCnpj, 0, 12);
+    $soma = 0;
     for ($i = 0; $i < 12; $i++) {
-        $soma += $base[$i] * $pesos[$i];
+        $soma += (int) $base[$i] * $PesoVerificadorCnpj1[$i];
+
     }
-    $resto = $soma % 11;
+    $resto = $Soma % 11;
 
     $dv1 = ($resto < 2) ? 0 : 11 - $resto;
 
     // usando os 13 primeiros digitos do cnpj
-    $base13 = $base . $dvi;
+    $base13 = $base . $dv1;
 
     $soma = 0;
     for ($i = 0; $i < 13; $i++) {
-        $soma += $base13[$i] * $PesoVerificadorCnpj2[$i];
+        $soma += (int) $base13[$i] * $PesoVerificadorCnpj2[$i];
+
     }
-    $resto = $soma % 11;
+    $resto = $Soma % 11;
     $dv2 = ($resto < 2) ? 0 : 11 - $resto;
 
     if ($VerificarCnjp[12] != $dv1 || $VerificarCnjp[13] != $dv2) {
         $erros[] = "CNPJ informado é invalido!";
     }
 
+    // pega o telefone informado e remove tudo que não for número
     $VerificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
-    if (strlen($VerificarTelefone) != 11) { // verifica se tem 11 números 
+    if (strlen($VerificarTelefone) < 10 || strlen($VerificarTelefone) > 11) {
         $erros[] = 'Número de telefone inválido: quantidade de dígitos insuficiente ';
-        return false;
     }
 
+    // se for celular (11 dígitos), verificar se começa com 9
+    if (strlen($VerificarTelefone) == 11 && substr($VerificarTelefone, 2, 1) != '9') {
+        $erros[] = 'Número de celular inválido: deve começar com 9.';
+    }
 
+    if (VerificarNumerosRepetidos($VerificarTelefone, 9, 10)) {
+        $erros[] = 'Número de telefone inválido: sequência repetida.';
+    }
 
 
 
@@ -103,7 +132,6 @@ try {
     // retorna mensagem de sucesso e volta para pagina de perfil da ong
     $_SESSION["sucesso"] = "Informações atualizadas com sucesso!";
     header("location: ./../view/pages/Ong/perfilOng.php");
-
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
     header("location: ./../view/pages/Ong/perfilOng.php");
@@ -111,6 +139,7 @@ try {
 
 }
 ;
+
 
 
 ?>
