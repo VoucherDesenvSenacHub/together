@@ -36,35 +36,4 @@ class PostagemModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function getById($id)
-    {
-        $sql = "SELECT * FROM postagens WHERE id = :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function atualizar($id, $titulo, $descricao, $link, $idImagem)
-    {
-        $sql = "UPDATE postagens 
-                SET titulo = :titulo, descricao = :descricao, link = :link, id_imagem = :id_imagem 
-                WHERE id = :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':titulo', $titulo);
-        $stmt->bindParam(':descricao', $descricao);
-        $stmt->bindParam(':link', $link);
-        $stmt->bindParam(':id_imagem', $idImagem);
-        return $stmt->execute();
-    }
-
-    public function deletar($id)
-    {
-        $sql = "DELETE FROM postagens WHERE id = :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
-    }
 }

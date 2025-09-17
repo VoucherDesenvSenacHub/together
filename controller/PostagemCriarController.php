@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($ok) {
             $_SESSION['type'] = 'sucesso';
             $_SESSION['message'] = 'Postagem criada com sucesso!';
-            header("Location: /together/view/pages/Ong/visaoSobreaOng.php"); 
+            header("Location: /together/view/pages/visaoSobreaOng.php"); 
             exit;
         } else {
             $_SESSION['type'] = 'erro';
