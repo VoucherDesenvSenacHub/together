@@ -116,7 +116,7 @@ $categorias = $categoriaModel->getAll();
         </div>
     </div>
     <!-- Não Apagar -->
-    <script src="/together/view/assests/js/pages/cadastrarOng.js"></script>
+    <script src="/together/view/assests/js/pages/mascara.js"></script>
     <script src="/together/view/assests/js/components/selectEndereco.js"></script>
 </body>
 

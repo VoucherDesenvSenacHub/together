@@ -16,7 +16,7 @@ import "./pages/validacaoAtualizacao.js";
 import "./pages/postagemOng.js";
 import "./pages/visualizarVoluntarios.js"
 import "./pages/gerenciarConta.js";
-import "./pages/cadastrarOng.js";
+import "./pages/mascara.js";
 import "./pages/carrossel.js";
 import "./components/selectEndereco.js";
 import "./components/endereco.js";
