@@ -1,10 +1,12 @@
-<?php require_once './../../components/head.php' ?>
-<?php require_once './../../components/acoes.php' ?>
-<?php require_once './../../components/button.php' ?>
-<?php require_once './../../components/input.php' ?>
-<?php require_once './../../components/label.php' ?>
-<?php require_once './../../../model/AdmModel.php'; ?>
-<?php require_once '../../components/alert.php' ;
+<?php require_once './../../components/head.php';
+ require_once './../../components/acoes.php';
+ require_once './../../components/button.php';
+ require_once './../../components/input.php';
+ require_once './../../components/label.php';
+ require_once './../../../model/AdmModel.php'; 
+ require_once '../../components/alert.php' ;
+require_once __DIR__. "/../../../model/OngsEmAnaliseModel.php";
+require_once './../../components/paginacao.php';
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -13,31 +15,21 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
 $admModel = new AdmModel();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-
-    $nome_ong = $_GET['nome_ong'] ?? '';
-    $listaOngs = $admModel->findOngBySearch($nome_ong);
-}
- else {
-    $listaOngs = "";
+    $data_inicio = $_GET['data-inicio'] ?? null;
+    $data_fim = $_GET['data-final'] ?? null;
+    $pesquisa = $_GET['nome_ong'] ?? '';
 }
 ?>
 
 
 <?php 
-require_once './../../components/head.php';
-require_once './../../components/acoes.php';
-require_once './../../components/button.php';
-require_once './../../components/input.php';
-require_once './../../components/label.php';
-require_once __DIR__. "/../../../model/OngsEmAnaliseModel.php";
-require_once './../../components/paginacao.php';
+
 
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
 
 // Captura filtros do formulário via GET
 $dataInicio = $_GET['data-inicio'] ?? null;
 $dataFim    = $_GET['data-final'] ?? null;
-$pesquisa  = $_GET['pesquisar'] ?? null;
 // Página atual e itens por página para paginação
 $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $paginaAtual = max(1, $paginaAtual);  // Garante que o valor mínimo seja 1
@@ -58,21 +50,22 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
             </div>
             <div class="formulario-perfil">
                 <div class="filtro">
-                <form method="GET" class="filtro" id="filtro-form">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio', '', $dataInicio) ?>
+                    <form method="GET" class="filtro" id="filtro-form">
+                        <div class="bloco-datas">
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio', '', $dataInicio) ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final', '', $dataFim) ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
                         </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final', '', $dataFim) ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
-                        </div>
-                    </div>
+                    </form>
                     <form action="OngsAValidar.php" method="GET">
                         <div class="bloco-pesquisa">
                             <?= label('nome_ong', '&nbsp;') ?>
@@ -92,7 +85,7 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                         </thead>
                         <tbody>
                                 <tr>
-                            <?php if (empty($ongsEmAnalise)): ?>
+                            <?php if(!$ongsEmAnalise): ?>
                                 <td colspan="4">Nenhuma ONG encontrada.</td>
                             <?php else: ?>
                                 <?php foreach ($ongsEmAnalise as $ong): ?>
