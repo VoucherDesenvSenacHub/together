@@ -119,9 +119,10 @@ class OngModel
     }
 
     public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
-    {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
-
+{
+    try {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj OR razao_social = :razao_social OR telefone = :telefone");
+        
         $stmt->execute([
             ':cnpj' => $cnpj,
             ':razao_social' => $razao_social,
@@ -129,8 +130,21 @@ class OngModel
         ]);
 
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $res['total'] > 0;
+        $existe = $res['total'] > 0;
+        
+        return [
+            'response' => true,
+            'existe' => $existe,
+            'total_encontrados' => $res['total']
+        ];
+        
+    } catch (Exception $e) {
+        return [
+            'response' => false,
+            'erro' => $e->getMessage()
+        ];
     }
+}
 
     public function verificarUsuarioTemOng($id)
     {

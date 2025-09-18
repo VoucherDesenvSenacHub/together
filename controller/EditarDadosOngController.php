@@ -54,6 +54,23 @@ try {
         return preg_match($pattern, $NumeroVerificado) === 1;
     }
 
+    // Função para validar CEP
+    function validarCEP($cep) {
+        // Remove tudo que não for número
+        $cepLimpo = preg_replace('/\D/', '', $cep);
+        
+        // Verifica se tem exatamente 8 dígitos
+        if (strlen($cepLimpo) != 8) {
+            return false;
+        }
+        
+        // Verifica se não são todos números iguais (00000000, 11111111, etc.)
+        if (preg_match('/^(\d)\1{7}$/', $cepLimpo)) {
+            return false;
+        }
+        
+        return true;
+    }
 
     // retira tudo que não for número do cnpj
     $VerificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
@@ -65,9 +82,6 @@ try {
         $erros[] = 'Cnpj informado não é valido!';
     }
 
-
-
-
     // verficar se o cnpj é valido
     $PesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
     $PesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
@@ -76,9 +90,8 @@ try {
     $soma = 0;
     for ($i = 0; $i < 12; $i++) {
         $soma += (int) $base[$i] * $PesoVerificadorCnpj1[$i];
-
     }
-    $resto = $Soma % 11;
+    $resto = $soma % 11;
 
     $dv1 = ($resto < 2) ? 0 : 11 - $resto;
 
@@ -88,12 +101,11 @@ try {
     $soma = 0;
     for ($i = 0; $i < 13; $i++) {
         $soma += (int) $base13[$i] * $PesoVerificadorCnpj2[$i];
-
     }
-    $resto = $Soma % 11;
+    $resto = $soma % 11;
     $dv2 = ($resto < 2) ? 0 : 11 - $resto;
 
-    if ($VerificarCnjp[12] != $dv1 || $VerificarCnjp[13] != $dv2) {
+    if ($VerificarCnpj[12] != $dv1 || $VerificarCnpj[13] != $dv2) {
         $erros[] = "CNPJ informado é invalido!";
     }
 
@@ -112,16 +124,63 @@ try {
         $erros[] = 'Número de telefone inválido: sequência repetida.';
     }
 
+    // Validação do CEP
+    if (!validarCEP($_POST['cep'])) {
+        $erros[] = "CEP informado não é válido!";
+    }
 
+    //Verifica se o metodo é post, define tamanho maximo da imagem e tipo permitidos
+    if($_SERVER['REQUEST_METHOD']== 'POST'){
+        $TamanhoMax = 16 * 1024 * 1024;
+        $tiposPermitidos = ['image/jpeg', 'image/png', 'image/jpg','image/webp'];
+        $extensoesPermitidas = ['jpeg', 'png', 'jpg', 'webp'];
 
+        $file = $_FILES['imagem'];
+        
+        if($file['error'] !== UPLOAD_ERR_OK){
+            die("erro no upload");
+        }
 
+        if($file['size']> $TamanhoMax){
+            die("Arquivo muito grande. Máximo permitido é 16 MB!");
+        }
+
+        $fileMime = mime_content_type($file['tmp_name']);
+        if (!in_array($fileMime, $tiposPermitidos)) {
+            die("Tipo de arquivo inválido. Só aceitamos JPEG, PNG, JPG ou WEBP.");
+        }
+
+        $extensao = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        if (!in_array($extensao, $extensoesPermitidas)) {
+            die("Extensão de arquivo inválida. Extensões permitidas: jpeg, jpg, png, webp.");
+        }
+
+        $destino = "" . basename($file['name']);
+        if (move_uploaded_file($file['tmp_name'], $destino)) {
+            echo "Upload realizado com sucesso!";
+        } else {
+            echo "Erro ao salvar o arquivo.";
+        }
+    }
+
+    // Instancia o modelo da ONG
     $ongModel = new OngModel();
-    $_POST['cnpj'] = preg_replace('/\D/', '', $_POST['cnpj']);
-    $_POST['telefone'] = preg_replace('/\D/', '', $_POST['telefone']);
-    if (!empty($_POST['cnpj'] && $_POST['telefone'])) {
-        // echo ($cnpjLimpo);
-        $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['nome'], $_POST['telefone']);
-        var_dump($existe);
+    
+    // Limpa CNPJ e telefone para verificação
+    $cnpjLimpo = preg_replace('/\D/', '', $_POST['cnpj']);
+    $telefoneLimpo = preg_replace('/\D/', '', $_POST['telefone']);
+    
+    // Verifica se a ONG já existe (apenas se não estivermos editando a mesma ONG)
+    if (!empty($cnpjLimpo) && !empty($telefoneLimpo)) {
+        $resultadoVerificacao = $ongModel->verificaExisteDadosOng($cnpjLimpo, $_POST['nome'], $telefoneLimpo);
+        
+        if (!$resultadoVerificacao['response']) {
+            $erros[] = "Erro ao verificar dados da ONG: " . $resultadoVerificacao['erro'];
+        } elseif ($resultadoVerificacao['existe']) {
+            // Aqui você pode adicionar uma verificação adicional se está editando a própria ONG
+            // Por exemplo, verificar se o ID da ONG atual é diferente da encontrada
+            $erros[] = "Já existe uma ONG cadastrada com esses dados (CNPJ, nome ou telefone)!";
+        }
     }
 
     // verfica se existe erro e exibe ao usuario
@@ -129,17 +188,45 @@ try {
         throw new Exception(implode("<br>", $erros));
     }
 
-    // retorna mensagem de sucesso e volta para pagina de perfil da ong
-    $_SESSION["sucesso"] = "Informações atualizadas com sucesso!";
-    header("location: ./../view/pages/Ong/perfilOng.php");
+    // Se chegou ate aqui dai sim  pode atualizar a ONG
+    // Pega o ID da ONG da sessão
+    if (!isset($_SESSION['id_ong']) || empty($_SESSION['id_ong'])) {
+        throw new Exception("ID da ONG não encontrado na sessão. Faça login novamente!");
+    }
+    
+    $idOng = $_SESSION['id_ong'];
+
+    // Converte a data para o formato do banco 
+    $dataFormatada = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
+    
+    // Chama a função de atualização
+    $resultado = $ongModel->atualizarOng(
+        $idOng,
+        $_POST['nome'],
+        $telefoneLimpo,
+        $cnpjLimpo,
+        $dataFormatada,
+        $_POST['email'],
+        $_POST['cep'],
+        $_POST['logradouro'],
+        $_POST['complemento'] ?? '',
+        $_POST['numero'],
+        $_POST['bairro'],
+        $_POST['cidade']
+    );
+
+    if ($resultado) {
+        // retorna mensagem de sucesso e volta para pagina de perfil da ong
+        $_SESSION["sucesso"] = "Informações atualizadas com sucesso!";
+        header("location: ./../view/pages/Ong/perfilOng.php");
+    } else {
+        throw new Exception("Erro ao atualizar os dados da ONG!");
+    }
+
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
     header("location: ./../view/pages/Ong/perfilOng.php");
     exit();
-
 }
-;
-
-
 
 ?>
