@@ -54,10 +54,10 @@ class UsuarioModel
             $stmtUsuario->bindParam(':id_endereco', $enderecoId);
 
             $stmtUsuario->execute();
-            
+
             $this->conn->commit();
             return true;
-            
+
         } catch (PDOException $e) {
             $this->conn->rollBack();
             echo "Erro ao registrar usuário: " . $e->getMessage();
@@ -86,25 +86,27 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findDonationHistoryBySearch($userid, $nome_ong){
+    public function findDonationHistoryBySearch($userid, $nome_ong)
+    {
         $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
                 FROM doacoes D
                 JOIN ongs O ON O.id = D.id_ong
                 JOIN usuarios U ON U.id = D.id_usuario
                 WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
-        
+
         $stmt = $this->conn->prepare($sql);
-        
+
         $nome_ong = '%' . $nome_ong . '%';
         $stmt->bindParam(':nome_ong', $nome_ong);
         $stmt->bindParam(':userid', $userid);
-        
+
         $stmt->execute();
-        
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findOngVolunteerBySearch($userid, $nome_ong){
+    public function findOngVolunteerBySearch($userid, $nome_ong)
+    {
         $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social 
                 FROM voluntarios V
                 JOIN ongs O ON O.id = V.id_ong
@@ -121,57 +123,51 @@ class UsuarioModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function editarUsuario($id, $nome, $telefone, $email, $cpf, $tipo_perfil, $id_imagem_de_perfil) {
+    public function editarUsuario($id, $nome, $telefone, $email, $cpf, $id_imagem_de_perfil = null)
+    {
         try {
-            $verificaCpf = $this->conn->prepare("SELECT id FROM usuarios WHERE cpf = :cpf AND id != :id");
-            $verificaCpf->bindParam(':cpf', $cpf);
-            $verificaCpf->bindParam(':id', $id, PDO::PARAM_INT);
-            $verificaCpf->execute();
-        
-            if ($verificaCpf->fetch()) {
-                return 'cpf_duplicado';
-            }
-
+            // Verifica duplicidade de telefone
             $verificaTelefone = $this->conn->prepare("SELECT id FROM usuarios WHERE telefone = :telefone AND id != :id");
             $verificaTelefone->bindParam(':telefone', $telefone);
             $verificaTelefone->bindParam(':id', $id, PDO::PARAM_INT);
             $verificaTelefone->execute();
+            if ($verificaTelefone->fetch())
+                return 'telefone_duplicado';
 
-            if ($verificaTelefone->fetch()) {
-                return 'telfone_duplicado';
-            }
-
+            // Monta query
             $sql = "UPDATE usuarios 
                     SET nome = :nome, 
                         telefone = :telefone, 
                         email = :email, 
-                        cpf = :cpf, 
-                        tipo_perfil = :tipo_perfil
-                        ";     
-            if (!empty($id_imagem_de_perfil)){
-                $sql .= ", id_imagem_de_perfil = :id_imagem_de_perfil ";
+                        cpf = :cpf";
+
+            if (!empty($id_imagem_de_perfil)) {
+                $sql .= ", id_imagem_de_perfil = :id_imagem_de_perfil";
             }
 
             $sql .= " WHERE id = :id";
-        
+
+            // Prepara e executa
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':telefone', $telefone);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':cpf', $cpf);
-            $stmt->bindParam(':tipo_perfil', $tipo_perfil);
-            if(!empty($id_imagem_de_perfil)){
+            if (!empty($id_imagem_de_perfil)) {
                 $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
             }
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        
             $stmt->execute();
+
+            return true;
         } catch (\Throwable $th) {
-            echo $th->getMessage();
+            return $th->getMessage();
         }
     }
-    
-    public function buscarUsuarioId($idUsuario) {
+
+
+    public function buscarUsuarioId($idUsuario)
+    {
         $sql = "SELECT * 
                 FROM usuarios u
                 LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id
@@ -182,6 +178,18 @@ class UsuarioModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function editarUsuarioImagem($id, $id_imagem_de_perfil) {
+    try {
+        $sql = "UPDATE usuarios SET id_imagem_de_perfil = :id_imagem_de_perfil WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    } catch (\Throwable $th) {
+        return false;
+    }
+}
 
 }
 
