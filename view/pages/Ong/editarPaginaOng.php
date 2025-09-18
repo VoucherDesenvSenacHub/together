@@ -12,7 +12,7 @@ $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
 
 require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
-$imagem = $imagemModel->buscarPorId($_SESSION['id']);
+$imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
 
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
@@ -37,8 +37,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class='formulario-imagem-preview'>
                             <?php if(!empty($imagem['caminho'])):?>
                                 <!-- <?php var_dump($imagem['caminho']) ?> -->
-                                <input type="hidden" name="id_imagem" value="<?= $idImagemExistente ?? '' ?>">
-                                <img class="img" src="<?= $imagem['caminho'] ?>" alt="<?= $arquivo['nome'] ?>" \>
+                                <input type="hidden" name="id_imagem" value="<?= $imagem ?>">
+                                <img class="img" src="<?= $imagem['caminho'] ?>" alt="" \>
                             <?php else:?> 
                                 <input type="file" name="imagem">
                                 <!-- <?php require_once "./../../components/upload.php" ?> -->

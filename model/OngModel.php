@@ -156,7 +156,7 @@ class OngModel
     public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
         try {
-            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter WHERE id=:id";
+            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':titulo', $titulo);
@@ -165,6 +165,7 @@ class OngModel
             $stmt->bindParam(':facebook', $facebook);
             $stmt->bindParam(':instagram', $instagram);
             $stmt->bindParam(':twitter', $twitter);
+            $stmt->bindParam(':id_imagem', $id_imagem);
             $stmt->execute();
             return true;
         } catch (Exception $e) {

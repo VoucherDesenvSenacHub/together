@@ -4,9 +4,9 @@ require_once __DIR__ . '/../model/ImagemModel.php';
 
 class UploadController
 {
-    public function processar($imagem, $idExistente = null)
+    public function processar($imagem, $idExistente)
     {
-        $diretorioDestino = __DIR__ . "/../upload/";
+        $diretorioDestino = "../upload/";
 
         // validar tipo e extensão
         $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -34,6 +34,9 @@ class UploadController
 
         $nomeUnico = uniqid() . '_' . $imagem["name"];
         $caminhoDestino = $diretorioDestino . $nomeUnico;
+
+        // Salvar no banco o caminho relativo com /together
+        $caminhoRelativo = '/together/upload/' . $nomeUnico;
 
         $caminhoTemporario = $imagem["tmp_name"];
         if (!move_uploaded_file($caminhoTemporario, $caminhoDestino)) {
