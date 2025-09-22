@@ -6,7 +6,7 @@ class UploadController
 {
     public function processar($imagem, $idExistente)
     {
-        $diretorioDestino = "../upload/";
+        $diretorioDestino = __DIR__ . "/../upload/";
 
         // validar tipo e extensão
         $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -46,11 +46,11 @@ class UploadController
         $imagemModel = new ImagemModel();
 
         if ($idExistente) {
-            $imagemModel->atualizar($idExistente, $nomeUnico, $imagem["name"], $caminhoDestino);
+            $imagemModel->atualizar($idExistente, $nomeUnico, $imagem["name"], $caminhoRelativo);
             return $idExistente; // retorna o id existente
         } else {
             // Retorna o id da nova imagem criada
-            return $imagemModel->criar($nomeUnico, $imagem["name"], $caminhoDestino);
+            return $imagemModel->criar($nomeUnico, $imagem["name"], $caminhoRelativo);
         }
     }
 }

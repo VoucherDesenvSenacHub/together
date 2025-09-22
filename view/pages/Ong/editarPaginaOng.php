@@ -23,7 +23,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 ?>
 
 <body>
-    <?php var_dump($_SESSION) ?>
+    <?php var_dump($imagem['caminho']) ?>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
@@ -35,14 +35,14 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="formulario-linha-superior">
                         <div class='formulario-imagem-preview'>
-                            <?php if(!empty($imagem['caminho'])):?>
-                                <!-- <?php var_dump($imagem['caminho']) ?> -->
-                                <input type="hidden" name="id_imagem" value="<?= $imagem ?>">
-                                <img class="img" src="<?= $imagem['caminho'] ?>" alt="" \>
+                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?>">
+                            <!-- <?php if(!empty($imagem['caminho'])):?>
+                                <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?>">
+                                <img class="img-teste" src="<?= $imagem['caminho']?>" alt="" \>
                             <?php else:?> 
                                 <input type="file" name="imagem">
-                                <!-- <?php require_once "./../../components/upload.php" ?> -->
-                            <?php endif; ?>
+                                <?php require_once "./../../components/upload.php" ?>
+                            <?php endif; ?> -->
                         </div>
                         <div class="formulario-campos">
                             <div>

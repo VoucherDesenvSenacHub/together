@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . "/../model/OngModel.php";
 
+var_dump($_POST);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
@@ -41,9 +43,6 @@ function validarEdicaoOng()
         require_once __DIR__ . "/../controller/UploadController.php";
 
         $ongModel = new OngModel();
-        $imagemModel = new ImagemModel();
-
-        $idImagem = null;
 
         // Se veio imagem no POST, processa o upload
         if (!empty($_FILES['imagem']['name'])) {
