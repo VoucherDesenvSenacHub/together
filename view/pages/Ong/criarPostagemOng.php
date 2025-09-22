@@ -3,6 +3,13 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../components/alert.php" ?>
+<?php
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -38,8 +45,10 @@
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', "", 'ongAdmin.php') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", 'ongAdmin.php') ?></div>
+                        <div class="postagem-geral-btn">
+                            <?= botao('salvar', 'Salvar', "", '/together/controller/PostagemCriarController.php') ?>
+                        </div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", '') ?></div>
                     </div>
                 </form>
             </div>
