@@ -13,6 +13,13 @@ $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
 require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
 $imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
+
+// --------------------------------------------
+// USADO PARA O PREVIEW DA IMAGEM
+require_once "./../../components/upload.php";
+$preview = new ImagemPreview($imagem['id']);
+// --------------------------------------------
+
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -35,7 +42,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <div class="formulario-linha-superior">
                         <div class='formulario-imagem-preview'>
                             <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
-                            <?php require_once "./../../components/upload.php" ?>
+                            <?php $preview->preview() ?>
                         </div>
                         <div class="formulario-campos">
                             <div>

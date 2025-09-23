@@ -28,12 +28,14 @@ class ImagemModel
         return $this->conn->lastInsertId();
     }
 
-    public function listar() {
-        $query = "SELECT * FROM $this->tabela ORDER BY data_envio DESC";
+    public function buscarImagemPorId($id) {
+        $query = "SELECT * FROM $this->tabela  WHERE id=:id";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        $stmt->execute([
+            ':id' => $id
+        ]);
 
-        return $stmt->fetchAll();
+        return $stmt->fetch();
     }
 
    public function buscarImagemPorIdPagina($id) {
@@ -45,7 +47,7 @@ class ImagemModel
     }
 
     public function atualizar($id, $nome_enviado, $nome_original, $caminho) {
-        $query = "UPDATE imagens SET nome_enviado = :nome_enviado, nome_original = :nome_original, caminho = :caminho WHERE id = :id";
+        $query = "UPDATE imagens SET nome = :nome_enviado, nome_original = :nome_original, caminho = :caminho WHERE id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':nome_enviado', $nome_enviado);
         $stmt->bindParam(':nome_original', $nome_original);
