@@ -20,14 +20,20 @@ class ImagemPreview
 ?>
       <div class="formulario-imagem-preview">
          <label class="custum-file-upload" for="file">
-            <div class="icon-upload"> <?= renderAcao('upload') ?> </div>
-            <div class="text">
-               <span>Insira uma imagem</span>
-            </div>
+
+            <?php if (!$this->imagem): ?>
+               <div class="icon-upload"> <?= renderAcao('upload') ?> </div>
+               <div class="text">
+                  <span>Insira uma imagem</span>
+               </div>
+            <?php endif; ?>
+
             <input type="file" id="file" name="file" accept="image/*">
+
             <img id="preview"
                src="<?= $this->imagem ? $this->imagem['caminho'] : '#' ?>"
                alt="Preview da imagem">
+
          </label>
       </div>
 <?php

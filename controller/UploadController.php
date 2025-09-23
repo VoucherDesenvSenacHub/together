@@ -13,18 +13,24 @@ class UploadController
         $extensoesPermitidas = ['jpeg', 'jpg', 'png', 'webp'];
 
         if (!in_array($imagem['type'], $tiposPermitidos)) {
-            throw new Exception('Tipo de arquivo inválido!');
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Tipo de arquivo inválido!';
+            return false;
         }
 
         $arquivoExtensao = strtolower(pathinfo($imagem['name'], PATHINFO_EXTENSION));
         if (!in_array($arquivoExtensao, $extensoesPermitidas)) {
-            throw new Exception('Extensão do arquivo inválida!');
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Extensão do arquivo inválida!';
+            return false;
         }
 
         // tamanho máximo 16MB
         $tamanhoMaximoDoArquivoEmBytes = 16 * 1024 * 1024;
         if ($imagem["size"] > $tamanhoMaximoDoArquivoEmBytes) {
-            throw new Exception("Arquivo Muito Grande!");
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Tamanho do arquivo foi excedido!';
+            return false;
         }
 
         // Criar o diretorio upload caso não haja
@@ -40,7 +46,9 @@ class UploadController
 
         $caminhoTemporario = $imagem["tmp_name"];
         if (!move_uploaded_file($caminhoTemporario, $caminhoDestino)) {
-            throw new Exception("Erro ao mover o arquivo!");
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Erro ao mover o arquivo!';
+            return false;
         }
 
         $imagemModel = new ImagemModel();
