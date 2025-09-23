@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (value.length >= 3) {
             let mes = parseInt(value.substring(0, 2), 10);
-            mes = Math.min(Math.max(mes, 1), 12); // Garante entre 01 e 12
+            mes = Math.min(Math.max(mes, 1), 12);
             let ano = value.substring(2, 4);
             campo.value = `${mes.toString().padStart(2, '0')}/${ano}`;
         } else {
@@ -29,12 +29,34 @@ document.addEventListener("DOMContentLoaded", function () {
         campo.value = value;
     }
 
+    function formatarValor(campo) {
+        let value = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
+
+        // Garante pelo menos 3 dígitos (2 centavos + 1 real)
+        while (value.length < 3) {
+            value = "0" + value;
+        }
+
+        const centavos = value.slice(-2);
+        let reais = value.slice(0, -2).replace(/^0+/, ""); // Remove zeros à esquerda dos reais
+
+        // Se reais estiver vazio, exibe como 0
+        reais = reais === "" ? "0" : reais;
+
+        // Adiciona separadores de milhar (.)
+        reais = reais.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        campo.value = `R$ ${reais},${centavos}`;
+    }
+
+
     // Seleção dos campos
     const campoCartao = document.getElementById("numero");
     const campoValidade = document.getElementById("validade");
     const campoCVV = document.getElementById("cvv");
+    const campoValor = document.getElementById("valor");
 
-    // Máscaras e restrições de digitação
+    // Máscaras e restrições
     if (campoCartao) {
         formatarCartao(campoCartao);
         campoCartao.addEventListener("input", () => formatarCartao(campoCartao));
@@ -53,24 +75,39 @@ document.addEventListener("DOMContentLoaded", function () {
         campoCVV.addEventListener("keypress", somenteNumeros);
     }
 
-    // Validação e limpeza ao enviar o formulário
+    if (campoValor) {
+        formatarValor(campoValor);
+        campoValor.addEventListener("input", () => formatarValor(campoValor));
+        campoValor.addEventListener("keypress", somenteNumeros);
+    }
+
+    // Submissão do formulário
     const form = document.getElementById("form-pagamento");
     if (form) {
         form.addEventListener("submit", (e) => {
             const numero = campoCartao?.value.replace(/\D/g, "") || "";
-            // const validade = campoValidade?.value.replace(/\D/g, "") || "";
             const cvv = campoCVV?.value.replace(/\D/g, "") || "";
+            const validade = campoValidade?.value || "";
+            let valorRaw = campoValor?.value || "";
 
-            if (numero.length !== 16 || cvv.length !== 3 || (campoValidade && campoValidade.value.length !== 5)) {
+            // Validação
+            if (numero.length !== 16 || cvv.length !== 3 || validade.length !== 5) {
                 e.preventDefault();
                 alert("Por favor, preencha todos os campos corretamente.");
                 return;
             }
 
-            // Substitui valores com versões sem formatação
+            // Converte "R$ 1.234,56" para "1234.56"
+            if (campoValor) {
+                let valorLimpo = valorRaw.replace(/[^\d]/g, "");
+                let valorFinal = (parseInt(valorLimpo, 10) / 100).toFixed(2);
+                campoValor.value = valorFinal; // Substitui no input para enviar corretamente
+            }
+
+            // Remove máscaras dos outros campos
             if (campoCartao) campoCartao.value = numero;
-            // if (campoValidade) campoValidade.value = validade;
             if (campoCVV) campoCVV.value = cvv;
+            // A validade pode ser enviada como está (MM/AA) ou separada se necessário
         });
     }
 

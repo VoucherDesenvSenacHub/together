@@ -5,6 +5,7 @@
 <?php require_once "./../../components/alert.php" ?>
 
 <?php
+var_dump($_SESSION);
 $erro = $_SESSION['erro'] ?? '';
 
 if (isset($_SESSION['erro'], $erro)) {
@@ -43,13 +44,19 @@ if (isset($_SESSION['erro'], $erro)) {
                 <?= label('numero', 'Número do cartão') ?>
                 <?= inputRequired('text', 'numero', 'numero') ?>
               </div>
-              <div>
-                <?= label('validade', 'Validade') ?>
-                <?= inputRequired('text', 'validade', 'validade') ?>
+              <div class="form-row">
+                <div>
+                  <?= label('validade', 'Validade') ?>
+                  <?= inputRequired('text', 'validade', 'validade') ?>
+                </div>
+                <div>
+                  <?= label('cvv', 'CVV') ?>
+                  <?= inputRequired('number', 'cvv', 'cvv') ?>
+                </div>
               </div>
               <div>
-                <?= label('cvv', 'CVV') ?>
-                <?= inputRequired('number', 'cvv', 'cvv') ?>
+                <?= label('valor', 'Valor') ?>
+                <?= inputRequired('text', 'valor', 'valor') ?>
               </div>
               <div class="container-botao-pagamento">
                 <?= botao('salvar', 'Realizar Pagamento','','../../../controller/PagamentoUsuarioController.php') ?>
