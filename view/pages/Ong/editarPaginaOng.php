@@ -13,7 +13,6 @@ $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
 require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
 $imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
-
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -23,7 +22,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 ?>
 
 <body>
-    <?php var_dump($imagem['caminho']) ?>
+    <?php var_dump($imagem['id']) ?>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
@@ -35,14 +34,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="formulario-linha-superior">
                         <div class='formulario-imagem-preview'>
-                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?>">
-                            <!-- <?php if(!empty($imagem['caminho'])):?>
-                                <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?>">
-                                <img class="img-teste" src="<?= $imagem['caminho']?>" alt="" \>
-                            <?php else:?> 
-                                <input type="file" name="imagem">
-                                <?php require_once "./../../components/upload.php" ?>
-                            <?php endif; ?> -->
+                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+                            <?php require_once "./../../components/upload.php" ?>
                         </div>
                         <div class="formulario-campos">
                             <div>

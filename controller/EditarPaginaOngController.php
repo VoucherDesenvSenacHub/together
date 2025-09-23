@@ -45,9 +45,9 @@ function validarEdicaoOng()
         $ongModel = new OngModel();
 
         // Se veio imagem no POST, processa o upload
-        if (!empty($_FILES['imagem']['name'])) {
+        if (!empty($_FILES['file'])) {
             $upload = new UploadController();
-            $idImagem = $upload->processar($_FILES['imagem'], $_POST['id_imagem']);
+            $idImagem = $upload->processar($_FILES['file'], $_POST['id_imagem']);
         }
 
         $resultado = $ongModel->editarPaginaOng(
