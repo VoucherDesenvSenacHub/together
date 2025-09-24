@@ -1,4 +1,6 @@
-<!-- 
+<?php
+
+/*
 Como usar:
 1 - Fazer require_once __DIR__ . "/../controller/UploadController.php"
 2 - $upload = new UploadController();
@@ -18,9 +20,7 @@ paginasOng
 patrocinadores
 
 USAR EXATAMENTE ESSES EXEMPLOS ACIMA PARA NOME DE PASTA!!!!!!!!
--->
-
-<?php
+*/
 
 require_once __DIR__ . '/../model/ImagemModel.php';
 

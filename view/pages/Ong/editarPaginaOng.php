@@ -48,8 +48,6 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                 <?= label("titulo", "Título") ?>
                                 <?= inputRequiredMaxLength("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
                             </div>
-
-
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>
                                 <?= textareaRequiredMaxLength("subtitulo", "subtitulo", $pagina['subtitulo'], 150) ?>
