@@ -7,7 +7,8 @@ function renderAcao($action, $extraClasses = '', $id = '') {
         'deletar'    => ['trash', 'fa-solid', 'color: #797777;'],
         'baixar'     => ['download','fa-solid','color: #797777;'],
         'aceitar'    => ['check','fa-solid','color: var(--cor-botao-salvar);'],
-        'recusar'    => ['xmark', 'fa-solid', 'color: var(--cor-botao-excluir);']
+        'recusar'    => ['xmark', 'fa-solid', 'color: var(--cor-botao-excluir);'],
+        'upload'    => ['file-import', 'fa-solid', 'color: #797777;']
     ];
 
     if (isset($icons[$action])) {

@@ -1,27 +1,51 @@
 <?php
-require_once __DIR__ . '/../../config/database.php';
-require_once __DIR__ . '/../../controller/ImagemController.php';
 
-// Instancia a conexão
-$db = new Database();
-$conn = $db->conectar();  // <- aqui temos o PDO
+/* 
+Como usar:
+1 - fazer require_once "./../../components/upload.php";
+2 - $preview = new ImagemPreview($imagem['id']);
+3 - <?php $preview->preview() ?> (recomendacao: adicionar no lugar do require_once que ficava na view)
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-        $imagemController = new ImagemController($conn);
-        $caminho = $imagemController->salvarImagem($_FILES['file']);
-        echo "<p>Imagem salva com sucesso! Caminho: $caminho</p>";
-    } catch (Exception $e) {
-        echo "<p>Erro: " . $e->getMessage() . "</p>";
-    }
-}
+$imagem['id'] = precisa do id da Imagem para funcionar, ou seja, precisa fazer uma consulta sql para pegar o idImagem, após isso executar os passos acima!
+*/
+
+require_once './../../components/acoes.php';
+require_once __DIR__ . "/../../model/ImagemModel.php";
+
+class ImagemPreview
+{
+   private $id;
+   private $imagemModel;
+   private $imagem;
+
+   public function __construct($id)
+   {
+      $this->id = $id;
+      $this->imagemModel = new ImagemModel();
+      $this->imagem = $this->imagemModel->buscarImagemPorId($this->id);
+   }
+
+   public function preview()
+   {
 ?>
+      <div class="formulario-imagem-preview">
+         <label class="custum-file-upload" for="file">
 
-<div class="formulario-imagem-preview">
-    <label class="custum-file-upload" for="file">
-        <div class="icon-upload"> ...svg aqui... </div>
-        <div class="text"><span>Insira uma imagem</span></div>
-        <input type="file" id="file" name="file" accept="image/*">
-        <img id="preview" src="#" alt="">
-    </label>
-</div>
+            <?php if (!$this->imagem): ?>
+               <div class="icon-upload"> <?= renderAcao('upload') ?> </div>
+               <div class="text">
+                  <span>Insira uma imagem</span>
+               </div>
+            <?php endif; ?>
+
+            <input type="file" id="file" name="file" accept="image/*">
+
+            <img id="preview"
+               src="<?= $this->imagem ? $this->imagem['caminho'] : '#' ?>"
+               alt="<?= $this->imagem['nome_original'] ?>">
+
+         </label>
+      </div>
+<?php
+   }
+}
