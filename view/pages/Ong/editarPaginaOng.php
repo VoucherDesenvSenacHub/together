@@ -29,7 +29,6 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 ?>
 
 <body>
-    <?php var_dump($imagem['id']) ?>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
