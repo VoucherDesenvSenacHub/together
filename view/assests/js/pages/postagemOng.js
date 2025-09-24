@@ -5,20 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const icon = document.querySelector('.icon-upload');
     const formPreview = document.querySelector('.formulario-imagem-preview');
     
-    if (fileInput && preview && text && icon && formPreview) {
+    if (fileInput && preview && formPreview) {
         fileInput.addEventListener('change', function () {
             const file = this.files[0];
             if (file) {
-                text.style.display = 'none';
-                icon.style.display = 'none';
+                if (text) text.style.display = 'none';
+                if (icon) icon.style.display = 'none';
                 formPreview.style.border = 'none';
+
                 const reader = new FileReader();
-        
                 reader.addEventListener('load', function () {
                     preview.setAttribute('src', this.result);
                     preview.style.display = 'block';
                 });
-        
                 reader.readAsDataURL(file);
             } else {
                 preview.style.display = 'none';

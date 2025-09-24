@@ -34,7 +34,6 @@ class OngModel
         $stmt->bindParam(':nome_usuario', $nome_usuario);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     }
 
     public function findDonorSearch($nome_doador)
@@ -220,5 +219,35 @@ class OngModel
         $stmt->bindParam(':id', $id);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+    }
+
+    public function mostrarInformacoesPaginaOng($id)
+    {
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter FROM paginas p WHERE p.id_ong=:id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    {
+        try {
+            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':facebook', $facebook);
+            $stmt->bindParam(':instagram', $instagram);
+            $stmt->bindParam(':twitter', $twitter);
+            $stmt->bindParam(':id_imagem', $id_imagem);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            error_log("Erro editarPaginaOng: " . $e->getMessage());
+            return false;
+        }
     }
 }
