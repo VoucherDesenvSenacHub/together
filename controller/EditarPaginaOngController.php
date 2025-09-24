@@ -49,6 +49,10 @@ function validarEdicaoOng()
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'usuarios');
+            if ($idImagem === false) {
+                header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+                exit;
+            }
         }
 
         $resultado = $ongModel->editarPaginaOng(

@@ -5,7 +5,7 @@ Como usar:
 1 - Fazer require_once __DIR__ . "/../controller/UploadController.php"
 2 - $upload = new UploadController();
 3 - $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
-3 -- $upload->processar retorna um id, existente ou cria um novo (se nao existir nenhum id vinculado)
+3 -- $upload->processar retorna um id ou um false se cair em alguma excessão (se nao existir nenhum id vinculado ele cria um id novo)
 
 4 - Recomendo que adicione no arquivo view <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
 4.1 - Agora, já na controller adicione um $idImagem = $_POST['id_imagem'] (recomendação: $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null)
