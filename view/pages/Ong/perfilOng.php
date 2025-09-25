@@ -8,10 +8,10 @@
 $OngModel = new OngModel();
 $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
 
-// if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
-//   header("location: ./../login.php");
-//   exit();
-// }
+ if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
+  header("location: ./../login.php");
+   exit();
+ }
 // mostra popup de erro se existir
 $tipos = ['erro', 'sucesso'];
 
