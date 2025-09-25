@@ -2,8 +2,11 @@
 session_start();
 
 require_once __DIR__ . "/../model/OngModel.php";
+require_once __DIR__ . "/../controller/UploadController.php";
+
 
 try {
+
     $erros = [];
     // verifica se o metodo é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -55,20 +58,21 @@ try {
     }
 
     // Função para validar CEP
-    function validarCEP($cep) {
+    function validarCEP($cep)
+    {
         // Remove tudo que não for número
         $cepLimpo = preg_replace('/\D/', '', $cep);
-        
+
         // Verifica se tem exatamente 8 dígitos
         if (strlen($cepLimpo) != 8) {
             return false;
         }
-        
+
         // Verifica se não são todos números iguais (00000000, 11111111, etc.)
         if (preg_match('/^(\d)\1{7}$/', $cepLimpo)) {
             return false;
         }
-        
+
         return true;
     }
 
@@ -129,51 +133,16 @@ try {
         $erros[] = "CEP informado não é válido!";
     }
 
-    //Verifica se o metodo é post, define tamanho maximo da imagem e tipo permitidos
-    if($_SERVER['REQUEST_METHOD']== 'POST'){
-        $TamanhoMax = 16 * 1024 * 1024;
-        $tiposPermitidos = ['image/jpeg', 'image/png', 'image/jpg','image/webp'];
-        $extensoesPermitidas = ['jpeg', 'png', 'jpg', 'webp'];
 
-        $file = $_FILES['imagem'];
-        
-        if($file['error'] !== UPLOAD_ERR_OK){
-            die("erro no upload");
-        }
-
-        if($file['size']> $TamanhoMax){
-            die("Arquivo muito grande. Máximo permitido é 16 MB!");
-        }
-
-        $fileMime = mime_content_type($file['tmp_name']);
-        if (!in_array($fileMime, $tiposPermitidos)) {
-            die("Tipo de arquivo inválido. Só aceitamos JPEG, PNG, JPG ou WEBP.");
-        }
-
-        $extensao = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-        if (!in_array($extensao, $extensoesPermitidas)) {
-            die("Extensão de arquivo inválida. Extensões permitidas: jpeg, jpg, png, webp.");
-        }
-
-        $destino = "" . basename($file['name']);
-        if (move_uploaded_file($file['tmp_name'], $destino)) {
-            echo "Upload realizado com sucesso!";
-        } else {
-            echo "Erro ao salvar o arquivo.";
-        }
-    }
 
     // Instancia o modelo da ONG
     $ongModel = new OngModel();
-    
-    // Limpa CNPJ e telefone para verificação
-    $cnpjLimpo = preg_replace('/\D/', '', $_POST['cnpj']);
-    $telefoneLimpo = preg_replace('/\D/', '', $_POST['telefone']);
-    
+
+
     // Verifica se a ONG já existe (apenas se não estivermos editando a mesma ONG)
-    if (!empty($cnpjLimpo) && !empty($telefoneLimpo)) {
-        $resultadoVerificacao = $ongModel->verificaExisteDadosOng($cnpjLimpo, $_POST['nome'], $telefoneLimpo);
-        
+    if (!empty($VerificarCnpj) && !empty($VerificarTelefone)) {
+        $resultadoVerificacao = $ongModel->verificaExisteDadosOng($VerificarCnpj, $_POST['nome'], $$VerificarTelefone);
+
         if (!$resultadoVerificacao['response']) {
             $erros[] = "Erro ao verificar dados da ONG: " . $resultadoVerificacao['erro'];
         } elseif ($resultadoVerificacao['existe']) {
@@ -183,6 +152,9 @@ try {
         }
     }
 
+    $upload = new UploadController();
+    $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
+
     // verfica se existe erro e exibe ao usuario
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
@@ -190,15 +162,15 @@ try {
 
     // Se chegou ate aqui dai sim  pode atualizar a ONG
     // Pega o ID da ONG da sessão
-    if (!isset($_SESSION['id_ong']) || empty($_SESSION['id_ong'])) {
+    if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
         throw new Exception("ID da ONG não encontrado na sessão. Faça login novamente!");
     }
-    
-    $idOng = $_SESSION['id_ong'];
+
+    $idOng = $_SESSION['id'];
 
     // Converte a data para o formato do banco 
     $dataFormatada = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
-    
+
     // Chama a função de atualização
     $resultado = $ongModel->atualizarOng(
         $idOng,

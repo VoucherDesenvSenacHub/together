@@ -8,10 +8,10 @@
 $OngModel = new OngModel();
 $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
 
- if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
+if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
   header("location: ./../login.php");
-   exit();
- }
+  exit();
+}
 // mostra popup de erro se existir
 $tipos = ['erro', 'sucesso'];
 
@@ -36,6 +36,7 @@ foreach ($tipos as $tipo) {
           <div class="container-perfil-voluntario">
             <div class="div-logo">
               <img src="/together/view/assests/images/Adm/adm-vision-ong.png" alt="Foto do usuário" class="logo-user">
+              <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
             </div>
             <div class="container-readonly">
               <div class="container-readonly-primary">
