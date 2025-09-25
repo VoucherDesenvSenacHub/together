@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../model/PostagemModel.php';
+require_once __DIR__ . "/../controller/UploadController.php";
 
 session_start();
 
@@ -20,6 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $postagemModel = new PostagemModel();
 
     try {
+        // Se veio imagem no POST, processa o upload
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $upload = new UploadController();
+            $idImagem = $upload->processar($_FILES['file'], $idImagem, 'postagensOng');
+            if ($idImagem === false) {
+                header('Location: /together/view/pages/ong/criarPostagemOng.php');
+                exit;
+            }
+        }
+        
         $ok = $postagemModel->criar($titulo, $descricao, $link, $idImagem, $idOng);
 
         if ($ok) {
