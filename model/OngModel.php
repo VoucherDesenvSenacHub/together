@@ -34,7 +34,6 @@ class OngModel
         $stmt->bindParam(':nome_usuario', $nome_usuario);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
     }
 
     public function findDonorSearch($nome_doador)
@@ -52,6 +51,61 @@ class OngModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function filtroDataHoraDoacoes($id_ong, $data_inicio = NULL, $data_fim = NULL)
+    {
+        if (is_null($data_inicio) || is_null($data_fim)) {
+            $sql = "SELECT D.dt_doacao, U.nome, D.valor
+                          FROM doacoes D 
+                          JOIN usuarios U ON U.id = D.id_usuario 
+                          WHERE D.id_ong = :id_ong
+                          ORDER BY D.dt_doacao DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+        } else {
+            $sql = "SELECT D.dt_doacao, U.nome, D.valor
+                          FROM doacoes D 
+                          JOIN usuarios U ON U.id = D.id_usuario 
+                          WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
+                          AND D.id_ong = :id_ong
+                          ORDER BY D.dt_doacao DESC";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function filtroDataHoraVoluntarios($id_ong, $data_inicio = NULL, $data_fim = NULL)
+    {
+        if (is_null($data_inicio) || is_null($data_fim)) {
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+        } else {
+            $sql = "SELECT V.dt_associacao, U.nome, U.id
+                          FROM voluntarios V 
+                          JOIN usuarios U ON U.id = V.id_usuario 
+                          WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
+                          AND V.id_ong = :id_ong
+                          ORDER BY V.dt_associacao DESC";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_ong', $id_ong);
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
@@ -110,6 +164,30 @@ class OngModel
             return [
                 'response' => true
             ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function editarPostagemDaOng($id_postagem, $titulo, $dt_postagem, $descricao, $link)
+    {
+        try {
+            // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
+            $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
+            $stmt = $this->conn->prepare($q);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':dt_postagem', $dt_postagem);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':link', $link);
+            $stmt->bindParam(':id_postagem', $id_postagem);
+            $stmt->execute();
+            return [
+                'response' => true
+            ];
+
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -177,9 +255,9 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $bairro,  $cidade)
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $bairro, $cidade)
     {
-        try{
+        try {
             $this->conn->beginTransaction();
 
             $queryOng = "UPDATE ongs
@@ -201,13 +279,13 @@ class OngModel
             $queryUsuario = "UPDATE usuarios
             SET email = :email
                 WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
-                 $stmtUsuario = $this->conn->prepare($queryUsuario);
-                 $stmtUsuario->bindParam(':email', $email);
-                 $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
-                 $stmtUsuario->execute();
-         
-                
-                 $queryEndereco = "UPDATE enderecos 
+            $stmtUsuario = $this->conn->prepare($queryUsuario);
+            $stmtUsuario->bindParam(':email', $email);
+            $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtUsuario->execute();
+
+
+            $queryEndereco = "UPDATE enderecos 
                                      SET cep = :cep, 
                                          logradouro = :logradouro, 
                                          complemento = :complemento, 
@@ -215,26 +293,26 @@ class OngModel
                                          bairro = :bairro, 
                                          cidade = :cidade
                                    WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
-                 $stmtEndereco = $this->conn->prepare($queryEndereco);
-                 $stmtEndereco->bindParam(':cep', $cep);
-                 $stmtEndereco->bindParam(':logradouro', $logradouro);
-                 $stmtEndereco->bindParam(':complemento', $complemento);
-                 $stmtEndereco->bindParam(':bairro', $bairro);
-                 $stmtEndereco->bindParam(':numero', $numero);
-                 $stmtEndereco->bindParam(':cidade', $cidade);
-                 $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
-                 $stmtEndereco->execute();
-         
-                 $this->conn->commit();
-                 return true;
-             } catch (Exception $e) {
-                 $this->conn->rollBack();
-                 throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
-             }
-            
+            $stmtEndereco = $this->conn->prepare($queryEndereco);
+            $stmtEndereco->bindParam(':cep', $cep);
+            $stmtEndereco->bindParam(':logradouro', $logradouro);
+            $stmtEndereco->bindParam(':complemento', $complemento);
+            $stmtEndereco->bindParam(':bairro', $bairro);
+            $stmtEndereco->bindParam(':numero', $numero);
+            $stmtEndereco->bindParam(':cidade', $cidade);
+            $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtEndereco->execute();
 
+            $this->conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
         }
+
+
     }
+}
 
 
 

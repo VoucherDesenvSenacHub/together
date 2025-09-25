@@ -15,7 +15,10 @@ CREATE TABLE enderecos(
 
 CREATE TABLE imagens(
 	id int primary key auto_increment,
-    link text not null
+    nome_enviado varchar(255) not null,
+    nome_original varchar(255) not null,
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    caminho varchar(255) not null
 );
 
 CREATE TABLE usuarios(
@@ -118,7 +121,7 @@ CREATE TABLE doacoes(
 );
 
 CREATE TABLE desenvolvedores(
-    id int primary key,
+    id int primary key auto_increment,
     nome varchar(127),
     link_github varchar(255),
     link_linkedin varchar(255),

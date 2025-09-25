@@ -2,6 +2,21 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../../model/OngModel.php' ?>
+
+<?php 
+// $idOng = $_SESSION['id_ong'] ?? null;
+$idOng = 1; // Temporário para testes
+$ongModel = new OngModel();
+
+$dtInicio = $_GET['dt_inicio'] ?? null;
+$dtFinal = $_GET['dt_final'] ?? null;
+
+$dtInicio = !empty($dtInicio) ? $dtInicio : null;
+$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+
+$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -61,15 +76,15 @@
                         </a>
                     </div>
                 </div>
-                <div class="filtro">
+                <form class="filtro" method="GET">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            <?= inputDefault('date', 'data-inicio', 'dt_inicio', $_GET['dt_inicio'] ?? '') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                            <?= inputDefault('date', 'data-final', 'dt_final', $_GET['dt_final'] ?? '') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
@@ -81,7 +96,7 @@
                         <?= label('pesquisar', '&nbsp;') ?>
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Doador') ?>
                     </div>
-                </div>
+                </form>
 
                 <div class="table-mobile">
                     <table class="tabela">
@@ -93,14 +108,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php if (empty($lista)): ?>
                                 <tr>
-                                    <td><?= $i + 10 ?>/05/2025</td>
-                                    <td><?= $lista[$i] ?></td>
-                                    <td><?= "R$" . ($i + 2) * 10 ?></td>
+                                    <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php else: ?>
+                                <?php foreach($lista as $doacao): ?>
+                                    <tr>
+                                        <td><?= $doacao['dt_doacao']?></td>
+                                        <td><?= $doacao['nome'] ?></td>
+                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
