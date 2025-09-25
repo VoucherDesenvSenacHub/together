@@ -1,12 +1,27 @@
 <?php
-
 /* 
 Como usar:
-1 - fazer require_once "./../../components/upload.php";
-2 - $preview = new ImagemPreview($imagem['id']);
-3 - <?php $preview->preview() ?> (recomendacao: adicionar no lugar do require_once que ficava na view)
 
-$imagem['id'] = precisa do id da Imagem para funcionar, ou seja, precisa fazer uma consulta sql para pegar o idImagem, após isso executar os passos acima!
+   1 - require_once "./../../components/upload.php";
+
+   2 - $preview = new ImagemPreview($imagem['id']); (SE NÃO EXISTIR ID IMAGEM PODE PASSAR NULL AO INVES DE $imagem['id])
+
+   3 - Adicionar enctype="multipart/form-data"> no form da view
+      Exemplo:
+         <form action="" method="POST" enctype="multipart/form-data">
+
+   4 - Se necessário passar o input hidden com o value do id da imagem (SE O ID IMAGEM DO **PASSO 2** FOR NULL NÃO É NECESSÁRIO)
+      Comentário:
+         Mas para isso precisa de uma Model para consultar o id da imagem, assim adicionando ela na variavel $imagem, para podermos passar ela com o $imagem['id']
+      Exemplo:
+         <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+
+   5 - <?php $preview->preview() ?> 
+      Recomendação: 
+         Adicionar no lugar do <?php require_once "./../../components/upload.php" ?> que ficava na view
+      Exemplo:
+         <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+         <?php $preview->preview() ?>
 */
 
 require_once './../../components/acoes.php';
@@ -42,8 +57,7 @@ class ImagemPreview
 
             <img id="preview"
                src="<?= $this->imagem ? $this->imagem['caminho'] : '#' ?>"
-               alt="<?= $this->imagem['nome_original'] ?>">
-
+               alt="<?= $this->imagem ? $this->imagem['nome_original'] : null ?>">
          </label>
       </div>
 <?php

@@ -27,7 +27,7 @@ class PostagemModel
     public function getAll()
     {
         $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao,
-                       p.link, i.caminho AS imagem, o.nome AS ong
+                       p.link, i.caminho AS imagem, o.razao_social AS ong
                 FROM postagens p
                 LEFT JOIN imagens i ON p.id_imagem = i.id
                 LEFT JOIN ongs o ON p.id_ong = o.id
