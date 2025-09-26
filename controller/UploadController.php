@@ -48,6 +48,7 @@ class UploadController
     public function processar($imagem, $idExistente, $pasta)
     {
         $diretorioDestino = __DIR__ . "/../upload/$pasta/";
+        $diretorioUpload = __DIR__ . "/../upload/";
 
         // validar tipo e extensão
         $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -75,6 +76,11 @@ class UploadController
         }
 
         // Criar o diretorio upload caso não haja
+        if (!is_dir($diretorioUpload)) {
+            mkdir($diretorioUpload);
+        }
+
+        // Criar o diretorio destino caso não haja
         if (!is_dir($diretorioDestino)) {
             mkdir($diretorioDestino);
         }
