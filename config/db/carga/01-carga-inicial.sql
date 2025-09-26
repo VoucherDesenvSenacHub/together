@@ -6,19 +6,11 @@ INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, est
   ('Av. D', 400, '30100000', 'Bloco C', 'Funcionários', 'Belo Horizonte', 'MG');
 
 -- 2) Imagens 
-<<<<<<< HEAD
-INSERT INTO imagens (nome, nome_original, caminho) VALUES
-  ('img_1.jpg', '1.jpg', 'https://img.example.com/1.jpg'),
-  ('img_2.jpg', '2.jpg', 'https://img.example.com/2.jpg'),
-  ('img_3.jpg', '3.jpg', 'https://img.example.com/3.jpg'),
-  ('img_4.jpg', '4.jpg', 'https://img.example.com/4.jpg');
-=======
 INSERT INTO imagens (nome_enviado, nome_original, caminho) VALUES
   ('1.jpg', '1.jpg', 'https://img.example.com/1.jpg'),
   ('2.jpg', '2.jpg', 'https://img.example.com/2.jpg'),
   ('3.jpg', '3.jpg', 'https://img.example.com/3.jpg'),
   ('4.jpg', '4.jpg', 'https://img.example.com/4.jpg');
->>>>>>> 8c54d37076b79c631155a13a5ae71c875335e1f6
 
 -- 3) Usuários 
 INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES

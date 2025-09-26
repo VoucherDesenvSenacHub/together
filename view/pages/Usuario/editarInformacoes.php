@@ -4,22 +4,26 @@ require_once "../../components/label.php";
 require_once "../../components/input.php";
 require_once "../../components/textarea.php";
 require_once "../../../model/UsuarioModel.php";
+require_once "../../../model/ImagemModel.php";
+require_once "./../../components/upload.php";
+require_once "./../../components/alert.php";
+
+$imgModel = new ImagemModel();
+$imagem = $imgModel->buscarImagemPorIdUsuario($_SESSION['id']);
+
+$preview = new ImagemPreview($imagem['id'] ?? null);
+
 
 $model = new UsuarioModel();
 $usuarioId = $_SESSION['id'];
 $usuario = $model->buscarUsuarioId($usuarioId);
 
-// if (isset($_SESSION['erro'])) {
-//     showPopup('erro', $_SESSION['erro']);
-//     unset($_SESSION['erro']);
-// }
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
 
-// if (isset($_SESSION['sucesso'])) {
-//     showPopup('sucesso', $_SESSION['sucesso']);
-//     unset($_SESSION['sucesso']);
-// }
 ?>
-
 
 <body>
     <?= require_once "../../../view/components/navbar.php" ?>
@@ -30,11 +34,13 @@ $usuario = $model->buscarUsuarioId($usuarioId);
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form form enctype="multipart/form-data" action="../../../controller/UsuarioEditarController.php" method="POST" class="postagem-geral-form editar-informacoes-form">
+                <form form enctype="multipart/form-data" method="POST"
+                    class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
                         <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
                         <div class="div-logo">
-                            <?php require_once "./../../components/upload.php" ?>
+                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+                            <?php $preview->preview() ?>
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">

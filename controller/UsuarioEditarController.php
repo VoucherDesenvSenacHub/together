@@ -2,6 +2,9 @@
 session_start();
 require_once "../model/UsuarioModel.php";
 require_once "../model/ImagemModel.php";
+require_once __DIR__ . "/../controller/UploadController.php";
+
+var_dump($_FILES['file']);
 
 $modelUsuario = new UsuarioModel();
 $modelImagem = new ImagemModel();
@@ -20,42 +23,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // =====================
     if (empty($nome) || strlen($nome) < 10) {
         $_SESSION['mensagem'] = "Nome deve ter pelo menos 10 caracteres.";
-        header("Location: ../../../view/pages/Usuario/editarInformacoes.php");
+        // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['mensagem'] = "E-mail inválido.";
-        header("Location: ../../../view/pages/Usuario/editarInformacoes.php");
+        // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
         exit;
     }
 
     if (!preg_match('/^\d{10,11}$/', $telefone)) {
         $_SESSION['mensagem'] = "Telefone inválido. Deve conter 10 ou 11 dígitos.";
-        header("Location: ../../../view/pages/Usuario/editarInformacoes.php");
+        // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
         exit;
     }
 
     // =====================
-    // Upload de imagem
-    // =====================
+    // Processa upload da imagem
+
+    $idImagem = $_POST['id_imagem'];
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $arquivoTmp = $_FILES['file']['tmp_name'];
-        $nomeOriginal = $_FILES['file']['name'];
-        $ext = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
-        $novoNome = uniqid('img_', true) . '.' . $ext;
-
-        $diretorio = __DIR__ . '/../../uploads/';
-        if (!is_dir($diretorio)) mkdir($diretorio, 0755, true);
-
-        $caminhoFinal = $diretorio . $novoNome;
-
-        if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
-            $caminhoBanco = 'uploads/' . $novoNome;
-            $id_imagem = $modelImagem->salvar($caminhoBanco, $novoNome, $nomeOriginal);
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, 'usuarios');
+        if ($idImagem === false) {
+            // header('Location: /together/view/pages/Usuario/editarInformacoes.php');
+            exit;
         }
     }
-
+    
     // =====================
     // Atualiza usuário
     // =====================
@@ -79,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['mensagem'] = "Erro: $resultado";
     }
 
-    header("Location: ../view/pages/Usuario/editarInformacoes.php");
+    // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
     exit;
 }
 ?>
