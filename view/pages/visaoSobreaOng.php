@@ -29,7 +29,7 @@ require_once "./../components/acoes.php";
     <?php } ?>
     <?php if($_SESSION['perfil'] === 'Usuario' || $_SESSION['perfil'] === 'Ong') { ?>
         <?php 
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?idOng=1';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
         ?>
     <?php } ?>

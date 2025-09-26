@@ -8,10 +8,15 @@ class pagamentoValidator{
         $validade = trim($dados['validade']);
         $cvv = $dados['cvv'];
         $valor = $dados['valor'];
+        $idOng = $dados['idOng'];
 
         // Verificar campos obrigatórios
         if (empty($nome) || empty($numero) || empty($validade) || empty($cvv)) {
             throw new Exception("Por favor, preencha todos os campos obrigatórios.");
+        }
+
+        if(empty($idOng) || !is_numeric($idOng) || $idOng <= 0) {
+            throw new Exception("ONG inválida. Por favor, selecione uma ONG válida para a doação.");
         }
 
         // Nome: letras e espaços (com acentos), até 100 caracteres

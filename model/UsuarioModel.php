@@ -86,6 +86,16 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function findUsuarioById($id)
+    {
+        $sql = "SELECT * FROM usuarios U JOIN enderecos E ON U.id_endereco = E.id WHERE U.id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function findDonationHistoryBySearch($userid, $nome_ong){
     $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
             FROM doacoes D
