@@ -10,19 +10,15 @@ require_once "./../../components/alert.php";
 
 $imgModel = new ImagemModel();
 $imagem = $imgModel->buscarImagemPorIdUsuario($_SESSION['id']);
-
 $preview = new ImagemPreview($imagem['id'] ?? null);
 
-
-$model = new UsuarioModel();
-$usuarioId = $_SESSION['id'];
-$usuario = $model->buscarUsuarioId($usuarioId);
+$usuarioModel = new UsuarioModel();
+$usuario = $usuarioModel->buscarUsuarioId($_SESSION['id']);
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
-
 ?>
 
 <body>
@@ -34,10 +30,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form form enctype="multipart/form-data" method="POST"
-                    class="postagem-geral-form editar-informacoes-form">
+                <form action="" enctype="multipart/form-data" method="POST" class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
-                        <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
                         <div class="div-logo">
                             <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
                             <?php $preview->preview() ?>
