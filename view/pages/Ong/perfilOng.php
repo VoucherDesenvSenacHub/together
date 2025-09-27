@@ -3,6 +3,7 @@
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
 <?php require_once "../../../view/components/alert.php"; ?>
+<?php require_once "../../../view/components/selectEndereco.php"; ?>
 <?php require_once './../../../model/OngModel.php'; ?>
 <?php
 $OngModel = new OngModel();
@@ -93,12 +94,13 @@ foreach ($tipos as $tipo) {
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
-                <?= label('bairro', 'Bairro') ?>
-                <?= inputRequired('text', 'bairro', 'bairro', $InformacoesOng['bairro']) ?>
+                <?= label('estado', 'Estado') ?>
+                <?php renderSelectEstado($InformacoesOng['estado']); ?>
               </div>
+
               <div class="container-input-endereco-voluntario">
                 <?= label('cidade', 'Cidade') ?>
-                <?= inputRequired('text', 'cidade', 'cidade', $InformacoesOng['cidade']) ?>
+                <?php renderSelectCidade($InformacoesOng['estado'], $InformacoesOng['cidade']); ?>
               </div>
             </div>
           </div>

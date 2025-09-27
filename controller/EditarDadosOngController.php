@@ -13,7 +13,7 @@ try {
         $erros[] = "Método inválido para esta requisição";
     }
     // campos que devem ser preenchidos e verifica se está vazio.
-    $campos = ['nome', 'telefone', 'cnpj', 'data', 'email', 'cep', 'logradouro', 'numero', 'bairro', 'cidade'];
+    $campos = ['nome', 'telefone', 'cnpj', 'data', 'email', 'cep', 'logradouro', 'numero', 'cidade'];
 
     // verica todos os campos estão preenchidos
     foreach ($campos as $campo) {
@@ -57,33 +57,24 @@ try {
         return preg_match($pattern, $NumeroVerificado) === 1;
     }
 
-    // Função para validar CEP
-    function validarCEP($cep)
-    {
-        // Remove tudo que não for número
-        $cepLimpo = preg_replace('/\D/', '', $cep);
-
-        // Verifica se tem exatamente 8 dígitos
-        if (strlen($cepLimpo) != 8) {
-            return false;
-        }
-
-        // Verifica se não são todos números iguais (00000000, 11111111, etc.)
-        if (preg_match('/^(\d)\1{7}$/', $cepLimpo)) {
-            return false;
-        }
-
-        return true;
+    $VerificarCep = preg_replace('/\D/', "", $_POST['cep']);
+    if (strlen($VerificarCep) < 8 || strlen($VerificarCep) > 8) {
+        $erros[] = "CEP informado é invalido!";
     }
+
+    if (VerificarNumerosRepetidos($VerificarCep, 7, null)) {
+        $erros[] = "CEP informado é invalido: sequência repetida.";
+    }
+
 
     // retira tudo que não for número do cnpj
     $VerificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
     if (strlen($VerificarCnpj) != 14) { // verifica se tem 14 números 
-        $erros[] = 'CNPJ informado não é valido!';
+        $erros[] = 'CNPJ informado é  invalido!';
     }
 
     if (VerificarNumerosRepetidos($VerificarCnpj, 13, null)) {
-        $erros[] = 'Cnpj informado não é valido!';
+        $erros[] = 'CNPJ informado não é valido: sequência repetida.';
     }
 
     // verficar se o cnpj é valido
@@ -127,63 +118,69 @@ try {
     if (VerificarNumerosRepetidos($VerificarTelefone, 9, 10)) {
         $erros[] = 'Número de telefone inválido: sequência repetida.';
     }
-
-    // Validação do CEP
-    if (!validarCEP($_POST['cep'])) {
-        $erros[] = "CEP informado não é válido!";
-    }
-
-
-
-    // Instancia o modelo da ONG
+    // Pega o ID da ONG da sessão
+    $idOng = $_SESSION['id'];
     $ongModel = new OngModel();
 
-
     // Verifica se a ONG já existe (apenas se não estivermos editando a mesma ONG)
-    if (!empty($VerificarCnpj) && !empty($VerificarTelefone)) {
-        $resultadoVerificacao = $ongModel->verificaExisteDadosOng($VerificarCnpj, $_POST['nome'], $$VerificarTelefone);
+    // if (!empty($VerificarCnpj) && !empty($VerificarTelefone)) {
+    //     $resultadoVerificacao = $ongModel->verificaExisteDadosOng($VerificarCnpj, $_POST['nome'], $VerificarTelefone);
 
-        if (!$resultadoVerificacao['response']) {
-            $erros[] = "Erro ao verificar dados da ONG: " . $resultadoVerificacao['erro'];
-        } elseif ($resultadoVerificacao['existe']) {
-            // Aqui você pode adicionar uma verificação adicional se está editando a própria ONG
-            // Por exemplo, verificar se o ID da ONG atual é diferente da encontrada
-            $erros[] = "Já existe uma ONG cadastrada com esses dados (CNPJ, nome ou telefone)!";
+    //     if (!$resultadoVerificacao['response']) {
+    //         $erros[] = "Erro ao verificar dados da ONG: " . $resultadoVerificacao['erro'];
+    //     } elseif ($resultadoVerificacao['existe']) {
+    //         $erros[] = "Já existe uma ONG cadastrada com esses dados (CNPJ, nome ou telefone)!";
+    //     }
+    // }
+
+    $dadosAtuais = $ongModel->buscarOngPorId($idOng);
+    $campos = [
+        'nome' => 'razao_social',
+        'telefone' => 'telefone',
+        'cnpj' => 'cnpj'
+    ];
+
+    foreach ($campos as $postCampo => $dbCampo) {
+        $valorNovo = trim(strtolower($_POST[$postCampo] ?? ''));
+        $valorAntigo = trim(strtolower($dadosAtuais[$dbCampo] ?? ''));
+
+        if ($valorNovo !== $valorAntigo) {
+            $existe = $ongModel->verificaExisteCampo($dbCampo, $valorNovo, $id);
+            if ($existe) {
+                $erros[] = "Já existe uma ONG com esse {$postCampo}!";
+            }
         }
     }
 
     $upload = new UploadController();
     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
 
+    if (!isset($idOng) || empty($idOng)) {
+        $erros[] = "ID da ONG não encontrado na sessão. Faça login novamente!";
+    }
     // verfica se existe erro e exibe ao usuario
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
     }
 
-    // Se chegou ate aqui dai sim  pode atualizar a ONG
-    // Pega o ID da ONG da sessão
-    if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-        throw new Exception("ID da ONG não encontrado na sessão. Faça login novamente!");
-    }
-
-    $idOng = $_SESSION['id'];
 
     // Converte a data para o formato do banco 
     $dataFormatada = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
 
+    // Instancia o modelo da ONG
     // Chama a função de atualização
     $resultado = $ongModel->atualizarOng(
         $idOng,
         $_POST['nome'],
-        $telefoneLimpo,
-        $cnpjLimpo,
+        $VerificarTelefone,
+        $VerificarCnpj,
         $dataFormatada,
         $_POST['email'],
-        $_POST['cep'],
+        $VerificarCep,
         $_POST['logradouro'],
         $_POST['complemento'] ?? '',
         $_POST['numero'],
-        $_POST['bairro'],
+        $_POST['estado'],
         $_POST['cidade']
     );
 

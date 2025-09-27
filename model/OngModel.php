@@ -197,32 +197,32 @@ class OngModel
     }
 
     public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
-{
-    try {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj OR razao_social = :razao_social OR telefone = :telefone");
-        
-        $stmt->execute([
-            ':cnpj' => $cnpj,
-            ':razao_social' => $razao_social,
-            ':telefone' => $telefone,
-        ]);
+    {
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj OR razao_social = :razao_social OR telefone = :telefone");
 
-        $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        $existe = $res['total'] > 0;
-        
-        return [
-            'response' => true,
-            'existe' => $existe,
-            'total_encontrados' => $res['total']
-        ];
-        
-    } catch (Exception $e) {
-        return [
-            'response' => false,
-            'erro' => $e->getMessage()
-        ];
+            $stmt->execute([
+                ':cnpj' => $cnpj,
+                ':razao_social' => $razao_social,
+                ':telefone' => $telefone,
+            ]);
+
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existe = $res['total'] > 0;
+
+            return [
+                'response' => true,
+                'existe' => $existe,
+                'total_encontrados' => $res['total']
+            ];
+
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
     }
-}
 
     public function verificarUsuarioTemOng($id)
     {
@@ -249,6 +249,7 @@ class OngModel
                     e.cep, 
                     e.logradouro, 
                     e.complemento, 
+                    e.estado,
                     e.bairro, 
                     e.numero, 
                     e.cidade
@@ -269,16 +270,32 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $bairro, $cidade)
+    public function verificaExisteCampo($campo, $valor, $id): bool
+    {
+        $query = "SELECT COUNT(*) as total 
+              FROM ongs 
+              WHERE {$campo} = :valor 
+              AND id != :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] > 0;
+    }
+
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $estado, $cidade)
     {
         try {
             $this->conn->beginTransaction();
 
             $queryOng = "UPDATE ongs
-            SET razao_social = :nome
-            telefone  = :telefone
-            cnpj = :cnpj
-            dt_criacao = :data_criacao
+            SET razao_social = :nome,
+            telefone  = :telefone,
+            cnpj = :cnpj,
+            dt_criacao = :dt_criacao
             WHERE id = :id";
 
             $stmtOng = $this->conn->prepare($queryOng);
@@ -304,15 +321,15 @@ class OngModel
                                          logradouro = :logradouro, 
                                          complemento = :complemento, 
                                          numero = :numero, 
-                                         bairro = :bairro, 
+                                         estado = :estado,
                                          cidade = :cidade
                                    WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
             $stmtEndereco = $this->conn->prepare($queryEndereco);
             $stmtEndereco->bindParam(':cep', $cep);
             $stmtEndereco->bindParam(':logradouro', $logradouro);
             $stmtEndereco->bindParam(':complemento', $complemento);
-            $stmtEndereco->bindParam(':bairro', $bairro);
             $stmtEndereco->bindParam(':numero', $numero);
+            $stmtEndereco->bindParam(':estado', $estado);
             $stmtEndereco->bindParam(':cidade', $cidade);
             $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
             $stmtEndereco->execute();
