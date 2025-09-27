@@ -48,7 +48,7 @@ function validarEdicaoOng()
         // Se veio imagem no POST, processa o upload
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
-            $idImagem = $upload->processar($_FILES['file'], $idImagem, 'usuarios');
+            $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
             if ($idImagem === false) {
                 header('Location: /together/view/pages/Ong/editarPaginaOng.php');
                 exit;

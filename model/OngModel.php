@@ -52,7 +52,7 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroDataHoraDoacoes($id_ong, $data_inicio=NULL, $data_fim=NULL)
+    public function filtroDataHoraDoacoes($id_ong, $data_inicio = NULL, $data_fim = NULL)
     {
         if (is_null($data_inicio) || is_null($data_fim)) {
             $sql = "SELECT D.dt_doacao, U.nome, D.valor
@@ -62,14 +62,14 @@ class OngModel
                           ORDER BY D.dt_doacao DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
-        } else{
+        } else {
             $sql = "SELECT D.dt_doacao, U.nome, D.valor
                           FROM doacoes D 
                           JOIN usuarios U ON U.id = D.id_usuario 
                           WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
                           AND D.id_ong = :id_ong
                           ORDER BY D.dt_doacao DESC";
-    
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
             $stmt->bindParam(':data_inicio', $data_inicio);
@@ -79,8 +79,9 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroDataHoraVoluntarios($id_ong, $data_inicio=NULL, $data_fim=NULL){
-        if( is_null($data_inicio) || is_null($data_fim)) {
+    public function filtroDataHoraVoluntarios($id_ong, $data_inicio = NULL, $data_fim = NULL)
+    {
+        if (is_null($data_inicio) || is_null($data_fim)) {
             $sql = "SELECT V.dt_associacao, U.nome, U.id
                           FROM voluntarios V 
                           JOIN usuarios U ON U.id = V.id_usuario 
@@ -88,14 +89,14 @@ class OngModel
                           ORDER BY V.dt_associacao DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
-        } else{
+        } else {
             $sql = "SELECT V.dt_associacao, U.nome, U.id
                           FROM voluntarios V 
                           JOIN usuarios U ON U.id = V.id_usuario 
                           WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
                           AND V.id_ong = :id_ong
                           ORDER BY V.dt_associacao DESC";
-    
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
             $stmt->bindParam(':data_inicio', $data_inicio);
@@ -171,8 +172,9 @@ class OngModel
         }
     }
 
-    public function editarPostagemDaOng($id_postagem,$titulo,$dt_postagem,$descricao, $link){
-        try{
+    public function editarPostagemDaOng($id_postagem, $titulo, $dt_postagem, $descricao, $link)
+    {
+        try {
             // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
             $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
             $stmt = $this->conn->prepare($q);
@@ -186,7 +188,7 @@ class OngModel
                 'response' => true
             ];
 
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return [
                 'response' => false,
                 'erro' => $e->getMessage()
@@ -210,15 +212,17 @@ class OngModel
 
     public function verificarUsuarioTemOng($id)
     {
-        $query = "SELECT o.razao_social
-        FROM usuarios u
-        INNER JOIN ongs o ON o.id_usuario = u.id
-        WHERE u.id = :id";
+        $query = "SELECT o.id as id_ong, o.razao_social
+              FROM usuarios u
+              INNER JOIN ongs o ON o.id_usuario = u.id
+              WHERE u.id = :id";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+
+        // Retorna o array com id_ong e razao_social, ou null se não existir
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function mostrarInformacoesPaginaOng($id)
@@ -249,5 +253,18 @@ class OngModel
             error_log("Erro editarPaginaOng: " . $e->getMessage());
             return false;
         }
+    }
+
+    public function pegarImagemPerfilPaginaOng($id_ong)
+    {
+        $query = "SELECT i.caminho 
+              FROM paginas p
+              LEFT JOIN imagens i ON p.id_imagem = i.id
+              WHERE p.id = :id_ong";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)['caminho'];
     }
 }
