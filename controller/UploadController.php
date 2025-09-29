@@ -1,25 +1,44 @@
 <?php
-
 /*
 Como usar:
-1 - Fazer require_once __DIR__ . "/../controller/UploadController.php"
-2 - $upload = new UploadController();
-3 - $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
-3 -- $upload->processar retorna um id ou um false se cair em alguma excessão (se nao existir nenhum id vinculado ele cria um id novo)
 
-4 - Recomendo que adicione no arquivo view <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
-4.1 - Agora, já na controller adicione um $idImagem = $_POST['id_imagem'] (recomendação: $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null)
+    1 - require_once __DIR__ . "/../controller/UploadController.php"
+    2 - $upload = new UploadController();
+    3 - $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
+    4 - $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
 
-$idImagem = variavel que vai guardar o id da imagem
-$pasta = nome do arquivo que vai guardar a imagem segue os exemplos abaixo:
+Exemplo:
 
-usuarios
-ongs 
-postagensOng 
-paginasOng 
-patrocinadores
+    require_once __DIR__ . "/../controller/UploadController.php"
+    $idImagem  = $_POST['id_imagem'];
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
+        if ($idImagem === false) {
+            header('Location: /together/view/pages/caminho.php');
+            exit;
+        }
+    }
 
-USAR EXATAMENTE ESSES EXEMPLOS ACIMA PARA NOME DE PASTA!!!!!!!!
+Recomendações: 
+
+    Recomendações para o arquivo view:
+        <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>"> 
+        <form action="" method="POST" enctype="multipart/form-data">
+
+Explicações: 
+
+    $idImagem = variavel que vai guardar o id da imagem
+    $upload->processar = retorna um id ou um false se cair em alguma excessão (se nao existir nenhum id vinculado ele cria um id novo)
+    $pasta = nome do arquivo que vai guardar a imagem, segue os exemplos abaixo:
+
+    usuarios
+    ongs 
+    postagensOng 
+    paginasOng 
+    patrocinadores
+
+    USAR EXATAMENTE ESSES EXEMPLOS ACIMA PARA NOME DE PASTA!!!!!!!!
 */
 
 require_once __DIR__ . '/../model/ImagemModel.php';
@@ -29,6 +48,7 @@ class UploadController
     public function processar($imagem, $idExistente, $pasta)
     {
         $diretorioDestino = __DIR__ . "/../upload/$pasta/";
+        $diretorioUpload = __DIR__ . "/../upload/";
 
         // validar tipo e extensão
         $tiposPermitidos = ['image/jpeg', 'image/png', 'image/webp'];
@@ -56,6 +76,11 @@ class UploadController
         }
 
         // Criar o diretorio upload caso não haja
+        if (!is_dir($diretorioUpload)) {
+            mkdir($diretorioUpload);
+        }
+
+        // Criar o diretorio destino caso não haja
         if (!is_dir($diretorioDestino)) {
             mkdir($diretorioDestino);
         }
