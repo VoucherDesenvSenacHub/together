@@ -11,19 +11,19 @@ class EnderecoController
         $this->enderecoModel = new EnderecoModel();
     }
 
-    public function salvarEdicao()
+    public function editarEndereco($id, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $endereco = [
-                'id' => $_POST['id'] ?? null,
-                'logradouro' => $_POST['logradouro'] ?? '',
-                'numero' => $_POST['numero'] ?? '',
-                'cep' => $_POST['cep'] ?? '',
-                'complemento' => $_POST['complemento'] ?? '',
-                'bairro' => $_POST['bairro'] ?? '',
-                'cidade' => $_POST['cidade'] ?? '',
-                'estado' => $_POST['estado'] ?? ''
+                'id' => $id ,
+                'logradouro' => $logradouro ,
+                'numero' => $numero ,
+                'cep' => $cep ,
+                'complemento' => $complemento ,
+                'bairro' => $bairro,
+                'cidade' => $cidade ,
+                'estado' => $estado ,
             ];
 
             $resultado = $this->enderecoModel->editar($endereco);
@@ -31,12 +31,12 @@ class EnderecoController
             if ($resultado['response']) {
                 $_SESSION['message'] = 'Atualizado com sucesso';
                 $_SESSION['type'] = 'sucesso';
-                header('Location: editarInformacoes.php');
-                exit;
+                return true;
             } else {
                 $_SESSION['type'] = 'erro';
                 $_SESSION['message'] = 'Ocorreu um erro ao salvar as alterações';
-                $_SESSION['erro'] = $resultado['erro'];
+                return false;
+                // $_SESSION['erro'] = $resultado['erro'];
             }
         }
     }

@@ -22,7 +22,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 ?>
 
 <body>
-    <?= require_once "../../../view/components/navbar.php" ?>
+    <?php require_once "../../../view/components/navbar.php" ?>
 
     <main class="main-container main-min">
         <?php require_once './../../components/back-button.php' ?>
