@@ -5,7 +5,6 @@
 <?php require_once "./../../components/alert.php" ?>
 
 <?php
-var_dump($_SESSION);
 $erro = $_SESSION['erro'] ?? '';
 
 if (isset($_SESSION['erro'], $erro)) {
