@@ -50,6 +50,15 @@ class ImagemModel
         return $stmt->fetch();
     }
 
+    public function buscarImagemPorIdPostagem($id)
+    {
+        $query = "SELECT i.* FROM $this->tabela i INNER JOIN postagens p ON i.id = p.id_imagem WHERE p.id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function buscarImagemPorIdUsuario($idUsuario)
     {
         $query = "SELECT i.* 
