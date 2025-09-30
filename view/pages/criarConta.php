@@ -5,33 +5,23 @@
 <?php require_once "./../components/select.php" ?>
 <?php require_once "./../components/alert.php" ?>
 
-
 <?php
-    $usuario = [
-        'nome' => '',
-        'cpf' => '',
-        'telefone' => '',
-        'email' => '',
-        'senha' => '',
-        'confirmar_senha' => ''   
-    ];
-
-$erro = $_SESSION['erro'] ?? '';
-
-if (isset($_SESSION['erro'], $erro)) {
-    showPopup($_SESSION['erro'], $erro);
-    unset($_SESSION['erro'], $erro);
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
 }
 
+if (!isset($_SESSION['step'])) {
+    $_SESSION['step'] = 1;
+}
 ?>
 
 <body class="body-login">
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+            <?php $_SESSION['step'] === 2 ? '' : require_once './../components/back-button.php' ?>
         </div>
-
 
         <div class="conteudo-login">
 
@@ -44,48 +34,53 @@ if (isset($_SESSION['erro'], $erro)) {
                 <form class='login' id='criar' method="POST" action="../../controller/UsuarioCriarController.php">
                     <h1 class="titulo-login">Criar uma nova conta</h1>
 
-                    <div class="step active">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('nome', 'Nome') ?>
-                                <?= inputRequired('text', 'nome', 'nome') ?>
-                            </div>
-                            <div>
-                                <?= label('cpf', 'CPF') ?>
-                                <?= inputRequired('text', 'cpf', 'cpf') ?>
-                            </div>
-                            <div>
-                                <?= label('telefone', 'Telefone') ?>
-                                <?= inputRequired('text', 'telefone', 'telefone') ?>
-                            </div>
-                            <div>
-                                <?= label('email', 'E-mail') ?>
-                                <?= inputRequired('email', 'email', 'email') ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('next', 'Próximo','btn','','button') ?>
-                            </div>
-                            <div class="criar-conta-area-login">
-                                <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step">
-                        <div class="container-input-login">
-                            <div>
-                                <?= label('senha', 'Senha') ?>
-                                <?= inputRequired('text', 'senha', 'senha') ?>
-                            </div>
-                            <div>
-                                <?= label('confirmar_senha_nova_conta', 'Confirmar Senha') ?>
-                                <?= inputRequired('text', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
-                            </div>
-                            <div class="botao-login group-btn-cadastro-ong">
-                                <?= botao('prev', 'Voltar', 'btn1','','button') ?>
-                                <?= botao('salvar', 'Cadastre-se',"btn2",'../../controller/UsuarioCriarController.php' ,'submit') ?>
+                    <?php if ($_SESSION['step'] === 1): ?>
+                        <div class="step active">
+                            <div class="container-input-login">
+                                <div>
+                                    <?= label('nome', 'Nome') ?>
+                                    <?= inputRequired('text', 'nome', 'nome') ?>
+                                </div>
+                                <div>
+                                    <?= label('cpf', 'CPF') ?>
+                                    <?= inputRequired('text', 'cpf', 'cpf') ?>
+                                </div>
+                                <div>
+                                    <?= label('telefone', 'Telefone') ?>
+                                    <?= inputRequired('text', 'telefone', 'telefone') ?>
+                                </div>
+                                <div>
+                                    <?= label('email', 'E-mail') ?>
+                                    <?= inputRequired('email', 'email', 'email') ?>
+                                </div>
+                                <div class="botao-login group-btn-cadastro-ong">
+                                    <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '../../controller/UsuarioCriarContaController.php') ?>
+                                </div>
+                                <div class="criar-conta-area-login">
+                                    <a href="login.php" class="text-login link-login">Já tem uma conta?</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
+
+                    <?php if ($_SESSION['step'] === 2): ?>
+                        <div class="step">
+                            <div class="container-input-login">
+                                <div>
+                                    <?= label('senha', 'Senha') ?>
+                                    <?= inputRequired('text', 'senha', 'senha') ?>
+                                </div>
+                                <div>
+                                    <?= label('confirmar_senha_nova_conta', 'Confirmar Senha') ?>
+                                    <?= inputRequired('text', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
+                                </div>
+                                <div class="botao-login group-btn-cadastro-ong">
+                                    <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '../../controller/UsuarioCriarContaController.php') ?>
+                                    <?= botao('salvar', 'Cadastre-se', name: 'step_action', value: 'salvar', formaction: '../../controller/UsuarioCriarContaController.php') ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 
                 </form>
             </div>
