@@ -5,13 +5,17 @@
 <?php require_once "../../../view/components/alert.php"; ?>
 <?php require_once "../../../view/components/selectEndereco.php"; ?>
 <?php require_once './../../../model/OngModel.php'; ?>
+<?php require_once "./../../components/upload.php"; ?>
 <?php
 $OngModel = new OngModel();
 $InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
 
+$idImagem = $InformacoesOng['id_imagem_de_perfil'];
+
+$preview = new ImagemPreview($idImagem);
+
 if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
   header("location: ./../login.php");
-  exit();
 }
 // mostra popup de erro se existir
 $tipos = ['erro', 'sucesso'];
@@ -33,11 +37,12 @@ foreach ($tipos as $tipo) {
     <div class="div-wrap-width">
       <h1 class="titulo-pagina">Informações da ONG</h1>
       <div class="formulario-perfil">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
           <div class="container-perfil-voluntario">
             <div class="div-logo">
-              <img src="/together/view/assests/images/Adm/adm-vision-ong.png" alt="Foto do usuário" class="logo-user">
-              <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+              <!-- <img src="/together/view/assests/images/Adm/adm-vision-ong.png" alt="Foto do usuário" class="logo-user"> -->
+              <input type="hidden" name="id_imagem" value="<?= $idImagem ?? null ?>">
+              <?php $preview->preview() ?>
             </div>
             <div class="container-readonly">
               <div class="container-readonly-primary">

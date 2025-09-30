@@ -174,8 +174,25 @@ try {
         }
     }
 
-    $upload = new UploadController();
-    $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
+    // $upload = new UploadController();
+    // $idImagem =
+    //     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
+
+    $idImagem = $_POST['id_imagem'];
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
+        if ($idImagem === false) {
+            header('Location: /together/view/pages/caminho.php');
+            exit;
+        }
+    }
+
+    $idImagem = $upload->processar($_FILES['file'], $_POST['id_imagem'], 'ongs');
+
+    if ($idImagem) {
+        $OngModel->atualizarImagemPerfil($_SESSION['id'], $idImagem);
+    }
 
     // verfica se existe erro e exibe ao usuario
     if (!empty($erros)) {
@@ -199,7 +216,8 @@ try {
         $_POST['complemento'] ?? '',
         $_POST['numero'],
         $_POST['estado'],
-        $_POST['cidade']
+        $_POST['cidade'],
+        $_POST['id_imagem'] ?? null
     );
 
     if ($resultado) {
@@ -209,6 +227,8 @@ try {
     } else {
         throw new Exception("Erro ao atualizar os dados da ONG!");
     }
+
+
 
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();

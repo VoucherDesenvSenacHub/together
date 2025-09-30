@@ -240,29 +240,31 @@ class OngModel
     public function buscarOngPorId($id)
     {
         $query = "SELECT 
-                    o.id, 
-                    o.razao_social AS nome, 
-                    o.telefone, 
-                    o.cnpj, 
-                    o.dt_criacao AS data_fundacao,
-                    u.email,
-                    e.cep, 
-                    e.logradouro, 
-                    e.complemento, 
-                    e.estado,
-                    e.bairro, 
-                    e.numero, 
-                    e.cidade
-                FROM 
-                    ongs o
-                INNER JOIN 
-                    enderecos e ON o.id_endereco = e.id
-                INNER JOIN 
-                    usuarios u ON o.id_usuario = u.id
-                LEFT JOIN 
-                    imagens i ON o.id_imagem_de_perfil = i.id
-                WHERE 
-                    o.id = :id";
+                o.id, 
+                o.razao_social AS nome, 
+                o.telefone, 
+                o.cnpj, 
+                o.dt_criacao AS data_fundacao,
+                u.email,
+                e.cep, 
+                e.logradouro, 
+                e.complemento, 
+                e.estado,
+                e.bairro, 
+                e.numero, 
+                e.cidade,
+                o.id_imagem_de_perfil,   
+                i.caminho AS imagem      
+            FROM 
+                ongs o
+            INNER JOIN 
+                enderecos e ON o.id_endereco = e.id
+            INNER JOIN 
+                usuarios u ON o.id_usuario = u.id
+            LEFT JOIN 
+                imagens i ON o.id_imagem_de_perfil = i.id
+            WHERE 
+                o.id = :id";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -286,17 +288,23 @@ class OngModel
         return $result['total'] > 0;
     }
 
-    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $estado, $cidade)
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $estado, $cidade, $id_imagem = null)
     {
         try {
             $this->conn->beginTransaction();
 
             $queryOng = "UPDATE ongs
-            SET razao_social = :nome,
-            telefone  = :telefone,
-            cnpj = :cnpj,
-            dt_criacao = :dt_criacao
-            WHERE id = :id";
+                     SET razao_social = :nome,
+                         telefone = :telefone,
+                         cnpj = :cnpj,
+                         dt_criacao = :dt_criacao";
+
+            // só atualiza a imagem se $id_imagem não for nulo
+            if ($id_imagem) {
+                $queryOng .= ", id_imagem_de_perfil = :id_imagem";
+            }
+
+            $queryOng .= " WHERE id = :id";
 
             $stmtOng = $this->conn->prepare($queryOng);
             $stmtOng->bindParam(':nome', $nome);
@@ -304,26 +312,32 @@ class OngModel
             $stmtOng->bindParam(':cnpj', $cnpj);
             $stmtOng->bindParam(':dt_criacao', $data_fundacao);
             $stmtOng->bindParam(':id', $id, PDO::PARAM_INT);
+
+            if ($id_imagem) {
+                $stmtOng->bindParam(':id_imagem', $id_imagem, PDO::PARAM_INT);
+            }
+
+
             $stmtOng->execute();
 
-
+            // Atualiza email do usuário
             $queryUsuario = "UPDATE usuarios
-            SET email = :email
-                WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+                         SET email = :email
+                         WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
             $stmtUsuario = $this->conn->prepare($queryUsuario);
             $stmtUsuario->bindParam(':email', $email);
             $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
             $stmtUsuario->execute();
 
-
+            // Atualiza endereço
             $queryEndereco = "UPDATE enderecos 
-                                     SET cep = :cep, 
-                                         logradouro = :logradouro, 
-                                         complemento = :complemento, 
-                                         numero = :numero, 
-                                         estado = :estado,
-                                         cidade = :cidade
-                                   WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
+                          SET cep = :cep, 
+                              logradouro = :logradouro, 
+                              complemento = :complemento, 
+                              numero = :numero, 
+                              estado = :estado,
+                              cidade = :cidade
+                          WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
             $stmtEndereco = $this->conn->prepare($queryEndereco);
             $stmtEndereco->bindParam(':cep', $cep);
             $stmtEndereco->bindParam(':logradouro', $logradouro);
@@ -340,9 +354,22 @@ class OngModel
             $this->conn->rollBack();
             throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
         }
-
-
     }
+
+    public function atualizarImagemPerfil($idOng, $idImagem)
+    {
+        try {
+            $query = "UPDATE ongs SET id_imagem_de_perfil = :id_imagem WHERE id = :id_ong";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id_imagem', $idImagem, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $idOng, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao atualizar imagem de perfil: " . $e->getMessage());
+        }
+    }
+
 }
 
 
