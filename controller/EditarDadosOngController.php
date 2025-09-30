@@ -119,34 +119,56 @@ try {
         $erros[] = 'Número de telefone inválido: sequência repetida.';
     }
     // Pega o ID da ONG da sessão
-    $idOng = $_SESSION['id'];
     $ongModel = new OngModel();
 
-    // Verifica se a ONG já existe (apenas se não estivermos editando a mesma ONG)
-    // if (!empty($VerificarCnpj) && !empty($VerificarTelefone)) {
-    //     $resultadoVerificacao = $ongModel->verificaExisteDadosOng($VerificarCnpj, $_POST['nome'], $VerificarTelefone);
+    // garante sessão e id
+    if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+        throw new Exception("ID da ONG não encontrado na sessão. Faça login novamente!");
+    }
+    $idOng = (int) $_SESSION['id'];
 
-    //     if (!$resultadoVerificacao['response']) {
-    //         $erros[] = "Erro ao verificar dados da ONG: " . $resultadoVerificacao['erro'];
-    //     } elseif ($resultadoVerificacao['existe']) {
-    //         $erros[] = "Já existe uma ONG cadastrada com esses dados (CNPJ, nome ou telefone)!";
-    //     }
-    // }
-
+    // pega dados atuais
     $dadosAtuais = $ongModel->buscarOngPorId($idOng);
-    $campos = [
-        'nome' => 'razao_social',
-        'telefone' => 'telefone',
-        'cnpj' => 'cnpj'
+    if (!$dadosAtuais) {
+        throw new Exception("ONG não encontrada.");
+    }
+
+    // mapa post -> coluna do DB (e qual chave o buscarOngPorId devolve)
+    $map = [
+        'nome' => ['db' => 'razao_social', 'oldKey' => 'nome'],
+        'telefone' => ['db' => 'telefone', 'oldKey' => 'telefone'],
+        'cnpj' => ['db' => 'cnpj', 'oldKey' => 'cnpj'],
     ];
 
-    foreach ($campos as $postCampo => $dbCampo) {
-        $valorNovo = trim(strtolower($_POST[$postCampo] ?? ''));
-        $valorAntigo = trim(strtolower($dadosAtuais[$dbCampo] ?? ''));
+    foreach ($map as $postCampo => $info) {
+        $dbCampo = $info['db'];
+        $oldKey = $info['oldKey'];
 
+        // valor vindo do form
+        $rawNovo = $_POST[$postCampo] ?? '';
+
+
+        if ($dbCampo === 'cnpj') {
+            $valorNovo = preg_replace('/\D/', '', $rawNovo);
+            $valorAntigo = isset($dadosAtuais[$oldKey]) ? preg_replace('/\D/', '', $dadosAtuais[$oldKey]) : '';
+        } elseif ($dbCampo === 'telefone') {
+            $valorNovo = preg_replace('/\D/', '', $rawNovo);
+            $valorAntigo = isset($dadosAtuais[$oldKey]) ? preg_replace('/\D/', '', $dadosAtuais[$oldKey]) : '';
+        } else {
+            // strings (nome/razao_social)
+            $valorNovo = mb_strtolower(trim($rawNovo));
+            $valorAntigo = isset($dadosAtuais[$oldKey]) ? mb_strtolower(trim($dadosAtuais[$oldKey])) : '';
+        }
+
+        // Se for vazio (por segurança) pula verificação
+        if ($valorNovo === '') {
+            continue;
+        }
+
+        // Só verifica se realmente mudou
         if ($valorNovo !== $valorAntigo) {
-            $existe = $ongModel->verificaExisteCampo($dbCampo, $valorNovo, $id);
-            if ($existe) {
+            // chama verificacao passando o nome da coluna no DB
+            if ($ongModel->verificaExisteCampo($dbCampo, $valorNovo, $idOng)) {
                 $erros[] = "Já existe uma ONG com esse {$postCampo}!";
             }
         }
@@ -155,9 +177,6 @@ try {
     $upload = new UploadController();
     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
 
-    if (!isset($idOng) || empty($idOng)) {
-        $erros[] = "ID da ONG não encontrado na sessão. Faça login novamente!";
-    }
     // verfica se existe erro e exibe ao usuario
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
@@ -167,7 +186,6 @@ try {
     // Converte a data para o formato do banco 
     $dataFormatada = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
 
-    // Instancia o modelo da ONG
     // Chama a função de atualização
     $resultado = $ongModel->atualizarOng(
         $idOng,
