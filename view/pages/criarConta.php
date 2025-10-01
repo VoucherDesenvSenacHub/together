@@ -64,7 +64,7 @@ if (!isset($_SESSION['step'])) {
                     <?php endif; ?>
 
                     <?php if ($_SESSION['step'] === 2): ?>
-                        <div class="step">
+                        <div class="step active">
                             <div class="container-input-login">
                                 <div>
                                     <?= label('senha', 'Senha') ?>

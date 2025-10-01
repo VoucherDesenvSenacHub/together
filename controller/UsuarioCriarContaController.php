@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: /together/view/pages/criarConta.php");
             exit;
         } elseif ($acao === "salvar") {
-            if ($_POST('senha') === $_POST('confirmar_senha')) {
+            if ($_POST['senha'] === $_POST['confirmar_senha']) {
                 registrarDadosConta();
                 tirarDadosContaDaSession();
                 header("Location: /together/view/pages/login.php");
@@ -63,27 +63,32 @@ function registrarDadosConta()
 
     // Só entra no try se todos os dados estiverem preenchidos
     try {
-        $ok = $usuarioModel->registrarDadosOng(
-            $_SESSION['id'] ?? null,
-            $_SESSION['razao_social'] ?? null,
-            $_SESSION['cnpj'] ?? null,
+        $senhaComHash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+
+        $ok = $usuarioModel->registrarUsuarioSemEndereco(
+            $_SESSION['nome'] ?? null,
+            $_SESSION['cpf'] ?? null,
             $_SESSION['telefone'] ?? null,
-            $_SESSION['id_categoria'] ?? null,
+            $_SESSION['email'] ?? null,
+            $senhaComHash
         );
 
-        if (!$ok['response']) {
+        if ($ok) {
+            $_SESSION['type'] = 'sucesso';
+            $_SESSION['message'] = 'Usuario cadastrado com sucesso';
+        } else {
             $_SESSION['type'] = 'erro';
-            $_SESSION['message'] = 'Erro ao cadastrar dados da ONG.';
+            $_SESSION['message'] = 'Erro ao cadastrar dados do usuario!';
             $_SESSION['step'] = $_SESSION['step'] - 1;
+            header("Location: /together/view/pages/criarConta.php");
+            exit;
         }
-
-        $_SESSION['id_endereco'] = $ok['id_endereco'];
     } catch (Exception $e) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Ocorreu um erro!';
         $_SESSION['step'] = $_SESSION['step'] - 1;
         $_SESSION['erro'] = 'Erro: ' . $e->getMessage();
-        // header("Location: /together/view/pages/criarConta.php");
+        header("Location: /together/view/pages/criarConta.php");
         exit;
     }
 }

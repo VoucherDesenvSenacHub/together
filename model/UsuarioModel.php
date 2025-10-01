@@ -67,21 +67,22 @@ class UsuarioModel
     public function registrarUsuarioSemEndereco($nome, $cpf, $telefone, $email, $senha)
     {
         try {
-            $query = "INSERT INTO usuarios (nome, cpf, telefone, email,) VALUES (:nome_enviado, :nome_original, :caminho)";
+            $query = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, tipo_perfil) VALUES (:nome, :cpf, :telefone, :email, :senha, :tipo_perfil)";
             $stmt = $this->conn->prepare($query);
 
             // utilizar dentro do execulte no lugar de bindparam
-
             $stmt->execute([
-                ':nome_enviado' => $nome_enviado,
-                ':nome_original' => $nome_original,
-                ':caminho' => $caminho
+                ':nome' => $nome,
+                ':cpf' => $cpf,
+                ':telefone' => $telefone,
+                ':email' => $email,
+                ':senha' => $senha,
+                ':tipo_perfil' => 'Usuario',
             ]);
 
             return true;
         } catch (PDOException $e) {
-            $this->conn->rollBack();
-            echo "Erro ao registrar usuário: " . $e->getMessage();
+            error_log("Erro ao registrar usuário: " . $e->getMessage());
             return false;
         }
     }
