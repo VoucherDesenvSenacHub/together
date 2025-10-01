@@ -26,11 +26,11 @@
     </div>
 
     <div class="footer-bottom">
-        <a href="view/pages/copyright.php" class="btn-link">
+        <a href="https://localhost/together/view/pages/copyright.php" class="btn-link">
             &copy; 2025 Together. Todos os direitos reservados.
         </a>
     </div>
 </footer>
 
 
-<script src="/together/view/assests/js/main.js" type="module"></script>
+<script src="together/view/assests/js/main.js" type="module"></script>
