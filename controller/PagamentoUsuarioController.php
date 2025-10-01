@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . "/../model/validators/pagamentoValidator.php";
+require_once __DIR__ . "/../exceptions/pagamentoValidator.php";
 require_once __DIR__ . "/../model/OngModel.php";
 require_once __DIR__ . "/../model/UsuarioModel.php";
 
