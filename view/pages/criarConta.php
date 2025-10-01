@@ -39,19 +39,19 @@ if (!isset($_SESSION['step'])) {
                             <div class="container-input-login">
                                 <div>
                                     <?= label('nome', 'Nome') ?>
-                                    <?= inputRequired('text', 'nome', 'nome') ?>
+                                    <?= inputRequired('text', 'nome', 'nome', $_SESSION['nome']) ?>
                                 </div>
                                 <div>
                                     <?= label('cpf', 'CPF') ?>
-                                    <?= inputRequired('text', 'cpf', 'cpf') ?>
+                                    <?= inputRequired('text', 'cpf', 'cpf', $_SESSION['cpf']) ?>
                                 </div>
                                 <div>
                                     <?= label('telefone', 'Telefone') ?>
-                                    <?= inputRequired('text', 'telefone', 'telefone') ?>
+                                    <?= inputRequired('text', 'telefone', 'telefone', $_SESSION['telefone']) ?>
                                 </div>
                                 <div>
                                     <?= label('email', 'E-mail') ?>
-                                    <?= inputRequired('email', 'email', 'email') ?>
+                                    <?= inputRequired('email', 'email', 'email', $_SESSION['email']) ?>
                                 </div>
                                 <div class="botao-login group-btn-cadastro-ong">
                                     <?= botao('next', 'Próximo', name: 'step_action', value: 'next', formaction: '../../controller/UsuarioCriarContaController.php') ?>
