@@ -57,13 +57,33 @@ class UsuarioModel
 
             $this->conn->commit();
             return true;
-
         } catch (PDOException $e) {
             $this->conn->rollBack();
             echo "Erro ao registrar usuário: " . $e->getMessage();
             return false;
         }
+    }
 
+    public function registrarUsuarioSemEndereco($nome, $cpf, $telefone, $email, $senha)
+    {
+        try {
+            $query = "INSERT INTO usuarios (nome, cpf, telefone, email,) VALUES (:nome_enviado, :nome_original, :caminho)";
+            $stmt = $this->conn->prepare($query);
+
+            // utilizar dentro do execulte no lugar de bindparam
+
+            $stmt->execute([
+                ':nome_enviado' => $nome_enviado,
+                ':nome_original' => $nome_original,
+                ':caminho' => $caminho
+            ]);
+
+            return true;
+        } catch (PDOException $e) {
+            $this->conn->rollBack();
+            echo "Erro ao registrar usuário: " . $e->getMessage();
+            return false;
+        }
     }
 
     public function findUsuarioByEmail($email)
@@ -249,6 +269,4 @@ class UsuarioModel
             return false;
         }
     }
-
-
 }
