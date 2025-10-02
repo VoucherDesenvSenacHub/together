@@ -6,11 +6,11 @@ INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, est
   ('Av. D', 400, '30100000', 'Bloco C', 'Funcionários', 'Belo Horizonte', 'MG');
 
 -- 2) Imagens 
-INSERT INTO imagens (link) VALUES
-  ('https://img.example.com/1.jpg'),
-  ('https://img.example.com/2.jpg'),
-  ('https://img.example.com/3.jpg'),
-  ('https://img.example.com/4.jpg');
+INSERT INTO imagens (nome_enviado, nome_original, caminho) VALUES
+  ('1.jpg', '1.jpg', 'https://img.example.com/1.jpg'),
+  ('2.jpg', '2.jpg', 'https://img.example.com/2.jpg'),
+  ('3.jpg', '3.jpg', 'https://img.example.com/3.jpg'),
+  ('4.jpg', '4.jpg', 'https://img.example.com/4.jpg');
 
 -- 3) Usuários 
 INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES
@@ -82,3 +82,19 @@ INSERT INTO doacoes (valor, anonimo, dt_doacao, id_usuario, id_ong) VALUES
   (250.50, true, '2025-06-15', 2, 2),
   (75.00, false, '2025-07-01', 1, 3),
   (150.00, false, '2025-07-20', 4, 1);
+
+-- 11) Desenvolvedores
+INSERT INTO desenvolvedores(nome, link_linkedin, link_github, link_foto) VALUES
+  ('Eduardo Serafim', 'https://www.linkedin.com/in/eduardo-serafim-821649', 'https://github.com/eduardoserafiim', '../assets/images/Copyright/togetherteam/serafim.jpg'),
+  ('Henrico Queiroz', 'https://www.linkedin.com/in/henrico-queiroz-7250073', 'https://github.com/HenricQ', '../assets/images/Copyright/togetherteam/queiroz.jpg'),
+  ('Vitor Galvão', 'https://www.linkedin.com/in/vitor-galv%C3%A3o-29982a', 'https://github.com/vitorgalvao0', '../assets/images/Copyright/togetherteam/galvao.jpg'),
+  ('Antônio Victor', 'https://www.linkedin.com/in/antoniov1ctor/', 'https://github.com/AntonioV1ctor', '../assets/images/Copyright/togetherteam/victor.jpg'),
+  ('Luan Mendes', 'https://www.linkedin.com/in/luan-m-26b8342bb/', 'https://github.com/LuanMendesMoura', '../assets/images/Copyright/togetherteam/mendes.jpg'),
+  ('Gabrielle Faustino', 'https://www.linkedin.com/in/gabrielle-faustino-025aaa', 'https://github.com/GabrielleFaus', '../assets/images/Copyright/togetherteam/faustino.jpg'),
+  ('Rogério Vicente', NULL, 'https://github.com/rogeriovc', '../assets/images/Copyright/togetherteam/vicente.jpg'),
+  ('Ariel David', 'https://www.linkedin.com/in/ariel-leza-39680455', 'https://github.com/ArielDavid79', '../assets/images/Copyright/togetherteam/david.jpg'),
+  ('Rhyan Komm', 'https://www.linkedin.com/in/rhyan-komm-695699245', 'https://github.com/RhyanSKomm', '../assets/images/Copyright/togetherteam/komm.jpg'),
+  ('Allan Fernandes', 'https://www.linkedin.com/in/allan-fernandes-6653962', 'https://github.com/All4nFernandes', '../assets/images/Copyright/togetherteam/fernandes.jpg'),
+  ('Murilo Dias', 'https://www.linkedin.com/in/murilo-rocha-4953a3333', 'https://github.com/Murilo460', '../assets/images/Copyright/togetherteam/dias.jpg'),
+  ('Rodrigo Ramalho', 'https://www.linkedin.com/in/rodrigo-garcia-ramalho-', 'https://github.com/RodrigoRamalho8', '../assets/images/Copyright/togetherteam/ramalho.jpg'),
+  ('Vitor Bueno', 'https://www.linkedin.com/in/vitor-bueno-novaga/', 'https://github.com/Vitor-Novaga', '../assets/images/Copyright/togetherteam/bueno.jpg');

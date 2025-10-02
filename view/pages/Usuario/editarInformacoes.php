@@ -1,29 +1,32 @@
-<?php require_once "../../components/head.php"; ?>
-<?php require_once "../../components/button.php" ?>
-<?php require_once "../../components/label.php" ?>
-<?php require_once "../../components/input.php" ?>
-<?php require_once "../../components/textarea.php" ?>
-<?php require_once "../../components/select.php" ?>
-<?php require_once "../../components/selectEndereco.php" ?>
-<?php require_once "../../../controller/EnderecoController.php" ?>
-<?php require_once '../../components/alert.php'; ?>
+<?php require_once "../../components/head.php";
+require_once "../../components/button.php";
+require_once "../../components/label.php";
+require_once "../../components/input.php";
+require_once "../../components/textarea.php";
+require_once "../../../model/UsuarioModel.php";
+require_once "../../../model/ImagemModel.php";
+require_once "./../../components/upload.php";
+require_once "./../../components/alert.php";
 
-<?php
-$id = $_GET['id'] ?? 4;
+$imgModel = new ImagemModel();
+$imagem = $imgModel->buscarImagemPorIdUsuario($_SESSION['id']);
 
-$enderecoController = new EnderecoController();
-$enderecoController->salvarEdicao();
+$preview = new ImagemPreview($imagem['id'] ?? null);
 
-$endereco = $enderecoController->carregarEnderecoPorUsuario($id);
+
+$model = new UsuarioModel();
+$usuarioId = $_SESSION['id'];
+$usuario = $model->buscarUsuarioId($usuarioId);
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
+
 ?>
 
 <body>
-    <?php require_once "../../../view/components/navbar.php"; ?>
+    <?= require_once "../../../view/components/navbar.php" ?>
 
     <main class="main-container main-min">
         <?php require_once './../../components/back-button.php' ?>
@@ -31,44 +34,43 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form action="" method="POST" class="postagem-geral-form editar-informacoes-form">
+                <form form enctype="multipart/form-data" method="POST"
+                    class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
+                        <input type="text" name="id" value="<?= $usuarioId ?>" hidden>
                         <div class="div-logo">
-                            <div class='formulario-imagem-preview'>
-                                <?php require_once "./../../components/upload.php" ?>
-                            </div>
+                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+                            <?php $preview->preview() ?>
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
-                                    <input type="hidden" name="id" value="<?= htmlspecialchars($endereco['id'] ?? '') ?>">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome']) ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                        <?= inputRequired('text', 'telefone', 'telefone', $usuario['telefone']) ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf']) ?>
                                     </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
-                                        <?= inputFilter('date', 'data_nascimento', 'data_nascimento') ?>
+                                        <?= inputReadonly('text', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                                <?= inputRequired('text', 'email', 'email', $usuario['email']) ?>
                             </div>
                         </div>
                     </div>
-
                     <div class="container-endereco container-readonly-secondary">
                         <div class="titulo-endereco-voluntario">
                             <h1>Endereço</h1>
@@ -76,50 +78,48 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputDefault('text', 'cep', 'cep', $endereco['cep']) ?>
+                                <?= inputDefault('text', 'cep', 'cep') ?>
+                            </div>
+                            <div class="container-input-endereco-voluntario">
+                                <?= label('cidade', 'Cidade') ?>
+                                <?= inputDefault('text', 'cidade', 'cidade') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?php renderSelectEstado($endereco['estado'] ?? '',); ?>
+                                <?= inputDefault('text', 'estado', 'estado') ?>
                             </div>
-
-                            <div class="container-input-endereco-voluntario">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?php renderSelectCidade($endereco['estado'] ?? '', $endereco['cidade'] ?? ''); ?>
-                            </div>
-
                         </div>
-
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputDefault('text', 'bairro', 'bairro', $endereco['bairro']) ?>
+                                <?= inputDefault('text', 'bairro', 'bairro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputDefault('text', 'logradouro', 'logradouro', $endereco['logradouro']) ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputDefault('number', 'numero', 'numero', $endereco['numero']) ?>
+                                <?= inputDefault('text', 'numero', 'numero') ?>
                             </div>
                         </div>
-
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento', $endereco['complemento']) ?>
+                                <?= inputDefault('text', 'complemento', 'complemento') ?>
                             </div>
                         </div>
                     </div>
-
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', '', '', 'salvar') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', '', 'editarInformacoes.php') ?></div>
+                        <div class="postagem-geral-btn">
+                            <?= botao('salvar', 'Salvar', formaction: '../../../controller/UsuarioEditarController.php') ?>
+                        </div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
                 </form>
             </div>
         </div>
+
     </main>
 
     <?php require_once './../../components/footer.php' ?>
