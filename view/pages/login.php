@@ -5,10 +5,12 @@
 <?php require_once "./../components/alert.php" ?>
 
 <?php
-// Pega a mensagem de erro e já limpa a sessão
-if (isset($_SESSION['erro'], $erro)) {
-    showPopup($_SESSION['erro'], $erro);
-    unset($_SESSION['erro'], $erro);
+// // Pega a mensagem de erro e já limpa a sessão
+
+if (isset($_SESSION['erro'])) {
+    $erro = $_SESSION['erro'];
+    showPopup("erro", $erro); // passar o tipo e a mensagem
+    unset($_SESSION['erro']);
 }
 
 // Notificacao
