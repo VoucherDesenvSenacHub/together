@@ -172,21 +172,18 @@ class OngModel
         }
     }
 
-    public function editarPostagemDaOng($id_postagem, $titulo, $dt_postagem, $descricao, $link)
+    public function editarPostagemDaOng($id_postagem, $titulo, $descricao, $link, $id_imagem = null)
     {
         try {
-            // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
-            $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
+            $q = "UPDATE postagens SET titulo = :titulo, descricao = :descricao, link = :link, id_imagem = :id_imagem WHERE id = :id_postagem";
             $stmt = $this->conn->prepare($q);
             $stmt->bindParam(':titulo', $titulo);
-            $stmt->bindParam(':dt_postagem', $dt_postagem);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':link', $link);
+            $stmt->bindParam(':id_imagem', $id_imagem);
             $stmt->bindParam(':id_postagem', $id_postagem);
             $stmt->execute();
-            return [
-                'response' => true
-            ];
+            return true;
 
         } catch (Exception $e) {
             return [
