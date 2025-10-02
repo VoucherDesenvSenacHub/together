@@ -1,6 +1,6 @@
 <?php
 
-class pagamentoValidator{
+class PagamentoException{
     public function validar(array $dados){
 
         $nome = $dados['nome'];

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . "/../exceptions/pagamentoValidator.php";
+require_once __DIR__ . "/../exceptions/PagamentoException.php";
 require_once __DIR__ . "/../model/OngModel.php";
 require_once __DIR__ . "/../model/UsuarioModel.php";
 
@@ -11,7 +11,7 @@ try {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
-        $validator = new pagamentoValidator();
+        $validator = new PagamentoException();
         $validator->validar($_POST);
 
         
