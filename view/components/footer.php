@@ -26,7 +26,7 @@
     </div>
 
     <div class="footer-bottom">
-        <a href="https://localhost/together/view/pages/copyright.php" class="btn-link">
+        <a href="/together/view/pages/copyright.php" class="btn-link">
             &copy; 2025 Together. Todos os direitos reservados.
         </a>
     </div>
