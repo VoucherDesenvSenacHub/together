@@ -10,8 +10,8 @@
      * @return string - HTML para renderizar o textarea;
      */
 
-    function textareaRequired($id, $name) {
-        return " <textarea class='formulario-textarea' id='$id' name='$name' required></textarea> ";        
+    function textareaRequired($id, $name, $value="") {
+        return " <textarea class='formulario-textarea' id='$id' name='$name' required>$value</textarea> ";        
     }
 
      function textareaReadonly($id, $name, $value = "") {
@@ -22,4 +22,7 @@
         return " <textarea class='formulario-textarea' id='$id' name='$name'></textarea> ";           
     };
 
+    function textareaRequiredMaxLength($id, $name, $value="", $maxLength="") {
+        return " <textarea class='formulario-textarea' id='$id' name='$name' maxlength='$maxLength' required>$value</textarea> ";        
+    }
 ?>

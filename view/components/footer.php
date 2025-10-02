@@ -2,7 +2,8 @@
     <div class="footer-container">
         <div class="footer-about">
             <div class="footer-about">
-                <img src="\together\view\assests\images\components\logo_nova_together.png" alt="Logo da Empresa" class="footer-logo">
+                <img src="\together\view\assests\images\components\logo_nova_together.png" alt="Logo da Empresa"
+                    class="footer-logo">
             </div>
 
         </div>
@@ -25,9 +26,11 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; 2025 Together. Todos os direitos reservados.</p>
+        <a href="/together/view/pages/copyright.php" class="btn-link">
+            &copy; 2025 Together. Todos os direitos reservados.
+        </a>
     </div>
 </footer>
 
 
-<script src="/together/view/assests/js/main.js" type="module"></script>
+<script src="together/view/assests/js/main.js" type="module"></script>

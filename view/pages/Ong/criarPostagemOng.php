@@ -3,6 +3,16 @@
 <?php require_once "../../components/label.php" ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
+<?php require_once "../../components/alert.php" ?>
+<?php require_once "./../../components/upload.php" ?>
+<?php
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+
+$preview = new ImagemPreview(null)
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
@@ -13,10 +23,10 @@
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Criar Postagem</h1>
             <div class="formulario-perfil">
-                <form action="" method="POST" class="postagem-geral-form">
+                <form action="" method="POST" class="postagem-geral-form" enctype="multipart/form-data">
                     <div class="postagem-geral-form-linha-superior">
                         <div class='formulario-imagem-preview'>
-                            <?php require_once "./../../components/upload.php" ?>
+                            <?php $preview->preview() ?>
                         </div>
                         <div class="postagem-geral-input-text">
                             <div>
@@ -38,8 +48,10 @@
                         </div>
                     </div>
                     <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn"><?= botao('salvar', 'Salvar', "", 'ongAdmin.php') ?></div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", 'ongAdmin.php') ?></div>
+                        <div class="postagem-geral-btn">
+                            <?= botao('salvar', 'Salvar', "", '/together/controller/PostagemCriarController.php') ?>
+                        </div>
+                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", '') ?></div>
                     </div>
                 </form>
             </div>

@@ -1,0 +1,61 @@
+a
+{
+    color: black;
+}
+
+.container
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+
+.card-title
+{
+    text-align: center;
+}
+
+.card-image 
+{
+    border-radius: 12px;
+}
+
+#linksCopyright
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.fa-github
+{
+    margin: auto;
+    height: 20px;
+    width: 50px;
+}
+
+.fa-square-linkedin
+{
+    height: 20px;
+    width: 50px;
+}
+
+.text-align
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-btn
+{
+    display: flex;
+    flex-direction: column;
+}

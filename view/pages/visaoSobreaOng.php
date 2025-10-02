@@ -2,25 +2,27 @@
 require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
+require_once './../components/alert.php';
+
 ?>
 
-<?php if(isset($_SESSION['perfil'])) { ?>
-    <?php if($_SESSION['perfil'] === 'Administrador') { ?>
+<?php if (isset($_SESSION['perfil'])) { ?>
+    <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
         <style>
             .span-msg {
                 display: block;
             }
         </style>
-        <?php 
-            $urlDoacao = '';
-            $urlVoluntario = ''
+        <?php
+        $urlDoacao = '';
+        $urlVoluntario = ''
         ?>
         <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
-            <?php $usuario = 'Administrador'?>
-        <?php }?>
-        
+            <?php $usuario = 'Administrador' ?>
+        <?php } ?>
+
     <?php } ?>
-    <?php if($_SESSION['perfil'] === 'Ong') { ?>
+    <?php if ($_SESSION['perfil'] === 'Ong') { ?>
         <style>
             .sessionOng {
                 display: block;
@@ -33,12 +35,20 @@ require_once "./../components/acoes.php";
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
         ?>
     <?php } ?>
-<?php } else {?>
-    <?php 
-        $urlDoacao = "/together/view/pages/login.php";
-        $urlVoluntario = '/together/view/pages/login.php'
+<?php } else { ?>
+    <?php
+    $urlDoacao = "/together/view/pages/login.php";
+    $urlVoluntario = '/together/view/pages/login.php'
     ?>
-<?php }?>
+<?php } ?>
+
+<?php
+// Popup do session
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+} 
+?>
 
 <body>
     <?php require_once './../components/navbar.php' ?>
@@ -69,10 +79,10 @@ require_once "./../components/acoes.php";
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">A Associação Prato Cheio combate a fome de pessoas em situação de vulnerabilidade social e promove sistemas alimentares sustentáveis.</p>
                             </div>
                             <div class="adm-ong-vision-button-div">
-                                <?= botao('primary', 'Fazer Doação','',$urlDoacao); ?>
-                                <?= botao('primary', 'Voluntariar-se','',$urlVoluntario); ?>
+                                <?= botao('primary', 'Fazer Doação', '', $urlDoacao); ?>
+                                <?= botao('primary', 'Voluntariar-se', '', $urlVoluntario); ?>
                             </div>
-                            <span class="span-msg">Não é possível executar essa ação como <?=$usuario?>!</span>
+                            <span class="span-msg">Não é possível executar essa ação como <?= $usuario ?>!</span>
                             <div>
                                 <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text"><i>* Sua doação será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores às organizações beneficiadas.</i></p>
                             </div>

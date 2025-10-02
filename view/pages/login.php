@@ -13,13 +13,17 @@ if (isset($_SESSION['erro'], $erro)) {
     unset($_SESSION['erro'], $erro);
 }
 
+// Notificacao
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+
 //verifica se está logado e redireciona para o index
 if (isset($_SESSION['id'])) {
     header("Location: /together/index.php");
     exit;
 }
-
-
 ?>
 
 <body class="body-login">
