@@ -178,27 +178,22 @@ try {
     // $idImagem =
     //     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
 
-    $idImagem = $_POST['id_imagem'];
+    $idImagem = !empty($_POST['id_imagem']) ? (int) $_POST['id_imagem'] : null;
+
+    // Verifica se um novo arquivo foi enviado
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $upload = new UploadController();
-        $idImagem = $upload->processar($_FILES['file'], $idImagem, '$pasta');
-        if ($idImagem === false) {
-            header('Location: /together/view/pages/caminho.php');
+        // Processa o upload, passando o id existente (se houver) e a pasta correta
+        $idImagemProcessado = $upload->processar($_FILES['file'], $idImagem, 'ongs');
+
+        if ($idImagemProcessado === false) {
+            // Se o upload falhar, a mensagem de erro já foi definida no UploadController
+            header('Location: /together/view/pages/Ong/perfilOng.php');
             exit;
         }
+        // Atualiza o id da imagem com o retornado pelo processamento
+        $idImagem = $idImagemProcessado;
     }
-
-    $idImagem = $upload->processar($_FILES['file'], $_POST['id_imagem'], 'ongs');
-
-    if ($idImagem) {
-        $OngModel->atualizarImagemPerfil($_SESSION['id'], $idImagem);
-    }
-
-    // verfica se existe erro e exibe ao usuario
-    if (!empty($erros)) {
-        throw new Exception(implode("<br>", $erros));
-    }
-
 
     // Converte a data para o formato do banco 
     $dataFormatada = date('Y-m-d', strtotime(str_replace('/', '-', $_POST['data'])));
@@ -217,7 +212,7 @@ try {
         $_POST['numero'],
         $_POST['estado'],
         $_POST['cidade'],
-        $_POST['id_imagem'] ?? null
+        $novoIdImagem ?? null
     );
 
     if ($resultado) {

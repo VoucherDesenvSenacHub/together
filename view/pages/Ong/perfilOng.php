@@ -40,7 +40,6 @@ foreach ($tipos as $tipo) {
         <form action="" method="POST" enctype="multipart/form-data">
           <div class="container-perfil-voluntario">
             <div class="div-logo">
-              <!-- <img src="/together/view/assests/images/Adm/adm-vision-ong.png" alt="Foto do usuário" class="logo-user"> -->
               <input type="hidden" name="id_imagem" value="<?= $idImagem ?? null ?>">
               <?php $preview->preview() ?>
             </div>
