@@ -49,7 +49,7 @@ class AdmModel
                     FROM ongs
                     WHERE dt_criacao BETWEEN :data_inicio AND :data_fim
                     ORDER BY dt_criacao DESC";
-            
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':data_inicio', $data_inicio);
             $stmt->bindParam(':data_fim', $data_fim);
@@ -57,21 +57,22 @@ class AdmModel
             $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
                     FROM ongs
                     ORDER BY dt_criacao DESC";
-            
+
             $stmt = $this->conn->prepare($sql);
         }
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
-    public function filtroUsuariosCadastradosByDataCadastro($data_inicio = NULL, $data_fim = NULL){
+
+    public function filtroUsuariosCadastradosByDataCadastro($data_inicio = NULL, $data_fim = NULL)
+    {
         if (!is_null($data_inicio) && !is_null($data_fim)) {
             $sql = "SELECT id, nome, dt_criacao, ativo
                     FROM usuarios
                     WHERE dt_criacao BETWEEN :data_inicio AND :data_fim
                     ORDER BY dt_criacao DESC";
-            
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':data_inicio', $data_inicio);
             $stmt->bindParam(':data_fim', $data_fim);
@@ -79,7 +80,7 @@ class AdmModel
             $sql = "SELECT id, nome, dt_criacao, ativo
                     FROM usuarios
                     ORDER BY dt_criacao DESC";
-            
+
             $stmt = $this->conn->prepare($sql);
         }
 
@@ -87,6 +88,12 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    
-    
 }
+
+// ===== Configuração da paginação da listagem =====
+$porPagina = 15;
+$pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
+$pagina = max(1, $pagina); // nunca menor que 1
+$offset = ($pagina - 1) * $porPagina;
+
+

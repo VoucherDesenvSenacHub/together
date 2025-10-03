@@ -2,6 +2,32 @@
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
+<?php require_once "../../../view/components/alert.php"; ?>
+<?php require_once "../../../view/components/selectEndereco.php"; ?>
+<?php require_once './../../../model/OngModel.php'; ?>
+<?php require_once "./../../components/upload.php"; ?>
+<?php
+$OngModel = new OngModel();
+$InformacoesOng = $OngModel->buscarOngPorId($_SESSION['id']);
+
+$idImagem = $InformacoesOng['id_imagem_de_perfil'];
+
+$preview = new ImagemPreview($idImagem);
+
+if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
+  header("location: ./../login.php");
+}
+// mostra popup de erro se existir
+$tipos = ['erro', 'sucesso'];
+
+foreach ($tipos as $tipo) {
+  if (isset($_SESSION[$tipo])) {
+    showPopup($tipo, $_SESSION[$tipo]);
+    unset($_SESSION[$tipo]);
+  }
+}
+
+?>
 
 <body>
   <?php require_once "../../../view/components/navbar.php"; ?>
@@ -11,37 +37,38 @@
     <div class="div-wrap-width">
       <h1 class="titulo-pagina">Informações da ONG</h1>
       <div class="formulario-perfil">
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
           <div class="container-perfil-voluntario">
             <div class="div-logo">
-              <img src="/together/view/assests/images/Adm/adm-vision-ong.png" alt="Foto do usuário" class="logo-user">
+              <input type="hidden" name="id_imagem" value="<?= $idImagem ?? null ?>">
+              <?php $preview->preview() ?>
             </div>
             <div class="container-readonly">
               <div class="container-readonly-primary">
                 <div class="form-row">
                   <div>
                     <?= label('nome', 'Nome') ?>
-                    <?= inputReadonly('text', 'nome', 'nome', 'Associação Prato Cheio') ?>
+                    <?= inputRequired('text', 'nome', 'nome', $InformacoesOng['nome']) ?>
                   </div>
                   <div>
                     <?= label('telefone', 'Telefone') ?>
-                    <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                    <?= inputRequired('text', 'telefone', 'telefone', $InformacoesOng['telefone']) ?>
                   </div>
                 </div>
                 <div class="form-row">
                   <div>
                     <?= label('cnpj', 'CNPJ') ?>
-                    <?= inputReadonly('text', 'cnpj', 'cnpj', '00.000.000/0000-00') ?>
+                    <?= inputRequired('text', 'cnpj', 'cnpj', $InformacoesOng['cnpj']) ?>
                   </div>
                   <div>
                     <?= label('data', 'Data da Fundação') ?>
-                    <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                    <?= inputRequired('text', 'data', 'data', $InformacoesOng['data_fundacao']) ?>
                   </div>
                 </div>
               </div>
               <div class="container-input-email-voluntario">
                 <?= label('email', 'Email') ?>
-                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                <?= inputRequired('text', 'email', 'email', $InformacoesOng['email']) ?>
               </div>
             </div>
           </div>
@@ -52,37 +79,40 @@
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('cep', 'CEP') ?>
-                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                <?= inputRequired('text', 'cep', 'cep', $InformacoesOng['cep']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('logradouro', 'Logradouro') ?>
-                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                <?= inputRequired('text', 'logradouro', 'logradouro', $InformacoesOng['logradouro']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
                 <?= label('complemento', 'Complemento') ?>
-                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                <?= inputDefault('text', 'complemento', 'complemento', $InformacoesOng['complemento']) ?>
               </div>
               <div class="container-input-endereco-voluntario">
                 <?= label('numero', 'Número') ?>
-                <?= inputReadonly('text', 'numero', 'numero', '0') ?>
+                <?= inputRequired('text', 'numero', 'numero', $InformacoesOng['numero']) ?>
               </div>
             </div>
             <div class="container-endereco-voluntario">
               <div class="container-input-endereco-voluntario">
-                <?= label('bairro', 'Bairro') ?>
-                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                <?= label('estado', 'Estado') ?>
+                <?php renderSelectEstado($InformacoesOng['estado']); ?>
               </div>
+
               <div class="container-input-endereco-voluntario">
                 <?= label('cidade', 'Cidade') ?>
-                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                <?php renderSelectCidade($InformacoesOng['estado'], $InformacoesOng['cidade']); ?>
               </div>
             </div>
           </div>
           <div class="container-readonly-footer">
             <div class="botao-excluir-voluntario">
-              <div class="postagem-geral-btn"><?= botao('salvar', 'Editar', "", '') ?></div>
+              <div class="postagem-geral-btn">
+                <?= botao('salvar', 'Editar', "", './../../../controller/EditarDadosOngController.php') ?>
+              </div>
               <div class="postagem-geral-btn"><?= botao('prev', 'Cancelar', "", '') ?></div>
             </div>
           </div>

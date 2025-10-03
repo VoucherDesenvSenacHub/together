@@ -172,21 +172,18 @@ class OngModel
         }
     }
 
-    public function editarPostagemDaOng($id_postagem, $titulo, $dt_postagem, $descricao, $link)
+    public function editarPostagemDaOng($id_postagem, $titulo, $descricao, $link, $id_imagem = null)
     {
         try {
-            // Vai ter que criar um sistema que seja capaz de criar um ID para a imagem e idexar ela aqui ness table: id_imagem = :id_imagem
-            $q = "UPDATE postagens SET titulo = :titulo, dt_postagem = :dt_postagem, descricao = :descricao, link = :link  WHERE id = :id_postagem";
+            $q = "UPDATE postagens SET titulo = :titulo, descricao = :descricao, link = :link, id_imagem = :id_imagem WHERE id = :id_postagem";
             $stmt = $this->conn->prepare($q);
             $stmt->bindParam(':titulo', $titulo);
-            $stmt->bindParam(':dt_postagem', $dt_postagem);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':link', $link);
+            $stmt->bindParam(':id_imagem', $id_imagem);
             $stmt->bindParam(':id_postagem', $id_postagem);
             $stmt->execute();
-            return [
-                'response' => true
-            ];
+            return true;
 
         } catch (Exception $e) {
             return [
@@ -198,16 +195,30 @@ class OngModel
 
     public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
     {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj OR razao_social = :razao_social OR telefone = :telefone");
 
-        $stmt->execute([
-            ':cnpj' => $cnpj,
-            ':razao_social' => $razao_social,
-            ':telefone' => $telefone,
-        ]);
+            $stmt->execute([
+                ':cnpj' => $cnpj,
+                ':razao_social' => $razao_social,
+                ':telefone' => $telefone,
+            ]);
 
-        $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $res['total'] > 0;
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existe = $res['total'] > 0;
+
+            return [
+                'response' => true,
+                'existe' => $existe,
+                'total_encontrados' => $res['total']
+            ];
+
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
     }
 
     public function verificarUsuarioTemOng($id)
@@ -225,33 +236,128 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function mostrarInformacoesPaginaOng($id)
+    public function buscarOngPorId($id)
     {
-        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter FROM paginas p WHERE p.id_ong=:id";
+        $query = "SELECT 
+                o.id, 
+                o.razao_social AS nome, 
+                o.telefone, 
+                o.cnpj, 
+                o.dt_criacao AS data_fundacao,
+                u.email,
+                e.cep, 
+                e.logradouro, 
+                e.complemento, 
+                e.estado,
+                e.bairro, 
+                e.numero, 
+                e.cidade,
+                o.id_imagem_de_perfil,   
+                i.caminho AS imagem      
+            FROM 
+                ongs o
+            INNER JOIN 
+                enderecos e ON o.id_endereco = e.id
+            INNER JOIN 
+                usuarios u ON o.id_usuario = u.id
+            LEFT JOIN 
+                imagens i ON o.id_imagem_de_perfil = i.id
+            WHERE 
+                o.id = :id";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    public function verificaExisteCampo($campo, $valor, $id): bool
+    {
+        $query = "SELECT COUNT(*) as total 
+              FROM ongs 
+              WHERE {$campo} = :valor 
+              AND id != :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] > 0;
+    }
+
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $estado, $cidade, $idImagem = null)
     {
         try {
-            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $this->conn->beginTransaction();
+
+            $queryOng = "UPDATE ongs
+            SET razao_social = :nome,
+                telefone  = :telefone,
+                cnpj = :cnpj,
+                dt_criacao = :dt_criacao"
+                . ($idImagem ? ", id_imagem_de_perfil = :idImagem" : "") . "
+            WHERE id = :id";
+
+            $stmtOng = $this->conn->prepare($queryOng);
+            $stmtOng->bindParam(':nome', $nome);
+            $stmtOng->bindParam(':telefone', $telefone);
+            $stmtOng->bindParam(':cnpj', $cnpj);
+            $stmtOng->bindParam(':dt_criacao', $data_fundacao);
+            if ($idImagem) {
+                $stmtOng->bindParam(':idImagem', $idImagem, PDO::PARAM_INT);
+            }
+            $stmtOng->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtOng->execute();
+
+            // Atualiza usuário
+            $queryUsuario = "UPDATE usuarios
+            SET email = :email
+            WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+            $stmtUsuario = $this->conn->prepare($queryUsuario);
+            $stmtUsuario->bindParam(':email', $email);
+            $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtUsuario->execute();
+
+            // Atualiza endereço
+            $queryEndereco = "UPDATE enderecos 
+            SET cep = :cep, 
+                logradouro = :logradouro, 
+                complemento = :complemento, 
+                numero = :numero, 
+                estado = :estado,
+                cidade = :cidade
+            WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
+            $stmtEndereco = $this->conn->prepare($queryEndereco);
+            $stmtEndereco->bindParam(':cep', $cep);
+            $stmtEndereco->bindParam(':logradouro', $logradouro);
+            $stmtEndereco->bindParam(':complemento', $complemento);
+            $stmtEndereco->bindParam(':numero', $numero);
+            $stmtEndereco->bindParam(':estado', $estado);
+            $stmtEndereco->bindParam(':cidade', $cidade);
+            $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtEndereco->execute();
+
+            $this->conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
+        }
+    }
+
+    public function atualizarImagemPerfil($idOng, $idImagem)
+    {
+        try {
+            $query = "UPDATE ongs SET id_imagem_de_perfil = :id_imagem WHERE id = :id_ong";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':titulo', $titulo);
-            $stmt->bindParam(':subtitulo', $subtitulo);
-            $stmt->bindParam(':descricao', $descricao);
-            $stmt->bindParam(':facebook', $facebook);
-            $stmt->bindParam(':instagram', $instagram);
-            $stmt->bindParam(':twitter', $twitter);
-            $stmt->bindParam(':id_imagem', $id_imagem);
+            $stmt->bindParam(':id_imagem', $idImagem, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $idOng, PDO::PARAM_INT);
             $stmt->execute();
             return true;
         } catch (Exception $e) {
-            error_log("Erro editarPaginaOng: " . $e->getMessage());
-            return false;
+            throw new Exception("Erro ao atualizar imagem de perfil: " . $e->getMessage());
         }
     }
 
@@ -268,3 +374,6 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC)['caminho'];
     }
 }
+
+
+

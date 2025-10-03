@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST['step_action'] ?? null;
     $ongModel = new OngModel();
     $usuarioTemOng = $ongModel->verificarUsuarioTemOng($_SESSION['id']);
-    if(!$usuarioTemOng) {
+    if (!$usuarioTemOng) {
         if ($acao === "next" && $_SESSION['step'] < 2) {
             if (verificarDadosOng()) {
                 $_SESSION['type'] = 'erro';
