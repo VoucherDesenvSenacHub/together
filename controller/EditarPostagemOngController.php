@@ -51,7 +51,7 @@ function validarEdicaoPostagemOng()
                 exit;
             }
         }
-        
+
         $resultado = $ongModel->editarPostagemDaOng(
             $_SESSION['id'],
             $_POST['titulo'],
@@ -68,9 +68,9 @@ function validarEdicaoPostagemOng()
         } else {
             $_SESSION['type'] = 'sucesso';
             $_SESSION['message'] = 'Dados da postagem atualizados com sucesso!';
-            header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+            header('Location: /together/view/pages/visaoSobreaOng.php');
             exit;
-        } 
+        }
     }
 }
 
