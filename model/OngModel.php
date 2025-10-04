@@ -184,7 +184,6 @@ class OngModel
             $stmt->bindParam(':id_postagem', $id_postagem);
             $stmt->execute();
             return true;
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -212,7 +211,6 @@ class OngModel
                 'existe' => $existe,
                 'total_encontrados' => $res['total']
             ];
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -359,7 +357,13 @@ class OngModel
         }
     }
 
+    public function buscarTodasOngs($categoria = NULL)
+    {
+        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao FROM ongs o INNER JOIN categorias_ongs c ON c.id = o.id_categoria INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil INNER JOIN paginas p ON p.id_ong = o.id WHERE (:categoria IS NULL OR c.nome = :categoria )";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([
+            ':categoria' => $categoria
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
-
-
-
