@@ -86,10 +86,14 @@ try {
 
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
+    $_SESSION['type'] = 'erro';
+    $_SESSION['message'] = $e->getMessage();
     if ($logadont){
         header('Location: ../view/pages/login.php');
+    } else if (isset($_POST['idOng'])) {
+        header('Location: ../view/pages/Usuario/pagamento_Usuario.php?idOng=' . $_POST['idOng']);
     } else {
-        header('Location: ../view/pages/Usuario/pagamento_Usuario.php');
+        header('Location: ../index.php');
     }
     exit();
 }
