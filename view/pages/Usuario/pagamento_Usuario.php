@@ -35,7 +35,9 @@ if (isset($_SESSION['erro'], $erro)) {
           </div>
           <div class="formulario-e-imagem">
             <form action="../../../controller/PagamentoUsuarioController.php" method="POST" class="form-pagamento" id="form-pagamento">
-              <input type="hidden" name="idOng" value="<?php echo $_GET['idOng']; ?>">
+              <?php if (isset($_GET['idOng'])) : ?>
+                <input type="hidden" name="idOng" value="<?= $_GET['idOng']; ?>">
+              <?php endif; ?>
               <div>
                 <?= label('nome', 'Nome (como está no cartão)') ?>
                 <?= inputRequired('text', 'nome', 'nome') ?>
