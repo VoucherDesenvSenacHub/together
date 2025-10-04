@@ -36,4 +36,21 @@ class PostagemModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getByOng($idOng)
+    {
+        $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao,
+                   p.link, i.caminho AS imagem, o.razao_social AS ong
+            FROM postagens p
+            LEFT JOIN imagens i ON p.id_imagem = i.id
+            LEFT JOIN ongs o ON p.id_ong = o.id
+            WHERE p.id_ong = :id_ong
+            ORDER BY p.dt_postagem DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id_ong', $idOng);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 }

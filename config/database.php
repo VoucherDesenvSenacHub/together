@@ -1,11 +1,12 @@
 <?php
 
-    class Database {
-        private $host = "localhost";
-        private $port = "3306";
-        private $dbName = "together";
-        private $user = "root";
-        private $password = "";
+class Database
+{
+    private $host = "localhost";
+    private $port = "3306";
+    private $dbName = "together";
+    private $user = "root";
+    private $password = "";
 
 
     public function conectar()
