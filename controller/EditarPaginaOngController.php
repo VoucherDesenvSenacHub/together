@@ -74,7 +74,7 @@ function validarEdicaoOng()
         } else {
             $_SESSION['type'] = 'sucesso';
             $_SESSION['message'] = 'Dados da ONG atualizados com sucesso!';
-            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            header('Location: /together/view/pages/visaoSobreaOng.php');
             exit;
         }
     }

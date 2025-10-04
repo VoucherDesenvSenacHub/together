@@ -231,10 +231,9 @@ class OngModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-
-        // Retorna o array com id_ong e razao_social, ou null se não existir
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
     }
+
 
     public function buscarOngPorId($id)
     {
@@ -366,13 +365,90 @@ class OngModel
         $query = "SELECT i.caminho 
               FROM paginas p
               LEFT JOIN imagens i ON p.id_imagem = i.id
-              WHERE p.id = :id_ong";
+              WHERE p.id_ong = :id_ong";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_ong', $id_ong);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC)['caminho'];
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado ? $resultado['caminho'] : null;
     }
+
+    public function mostrarInformacoesPaginaOng($id)
+    {
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
+              FROM paginas p 
+              WHERE p.id_ong = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($pagina) {
+            // Extrai apenas o nome do perfil das URLs
+            $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
+            $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
+            $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
+        }
+
+        return $pagina;
+    }
+
+    // Função auxiliar para pegar o último segmento da URL
+    private function extrairNomePerfil($url)
+{
+    if (!$url) return null;
+
+    $parsed = parse_url($url);
+
+    if (!isset($parsed['path'])) return null;
+
+    // Remove barra final e query string
+    $path = rtrim($parsed['path'], '/');
+    $path = explode('?', $path)[0];
+
+    // Pega apenas o último segmento
+    $parts = explode('/', $path);
+    $ultimo = end($parts);
+
+    return $ultimo ?: null;
+}
+
+
+
+    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    {
+        try {
+            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':facebook', $facebook);
+            $stmt->bindParam(':instagram', $instagram);
+            $stmt->bindParam(':twitter', $twitter);
+            $stmt->bindParam(':id_imagem', $id_imagem);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            error_log("Erro editarPaginaOng: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function mostrarinformacoesPostagemOng($id_postagem)
+    {
+        $query = "SELECT titulo, descricao, link FROM postagens WHERE id=:id_postagem";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_postagem', $id_postagem);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 }
 
 

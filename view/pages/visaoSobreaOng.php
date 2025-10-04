@@ -3,35 +3,35 @@ require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
 require_once './../components/alert.php';
-require_once './../../model/OngModel.php'
-    ?>
+require_once './../../model/OngModel.php';
+require_once './../../model/PostagemModel.php';
+?>
 
 <?php
 $ongModel = new OngModel();
+$postagemModel = new PostagemModel();
 
-$idOngUrl = $_GET['id'] ?? null; // ONG sendo visualizada
+$idOngUrl = $_GET['id'] ?? null;
 $idUsuarioLogado = $_SESSION['id'] ?? null;
 $perfilLogado = $_SESSION['perfil'] ?? null;
 
 
-// Se for uma ONG logada, descubra o ID da ONG dela
 $idOngDoUsuario = null;
 if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $dadosOngDoUsuario = $ongModel->verificarUsuarioTemOng($idUsuarioLogado);
     $idOngDoUsuario = $dadosOngDoUsuario['id_ong'] ?? null;
 }
 
-// Se não veio ID na URL e o usuário logado é uma ONG, usa o ID da própria ONG
 if (!$idOngUrl && $perfilLogado === 'Ong') {
     $idOngUrl = $idOngDoUsuario;
 }
 
-// Agora sim, carregue os dados da página
+$postagens = $postagemModel->getByOng($idOngUrl);
+
 $pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $doacoes = $ongModel->filtroDataHoraDoacoes($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
-var_dump($imagemPerfil )
 ?>
 
 <?php if (isset($_SESSION['perfil'])) { ?>
@@ -140,40 +140,31 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         </div>
                         <div class="adm-ong-vision-post-box">
                             <div class="adm-ong-vision-post-area">
-
-                                <?php for ($i = 0; $i < 5; $i++) { ?>
-
-                                    <li class="adm-ong-vision-post-card">
-                                        <div class="adm-ong-vision-post-img-moldure">
-                                            <img class="adm-ong-vision-post-img"
-                                                src="./../assests/images/Adm/adm-vision-ong-post1.png" alt="">
-                                        </div>
-                                        <div class="adm-ong-vision-post-text-div">
-                                            <h1>Instagram</h1>
-                                            <p>https://www.instagram.com > PratoCheio</p>
-                                            <h3><a
-                                                    href="https://www.instagram.com/ongmissaoafrica/p/CsHzIbtPSp8/?img_index=1">Compartilhando
-                                                    Alimento, Nutrindo Esperança: Sua Doação Faz a Diferença na Vida dos
-                                                    Moradores de Rua</a></h3>
-                                            <div class="icon-visao-sobre-ong">
-                                                <a class="sessionOng" href=""><?= renderAcao('deletar') ?></a>
-                                                <a class="sessionOng"
-                                                    href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                <?php if ($postagens): ?>
+                                    <?php foreach ($postagens as $post): ?>
+                                        <li class="adm-ong-vision-post-card">
+                                            <div class="adm-ong-vision-post-img-moldure">
+                                                <img class="adm-ong-vision-post-img"
+                                                    src="<?= $post['imagem'] ?? './../assests/images/Adm/adm-vision-ong-post1.png' ?>"
+                                                    alt="Imagem do post">
                                             </div>
-                                        </div>
-                                    </li>
-
-                                    <?php
-                                    if ($i < 4) {
-                                        echo "<hr>";
-                                    } else {
-                                        echo "";
-                                    }
-
-                                    ?>
-
-                                <?php } ?>
-
+                                            <div class="adm-ong-vision-post-text-div">
+                                                <h1><?= $post['titulo'] ?></h1>
+                                                <p><?= $post['descricao'] ?></p>
+                                                <?php if ($post['link']): ?>
+                                                    <h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
+                                                <?php endif; ?>
+                                                <div class="icon-visao-sobre-ong">
+                                                    <a class="sessionOng"
+                                                        href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <hr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <p>Nenhuma postagem disponível.</p>
+                                <?php endif; ?>
                             </div>
                             <div class="adm-ong-vision-social-area">
                                 <div class="adm-ong-vision-social-title">
@@ -181,22 +172,46 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                 </div>
 
                                 <div class="adm-ong-vision-perfil-area">
-                                    <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon"
-                                            src="./../assests/images/Adm/instagram.png" alt="">
-                                        <h1>@PratoCheioOfc</h1>
-                                    </div>
-                                    <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon"
-                                            src="./../assests/images/Adm/facebook.png" alt="">
-                                        <h1>@PratoCheioOfc</h1>
-                                    </div>
-                                    <div class="adm-ong-vision-area-div-perfil">
-                                        <img class="adm-ong-vision-perfil-default-icon"
-                                            src="./../assests/images/Adm/X.png" alt="">
-                                        <h1>@PratoCheioOfc</h1>
-                                    </div>
+                                    <?php if (!empty($pagina['instagram'])): ?>
+                                        <div class="adm-ong-vision-area-div-perfil">
+                                            <img class="adm-ong-vision-perfil-default-icon"
+                                                src="./../assests/images/Adm/instagram.png" alt="Instagram">
+                                            <h1>
+                                                <a href="<?= htmlspecialchars($pagina['instagram']) ?>" target="_blank"
+                                                    rel="noopener noreferrer">
+                                                    <?= htmlspecialchars($pagina['instagram_nome'] ?? $pagina['instagram']) ?>
+                                                </a>
+                                            </h1>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($pagina['facebook'])): ?>
+                                        <div class="adm-ong-vision-area-div-perfil">
+                                            <img class="adm-ong-vision-perfil-default-icon"
+                                                src="./../assests/images/Adm/facebook.png" alt="Facebook">
+                                            <h1>
+                                                <a href="<?= htmlspecialchars($pagina['facebook']) ?>" target="_blank"
+                                                    rel="noopener noreferrer">
+                                                    <?= htmlspecialchars($pagina['facebook_nome'] ?? $pagina['facebook']) ?>
+                                                </a>
+                                            </h1>
+                                        </div>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($pagina['twitter'])): ?>
+                                        <div class="adm-ong-vision-area-div-perfil">
+                                            <img class="adm-ong-vision-perfil-default-icon"
+                                                src="./../assests/images/Adm/X.png" alt="Twitter">
+                                            <h1>
+                                                <a href="<?= htmlspecialchars($pagina['twitter']) ?>" target="_blank"
+                                                    rel="noopener noreferrer">
+                                                    <?= htmlspecialchars($pagina['twitter_nome'] ?? $pagina['twitter']) ?>
+                                                </a>
+                                            </h1>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
+
 
                             </div>
                         </div>
