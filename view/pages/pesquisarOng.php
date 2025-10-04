@@ -42,16 +42,18 @@ var_dump($_SESSION);
                                     <?php foreach ($categorias as $categoria): ?>
                                         <div class="ong-search-screen-filter-area">
                                             <label class="checkbox-label">
-                                                <?php if($_SESSION['categoria'] === $categoria["nome"]): ?>
-                                                    <?php $checked = "checked" ?>
-                                                    <?= inputCheckBox('ods[]', 'categorias', $categoria["nome"], $checked) ?>
-                                                    <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
-                                                <?php endif; ?>
+                                                <?php
+                                                $checked = '';
+                                                if (isset($_SESSION['categoria']) && $_SESSION['categoria'] === $categoria["nome"]) {
+                                                    $checked = 'checked';
+                                                }
+                                                ?>
+                                                <?= inputCheckBox('ods[]', 'categorias', $categoria["nome"], $checked) ?>
+                                                <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
-
                                 <button type="button" class="toggle-btn" onclick="document.getElementById('filters').classList.toggle('expanded'); this.textContent = this.textContent === 'Ver mais ▼' ? 'Ver menos ▲' : 'Ver mais ▼'">Ver mais ▼</button>
                             </div>
 
