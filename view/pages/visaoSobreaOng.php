@@ -31,7 +31,7 @@ require_once './../components/alert.php';
     <?php } ?>
     <?php if($_SESSION['perfil'] === 'Usuario' || $_SESSION['perfil'] === 'Ong') { ?>
         <?php 
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?idOng=1';
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=1';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
         ?>
     <?php } ?>

@@ -3,6 +3,7 @@ session_start();
 require_once __DIR__ . "/../exceptions/PagamentoException.php";
 require_once __DIR__ . "/../model/OngModel.php";
 require_once __DIR__ . "/../model/UsuarioModel.php";
+require_once __DIR__ . "/../model/DoacaoModel.php";
 
 
 try {
@@ -14,6 +15,7 @@ try {
         $validator = new PagamentoException();
         $validator->validar($_POST);
 
+        $doacaoModel = new DoacaoModel();
         
         if($logadont) {
             throw new Exception("Usuário não autenticado. Faça login para continuar.");
@@ -75,6 +77,20 @@ try {
             echo "Código da resposta: $httpCode\n";
             echo "Resposta da API:\n$response";
         }
+
+        $enviarDoacao = $doacaoModel->SalvarDoacao(
+            $_SESSION['id'],
+            $_POST['idOng'],
+            (float)$_POST['valor'],
+            isset($_POST['pagamento_anonimo']) ? true : false,
+            'Cartão de Crédito',
+            ($httpCode == 200) ? 'Aprovado' : 'Recusado',
+            'Doação via cartão de crédito',
+            ($httpCode == 200) ? json_decode($response)->codigoTransacao : '',
+            ($httpCode == 200) ? json_decode($response)->bandeiraCartao : '',
+            ($httpCode == 200) ? substr($_POST['numero'], -4) : '',
+            ($httpCode == 200) ? '/path/to/comprovante' : ''
+        );
         
         $_SESSION['type'] = 'success';
         $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
@@ -91,7 +107,7 @@ try {
     if ($logadont){
         header('Location: ../view/pages/login.php');
     } else if (isset($_POST['idOng'])) {
-        header('Location: ../view/pages/Usuario/pagamento_Usuario.php?idOng=' . $_POST['idOng']);
+        header('Location: ../view/pages/Usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
     } else {
         header('Location: ../index.php');
     }
