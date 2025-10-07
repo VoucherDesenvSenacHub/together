@@ -30,25 +30,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function formatarValor(campo) {
-        let value = campo.value.replace(/\D/g, ""); // Remove tudo que não for número
+        let value = campo.value.replace(/\D/g, "");
 
-        // Garante pelo menos 3 dígitos (2 centavos + 1 real)
         while (value.length < 3) {
             value = "0" + value;
         }
 
         const centavos = value.slice(-2);
-        let reais = value.slice(0, -2).replace(/^0+/, ""); // Remove zeros à esquerda dos reais
-
-        // Se reais estiver vazio, exibe como 0
+        let reais = value.slice(0, -2).replace(/^0+/, "");
         reais = reais === "" ? "0" : reais;
-
-        // Adiciona separadores de milhar (.)
         reais = reais.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
         campo.value = `R$ ${reais},${centavos}`;
     }
-
 
     // Seleção dos campos
     const campoCartao = document.getElementById("numero");
@@ -90,24 +84,37 @@ document.addEventListener("DOMContentLoaded", function () {
             const validade = campoValidade?.value || "";
             let valorRaw = campoValor?.value || "";
 
-            // Validação
             if (numero.length !== 16 || cvv.length !== 3 || validade.length !== 5) {
                 e.preventDefault();
                 alert("Por favor, preencha todos os campos corretamente.");
                 return;
             }
 
-            // Converte "R$ 1.234,56" para "1234.56"
             if (campoValor) {
                 let valorLimpo = valorRaw.replace(/[^\d]/g, "");
                 let valorFinal = (parseInt(valorLimpo, 10) / 100).toFixed(2);
-                campoValor.value = valorFinal; // Substitui no input para enviar corretamente
+                campoValor.value = valorFinal;
             }
 
-            // Remove máscaras dos outros campos
             if (campoCartao) campoCartao.value = numero;
             if (campoCVV) campoCVV.value = cvv;
-            // A validade pode ser enviada como está (MM/AA) ou separada se necessário
+        });
+    }
+
+    // === Aqui entra o segundo script ===
+    const toggle = document.getElementById('pagamento_anonimo');
+    const mainContainer = document.querySelector('.main-container');
+    const body = document.querySelector('.user_pay');
+
+    if (toggle && mainContainer && body) {
+        toggle.addEventListener('change', function () {
+            if (this.checked) {
+                mainContainer.classList.add('modo-anonimo');
+                body.classList.add('modo-anonimo');
+            } else {
+                mainContainer.classList.remove('modo-anonimo');
+                body.classList.remove('modo-anonimo'); 
+            }
         });
     }
 

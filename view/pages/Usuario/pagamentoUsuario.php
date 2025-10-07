@@ -24,17 +24,17 @@ if (isset($_SESSION['erro'], $erro)) {
       <div class="container-pay-user">
         <!-- Lado esquerdo com título, botão e formulário -->
         <div class="layout-geral">
-          <div class="anonimo-div-box">
-            <div class="anonimo-toggle">
-              <label class="switch">
-                <input type="checkbox" name="pagamento_anonimo" id="pagamento_anonimo">
-                <span class="slider"></span>
-              </label>
-              <span class="anonimo-text">Doação anônima</span>
-            </div>
-          </div>
           <div class="formulario-e-imagem">
             <form action="../../../controller/PagamentoUsuarioController.php" method="POST" class="form-pagamento" id="form-pagamento">
+              <div class="anonimo-div-box">
+                <div class="anonimo-toggle">
+                  <label class="switch">
+                    <input type="checkbox" name="pagamento_anonimo" id="pagamento_anonimo">
+                    <span class="slider"></span>
+                  </label>
+                  <span class="anonimo-text">Doação anônima</span>
+                </div>
+              </div>
               <?php if (isset($_GET['idOng'])) : ?>
                 <input type="hidden" name="idOng" value="<?= $_GET['idOng']; ?>">
               <?php endif; ?>
