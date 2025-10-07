@@ -52,7 +52,7 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroDataHoraDoacoes($id_ong, $data_inicio=NULL, $data_fim=NULL)
+    public function filtroDataHoraDoacoes($id_ong, $data_inicio = NULL, $data_fim = NULL)
     {
         if (is_null($data_inicio) || is_null($data_fim)) {
             $sql = "SELECT D.dt_doacao, U.nome, D.valor
@@ -62,14 +62,14 @@ class OngModel
                           ORDER BY D.dt_doacao DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
-        } else{
+        } else {
             $sql = "SELECT D.dt_doacao, U.nome, D.valor
                           FROM doacoes D 
                           JOIN usuarios U ON U.id = D.id_usuario 
                           WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
                           AND D.id_ong = :id_ong
                           ORDER BY D.dt_doacao DESC";
-    
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
             $stmt->bindParam(':data_inicio', $data_inicio);
@@ -79,8 +79,9 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroDataHoraVoluntarios($id_ong, $data_inicio=NULL, $data_fim=NULL){
-        if( is_null($data_inicio) || is_null($data_fim)) {
+    public function filtroDataHoraVoluntarios($id_ong, $data_inicio = NULL, $data_fim = NULL)
+    {
+        if (is_null($data_inicio) || is_null($data_fim)) {
             $sql = "SELECT V.dt_associacao, U.nome, U.id
                           FROM voluntarios V 
                           JOIN usuarios U ON U.id = V.id_usuario 
@@ -88,14 +89,14 @@ class OngModel
                           ORDER BY V.dt_associacao DESC";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
-        } else{
+        } else {
             $sql = "SELECT V.dt_associacao, U.nome, U.id
                           FROM voluntarios V 
                           JOIN usuarios U ON U.id = V.id_usuario 
                           WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
                           AND V.id_ong = :id_ong
                           ORDER BY V.dt_associacao DESC";
-    
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_ong', $id_ong);
             $stmt->bindParam(':data_inicio', $data_inicio);
@@ -171,8 +172,9 @@ class OngModel
         }
     }
 
-    public function editarPostagemDaOng($id_postagem,$titulo,$descricao, $link, $id_imagem = null){
-        try{
+    public function editarPostagemDaOng($id_postagem, $titulo, $descricao, $link, $id_imagem = null)
+    {
+        try {
             $q = "UPDATE postagens SET titulo = :titulo, descricao = :descricao, link = :link, id_imagem = :id_imagem WHERE id = :id_postagem";
             $stmt = $this->conn->prepare($q);
             $stmt->bindParam(':titulo', $titulo);
@@ -183,55 +185,238 @@ class OngModel
             $stmt->execute();
             return true;
 
-        } catch (Exception $e){
-            error_log("Erro editarPostagemDaOng: " . $e->getMessage());
-            return false;
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
         }
-    }
-
-    public function mostrarinformacoesPostagemOng($id_postagem){
-        $query = "SELECT titulo, descricao, link FROM postagens WHERE id=:id_postagem";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_postagem', $id_postagem);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function verificaExisteDadosOng($cnpj, $razao_social, $telefone)
     {
-        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj or razao_social = :razao_social or telefone = :telefone");
+        try {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM ongs WHERE cnpj = :cnpj OR razao_social = :razao_social OR telefone = :telefone");
 
-        $stmt->execute([
-            ':cnpj' => $cnpj,
-            ':razao_social' => $razao_social,
-            ':telefone' => $telefone,
-        ]);
+            $stmt->execute([
+                ':cnpj' => $cnpj,
+                ':razao_social' => $razao_social,
+                ':telefone' => $telefone,
+            ]);
 
-        $res = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $res['total'] > 0;
+            $res = $stmt->fetch(PDO::FETCH_ASSOC);
+            $existe = $res['total'] > 0;
+
+            return [
+                'response' => true,
+                'existe' => $existe,
+                'total_encontrados' => $res['total']
+            ];
+
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
     }
 
     public function verificarUsuarioTemOng($id)
     {
-        $query = "SELECT o.razao_social
-        FROM usuarios u
-        INNER JOIN ongs o ON o.id_usuario = u.id
-        WHERE u.id = :id";
+        $query = "SELECT o.id as id_ong, o.razao_social
+              FROM usuarios u
+              INNER JOIN ongs o ON o.id_usuario = u.id
+              WHERE u.id = :id";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC) ? true : false;
+        return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
+    }
+
+
+    public function buscarOngPorId($id)
+    {
+        $query = "SELECT 
+                o.id, 
+                o.razao_social AS nome, 
+                o.telefone, 
+                o.cnpj, 
+                o.dt_criacao AS data_fundacao,
+                u.email,
+                e.cep, 
+                e.logradouro, 
+                e.complemento, 
+                e.estado,
+                e.bairro, 
+                e.numero, 
+                e.cidade,
+                o.id_imagem_de_perfil,   
+                i.caminho AS imagem      
+            FROM 
+                ongs o
+            INNER JOIN 
+                enderecos e ON o.id_endereco = e.id
+            INNER JOIN 
+                usuarios u ON o.id_usuario = u.id
+            LEFT JOIN 
+                imagens i ON o.id_imagem_de_perfil = i.id
+            WHERE 
+                o.id = :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verificaExisteCampo($campo, $valor, $id): bool
+    {
+        $query = "SELECT COUNT(*) as total 
+              FROM ongs 
+              WHERE {$campo} = :valor 
+              AND id != :id";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':valor', $valor);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'] > 0;
+    }
+
+    public function atualizarOng($id, $nome, $telefone, $cnpj, $data_fundacao, $email, $cep, $logradouro, $complemento, $numero, $estado, $cidade, $idImagem = null)
+    {
+        try {
+            $this->conn->beginTransaction();
+
+            $queryOng = "UPDATE ongs
+            SET razao_social = :nome,
+                telefone  = :telefone,
+                cnpj = :cnpj,
+                dt_criacao = :dt_criacao"
+                . ($idImagem ? ", id_imagem_de_perfil = :idImagem" : "") . "
+            WHERE id = :id";
+
+            $stmtOng = $this->conn->prepare($queryOng);
+            $stmtOng->bindParam(':nome', $nome);
+            $stmtOng->bindParam(':telefone', $telefone);
+            $stmtOng->bindParam(':cnpj', $cnpj);
+            $stmtOng->bindParam(':dt_criacao', $data_fundacao);
+            if ($idImagem) {
+                $stmtOng->bindParam(':idImagem', $idImagem, PDO::PARAM_INT);
+            }
+            $stmtOng->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtOng->execute();
+
+            // Atualiza usuário
+            $queryUsuario = "UPDATE usuarios
+            SET email = :email
+            WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+            $stmtUsuario = $this->conn->prepare($queryUsuario);
+            $stmtUsuario->bindParam(':email', $email);
+            $stmtUsuario->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtUsuario->execute();
+
+            // Atualiza endereço
+            $queryEndereco = "UPDATE enderecos 
+            SET cep = :cep, 
+                logradouro = :logradouro, 
+                complemento = :complemento, 
+                numero = :numero, 
+                estado = :estado,
+                cidade = :cidade
+            WHERE id = (SELECT id_endereco FROM ongs WHERE id = :id)";
+            $stmtEndereco = $this->conn->prepare($queryEndereco);
+            $stmtEndereco->bindParam(':cep', $cep);
+            $stmtEndereco->bindParam(':logradouro', $logradouro);
+            $stmtEndereco->bindParam(':complemento', $complemento);
+            $stmtEndereco->bindParam(':numero', $numero);
+            $stmtEndereco->bindParam(':estado', $estado);
+            $stmtEndereco->bindParam(':cidade', $cidade);
+            $stmtEndereco->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmtEndereco->execute();
+
+            $this->conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            throw new Exception("Erro ao atualizar ONG: " . $e->getMessage());
+        }
+    }
+
+    public function atualizarImagemPerfil($idOng, $idImagem)
+    {
+        try {
+            $query = "UPDATE ongs SET id_imagem_de_perfil = :id_imagem WHERE id = :id_ong";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id_imagem', $idImagem, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $idOng, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao atualizar imagem de perfil: " . $e->getMessage());
+        }
+    }
+
+    public function pegarImagemPerfilPaginaOng($id_ong)
+    {
+        $query = "SELECT i.caminho 
+              FROM paginas p
+              LEFT JOIN imagens i ON p.id_imagem = i.id
+              WHERE p.id_ong = :id_ong";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado ? $resultado['caminho'] : null;
     }
 
     public function mostrarInformacoesPaginaOng($id)
     {
-        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter FROM paginas p WHERE p.id_ong=:id";
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
+              FROM paginas p 
+              WHERE p.id_ong = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($pagina) {
+            // Extrai apenas o nome do perfil das URLs
+            $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
+            $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
+            $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
+        }
+
+        return $pagina;
     }
+
+    // Função auxiliar para pegar o último segmento da URL
+    private function extrairNomePerfil($url)
+{
+    if (!$url) return null;
+
+    $parsed = parse_url($url);
+
+    if (!isset($parsed['path'])) return null;
+
+    // Remove barra final e query string
+    $path = rtrim($parsed['path'], '/');
+    $path = explode('?', $path)[0];
+
+    // Pega apenas o último segmento
+    $parts = explode('/', $path);
+    $ultimo = end($parts);
+
+    return $ultimo ?: null;
+}
+
+
 
     public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
@@ -253,4 +438,18 @@ class OngModel
             return false;
         }
     }
+
+    public function mostrarinformacoesPostagemOng($id_postagem)
+    {
+        $query = "SELECT titulo, descricao, link FROM postagens WHERE id=:id_postagem";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_postagem', $id_postagem);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+
 }
+
+
+
