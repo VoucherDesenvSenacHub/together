@@ -9,11 +9,26 @@ require_once "./../../model/CategoriaOngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
 
+var_dump($_SESSION);
+
+// $categorias = [];
+// if(empty($_SESSION['buscaDeOng'])){
+//     $categoriaModel = new CategoriaOngModel();
+//     $todasCategorias = $categoriaModel->getAll();
+// }else{
+//     $todasCategorias = $_SESSION['buscaDeOng'];
+// }
+// foreach ($todasCategorias as $categoria){
+//     $categorias[] = 
+//     ['id' => $categoria['id'], 
+//     'nome' => $categoria['nome'], 
+//     'selecionado' => in_array($categoria['id'], $_SESSION['buscaDeOng'] ?? [])];
+// };
+
 require_once "./../../model/OngModel.php";
 $ongModel = new OngModel();
 $ongs = $ongModel->buscarTodasOngs();
 
-var_dump($_SESSION);
 ?>
 
 <body>
@@ -42,13 +57,8 @@ var_dump($_SESSION);
                                     <?php foreach ($categorias as $categoria): ?>
                                         <div class="ong-search-screen-filter-area">
                                             <label class="checkbox-label">
-                                                <?php
-                                                $checked = '';
-                                                if (isset($_SESSION['categoria']) && $_SESSION['categoria'] === $categoria["nome"]) {
-                                                    $checked = 'checked';
-                                                }
-                                                ?>
-                                                <?= inputCheckBox('ods[]', 'categorias', $categoria["nome"], $checked) ?>
+                                                <input type="hidden" name="idCategoria" value= <?= $categoria["id"] ?>>
+                                                <?= inputCheckBox('ods[]', 'nomeCategoria', $categoria["nome"]); ?>
                                                 <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>
@@ -60,8 +70,8 @@ var_dump($_SESSION);
                             <div class="filter-hidden-div"></div>
 
                             <div class="ong-search-screen-options-apply-filters-div">
-                                <?= botao('cancelar', 'Limpar Filtros', "", "") ?>
-                                <?= botao('salvar', 'Aplicar Filtros', "", "/together/controller/PesquisarOngController.php") ?>
+                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
+                                <?= botao('salvar', 'Aplicar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "aplicar") ?>
                             </div>
                         </form>
                     </div>
