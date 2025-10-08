@@ -6,7 +6,7 @@
     <?php require_once './../components/back-button.php'?>
 
         <div class="desenvolvimento">
-            <img src="/together/view/assests/images/components/togetherBlack.png" alt="">
+            <img src="/together/view/assets/images/components/togetherBlack.png" alt="">
             <div>
             <h3>
                 Em Desenvolvimento

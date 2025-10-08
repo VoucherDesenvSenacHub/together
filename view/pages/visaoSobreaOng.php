@@ -194,7 +194,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['instagram'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/instagram.png" alt="Instagram">
+                                                src="./../assets/images/Adm/instagram.png" alt="Instagram">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['instagram']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -207,7 +207,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['facebook'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/facebook.png" alt="Facebook">
+                                                src="./../assets/images/Adm/facebook.png" alt="Facebook">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['facebook']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -220,7 +220,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['twitter'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/X.png" alt="Twitter">
+                                                src="./../assets/images/Adm/X.png" alt="Twitter">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['twitter']) ?>" target="_blank"
                                                     rel="noopener noreferrer">

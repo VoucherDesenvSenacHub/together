@@ -2,7 +2,7 @@
     <div class="footer-container">
         <div class="footer-about">
             <div class="footer-about">
-                <img src="\together\view\assests\images\components\logo_nova_together.png" alt="Logo da Empresa"
+                <img src="\together\view\assets\images\components\logo_nova_together.png" alt="Logo da Empresa"
                     class="footer-logo">
             </div>
 
@@ -33,4 +33,4 @@
 </footer>
 
 
-<script src="together/view/assests/js/main.js" type="module"></script>
+<script src="together/view/assets/js/main.js" type="module"></script>
