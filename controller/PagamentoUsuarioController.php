@@ -100,11 +100,8 @@ try {
     $_SESSION['type'] = 'success';
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
 
-
-    echo $httpCode;
-    echo $response;
-    // header("Location: ../index.php");
-    // exit();
+    header("Location: ../index.php");
+    exit();
 
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
