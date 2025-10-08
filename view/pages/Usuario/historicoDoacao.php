@@ -72,7 +72,7 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
                                     <td><?= $doacao['razao_social']?></td>
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
-                                        <a href="assests/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
+                                        <a href="assets/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
                                             <?= renderAcao('baixar') ?>
                                         </a>
                                     </td>

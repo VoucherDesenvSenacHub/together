@@ -34,7 +34,7 @@ $categorias = $categoriaModel->getAll();
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assests/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
             <div class="box-login">
@@ -116,8 +116,8 @@ $categorias = $categoriaModel->getAll();
         </div>
     </div>
     <!-- Não Apagar -->
-    <script src="/together/view/assests/js/pages/mascara.js"></script>
-    <script src="/together/view/assests/js/components/selectEndereco.js"></script>
+    <script src="/together/view/assets/js/pages/mascara.js"></script>
+    <script src="/together/view/assets/js/components/selectEndereco.js"></script>
 </body>
 
 </html>
