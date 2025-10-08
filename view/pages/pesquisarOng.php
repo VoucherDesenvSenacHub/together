@@ -9,7 +9,12 @@ require_once "./../../model/CategoriaOngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
 
-var_dump($_SESSION);
+if (isset($_SESSION['buscaDeOng'])) {
+    foreach ($_SESSION['buscaDeOng'] as $selecionado) {
+        var_dump($selecionado['id']);
+    }
+}
+// var_dump($_SESSION['buscaDeOng']);
 
 // $categorias = [];
 // if(empty($_SESSION['buscaDeOng'])){
@@ -57,8 +62,13 @@ $ongs = $ongModel->buscarTodasOngs();
                                     <?php foreach ($categorias as $categoria): ?>
                                         <div class="ong-search-screen-filter-area">
                                             <label class="checkbox-label">
-                                                <input type="hidden" name="idCategoria" value= <?= $categoria["id"] ?>>
-                                                <?= inputCheckBox('ods[]', 'nomeCategoria', $categoria["nome"]); ?>
+                                                <?php if ($selecionado['id'] === $categoria['id']) {
+                                                    $checked = true;
+                                                }
+                                                    
+                                                ?>
+                                                    <?= inputCheckBox('', 'idCategoria[]', $categoria["id"], $checked); ?>
+                                                <?php endif; ?>
                                                 <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>
