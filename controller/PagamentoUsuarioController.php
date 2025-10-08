@@ -20,28 +20,28 @@ try {
     $validator = new PagamentoException();
     $validator->validar($_POST);
 
-    // Verifica se validade do cartão é válida
+    // Verifica validade do cartão
     if (!preg_match("/^(0[1-9]|1[0-2])\/(\d{2})$/", $_POST['validade'], $matches)) {
         throw new Exception("Data de validade do cartão inválida.");
     }
 
-    $mes = (int)$matches[1];
-    $ano = (int)$matches[2] + 2000;
+    $mes = (string)$matches[1];
+    $ano = (string)($matches[2] + 2000);
 
     // Buscar dados do usuário
     $usuarioModel = new UsuarioModel();
     $usuario = $usuarioModel->findUsuarioById($_SESSION['id']);
 
-    // Montar dados para requisição à API de pagamento
+    // Montar dados para a API
     $data = [
         "titular" => [
             "nome" => $usuario['nome'],
             "cpfCnpj" => $usuario['cpf'],
             "email" => $usuario['email'],
             "cep" => $usuario['cep'],
-            "enderecoNumero" => $usuario['numero'],
+            "enderecoNumero" => (string)$usuario['numero'],
             "enderecoComplemento" => $usuario['complemento'],
-            "telefone" => $usuario['telefone']
+            "telefone" => preg_replace('/[^\d]/', '', $usuario['telefone'])
         ],
         "cartao" => [
             "numero" => $_POST['numero'],
@@ -56,24 +56,34 @@ try {
         ]
     ];
 
-    $options = [
-        'http' => [
-            'header'  => "Content-Type: application/json\r\n",
-            'method'  => 'POST',
-            'content' => json_encode($data),
-        ],
-    ];
+    // Enviar requisição para a API com cURL
+    $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
 
-    $context = stream_context_create($options);
-    $response = file_get_contents('http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card', false, $context);
+    $dataJson = json_encode($data);
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json', 'Accept: application/json']);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $dataJson);
 
-    $httpCode = null;
-    if (isset($http_response_header[0])) {
-        preg_match('{HTTP/\S*\s(\d{3})}', $http_response_header[0], $match);
-        $httpCode = isset($match[1]) ? (int)$match[1] : null;
+    $response = curl_exec($ch);
+
+    // Captura erro de conexão
+    if ($response === false) {
+        $erroCurl = curl_error($ch);
+        curl_close($ch);
+        throw new Exception("Erro ao se conectar com a API de pagamento: $erroCurl");
     }
 
+    // Captura código de resposta HTTP
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    // Decodifica resposta
     $respostaApi = json_decode($response, true);
+
+    // Para depuração (log de resposta da API)
+    //file_put_contents(__DIR__ . "/../log_api_pagamento.txt", date('Y-m-d H:i:s') . "\nHTTP: $httpCode\nResposta: $response\n\n", FILE_APPEND);
 
     $statusPagamento = ($httpCode === 200) ? 'Aprovado' : 'Recusado';
 
@@ -90,7 +100,7 @@ try {
         $_POST['nome'],
         'Doação para ONG ' . $_POST['idOng'],
         $ultimosDigitos,
-        ''
+        '' // comprovante, se tiver
     ];
 
     // Salva no banco
@@ -100,6 +110,13 @@ try {
     $_SESSION['type'] = 'success';
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
 
+    // echo "<pre>";
+    // print_r($dataJson);
+    // print_r($response);
+    // print_r($httpCode);
+    // print_r($respostaApi);
+    // print_r($_SESSION);
+    // echo "</pre>";
     header("Location: ../index.php");
     exit();
 
