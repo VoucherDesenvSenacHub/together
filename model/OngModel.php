@@ -184,7 +184,6 @@ class OngModel
             $stmt->bindParam(':id_postagem', $id_postagem);
             $stmt->execute();
             return true;
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -212,7 +211,6 @@ class OngModel
                 'existe' => $existe,
                 'total_encontrados' => $res['total']
             ];
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -360,6 +358,112 @@ class OngModel
         }
     }
 
+    public function buscarTodasOngs($idCategorias = null)
+    {
+        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao
+              FROM ongs o
+              INNER JOIN categorias_ongs c ON c.id = o.id_categoria
+              INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil
+              INNER JOIN paginas p ON p.id_ong = o.id";
+
+        $params = [];
+
+        if (!empty($idCategorias)) {
+            // Gera placeholders dinâmicos (:id0, :id1, :id2...)
+            $placeholders = [];
+            foreach ($idCategorias as $key => $id) {
+                $ph = ":id$key";
+                $placeholders[] = $ph;
+                $params[$ph] = $id;
+            }
+            $query .= " WHERE c.id IN (" . implode(",", $placeholders) . ")";
+        }
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+    public function pegarImagemPerfilPaginaOng($id_ong)
+    {
+        $query = "SELECT i.caminho 
+              FROM paginas p
+              LEFT JOIN imagens i ON p.id_imagem = i.id
+              WHERE p.id_ong = :id_ong";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong);
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $resultado ? $resultado['caminho'] : null;
+    }
+
+    public function mostrarInformacoesPaginaOng($id)
+    {
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
+              FROM paginas p 
+              WHERE p.id_ong = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($pagina) {
+            // Extrai apenas o nome do perfil das URLs
+            $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
+            $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
+            $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
+        }
+
+        return $pagina;
+    }
+
+    // Função auxiliar para pegar o último segmento da URL
+    private function extrairNomePerfil($url)
+    {
+        if (!$url) return null;
+
+        $parsed = parse_url($url);
+
+        if (!isset($parsed['path'])) return null;
+
+        // Remove barra final e query string
+        $path = rtrim($parsed['path'], '/');
+        $path = explode('?', $path)[0];
+
+        // Pega apenas o último segmento
+        $parts = explode('/', $path);
+        $ultimo = end($parts);
+
+        return $ultimo ?: null;
+    }
+
+
+
+    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    {
+        try {
+            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':titulo', $titulo);
+            $stmt->bindParam(':subtitulo', $subtitulo);
+            $stmt->bindParam(':descricao', $descricao);
+            $stmt->bindParam(':facebook', $facebook);
+            $stmt->bindParam(':instagram', $instagram);
+            $stmt->bindParam(':twitter', $twitter);
+            $stmt->bindParam(':id_imagem', $id_imagem);
+            $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            error_log("Erro editarPaginaOng: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function ongsEmDestaque($limite = 4)
     {
         try {
@@ -400,7 +504,7 @@ class OngModel
         } catch (Exception $e) {
             throw new Exception("Erro ao trazer as ONGs em destaque: " . $e->getMessage());
         }
-    } 
+    }
 
     public function mostrarinformacoesPostagemOng($id_postagem)
     {
@@ -410,9 +514,4 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-
 }
-
-
-

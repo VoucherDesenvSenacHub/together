@@ -10,7 +10,7 @@
      * @return string - HTML para renderizar o card;
      */
 
-  function cardOng($imagem,$titulo,$descricao) {
+  function cardOng($imagem,$titulo,$descricao,$idOng = "") {
     return 
     "
     <div class='card-group'>
@@ -22,7 +22,7 @@
                 <h3 class='card-title'>$titulo</h3>
                 <p class='card-description'>$descricao</p>
             </div>
-            <a class='card-btn' href='/together/view/pages/visaoSobreaOng.php''>" .
+            <a class='card-btn' href='/together/view/pages/visaoSobreaOng.php?id=$idOng'>" .
                 botao('primary','Descobrir') .
             "</a>
         </div>
