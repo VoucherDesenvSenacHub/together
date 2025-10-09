@@ -90,7 +90,7 @@ $ongs = $ongModel->buscarTodasOngs($idCategoria);
 
                 <div class="ong-search-screen-content-align-itens">
                     <?php foreach ($ongs as $ong): ?>
-                        <?= cardOng($ong["caminho"], $ong["razao_social"], $ong["descricao"]) ?>
+                        <?= cardOng($ong["caminho"], $ong["razao_social"], $ong["descricao"], $ong['id']) ?>
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>
