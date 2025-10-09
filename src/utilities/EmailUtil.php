@@ -22,13 +22,13 @@ class EmailUtil
             $this->mailer->isSMTP();
             $this->mailer->Host = 'smtp.gmail.com';
             $this->mailer->SMTPAuth = true;
-            $this->mailer->Username = 'email@gmail.com';
-            $this->mailer->Password = 'SenhaApp';
+            $this->mailer->Username = getenv('EMAIL_USERNAME');
+            $this->mailer->Password = getenv('EMAIL_PASSWORD');
             $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $this->mailer->Port = 587;
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
-            $this->mailer->setFrom('seuemail@gmail.com', 'Name'); // Nome do remetente
+            $this->mailer->setFrom(getenv('EMAIL_USERNAME'), 'SUPORTE'); // Nome do remetente
 
         } catch (Exception $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());

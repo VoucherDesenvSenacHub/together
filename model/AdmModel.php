@@ -88,6 +88,14 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function VerificarEmailExitente($email)
+    {
+        $sql = "SELECT 1 FROM usuarios where email = ? LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$email]);
+        return $stmt->fetchColumn() !== false;
+    }
+
 }
 
 // ===== Configuração da paginação da listagem =====
