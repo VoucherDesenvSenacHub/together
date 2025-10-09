@@ -9,8 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($_POST['idCategoria'])) {
                 foreach ($_POST['idCategoria'] as $id) {
                     $filtro[] = [
-                        'id' => $id,
-                        'sucesso' => true
+                        'id' => $id
                     ];
                 }
             }

@@ -9,31 +9,20 @@ require_once "./../../model/CategoriaOngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
 
+$categoriasSelecionadas = [];
 if (isset($_SESSION['buscaDeOng'])) {
     foreach ($_SESSION['buscaDeOng'] as $selecionado) {
-        var_dump($selecionado['id']);
+        $categoriasSelecionadas[] = $selecionado['id'];
     }
 }
-// var_dump($_SESSION['buscaDeOng']);
-
-// $categorias = [];
-// if(empty($_SESSION['buscaDeOng'])){
-//     $categoriaModel = new CategoriaOngModel();
-//     $todasCategorias = $categoriaModel->getAll();
-// }else{
-//     $todasCategorias = $_SESSION['buscaDeOng'];
-// }
-// foreach ($todasCategorias as $categoria){
-//     $categorias[] = 
-//     ['id' => $categoria['id'], 
-//     'nome' => $categoria['nome'], 
-//     'selecionado' => in_array($categoria['id'], $_SESSION['buscaDeOng'] ?? [])];
-// };
 
 require_once "./../../model/OngModel.php";
 $ongModel = new OngModel();
-$ongs = $ongModel->buscarTodasOngs();
-
+$idCategoria = [];
+foreach($categoriasSelecionadas as $id){
+    $idCategoria[] = $id;
+}
+$ongs = $ongModel->buscarTodasOngs($idCategoria);
 ?>
 
 <body>
@@ -62,13 +51,15 @@ $ongs = $ongModel->buscarTodasOngs();
                                     <?php foreach ($categorias as $categoria): ?>
                                         <div class="ong-search-screen-filter-area">
                                             <label class="checkbox-label">
-                                                <?php if ($selecionado['id'] === $categoria['id']) {
-                                                    $checked = true;
+                                                <?php
+                                                $checked='';
+                                                if (!empty($categoriasSelecionadas)) {
+                                                    if (in_array($categoria["id"], $categoriasSelecionadas)) {
+                                                        $checked = 'checked';
+                                                    }
                                                 }
-                                                    
                                                 ?>
-                                                    <?= inputCheckBox('', 'idCategoria[]', $categoria["id"], $checked); ?>
-                                                <?php endif; ?>
+                                                <?= inputCheckBox('', 'idCategoria[]', $categoria["id"], $checked) ?>
                                                 <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>

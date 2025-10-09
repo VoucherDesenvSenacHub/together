@@ -358,16 +358,33 @@ class OngModel
         }
     }
 
-    public function buscarTodasOngs($categoria = NULL)
+    public function buscarTodasOngs($idCategorias = null)
     {
-        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao FROM ongs o INNER JOIN categorias_ongs c ON c.id = o.id_categoria INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil INNER JOIN paginas p ON p.id_ong = o.id WHERE (:categoria IS NULL OR c.nome = :categoria )";
+        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao
+              FROM ongs o
+              INNER JOIN categorias_ongs c ON c.id = o.id_categoria
+              INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil
+              INNER JOIN paginas p ON p.id_ong = o.id";
+
+        $params = [];
+
+        if (!empty($idCategorias)) {
+            // Gera placeholders dinâmicos (:id0, :id1, :id2...)
+            $placeholders = [];
+            foreach ($idCategorias as $key => $id) {
+                $ph = ":id$key";
+                $placeholders[] = $ph;
+                $params[$ph] = $id;
+            }
+            $query .= " WHERE c.id IN (" . implode(",", $placeholders) . ")";
+        }
+
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            ':categoria' => $categoria
-        ]);
+        $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
+
+
     public function pegarImagemPerfilPaginaOng($id_ong)
     {
         $query = "SELECT i.caminho 
@@ -406,23 +423,23 @@ class OngModel
 
     // Função auxiliar para pegar o último segmento da URL
     private function extrairNomePerfil($url)
-{
-    if (!$url) return null;
+    {
+        if (!$url) return null;
 
-    $parsed = parse_url($url);
+        $parsed = parse_url($url);
 
-    if (!isset($parsed['path'])) return null;
+        if (!isset($parsed['path'])) return null;
 
-    // Remove barra final e query string
-    $path = rtrim($parsed['path'], '/');
-    $path = explode('?', $path)[0];
+        // Remove barra final e query string
+        $path = rtrim($parsed['path'], '/');
+        $path = explode('?', $path)[0];
 
-    // Pega apenas o último segmento
-    $parts = explode('/', $path);
-    $ultimo = end($parts);
+        // Pega apenas o último segmento
+        $parts = explode('/', $path);
+        $ultimo = end($parts);
 
-    return $ultimo ?: null;
-}
+        return $ultimo ?: null;
+    }
 
 
 
@@ -455,6 +472,4 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-
 }
