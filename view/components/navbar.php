@@ -3,7 +3,7 @@
 <header>
     <nav class="navbar-group">
         <div class="logo-area">
-            <a class="a-navbar" href="/together/index.php"><img class="logo-navbar" src="/together/view/assests/images/components/logo_nova_together.png" alt="logo"></a>
+            <a class="a-navbar" href="/together/index.php"><img class="logo-navbar" src="/together/view/assets/images/components/logo_nova_together.png" alt="logo"></a>
         </div>
         <ul class="ul-navbar">
             <li class="li-navbar">

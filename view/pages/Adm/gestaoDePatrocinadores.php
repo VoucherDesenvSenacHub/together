@@ -44,7 +44,7 @@
                             <?php for ($i = 0; $i < 10; $i++): ?>
                                 <tr>
                                     <td>
-                                        <img src="\together\view\assests\images\Adm\senac.png" alt="" class="logo-patrocinador">
+                                        <img src="\together\view\assets\images\Adm\senac.png" alt="" class="logo-patrocinador">
                                     </td>
                                     <td>Senac Hub Academy</td>
                                     <td>

@@ -11,64 +11,79 @@ require_once './../../model/PostagemModel.php';
 $ongModel = new OngModel();
 $postagemModel = new PostagemModel();
 
-$idOngUrl = $_GET['id'] ?? null;
+// Converte IDs da URL em inteiros para evitar erro de tipo
+$idOngUrl = isset($_GET['id']) ? intval($_GET['id']) : null;
 $idUsuarioLogado = $_SESSION['id'] ?? null;
 $perfilLogado = $_SESSION['perfil'] ?? null;
-
+$idPostagem = isset($_GET['id_postagem']) ? intval($_GET['id_postagem']) : null;
 
 $idOngDoUsuario = null;
 if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $dadosOngDoUsuario = $ongModel->verificarUsuarioTemOng($idUsuarioLogado);
-    $idOngDoUsuario = $dadosOngDoUsuario['id_ong'] ?? null;
+    $idOngDoUsuario = isset($dadosOngDoUsuario['id_ong']) ? intval($dadosOngDoUsuario['id_ong']) : null;
 }
 
+// Se a ONG estiver logada e não foi passado um ID, usa o dela
 if (!$idOngUrl && $perfilLogado === 'Ong') {
     $idOngUrl = $idOngDoUsuario;
 }
 
-$postagens = $postagemModel->getByOng($idOngUrl);
+// 🔒 Proteção: ONG só pode acessar sua própria página
+// Se for ONG, só mostra os botões de edição se for a dona da página
+$mostrarEdicao = false;
+if ($perfilLogado === 'Ong') {
+    if ($idOngUrl === $idOngDoUsuario) {
+        $mostrarEdicao = true; // pode editar sua própria página
+    }
+}
 
+
+// Carrega informações da página
+$postagens = $postagemModel->getByOng($idOngUrl);
 $pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $doacoes = $ongModel->filtroDataHoraDoacoes($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 ?>
 
-<?php if (isset($_SESSION['perfil'])) { ?>
-    <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
-        <style>
-            .span-msg {
-                display: block;
-            }
-        </style>
-        <?php
-        $urlDoacao = '';
-        $urlVoluntario = ''
-            ?>
-        <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
-            <?php $usuario = 'Administrador' ?>
-        <?php } ?>
 
-    <?php } ?>
-    <?php if ($_SESSION['perfil'] === 'Ong') { ?>
-        <style>
-            .sessionOng {
-                display: block;
-            }
-        </style>
-    <?php } ?>
-    <?php if ($_SESSION['perfil'] === 'Usuario' || $_SESSION['perfil'] === 'Ong') { ?>
-        <?php
+<?php
+$perfil = $_SESSION['perfil'] ?? null;
+$usuario = $perfil ?? 'Visitante';
+
+// URLs padrão (visitante não logado)
+$urlDoacao = "/together/view/pages/login.php";
+$urlVoluntario = "/together/view/pages/login.php";
+
+// Ajusta comportamento conforme perfil logado
+switch ($perfil) {
+    case 'Administrador':
+        $spanMsgVisivel = true;
+        $urlDoacao = '';
+        $urlVoluntario = '';
+        break;
+
+    case 'Ong':
+        $sessionOngVisivel = true;
         $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
-        $urlVoluntario = '/together/index.php?msg=voluntarioenviado'
-            ?>
-    <?php } ?>
-<?php } else { ?>
-    <?php
-    $urlDoacao = "/together/view/pages/login.php";
-    $urlVoluntario = '/together/view/pages/login.php'
-        ?>
-<?php } ?>
+        $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
+        break;
+
+    case 'Usuario':
+        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
+        break;
+}
+?>
+
+<?php if (!empty($spanMsgVisivel)): ?>
+<style>.span-msg { display: block; }</style>
+<?php endif; ?>
+
+<?php if (!empty($sessionOngVisivel)): ?>
+<style>.sessionOng { display: block; }</style>
+<?php endif; ?>
+
 
 <?php
 // Popup do session
@@ -94,8 +109,11 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">Fome Zero e
                                 Agricultura Sustentavel</h3>
                         </div>
-                        <a class="sessionOng icon-sobreaong"
-                            href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+                        <?php if ($mostrarEdicao): ?>
+                            <a class="icon-sobreaong"
+                                href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+                        <?php endif; ?>
+
 
                     </div>
                     <div class="adm-ong-vision-title-options">
@@ -144,8 +162,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php foreach ($postagens as $post): ?>
                                         <li class="adm-ong-vision-post-card">
                                             <div class="adm-ong-vision-post-img-moldure">
-                                                <img class="adm-ong-vision-post-img"
-                                                    src="<?= $post['imagem'] ?? './../assests/images/Adm/adm-vision-ong-post1.png' ?>"
+                                                <img class="adm-ong-vision-post-img" src="<?= $post['imagem'] ?>"
                                                     alt="Imagem do post">
                                             </div>
                                             <div class="adm-ong-vision-post-text-div">
@@ -155,8 +172,10 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                                     <h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
                                                 <?php endif; ?>
                                                 <div class="icon-visao-sobre-ong">
-                                                    <a class="sessionOng"
-                                                        href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                    <?php if ($mostrarEdicao): ?>
+                                                        <a
+                                                            href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </li>
@@ -175,7 +194,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['instagram'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/instagram.png" alt="Instagram">
+                                                src="./../assets/images/Adm/instagram.png" alt="Instagram">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['instagram']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -188,7 +207,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['facebook'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/facebook.png" alt="Facebook">
+                                                src="./../assets/images/Adm/facebook.png" alt="Facebook">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['facebook']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -201,7 +220,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?php if (!empty($pagina['twitter'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assests/images/Adm/X.png" alt="Twitter">
+                                                src="./../assets/images/Adm/X.png" alt="Twitter">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['twitter']) ?>" target="_blank"
                                                     rel="noopener noreferrer">

@@ -26,7 +26,7 @@ if (!isset($_SESSION['step'])) {
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assests/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
             <div class="box-login">
@@ -87,8 +87,8 @@ if (!isset($_SESSION['step'])) {
         </div>
     </div>
 
-    <script src="/together/view/assests/js/pages/mascara.js"></script>
-    <script src="/together/view/assests/js/pages/validacaoCriarUsuario.js"></script>
+    <script src="/together/view/assets/js/pages/mascara.js"></script>
+    <script src="/together/view/assets/js/pages/validacaoCriarUsuario.js"></script>
 </body>
 
 </html>

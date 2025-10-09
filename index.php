@@ -25,7 +25,7 @@
         <div class="home-banner-together">
             <div class="camada2">
                 <div class="home-banner-img-together">
-                    <img class="img-together" src="/together/view/assests/images/components/logoTogetherLogin.png" alt="">
+                    <img class="img-together" src="/together/view/assets/images/components/logoTogetherLogin.png" alt="">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="container-home card-ong">
                 <?php for ($i = 0; $i < 4; $i++) { ?>
-                    <?= cardOng("/together/view/assests/images/Adm/adm-vision-ong.png", "Associação Prato Cheio", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
+                    <?= cardOng("/together/view/assets/images/Adm/adm-vision-ong.png", "Associação Prato Cheio", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
                 <?php } ?>
             </div>
             <div class="linha-home"></div>
@@ -94,14 +94,14 @@
         </div>
         <div class="logos">
             <div class="logos-slide">
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
             </div>
         </div>
 

@@ -70,7 +70,7 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                         </div>
                     </div>
                     <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assests/images/Ong/relatorio.jpg" download>
+                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
                             <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
                             <p>Baixar Relatório</p>
                         </a>
