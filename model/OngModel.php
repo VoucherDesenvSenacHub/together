@@ -464,6 +464,48 @@ class OngModel
         }
     }
 
+    public function ongsEmDestaque($limite = 4)
+    {
+        try {
+            $query = "
+                SELECT 
+                    o.id,
+                    o.razao_social AS titulo_ong,
+                    p.descricao AS descricao_ong,
+                    i.caminho AS foto_ong,
+                    COUNT(d.id) AS total_doacoes
+                FROM ongs o
+                LEFT JOIN doacoes d ON d.id_ong = o.id
+                LEFT JOIN paginas p ON p.id_ong = o.id
+                LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
+                WHERE o.ativo = TRUE 
+                AND o.status_validacao = 'aprovado'
+                GROUP BY o.id, o.razao_social, p.descricao, i.caminho
+                ORDER BY total_doacoes DESC
+                LIMIT :limite";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // 🔹 Caso não tenha imagem, definir uma padrão
+            foreach ($ongs as &$ong) {
+                if (empty($ong['foto_ong'])) {
+                    $ong['foto_ong'] = "/together/view/assests/images/Adm/adm-vision-ong.png";
+                }
+                if (empty($ong['descricao_ong'])) {
+                    $ong['descricao_ong'] = "Descrição não disponível.";
+                }
+            }
+
+            return $ongs;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao trazer as ONGs em destaque: " . $e->getMessage());
+        }
+    }
+
     public function mostrarinformacoesPostagemOng($id_postagem)
     {
         $query = "SELECT titulo, descricao, link FROM postagens WHERE id=:id_postagem";
