@@ -67,7 +67,7 @@ class UsuarioModel
     public function registrarUsuarioSemEndereco($nome, $cpf, $telefone, $email, $senha)
     {
         try {
-            $query = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, tipo_perfil) VALUES (:nome, :cpf, :telefone, :email, :senha, :tipo_perfil)";
+            $query = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, ativo, tipo_perfil) VALUES (:nome, :cpf, :telefone, :email, :senha, :ativo, :tipo_perfil)";
             $stmt = $this->conn->prepare($query);
 
             // utilizar dentro do execulte no lugar de bindparam
@@ -77,6 +77,7 @@ class UsuarioModel
                 ':telefone' => $telefone,
                 ':email' => $email,
                 ':senha' => $senha,
+                ':ativo' => 1,
                 ':tipo_perfil' => 'Usuario',
             ]);
 
