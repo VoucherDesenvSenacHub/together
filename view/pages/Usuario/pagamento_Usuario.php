@@ -45,7 +45,7 @@
               </div>
 
             </form>
-            <!-- <img id="imagem-doacao" src="/together/view/assests/images/Usuario/doação.png" alt="Imagem de doação" /> -->
+            <!-- <img id="imagem-doacao" src="/together/view/assets/images/Usuario/doação.png" alt="Imagem de doação" /> -->
           </div>
         </div>
       </div>
