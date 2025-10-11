@@ -8,6 +8,7 @@
 require_once "./../../model/CategoriaOngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
+$pesquisa = '';
 
 $categoriasSelecionadas = [];
 if (isset($_SESSION['buscaDeOng'])) {
@@ -22,30 +23,57 @@ $idCategoria = [];
 foreach($categoriasSelecionadas as $id){
     $idCategoria[] = $id;
 }
+
+if ($_SESSION['nome_ong_pesquisa'] === 'POST') {
+    $pesquisa = $_SESSION['nome_ong_pesquisa'] ?? '';
+}
+// if($pesquisa != ""){
+//     $ongsFiltradasPorNome = $ongModel->findOngBySearch($pesquisa);
+// }
+
+// $ongs = $ongModel->buscarTodasOngs($idCategoria);
+
+
+
 $ongs = $ongModel->buscarTodasOngs($idCategoria);
+
+if (!empty($pesquisa)) {
+    $ongsFiltradasPorNome = $ongModel->findOngBySearch($pesquisa);
+
+    // Extrai os IDs das ONGs que passaram na busca por nome
+    $idsFiltrados = array_column($ongsFiltradasPorNome, 'id');
+
+    // Filtra as ONGs das categorias, mantendo apenas as que também estão na busca por nome
+    $ongs = array_filter($ongs, function ($ong) use ($idsFiltrados) {
+        return in_array($ong['id'], $idsFiltrados);
+    });
+
+    // Reindexa o array (opcional, para evitar índices quebrados)
+    $ongs = array_values($ongs);
+}
+
 ?>
 
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
-
-
+        <?= var_dump($_SESSION); ?>
         <?php require_once './../components/back-button.php' ?>
         <div class="ong-search-screen">
 
             <!-- Areá de Filtro -->
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
-                    </div>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>
                     </div>
-                    <hr class="ong-search-screen-hr-line">
                     <div class="ong-search-screen-options-box">
                         <form class="ong-search-screen-options-form" method="POST">
+                            <div class="bloco-pesquisa">
+                                <?= label('pesquisar', '&nbsp;') ?>
+                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social') ?>
+                            </div>
+                            <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
                                     <?php foreach ($categorias as $categoria): ?>

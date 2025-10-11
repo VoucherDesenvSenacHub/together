@@ -13,6 +13,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     ];
                 }
             }
+            if(!empty($_POST['nome_ong'])){
+                $_SESSION['nome_ong_pesquisa'] =  $_POST['nome_ong'];
+            }
             $_SESSION['buscaDeOng'] = $filtro;
 
         } elseif ($_POST['acao'] === 'limpar') {
