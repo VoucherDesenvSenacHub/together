@@ -18,3 +18,5 @@ CREATE TABLE doacoes (
     CONSTRAINT fk_doacoes_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
     CONSTRAINT fk_doacoes_ong FOREIGN KEY (id_ong) REFERENCES usuarios(id)
 );
+
+ALTER TABLE doacoes DROP COLUMN comprovante_path;
