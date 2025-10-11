@@ -203,7 +203,7 @@ class UsuarioModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function editarUsuario($id, $nome, $telefone, $email, $cpf, $id_imagem_de_perfil = null)
+    public function editarUsuario($id, $nome, $dt_nascimento, $telefone, $email, $id_endereco, $id_imagem_de_perfil = null)
     {
         try {
             // Verifica duplicidade de telefone
@@ -217,9 +217,10 @@ class UsuarioModel
             // Monta query
             $sql = "UPDATE usuarios 
                     SET nome = :nome, 
+                        dt_nascimento = :dt_nascimento,
                         telefone = :telefone, 
-                        email = :email, 
-                        cpf = :cpf";
+                        email = :email,
+                        id_endereco = :id_endereco";
 
             if (!empty($id_imagem_de_perfil)) {
                 $sql .= ", id_imagem_de_perfil = :id_imagem_de_perfil";
@@ -230,9 +231,10 @@ class UsuarioModel
             // Prepara e executa
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':dt_nascimento', $dt_nascimento);
             $stmt->bindParam(':telefone', $telefone);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':cpf', $cpf);
+            $stmt->bindParam(':id_endereco', $id_endereco);
             if (!empty($id_imagem_de_perfil)) {
                 $stmt->bindParam(':id_imagem_de_perfil', $id_imagem_de_perfil, PDO::PARAM_INT);
             }

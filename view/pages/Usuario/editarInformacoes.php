@@ -55,7 +55,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
-                                        <?= inputReadonly('text', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
+                                        <?= inputRequired('date', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
                                     </div>
                                 </div>
                             </div>

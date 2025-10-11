@@ -52,4 +52,30 @@ class EnderecoModel
             ];
         }
     }
+
+    public function criar($endereco)
+    {
+        try {
+            $query = "INSERT INTO $this->tabela (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES (:logradouro, :numero, :cep, :complemento, :bairro, :cidade, :estado)";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':logradouro', $endereco["logradouro"]);
+            $stmt->bindParam(':numero', $endereco["numero"]);
+            $stmt->bindParam(':cep', $endereco["cep"]);
+            $stmt->bindParam(':complemento', $endereco["complemento"]);
+            $stmt->bindParam(':bairro', $endereco["bairro"]);
+            $stmt->bindParam(':cidade', $endereco["cidade"]);
+            $stmt->bindParam(':estado', $endereco["estado"]);
+            $stmt->execute();
+
+            return [
+                'response' => $this->conn->lastInsertId()
+            ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'erro' => $e->getMessage()
+            ];
+        }
+    }
 }
