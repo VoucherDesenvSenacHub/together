@@ -38,9 +38,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             <?= inputRequired('email', 'email', 'email') ?>
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Enviar', '', '/together/controller/EmailController.php') ?>
+                            <?= botao('salvar', 'Enviar', '', '/together/controller/EsqueceuSenhaController.php') ?>
                         </div>
-
                     </div>
                 </form>
             </div>

@@ -2,12 +2,10 @@
 
 namespace App\Utils;
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 use App\Exceptions\EmailException;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
-require __DIR__ . '/../../vendor/autoload.php';
-require __DIR__ . '/../exceptions/EmailException.php';
 
 class EmailUtil
 {
@@ -15,7 +13,13 @@ class EmailUtil
 
     public function __construct()
     {
+        // Garante que o autoload esteja disponível
+        if (!class_exists(\PHPMailer\PHPMailer\PHPMailer::class)) {
+            require_once __DIR__ . '/../../vendor/autoload.php';
+        }
+
         $this->mailer = new PHPMailer(true);
+
 
         try {
             // Configurações do servidor SMTP (Gmail)
@@ -30,7 +34,7 @@ class EmailUtil
             $this->mailer->isHTML(true);
             $this->mailer->setFrom(getenv('EMAIL_USERNAME'), 'SUPORTE'); // Nome do remetente
 
-        } catch (Exception $e) {
+        } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());
         }
     }
@@ -57,7 +61,7 @@ class EmailUtil
 
             $this->mailer->send();
 
-        } catch (Exception $e) {
+        } catch (PHPMailerException $e) {
             throw new EmailException("Erro ao enviar e-mail: " . $e->getMessage());
         }
     }

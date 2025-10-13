@@ -5,8 +5,6 @@ namespace App\Services;
 use App\Utils\EmailUtil;
 use App\Exceptions\EmailException;
 
-require __DIR__ . '/../Utils/EmailUtil.php';
-require __DIR__ . '/../exceptions/EmailException.php';
 
 class EmailService
 {
