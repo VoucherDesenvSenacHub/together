@@ -33,4 +33,31 @@ class LoginModel
         return false; // Email não encontrado ou senha incorreta
     }
 
+    // Verifica se o email existe no banco
+    public function VerificarEmailExistente($email)
+    {
+        $sql = "SELECT 1 FROM usuarios where email = ? LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$email]);
+        return $stmt->fetchColumn() !== false;
+    }
+
+    // Salvar token de redefinição de senha
+    public function salvarToken($email)
+    {
+        // Gera um token aleatório seguro
+        $token = bin2hex(random_bytes(32)); // 64 caracteres hexadecimais
+
+        // Define validade, ex: 1 hora a partir de agora
+        $validade = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+        // Insere ou atualiza o token para este email
+        $sql = "INSERT INTO senha_tokens (email, token, validade) 
+            VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE token = VALUES(token), validade = VALUES(validade)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$email, $token, $validade]);
+
+        return $token; // retorna para enviar no e-mail
+    }
 }

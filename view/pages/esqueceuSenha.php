@@ -2,6 +2,14 @@
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
+<?php require_once "./../components/alert.php" ?>
+<?php
+// Notificacao
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+?>
 
 <body class="body-login">
 
@@ -14,7 +22,8 @@
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile" class="logo-imagem-login-mobile">
+                <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
+                    class="logo-imagem-login-mobile">
                 <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
@@ -29,7 +38,7 @@
                             <?= inputRequired('email', 'email', 'email') ?>
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Enviar','','login.php') ?>
+                            <?= botao('salvar', 'Enviar', '', '/together/controller/EmailController.php') ?>
                         </div>
 
                     </div>
