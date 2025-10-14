@@ -59,15 +59,15 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <div class="formulario-redes-buttons">
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assests/images/Adm/facebook.png" alt="Facebook">
+                                <img src="/together/view/assets/images/Adm/facebook.png" alt="Facebook">
                                 <input type="text" placeholder="@" name="Facebook" value="<?= $pagina['facebook'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assests/images/Adm/instagram.png" alt="Instagram">
+                                <img src="/together/view/assets/images/Adm/instagram.png" alt="Instagram">
                                 <input type="text" placeholder="@" name="Instagram" value="<?= $pagina['instagram'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assests/images/Adm/X.png" alt="X">
+                                <img src="/together/view/assets/images/Adm/X.png" alt="X">
                                 <input type="text" placeholder="@" name="X" value="<?= $pagina['twitter'] ?? '' ?>" />
                             </div>
                         </div>

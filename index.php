@@ -2,10 +2,14 @@
 <?php require_once './view/components/head.php' ?>
 <?php require_once './view/components/card.php' ?>
 <?php require_once './view/components/alert.php' ?>
+<?php require_once './model/OngModel.php' ?>
 
 <body>
 
     <?php
+    $ongModel = new OngModel();
+    $ongs = $ongModel->ongsEmDestaque();
+    
     // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';
@@ -25,7 +29,7 @@
         <div class="home-banner-together">
             <div class="camada2">
                 <div class="home-banner-img-together">
-                    <img class="img-together" src="/together/view/assests/images/components/logoTogetherLogin.png" alt="">
+                    <img class="img-together" src="/together/view/assets/images/components/logoTogetherLogin.png" alt="">
                 </div>
             </div>
         </div>
@@ -40,9 +44,15 @@
                 </div>
             </div>
             <div class="container-home card-ong">
-                <?php for ($i = 0; $i < 4; $i++) { ?>
-                    <?= cardOng("/together/view/assests/images/Adm/adm-vision-ong.png", "Associação Prato Cheio", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
+                <?php foreach ($ongs as $ong) { ?>
+                    <?= cardOng(
+                        $ong['foto_ong'],
+                        $ong['titulo_ong'],
+                        $ong['descricao_ong']
+                    ) ?>
                 <?php } ?>
+
+
             </div>
             <div class="linha-home"></div>
             <div class="container-home card-sobre-nos-home">
@@ -94,14 +104,14 @@
         </div>
         <div class="logos">
             <div class="logos-slide">
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
-                <img src="\together\view\assests\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
+                <img src="\together\view\assets\images\Adm\senac.png" />
             </div>
         </div>
 
