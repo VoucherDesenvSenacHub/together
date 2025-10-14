@@ -403,7 +403,7 @@ class OngModel
 
     public function mostrarInformacoesPaginaOng($id)
     {
-        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
+        $query = "SELECT p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
               FROM paginas p 
               WHERE p.id_ong = :id";
         $stmt = $this->conn->prepare($query);
