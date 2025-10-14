@@ -29,14 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = "E-mail inválido.";
-        // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
+        header("Location: /together/view/pages/Usuario/editarInformacoes.php");
         exit;
     }
 
     if (!preg_match('/^\d{10,11}$/', $telefone)) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = "Telefone inválido. Deve conter 10 ou 11 dígitos.";
-        // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
+        header("Location: /together/view/pages/Usuario/editarInformacoes.php");
         exit;
     }
 
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $upload = new UploadController();
         $idImagem = $upload->processar($_FILES['file'], $idImagem, 'usuarios');
         if ($idImagem === false) {
-            // header('Location: /together/view/pages/Usuario/editarInformacoes.php');
+            header('Location: /together/view/pages/Usuario/editarInformacoes.php');
             exit;
         }
     }
@@ -84,6 +84,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['message'] = "Erro: $resultado";
     }
 
-    // header("Location: /together/view/pages/Usuario/editarInformacoes.php");
+    header("Location: /together/view/pages/Usuario/editarInformacoes.php");
     exit;
 }
