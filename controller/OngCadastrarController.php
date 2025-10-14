@@ -51,8 +51,8 @@ function verificarDadosOng()
     if (!empty($_POST['cnpj'] && $_POST['telefone'])) {
         // echo ($cnpjLimpo);
         $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['razao_social'], $_POST['telefone']);
-        // var_dump($existe);
-        return $existe;
+        var_dump($existe);
+        return $existe['existe'];
     }
 }
 

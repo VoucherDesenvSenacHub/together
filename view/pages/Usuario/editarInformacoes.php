@@ -7,6 +7,7 @@ require_once "../../../model/UsuarioModel.php";
 require_once "../../../model/ImagemModel.php";
 require_once "./../../components/upload.php";
 require_once "./../../components/alert.php";
+require_once "./../../components/selectEndereco.php";
 
 $imgModel = new ImagemModel();
 $imagem = $imgModel->buscarImagemPorIdUsuario($_SESSION['id']);
@@ -75,12 +76,16 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                 <?= inputDefault('text', 'cep', 'cep', $usuario['cep'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('cidade', 'Cidade') ?>
-                                <?= inputDefault('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?>
+                                <?= label('estado', 'Estado') ?>
+                                <?php renderSelectEstado($usuario['estado'] ?? '',); ?>
+
+                                <!-- <?= inputDefault('text', 'estado', 'estado', $usuario['estado'] ?? '') ?> -->
                             </div>
                             <div class="container-input-endereco-voluntario">
-                                <?= label('estado', 'Estado') ?>
-                                <?= inputDefault('text', 'estado', 'estado', $usuario['estado'] ?? '') ?>
+                                <?= label('cidade', 'Cidade') ?>
+                                <?php renderSelectCidade($usuario['estado'] ?? '', $usuario['cidade'] ?? ''); ?>
+
+                                <!-- <?= inputDefault('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?> -->
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
