@@ -33,4 +33,4 @@
 </footer>
 
 
-<script src="together/view/assets/js/main.js" type="module"></script>
+<script src="/together/view/assets/js/main.js" type="module"></script>
