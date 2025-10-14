@@ -2,13 +2,11 @@
 
 class Database
 {
-    // 10.78.0.215
     private $host = "localhost";
     private $port = "3306";
     private $dbName = "together";
     private $user = "root";
-    // 12345678
-    private $password = "";
+    private $password = "12345678";
 
 
     public function conectar()

@@ -2,10 +2,14 @@
 <?php require_once './view/components/head.php' ?>
 <?php require_once './view/components/card.php' ?>
 <?php require_once './view/components/alert.php' ?>
+<?php require_once './model/OngModel.php' ?>
 
 <body>
 
     <?php
+    $ongModel = new OngModel();
+    $ongs = $ongModel->ongsEmDestaque();
+    
     // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';
@@ -40,9 +44,15 @@
                 </div>
             </div>
             <div class="container-home card-ong">
-                <?php for ($i = 0; $i < 4; $i++) { ?>
-                    <?= cardOng("/together/view/assets/images/Adm/adm-vision-ong.png", "Associação Prato Cheio", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
+                <?php foreach ($ongs as $ong) { ?>
+                    <?= cardOng(
+                        $ong['foto_ong'],
+                        $ong['titulo_ong'],
+                        $ong['descricao_ong']
+                    ) ?>
                 <?php } ?>
+
+
             </div>
             <div class="linha-home"></div>
             <div class="container-home card-sobre-nos-home">

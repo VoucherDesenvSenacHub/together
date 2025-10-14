@@ -184,7 +184,6 @@ class OngModel
             $stmt->bindParam(':id_postagem', $id_postagem);
             $stmt->execute();
             return true;
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -212,7 +211,6 @@ class OngModel
                 'existe' => $existe,
                 'total_encontrados' => $res['total']
             ];
-
         } catch (Exception $e) {
             return [
                 'response' => false,
@@ -360,6 +358,33 @@ class OngModel
         }
     }
 
+    public function buscarTodasOngs($idCategorias = null)
+    {
+        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao
+              FROM ongs o
+              INNER JOIN categorias_ongs c ON c.id = o.id_categoria
+              INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil
+              INNER JOIN paginas p ON p.id_ong = o.id";
+
+        $params = [];
+
+        if (!empty($idCategorias)) {
+            // Gera placeholders dinâmicos (:id0, :id1, :id2...)
+            $placeholders = [];
+            foreach ($idCategorias as $key => $id) {
+                $ph = ":id$key";
+                $placeholders[] = $ph;
+                $params[$ph] = $id;
+            }
+            $query .= " WHERE c.id IN (" . implode(",", $placeholders) . ")";
+        }
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function pegarImagemPerfilPaginaOng($id_ong)
     {
         $query = "SELECT i.caminho 
@@ -398,23 +423,23 @@ class OngModel
 
     // Função auxiliar para pegar o último segmento da URL
     private function extrairNomePerfil($url)
-{
-    if (!$url) return null;
+    {
+        if (!$url) return null;
 
-    $parsed = parse_url($url);
+        $parsed = parse_url($url);
 
-    if (!isset($parsed['path'])) return null;
+        if (!isset($parsed['path'])) return null;
 
-    // Remove barra final e query string
-    $path = rtrim($parsed['path'], '/');
-    $path = explode('?', $path)[0];
+        // Remove barra final e query string
+        $path = rtrim($parsed['path'], '/');
+        $path = explode('?', $path)[0];
 
-    // Pega apenas o último segmento
-    $parts = explode('/', $path);
-    $ultimo = end($parts);
+        // Pega apenas o último segmento
+        $parts = explode('/', $path);
+        $ultimo = end($parts);
 
-    return $ultimo ?: null;
-}
+        return $ultimo ?: null;
+    }
 
 
 
@@ -439,6 +464,48 @@ class OngModel
         }
     }
 
+    public function ongsEmDestaque($limite = 4)
+    {
+        try {
+            $query = "
+                SELECT 
+                    o.id,
+                    o.razao_social AS titulo_ong,
+                    p.descricao AS descricao_ong,
+                    i.caminho AS foto_ong,
+                    COUNT(d.id) AS total_doacoes
+                FROM ongs o
+                LEFT JOIN doacoes d ON d.id_ong = o.id
+                LEFT JOIN paginas p ON p.id_ong = o.id
+                LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
+                WHERE o.ativo = TRUE 
+                AND o.status_validacao = 'aprovado'
+                GROUP BY o.id, o.razao_social, p.descricao, i.caminho
+                ORDER BY total_doacoes DESC
+                LIMIT :limite";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // 🔹 Caso não tenha imagem, definir uma padrão
+            foreach ($ongs as &$ong) {
+                if (empty($ong['foto_ong'])) {
+                    $ong['foto_ong'] = "/together/view/assests/images/Adm/adm-vision-ong.png";
+                }
+                if (empty($ong['descricao_ong'])) {
+                    $ong['descricao_ong'] = "Descrição não disponível.";
+                }
+            }
+
+            return $ongs;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao trazer as ONGs em destaque: " . $e->getMessage());
+        }
+    }
+
     public function mostrarinformacoesPostagemOng($id_postagem)
     {
         $query = "SELECT titulo, descricao, link FROM postagens WHERE id=:id_postagem";
@@ -447,9 +514,4 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-
 }
-
-
-
