@@ -20,9 +20,9 @@ if (isset($_SESSION['erro'], $erro)) {
 }
 
 $VisualizarOngModel = new AdmModel();
-$totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
-$VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
-$quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
+// $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
+// $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
+// $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
 
 
 
