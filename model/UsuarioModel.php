@@ -253,6 +253,7 @@ class UsuarioModel
         $sql = "SELECT * 
                 FROM usuarios u
                 LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id
+                LEFT JOIN enderecos e ON u.id_endereco = e.id
                 WHERE u.id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $idUsuario, PDO::PARAM_INT);

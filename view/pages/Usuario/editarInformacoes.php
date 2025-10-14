@@ -41,27 +41,27 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome']) ?>
+                                        <?= inputRequired('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputRequired('text', 'telefone', 'telefone', $usuario['telefone']) ?>
+                                        <?= inputRequired('text', 'telefone', 'telefone', $usuario['telefone'] ?? '') ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf']) ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('data_nascimento', 'Data de Nascimento') ?>
-                                        <?= inputRequired('date', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento']) ?>
+                                        <?= inputRequired('date', 'dt_nascimento', 'dt_nascimento', $usuario['dt_nascimento'] ?? '') ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputRequired('text', 'email', 'email', $usuario['email']) ?>
+                                <?= inputRequired('text', 'email', 'email', $usuario['email'] ?? '') ?>
                             </div>
                         </div>
                     </div>
@@ -72,35 +72,35 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputDefault('text', 'cep', 'cep') ?>
+                                <?= inputDefault('text', 'cep', 'cep', $usuario['cep'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputDefault('text', 'cidade', 'cidade') ?>
+                                <?= inputDefault('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputDefault('text', 'estado', 'estado') ?>
+                                <?= inputDefault('text', 'estado', 'estado', $usuario['estado'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputDefault('text', 'bairro', 'bairro') ?>
+                                <?= inputDefault('text', 'bairro', 'bairro', $usuario['bairro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputDefault('text', 'logradouro', 'logradouro') ?>
+                                <?= inputDefault('text', 'logradouro', 'logradouro', $usuario['logradouro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputDefault('text', 'numero', 'numero') ?>
+                                <?= inputDefault('text', 'numero', 'numero', $usuario['numero'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputDefault('text', 'complemento', 'complemento') ?>
+                                <?= inputDefault('text', 'complemento', 'complemento', $usuario['complemento'] ?? '') ?>
                             </div>
                         </div>
                     </div>

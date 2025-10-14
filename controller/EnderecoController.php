@@ -11,8 +11,10 @@ class EnderecoController
         $this->enderecoModel = new EnderecoModel();
     }
 
-    public function atualizarEndereco($id , $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
+    public function atualizarEndereco($id, $logradouro, $numero, $cep, $complemento, $bairro, $cidade, $estado)
     {
+        $cep = preg_replace('/\D/', '', $cep);
+
         $endereco = [
             'id' => $id,
             'logradouro' => $logradouro,

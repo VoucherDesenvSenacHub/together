@@ -43,7 +43,7 @@ class EnderecoModel
             $stmt->bindParam(':estado', $endereco["estado"]);
             $stmt->execute();
             return [
-                'response' => true
+                'response' => $endereco['id']
             ];
         } catch (Exception $e) {
             return [
