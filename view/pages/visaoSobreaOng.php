@@ -65,12 +65,12 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         break;
 }
