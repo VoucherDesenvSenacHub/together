@@ -5,11 +5,13 @@ require_once "./../components/acoes.php";
 require_once './../components/alert.php';
 require_once './../../model/OngModel.php';
 require_once './../../model/PostagemModel.php';
+require_once './../../model/UsuarioModel.php';
 ?>
 
 <?php
 $ongModel = new OngModel();
 $postagemModel = new PostagemModel();
+$usuarioModel = new UsuarioModel();
 
 // Converte IDs da URL em inteiros para evitar erro de tipo
 $idOngUrl = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -37,23 +39,30 @@ if ($perfilLogado === 'Ong') {
     }
 }
 
-
 // Carrega informações da página
 $postagens = $postagemModel->getByOng($idOngUrl);
 $pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $doacoes = $ongModel->filtroDataHoraDoacoes($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
-?>
 
+// Verifica o status de voluntariado do usuário logado (se for usuário)
+$statusVoluntario = null;
+if ($perfilLogado === 'Usuario' && $idUsuarioLogado) {
+    $statusVoluntario = $usuarioModel->verificarStatusVoluntario($idUsuarioLogado, $idOngUrl);
+}
+?>
 
 <?php
 $perfil = $_SESSION['perfil'] ?? null;
 $usuario = $perfil ?? 'Visitante';
 
-// URLs padrão (visitante não logado)
+// URLs e estados dos botões
 $urlDoacao = "/together/view/pages/login.php";
 $urlVoluntario = "/together/view/pages/login.php";
+$btnVoluntarioDisabled = false;
+$btnVoluntarioText = 'Voluntariar-se';
+$btnVoluntarioClass = 'primary';
 
 // Ajusta comportamento conforme perfil logado
 switch ($perfil) {
@@ -70,8 +79,29 @@ switch ($perfil) {
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
-        $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
+        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?id_ong=' . $idOngUrl;
+        
+        // Verifica status do voluntariado
+        if ($statusVoluntario) {
+            if ($statusVoluntario['status_validacao'] == 1) {
+                // Já é voluntário aprovado
+                $btnVoluntarioText = 'Você é Voluntário';
+                $btnVoluntarioDisabled = true;
+                $btnVoluntarioClass = 'secondary';
+            } else {
+                // Solicitação pendente
+                $btnVoluntarioText = 'Solicitação Pendente';
+                $btnVoluntarioDisabled = true;
+                $btnVoluntarioClass = 'secondary';
+            }
+        } else {
+            // Pode se voluntariar
+            $urlVoluntario = '#';
+        }
+        break;
+        
+    default:
+        // Visitante não logado
         break;
 }
 ?>
@@ -83,7 +113,6 @@ switch ($perfil) {
 <?php if (!empty($sessionOngVisivel)): ?>
 <style>.sessionOng { display: block; }</style>
 <?php endif; ?>
-
 
 <?php
 // Popup do session
@@ -113,11 +142,9 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             <a class="icon-sobreaong"
                                 href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
                         <?php endif; ?>
-
-
                     </div>
-                    <div class="adm-ong-vision-title-options">
 
+                    <div class="adm-ong-vision-title-options">
                         <div class="adm-ong-vision-title-img-div">
                             <img class="adm-ong-vision-img" src="<?= $imagemPerfil ?>" alt="Imagem da ONG">
                         </div>
@@ -130,11 +157,39 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <?= $pagina['subtitulo'] ?? '' ?>
                                 </p>
                             </div>
+
                             <div class="adm-ong-vision-button-div">
-                                <?= botao('primary', 'Fazer Doação', '', $urlDoacao); ?>
-                                <?= botao('primary', 'Voluntariar-se', '', $urlVoluntario); ?>
+                                <?php if ($perfil === 'Usuario'): ?>
+                                    <!-- Botão de Doação -->
+                                    <a href="<?= $urlDoacao ?>" style="text-decoration: none;">
+                                        <?= botao('primary', 'Fazer Doação', '', ''); ?>
+                                    </a>
+                                    
+                                    <!-- Botão de Voluntariado -->
+                                    <?php if (!$btnVoluntarioDisabled): ?>
+                                        <form method="POST" action="/together/controller/voluntarioController.php" style="display: inline;">
+                                            <input type="hidden" name="action" value="voluntariar">
+                                            <input type="hidden" name="id_ong" value="<?= $idOngUrl ?>">
+                                            <?= botao('primary', $btnVoluntarioText, '', ''); ?>
+                                        </form>
+                                    <?php else: ?>
+                                        <?= botao($btnVoluntarioClass, $btnVoluntarioText, 'disabled', ''); ?>
+                                    <?php endif; ?>
+                                    
+                                <?php elseif (empty($perfil)): ?>
+                                    <!-- Visitante não logado -->
+                                    <?= botao('primary', 'Fazer Doação', '', $urlDoacao); ?>
+                                    <?= botao('primary', 'Voluntariar-se', '', $urlVoluntario); ?>
+                                    
+                                <?php else: ?>
+                                    <!-- Admin ou ONG -->
+                                    <?= botao('primary', 'Fazer Doação', '', $urlDoacao); ?>
+                                    <?= botao('primary', 'Voluntariar-se', '', $urlVoluntario); ?>
+                                <?php endif; ?>
                             </div>
+
                             <span class="span-msg">Não é possível executar essa ação como <?= $usuario ?>!</span>
+                            
                             <div>
                                 <p id="adm-ong-vision-text-alert" class="adm-ong-vision-default-text"><i>* Sua doação
                                         será feita diretamente para o Instituto Benfeitoria, que irá repassar os valores
@@ -142,16 +197,19 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             </div>
                         </div>
                     </div>
+
                     <div class="adm-ong-vision-about-location-div">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-location-dot"></i>
                         <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">Campo Grande -
                             MS R. Jardim Botânico 288</h3>
                     </div>
+
                     <div class="adm-ong-vision-about-div">
                         <p class="adm-ong-vision-default-text">
                             <?= $pagina['descricao'] ?? 'Nenhuma descrição disponível.' ?>
                         </p>
                     </div>
+
                     <div class="adm-ong-vision-post-container">
                         <div class="adm-ong-vision-post-title-div">
                             <h1 class="adm-ong-vision-title-text">Postagens da ONG</h1>
@@ -185,6 +243,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <p>Nenhuma postagem disponível.</p>
                                 <?php endif; ?>
                             </div>
+
                             <div class="adm-ong-vision-social-area">
                                 <div class="adm-ong-vision-social-title">
                                     <h1>Nossas Redes Sociais</h1>
@@ -230,8 +289,6 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                         </div>
                                     <?php endif; ?>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
