@@ -13,10 +13,10 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     exit;
 }
 
-$VisualizarUsuarioModel = new AdmModel();
-$totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
-$VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
-$quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
+// $VisualizarUsuarioModel = new AdmModel();
+// $totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
+// $VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
+// $quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
 
 
 // mostra popup de erro se existir
