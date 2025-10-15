@@ -44,7 +44,6 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <?= var_dump($_SESSION); ?>
         <?php require_once './../components/back-button.php' ?>
         <div class="ong-search-screen">
 
@@ -60,6 +59,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                                 <?= label('pesquisar', '&nbsp;') ?>
                                 <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
                             </div>
+                            <br>
                             <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
