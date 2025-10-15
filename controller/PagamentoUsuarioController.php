@@ -93,7 +93,7 @@ try {
         $respostaApi['tipo'],
         $respostaApi['situacao'],
         $respostaApi['descricao'],
-        $_POST['nome'],
+        $httpCode,
         $respostaApi['cartao']['bandeira'],
         $ultimosDigitos
     ];
