@@ -5,52 +5,39 @@
 <?php require_once "./../components/textarea.php" ?>
 <?php require_once './../components/card.php' ?>
 <?php
+require_once './../components/paginacao.php';
 require_once "./../../model/CategoriaOngModel.php";
+
+
+require_once "./../../model/OngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
-$pesquisa = '';
-
 $categoriasSelecionadas = [];
 if (isset($_SESSION['buscaDeOng'])) {
     foreach ($_SESSION['buscaDeOng'] as $selecionado) {
         $categoriasSelecionadas[] = $selecionado['id'];
     }
 }
-
-require_once "./../../model/OngModel.php";
 $ongModel = new OngModel();
-$idCategoria = [];
-foreach($categoriasSelecionadas as $id){
-    $idCategoria[] = $id;
-}
+$pesquisa = '';
 
-if ($_SESSION['nome_ong_pesquisa'] === 'POST') {
+if (isset($_SESSION['nome_ong_pesquisa']) ) {
     $pesquisa = $_SESSION['nome_ong_pesquisa'] ?? '';
+    if(count($categoriasSelecionadas) > 0){
+        $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
+    }else{
+        $ongs = $ongModel->buscarTodasOngs();
+    }
+    foreach($ongs as $chave => $ong){
+    if(!str_contains(strtolower($ong['razao_social']),strtolower( $pesquisa))){
+        unset($ongs[$chave]);
+        }
+    }
+}else{
+    $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
 }
-// if($pesquisa != ""){
-//     $ongsFiltradasPorNome = $ongModel->findOngBySearch($pesquisa);
-// }
 
-// $ongs = $ongModel->buscarTodasOngs($idCategoria);
-
-
-
-$ongs = $ongModel->buscarTodasOngs($idCategoria);
-
-if (!empty($pesquisa)) {
-    $ongsFiltradasPorNome = $ongModel->findOngBySearch($pesquisa);
-
-    // Extrai os IDs das ONGs que passaram na busca por nome
-    $idsFiltrados = array_column($ongsFiltradasPorNome, 'id');
-
-    // Filtra as ONGs das categorias, mantendo apenas as que também estão na busca por nome
-    $ongs = array_filter($ongs, function ($ong) use ($idsFiltrados) {
-        return in_array($ong['id'], $idsFiltrados);
-    });
-
-    // Reindexa o array (opcional, para evitar índices quebrados)
-    $ongs = array_values($ongs);
-}
+$quantidadeDePaginas = ceil(count($ongs) / 16)
 
 ?>
 
@@ -71,7 +58,7 @@ if (!empty($pesquisa)) {
                         <form class="ong-search-screen-options-form" method="POST">
                             <div class="bloco-pesquisa">
                                 <?= label('pesquisar', '&nbsp;') ?>
-                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social') ?>
+                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
                             </div>
                             <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
@@ -87,7 +74,7 @@ if (!empty($pesquisa)) {
                                                     }
                                                 }
                                                 ?>
-                                                <?= inputCheckBox('', 'idCategoria[]', $categoria["id"], $checked) ?>
+                                                <?= inputCheckBox('', 'categoriasSelecionadas[]', $categoria["id"], $checked) ?>
                                                 <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>
@@ -99,8 +86,8 @@ if (!empty($pesquisa)) {
                             <div class="filter-hidden-div"></div>
 
                             <div class="ong-search-screen-options-apply-filters-div">
-                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
                                 <?= botao('salvar', 'Aplicar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "aplicar") ?>
+                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
                             </div>
                         </form>
                     </div>
@@ -122,8 +109,11 @@ if (!empty($pesquisa)) {
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>
+                <div class="ong-search-screen-pagination">
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+            
+                </div>
             </div>
-
         </div>
     </main>
 

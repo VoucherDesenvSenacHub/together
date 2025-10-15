@@ -12,7 +12,7 @@ class OngModel
     }
     public function findOngBySearch($nome_ong)
     {
-        $sql = "SELECT id, razao_social, dt_fundacao, status_validacao FROM ongs WHERE razao_social LIKE :nome_ong";
+        $sql = "SELECT id, razao_social, dt_criacao, status_validacao FROM ongs WHERE razao_social LIKE :nome_ong";
         $stmt = $this->conn->prepare($sql);
         $nome_ong = '%' . $nome_ong . '%';
         $stmt->bindParam(':nome_ong', $nome_ong);

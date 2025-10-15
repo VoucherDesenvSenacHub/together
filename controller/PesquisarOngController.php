@@ -6,8 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($_POST['acao'] === "aplicar") {
             // Salva os checkboxes selecionados na sessão
             $filtro = [];
-            if (!empty($_POST['idCategoria'])) {
-                foreach ($_POST['idCategoria'] as $id) {
+            if (!empty($_POST['categoriasSelecionadas'])) {
+                foreach ($_POST['categoriasSelecionadas'] as $id) {
                     $filtro[] = [
                         'id' => $id
                     ];
@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         } elseif ($_POST['acao'] === 'limpar') {
             // Limpa os filtros
             unset($_SESSION['buscaDeOng']);
+            unset($_SESSION['nome_ong_pesquisa']);
         }
     }
     header('Location: /together/view/pages/pesquisarOng.php');

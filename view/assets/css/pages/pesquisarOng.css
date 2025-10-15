@@ -20,6 +20,10 @@
     }
 }
 
+.ong-search-screen-pagination{
+    margin-bottom: 10px;
+}
+
 .ong-search-screen-content {
     width: 100%;
     display: flex;
