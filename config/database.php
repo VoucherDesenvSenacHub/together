@@ -6,7 +6,7 @@ class Database
     private $port = "3306";
     private $dbName = "together";
     private $user = "root";
-    private $password = "12345678";
+    private $password = "";
 
 
     public function conectar()

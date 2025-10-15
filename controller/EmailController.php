@@ -4,6 +4,10 @@ namespace App\Controllers;
 use App\Services\EmailService;
 use App\Exceptions\EmailException;
 
+// require_once __DIR__ . '/../vendor/autoload.php';
+
+
+
 class EmailController
 {
     public function enviar(string $destinatario, string $assunto, string $mensagem): void

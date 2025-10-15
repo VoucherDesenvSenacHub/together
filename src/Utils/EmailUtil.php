@@ -33,6 +33,9 @@ class EmailUtil
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
             $this->mailer->setFrom(getenv('EMAIL_USERNAME'), 'SUPORTE'); // Nome do remetente
+            $this->mailer->SMTPDebug = 2; // mostra saída detalhada
+            $this->mailer->Debugoutput = 'error_log'; // manda o log pro log de erros do PHP
+
 
         } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());
