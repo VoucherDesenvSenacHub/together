@@ -3,6 +3,7 @@
 <?php require_once './view/components/card.php' ?>
 <?php require_once './view/components/alert.php' ?>
 <?php require_once './model/OngModel.php' ?>
+<?php require_once './model/PatrocinadoresModel.php' ?>
 
 <body>
 
@@ -10,6 +11,9 @@
     $ongModel = new OngModel();
     $ongs = $ongModel->ongsEmDestaque();
     
+    $patrocinadoresModel = new PatrocinadoresModel();
+    $patrocinadores = $patrocinadoresModel->findPatrocinadores();
+
     // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';
@@ -104,14 +108,12 @@
         </div>
         <div class="logos">
             <div class="logos-slide">
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
-                <img src="\together\view\assets\images\Adm\senac.png" />
+               <?php foreach ($patrocinadores as $patrocinador) { ?>
+                    <img src=<?echo$patrocinador["caminho"]?> />
+                <?php } ?>
+               
+                
+               
             </div>
         </div>
 
