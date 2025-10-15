@@ -5,47 +5,62 @@
 <?php require_once "./../components/textarea.php" ?>
 <?php require_once './../components/card.php' ?>
 <?php
+require_once './../components/paginacao.php';
 require_once "./../../model/CategoriaOngModel.php";
+
+
+require_once "./../../model/OngModel.php";
 $categoriaModel = new CategoriaOngModel();
 $categorias = $categoriaModel->getAll();
-
 $categoriasSelecionadas = [];
 if (isset($_SESSION['buscaDeOng'])) {
     foreach ($_SESSION['buscaDeOng'] as $selecionado) {
         $categoriasSelecionadas[] = $selecionado['id'];
     }
 }
-
-require_once "./../../model/OngModel.php";
 $ongModel = new OngModel();
-$idCategoria = [];
-foreach($categoriasSelecionadas as $id){
-    $idCategoria[] = $id;
+$pesquisa = '';
+
+if (isset($_SESSION['nome_ong_pesquisa']) ) {
+    $pesquisa = $_SESSION['nome_ong_pesquisa'] ?? '';
+    if(count($categoriasSelecionadas) > 0){
+        $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
+    }else{
+        $ongs = $ongModel->buscarTodasOngs();
+    }
+    foreach($ongs as $chave => $ong){
+    if(!str_contains(strtolower($ong['razao_social']),strtolower( $pesquisa))){
+        unset($ongs[$chave]);
+        }
+    }
+}else{
+    $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
 }
-$ongs = $ongModel->buscarTodasOngs($idCategoria);
+
+$quantidadeDePaginas = ceil(count($ongs) / 16)
+
 ?>
 
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
-
-
         <?php require_once './../components/back-button.php' ?>
         <div class="ong-search-screen">
 
             <!-- Areá de Filtro -->
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
-                    </div>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>
                     </div>
-                    <hr class="ong-search-screen-hr-line">
                     <div class="ong-search-screen-options-box">
                         <form class="ong-search-screen-options-form" method="POST">
+                            <div class="bloco-pesquisa">
+                                <?= label('pesquisar', '&nbsp;') ?>
+                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
+                            </div>
+                            <br>
+                            <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
                                     <?php foreach ($categorias as $categoria): ?>
@@ -59,7 +74,7 @@ $ongs = $ongModel->buscarTodasOngs($idCategoria);
                                                     }
                                                 }
                                                 ?>
-                                                <?= inputCheckBox('', 'idCategoria[]', $categoria["id"], $checked) ?>
+                                                <?= inputCheckBox('', 'categoriasSelecionadas[]', $categoria["id"], $checked) ?>
                                                 <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
                                             </label>
                                         </div>
@@ -71,8 +86,8 @@ $ongs = $ongModel->buscarTodasOngs($idCategoria);
                             <div class="filter-hidden-div"></div>
 
                             <div class="ong-search-screen-options-apply-filters-div">
-                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
                                 <?= botao('salvar', 'Aplicar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "aplicar") ?>
+                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
                             </div>
                         </form>
                     </div>
@@ -94,8 +109,11 @@ $ongs = $ongModel->buscarTodasOngs($idCategoria);
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>
+                <div class="ong-search-screen-pagination">
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+            
+                </div>
             </div>
-
         </div>
     </main>
 
