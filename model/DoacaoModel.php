@@ -55,11 +55,11 @@ class DoacaoModel {
         string $descricao,
         string $codigoTran,
         string $bandCartao,
-        string $lastDig,
-        string $path){
+        string $lastDig
+        ){
             try {
-                $query = "INSERT INTO doacoes (id_usuario, id_ong, valor, anonimo, metodo_pagamento, status, descricao, codigo_transacao, bandeira_cartao, ultimos_digitos, comprovante_path)
-                        VALUES (:idUser, :idOng, :valor, :anon, :metodo, :status, :descricao, :codigoTran, :bandCartao, :lastDig, :path)";
+                $query = "INSERT INTO doacoes (id_usuario, id_ong, valor, anonimo, metodo_pagamento, status, descricao, codigo_transacao, bandeira_cartao, ultimos_digitos)
+                        VALUES (:idUser, :idOng, :valor, :anon, :metodo, :status, :descricao, :codigoTran, :bandCartao, :lastDig)";
                 $stmt = $this->conn->prepare($query);
                 $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
                 $stmt->bindParam(':idOng', $idOng, PDO::PARAM_INT);
@@ -71,7 +71,6 @@ class DoacaoModel {
                 $stmt->bindParam(':codigoTran', $codigoTran, PDO::PARAM_STR);
                 $stmt->bindParam(':bandCartao', $bandCartao, PDO::PARAM_STR);
                 $stmt->bindParam(':lastDig', $lastDig, PDO::PARAM_STR);
-                $stmt->bindParam(':path', $path, PDO::PARAM_STR);
                 $stmt->execute();
                 return true;
             } catch (PDOException $e) {

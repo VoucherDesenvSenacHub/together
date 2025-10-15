@@ -55,9 +55,9 @@ class PagamentoException{
             throw new Exception("Valor inválido. Deve ser um número positivo.");
         }
 
-        if (!$this->numeroValido($numero)) {
-            throw new Exception("Número do cartão inválido.");
-        }
+        // if (!$this->numeroValido($numero)) {
+        //     throw new Exception("Número do cartão inválido.");
+        // }
     }
 
 

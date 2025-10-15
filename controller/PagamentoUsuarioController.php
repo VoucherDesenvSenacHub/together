@@ -95,13 +95,15 @@ try {
         $respostaApi['descricao'],
         $_POST['nome'],
         $respostaApi['cartao']['bandeira'],
-        $ultimosDigitos,
-        ''
+        $ultimosDigitos
     ];
 
     // Salva no banco
     $doacaoModel = new DoacaoModel();
-    $doacaoModel->SalvarDoacao(...$dadosPagamento);
+    $sucesso = $doacaoModel->SalvarDoacao(...$dadosPagamento);
+    if (!$sucesso) {
+        throw new Exception("Falha ao registrar a doação no sistema. Por favor, tente novamente.");
+    }
 
     $_SESSION['type'] = 'success';
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
