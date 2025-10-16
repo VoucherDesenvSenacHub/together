@@ -5,11 +5,10 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../../model/PatrocinadoresModel.php' ?>
 <?php require_once './../../components/upload.php' ?>
-<?php 
+<?php
 $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
 $preview = new ImagemPreview($patrocinadores['id'] ?? null);
-var_dump($patrocinadores['id']);
 ?>
 
 <body>
@@ -26,7 +25,7 @@ var_dump($patrocinadores['id']);
                     <h1>Patrocinadores</h1>
                 </div>
             </div>
-            <form action="GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
+            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
                 <div class="filtro">
 
                     <div class="bloco-pesquisa">
@@ -52,13 +51,17 @@ var_dump($patrocinadores['id']);
                             <?php for ($i = 0; $i < 10; $i++): ?>
                                 <tr>
                                     <td>
-                                        <img src="\together\view\assets\images\Adm\senac.png" alt="" class="logo-patrocinador">
+                                        <img src="/together/view/assets/images/Adm/senac.png" alt="" class="logo-patrocinador">
                                     </td>
                                     <td>Senac Hub Academy</td>
                                     <td>
                                         <div class="acoes-container">
                                             <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
-                                            <?= renderAcao('deletar') ?>
+                                            <button class="botao-deletar">
+                                                <input type="hidden" name="action" value="deletar">
+                                                <input type="hidden" name="id" value="<?= $patrocinador['id'] ?>">
+                                                <?= renderAcao('deletar') ?>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -68,7 +71,7 @@ var_dump($patrocinadores['id']);
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
             </form>
-            <div class="modal-overlay" id="modal-overlay-patrocinadores">
+            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
                         <div class="inputs-patrocinadores">
@@ -90,11 +93,12 @@ var_dump($patrocinadores['id']);
                     <div class="botao-modal-patrocinadores">
                         <div class="modal-botoes">
                             <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
-                            <?= botao('salvar', 'Salvar', 'fechar-patrocinadores') ?>
+                            <?= botao('salvar', 'Salvar', name:'action' ,formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
+                            <input type="hidden">
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
 
     </main>
