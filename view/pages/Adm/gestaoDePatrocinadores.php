@@ -4,12 +4,14 @@
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../../model/PatrocinadoresModel.php' ?>
-
+<?php require_once './../../components/upload.php' ?>
 <?php 
 $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
+$preview = new ImagemPreview($imagem['id'] ?? null); 
 ?>
-<body>
+
+<body>  
     <header>
         <?php require_once './../../components/navbar.php' ?>
     </header>
@@ -23,16 +25,16 @@ $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresM
                     <h1>Patrocinadores</h1>
                 </div>
             </div>
-            <div class="formulario-perfil">
+            <form action="GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
                 <div class="filtro">
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome') ?>
                     </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
-                            <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
+                            <?= botao('primary', 'Adicionar', 'abrir-patrocinadores', type: 'button') ?>
                         </div>
                     </div>
                 </div>
@@ -64,7 +66,7 @@ $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresM
                     </table>
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
-            </div>
+            </form>
             <div class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
@@ -80,7 +82,7 @@ $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresM
                         </div>
                         <div>
                             <div class='formulario-imagem-preview'>
-                                <?php require_once './../../components/upload.php' ?>
+                                <?php $preview->preview() ?>
                             </div>
                         </div>
                     </div>
