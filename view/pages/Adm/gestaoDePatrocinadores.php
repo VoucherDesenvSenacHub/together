@@ -3,7 +3,12 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
+<?php require_once './../../../model/PatrocinadoresModel.php' ?>
 
+<?php 
+$patrocinadoresModel = new PatrocinadoresModel();
+$patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
+?>
 <body>
     <header>
         <?php require_once './../../components/navbar.php' ?>
