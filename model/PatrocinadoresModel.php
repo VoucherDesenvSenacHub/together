@@ -12,10 +12,16 @@ class PatrocinadoresModel
     }
     public function findPatrocinadores()
     {
-        $sql = "SELECT  i.caminho FROM patrocinadores p  INNER JOIN imagens i ON i.id = p.id_imagem_icon";
+        $sql = "SELECT  p.nome, p.dt_criacao, p.dt_validade, p.rede_social, p.ativo,i.caminho FROM patrocinadores p  INNER JOIN imagens i ON i.id = p.id_imagem_icon";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    public function buscaPatrocinadoresPorNome($nome){
+        $query = "SELECT p.nome, p.dt_criacao, p.dt_validade, p.rede_social, p.ativo, i.id,i.caminho FROM patrocinadores p  WHERE p.nome LIKE '%:nome%' ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":nome", $nome);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
