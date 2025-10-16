@@ -19,28 +19,77 @@ class LoginModel
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
-        // Busca o usuário
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Se encontrou e a senha confere
         if ($usuario && password_verify($senha, $usuario['senha'])) {
-            // Remove a senha do retorno
             unset($usuario['senha']);
-            // Converte para objeto e retorna
             return (object) $usuario;
         }
 
-        return false; // Email não encontrado ou senha incorreta
+        return false;
     }
 
-    // Verifica se o email existe no banco
     public function VerificarEmailExistente($email)
     {
-        $email = trim($email); // remove espaços
-        $sql = "SELECT 1 FROM usuarios WHERE LOWER(email) = LOWER(?) LIMIT 1";
+        $email = trim($email);
+        $sql = "SELECT 1 FROM {$this->tabela} WHERE LOWER(email) = LOWER(?) LIMIT 1";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$email]);
-        $resultado = $stmt->fetchColumn();
-        return $resultado !== false;
+        return $stmt->fetchColumn() !== false;
+    }
+
+    // Gera token de redefinição e salva na própria tabela usuarios
+    public function gerarTokenRedefinicao($email)
+    {
+        $token = bin2hex(random_bytes(32)); // token seguro
+
+        // Atualiza o token e a expiração diretamente no SQL usando DATE_ADD
+        $sql = "UPDATE {$this->tabela}
+            SET token_redefinicao = ?, token_expira = DATE_ADD(NOW(), INTERVAL 1 HOUR)
+            WHERE email = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$token, $email]);
+
+        return $token;
+    }
+
+
+    // Valida token de redefinição
+    public function validarToken($token)
+    {
+        $sql = "SELECT email FROM {$this->tabela}
+                WHERE token_redefinicao = ? AND token_expira > NOW()
+                LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$token]);
+        return $stmt->fetchColumn() ?: false;
+    }
+
+    // Redefine a senha e remove token
+    public function redefinirSenha($email, $novaSenhaHash)
+    {
+        try {
+            $this->conn->beginTransaction();
+
+            $sql = "UPDATE {$this->tabela}
+                    SET senha = ?, token_redefinicao = NULL, token_expira = NULL
+                    WHERE email = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([$novaSenhaHash, $email]);
+
+            $this->conn->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->conn->rollBack();
+            return false;
+        }
+    }
+
+    public function buscarSenhaAtual($email)
+    {
+        $sql = "SELECT senha FROM {$this->tabela} WHERE email = ? LIMIT 1";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$email]);
+        return $stmt->fetchColumn() ?: null;
     }
 }

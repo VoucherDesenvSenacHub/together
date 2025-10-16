@@ -7,14 +7,13 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Controllers\EmailController;
 
-
 try {
     $erros = [];
 
     // Verifica método da requisição
     if ($_SERVER['REQUEST_METHOD'] !== "POST") {
         $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = "Método inválido para está requisição";
+        $_SESSION['message'] = "Método inválido para esta requisição.";
         header('Location: ../view/pages/login.php');
         exit;
     }
@@ -27,28 +26,40 @@ try {
         $erros[] = "Informe um e-mail válido!";
     }
 
-    // Se houver erros, exibe
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
     }
 
     $loginModel = new LoginModel();
 
-    // Se o e-mail existir, envia o e-mail
+    // Verifica se o e-mail existe no banco
     if ($loginModel->VerificarEmailExistente($email)) {
+
+        $token = bin2hex(random_bytes(32));
+
+        // Armazena o token no banco (com validade de 1h)
+        $loginModel->gerarTokenRedefinicao($email);
+
+        // Monta o link com o token
+        $link = "http://localhost/together/view/pages/redefinirSenha.php?token={$token}";
+
+        // 4️⃣ Cria o conteúdo do e-mail
         $assunto = "Redefinição de Senha - Together";
         $mensagem = "
             <h2>Olá!</h2>
             <p>Recebemos uma solicitação para redefinir sua senha.</p>
-            <p>Clique abaixo para criar uma nova senha:</p>
-            <a href='http://localhost/together/view/pages/redefinirSenha.php' target='_blank'>Redefinir minha senha</a>
+            <p>Clique no link abaixo para criar uma nova senha. Esse link é válido por 1 hora.</p>
+            <p><a href='{$link}' target='_blank'>Redefinir minha senha</a></p>
+            <br>
+            <p>Se você não solicitou a redefinição, ignore este e-mail.</p>
         ";
 
+        // 5️⃣ Envia o e-mail
         $emailController = new EmailController();
         $emailController->enviar($email, $assunto, $mensagem);
     }
 
-    // Mensagem genérica
+    // Mensagem genérica (por segurança)
     $_SESSION['type'] = 'sucesso';
     $_SESSION['message'] = "Se esse e-mail estiver cadastrado, enviamos um link para redefinir a senha.";
     header('Location: ../view/pages/login.php');
