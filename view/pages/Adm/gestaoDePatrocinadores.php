@@ -3,8 +3,11 @@
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
+<?php require_once './../../components/upload.php' ?>
 
-<body>
+<?php $preview = new ImagemPreview($imagem['id'] ?? null); ?>
+
+<body>  
     <header>
         <?php require_once './../../components/navbar.php' ?>
     </header>
@@ -18,7 +21,7 @@
                     <h1>Patrocinadores</h1>
                 </div>
             </div>
-            <div class="formulario-perfil">
+            <form action="" method="POST" enctype="multipart/form-data" class="formulario-perfil">
                 <div class="filtro">
 
                     <div class="bloco-pesquisa">
@@ -27,7 +30,7 @@
                     </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
-                            <?= botao('primary', 'Adicionar', 'abrir-patrocinadores') ?>
+                            <?= botao('primary', 'Adicionar', 'abrir-patrocinadores', type: 'button') ?>
                         </div>
                     </div>
                 </div>
@@ -59,7 +62,7 @@
                     </table>
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
-            </div>
+            </form>
             <div class="modal-overlay" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
@@ -75,7 +78,7 @@
                         </div>
                         <div>
                             <div class='formulario-imagem-preview'>
-                                <?php require_once './../../components/upload.php' ?>
+                                <?php $preview->preview() ?>
                             </div>
                         </div>
                     </div>
