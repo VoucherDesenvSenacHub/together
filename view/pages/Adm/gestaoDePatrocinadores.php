@@ -8,7 +8,8 @@
 <?php 
 $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
-$preview = new ImagemPreview($imagem['id'] ?? null);
+$preview = new ImagemPreview($patrocinadores['id'] ?? null);
+var_dump($patrocinadores['id']);
 ?>
 
 <body>
@@ -25,12 +26,12 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
                     <h1>Patrocinadores</h1>
                 </div>
             </div>
-            <form action="" method="POST" enctype="multipart/form-data" class="formulario-perfil">
+            <form action="GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
                 <div class="filtro">
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome') ?>
                     </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
