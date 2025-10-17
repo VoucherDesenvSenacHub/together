@@ -84,7 +84,7 @@ try {
     curl_close($ch);
 
     if ($httpCode !== 200) {
-        throw new Exception("Erro na API de pagamento. Código HTTP: $httpCode. Resposta: $response");
+        throw new Exception("Erro na API de pagamento. Código HTTP: $httpCode.");
     }
 
     $respostaApi = json_decode($response, true);
