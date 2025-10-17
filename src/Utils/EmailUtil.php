@@ -6,7 +6,6 @@ use App\Exceptions\EmailException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
-
 class EmailUtil
 {
     private PHPMailer $mailer;
@@ -20,22 +19,20 @@ class EmailUtil
 
         $this->mailer = new PHPMailer(true);
 
-
         try {
             // Configurações do servidor SMTP (Gmail)
             $this->mailer->isSMTP();
-            $this->mailer->Host = 'smtp.gmail.com';
+            $this->mailer->Host = getenv('EMAIL_HOST') ?: 'smtp.gmail.com';
             $this->mailer->SMTPAuth = true;
             $this->mailer->Username = getenv('EMAIL_USERNAME');
             $this->mailer->Password = getenv('EMAIL_PASSWORD');
-            $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $this->mailer->Port = 587;
+            $this->mailer->SMTPSecure = getenv('EMAIL_SMTP_SECURE') ?: 'tls';
+            $this->mailer->Port = getenv('EMAIL_PORT') ?: 587;
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
-            $this->mailer->setFrom(getenv('EMAIL_USERNAME'), 'SUPORTE'); // Nome do remetente
-            $this->mailer->SMTPDebug = 2; // mostra saída detalhada
-            $this->mailer->Debugoutput = 'error_log'; // manda o log pro log de erros do PHP
-
+            $this->mailer->setFrom(getenv('EMAIL_USERNAME'), getenv('EMAIL_FROM_NAME') ?: 'Suporte');
+            $this->mailer->SMTPDebug = 0; // 0 = sem debug, 2 = debug detalhado
+            $this->mailer->Debugoutput = 'error_log';
 
         } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());

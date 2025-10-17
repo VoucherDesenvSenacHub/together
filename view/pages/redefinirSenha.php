@@ -7,19 +7,18 @@
 <?php require_once "./../../model/LoginModel.php"; ?>
 
 <?php
-// Notificacaontpa
+// Notificacao 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
 
-// --- Validação do token ---
 $token = $_GET['token'] ?? '';
 
 if (empty($token)) {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = "Token inválido. Solicite a redefinição novamente.";
-    header("Location: login.php");
+    header("Location: /together/view/pages/login.php");
     exit;
 }
 
@@ -29,11 +28,11 @@ $email = $loginModel->validarToken($token);
 if (!$email) {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = "Token expirado ou inválido. Solicite a redefinição novamente.";
-    header("Location: login.php");
+    header("Location: /together/view/pages/login.php");
     exit;
 }
 
-// --- Salva o e-mail na sessão ---
+// salva email na sessão (para o controller usar)
 $_SESSION['email_redefinicao'] = $email;
 ?>
 

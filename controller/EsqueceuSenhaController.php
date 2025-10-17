@@ -35,15 +35,13 @@ try {
     // Verifica se o e-mail existe no banco
     if ($loginModel->VerificarEmailExistente($email)) {
 
-        $token = bin2hex(random_bytes(32));
-
         // Armazena o token no banco (com validade de 1h)
-        $loginModel->gerarTokenRedefinicao($email);
+        $token = $loginModel->gerarTokenRedefinicao($email);
 
         // Monta o link com o token
         $link = "http://localhost/together/view/pages/redefinirSenha.php?token={$token}";
 
-        // 4️⃣ Cria o conteúdo do e-mail
+        // Cria o conteúdo do e-mail
         $assunto = "Redefinição de Senha - Together";
         $mensagem = "
             <h2>Olá!</h2>
@@ -54,7 +52,7 @@ try {
             <p>Se você não solicitou a redefinição, ignore este e-mail.</p>
         ";
 
-        // 5️⃣ Envia o e-mail
+        // 5Envia o e-mail
         $emailController = new EmailController();
         $emailController->enviar($email, $assunto, $mensagem);
     }
