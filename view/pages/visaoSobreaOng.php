@@ -25,13 +25,13 @@ if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $idOngDoUsuario = isset($dadosOngDoUsuario['id_ong']) ? intval($dadosOngDoUsuario['id_ong']) : null;
 }
 
-// Se a ONG estiver logada e não foi passado um ID, usa o dela
+
 if (!$idOngUrl && $perfilLogado === 'Ong') {
     $idOngUrl = $idOngDoUsuario;
 }
 
-// 🔒 Proteção: ONG só pode acessar sua própria página
-// Se for ONG, só mostra os botões de edição se for a dona da página
+// ONG só pode acessar sua própria página
+
 $mostrarEdicao = false;
 if ($perfilLogado === 'Ong') {
     if ($idOngUrl === $idOngDoUsuario) {
@@ -46,7 +46,7 @@ $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $doacoes = $ongModel->filtroDataHoraDoacoes($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
-// Verifica o status de voluntariado do usuário logado (se for usuário)
+// Verifica o status de voluntariado do usuário logado
 $statusVoluntario = null;
 if ($perfilLogado === 'Usuario' && $idUsuarioLogado) {
     $statusVoluntario = $usuarioModel->verificarStatusVoluntario($idUsuarioLogado, $idOngUrl);
