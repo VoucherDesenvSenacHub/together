@@ -56,13 +56,19 @@ try {
 
     $url = 'http://payment.avanth.kinghost.net/api/payments/pay-with-credit-card';
 
-    $dataJson = json_encode($data);
+    $dataJson = json_encode($data, JSON_UNESCAPED_UNICODE);
+
+    if ($dataJson === false || json_last_error() !== JSON_ERROR_NONE) {
+        throw new Exception("Erro ao gerar JSON: " . json_last_error_msg());
+    }
+
+
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: application/json',
-        'Accept: */*'
+        'Content-Type: application/json; charset=utf-8',
+        'Accept: application/json'
     ]);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $dataJson);
 
@@ -76,6 +82,10 @@ try {
 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+
+    if ($httpCode !== 200) {
+        throw new Exception("Erro na API de pagamento. Código HTTP: $httpCode. Resposta: $response");
+    }
 
     $respostaApi = json_decode($response, true);
 
