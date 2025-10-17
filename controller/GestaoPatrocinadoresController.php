@@ -1,32 +1,60 @@
 <?php
 require_once __DIR__ . '/../model/PatrocinadoresModel.php';
 require_once __DIR__ . "/../controller/UploadController.php";
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patrocinadoresModel = new PatrocinadoresModel();
     $existePatrocinador = $patrocinadoresModel->buscaPatrocinadoresPorNome($_POST['patrocinador']);
 
-    $idImagem  = $_POST['idImagem'];
-    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-        $upload = new UploadController();
-        $idImagem = $upload->processar($_FILES['file'], $idImagem, 'patrocinadores');
-        if ($idImagem === false) {
-            header('Location: /together/view/pages/Adm/gestaoDePatrocinadores.php');
-            exit;
-        }
+    $erro = validarUrls();
+    if (!empty($erro)) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Url inválida!';
+        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+        exit;
     }
-    echo 'existePatrocinador';
-    var_dump($existePatrocinador);
-
-    echo 'Post Patrocinador';
-    var_dump($_POST['patrocinador']);
-
-    echo 'IdImagem';
-    var_dump($_POST['idImagem']);
 
     if (empty($existePatrocinador)) {
-        var_dump("ENTROU");
+
+        $idImagem  = $_POST['idImagem'] ?? null;
+
+        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+            $upload = new UploadController();
+            $idImagem = $upload->processar($_FILES['file'], $idImagem, 'patrocinadores');
+            if ($idImagem === false) {
+                header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+                exit;
+            }
+        }
+
         $resultado = $patrocinadoresModel->cadastrarPatrocinador($_POST['patrocinador'], $_POST['redePatrocinador'], $idImagem);
-        var_dump($resultado['messageErro']);
+
+        if ($resultado['response']) {
+            $_SESSION['type'] = 'sucesso';
+            $_SESSION['message'] = 'Patrocinador adicionado com sucesso';
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
+        } else {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Erro ao adicionar patrocinador';
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
+        }
+    } else {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Já existe um patrocinador com esse nome!';
+        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+        exit;
     }
+}
+
+function validarUrls()
+{
+    if (!empty($_POST['redePatrocinador'])) {
+        if (!filter_var($_POST['redePatrocinador'], FILTER_VALIDATE_URL)) {
+            $erro = "URL do patrocinador é inválida";
+        }
+    }
+    return $erro;
 }

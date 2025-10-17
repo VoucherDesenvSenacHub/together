@@ -5,10 +5,17 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../../model/PatrocinadoresModel.php' ?>
 <?php require_once './../../components/upload.php' ?>
+<?php require_once './../../components/alert.php' ?>
 <?php
 $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
 $preview = new ImagemPreview($patrocinadores['id'] ?? null);
+
+// Popup do session
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
 ?>
 
 <body>
@@ -48,12 +55,12 @@ $preview = new ImagemPreview($patrocinadores['id'] ?? null);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                            <?php foreach ($patrocinadores as $patrocinador): ?>
                                 <tr>
                                     <td>
-                                        <img src="/together/view/assets/images/Adm/senac.png" alt="" class="logo-patrocinador">
+                                        <img src="<?= $patrocinador['caminho'] ?>" alt="" class="logo-patrocinador">
                                     </td>
-                                    <td>Senac Hub Academy</td>
+                                    <td><?= $patrocinador['nome'] ?></td>
                                     <td>
                                         <div class="acoes-container">
                                             <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
@@ -65,7 +72,7 @@ $preview = new ImagemPreview($patrocinadores['id'] ?? null);
                                         </div>
                                     </td>
                                 </tr>
-                            <?php endfor; ?>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
