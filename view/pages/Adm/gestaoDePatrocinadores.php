@@ -86,6 +86,7 @@ $preview = new ImagemPreview($patrocinadores['id'] ?? null);
                         </div>
                         <div>
                             <div class='formulario-imagem-preview'>
+                                <input type="hidden" name="idImagem" value="<?= $patrocinadores['id'] ?? null ?>">
                                 <?php $preview->preview() ?>
                             </div>
                         </div>
@@ -93,7 +94,36 @@ $preview = new ImagemPreview($patrocinadores['id'] ?? null);
                     <div class="botao-modal-patrocinadores">
                         <div class="modal-botoes">
                             <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
-                            <?= botao('salvar', 'Salvar', name:'action' ,formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
+                            <?= botao('salvar', 'Salvar', name: 'action', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
+                            <input type="hidden">
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay" id="modal-overlay-patrocinadores">
+                <div class="modal-content">
+                    <div class="inserir-patrocinadores">
+                        <div class="inputs-patrocinadores">
+                            <div>
+                                <?= label('patrocinador', 'Patrocinador') ?>
+                                <?= inputRequired('text', 'patrocinador', 'patrocinador') ?>
+                            </div>
+                            <div>
+                                <?= label('redePatrocinador', 'Rede Social') ?>
+                                <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador') ?>
+                            </div>
+                        </div>
+                        <div>
+                            <div class='formulario-imagem-preview'>
+                                <input type="hidden" name="idImagem" value="<?= $patrocinadores['id'] ?? null ?>">
+                                <?php $preview->preview() ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="botao-modal-patrocinadores">
+                        <div class="modal-botoes">
+                            <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
+                            <?= botao('salvar', 'Salvar', name: 'action', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
                             <input type="hidden">
                         </div>
                     </div>

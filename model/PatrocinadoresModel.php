@@ -12,16 +12,65 @@ class PatrocinadoresModel
     }
     public function findPatrocinadores()
     {
-        $sql = "SELECT  p.nome, p.dt_criacao, p.dt_validade, p.rede_social, p.ativo,i.caminho, i.id FROM patrocinadores p  INNER JOIN imagens i ON i.id = p.id_imagem_icon";
+        $sql = "SELECT  p.nome, p.dt_criacao, p.rede_social, p.ativo,i.caminho, i.id FROM patrocinadores p  INNER JOIN imagens i ON i.id = p.id_imagem_icon";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function buscaPatrocinadoresPorNome($nome){
-        $query = "SELECT p.nome, p.dt_criacao, p.dt_validade, p.rede_social, p.ativo, i.id,i.caminho FROM patrocinadores p  WHERE p.nome LIKE '%:nome%' ";
+
+    public function buscaPatrocinadoresPorNome($nome)
+    {
+        $query = "SELECT p.nome, p.dt_criacao, p.rede_social, p.ativo, i.id, i.caminho FROM patrocinadores p INNER JOIN imagens i ON i.id = p.id_imagem_icon WHERE p.nome LIKE :nome";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":nome", $nome);
+        $stmt->bindValue(":nome", "%$nome%");
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function cadastrarPatrocinador($nome, $rede_social, $id_imagem_icon)
+    {
+        try {
+            $query = "INSERT INTO patrocinadores (nome, rede_social, id_imagem_icon) VALUES (:nome, :rede_social, :id_imagem_icon)";
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->execute([
+                ':nome' => $nome,
+                ':rede_social' => $rede_social,
+                ':id_imagem_icon' => $id_imagem_icon
+            ]);
+
+            return [
+                'response' => true
+            ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'messageErro' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function editarPatrocinadores($id, $nome, $rede_social, $id_imagem_icon)
+    {
+        try {
+            $query = "UPDATE patrocinadores SET nome = :nome, rede_social = :rede_social, id_imagem_icon = :id_imagem_icon WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+
+            $stmt->execute([
+                ':id' => $id,
+                ':nome' => $nome,
+                ':rede_social' => $rede_social,
+                ':id_imagem_icon' => $id_imagem_icon
+            ]);
+
+            return [
+                'response' => true
+            ];
+        } catch (Exception $e) {
+            return [
+                'response' => false,
+                'messageErro' => $e->getMessage()
+            ];
+        }
     }
 }
