@@ -19,6 +19,11 @@ $idUsuarioLogado = $_SESSION['id'] ?? null;
 $perfilLogado = $_SESSION['perfil'] ?? null;
 $idPostagem = isset($_GET['id_postagem']) ? intval($_GET['id_postagem']) : null;
 
+// Debug: Verifica se o ID da ONG está presente
+if (!$idOngUrl) {
+    die("Erro: ID da ONG não foi fornecido na URL. Acesse: visaoSobreaOng.php?id=1");
+}
+
 $idOngDoUsuario = null;
 if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $dadosOngDoUsuario = $ongModel->verificarUsuarioTemOng($idUsuarioLogado);
@@ -167,19 +172,23 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     
                                     <!-- Botão de Voluntariado -->
                                     <?php if (!$btnVoluntarioDisabled): ?>
-                                        <form method="POST" action="/together/controller/voluntarioController.php" style="display: inline;">
+                                        <form id="formVoluntariar" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;">
                                             <input type="hidden" name="action" value="voluntariar">
                                             <input type="hidden" name="id_ong" value="<?= $idOngUrl ?>">
-                                            <?= botao('primary', $btnVoluntarioText, '', ''); ?>
+                                            <button type="submit" class="botao botao-primary" onclick="document.getElementById('formVoluntariar').submit();">Voluntariar-se</button>
                                         </form>
                                     <?php else: ?>
-                                        <?= botao($btnVoluntarioClass, $btnVoluntarioText, 'disabled', ''); ?>
+                                        <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                     <?php endif; ?>
                                     
                                 <?php elseif (empty($perfil)): ?>
                                     <!-- Visitante não logado -->
-                                    <?= botao('primary', 'Fazer Doação', '', $urlDoacao); ?>
-                                    <?= botao('primary', 'Voluntariar-se', '', $urlVoluntario); ?>
+                                    <a href="<?= $urlDoacao ?>" style="text-decoration: none;">
+                                        <?= botao('primary', 'Fazer Doação', '', ''); ?>
+                                    </a>
+                                    <a href="<?= $urlVoluntario ?>" style="text-decoration: none;">
+                                        <?= botao('primary', 'Voluntariar-se', '', ''); ?>
+                                    </a>
                                     
                                 <?php else: ?>
                                     <!-- Admin ou ONG -->
