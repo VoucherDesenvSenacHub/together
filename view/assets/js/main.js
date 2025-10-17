@@ -10,7 +10,7 @@ import "./components/modalNotificacao.js";
 import "./pages/gestaoDePatrocinadores.js";
 import "./components/alert.js";
 // import "./pages/loginUsuario.js";
-import "./pages/pagamento_Usuario.js";
+import "./pages/pagamentoUsuario.js";
 import "./pages/validacaoAtualizacao.js";
 // import "./pages/validarAtualizacaoOng.js";
 import "./pages/postagemOng.js";

@@ -1,0 +1,1 @@
+ALTER TABLE doacoes DROP COLUMN comprovante_path;
