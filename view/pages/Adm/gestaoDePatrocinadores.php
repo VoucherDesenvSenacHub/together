@@ -19,6 +19,8 @@ if (isset($_GET['editar'])) {
     $preview = new ImagemPreview($editarPatrocinador['id_imagem'] ?? null);
 }
 
+var_dump($editarPatrocinador);
+
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -97,7 +99,6 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <div class="inserir-patrocinadores">
                         <div class="inputs-patrocinadores">
                             <input type="hidden" name="id" value="<?= $editarPatrocinador['id'] ?? '' ?>">
-
                             <input type="hidden" name="action" value="<?= $editarPatrocinador ? 'editar' : 'salvar' ?>">
 
                             <div>
@@ -127,8 +128,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     </div>
                     <div class="botao-modal-patrocinadores">
                         <div class="modal-botoes">
-                            <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores', formaction:'/together/view/pages/adm/gestaoDePatrocinadores.php') ?>
-                            <?= botao('salvar', 'Salvar', name: 'action', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
+                            <?= botaoFormNoValide('cancelar', 'Cancelar', 'fechar-patrocinadores', formaction:'/together/view/pages/adm/gestaoDePatrocinadores.php') ?>
+                            <?= botao('salvar', 'Salvar', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
                             <input type="hidden">
                         </div>
                     </div>

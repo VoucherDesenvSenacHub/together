@@ -20,8 +20,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
         }
-    } elseif ($_POST['action'] === 'editar') {
-        $resposta = $patrocinadoresModel->desativarPatrocinador($_POST['id']);
+    };
+
+    $erro = validarUrls();
+    if (!empty($erro)) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Url inválida!';
+        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+        exit;
+    }
+
+    $idImagem  = $_POST['idImagem'] ?? null;
+
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, 'patrocinadores');
+        if ($idImagem === false) {
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
+        }
+    }
+
+    if ($_POST['action'] === 'editar') {
+        $resposta = $patrocinadoresModel->editarPatrocinadores($_POST['id'], $_POST['patrocinador'], $_POST['redePatrocinador'], $idImagem);
 
         if ($resposta['response']) {
             $_SESSION['type'] = 'sucesso';
@@ -34,29 +55,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
         }
-    };
-
-    $existePatrocinador = $patrocinadoresModel->buscaPatrocinadoresPorNome($_POST['patrocinador']);
-
-    $erro = validarUrls();
-    if (!empty($erro)) {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'Url inválida!';
-        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
-        exit;
-    }
-
-    if (empty($existePatrocinador)) {
-
-        $idImagem  = $_POST['idImagem'] ?? null;
-
-        if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
-            $upload = new UploadController();
-            $idImagem = $upload->processar($_FILES['file'], $idImagem, 'patrocinadores');
-            if ($idImagem === false) {
-                header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
-                exit;
-            }
+    } elseif ($_POST['action'] === 'salvar') {
+        $existePatrocinador = $patrocinadoresModel->buscaPatrocinadoresPorNome($_POST['patrocinador']);
+        if (!empty($existePatrocinador)) {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Já existe um patrocinador com esse nome!';
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
         }
 
         $resultado = $patrocinadoresModel->cadastrarPatrocinador($_POST['patrocinador'], $_POST['redePatrocinador'], $idImagem);
@@ -72,11 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
         }
-    } else {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'Já existe um patrocinador com esse nome!';
-        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
-        exit;
     }
 }
 

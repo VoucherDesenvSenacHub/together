@@ -101,7 +101,7 @@ class PatrocinadoresModel
 
     public function buscarPatrocinadorPorId($id)
     {
-        $query = "SELECT p.nome, p.rede_social, i.id as id_imagem FROM patrocinadores p INNER JOIN imagens i ON i.id = p.id_imagem_icon WHERE p.id = :id AND p.ativo = :ativo";
+        $query = "SELECT p.id, p.nome, p.rede_social, i.id as id_imagem FROM patrocinadores p INNER JOIN imagens i ON i.id = p.id_imagem_icon WHERE p.id = :id AND p.ativo = :ativo";
         $stmt = $this->conn->prepare($query);
         $stmt->execute([
             ':id' => $id,
