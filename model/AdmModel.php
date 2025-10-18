@@ -65,6 +65,13 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listOngsAprovadas(){
+        $sql = "SELECT id,razao_social, dt_criacao FROM ongs WHERE status_validacao = 'aprovado'";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function filtroUsuariosCadastradosByDataCadastro($data_inicio = NULL, $data_fim = NULL)
     {
         if (!is_null($data_inicio) && !is_null($data_fim)) {
