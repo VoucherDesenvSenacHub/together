@@ -6,6 +6,7 @@
 <?php require_once './../../components/paginacao.php'; ?>
 <?php require_once './../../../model/AdmModel.php'; ?>
 
+
 <?php
 // verifica se o perfil é de administrador
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
@@ -19,7 +20,20 @@ if (isset($_SESSION['erro'], $erro)) {
     unset($_SESSION['erro'], $erro);
 }
 
+
 $VisualizarOngModel = new AdmModel();
+
+$VisualizarOngs = [];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
+    $nome_ong = trim($_POST['nome_ong']);
+    $VisualizarOngs = $VisualizarOngModel->findOngBySearch($nome_ong);
+} else {
+    $VisualizarOngs = $VisualizarOngModel->findOngBySearch('');
+}
+
+
+
 // $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
 // $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
 // $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
@@ -45,25 +59,34 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 
             <div class="formulario-perfil">
                 <div class="filtro">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
-                        </div>
-                    </div>
+                    <form action="visualizarOngs.php" method="POST">
+                        <div class="bloco-datas">
 
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
-                    </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
+                            
+                        </div>
+                    </form>
+
+                    <form action="visualizarOngs.php" method="POST">
+
+                        <div class="bloco-pesquisa">
+                            <?= label('nome_ong', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social') ?>
+                        </div>
+
+                    </form>
+
                 </div>
 
                 <div class="table-mobile">
@@ -77,22 +100,25 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </thead>
                         <tbody>
                             <?php if (!empty($VisualizarOngs) && is_array($VisualizarOngs)) { ?>
-                                <?php foreach ($VisualizarOngs as $ong) { ?>
-                                    <tr>
-                                        <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
-                                        <td><?= $ong['nome'] ?></td>
-                                        <td>
-                                            <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
-                                                <?= renderAcao('visualizar') ?>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } else { ?>
-                                <tr>
-                                    <td colspan="3" style="text-align:center;">Nenhuma ONG encontrada.</td>
-                                </tr>
-                            <?php } ?>
+                                <form action="visualizarOngs.php" method="GET">
+
+                                    <?php foreach ($VisualizarOngs as $ong) { ?>
+                                        <tr>
+                                            <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
+                                            <td><?= $ong['razao_social'] ?></td>
+                                            <td>
+                                                <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
+                                                    <?= renderAcao('visualizar') ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    <?php } else { ?>
+                                        <tr>
+                                            <td colspan="3" style="text-align:center;">Nenhuma ONG encontrada.</td>
+                                        </tr>
+                                    <?php } ?>
+                                </form>
                         </tbody>
                     </table>
                 </div>
