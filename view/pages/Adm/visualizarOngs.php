@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
 
 
 
+$VisualizarOngs = $VisualizarOngModel->listOngsAprovadas();
 // $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
 // $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
 // $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
