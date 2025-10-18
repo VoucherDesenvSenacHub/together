@@ -44,4 +44,38 @@ class DoacaoModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function SalvarDoacao(
+        int $idUser,
+        int $idOng,
+        float $valor,
+        bool $anon,
+        string $metodo,
+        string $status,
+        string $descricao,
+        string $codigoTran,
+        string $bandCartao,
+        string $lastDig
+        ){
+            try {
+                $query = "INSERT INTO doacoes (id_usuario, id_ong, valor, anonimo, metodo_pagamento, status, descricao, codigo_transacao, bandeira_cartao, ultimos_digitos)
+                        VALUES (:idUser, :idOng, :valor, :anon, :metodo, :status, :descricao, :codigoTran, :bandCartao, :lastDig)";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(':idUser', $idUser, PDO::PARAM_INT);
+                $stmt->bindParam(':idOng', $idOng, PDO::PARAM_INT);
+                $stmt->bindParam(':valor', $valor);
+                $stmt->bindParam(':anon', $anon, PDO::PARAM_BOOL);
+                $stmt->bindParam(':metodo', $metodo, PDO::PARAM_STR);
+                $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+                $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+                $stmt->bindParam(':codigoTran', $codigoTran, PDO::PARAM_STR);
+                $stmt->bindParam(':bandCartao', $bandCartao, PDO::PARAM_STR);
+                $stmt->bindParam(':lastDig', $lastDig, PDO::PARAM_STR);
+                $stmt->execute();
+                return true;
+            } catch (PDOException $e) {
+                error_log("Erro ao registrar doação: " . $e->getMessage());
+                return false;
+            }
+        }
 }

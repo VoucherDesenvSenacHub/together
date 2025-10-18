@@ -79,7 +79,9 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        // para quem for alterar essa tela futuramente, o id da ong deve ser pego da ong logada
+        // e nao fixo como 1
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . 1;
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         break;
 

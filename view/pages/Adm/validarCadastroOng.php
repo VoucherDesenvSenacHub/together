@@ -26,9 +26,6 @@ if(isset($_GET['id'])){
             <div class="formulario-perfil">
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
-                        <div class="div-logo">
-                            <img src="/together/view/assets/images/Ong/Ong_icon.png" alt="Foto do usuário" class="logo-user">
-                        </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
