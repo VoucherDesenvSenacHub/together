@@ -63,12 +63,16 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <td><?= $patrocinador['nome'] ?></td>
                                     <td>
                                         <div class="acoes-container">
-                                            <?= renderAcao('editar', '', 'abrir-patrocinadores') ?>
-                                            <button class="botao-deletar">
+                                            
+                                            <?= renderAcao('editar') ?>
+
+                                            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST">
                                                 <input type="hidden" name="action" value="deletar">
                                                 <input type="hidden" name="id" value="<?= $patrocinador['id'] ?>">
-                                                <?= renderAcao('deletar') ?>
-                                            </button>
+                                                <button type="submit" class="botao-deletar">
+                                                    <?= renderAcao('deletar') ?>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -82,49 +86,19 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
                         <div class="inputs-patrocinadores">
+                            <input type="hidden" name="action" id="action" value="salvar">
+                            <input type="hidden" name="idPatrocinador" id="input-id-patrocinador">
                             <div>
-                                <?= label('patrocinador', 'Patrocinador') ?>
-                                <?= inputRequired('text', 'patrocinador', 'patrocinador') ?>
-                            </div>
-                            <div>
-                                <?= label('redePatrocinador', 'Rede Social') ?>
-                                <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador') ?>
-                            </div>
-                        </div>
-                        <div>
-                            <div class='formulario-imagem-preview'>
-                                <input type="hidden" name="idImagem" value="<?= $patrocinadores['id'] ?? null ?>">
-                                <?php $preview->preview() ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="botao-modal-patrocinadores">
-                        <div class="modal-botoes">
-                            <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
-                            <?= botao('salvar', 'Salvar', name: 'action', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
-                            <input type="hidden">
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay" id="modal-overlay-patrocinadores">
-                <div class="modal-content">
-                    <div class="inserir-patrocinadores">
-                        <div class="inputs-patrocinadores">
-                            <div>
-                                <?= label('patrocinador', 'Patrocinador') ?>
-                                <?= inputRequired('text', 'patrocinador', 'patrocinador') ?>
+                                <?= label('input-patrocinador', 'Patrocinador') ?>
+                                <?= inputRequired('text', 'input-patrocinador', 'patrocinador') ?>
                             </div>
                             <div>
-                                <?= label('redePatrocinador', 'Rede Social') ?>
-                                <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador') ?>
+                                <?= label('input-rede', 'Rede Social') ?>
+                                <?= inputRequired('text', 'input-rede', 'redePatrocinador') ?>
                             </div>
                         </div>
-                        <div>
-                            <div class='formulario-imagem-preview'>
-                                <input type="hidden" name="idImagem" value="<?= $patrocinadores['id'] ?? null ?>">
-                                <?php $preview->preview() ?>
-                            </div>
+                        <div class="formulario-imagem-preview" id="preview-container">
+                            <?php $preview->preview() ?>
                         </div>
                     </div>
                     <div class="botao-modal-patrocinadores">
