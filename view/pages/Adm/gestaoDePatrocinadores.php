@@ -11,6 +11,14 @@ $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
 $preview = new ImagemPreview($patrocinadores['id'] ?? null);
 
+$editarPatrocinador = null;
+
+if (isset($_GET['editar'])) {
+    $idEditar = (int)$_GET['editar'];
+    $editarPatrocinador = $patrocinadoresModel->buscarPatrocinadorPorId($idEditar);
+    $preview = new ImagemPreview($editarPatrocinador['id_imagem'] ?? null);
+}
+
 // Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -63,13 +71,15 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     <td><?= $patrocinador['nome'] ?></td>
                                     <td>
                                         <div class="acoes-container">
-                                            
-                                            <?= renderAcao('editar') ?>
+
+                                            <a href="?editar=<?= $patrocinador['id'] ?>" class="btn-editar-patrocinador">
+                                                <?= renderAcao('editar') ?>
+                                            </a>
 
                                             <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST">
                                                 <input type="hidden" name="action" value="deletar">
                                                 <input type="hidden" name="id" value="<?= $patrocinador['id'] ?>">
-                                                <button type="submit" class="botao-deletar">
+                                                <button type="submit" class="btn-desativar-patrocinador">
                                                     <?= renderAcao('deletar') ?>
                                                 </button>
                                             </form>
@@ -82,28 +92,42 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
             </form>
-            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay" id="modal-overlay-patrocinadores">
+            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay <?= $editarPatrocinador ? 'aberto' : '' ?>" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
                         <div class="inputs-patrocinadores">
-                            <input type="hidden" name="action" id="action" value="salvar">
-                            <input type="hidden" name="idPatrocinador" id="input-id-patrocinador">
+                            <input type="hidden" name="id" value="<?= $editarPatrocinador['id'] ?? '' ?>">
+
+                            <input type="hidden" name="action" value="<?= $editarPatrocinador ? 'editar' : 'salvar' ?>">
+
                             <div>
                                 <?= label('input-patrocinador', 'Patrocinador') ?>
-                                <?= inputRequired('text', 'input-patrocinador', 'patrocinador') ?>
+                                <?= inputRequired('text', 'patrocinador', 'patrocinador', value: $editarPatrocinador['nome'] ?? '') ?>
                             </div>
+
                             <div>
                                 <?= label('input-rede', 'Rede Social') ?>
-                                <?= inputRequired('text', 'input-rede', 'redePatrocinador') ?>
+                                <?= inputRequired('text', 'redePatrocinador', 'redePatrocinador', value: $editarPatrocinador['rede_social'] ?? '') ?>
                             </div>
+
                         </div>
-                        <div class="formulario-imagem-preview" id="preview-container">
-                            <?php $preview->preview() ?>
+                        <div class='formulario-imagem-preview'>
+                            <input type="hidden" name="idImagem" value="<?= $editarPatrocinador['id_imagem'] ?? null ?>">
+
+                            <?php
+                            if ($editarPatrocinador) {
+                                $preview->preview();
+                            } else {
+                                $previewNovo = new ImagemPreview(null);
+                                $previewNovo->preview();
+                            }
+                            ?>
+
                         </div>
                     </div>
                     <div class="botao-modal-patrocinadores">
                         <div class="modal-botoes">
-                            <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores') ?>
+                            <?= botao('cancelar', 'Cancelar', 'fechar-patrocinadores', formaction:'/together/view/pages/adm/gestaoDePatrocinadores.php') ?>
                             <?= botao('salvar', 'Salvar', name: 'action', formaction: '/together/controller/GestaoPatrocinadoresController.php') ?>
                             <input type="hidden">
                         </div>

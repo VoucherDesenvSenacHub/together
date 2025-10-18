@@ -68,7 +68,7 @@
     letter-spacing: 2px;
   }
 
-   .botao-deletar{
+   .btn-desativar-patrocinador, .btn-editar-patrocinador{
     background-color: transparent;
     border: none;
   }

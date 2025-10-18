@@ -14,14 +14,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['message'] = 'Patrocinador deletado!';
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
-
         } else {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao deletar patrocinador';
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
         }
-    }
+    } elseif ($_POST['action'] === 'editar') {
+        $resposta = $patrocinadoresModel->desativarPatrocinador($_POST['id']);
+
+        if ($resposta['response']) {
+            $_SESSION['type'] = 'sucesso';
+            $_SESSION['message'] = 'Patrocinador deletado!';
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
+        } else {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Erro ao deletar patrocinador';
+            header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+            exit;
+        }
+    };
 
     $existePatrocinador = $patrocinadoresModel->buscaPatrocinadoresPorNome($_POST['patrocinador']);
 
