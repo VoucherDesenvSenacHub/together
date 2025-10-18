@@ -20,6 +20,7 @@ if (isset($_SESSION['erro'], $erro)) {
 }
 
 $VisualizarOngModel = new AdmModel();
+$VisualizarOngs = $VisualizarOngModel->listOngsAprovadas();
 // $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
 // $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
 // $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
@@ -80,9 +81,9 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                 <?php foreach ($VisualizarOngs as $ong) { ?>
                                     <tr>
                                         <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
-                                        <td><?= $ong['nome'] ?></td>
+                                        <td><?= $ong['razao_social'] ?></td>
                                         <td>
-                                            <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
+                                            <a href="/together/view/pages/visaoSobreaOng.php?id=<?= $ong['id'] ?? '' ?>">
                                                 <?= renderAcao('visualizar') ?>
                                             </a>
                                         </td>
