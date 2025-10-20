@@ -14,13 +14,13 @@ INSERT INTO imagens (nome_enviado, nome_original, caminho) VALUES
 
 -- 3) Usuários 
 INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, id_endereco, id_imagem_de_perfil, tipo_perfil) VALUES
-('João Silva', '11122233344', '1990-05-10', '(67)99999-0001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
-('Maria Souza', '22233344455', '1988-09-22', '(67)99999-0002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Ong'),
-('Carlos Pereira', '33344455566', '1985-12-15', '(11)98888-0003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Administrador'),
-('Ana Costa', '44455566677', '1992-03-28', '(31)97777-0004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'Ong'),
-('Paulo Almeida', '55566677788', '1991-07-05', '(21)98888-0005', 'paulo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
-('Carla Mendes', '66677788899', '1989-11-12', '(41)97777-0006', 'carla@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Usuario'),
-('Ricardo Gomes', '77788899900', '1987-04-20', '(51)96666-0007', 'ricardo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Usuario');
+('João Silva', '11122233344', '1990-05-10', '67999990001', 'joao@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
+('Maria Souza', '22233344455', '1988-09-22', '67999990002', 'maria@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Ong'),
+('Carlos Pereira', '33344455566', '1985-12-15', '11988880003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Administrador'),
+('Ana Costa', '44455566677', '1992-03-28', '31977770004', 'ana@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 4, 4, 'Ong'),
+('Paulo Almeida', '55566677788', '1991-07-05', '21988880005', 'paulo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 1, 1, 'Usuario'),
+('Carla Mendes', '66677788899', '1989-11-12', '41977770006', 'carla@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Usuario'),
+('Ricardo Gomes', '77788899900', '1987-04-20', '51966660007', 'ricardo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Usuario');
 
 -- 4) Categorias de ONGs
 INSERT INTO categorias_ongs (nome) VALUES
