@@ -87,6 +87,11 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
+                            <?php if (empty($patrocinadores)) { ?>
+                                <tr>
+                                    <td colspan="3" style="text-align:center;">Nenhum patrocinador encontrado.</td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
