@@ -5,6 +5,7 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../../model/PatrocinadoresModel.php' ?>
 <?php require_once './../../components/upload.php' ?>
+<?php require_once './../../components/upload.php' ?>
 <?php 
 $patrocinadoresModel = new PatrocinadoresModel();
 $patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
