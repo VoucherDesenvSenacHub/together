@@ -109,7 +109,7 @@
         <div class="logos">
             <div class="logos-slide">
                <?php foreach ($patrocinadores as $patrocinador) { ?>
-                    <img src=<?echo$patrocinador["caminho"]?> />
+                    <img src="<?= $patrocinador["caminho"]?>"/>
                 <?php } ?>
                
                 
