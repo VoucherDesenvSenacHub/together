@@ -23,9 +23,12 @@ if (isset($_SESSION['erro'], $erro)) {
 
 $admModel = new AdmModel();
 
+if(isset($_POST['data-inicio']) || isset($_POST['data-final'])){
+    $data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : NULL;
+    $data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : NULL;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
-
+    $VisualizarOngs = $admModel->filtroOngsValidationByDataCriacao($data_inicio, $data_fim);
+} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
     $nome_ong = trim($_POST['nome_ong']);
     $VisualizarOngs = $admModel->findOngBySearch($nome_ong);
 } else {
