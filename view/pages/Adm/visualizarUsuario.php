@@ -13,6 +13,11 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     exit;
 }
 
+$ListarUsuarioModel = new admModel();
+$ListarUsuarios = $ListarUsuarioModel->listarUsuarios();
+// $totalUsuarios = $ListarUsuarioModel->
+
+
 // $VisualizarUsuarioModel = new AdmModel();
 // $totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
 // $VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
@@ -75,8 +80,8 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($VisualizarUsuarios)) { ?>
-                                <?php foreach ($VisualizarUsuarios as $usuario) { ?>
+                            <?php if (!empty($ListarUsuarios)) { ?>
+                                <?php foreach ($ListarUsuarios as $usuario) { ?>
                                     <tr>
                                         <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
                                         <td><?= $usuario['nome'] ?></td>

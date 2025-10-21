@@ -88,6 +88,22 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function listarUsuarios()
+    {
+        try {
+            $sql = "SELECT id, nome, dt_criacao FROM usuarios ORDER BY id ASC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Registra erro no log
+            error_log("Erro ao listar usuários: " . $e->getMessage());
+            return []; // retorna um array vazio para evitar quebra do sistema
+        }
+    }
+
 }
 
 // ===== Configuração da paginação da listagem =====
