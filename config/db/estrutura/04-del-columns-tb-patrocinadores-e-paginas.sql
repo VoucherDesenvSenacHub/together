@@ -6,3 +6,5 @@ DROP COLUMN dt_validade;
 
 ALTER TABLE patrocinadores
 MODIFY COLUMN nome varchar(255) unique;
+
+ALTER TABLE patrocinadores DROP CONSTRAINT nome;
