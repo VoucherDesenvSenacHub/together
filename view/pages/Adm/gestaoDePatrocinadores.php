@@ -8,7 +8,7 @@
 <?php require_once './../../components/alert.php' ?>
 <?php
 $patrocinadoresModel = new PatrocinadoresModel();
-$patrocinadores = isset($_SESSION['pesquisar_patrocinador']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['pesquisar_patrocinador']) : $patrocinadoresModel->findPatrocinadores();
+$patrocinadores = isset($_SESSION['patrocinador_nome']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['patrocinador_nome']) : $patrocinadoresModel->findPatrocinadores();
 $preview = new ImagemPreview($patrocinadores['id'] ?? null);
 
 $editarPatrocinador = null;
@@ -37,14 +37,16 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <div class="container-botao-patrocinadores">
                 <div class="titulo-pagina">
-                    <h1>Patrocinadores</h1>7
+                    <h1>Patrocinadores</h1>
                 </div>
             </div>
             <div class="formulario-perfil">
                 <div class="filtro">
+                    <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST">
                             <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome') ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome', $_SESSION['patrocinador_nome']) ?? "" ?>
+                    </form>
                         </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">

@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($resposta['response']) {
             $_SESSION['type'] = 'sucesso';
-            $_SESSION['message'] = 'Patrocinador deletado!';
+            $_SESSION['message'] = 'Patrocinador editado com sucesso!';
             header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
             exit;
         } else {
