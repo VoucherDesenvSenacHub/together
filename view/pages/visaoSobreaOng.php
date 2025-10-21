@@ -1,4 +1,6 @@
 <?php
+
+
 require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
@@ -19,24 +21,17 @@ $idUsuarioLogado = $_SESSION['id'] ?? null;
 $perfilLogado = $_SESSION['perfil'] ?? null;
 $idPostagem = isset($_GET['id_postagem']) ? intval($_GET['id_postagem']) : null;
 
-// Debug: Verifica se o ID da ONG está presente
-if (!$idOngUrl) {
-    die("Erro: ID da ONG não foi fornecido na URL. Acesse: visaoSobreaOng.php?id=1");
-}
-
 $idOngDoUsuario = null;
 if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $dadosOngDoUsuario = $ongModel->verificarUsuarioTemOng($idUsuarioLogado);
     $idOngDoUsuario = isset($dadosOngDoUsuario['id_ong']) ? intval($dadosOngDoUsuario['id_ong']) : null;
 }
 
-
 if (!$idOngUrl && $perfilLogado === 'Ong') {
     $idOngUrl = $idOngDoUsuario;
 }
 
 // ONG só pode acessar sua própria página
-
 $mostrarEdicao = false;
 if ($perfilLogado === 'Ong') {
     if ($idOngUrl === $idOngDoUsuario) {
@@ -68,6 +63,8 @@ $urlVoluntario = "/together/view/pages/login.php";
 $btnVoluntarioDisabled = false;
 $btnVoluntarioText = 'Voluntariar-se';
 $btnVoluntarioClass = 'primary';
+$spanMsgVisivel = false;
+$sessionOngVisivel = false;
 
 // Ajusta comportamento conforme perfil logado
 switch ($perfil) {
@@ -79,15 +76,13 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        // para quem for alterar essa tela futuramente, o id da ong deve ser pego da ong logada
-        // e nao fixo como 1
-        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . 1;
+        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         break;
 
     case 'Usuario':
         $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?id_ong=' . $idOngUrl;
-        
+
         // Verifica status do voluntariado
         if ($statusVoluntario) {
             if ($statusVoluntario['status_validacao'] == 1) {
@@ -106,7 +101,7 @@ switch ($perfil) {
             $urlVoluntario = '#';
         }
         break;
-        
+
     default:
         // Visitante não logado
         break;
@@ -122,9 +117,12 @@ switch ($perfil) {
 <?php endif; ?>
 
 <?php
-// Popup do session
-if (isset($_SESSION['type'], $_SESSION['message'])) {
-    showPopup($_SESSION['type'], $_SESSION['message']);
+// Popup do session - SALVA em variáveis antes de apagar
+$popupType = $_SESSION['type'] ?? null;
+$popupMessage = $_SESSION['message'] ?? null;
+
+// Limpa a sessão ANTES de mostrar (para não aparecer de novo)
+if ($popupType && $popupMessage) {
     unset($_SESSION['type'], $_SESSION['message']);
 }
 ?>
@@ -132,18 +130,27 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 <body>
     <?php require_once './../components/navbar.php' ?>
 
+    <?php
+    // Mostra o popup DENTRO do body, depois que tudo carregou
+    if ($popupType && $popupMessage) {
+        showPopup($popupType, $popupMessage);
+    }
+    ?>
+
     <main class="main-container">
         <?php require_once './../components/back-button.php' ?>
 
         <div class="adm-ong-vision-container">
 
-            <form method="POST" action="" class="adm-ong-vision-form-box">
+            <!-- Troquei o form externo por div para evitar forms aninhados -->
+            <div class="adm-ong-vision-form-box">
                 <div class="adm-ong-vision-area-limiter">
                     <div class="adm-ong-vision-filter-tags">
                         <div class="adm-ong-group-filter-tag">
                             <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
-                            <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">Fome Zero e
-                                Agricultura Sustentavel</h3>
+                            <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">
+                                <?= $pagina['nome_categoria'] ?? 'Categoria não definida' ?>
+                            </h3>
                         </div>
                         <?php if ($mostrarEdicao): ?>
                             <a class="icon-sobreaong"
@@ -174,10 +181,10 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     
                                     <!-- Botão de Voluntariado -->
                                     <?php if (!$btnVoluntarioDisabled): ?>
-                                        <form id="formVoluntariar" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;">
+                                        <form id="formVoluntariarVisaoOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;">
                                             <input type="hidden" name="action" value="voluntariar">
-                                            <input type="hidden" name="id_ong" value="<?= $idOngUrl ?>">
-                                            <button type="submit" class="botao botao-primary" onclick="document.getElementById('formVoluntariar').submit();">Voluntariar-se</button>
+                                            <input type="hidden" name="id_ong" value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
+                                            <button type="submit" class="botao botao-primary">Voluntariar-se</button>
                                         </form>
                                     <?php else: ?>
                                         <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
@@ -211,8 +218,11 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
                     <div class="adm-ong-vision-about-location-div">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-location-dot"></i>
-                        <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">Campo Grande -
-                            MS R. Jardim Botânico 288</h3>
+                        <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">
+                            <?= $pagina['cidade'] ?? 'Cidade' ?> - <?= $pagina['estado'] ?? 'Estado' ?> 
+                            <?= $pagina['logradouro'] ?? '' ?> 
+                            <?= $pagina['numero'] ?? '' ?>
+                        </h3>
                     </div>
 
                     <div class="adm-ong-vision-about-div">
@@ -304,7 +314,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         </div>
                     </div>
                 </div>
-            </form>
+            </div> <!-- fim adm-ong-vision-form-box -->
         </div>
     </main>
     <?php require_once "../../view/components/footer.php"; ?>
