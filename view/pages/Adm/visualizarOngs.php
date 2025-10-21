@@ -23,25 +23,11 @@ if (isset($_SESSION['erro'], $erro)) {
 
 $admModel = new AdmModel();
 
-if(isset($_POST['data-inicio']) || isset($_POST['data-final'])){
-    $data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : NULL;
-    $data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : NULL;
+$nome_ong = isset($_POST['nome_ong']) ? trim($_POST['nome_ong']) : '';
+$data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
+$data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
 
-    $VisualizarOngs = $admModel->filtroOngsValidationByDataCriacao($data_inicio, $data_fim);
-} else if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
-    $nome_ong = trim($_POST['nome_ong']);
-    $VisualizarOngs = $admModel->findOngBySearch($nome_ong);
-} else {
-    $VisualizarOngs = $admModel->findOngBySearch('');
-}
-
-
-
-//$VisualizarOngs = $admModel->listOngsAprovadas();
-// $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
-// $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
-// $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
-
+$VisualizarOngs = $admModel->filtrarOngs($nome_ong, $data_inicio, $data_fim);
 
 
 // página atual e quantidade de páginas vindo do controller
