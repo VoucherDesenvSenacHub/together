@@ -18,7 +18,6 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
-    echo "<script>window.history.replaceState(null, null, window.location.pathname);</script>";
 }
 
 
