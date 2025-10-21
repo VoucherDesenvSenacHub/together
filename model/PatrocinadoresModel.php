@@ -109,4 +109,14 @@ class PatrocinadoresModel
         ]);
         return $stmt->fetch();
     }
+
+    public function buscarPatrocinadorExistente($nome)
+    {
+        $query = "SELECT p.nome FROM patrocinadores p WHERE p.nome = :nome AND p.ativo = :ativo";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindValue(":nome", $nome);
+        $stmt->bindValue(":ativo", true);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
