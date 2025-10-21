@@ -33,39 +33,40 @@ class AdmModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findOngBySearch($nome_ong)
+    public function filtrarOngs($nome_ong = '', $data_inicio = null, $data_fim = null)
     {
-        $sql = "SELECT razao_social, dt_criacao, status_validacao FROM ongs WHERE razao_social LIKE :nome_ong";
+        $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
+            FROM ongs
+            WHERE status_validacao = 'aprovado'";
+
+        $params = [];
+
+        if (!empty($nome_ong)) {
+            $sql .= " AND razao_social LIKE :nome_ong";
+            $params[':nome_ong'] = '%' . $nome_ong . '%';
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND dt_criacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
+
+        $sql .= " ORDER BY dt_criacao DESC";
+
         $stmt = $this->conn->prepare($sql);
-        $nome_ong = '%' . $nome_ong . '%';
-        $stmt->bindParam(':nome_ong', $nome_ong);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function filtroOngsValidationByDataCriacao($data_inicio = NULL, $data_fim = NULL)
-    {
-        if (!is_null($data_inicio) && !is_null($data_fim)) {
-            $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
-                    FROM ongs
-                    WHERE dt_criacao BETWEEN :data_inicio AND :data_fim
-                    ORDER BY dt_criacao DESC";
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':data_inicio', $data_inicio);
-            $stmt->bindParam(':data_fim', $data_fim);
-        } else {
-            $sql = "SELECT id, razao_social, dt_criacao, status_validacao, ativo
-                    FROM ongs
-                    ORDER BY dt_criacao DESC";
-
-            $stmt = $this->conn->prepare($sql);
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
         }
 
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listOngsAprovadas(){
+
+    public function listOngsAprovadas()
+    {
         $sql = "SELECT id,razao_social, dt_criacao FROM ongs WHERE status_validacao = 'aprovado'";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -94,7 +95,6 @@ class AdmModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 }
 
 // ===== Configuração da paginação da listagem =====
@@ -102,5 +102,3 @@ $porPagina = 15;
 $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 $pagina = max(1, $pagina); // nunca menor que 1
 $offset = ($pagina - 1) * $porPagina;
-
-
