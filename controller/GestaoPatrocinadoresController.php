@@ -6,9 +6,10 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patrocinadoresModel = new PatrocinadoresModel();
 
-    if(isset($_POST['pesquisar_patrocinador'])){
+    if (isset($_POST['pesquisar_patrocinador'])) {
         $_SESSION['patrocinador_nome'] = $_POST['pesquisar_patrocinador'];
         header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+        exit;
     }
 
     if ($_POST['action'] === 'deletar') {
@@ -61,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
     } elseif ($_POST['action'] === 'salvar') {
-        $existePatrocinador = $patrocinadoresModel->buscaPatrocinadoresPorNome($_POST['patrocinador']);
+        $existePatrocinador = $patrocinadoresModel->buscarPatrocinadorExistente($_POST['patrocinador']);
         if (!empty($existePatrocinador)) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Já existe um patrocinador com esse nome!';
