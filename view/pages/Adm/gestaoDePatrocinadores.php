@@ -40,7 +40,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <h1>Patrocinadores</h1>7
                 </div>
             </div>
-            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
+            <div class="formulario-perfil">
                 <div class="filtro">
                             <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
@@ -76,7 +76,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                             </a>
                                                 <input type="hidden" name="action" value="deletar">
                                                 <input type="hidden" name="id" value="<?= $patrocinador['id'] ?>">
-                                                <button type="submit" class="btn-desativar-patrocinador">
+                                                <button class="btn-desativar-patrocinador">
                                                     <?= renderAcao('deletar') ?>
                                                 </button>
                                         </div>
@@ -92,8 +92,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     </table>
                 </div>
                 <?php require_once './../../components/paginacao.php' ?>
-            </form>
-            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="modal-overlay <?= $editarPatrocinador ? 'aberto' : '' ?>" id="modal-overlay-patrocinadores">
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data" class="modal-overlay <?= $editarPatrocinador ? 'aberto' : '' ?>" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
                     <div class="inserir-patrocinadores">
                         <div class="inputs-patrocinadores">
