@@ -37,16 +37,15 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <div class="container-botao-patrocinadores">
                 <div class="titulo-pagina">
-                    <h1>Patrocinadores</h1>
+                    <h1>Patrocinadores</h1>7
                 </div>
             </div>
             <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST" enctype="multipart/form-data" class="formulario-perfil">
                 <div class="filtro">
-
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome') ?>
-                    </div>
+                            <div class="bloco-pesquisa">
+                            <?= label('pesquisar', '&nbsp;') ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome') ?>
+                        </div>
                     <div class="filtro-botao-patrocinador">
                         <div class="div-btn-patrocinador">
                             <?= botao('primary', 'Adicionar', 'abrir-patrocinadores', type: 'button') ?>
@@ -75,14 +74,11 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                             <a href="?editar=<?= $patrocinador['id'] ?>" class="btn-editar-patrocinador">
                                                 <?= renderAcao('editar') ?>
                                             </a>
-
-                                            <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST">
                                                 <input type="hidden" name="action" value="deletar">
                                                 <input type="hidden" name="id" value="<?= $patrocinador['id'] ?>">
                                                 <button type="submit" class="btn-desativar-patrocinador">
                                                     <?= renderAcao('deletar') ?>
                                                 </button>
-                                            </form>
                                         </div>
                                     </td>
                                 </tr>

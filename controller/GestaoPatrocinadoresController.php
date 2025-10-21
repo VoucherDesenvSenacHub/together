@@ -6,6 +6,11 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $patrocinadoresModel = new PatrocinadoresModel();
 
+    if(isset($_POST['pesquisar_patrocinador'])){
+        $_SESSION['patrocinador_nome'] = $_POST['pesquisar_patrocinador'];
+        header('Location: /together/view/pages/adm/gestaoDePatrocinadores.php');
+    }
+
     if ($_POST['action'] === 'deletar') {
         $resposta = $patrocinadoresModel->desativarPatrocinador($_POST['id']);
 
