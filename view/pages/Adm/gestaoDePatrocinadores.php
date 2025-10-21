@@ -6,9 +6,16 @@
 <?php require_once './../../../model/PatrocinadoresModel.php' ?>
 <?php require_once './../../components/upload.php' ?>
 <?php require_once './../../components/alert.php' ?>
+<?php require_once './../../components/paginacao.php' ?>
 <?php
 $patrocinadoresModel = new PatrocinadoresModel();
-$patrocinadores = isset($_SESSION['patrocinador_nome']) ?  $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['patrocinador_nome']) : $patrocinadoresModel->findPatrocinadores();
+
+if(isset($_SESSION['patrocinador_nome'])){
+
+    $patrocinadores = $patrocinadoresModel->buscaPatrocinadoresPorNome($_SESSION['patrocinador_nome']);
+}else{
+    $patrocinadores = $patrocinadoresModel->findPatrocinadores();
+}
 $preview = new ImagemPreview($patrocinadores['id'] ?? null);
 
 $editarPatrocinador = null;
@@ -24,6 +31,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
+$quantidadeDePaginas = ceil(count($patrocinadores)/10);
 ?>
 
 <body>
@@ -45,7 +53,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <form action="/together/controller/GestaoPatrocinadoresController.php" method="POST">
                             <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
-                            <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome', $_SESSION['patrocinador_nome']) ?? "" ?>
+                            <?= inputFilter('text', 'pesquisar', 'pesquisar_patrocinador', 'Pesquisar Nome', isset($_SESSION['patrocinador_nome']) ? $_SESSION['patrocinador_nome'] : "")?>
                     </form>
                         </div>
                     <div class="filtro-botao-patrocinador">
@@ -93,7 +101,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+            <?php criarPaginacao($quantidadeDePaginas); ?>
             </div>
             <form action="" method="POST" enctype="multipart/form-data" class="modal-overlay <?= $editarPatrocinador ? 'aberto' : '' ?>" id="modal-overlay-patrocinadores">
                 <div class="modal-content">
