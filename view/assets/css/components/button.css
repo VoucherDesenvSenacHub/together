@@ -68,6 +68,11 @@
     letter-spacing: 2px;
   }
 
+   .btn-desativar-patrocinador, .btn-editar-patrocinador{
+    background-color: transparent;
+    border: none;
+  }
+
   @media screen and (max-width: 395px){
     .botao {
       font-size: 10px;
