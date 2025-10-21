@@ -21,20 +21,20 @@ if (isset($_SESSION['erro'], $erro)) {
 }
 
 
-$VisualizarOngModel = new AdmModel();
+$admModel = new AdmModel();
 
-$VisualizarOngs = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nome_ong'])) {
+
     $nome_ong = trim($_POST['nome_ong']);
-    $VisualizarOngs = $VisualizarOngModel->findOngBySearch($nome_ong);
+    $VisualizarOngs = $admModel->findOngBySearch($nome_ong);
 } else {
-    $VisualizarOngs = $VisualizarOngModel->findOngBySearch('');
+    $VisualizarOngs = $admModel->findOngBySearch('');
 }
 
 
 
-$VisualizarOngs = $VisualizarOngModel->listOngsAprovadas();
+//$VisualizarOngs = $admModel->listOngsAprovadas();
 // $totalOngs = $VisualizarOngModel->contarUsuarios("Ong");
 // $VisualizarOngs = $VisualizarOngModel->listarUsuariosPaginado($porPagina, $offset, "Ong");
 // $quantidadeDePaginasOngs = ceil($totalOngs / $porPagina);
@@ -59,8 +59,8 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             </form>
 
             <div class="formulario-perfil">
-                <div class="filtro">
-                    <form action="visualizarOngs.php" method="POST">
+                <form action="visualizarOngs.php" method="POST">
+                    <div class="filtro">
                         <div class="bloco-datas">
 
                             <div class="filtro-por-mes">
@@ -75,61 +75,56 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                 <?= label('data-final', '&nbsp;') ?>
                                 <?= botao('primary', '✔') ?>
                             </div>
-                            
-                        </div>
-                    </form>
 
-                    <form action="visualizarOngs.php" method="POST">
+                        </div>
+
 
                         <div class="bloco-pesquisa">
                             <?= label('nome_ong', '&nbsp;') ?>
                             <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social') ?>
                         </div>
 
-                    </form>
-
-                </div>
-
-                <div class="table-mobile">
-                    <table class="tabela">
-                        <thead>
-                            <tr>
-                                <th>Data de Cadastro</th>
-                                <th>Razão Social</th>
-                                <th>Visualizar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($VisualizarOngs) && is_array($VisualizarOngs)) { ?>
-                                <form action="visualizarOngs.php" method="GET">
-
-                                    <?php foreach ($VisualizarOngs as $ong) { ?>
-                                        <tr>
-                                            <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
-                                            <td><?= $ong['razao_social'] ?></td>
-                                            <td>
-                                                <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
-                                                    <?= renderAcao('visualizar') ?>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                    <?php } else { ?>
-                                        <tr>
-                                            <td colspan="3" style="text-align:center;">Nenhuma ONG encontrada.</td>
-                                        </tr>
-                                    <?php } ?>
-                                </form>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Paginação -->
-                <?php if ($quantidadeDePaginas > 1) { ?>
-                    <?php criarPaginacao($quantidadeDePaginas); ?>
-                <?php } ?>
+                </form>
 
             </div>
+
+            <div class="table-mobile">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Data de Cadastro</th>
+                            <th>Razão Social</th>
+                            <th>Visualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($VisualizarOngs) && is_array($VisualizarOngs)) { ?>
+                            <?php foreach ($VisualizarOngs as $ong) { ?>
+                                <tr>
+                                    <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
+                                    <td><?= htmlspecialchars($ong['razao_social']) ?></td>
+                                    <td>
+                                        <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } else { ?>
+                            <tr>
+                                <td colspan="3" style="text-align:center;">Nenhuma ONG encontrada.</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginação -->
+            <?php if ($quantidadeDePaginas > 1) { ?>
+                <?php criarPaginacao($quantidadeDePaginas); ?>
+            <?php } ?>
+
+        </div>
         </div>
     </main>
 
