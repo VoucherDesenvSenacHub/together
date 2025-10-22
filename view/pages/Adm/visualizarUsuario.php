@@ -13,19 +13,24 @@ if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     exit;
 }
 
-// $VisualizarUsuarioModel = new AdmModel();
-// $totalUsuarios = $VisualizarUsuarioModel->contarUsuarios("Usuario");
-// $VisualizarUsuarios = $VisualizarUsuarioModel->listarUsuariosPaginado($porPagina, $offset, "Usuario");
-// $quantidadeDePaginasUsuarios = ceil($totalUsuarios / $porPagina);
-
-
 // mostra popup de erro se existir
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
 }
 
-// página atual definida pelo controller
+// Instancia o modelo
+$admModel = new AdmModel();
+
+// Pega os dados do formulário de filtro
+$nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : '';
+$data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
+$data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
+
+//  Chama a nova função de filtro em vez de listar todos
+$ListarUsuarios = $admModel->filtrarUsuarios($nome_usuario, $data_inicio, $data_fim);
+
+// página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
 $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
@@ -41,67 +46,68 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                     <h1 class="titulo-pagina">Usuários Cadastrados</h1>
                 </div>
             </form>
-
             <div class="formulario-perfil">
-                <div class="filtro">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                <form action="visualizarUsuario.php" method="POST">
+                    <div class="filtro">
+                        <div class="bloco-datas">
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio', '', $data_inicio) ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final', '', $data_fim) ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
                         </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
-                        </div>
-                    </div>
 
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Nome') ?>
-                    </div>
-                </div>
+                        <div class="bloco-pesquisa">
+                            <?= label('pesquisar', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_usuario', 'nome_usuario', 'Pesquisar Nome', $nome_usuario) ?>
+                        </div>
+                </form>
+            </div>
 
-                <div class="table-mobile">
-                    <table class="tabela">
-                        <thead>
-                            <tr>
-                                <th>Data de Cadastro</th>
-                                <th>Nome</th>
-                                <th>Visualizar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php if (!empty($VisualizarUsuarios)) { ?>
-                                <?php foreach ($VisualizarUsuarios as $usuario) { ?>
-                                    <tr>
-                                        <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
-                                        <td><?= $usuario['nome'] ?></td>
-                                        <td>
-                                            <a href="visaoDoUsuario.php?id=<?= $usuario['id'] ?? '' ?>">
-                                                <?= renderAcao('visualizar') ?>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            <?php } else { ?>
+            <div class="table-mobile">
+                <table class="tabela">
+                    <thead>
+                        <tr>
+                            <th>Data de Cadastro</th>
+                            <th>Nome</th>
+                            <th>Visualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($ListarUsuarios)) { ?>
+                            <?php foreach ($ListarUsuarios as $usuario) { ?>
                                 <tr>
-                                    <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
+                                    <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
+                                    <td><?= $usuario['nome'] ?></td>
+                                    <td>
+                                        <a href="visaoDoUsuario.php?id=<?= $usuario['id'] ?? '' ?>">
+                                            <?= renderAcao('visualizar') ?>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Paginação -->
-                <?php if ($quantidadeDePaginas > 1) { ?>
-                    <?php criarPaginacao($quantidadeDePaginas); ?>
-                <?php } ?>
-
+                        <?php } else { ?>
+                            <tr>
+                                <td colspan="3" style="text-align:center;">Nenhum usuário encontrado.</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
+
+            <!-- Paginação -->
+            <?php if ($quantidadeDePaginas > 1) { ?>
+                <?php criarPaginacao($quantidadeDePaginas); ?>
+            <?php } ?>
+
+        </div>
         </div>
     </main>
 
