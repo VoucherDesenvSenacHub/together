@@ -118,22 +118,23 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findDonationHistoryBySearch($userid, $nome_ong){
-    $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
+    public function findDonationHistoryBySearch($userid, $nome_ong)
+    {
+        $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
             FROM doacoes D
             JOIN ongs O ON O.id = D.id_ong
             JOIN usuarios U ON U.id = D.id_usuario
             WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
-    
-    $stmt = $this->conn->prepare($sql);
-    
-    $nome_ong = '%' . $nome_ong . '%';
-    $stmt->bindParam(':nome_ong', $nome_ong);
-    $stmt->bindParam(':userid', $userid);
-    
-    $stmt->execute();
-    
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt = $this->conn->prepare($sql);
+
+        $nome_ong = '%' . $nome_ong . '%';
+        $stmt->bindParam(':nome_ong', $nome_ong);
+        $stmt->bindParam(':userid', $userid);
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function findOngVolunteerBySearch($userid, $nome_ong)
@@ -281,6 +282,25 @@ class UsuarioModel
             return $stmt->execute();
         } catch (\Throwable $th) {
             return false;
+        }
+    }
+
+    public function buscarUsuarioOngsVoluntarias($id_usuario, $limite, $offset)
+    {
+        try {
+            $query = "SELECT o.id, v.dt_associacao, o.razao_social FROM voluntarios v INNER JOIN ongs o ON v.id_ong = o.id WHERE v.status_validacao = :status_validacao AND v.ativo = :ativo AND v.id_usuario = :id_usuario LIMIT :limite OFFSET :offset";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':status_validacao', 'aprovado', PDO::PARAM_STR);
+            $stmt->bindValue(':ativo', true, PDO::PARAM_BOOL);
+            $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return [];
         }
     }
 }

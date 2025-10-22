@@ -2,7 +2,18 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../components/paginacao.php' ?>
+<?php require_once './../../../model/UsuarioModel.php';
+$usuarioModel = new UsuarioModel();
 
+$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+$limite = 10;
+$offset = ($paginaAtual - 1) * $limite;
+
+$voluntariados = $usuarioModel->buscarUsuarioOngsVoluntarias($_SESSION['id'], $limite, $offset);
+
+$quantidadeDePaginas = count($voluntariados); 
+?>
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
@@ -18,7 +29,7 @@
                 </div>
             </form>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <div class="filtro">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -48,23 +59,27 @@
                                 <th>Visualizar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php $lista = ["Médicos Sem Fronteiras","Greenpeace","Amnesty International","WWF","Aldeias Infantis SOS","Cruz Vermelha","Instituto Ayrton Senna","Projeto Tamar","Fundação Abrinq","GRAACC"] ?>
-                            <?php for ($i = 0; $i < 10; $i++): ?>
+                        <tbody> 
+                            <?php foreach ($voluntariados as $voluntario): ?>
                                 <tr>
-                                    <td><?php echo $i + 10 ?>/09/2025</td>
-                                    <td><?php echo $lista[$i]?></td>
+                                    <td><?= $voluntario['dt_associacao'] ?? '' ?></td>
+                                    <td><?= $voluntario['razao_social'] ?? '' ?></td>
                                     <td>
-                                        <a href="\together\view\pages\visaoSobreaOng.php">
+                                        <a href="\together\view\pages\visaoSobreaOng.php?id=<?= $voluntario['id'] ?>">
                                             <?= renderAcao('visualizar') ?>
                                         </a>
                                     </td>
                                 </tr>
-                            <?php endfor ?>
+                            <?php endforeach; ?>
+                            <?php if (empty($voluntariados)) { ?>
+                                <tr>
+                                    <td colspan="3" style="text-align:center;">Nenhum voluntariado encontrado.</td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+                <?php criarPaginacao($quantidadeDePaginas); ?>
             </div>
         </div>
     </main>
