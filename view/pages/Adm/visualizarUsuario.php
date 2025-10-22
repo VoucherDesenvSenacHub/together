@@ -19,13 +19,15 @@ if (isset($_SESSION['erro'], $erro)) {
     unset($_SESSION['erro'], $erro);
 }
 
-//  Instancia o modelo
+// Instancia o modelo
 $admModel = new AdmModel();
 
+// Pega os dados do formulário de filtro
 $nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : '';
 $data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
 
+//  Chama a nova função de filtro em vez de listar todos
 $ListarUsuarios = $admModel->filtrarUsuarios($nome_usuario, $data_inicio, $data_fim);
 
 // página atual e quantidade de páginas vindo do controller
@@ -39,12 +41,13 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
         <?php require_once './../../components/back-button.php' ?>
 
         <div class="div-wrap-width">
-            <div class="superior-pagina-tabela">
-                <h1 class="titulo-pagina">Usuários Cadastrados</h1>
-            </div>
-
+            <form action="" class="form-filtro-data">
+                <div class="superior-pagina-tabela">
+                    <h1 class="titulo-pagina">Usuários Cadastrados</h1>
+                </div>
+            </form>
             <div class="formulario-perfil">
-                <form action="visualizarUsuarios.php" method="POST"> <!-- Defina o nome do arquivo correto aqui -->
+                <form action="visualizarUsuario.php" method="POST">
                     <div class="filtro">
                         <div class="bloco-datas">
                             <div class="filtro-por-mes">
@@ -62,10 +65,9 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </div>
 
                         <div class="bloco-pesquisa">
-                            <?= label('nome_usuario', '&nbsp;') ?>
+                            <?= label('pesquisar', '&nbsp;') ?>
                             <?= inputFilter('text', 'nome_usuario', 'nome_usuario', 'Pesquisar Nome', $nome_usuario) ?>
                         </div>
-                    </div>
                 </form>
             </div>
 
@@ -83,7 +85,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                             <?php foreach ($ListarUsuarios as $usuario) { ?>
                                 <tr>
                                     <td><?= date("d/m/Y", strtotime($usuario['dt_criacao'])) ?></td>
-                                    <td><?= htmlspecialchars($usuario['nome']) ?></td>
+                                    <td><?= $usuario['nome'] ?></td>
                                     <td>
                                         <a href="visaoDoUsuario.php?id=<?= $usuario['id'] ?? '' ?>">
                                             <?= renderAcao('visualizar') ?>
@@ -105,6 +107,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                 <?php criarPaginacao($quantidadeDePaginas); ?>
             <?php } ?>
 
+        </div>
         </div>
     </main>
 
