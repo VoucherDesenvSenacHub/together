@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once __DIR__ . '/../model/UsuarioModel.php';
 
-/**
- * Controller para gerenciar solicitações de voluntariado
- */
+require_once __DIR__ . '/../model/UsuarioModel.php';
+require_once __DIR__ . '/../model/OngModel.php'; 
+
+
 
 // Verifica se o usuário está logado
 if (!isset($_SESSION['id']) || !isset($_SESSION['perfil'])) {
@@ -14,7 +14,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['perfil'])) {
     exit;
 }
 
-// Verifica se é um usuário ou ONG (não Admin)
+// Verifica se é um usuário ou ONG 
 if ($_SESSION['perfil'] === 'Administrador') {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = 'Administradores não podem se voluntariar.';
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id_usuario = $_SESSION['id'];
     $id_ong = isset($_POST['id_ong']) ? intval($_POST['id_ong']) : null;
     
-    // Validação básica
+    // Validação 
     if (!$id_ong || $id_ong <= 0) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'ONG inválida.';
@@ -37,10 +37,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
     
-    // Instancia o model
+    // Impede que a ONG se voluntarie para si mesma
+    if ($_SESSION['perfil'] === 'Ong') {
+        $ongModelTmp = new OngModel();
+        // método verificarUsuarioTemOng está no OngModel
+        $dadosOngDoUsuario = $ongModelTmp->verificarUsuarioTemOng($id_usuario);
+        $idOngDoUsuario = isset($dadosOngDoUsuario['id_ong']) ? intval($dadosOngDoUsuario['id_ong']) : null;
+
+        if ($idOngDoUsuario && $idOngDoUsuario === $id_ong) {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = 'Uma ONG não pode se voluntariar para si mesma.';
+            header('Location: /together/view/pages/visaoSobreaOng.php?id=' . $id_ong);
+            exit;
+        }
+    }
+    
+    
     $usuarioModel = new UsuarioModel();
     
-    // Tenta registrar o voluntário
     $resultado = $usuarioModel->registrarVoluntario($id_usuario, $id_ong);
     
     // Trata o resultado
