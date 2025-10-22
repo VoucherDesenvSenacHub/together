@@ -14,7 +14,7 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['perfil'])) {
     exit;
 }
 
-// Verifica se é um usuário ou ONG 
+// Verifica se é um usuário ou ong 
 if ($_SESSION['perfil'] === 'Administrador') {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = 'Administradores não podem se voluntariar.';
