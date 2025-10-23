@@ -65,10 +65,33 @@ class AdmModel
     }
 
 
-    public function listOngsAprovadas()
+    public function filtrarUsuarios($nome_usuario = '', $data_inicio = null, $data_fim = null)
     {
-        $sql = "SELECT id,razao_social, dt_criacao FROM ongs WHERE status_validacao = 'aprovado'";
+        $sql = "SELECT id, nome, dt_criacao, ativo
+                FROM usuarios
+                WHERE ativo = 1"; // Assumindo que '1' significa ativo.
+
+        $params = [];
+
+        if (!empty($nome_usuario)) {
+            $sql .= " AND nome LIKE :nome_usuario";
+            $params[':nome_usuario'] = '%' . $nome_usuario . '%';
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND dt_criacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
+
+        $sql .= " ORDER BY dt_criacao DESC";
+
         $stmt = $this->conn->prepare($sql);
+
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -95,7 +118,25 @@ class AdmModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function listarUsuarios()
+    {
+        try {
+            $sql = "SELECT id, nome, dt_criacao FROM usuarios ORDER BY id ASC";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            // Registra erro no log
+            error_log("Erro ao listar usuários: " . $e->getMessage());
+            return []; // retorna um array vazio para evitar quebra do sistema
+        }
+    }
+
 }
+
 
 // ===== Configuração da paginação da listagem =====
 $porPagina = 15;

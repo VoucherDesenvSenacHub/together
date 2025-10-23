@@ -6,13 +6,18 @@
 <?php require_once './../../../model/UsuarioModel.php';
 $usuarioModel = new UsuarioModel();
 
-$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$limite = 10;
-$offset = ($paginaAtual - 1) * $limite;
 
-$voluntariados = $usuarioModel->buscarUsuarioOngsVoluntarias($_SESSION['id'], $limite, $offset);
+if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET['pesquisar'])) {
+    $hoje = date('Y-m-d');
+    $voluntariados = $usuarioModel->buscarOngsVoluntario($_SESSION['id'], $_GET['pesquisar'], $_GET['data-inicio'], $_GET['data-final'] ? $_GET['data-final'] : $hoje);
+} else {
+    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $limite = 10;
+    $offset = ($paginaAtual - 1) * $limite;
 
-$quantidadeDePaginas = count($voluntariados); 
+    $voluntariados = $usuarioModel->buscarUsuarioOngsVoluntarias($_SESSION['id'], $limite, $offset);
+    $quantidadeDePaginas = ceil($usuarioModel->contarUsuarioOngsVoluntarias($_SESSION['id']) / 10);
+}
 ?>
 
 <body>
@@ -29,7 +34,7 @@ $quantidadeDePaginas = count($voluntariados);
                 </div>
             </form>
             <div class="formulario-perfil">
-                <div class="filtro">
+                <form class="filtro" action="usuarioOngsVoluntarias.php" method="GET">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -49,7 +54,7 @@ $quantidadeDePaginas = count($voluntariados);
                         <?= label('pesquisar', '&nbsp;') ?>
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Razão Social') ?>
                     </div>
-                </div>
+                </form>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -59,7 +64,7 @@ $quantidadeDePaginas = count($voluntariados);
                                 <th>Visualizar</th>
                             </tr>
                         </thead>
-                        <tbody> 
+                        <tbody>
                             <?php foreach ($voluntariados as $voluntario): ?>
                                 <tr>
                                     <td><?= $voluntario['dt_associacao'] ?? '' ?></td>
@@ -79,7 +84,7 @@ $quantidadeDePaginas = count($voluntariados);
                         </tbody>
                     </table>
                 </div>
-                <?php criarPaginacao($quantidadeDePaginas); ?>
+                <?php !empty($quantidadeDePaginas) ? criarPaginacao($quantidadeDePaginas) : null; ?>
             </div>
         </div>
     </main>
