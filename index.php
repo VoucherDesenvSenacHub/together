@@ -52,7 +52,7 @@
                     <?= cardOng(
                         $ong['foto_ong'],
                         $ong['titulo_ong'],
-                        $ong['descricao_ong']
+                        $ong['descricao_ong'],
                     ) ?>
                 <?php } ?>
 
