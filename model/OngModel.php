@@ -424,11 +424,13 @@ class OngModel
     // Função auxiliar para pegar o último segmento da URL
     private function extrairNomePerfil($url)
     {
-        if (!$url) return null;
+        if (!$url)
+            return null;
 
         $parsed = parse_url($url);
 
-        if (!isset($parsed['path'])) return null;
+        if (!isset($parsed['path']))
+            return null;
 
         // Remove barra final e query string
         $path = rtrim($parsed['path'], '/');
@@ -485,7 +487,7 @@ class OngModel
                 LIMIT :limite";
 
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
             $stmt->execute();
 
             $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -513,5 +515,40 @@ class OngModel
         $stmt->bindParam(':id_postagem', $id_postagem);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function filtrarDoacoes($id_ong, $nome_usuario = '', $data_inicio = null, $data_fim = null)
+    {
+        $sql = "SELECT D.dt_doacao, U.nome, D.valor
+            FROM doacoes D
+            JOIN usuarios U ON U.id = D.id_usuario
+            WHERE D.id_ong = :id_ong";
+
+        $params = [':id_ong' => $id_ong];
+
+        // Filtro por nome do usuário (opcional)
+        if (!empty($nome_usuario)) {
+            $sql .= " AND U.nome LIKE :nome_usuario";
+            $params[':nome_usuario'] = '%' . $nome_usuario . '%';
+        }
+
+        // Filtro por intervalo de datas (opcional)
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND D.dt_doacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
+
+        $sql .= " ORDER BY D.dt_doacao DESC";
+
+        $stmt = $this->conn->prepare($sql);
+
+        // Faz o bind dos parâmetros de forma dinâmica
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

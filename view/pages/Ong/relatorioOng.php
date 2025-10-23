@@ -8,15 +8,17 @@
 // $idOng = $_SESSION['id_ong'] ?? null;
 $idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
+// $admModel = new AdmModel();
 
 $nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : '';
-$dtInicio = $_GET['dt_inicio'] ?? null;
-$dtFinal = $_GET['dt_final'] ?? null;
+$data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
+$data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
 
-$dtInicio = !empty($dtInicio) ? $dtInicio : null;
-$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+// $dtInicio = !empty($dtInicio) ? $dtInicio : null;
+// $dtFinal = !empty($dtFinal) ? $dtFinal : null;
 
-$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+// $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+$lista = $ongModel->filtrarDoacoes($idOng, $data_inicio, $data_fim);
 ?>
 
 <body>
@@ -82,11 +84,11 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
-                            <?= inputDefault('date', 'data-inicio', 'dt_inicio', $_GET['dt_inicio'] ?? '') ?>
+                            <?= inputDefault('date', 'data-inicio', 'dt_inicio', $data_inicio""'') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
-                            <?= inputDefault('date', 'data-final', 'dt_final', $_GET['dt_final'] ?? '') ?>
+                            <?= inputDefault('date', 'data-final', 'dt_final', $data_fim'') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
