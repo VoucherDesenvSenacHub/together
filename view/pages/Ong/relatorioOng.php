@@ -4,11 +4,12 @@
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../../model/OngModel.php' ?>
 
-<?php 
+<?php
 // $idOng = $_SESSION['id_ong'] ?? null;
 $idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
 
+$nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : '';
 $dtInicio = $_GET['dt_inicio'] ?? null;
 $dtFinal = $_GET['dt_final'] ?? null;
 
@@ -70,7 +71,8 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                         </div>
                     </div>
                     <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
+                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div"
+                            href="assets/images/Ong/relatorio.jpg" download>
                             <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
                             <p>Baixar Relatório</p>
                         </a>
@@ -113,9 +115,10 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                                     <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($lista as $doacao): ?>
+                                <?php foreach ($lista as $doacao): ?>
                                     <tr>
-                                        <td><?= $doacao['dt_doacao']?></td>
+                                        <td><?= date("d/m/Y", strtotime($doacao['dt_doacao'])) ?></td>
+                                        <!-- <td><?= $doacao['dt_doacao'] ?></td> -->
                                         <td><?= $doacao['nome'] ?></td>
                                         <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     </tr>
