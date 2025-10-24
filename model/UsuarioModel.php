@@ -118,30 +118,13 @@ class UsuarioModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findDonationHistoryBySearch($userid, $nome_ong){
-    $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
+    public function findDonationHistoryBySearch($userid, $nome_ong)
+    {
+        $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
             FROM doacoes D
             JOIN ongs O ON O.id = D.id_ong
             JOIN usuarios U ON U.id = D.id_usuario
             WHERE U.id = :userid AND O.razao_social LIKE :nome_ong";
-    
-    $stmt = $this->conn->prepare($sql);
-    
-    $nome_ong = '%' . $nome_ong . '%';
-    $stmt->bindParam(':nome_ong', $nome_ong);
-    $stmt->bindParam(':userid', $userid);
-    
-    $stmt->execute();
-    
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function findOngVolunteerBySearch($userid, $nome_ong)
-    {
-        $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social 
-                FROM voluntarios V
-                JOIN ongs O ON O.id = V.id_ong
-                WHERE V.id_usuario = :userid AND O.razao_social LIKE :nome_ong";
 
         $stmt = $this->conn->prepare($sql);
 
@@ -154,30 +137,37 @@ class UsuarioModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtroOngVolunteerByData($userid, $data_inicio = NULL, $data_fim = NULL)
+    public function buscarOngsVoluntario($userid, $nome_ong = null, $data_inicio = null, $data_fim = null)
     {
-        if (!is_null($data_inicio) && !is_null($data_fim)) {
-            $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social
-                FROM voluntarios V
-                JOIN ongs O ON O.id = V.id_ong
-                WHERE V.dt_associacao BETWEEN :data_inicio AND :data_fim
-                  AND V.id_usuario = :userid
-                ORDER BY V.dt_associacao DESC";
+        $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong as id, O.razao_social FROM voluntarios V JOIN ongs O ON O.id = V.id_ong WHERE V.id_usuario = :userid";
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':data_inicio', $data_inicio);
-            $stmt->bindParam(':data_fim', $data_fim);
-        } else {
-            $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong, O.razao_social
-                FROM voluntarios V
-                JOIN ongs O ON O.id = V.id_ong
-                WHERE V.id_usuario = :userid
-                ORDER BY V.dt_associacao DESC";
-
-            $stmt = $this->conn->prepare($sql);
+        // Filtros opcionais
+        if (!empty($nome_ong)) {
+            $sql .= " AND O.razao_social LIKE :nome_ong";
         }
 
-        $stmt->bindParam(':userid', $userid);
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+        }
+
+        $sql .= " ORDER BY V.dt_associacao DESC";
+
+        $stmt = $this->conn->prepare($sql);
+
+        // Bind obrigatório
+        $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
+
+        // Bind opcionais
+        if (!empty($nome_ong)) {
+            $nome_ong = '%' . $nome_ong . '%';
+            $stmt->bindParam(':nome_ong', $nome_ong, PDO::PARAM_STR);
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $stmt->bindParam(':data_inicio', $data_inicio);
+            $stmt->bindParam(':data_fim', $data_fim);
+        }
+
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -284,64 +274,92 @@ class UsuarioModel
         }
     }
 
-    public function registrarVoluntario($id_usuario, $id_ong){
-        try{
+    public function buscarUsuarioOngsVoluntarias($id_usuario, $limite, $offset)
+    {
+        try {
+            $query = "SELECT o.id, v.dt_associacao, o.razao_social FROM voluntarios v INNER JOIN ongs o ON v.id_ong = o.id WHERE v.status_validacao = 'aprovado' AND v.ativo = 1 AND v.id_usuario = :id_usuario ORDER BY v.dt_associacao ASC LIMIT :limite OFFSET :offset";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            return [];
+        }
+    }
+
+    public function contarUsuarioOngsVoluntarias($id_usuario)
+    {
+        try {
+            $query = "SELECT COUNT(*) AS total FROM voluntarios v WHERE v.status_validacao = 'aprovado' AND v.ativo = 1 AND v.id_usuario = :id_usuario";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return (int)$resultado['total'];
+        } catch (Exception $e) {
+            return 0;
+        }
+    }
+
+    public function registrarVoluntario($id_usuario, $id_ong)
+    {
+        try {
             $sqlVerifica = "SELECT id , status_validacao FROM voluntarios WHERE id_usuario = :id_usuario AND id_ong = :id_ong";
             $stmtVerifica =  $this->conn->prepare($sqlVerifica);
             $stmtVerifica->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmtVerifica->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
             $stmtVerifica->execute();
-        
+
             $voluntarioExistente = $stmtVerifica->fetch(PDO::FETCH_ASSOC);
 
-             if ($voluntarioExistente) {
+            if ($voluntarioExistente) {
 
-            if ($voluntarioExistente['status_validacao'] == 1) {
-                return 'ja_voluntario'; 
-            } else {
-                return 'solicitacao_pendente'; 
+                if ($voluntarioExistente['status_validacao'] == 'aprovado') {
+                    return 'ja_voluntario';
+                } else {
+                    return 'solicitacao_pendente';
+                }
             }
-        }
-         
+
             $sql = "INSERT INTO voluntarios (id_usuario, id_ong, dt_associacao, status_validacao, ativo) 
-                    VALUES (:id_usuario, :id_ong, NOW(), 0, 1)";
+                    VALUES (:id_usuario, :id_ong, NOW(), 'pendente', 1)";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
 
-if ($stmt->execute()) {
-    return true;
-}
+            if ($stmt->execute()) {
+                return true;
+            }
 
-return 'erro_inserir';
-
-        }catch
-            (PDOException $e) {
-        error_log("Erro ao registrar voluntário: " . $e->getMessage());
-        return 'erro_banco';
-
+            return 'erro_inserir';
+        } catch (PDOException $e) {
+            error_log("Erro ao registrar voluntário: " . $e->getMessage());
+            return $e->getMessage();
         }
     }
 
     public function verificarStatusVoluntario($id_usuario, $id_ong)
-{
-    try {
-        $sql = "SELECT id, dt_associacao, status_validacao, ativo 
+    {
+        try {
+            $sql = "SELECT id, dt_associacao, status_validacao, ativo 
                 FROM voluntarios 
                 WHERE id_usuario = :id_usuario 
                 AND id_ong = :id_ong";
-        
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-        $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
-        $stmt->execute();
-        
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-        
-    } catch (PDOException $e) {
-        error_log("Erro ao verificar status voluntário: " . $e->getMessage());
-        return false;
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao verificar status voluntário: " . $e->getMessage());
+            return false;
+        }
     }
-}
 }
