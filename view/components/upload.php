@@ -24,7 +24,7 @@ Como usar:
          <?php $preview->preview() ?>
 */
 
-require_once './../../components/acoes.php';
+require_once './../components/acoes.php';
 require_once __DIR__ . "/../../model/ImagemModel.php";
 
 class ImagemPreview
