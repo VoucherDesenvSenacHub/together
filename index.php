@@ -4,13 +4,26 @@
 <?php require_once './view/components/alert.php' ?>
 <?php require_once './model/OngModel.php' ?>
 <?php require_once './model/PatrocinadoresModel.php' ?>
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = new Dotenv();
+$dotenv->loadEnv(__DIR__ . '/.env');
+
+
+
+
+?>
 
 <body>
 
     <?php
     $ongModel = new OngModel();
     $ongs = $ongModel->ongsEmDestaque();
-    
+
     $patrocinadoresModel = new PatrocinadoresModel();
     $patrocinadores = $patrocinadoresModel->findPatrocinadores();
 
@@ -33,7 +46,8 @@
         <div class="home-banner-together">
             <div class="camada2">
                 <div class="home-banner-img-together">
-                    <img class="img-together" src="/together/view/assets/images/components/logoTogetherLogin.png" alt="">
+                    <img class="img-together" src="/together/view/assets/images/components/logoTogetherLogin.png"
+                        alt="">
                 </div>
             </div>
         </div>
@@ -49,7 +63,7 @@
             </div>
             <div class="container-home card-ong">
                 <?php foreach ($ongs as $ong) { ?>
-                    <?= cardOng(
+                <?= cardOng(
                         $ong['foto_ong'],
                         $ong['titulo_ong'],
                         $ong['descricao_ong']
@@ -84,7 +98,7 @@
                 <?= cardSobreNos("História do projeto", "Nosso site foi idealizado com o objetivo de criar um ponto de encontro virtual para ONGs que buscam ampliar seu impacto. Ao longo do tempo, trabalhamos para conectar as organizações com as pessoas certas, oferecendo uma plataforma simples, eficiente e de fácil acesso.") ?>
             </div>
             <div class="container-home card-sobre-nos-home">
-                <?= cardSobreNos("Nossos valores", "Valorizamos a transparência, com informações claras sobre ONGs e seus projetos.<br>Incentivamos a colaboração entre todos que queiram causar impacto positivo.<br>Defendemos a acessibilidade, permitindo que qualquer pessoa participe das ações sociais.",) ?>
+                <?= cardSobreNos("Nossos valores", "Valorizamos a transparência, com informações claras sobre ONGs e seus projetos.<br>Incentivamos a colaboração entre todos que queiram causar impacto positivo.<br>Defendemos a acessibilidade, permitindo que qualquer pessoa participe das ações sociais.", ) ?>
                 <?= cardSobreNos("Junte-se a nós", "Queremos fazer parte da transformação social. Se você é uma ONG, um voluntário ou um doador, convidamos você a se conectar conosco e fazer parte dessa rede de apoio. Explore os projetos disponíveis, participe de ações ou ajude a divulgar a causa que mais lhe toca.") ?>
             </div>
             <div class="linha-home"></div>
@@ -92,7 +106,8 @@
                 <div class="sobre-nos-card">
                     <?= cardSobreNos("Torne-se uma ONG", "Cadastre sua ONG em nossa plataforma e conecte-se com pessoas que realmente querem fazer a diferença. Aqui, sua causa ganha visibilidade, apoio e parcerias para crescer e impactar ainda mais vidas. Junte-se a uma rede que acredita no poder da transformação social!") ?>
                     <div class="btn-home-acao">
-                        <a href="<?= ($_SESSION['perfil'] ?? '') === 'Usuario' ? '/together/view/pages/cadastrarOng.php' : '/together/index.php?redirect=cadastrarOng' ?>">
+                        <a
+                            href="<?= ($_SESSION['perfil'] ?? '') === 'Usuario' ? '/together/view/pages/cadastrarOng.php' : '/together/index.php?redirect=cadastrarOng' ?>">
                             <?= botao('entrar', 'Cadastrar-se') ?>
                         </a>
                     </div>
@@ -108,12 +123,12 @@
         </div>
         <div class="logos">
             <div class="logos-slide">
-               <?php foreach ($patrocinadores as $patrocinador) { ?>
-                    <img src=<?echo$patrocinador["caminho"]?> />
+                <?php foreach ($patrocinadores as $patrocinador) { ?>
+                <img src=<? echo $patrocinador["caminho"] ?> />
                 <?php } ?>
-               
-                
-               
+
+
+
             </div>
         </div>
 

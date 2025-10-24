@@ -6,6 +6,7 @@ use App\Exceptions\EmailException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
+
 class EmailUtil
 {
     private PHPMailer $mailer;
