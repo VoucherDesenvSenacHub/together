@@ -1,20 +1,23 @@
-<?php require_once "../../components/head.php";
-require_once "../../components/button.php";
-require_once "../../components/label.php";
-require_once "../../components/input.php";
-require_once "../../components/textarea.php";
-require_once "../../../model/UsuarioModel.php";
-require_once "../../../model/ImagemModel.php";
-require_once "./../../components/upload.php";
-require_once "./../../components/alert.php";
-require_once "./../../components/selectEndereco.php";
+<?php require_once "../components/head.php";
+require_once "../components/button.php";
+require_once "../components/label.php";
+require_once "../components/input.php";
+require_once "../components/textarea.php";
+require_once "../../model/UsuarioModel.php";
+require_once "../../model/ImagemModel.php";
+require_once "../components/upload.php";
+require_once "./../components/alert.php";
+require_once "./../components/selectEndereco.php";
+
 
 $imgModel = new ImagemModel();
-$imagem = $imgModel->buscarImagemPorIdUsuario($_SESSION['id']);
+$idUsuario = $_SESSION['id'] ?? null;
+
+$imagem = $idUsuario ? $imgModel->buscarImagemPorIdUsuario($idUsuario) : [];
 $preview = new ImagemPreview($imagem['id'] ?? null);
 
 $usuarioModel = new UsuarioModel();
-$usuario = $usuarioModel->buscarUsuarioId($_SESSION['id']);
+$usuario = $idUsuario ? $usuarioModel->buscarUsuarioId($idUsuario) : [];
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -23,10 +26,10 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 ?>
 
 <body>
-    <?php require_once "../../../view/components/navbar.php" ?>
+    <?php require_once "../../view/components/navbar.php" ?>
 
     <main class="main-container main-min">
-        <?php require_once './../../components/back-button.php' ?>
+        <?php require_once './../components/back-button.php' ?>
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
@@ -111,7 +114,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     </div>
                     <div class="postagem-geral-div-btn">
                         <div class="postagem-geral-btn">
-                            <?= botao('salvar', 'Salvar', formaction: '../../../controller/UsuarioEditarController.php') ?>
+                            <?= botao('salvar', 'Salvar', formaction: '../../controller/UsuarioEditarController.php') ?>
                         </div>
                         <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
                     </div>
@@ -121,5 +124,5 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
     </main>
 
-    <?php require_once './../../components/footer.php' ?>
+    <?php require_once './../components/footer.php' ?>
 </body>
