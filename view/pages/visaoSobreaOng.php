@@ -84,7 +84,7 @@ switch ($perfil) {
         } else {
             // Visualizando outra ONG dai se já tem solicitação  desabilita 
             if ($statusVoluntario) {
-                if ($statusVoluntario['status_validacao'] == 1) {
+                if ($statusVoluntario['status_validacao'] == 'aprovado') {
                     $btnVoluntarioText = 'Você é Voluntário';
                     $btnVoluntarioDisabled = true;
                     $btnVoluntarioClass = 'secondary';
@@ -105,7 +105,7 @@ switch ($perfil) {
     case 'Usuario':
         $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?id_ong=' . $idOngUrl;
         if ($statusVoluntario) {
-            if ($statusVoluntario['status_validacao'] == 1) {
+            if ($statusVoluntario['status_validacao'] == 'aprovado') {
                 $btnVoluntarioText = 'Você é Voluntário';
                 $btnVoluntarioDisabled = true;
                 $btnVoluntarioClass = 'secondary';
