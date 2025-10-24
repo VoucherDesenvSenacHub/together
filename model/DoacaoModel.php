@@ -45,6 +45,39 @@ class DoacaoModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function filtrarDoacao(int $userid, string $nome_ong = "", ?string $data_inicio = null, ?string $data_fim = null){
+
+    $sql = "SELECT D.dt_doacao, O.razao_social, D.valor 
+            FROM doacoes D
+            JOIN ongs O ON O.id = D.id_ong
+            JOIN usuarios U ON U.id = D.id_usuario
+            WHERE U.id = :userid";
+
+    $params = [':userid' => $userid];
+
+    if (!empty($nome_ong)) {
+        $sql .= " AND O.razao_social LIKE :nome_ong";
+        $params[':nome_ong'] = '%' . $nome_ong . '%';
+    }
+
+    if (!is_null($data_inicio) && !is_null($data_fim)) {
+        $sql .= " AND D.dt_doacao BETWEEN :data_inicio AND :data_fim";
+        $params[':data_inicio'] = $data_inicio;
+        $params[':data_fim'] = $data_fim;
+    }
+
+    $sql .= " ORDER BY D.dt_doacao DESC";
+
+    $stmt = $this->conn->prepare($sql);
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value);
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function SalvarDoacao(
         int $idUser,
         int $idOng,
