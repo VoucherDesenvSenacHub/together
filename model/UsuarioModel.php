@@ -305,64 +305,61 @@ class UsuarioModel
         }
     }
 
-    public function registrarVoluntario($id_usuario, $id_ong){
-        try{
+    public function registrarVoluntario($id_usuario, $id_ong)
+    {
+        try {
             $sqlVerifica = "SELECT id , status_validacao FROM voluntarios WHERE id_usuario = :id_usuario AND id_ong = :id_ong";
             $stmtVerifica =  $this->conn->prepare($sqlVerifica);
             $stmtVerifica->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmtVerifica->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
             $stmtVerifica->execute();
-        
+
             $voluntarioExistente = $stmtVerifica->fetch(PDO::FETCH_ASSOC);
 
-             if ($voluntarioExistente) {
+            if ($voluntarioExistente) {
 
-            if ($voluntarioExistente['status_validacao'] == 1) {
-                return 'ja_voluntario'; 
-            } else {
-                return 'solicitacao_pendente'; 
+                if ($voluntarioExistente['status_validacao'] == 'aprovado') {
+                    return 'ja_voluntario';
+                } else {
+                    return 'solicitacao_pendente';
+                }
             }
-        }
-         
+
             $sql = "INSERT INTO voluntarios (id_usuario, id_ong, dt_associacao, status_validacao, ativo) 
-                    VALUES (:id_usuario, :id_ong, NOW(), 0, 1)";
+                    VALUES (:id_usuario, :id_ong, NOW(), 'pendente', 1)";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
 
-if ($stmt->execute()) {
-    return true;
-}
+            if ($stmt->execute()) {
+                return true;
+            }
 
-return 'erro_inserir';
-
-        }catch
-            (PDOException $e) {
-        error_log("Erro ao registrar voluntário: " . $e->getMessage());
-        return 'erro_banco';
-
+            return 'erro_inserir';
+        } catch (PDOException $e) {
+            error_log("Erro ao registrar voluntário: " . $e->getMessage());
+            return $e->getMessage();
         }
     }
 
     public function verificarStatusVoluntario($id_usuario, $id_ong)
-{
-    try {
-        $sql = "SELECT id, dt_associacao, status_validacao, ativo 
+    {
+        try {
+            $sql = "SELECT id, dt_associacao, status_validacao, ativo 
                 FROM voluntarios 
                 WHERE id_usuario = :id_usuario 
                 AND id_ong = :id_ong";
-        
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
-        $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
-        $stmt->execute();
-        
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-        
-    } catch (PDOException $e) {
-        error_log("Erro ao verificar status voluntário: " . $e->getMessage());
-        return false;
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+            $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erro ao verificar status voluntário: " . $e->getMessage());
+            return false;
+        }
     }
-}
 }
