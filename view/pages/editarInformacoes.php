@@ -10,6 +10,13 @@ require_once "./../components/alert.php";
 require_once "./../components/selectEndereco.php";
 
 
+if (empty($_SESSION['id'])) {
+    $_SESSION['type'] = "erro";
+    $_SESSION["message"] = "Você precisa estar logado para acessar essa pagina!";
+    header('location: /together/index.php');
+    exit();
+}
+
 $imgModel = new ImagemModel();
 $idUsuario = $_SESSION['id'] ?? null;
 
@@ -34,7 +41,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
             <div class="formulario-perfil">
-                <form action="" enctype="multipart/form-data" method="POST" class="postagem-geral-form editar-informacoes-form">
+                <form action="" enctype="multipart/form-data" method="POST"
+                    class="postagem-geral-form editar-informacoes-form">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
                             <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
@@ -80,7 +88,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?php renderSelectEstado($usuario['estado'] ?? '',); ?>
+                                <?php renderSelectEstado($usuario['estado'] ?? '', ); ?>
 
                                 <!-- <?= inputDefault('text', 'estado', 'estado', $usuario['estado'] ?? '') ?> -->
                             </div>
