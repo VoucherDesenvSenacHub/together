@@ -2,19 +2,32 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once './../../../model/OngModel.php' ?>
+
+<?php 
+// $idOng = $_SESSION['id_ong'] ?? null;
+$idOng = 1; // Temporário para testes
+$ongModel = new OngModel();
+
+$dtInicio = $_GET['dt_inicio'] ?? null;
+$dtFinal = $_GET['dt_final'] ?? null;
+
+$dtInicio = !empty($dtInicio) ? $dtInicio : null;
+$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+
+$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
-
     <main class="main-container">
-        <?php require_once '../../components/back-button.php' ?>
+        <?php require_once './../../components/back-button.php' ?>
 
-        <div class="relatorio-ong-container">
-            <div class="relatorio-ong-box">
+        <div class="div-wrap-width">
+            <h1 class="titulo-pagina">Relatórios</h1>
+
+            <div class="formulario-perfil">
                 <div class="relatorio-ong-area-limiter">
-                    <div class="relatorio-ong-title-div">
-                        <h1 class="titulo-pagina">Relatórios</h1>
-                    </div>
                     <div class="relatorio-ong-statistic-cards-div">
                         <div class="relatorio-ong-card-clicks-1">
                             <div title="+1,0 mil Clicks" class="relatorio-ong-card-text-value">
@@ -57,20 +70,21 @@
                         </div>
                     </div>
                     <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assests/images/Ong/relatorio.jpg" download>
+                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
                             <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
                             <p>Baixar Relatório</p>
                         </a>
                     </div>
-                    <div class="filtro">
+                </div>
+                <form class="filtro" method="GET">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                            <?= inputDefault('date', 'data-inicio', 'dt_inicio', $_GET['dt_inicio'] ?? '') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
+                            <?= inputDefault('date', 'data-final', 'dt_final', $_GET['dt_final'] ?? '') ?>
                         </div>
                         <div class="filtro-por-mes">
                             <?= label('data-final', '&nbsp;') ?>
@@ -80,30 +94,36 @@
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
+                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Doador') ?>
                     </div>
-                </div>
-                </div>
-                <!-- <div title="Gráfico do projeto" class="relatorio-ong-graphic-div"> -->
-                <table class="tabela">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Doador</th>
-                            <th>Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $lista = ["Ana Clara", "Bruno Silva", "Carlos Eduardo", "Daniela Souza", "Eduardo Lima", "Fernanda Alves", "Gabriel Rocha", "Helena Costa", "Isabela Martins", "João Pedro"]; ?>
-                        <?php for ($i = 0; $i < 10; $i++): ?>
+                </form>
+
+                <div class="table-mobile">
+                    <table class="tabela">
+                        <thead>
                             <tr>
-                                <td><?= $i+10?>/05/2025</td>
-                                <td><?= $lista[$i] ?></td>
-                                <td><?= "R$" . ($i+2) * 10 ?></td>
+                                <th>Data</th>
+                                <th>Doador</th>
+                                <th>Valor</th>
                             </tr>
-                        <?php endfor; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php if (empty($lista)): ?>
+                                <tr>
+                                    <td colspan="3">Nenhuma doação encontrada.</td>
+                                </tr>
+                            <?php else: ?>
+                                <?php foreach($lista as $doacao): ?>
+                                    <tr>
+                                        <td><?= $doacao['dt_doacao']?></td>
+                                        <td><?= $doacao['nome'] ?></td>
+                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
                 <?php require_once './../../components/paginacao.php' ?>
             </div>
         </div>

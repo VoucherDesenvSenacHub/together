@@ -2,6 +2,29 @@
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/label.php" ?>
+<?php require_once "./../components/alert.php" ?>
+
+<?php
+// // Pega a mensagem de erro e já limpa a sessão
+
+if (isset($_SESSION['erro'])) {
+    $erro = $_SESSION['erro'];
+    showPopup("erro", $erro); // passar o tipo e a mensagem
+    unset($_SESSION['erro']);
+}
+
+// Notificacao
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+
+//verifica se está logado e redireciona para o index
+if (isset($_SESSION['id'])) {
+    header("Location: /together/index.php");
+    exit;
+}
+?>
 
 <body class="body-login">
 
@@ -14,8 +37,9 @@
         <div class="conteudo-login">
 
             <div class="logo-login">
-                <img src="../assests/images/components/logoTogetherLoginMobile.png" alt="logoMobile" class="logo-imagem-login-mobile">
-                <img src="../assests/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
+                    class="logo-imagem-login-mobile">
+                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
             </div>
 
             <div class="box-login">
@@ -34,11 +58,12 @@
 
                         </div>
                         <div class="botao-login">
-                            <?= botao('salvar', 'Entrar',   '','../../controller/entrar.php') ?>
+                            <?= botao('salvar', 'Entrar', '', "./../../controller/EntrarController.php", "submit") ?>
                         </div>
                         <div class="criar-conta-area-login">
-                            <a href="redefinirSenha.php" class="text-login link-login">Esqueceu a senha?</a>
-                            <p class="text-login">Não possui uma conta? <a href="criarConta.php" class="text-login link-login">Criar nova conta</a> </p>
+                            <a href="esqueceuSenha.php" class="text-login link-login">Esqueceu a senha?</a>
+                            <p class="text-login">Não possui uma conta? <a href="criarConta.php"
+                                    class="text-login link-login">Criar nova conta</a> </p>
                         </div>
 
                     </div>
@@ -46,7 +71,6 @@
             </div>
         </div>
     </div>
-
 </body>
 
 <!-- <?php require_once "../../view/components/footer.php" ?> -->

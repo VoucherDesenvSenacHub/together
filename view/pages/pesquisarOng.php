@@ -4,159 +4,90 @@
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../components/textarea.php" ?>
 <?php require_once './../components/card.php' ?>
+<?php
+require_once './../components/paginacao.php';
+require_once "./../../model/CategoriaOngModel.php";
+
+
+require_once "./../../model/OngModel.php";
+$categoriaModel = new CategoriaOngModel();
+$categorias = $categoriaModel->getAll();
+$categoriasSelecionadas = [];
+if (isset($_SESSION['buscaDeOng'])) {
+    foreach ($_SESSION['buscaDeOng'] as $selecionado) {
+        $categoriasSelecionadas[] = $selecionado['id'];
+    }
+}
+$ongModel = new OngModel();
+$pesquisa = '';
+
+if (isset($_SESSION['nome_ong_pesquisa']) ) {
+    $pesquisa = $_SESSION['nome_ong_pesquisa'] ?? '';
+    if(count($categoriasSelecionadas) > 0){
+        $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
+    }else{
+        $ongs = $ongModel->buscarTodasOngs();
+    }
+    foreach($ongs as $chave => $ong){
+    if(!str_contains(strtolower($ong['razao_social']),strtolower( $pesquisa))){
+        unset($ongs[$chave]);
+        }
+    }
+}else{
+    $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
+}
+
+$quantidadeDePaginas = ceil(count($ongs) / 16)
+
+?>
 
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
-
-
         <?php require_once './../components/back-button.php' ?>
         <div class="ong-search-screen">
 
             <!-- Areá de Filtro -->
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar') ?>
-                    </div>
                     <div class="ong-search-screen-category-title-div">
                         <h1>Categorias</h1>
                     </div>
-                    <hr class="ong-search-screen-hr-line">
                     <div class="ong-search-screen-options-box">
-                        <form class="ong-search-screen-options-form" action="pesquisarOng.php" method="GET">
+                        <form class="ong-search-screen-options-form" method="POST">
+                            <div class="bloco-pesquisa">
+                                <?= label('pesquisar', '&nbsp;') ?>
+                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
+                            </div>
+                            <br>
+                            <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'erradicacao_pobreza') ?>
-                                            <span class="ong-search-screen-text-align">Erradicação da pobreza</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'fome_zero_agricultura') ?>
-                                            <span class="ong-search-screen-text-align">Fome zero e agricultura sustentável</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'saude_bem_estar') ?>
-                                            <span class="ong-search-screen-text-align">Saúde e Bem-Estar</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'educacao_qualidade') ?>
-                                            <span class="ong-search-screen-text-align">Educação de qualidade</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'igualdade_genero') ?>
-                                            <span class="ong-search-screen-text-align">Igualdade de gênero</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'agua_saneamento') ?>
-                                            <span class="ong-search-screen-text-align">Água potável e saneamento</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'energia_limpa') ?>
-                                            <span class="ong-search-screen-text-align">Energia limpa e acessível</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'trabalho_crescimento') ?>
-                                            <span class="ong-search-screen-text-align">Trabalho decente e crescimento econômico</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'industria_inovacao') ?>
-                                            <span class="ong-search-screen-text-align">Indústria, inovação e infraestrutura</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'reducao_desigualdades') ?>
-                                            <span class="ong-search-screen-text-align">Redução das desigualdades</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'cidades_sustentaveis') ?>
-                                            <span class="ong-search-screen-text-align">Cidades e comunidades sustentáveis</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'consumo_responsavel') ?>
-                                            <span class="ong-search-screen-text-align">Consumo e produção responsáveis</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'acao_clima') ?>
-                                            <span class="ong-search-screen-text-align">Ação contra a mudança global do clima</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'vida_agua') ?>
-                                            <span class="ong-search-screen-text-align">Vida na água</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'vida_terrestre') ?>
-                                            <span class="ong-search-screen-text-align">Vida terrestre</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'paz_justica') ?>
-                                            <span class="ong-search-screen-text-align">Paz, Justiça e Instituições Eficazes</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="ong-search-screen-filter-area">
-                                        <label class="checkbox-label">
-                                            <?= inputCheckBox('checkbox', 'ods[]', 'parcerias_meios') ?>
-                                            <span class="ong-search-screen-text-align">Parcerias e meios de implementação</span>
-                                        </label>
-                                    </div>
+                                    <?php foreach ($categorias as $categoria): ?>
+                                        <div class="ong-search-screen-filter-area">
+                                            <label class="checkbox-label">
+                                                <?php
+                                                $checked='';
+                                                if (!empty($categoriasSelecionadas)) {
+                                                    if (in_array($categoria["id"], $categoriasSelecionadas)) {
+                                                        $checked = 'checked';
+                                                    }
+                                                }
+                                                ?>
+                                                <?= inputCheckBox('', 'categoriasSelecionadas[]', $categoria["id"], $checked) ?>
+                                                <span class="ong-search-screen-text-align"><?= $categoria["nome"] ?></span>
+                                            </label>
+                                        </div>
+                                    <?php endforeach; ?>
                                 </div>
-
                                 <button type="button" class="toggle-btn" onclick="document.getElementById('filters').classList.toggle('expanded'); this.textContent = this.textContent === 'Ver mais ▼' ? 'Ver menos ▲' : 'Ver mais ▼'">Ver mais ▼</button>
                             </div>
 
                             <div class="filter-hidden-div"></div>
 
                             <div class="ong-search-screen-options-apply-filters-div">
-                                <?= botao('cancelar', 'Limpar Filtros', "", "#") ?>
-                                <?= botao('salvar', 'Aplicar Filtros', "", "#") ?>
+                                <?= botao('salvar', 'Aplicar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "aplicar") ?>
+                                <?= botao('cancelar', 'Limpar Filtros', "", "/together/controller/PesquisarOngController.php", "acao", "limpar") ?>
                             </div>
                         </form>
                     </div>
@@ -173,14 +104,19 @@
                 </div> -->
 
                 <div class="ong-search-screen-content-align-itens">
-                    <?php for ($i = 0; $i < 12; $i++): ?>
-                        <?= cardOng("https://img.cdndsgni.com/preview/10592521.jpg", "Salva Vidas!", "Salvamos a vida de animais abandonados, moradores de rua e todas as pessoas necessitadas.") ?>
-                    <?php endfor ?>
+                    <?php foreach ($ongs as $ong): ?>
+                        <?= cardOng($ong["caminho"], $ong["razao_social"], $ong["descricao"], $ong['id']) ?>
+                    <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
-
+                </div>
+                <div class="ong-search-screen-pagination">
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+            
                 </div>
             </div>
-
         </div>
     </main>
+
+    <?php require_once './../components/footer.php' ?>
+
 </body>
