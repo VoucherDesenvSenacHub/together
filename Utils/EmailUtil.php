@@ -15,7 +15,7 @@ class EmailUtil
     {
         // Garante que o autoload esteja disponível
         if (!class_exists(\PHPMailer\PHPMailer\PHPMailer::class)) {
-            require_once __DIR__ . '/../../vendor/autoload.php';
+            require_once __DIR__ . '/../config/autoload.php';
         }
 
         $this->mailer = new PHPMailer(true);
@@ -23,12 +23,12 @@ class EmailUtil
         try {
             // Configurações do servidor SMTP (Gmail)
             $this->mailer->isSMTP();
-            $this->mailer->Host = getenv('EMAIL_HOST') ?: 'smtp.gmail.com';
+            $this->mailer->Host = getenv('EMAIL_HOST');
             $this->mailer->SMTPAuth = true;
             $this->mailer->Username = getenv('EMAIL_USERNAME');
             $this->mailer->Password = getenv('EMAIL_PASSWORD');
-            $this->mailer->SMTPSecure = getenv('EMAIL_SMTP_SECURE') ?: 'tls';
-            $this->mailer->Port = getenv('EMAIL_PORT') ?: 587;
+            $this->mailer->SMTPSecure = getenv('EMAIL_SMTP_SECURE');
+            $this->mailer->Port = getenv('EMAIL_PORT');
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
             $this->mailer->setFrom(getenv('EMAIL_USERNAME'), getenv('EMAIL_FROM_NAME') ?: 'Suporte');
