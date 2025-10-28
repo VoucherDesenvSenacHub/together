@@ -4,19 +4,6 @@
 <?php require_once './view/components/alert.php' ?>
 <?php require_once './model/OngModel.php' ?>
 <?php require_once './model/PatrocinadoresModel.php' ?>
-<?php
-
-require_once __DIR__ . '/vendor/autoload.php';
-
-use Symfony\Component\Dotenv\Dotenv;
-
-$dotenv = new Dotenv();
-$dotenv->loadEnv(__DIR__ . '/.env');
-
-
-
-
-?>
 
 <body>
 
@@ -66,7 +53,8 @@ $dotenv->loadEnv(__DIR__ . '/.env');
                 <?= cardOng(
                         $ong['foto_ong'],
                         $ong['titulo_ong'],
-                        $ong['descricao_ong']
+                        $ong['descricao_ong'],
+                        $ong['id']
                     ) ?>
                 <?php } ?>
 
@@ -124,7 +112,7 @@ $dotenv->loadEnv(__DIR__ . '/.env');
         <div class="logos">
             <div class="logos-slide">
                 <?php foreach ($patrocinadores as $patrocinador) { ?>
-                <img src=<? echo $patrocinador["caminho"] ?> />
+                <img src="<?= $patrocinador["caminho"]?>" />
                 <?php } ?>
 
 

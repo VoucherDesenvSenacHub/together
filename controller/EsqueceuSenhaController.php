@@ -1,11 +1,10 @@
 <?php
+
+use App\Services\EmailService;
 session_start();
 
 require_once __DIR__ . "/../model/LoginModel.php";
-require_once __DIR__ . "/../controller/EmailController.php";
 require_once __DIR__ . "/../vendor/autoload.php";
-
-use App\Controllers\EmailController;
 
 try {
     $erros = [];
@@ -41,20 +40,9 @@ try {
         // Monta o link com o token
         $link = "http://localhost/together/view/pages/redefinirSenha.php?token={$token}";
 
-        // Cria o conteúdo do e-mail
-        $assunto = "Redefinição de Senha - Together";
-        $mensagem = "
-            <h2>Olá!</h2>
-            <p>Recebemos uma solicitação para redefinir sua senha.</p>
-            <p>Clique no link abaixo para criar uma nova senha. Esse link é válido por 1 hora.</p>
-            <p><a href='{$link}' target='_blank'>Redefinir minha senha</a></p>
-            <br>
-            <p>Se você não solicitou a redefinição, ignore este e-mail.</p>
-        ";
+        $emailService = new EmailService();
+        $emailService->MensagemEMail($email, $link);
 
-        // 5Envia o e-mail
-        $emailController = new EmailController();
-        $emailController->enviar($email, $assunto, $mensagem);
     }
 
     // Mensagem genérica (por segurança)
