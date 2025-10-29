@@ -2,10 +2,13 @@
 
 namespace App\Utils;
 
+require_once __DIR__ . "/../config/autoload.php";
+
 use App\Exceptions\EmailException;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception as PHPMailerException;
 
+require_once __DIR__ . "/../exceptions/EmailException.php";
 
 class EmailUtil
 {
@@ -13,27 +16,21 @@ class EmailUtil
 
     public function __construct()
     {
-        // Garante que o autoload esteja disponível
-        if (!class_exists(\PHPMailer\PHPMailer\PHPMailer::class)) {
-            require_once __DIR__ . '/../config/autoload.php';
-        }
-
         $this->mailer = new PHPMailer(true);
 
         try {
             // Configurações do servidor SMTP (Gmail)
             $this->mailer->isSMTP();
-            $this->mailer->Host = getenv('EMAIL_HOST');
+            $this->mailer->Host = $_ENV['EMAIL_HOST'];
             $this->mailer->SMTPAuth = true;
-            $this->mailer->Username = getenv('EMAIL_USERNAME');
-            $this->mailer->Password = getenv('EMAIL_PASSWORD');
-            $this->mailer->SMTPSecure = getenv('EMAIL_SMTP_SECURE');
-            $this->mailer->Port = getenv('EMAIL_PORT');
+            $this->mailer->Username = $_ENV['EMAIL_USERNAME'];
+            $this->mailer->Password = $_ENV['EMAIL_PASSWORD'];
+            $this->mailer->SMTPSecure = $_ENV['EMAIL_SMTP_SECURE'];
+            $this->mailer->Port = (int) $_ENV['EMAIL_PORT'];
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->isHTML(true);
-            $this->mailer->setFrom(getenv('EMAIL_USERNAME'), getenv('EMAIL_FROM_NAME') ?: 'Suporte');
-            $this->mailer->SMTPDebug = 0; // 0 = sem debug, 2 = debug detalhado
-            $this->mailer->Debugoutput = 'error_log';
+            $this->mailer->setFrom($_ENV['EMAIL_USERNAME'], $_ENV['EMAIL_FROM_NAME'] ?: 'Suporte');
+            $this->mailer->SMTPDebug = 0;
 
         } catch (PHPMailerException $e) {
             throw new EmailException("Falha ao configurar o PHPMailer: " . $e->getMessage());

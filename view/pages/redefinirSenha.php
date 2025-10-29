@@ -16,9 +16,10 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 $token = $_GET['token'] ?? '';
 
 if (empty($token)) {
+    var_dump("caiu no if token vazio");
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = "Token inválido. Solicite a redefinição novamente.";
-    header("Location: /together/view/pages/login.php");
+    // header("Location: /together/view/pages/login.php");
     exit;
 }
 

@@ -2,9 +2,8 @@
 
 use App\Services\EmailService;
 session_start();
-
 require_once __DIR__ . "/../model/LoginModel.php";
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../services/EmailService.php";
 
 try {
     $erros = [];
@@ -34,14 +33,16 @@ try {
     // Verifica se o e-mail existe no banco
     if ($loginModel->VerificarEmailExistente($email)) {
 
+        $url = $_ENV["BASE_URL"];
+
         // Armazena o token no banco (com validade de 1h)
         $token = $loginModel->gerarTokenRedefinicao($email);
 
         // Monta o link com o token
-        $link = "http://localhost/together/view/pages/redefinirSenha.php?token={$token}";
+        $link = "{$url}/together/view/pages/redefinirSenha.php?token={$token}";
 
         $emailService = new EmailService();
-        $emailService->MensagemEMail($email, $link);
+        $emailService->enviarEmailRedefinirSenha($email, $link);
 
     }
 
