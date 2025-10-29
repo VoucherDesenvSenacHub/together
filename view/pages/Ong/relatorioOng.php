@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once './../../components/head.php';
 require_once './../../components/label.php';
 require_once './../../components/input.php';
@@ -6,20 +6,17 @@ require_once './../../components/acoes.php';
 require_once './../../../model/OngModel.php';
 require_once './../../components/paginacao.php';
 
-$idOng = $_SESSION['id_ong'] ?? 1; // ou temporário para teste
+$idOng = $_SESSION['id_ong'] ?? 1;
 $ongModel = new OngModel();
 
-//  Captura filtros
 $dtInicio = $_GET['dt_inicio'] ?? null;
 $dtFinal  = $_GET['dt_final'] ?? null;
 $pesquisa = $_GET['pesquisar'] ?? null;
 
-// Normaliza os valores
 $dtInicio = !empty($dtInicio) ? $dtInicio : null;
 $dtFinal  = !empty($dtFinal)  ? $dtFinal  : null;
 $pesquisa = !empty($pesquisa) ? $pesquisa : null;
 
-// Se não for informado as datas, o método já traz tudo quando receber null
 $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
 
 // Filtro de pesquisa por nome do doador
@@ -32,13 +29,11 @@ if (!empty($pesquisa)) {
     $lista = array_values($lista);
 }
 
-// Paginação 
 $porPagina = 10;
 $totalRegistros = count($lista);
 $paginaAtual = isset($_GET['pagina']) ? max(1, (int)$_GET['pagina']) : 1;
 $offset = ($paginaAtual - 1) * $porPagina;
 
-// puxa apenas os itens da página atual
 $listaPaginada = array_slice($lista, $offset, $porPagina);
 $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $porPagina) : 0;
 ?>
@@ -52,7 +47,14 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Relatórios</h1>
 
-            <div class="formulario-perfil">          
+            <div class="formulario-perfil">
+
+                <div class="relatorio-ong-ong-options-4">
+                    <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
+                        <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
+                        <p>Baixar Relatório</p>
+                    </a>
+                </div>
                 <form class="filtro" method="GET">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
@@ -71,13 +73,12 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <input 
-                            type="text" 
-                            name="pesquisar" 
-                            id="pesquisar" 
+                        <input
+                            type="text"
+                            name="pesquisar"
+                            id="pesquisar"
                             placeholder="Pesquisar Doador"
-                            value="<?= htmlspecialchars($_GET['pesquisar'] ?? '') ?>"
-                        >
+                            value="<?= htmlspecialchars($_GET['pesquisar'] ?? '') ?>">
                     </div>
                 </form>
 
@@ -96,7 +97,7 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
                                     <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($listaPaginada as $doacao): ?>
+                                <?php foreach ($listaPaginada as $doacao): ?>
                                     <tr>
                                         <td><?= !empty($doacao['dt_doacao']) ? date('d/m/Y', strtotime($doacao['dt_doacao'])) : '-' ?></td>
                                         <td><?= htmlspecialchars($doacao['nome']) ?></td>
@@ -116,4 +117,5 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
     </main>
     <?php require_once "./../../components/footer.php"; ?>
 </body>
+
 </html>
