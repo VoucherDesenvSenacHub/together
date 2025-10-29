@@ -50,7 +50,7 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
             <div class="formulario-perfil">
 
                 <div class="relatorio-ong-ong-options-4">
-                    <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
+                    <a id="btn-relatorio-pdf" title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="#" role="button">
                         <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
                         <p>Baixar Relatório</p>
                     </a>
@@ -116,6 +116,8 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
         </div>
     </main>
     <?php require_once "./../../components/footer.php"; ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-y3BX72fTncSNSd88GmFfkEtR2KkC1otY3sEZtQhWv5Q5bE6nSxQMhEPBjf0AJq4NLG2x8WGdJ2zyVJQ6QkUA6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/together/view/assets/js/pages/relatorioOng_PDF.js?v=5"></script>
 </body>
 
 </html>
