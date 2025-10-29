@@ -16,10 +16,9 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 $token = $_GET['token'] ?? '';
 
 if (empty($token)) {
-    var_dump("caiu no if token vazio");
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = "Token inválido. Solicite a redefinição novamente.";
-    // header("Location: /together/view/pages/login.php");
+    header("Location: /together/view/pages/login.php");
     exit;
 }
 
@@ -49,6 +48,7 @@ $_SESSION['email_redefinicao'] = $email;
             <div class="box-login">
 
                 <form class="login" method="POST" action="">
+                     <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
                     <h1 class="titulo-login">Redefinir Senha</h1>
 
                     <div class="step active">
