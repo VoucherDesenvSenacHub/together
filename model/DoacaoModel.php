@@ -13,7 +13,7 @@ class DoacaoModel {
     public function BuscarDoacoesPorID(int $idUsuario, ?int $pagina = null, int $tamanhoPagina = 15){
         if($pagina === null){
             // busca total (sem paginação)
-            $query = "SELECT D.dt_doacao, O.razao_social, D.valor 
+            $query = "SELECT O.id, D.dt_doacao, O.razao_social, D.valor 
                       FROM doacoes D 
                       JOIN ongs O ON O.id = D.id_ong 
                       JOIN usuarios U ON U.id = D.id_usuario 
