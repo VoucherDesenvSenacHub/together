@@ -2,18 +2,15 @@
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-<?php require_once "../../../model/UsuarioModel.php";
+<?php require_once "../../../model/OngModel.php";
 require_once "./../../components/upload.php";
 
 // USADO PARA LISTAR INFORMAÇÕES DO USUARIO
-$usuarioModel = new UsuarioModel();
-$usuario = $usuarioModel->buscarUsuarioId($_GET['id'] ?? null);
+$ongModel = new OngModel();
+$usuario = $ongModel->buscarVoluntarioPorId($_GET['id'] ?? null);
 
 // USADO PARA O PREVIEW DA IMAGEM
-$imagemModel = new ImagemModel();
-$imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id'] ?? null);
-
-$preview = new ImagemPreview($imagem['id'] ?? null);
+$preview = new ImagemPreview($usuario['id_imagem'] ?? null);
 ?>
 
 <body>
@@ -33,6 +30,7 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
                             <div class="container-readonly-primary">
                                 <div class="form-row">
                                     <div>
+                                        <input type="hidden" name="id_voluntario" value=<?= $_GET['id'] ?? null?>>
                                         <?= label('nome', 'Nome') ?>
                                         <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
                                     </div>
@@ -100,8 +98,8 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', 'btnExcluirVoluntario', '/together/view/pages/Ong/validacaoVoluntario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', formaction: '/together/controller/VisualizarVoluntariosController.php', name:'action', value:'aceitar') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar',  formaction: '/together/controller/VisualizarVoluntariosController.php', name:'action', value:'recusar') ?> </div>
                         </div>
                     </div>
                 </form>
