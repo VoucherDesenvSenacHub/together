@@ -20,6 +20,40 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function filtrarVoluntario($nome_usuario_voluntario, $data_inicio = null, $data_fim = null)
+    {
+        $sql = "SELECT V.dt_associacao, U.nome
+            FROM voluntarios V
+            JOIN usuarios U ON U.id = V.id_usuario
+            WHERE V.ativo = 1";
+
+        $params = [];
+
+        if (!empty($nome_usuario_voluntario)) {
+            // Adiciona o filtro de nome, se fornecido
+            $sql .= " AND U.nome LIKE :nome_usuario_voluntario";
+            $params[':nome_usuario_voluntario'] = '%' . $nome_usuario_voluntario . '%';
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            // Adiciona o filtro de data, se fornecido
+            $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
+
+        $sql .= " ORDER BY V.dt_associacao DESC";
+
+        $stmt = $this->conn->prepare($sql);
+
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function findVoluntarioBySearch($nome_usuario)
     {
         $sql = "SELECT V.dt_associacao, U.nome
