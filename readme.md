@@ -12,8 +12,6 @@ O gerenciamento de dependências é feito com o **Composer local** (`composer.ph
 
 clonar o repositorio
 
-# instalar o composer
-
 php composer.phar install
 
 Criar um arquivo .env para colocar suas variáveis de ambiente
