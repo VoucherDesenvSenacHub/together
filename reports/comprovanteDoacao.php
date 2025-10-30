@@ -1,11 +1,11 @@
 <?php
 
-require_once '../model/DoacaoModel.php';
+require_once '../utils/PdfUtil.php';
 
-$modelDoacao = new DoacaoModel();
-$doacoes = $modelDoacao->BuscarDoacoesPorID(1);
+$id = 5;
 
-var_dump($doacoes['dt_doacoes']);
+$modelDoacao = new PdfUtil();
+$doacoes = $modelDoacao->procurarHistoricoDoacao($id);
 
 $ong = [
     'nome' => 'ONG Legal',
@@ -81,16 +81,16 @@ $ong = [
         <h1 class="titulo">Comprovante de Doação</h1>
     
         <div class="flex">
-            <p><strong>ID da Transação:</strong> <?= $doacoes['id'] ?></p>
-            <p><strong>Data da Transação:</strong> <?= $doacoes['dt_doacao'] ?></p>
-            <p><strong>Hora da Transação:</strong> <?= $doacoes['hora'] ?></p>
+            <p><strong>ID da Transação:</strong> <?= $doacoes[0]['codigo_transacao'] ?></p>
+            <p><strong>Data da Transação:</strong> <?= $doacoes[0]['dt_doacao'] ?></p>
+            <p><strong>Hora da Transação:</strong> <?= $doacoes[0]['hora'] ?></p>
         </div>
         
         <hr>
         
-        <p><strong>Nome do Doador:</strong> <?= $doacoes['id_usuario'] ?></p>
-        <p><strong>Cartão:</strong> **** **** **** <?= $doacoes['ultimos_digitos'] ?></p>
-        <p><strong>Valor pago:</strong> R$ <?= $doacoes['valor'] ?></p>
+        <p><strong>Nome do Doador:</strong> <?= $doacoes[0]['nome'] ?></p>
+        <p><strong>Cartão:</strong> **** **** **** <?= $doacoes[0]['ultimos_digitos'] ?></p>
+        <p><strong>Valor pago:</strong> R$ <?= $doacoes[0]['valor'] ?></p>
     
         <hr>
 
