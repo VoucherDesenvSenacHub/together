@@ -16,4 +16,4 @@ php composer.phar install
 
 Criar um arquivo .env para colocar suas variáveis de ambiente, como o exemplo.
 
-(/.env_example)
+(./.env_example)
