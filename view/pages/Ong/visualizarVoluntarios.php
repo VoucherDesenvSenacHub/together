@@ -24,7 +24,7 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
-                            <?php $preview->preview() ?>
+                            <?php $preview->preview(true) ?>
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
