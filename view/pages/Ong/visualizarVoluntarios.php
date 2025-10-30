@@ -30,7 +30,7 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
                             <div class="container-readonly-primary">
                                 <div class="form-row">
                                     <div>
-                                        <input type="hidden" name="id_voluntario" value=<?= $_GET['id'] ?? null?>>
+                                        <input type="hidden" name="id_voluntario" value=<?= $_GET['id'] ?? null ?>>
                                         <?= label('nome', 'Nome') ?>
                                         <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
                                     </div>
@@ -98,8 +98,8 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', formaction: '/together/controller/VisualizarVoluntariosController.php', name:'action', value:'aceitar') ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar',  formaction: '/together/controller/VisualizarVoluntariosController.php', name:'action', value:'recusar') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', formaction: '/together/controller/VisualizarVoluntariosController.php', name: 'action', value: 'aceitar') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar',  formaction: '/together/controller/VisualizarVoluntariosController.php', name: 'action', value: 'recusar') ?> </div>
                         </div>
                     </div>
                 </form>
