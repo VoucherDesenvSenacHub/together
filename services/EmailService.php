@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Services;
-
 use App\Utils\EmailUtil;
 use App\Exceptions\EmailException;
 
-require_once __DIR__ . "/../Utils/EmailUtil.php";
-
+require_once __DIR__ . "/../utils/EmailUtil.php";
 
 class EmailService
 {
@@ -32,5 +30,4 @@ class EmailService
         $mailUtil = new EmailUtil();
         $mailUtil->enviar($destinatario, $assunto, $mensagem);
     }
-
 }

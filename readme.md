@@ -8,26 +8,12 @@ O gerenciamento de dependências é feito com o **Composer local** (`composer.ph
 - PHP 8.1 ou superior
 - Composer local (`composer.phar` na raiz do projeto)
 
-## ⚙️ Instalação
+### ⚙️ instalar as dependências
 
 clonar o repositorio
 
 php composer.phar install
 
-Criar um arquivo .env para colocar suas variáveis de ambiente
+Criar um arquivo .env para colocar suas variáveis de ambiente, como o exemplo.
 
-# Exemplo:
-
-EMAIL_HOST=smtp.gmail.com
-
-EMAIL_USER=seuemail@gmail.com
-
-EMAIL_PASS=sua_senha_de_app
-
-EMAIL_PORT=587
-
-# Dependências
-
-PHPMailer php composer.phar require phpmailer/phpmailer
-
-Symfony Dotenv php composer.phar require symfony/dotenv
+(/.env_example)

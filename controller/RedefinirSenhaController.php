@@ -40,14 +40,13 @@ try {
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
     }
-    
+
     $novaSenhaHash = password_hash($senha, PASSWORD_DEFAULT);
     $redefiniu = $loginModel->redefinirSenha($email, $novaSenhaHash);
 
     if (!$redefiniu) {
         throw new Exception("Erro ao redefinir a senha. Tente novamente.");
     }
-
 
     unset($_SESSION['email_redefinicao']);
     $_SESSION['type'] = 'sucesso';
@@ -58,7 +57,7 @@ try {
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = $e->getMessage();
-    $token = $_POST['token'] ?? ''; 
+    $token = $_POST['token'] ?? '';
     header("Location: /together/view/pages/redefinirSenha.php?token=" . urlencode($token));
     exit;
 }

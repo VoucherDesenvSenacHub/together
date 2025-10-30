@@ -56,7 +56,6 @@ class LoginModel
         return $tokenGerado;
     }
 
-
     // Valida token e retorna o email se válido
     public function validarToken(string $token): ?string
     {
@@ -80,7 +79,6 @@ class LoginModel
         ]);
     }
 
-
     public function buscarSenhaAtual(string $email): ?string
     {
         $stmt = $this->conn->prepare("SELECT senha FROM usuarios WHERE email = :email LIMIT 1");
@@ -97,7 +95,6 @@ class LoginModel
         $stmt->execute([$email]);
         error_log("[limparTokenExpirado] limpo token para {$email}, linhas afetadas: " . $stmt->rowCount());
     }
-
 }
 
 

@@ -26,7 +26,6 @@
         unset($_SESSION['type'], $_SESSION['message']);
     }
     ?>
-
     <?php require_once './view/components/navbar.php' ?>
     <?php require_once './view/components/sidebar.php' ?>
     <main>
@@ -50,15 +49,13 @@
             </div>
             <div class="container-home card-ong">
                 <?php foreach ($ongs as $ong) { ?>
-                <?= cardOng(
+                    <?= cardOng(
                         $ong['foto_ong'],
                         $ong['titulo_ong'],
                         $ong['descricao_ong'],
                         $ong['id']
                     ) ?>
                 <?php } ?>
-
-
             </div>
             <div class="linha-home"></div>
             <div class="container-home card-sobre-nos-home">
@@ -107,19 +104,14 @@
                 </div>
             </div>
             <div class="linha-home bottom"></div>
-
         </div>
         <div class="logos">
             <div class="logos-slide">
                 <?php foreach ($patrocinadores as $patrocinador) { ?>
-                <img src="<?= $patrocinador["caminho"]?>" />
+                    <img src="<?= $patrocinador["caminho"] ?>" />
                 <?php } ?>
-
-
-
             </div>
         </div>
-
     </main>
 
     <?php require_once './view/components/footer.php' ?>
