@@ -1,26 +1,12 @@
 <?php
-
-use Dompdf\Dompdf;
-
-require '../vendor/autoload.php';
-
 class RelatorioService
 {
     public function gerarComprovanteDoacao()
     {
         ob_start();
-        require '../reports/comprovanteDoacao.php';
-        $relatorioComprovante = ob_get_clean();
-
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($relatorioComprovante);
-        $dompdf->setPaper('A4');
-        $dompdf->render();
-
-        $dompdf->stream();
+        require __DIR__ . '/../reports/comprovanteDoacao.php';
+        $relatorioComprovanteHtml = ob_get_clean();
+        // Esse trecho eu tenho que mover para o utils, o service chama uma funcao util para gerar o relatorio
+        return ;
     }
 }
-
-
-$relatorioService = new RelatorioService();
-$relatorioService->gerarComprovanteDoacao();

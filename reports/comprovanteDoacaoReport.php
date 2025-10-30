@@ -1,11 +1,12 @@
 <?php
 
-require_once '../utils/PdfUtil.php';
+require_once __DIR__ . '/../model/RelatorioModel.php';
 
 $id = 5;
 
-$modelDoacao = new PdfUtil();
-$doacoes = $modelDoacao->procurarHistoricoDoacao($id);
+// aqui só vai ter importacao para a model e consulta para o banco que chama a model e montar o html que gera o relatorio
+$relatorioModel = new RelatorioModel();
+$doacao = $relatorioModel->buscarDoacao($id);
 
 $ong = [
     'nome' => 'ONG Legal',
@@ -13,8 +14,8 @@ $ong = [
     'endereco' => 'Senac Hub Academy'
 ];
 
-$doacoes[0]['hora'] = date('H:i:s', strtotime($doacoes[0]['dt_doacao']));
-$doacoes[0]['dt_doacao'] = date('d/m/Y', strtotime($doacoes[0]['dt_doacao']));
+$doacao['hora'] = date('H:i:s', strtotime($doacao['dt_doacao']));
+$doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
  
 ?>
 <!DOCTYPE html>
@@ -93,18 +94,18 @@ $doacoes[0]['dt_doacao'] = date('d/m/Y', strtotime($doacoes[0]['dt_doacao']));
     
         <table>
             <tr>
-                <td><strong>ID da Transação:</strong> <?= $doacoes[0]['codigo_transacao'] ?></td>
-                <td><strong>Data da Transação:</strong> <?= $doacoes[0]['dt_doacao'] ?></td>
-                <td><strong>Hora da Transação:</strong> <?= $doacoes[0]['hora'] ?></td>
+                <td><strong>ID da Transação:</strong> <?= $doacao['codigo_transacao'] ?></td>
+                <td><strong>Data da Transação:</strong> <?= $doacao['dt_doacao'] ?></td>
+                <td><strong>Hora da Transação:</strong> <?= $doacao['hora'] ?></td>
             </tr>
         </table>
 
         
         <hr>
         
-        <p><strong>Nome do Doador:</strong> <?= $doacoes[0]['nome'] ?></p>
-        <p><strong>Cartão:</strong> **** **** **** <?= $doacoes[0]['ultimos_digitos'] ?></p>
-        <p><strong>Valor pago:</strong> R$ <?= $doacoes[0]['valor'] ?></p>
+        <p><strong>Nome do Doador:</strong> <?= $doacao['nome'] ?></p>
+        <p><strong>Cartão:</strong> **** **** **** <?= $doacao['ultimos_digitos'] ?></p>
+        <p><strong>Valor pago:</strong> R$ <?= $doacao['valor'] ?></p>
     
         <hr>
 
