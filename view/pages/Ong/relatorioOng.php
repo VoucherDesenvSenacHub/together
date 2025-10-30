@@ -5,6 +5,7 @@ require_once './../../components/input.php';
 require_once './../../components/acoes.php';
 require_once './../../../model/OngModel.php';
 require_once './../../components/paginacao.php';
+require_once './../../components/input.php';
 
 $idOng = $_SESSION['id_ong'] ?? 1;
 $ongModel = new OngModel();
@@ -73,12 +74,13 @@ $quantidadeDePaginas = ($totalRegistros > 0) ? (int) ceil($totalRegistros / $por
 
                     <div class="bloco-pesquisa">
                         <?= label('pesquisar', '&nbsp;') ?>
-                        <input
-                            type="text"
-                            name="pesquisar"
-                            id="pesquisar"
-                            placeholder="Pesquisar Doador"
-                            value="<?= htmlspecialchars($_GET['pesquisar'] ?? '') ?>">
+                        <?= inputFilter(
+                            type: 'text',
+                            id: 'pesquisar',
+                            name: 'pesquisar',
+                            placeholder: 'Pesquisar Doador',
+                            value: htmlspecialchars($_GET['pesquisar'] ?? '', ENT_QUOTES, 'UTF-8')
+                        ) ?>
                     </div>
                 </form>
 
