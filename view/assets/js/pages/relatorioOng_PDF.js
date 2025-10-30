@@ -1,5 +1,4 @@
-// relatorioOng_PDF.js
-// Caminho: /together/view/assets/js/pages/relatorioOng_PDF.js
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const gatilho =
@@ -37,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (tds.length >= 3) {
             const data   = (tds[0].textContent || '').trim();
             const doador = (tds[1].textContent || '').trim();
-            const valor  = (tds[2].textContent || '').trim(); // "R$ 1.234,56"
+            const valor  = (tds[2].textContent || '').trim(); 
             const vNum   = parseBRL(valor);
             if (isFinite(vNum)) totalPagina += vNum;
             dados.push({ data, doador, valor });
@@ -53,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const logoPath = '/together/view/assets/images/Geral/Together.png';
 
       const container = document.createElement('div');
-      // A4 = 210mm x 297mm. Usamos 190mm + padding 10mm = 210mm, sem margem do html2pdf (margin:0).
       container.style.width = '190mm';
       container.style.boxSizing = 'border-box';
       container.style.padding = '10mm';
@@ -152,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       const opts = {
-        margin: 0, // usamos o padding do container como margem
+        margin: 0, 
         filename: `relatorio-doacoes-${stamp}.pdf`,
         html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
