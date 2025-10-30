@@ -14,6 +14,4 @@ clonar o repositorio
 
 php composer.phar install
 
-Criar um arquivo .env para colocar suas variáveis de ambiente, como o exemplo.
-
-(./.env_example)
+Criar um arquivo `.env` para colocar suas variáveis de ambiente, como o exemplo em [.env.example](./.env.example)
