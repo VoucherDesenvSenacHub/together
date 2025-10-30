@@ -24,7 +24,12 @@ if ($quantidadeDePaginas > 0) {
     $pagina = 1;
 }
 
-$doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
+$nome_ong = isset($_POST['nome_ong']) ? trim($_POST['nome_ong']) : '';
+$data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
+$data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
+
+$doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_inicio, $data_fim);
+
 ?>
 
 <body>
@@ -34,29 +39,31 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Histórico de Doações</h1>
             <div class="formulario-perfil">
+                <form action="visualizarOngs.php" method="POST">
+                    <div class="filtro">
+                        <div class="bloco-datas">
 
-                <div class="filtro">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= botao('primary', '✔') ?>
+                                <div class="filtro-por-mes">
+                                    <?= label('data-inicio', 'Período') ?>
+                                    <?= inputFilter('date', 'data-inicio', 'data-inicio') ?>
+                                </div>
+                                <div class="filtro-por-mes">
+                                    <?= label('data-final', '&nbsp;') ?>
+                                    <?= inputFilter('date', 'data-final', 'data-final') ?>
+                                </div>
+                                <div class="filtro-por-mes">
+                                    <?= label('data-final', '&nbsp;') ?>
+                                    <?= botao('primary', '✔') ?>
+                                </div>
+
+                            </div>
+
+                        <div class="bloco-pesquisa">
+                            <?= label('pesquisar', '&nbsp;') ?>
+                            <?= inputFilter('text', 'pesquisar', 'nome_ong', "Pesquisar Ong&#39s") ?>
                         </div>
                     </div>
-
-                    <div class="bloco-pesquisa">
-                        <?= label('pesquisar', '&nbsp;') ?>
-                        <?= inputFilter('text', 'pesquisar', 'pesquisar', "Pesquisar Ong&#39s") ?>
-                    </div>
-                </div>
-
+                </form>
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -68,10 +75,10 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($doacoes as $doacao){ ?>
+                            <?php foreach ($doacoesDoUsuario as $doacao){ ?>
                                 <tr>
-                                    <td><?= $doacao['dt_doacao'] ?></td>
-                                    <td><?= $doacao['razao_social']?></td>
+                                    <td><?= date("d/m/Y", strtotime($doacao['dt_doacao'])) ?></td>
+                                    <td><?= htmlspecialchars($doacao['razao_social']) ?></td>
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
                                         <form action="./baixar-comprovante.php" method="post" style="display:inline;">
@@ -84,7 +91,7 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
                                 </tr>
                             <?php } ?>
 
-                            <?php if (empty($doacoes)) { ?>
+                            <?php if (empty($doacoesDoUsuario)) { ?>
                                 <tr>
                                     <td colspan="4" style="text-align:center;">Nenhuma doação encontrada.</td>
                                 </tr>
