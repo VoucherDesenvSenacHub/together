@@ -10,7 +10,9 @@ try {
     $erros = [];
     // verifica se o metodo é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-        $erros[] = "Método inválido para esta requisição";
+        $_SESSION['erro'] = "Método inválido para esta requisição";
+        header("location: ./../view/pages/Ong/perfilOng.php");
+        exit;
     }
     // campos que devem ser preenchidos e verifica se está vazio.
     $campos = ['nome', 'telefone', 'cnpj', 'data', 'email', 'cep', 'logradouro', 'numero', 'cidade'];
@@ -174,6 +176,9 @@ try {
         }
     }
 
+    if (!empty($erros)) {
+        throw new Exception(implode("<br>", $erros));
+    }
     // $upload = new UploadController();
     // $idImagem =
     //     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
@@ -222,6 +227,7 @@ try {
     } else {
         throw new Exception("Erro ao atualizar os dados da ONG!");
     }
+
 
 
 
