@@ -21,8 +21,11 @@ Criar um arquivo .env para colocar suas variáveis de ambiente
 # Exemplo:
 
 EMAIL_HOST=smtp.gmail.com
+
 EMAIL_USER=seuemail@gmail.com
-EMAIL_PASS=suasenha
+
+EMAIL_PASS=sua_senha_de_app
+
 EMAIL_PORT=587
 
 # Dependências
