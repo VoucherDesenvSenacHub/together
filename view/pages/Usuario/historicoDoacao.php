@@ -4,12 +4,14 @@
 <?php require_once "./../../components/input.php"; ?>
 <?php require_once "./../../../model/DoacaoModel.php"; ?>
 <?php require_once './../../components/paginacao.php'; ?>
+<?php require_once './../../../services/RelatorioService.php'; ?>
 
 <?php
 $idUsuario = (int)$_SESSION['id'];
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 $doacaoModel = new DoacaoModel();
+$relatorioService = new RelatorioService();
 
 // quantidade total de registros
 $totalDoacoes = count($doacaoModel->BuscarDoacoesPorID($idUsuario));
@@ -72,9 +74,12 @@ $doacoes = $doacaoModel->BuscarDoacoesPorID($idUsuario, $pagina);
                                     <td><?= $doacao['razao_social']?></td>
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
-                                        <a href="assets/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
-                                            <?= renderAcao('baixar') ?>
-                                        </a>
+                                        <form action="./baixar-comprovante.php" method="post" style="display:inline;">
+                                            <input type="hidden" name="id_doacao" value="<?= $doacao['id_doacao'] ?>">
+                                            <button type="submit" style="border: none; background-color: inherit;">
+                                                <?= renderAcao('baixar') ?>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php } ?>

@@ -1,11 +1,12 @@
 <?php
 
-require_once '../utils/PdfUtil.php';
+require_once __DIR__ . '/../model/RelatorioModel.php';
 
 $id = 5;
 
-$modelDoacao = new PdfUtil();
-$doacoes = $modelDoacao->procurarHistoricoDoacao($id);
+// aqui só vai ter importacao para a model e consulta para o banco que chama a model e montar o html que gera o relatorio
+$relatorioModel = new RelatorioModel();
+$doacao = $relatorioModel->buscarDoacao($id);
 
 $ong = [
     'nome' => 'ONG Legal',
@@ -81,16 +82,16 @@ $ong = [
         <h1 class="titulo">Comprovante de Doação</h1>
     
         <div class="flex">
-            <p><strong>ID da Transação:</strong> <?= $doacoes[0]['codigo_transacao'] ?></p>
-            <p><strong>Data da Transação:</strong> <?= $doacoes[0]['dt_doacao'] ?></p>
-            <p><strong>Hora da Transação:</strong> <?= $doacoes[0]['hora'] ?></p>
+            <p><strong>ID da Transação:</strong> <?= $doacao['codigo_transacao'] ?></p>
+            <p><strong>Data da Transação:</strong> <?= $doacao['dt_doacao'] ?></p>
+            <p><strong>Hora da Transação:</strong> <?= $doacao['hora'] ?></p>
         </div>
         
         <hr>
         
-        <p><strong>Nome do Doador:</strong> <?= $doacoes[0]['nome'] ?></p>
-        <p><strong>Cartão:</strong> **** **** **** <?= $doacoes[0]['ultimos_digitos'] ?></p>
-        <p><strong>Valor pago:</strong> R$ <?= $doacoes[0]['valor'] ?></p>
+        <p><strong>Nome do Doador:</strong> <?= $doacao['nome'] ?></p>
+        <p><strong>Cartão:</strong> **** **** **** <?= $doacao['ultimos_digitos'] ?></p>
+        <p><strong>Valor pago:</strong> R$ <?= $doacao['valor'] ?></p>
     
         <hr>
 

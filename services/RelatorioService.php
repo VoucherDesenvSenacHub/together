@@ -2,14 +2,16 @@
 
 use Dompdf\Dompdf;
 
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 class RelatorioService
 {
-    public function gerarComprovanteDoacao()
+    public function gerarComprovanteDoacao($idDoacao)
     {
+        $id = $idDoacao;
+
         ob_start();
-        require '../reports/comprovanteDoacao.php';
+        require __DIR__ . '/../reports/comprovanteDoacao.php';
         $relatorioComprovante = ob_get_clean();
 
         $dompdf = new Dompdf();
@@ -20,7 +22,3 @@ class RelatorioService
         $dompdf->stream();
     }
 }
-
-
-$relatorioService = new RelatorioService();
-$relatorioService->gerarComprovanteDoacao();
