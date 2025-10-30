@@ -45,7 +45,7 @@
         <div class="login-botao-area-navbar">
             <form action="">
             <?php if(isset($_SESSION['perfil'])) { 
-                echo '<a href="/together/controller/sair.php">
+                echo '<a href="/together/controller/SairController.php">
                         <i class="fa-solid fa-right-from-bracket icone-sair" title="Sair" id="btn-circular"></i>
                     </a>';
             }
