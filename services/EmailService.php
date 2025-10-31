@@ -34,7 +34,7 @@ class EmailService
 
     public function enviarEmailVoluntarioRejeitado($destinatario, $razao_social_ong)
     {
-        $assunto = "Recusa do voluntariado - Together";
+        $assunto = "Notificação do voluntariado - Together";
         $mensagem = "
         <h2>Aviso de Solicitação de Voluntariado</h2>
         <p>Olá!</p>
@@ -50,7 +50,7 @@ class EmailService
 
     public function enviarEmailVoluntarioAprovado($destinatario, $razao_social_ong)
     {
-        $assunto = "Recusa do voluntariado - Together";
+        $assunto = "Notificação do voluntariado - Together";
         $mensagem = "
         <h2>Aviso de Solicitação de Voluntariado</h2>
         <p>Olá!</p>
