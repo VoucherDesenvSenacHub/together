@@ -533,7 +533,7 @@ class OngModel
 
     public function buscarVoluntarioPorId($id_voluntario)
     {
-        $query = "SELECT v.id, u.nome, u.telefone, u.cpf, u.dt_nascimento, u.email, e.cep, e.cidade, e.estado, e.bairro, e.logradouro, e.numero, e.complemento, i.id as id_imagem FROM voluntarios v LEFT JOIN usuarios u ON v.id_usuario = u.id LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id LEFT JOIN enderecos e ON u.id_endereco = e.id WHERE v.id = :id_voluntario";
+        $query = "SELECT v.id, o.razao_social, u.nome, u.telefone, u.cpf, u.dt_nascimento, u.email, e.cep, e.cidade, e.estado, e.bairro, e.logradouro, e.numero, e.complemento, i.id as id_imagem FROM voluntarios v LEFT JOIN ongs o ON v.id_ong = o.id LEFT JOIN usuarios u ON v.id_usuario = u.id LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id LEFT JOIN enderecos e ON u.id_endereco = e.id WHERE v.id = :id_voluntario";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_voluntario', $id_voluntario, PDO::PARAM_INT);
         $stmt->execute();

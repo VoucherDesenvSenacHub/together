@@ -30,6 +30,7 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
                             <div class="container-readonly-primary">
                                 <div class="form-row">
                                     <div>
+                                        <input type="hidden" name="razao_social" value="<?= $usuario['razao_social']?>">
                                         <input type="hidden" name="id_voluntario" value=<?= $_GET['id'] ?? null ?>>
                                         <?= label('nome', 'Nome') ?>
                                         <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
