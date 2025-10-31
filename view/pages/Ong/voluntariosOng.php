@@ -10,14 +10,16 @@
 // $idOng = $_SESSION['id_ong'] ?? null;
 // $idOng = $_SESSION['id_ong'] ?? null;
 
-$idOng = 1; // Temporário para testes
+// $idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
+
+$id_ong = $_SESSION['id_ong'] ?? null;
 
 $nome_usuario_voluntario = isset($_POST['nome_usuario_voluntario']) ? trim($_POST['nome_usuario_voluntario']) : '';
 $data_inicio = isset($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
 
-$lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $data_inicio, $data_fim);
+$lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio, $data_fim);
 
 // página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;

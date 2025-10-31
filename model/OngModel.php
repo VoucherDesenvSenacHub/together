@@ -20,14 +20,19 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtrarVoluntario($nome_usuario_voluntario, $data_inicio = null, $data_fim = null)
+    public function filtrarVoluntario($nome_usuario_voluntario, $id_ong , $data_inicio = null, $data_fim = null)
     {
         $sql = "SELECT V.dt_associacao, U.nome
             FROM voluntarios V
             JOIN usuarios U ON U.id = V.id_usuario
-            WHERE V.ativo = 1";
+            JOIN ongs O ON O.id = V.id_ong
+            WHERE V.status_validacao = 1
+            AND O.id = :id_ong;
+            ";
 
-        $params = [];
+        $params = [
+            ':id_ong' => $id_ong
+        ];
 
         if (!empty($nome_usuario_voluntario)) {
             // Adiciona o filtro de nome, se fornecido
