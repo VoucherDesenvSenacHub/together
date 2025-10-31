@@ -81,8 +81,8 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
                                     <td><?= htmlspecialchars($doacao['razao_social']) ?></td>
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
-                                        <form action="./baixar-comprovante.php" method="post" style="display:inline;">
-                                            <input type="hidden" name="id_doacao" value="<?= $doacao['id_doacao'] ?>">
+                                        <form action="../../../controller/HistoricoDoacoesUsuarioController.php" method="GET">
+                                            <input type="hidden" name="id" value="<?= $doacao['id'] ?>">
                                             <button type="submit" style="border: none; background-color: inherit;">
                                                 <?= renderAcao('baixar') ?>
                                             </button>

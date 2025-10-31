@@ -7,11 +7,18 @@ class PdfUtil
 {
     public function gerarPdf($html)
     {
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4');
-        $dompdf->render();
-        // $dompdf->stream();
-        return $dompdf->output();
+        try
+        {
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4');
+            $dompdf->render();
+            
+            return $dompdf->output();
+        }
+        catch(Exception $e)
+        {
+            error_log('Erro ao gerar o PDF: '. $e->getMessage());
+        }
     }
 }

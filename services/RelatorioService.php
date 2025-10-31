@@ -1,12 +1,23 @@
 <?php
+
+require_once __DIR__ . '/../utils/PdfUtil.php';
 class RelatorioService
 {
-    public function gerarComprovanteDoacao()
+    public function gerarComprovanteDoacao($idDoacao)
     {
-        ob_start();
-        require __DIR__ . '/../reports/comprovanteDoacao.php';
-        $relatorioComprovanteHtml = ob_get_clean();
-        // Esse trecho eu tenho que mover para o utils, o service chama uma funcao util para gerar o relatorio
-        return ;
-    }
+        try
+        {
+            ob_start();
+            require __DIR__ . '/../reports/comprovanteDoacaoReport.php';
+            $relatorioComprovanteHtml = ob_get_clean();
+    
+            $pdfUtil = new PdfUtil();
+            return $pdfUtil->gerarPdf($relatorioComprovanteHtml);
+        }
+        catch(Exception $e)
+        {
+            error_log('Erro ao gerar o comprovante: '. $e->getMessage());
+        }
+    }   
 }
+
