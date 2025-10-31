@@ -20,6 +20,40 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function filtrarVoluntario($nome_usuario_voluntario, $data_inicio = null, $data_fim = null)
+    {
+        $sql = "SELECT V.dt_associacao, U.nome
+            FROM voluntarios V
+            JOIN usuarios U ON U.id = V.id_usuario
+            WHERE V.ativo = 1";
+
+        $params = [];
+
+        if (!empty($nome_usuario_voluntario)) {
+            // Adiciona o filtro de nome, se fornecido
+            $sql .= " AND U.nome LIKE :nome_usuario_voluntario";
+            $params[':nome_usuario_voluntario'] = '%' . $nome_usuario_voluntario . '%';
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            // Adiciona o filtro de data, se fornecido
+            $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
+
+        $sql .= " ORDER BY V.dt_associacao DESC";
+
+        $stmt = $this->conn->prepare($sql);
+
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function findVoluntarioBySearch($nome_usuario)
     {
         $sql = "SELECT V.dt_associacao, U.nome
@@ -512,6 +546,32 @@ class OngModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_postagem', $id_postagem);
         $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function atualizarStatusVoluntario($id_voluntario, $status_validacao)
+    {
+        try {
+            $query = "UPDATE voluntarios SET status_validacao = :status_validacao WHERE id = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ':id' => $id_voluntario,
+                'status_validacao' => $status_validacao
+            ]);
+
+            return true;
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function buscarVoluntarioPorId($id_voluntario)
+    {
+        $query = "SELECT v.id, o.razao_social, u.nome, u.telefone, u.cpf, u.dt_nascimento, u.email, e.cep, e.cidade, e.estado, e.bairro, e.logradouro, e.numero, e.complemento, i.id as id_imagem FROM voluntarios v LEFT JOIN ongs o ON v.id_ong = o.id LEFT JOIN usuarios u ON v.id_usuario = u.id LEFT JOIN imagens i ON u.id_imagem_de_perfil = i.id LEFT JOIN enderecos e ON u.id_endereco = e.id WHERE v.id = :id_voluntario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_voluntario', $id_voluntario, PDO::PARAM_INT);
+        $stmt->execute();
+
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
