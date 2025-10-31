@@ -2,6 +2,13 @@
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
+<?php require_once "../../components/alert.php";
+
+if (isset($_SESSION['type'], $_SESSION['message'])) {
+    showPopup($_SESSION['type'], $_SESSION['message']);
+    unset($_SESSION['type'], $_SESSION['message']);
+}
+?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
@@ -11,7 +18,7 @@
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Validação de Voluntários</h1>
             <div class="formulario-perfil">
-            <div class="filtro">
+                <div class="filtro">
                     <div class="bloco-datas">
                         <div class="filtro-por-mes">
                             <?= label('data-inicio', 'Período') ?>
@@ -32,7 +39,7 @@
                         <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Voluntário') ?>
                     </div>
                 </div>
-                
+
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
