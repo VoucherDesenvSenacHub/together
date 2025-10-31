@@ -14,6 +14,9 @@ $ong = [
     'endereco' => 'Senac Hub Academy'
 ];
 
+$doacao['hora'] = date('H:i:s', strtotime($doacao['dt_doacao']));
+$doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
+ 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,15 +35,22 @@ $ong = [
             padding: 2rem;
         }
 
-        .flex
+        table
         {
-            display: flex;
-            justify-content: space-around;
+            width: 100%;
         }
 
-        .imagem
+        td 
         {
+            padding: 4px;
+            font-size: 16px;
+        }
+
+
+
+        .imagem img {
             width: 200px;
+            display: block;
         }
 
         .titulo
@@ -71,6 +81,7 @@ $ong = [
         p
         {
             margin: 0.2rem 0 0.2rem 0;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -81,11 +92,14 @@ $ong = [
         </div>
         <h1 class="titulo">Comprovante de Doação</h1>
     
-        <div class="flex">
-            <p><strong>ID da Transação:</strong> <?= $doacao['codigo_transacao'] ?></p>
-            <p><strong>Data da Transação:</strong> <?= $doacao['dt_doacao'] ?></p>
-            <p><strong>Hora da Transação:</strong> <?= $doacao['hora'] ?></p>
-        </div>
+        <table>
+            <tr>
+                <td><strong>ID da Transação:</strong> <?= $doacao['codigo_transacao'] ?></td>
+                <td><strong>Data da Transação:</strong> <?= $doacao['dt_doacao'] ?></td>
+                <td><strong>Hora da Transação:</strong> <?= $doacao['hora'] ?></td>
+            </tr>
+        </table>
+
         
         <hr>
         
