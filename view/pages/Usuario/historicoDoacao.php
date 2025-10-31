@@ -57,7 +57,6 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
                                 </div>
 
                             </div>
-
                         <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
                             <?= inputFilter('text', 'pesquisar', 'nome_ong', "Pesquisar Ong&#39s") ?>

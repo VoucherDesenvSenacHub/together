@@ -80,9 +80,6 @@ $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
 </head>
 <body>
     <div class="container">
-        <div class="imagem">
-            <!-- <img src="data:image/png;base64,<?= base64_encode(file_get_contents( "../view/assets/images/components/logo_nova_together.png" )) ?>" alt="together.png"> -->
-        </div>
         <h1 class="titulo">Comprovante de Doação</h1>
     
         <table>

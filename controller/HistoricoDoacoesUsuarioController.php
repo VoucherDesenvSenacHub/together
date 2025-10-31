@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
         $relatorio = $relatorioService->gerarComprovanteDoacao($idDoacao);
 
         header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="fds.pdf"');
+        header('Content-Disposition: attachment; filename="comprovante.pdf"');
         echo $relatorio;
     }
 }
