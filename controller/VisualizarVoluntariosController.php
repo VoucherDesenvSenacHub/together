@@ -15,14 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $ongModel->atualizarStatusVoluntario($id_voluntario, 'aprovado');
         $_SESSION['type'] = 'sucesso';
         $_SESSION['message'] = 'Voluntário aprovado!';
-        $emailService->enviarEmailVoluntarioAprovado('luanmendesmoura091207@gmail.com', $_POST['razao_social']);
+        $emailService->enviarEmailVoluntarioAprovado($_POST['email'], $_POST['razao_social']);
         header("Location: /together/view/pages/Ong/validacaoVoluntario.php");
         exit;
     } elseif ($_POST['action'] === 'recusar') {
         $ongModel->atualizarStatusVoluntario($id_voluntario, 'rejeitado');
         $_SESSION['type'] = 'sucesso';
         $_SESSION['message'] = 'Voluntário rejeitado!';
-        $emailService->enviarEmailVoluntarioRejeitado('luanmendesmoura091207@gmail.com', $_POST['razao_social']);
+        $emailService->enviarEmailVoluntarioRejeitado($_POST['email'], $_POST['razao_social']);
         header("Location: /together/view/pages/Ong/validacaoVoluntario.php");
         exit;
     }
