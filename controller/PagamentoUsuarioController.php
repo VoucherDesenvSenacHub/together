@@ -30,6 +30,12 @@ try {
     $usuarioModel = new UsuarioModel();
     $usuario = $usuarioModel->findUsuarioById($_SESSION['id']);
 
+    if( is_null($usuario['cep']) || is_null($usuario['numero']) ||
+        is_null($usuario['telefone']) || is_null($usuario['complemento']) )
+    {
+        throw new Exception("Informações insuficientes do usuário.");
+    }
+
     // Montar dados para a API
     $data = [
         "titular" => [
@@ -103,7 +109,7 @@ try {
         $respostaApi['tipo'],
         $respostaApi['situacao'],
         $respostaApi['descricao'],
-        $httpCode,
+        $respostaApi['id'],
         $respostaApi['cartao']['bandeira'],
         $ultimosDigitos
     ];
