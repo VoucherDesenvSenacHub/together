@@ -418,49 +418,50 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtrarVoluntarioPendente($nome_voluntario = '', $data_inicio = null, $data_fim = null)
+    public function filtrarVoluntarioPendente($idOng, $nome_voluntario = '', $data_inicio = null, $data_fim = null)
     {
-        $sql = "SELECT
-                    U.id,
-                    U.nome,
-                    U.dt_criacao,
-                    V.id_usuario,
-                    V.status_validacao
-                    O.id
-                FROM
-                    usuarios U
-                INNER JOIN
-                    voluntarios V ON V.id_usuario = U.id
-                INNER JOIN
-                    ongs O ON O.id = V.id_ong
-                WHERE
-                    O.id = 1"; 
-                    //Ainda ta com erro falta arrumar
+    $sql = "SELECT
+                V.id AS id_voluntario,
+                U.nome,
+                V.id_usuario AS id_usuario_voluntario,
+                V.status_validacao,
+                V.dt_associacao,
+                O.id AS id_ong
+            FROM
+                usuarios U
+            INNER JOIN
+                voluntarios V ON V.id_usuario = U.id
+            INNER JOIN
+                ongs O ON O.id = V.id_ong
+            WHERE
+                O.id = :idOng
+            AND V.status_validacao = 'pendente'";
 
-        $params = [];
+    $params = [':idOng' => $idOng];
 
-        if (!empty($nome_voluntario)) {
-            $sql .= " AND nome LIKE :nome_voluntario";
-            $params[':nome_voluntario'] = '%' . $nome_voluntario . '%';
-        }
-
-        if (!empty($data_inicio) && !empty($data_fim)) {
-            $sql .= " AND dt_criacao BETWEEN :data_inicio AND :data_fim";
-            $params[':data_inicio'] = $data_inicio;
-            $params[':data_fim'] = $data_fim;
-        }
-
-        $sql .= " ORDER BY dt_criacao DESC";
-
-        $stmt = $this->conn->prepare($sql);
-
-        foreach ($params as $param => $value) {
-            $stmt->bindValue($param, $value);
-        }
-
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (!empty($nome_voluntario)) {
+        $sql .= " AND U.nome LIKE :nome_voluntario";
+        $params[':nome_voluntario'] = '%' . $nome_voluntario . '%';
     }
+
+    if (!empty($data_inicio) && !empty($data_fim)) {
+        $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+        $params[':data_inicio'] = $data_inicio;
+        $params[':data_fim'] = $data_fim;
+    }
+
+    $sql .= " ORDER BY U.dt_criacao DESC";
+
+    $stmt = $this->conn->prepare($sql);
+
+    foreach ($params as $param => $value) {
+        $stmt->bindValue($param, $value);
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
     public function pegarImagemPerfilPaginaOng($id_ong)
