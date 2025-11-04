@@ -14,16 +14,22 @@ class RelatorioModel
 
     public function buscarDoacao($idDoacao) 
     {
-        // retornar junto a ong 
-        $sql = "SELECT D.codigo_transacao, D.dt_doacao, U.nome, D.ultimos_digitos, D.valor 
-                FROM doacoes D 
-                JOIN usuarios U ON D.id_usuario = U.id
-                JOIN ongs O ON D.id_ong = O.id
-                WHERE D.id = :idDoacao 
-                LIMIT 1";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':idDoacao', $idDoacao);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        try
+        {
+            $sql = "SELECT D.codigo_transacao, D.dt_doacao, U.nome, D.ultimos_digitos, D.valor, O.razao_social, O.cnpj, O.telefone
+                    FROM doacoes D 
+                    JOIN usuarios U ON D.id_usuario = U.id
+                    JOIN ongs O ON D.id_ong = O.id
+                    WHERE D.id = :idDoacao 
+                    LIMIT 1";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':idDoacao', $idDoacao);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(Exception $e)
+        {
+            error_log('Erro ao fazer a busca: '. $e->getMessage());
+        }
     }
 }

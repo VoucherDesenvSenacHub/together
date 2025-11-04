@@ -2,17 +2,10 @@
 
 require_once __DIR__ . '/../model/RelatorioModel.php';
 
-$id = 5;
+global $idDoacao;
 
-// aqui só vai ter importacao para a model e consulta para o banco que chama a model e montar o html que gera o relatorio
 $relatorioModel = new RelatorioModel();
-$doacao = $relatorioModel->buscarDoacao($id);
-
-$ong = [
-    'nome' => 'ONG Legal',
-    'cnpj' => 123331231,
-    'endereco' => 'Senac Hub Academy'
-];
+$doacao = $relatorioModel->buscarDoacao($idDoacao);
 
 $doacao['hora'] = date('H:i:s', strtotime($doacao['dt_doacao']));
 $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
@@ -87,9 +80,6 @@ $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
 </head>
 <body>
     <div class="container">
-        <div class="imagem">
-            <img src="../view/assets/images/components/logo_nova_together.png" alt="together.png">
-        </div>
         <h1 class="titulo">Comprovante de Doação</h1>
     
         <table>
@@ -109,9 +99,9 @@ $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
     
         <hr>
 
-        <p><strong>ONG:</strong> <?= $ong['nome'] ?></p>
-        <p><strong>CNPJ:</strong> <?= $ong['cnpj'] ?></p>
-        <p><strong>Endereço:</strong> <?= $ong['endereco'] ?></p>
+        <p><strong>ONG:</strong> <?= $doacao['razao_social'] ?></p>
+        <p><strong>CNPJ:</strong> <?= $doacao['cnpj'] ?></p>
+        <p><strong>Telefone:</strong> <?= $doacao['telefone'] ?></p>
 
         <hr>
 
