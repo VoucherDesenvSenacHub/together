@@ -1,11 +1,13 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once './../../components/head.php';
- require_once './../../components/acoes.php';
- require_once './../../components/button.php';
- require_once './../../components/input.php';
- require_once './../../components/label.php';
- require_once './../../../model/AdmModel.php'; 
- require_once '../../components/alert.php' ;
-require_once __DIR__. "/../../../model/OngsEmAnaliseModel.php";
+require_once './../../components/acoes.php';
+require_once './../../components/button.php';
+require_once './../../components/input.php';
+require_once './../../components/label.php';
+require_once './../../../model/AdmModel.php';
+require_once '../../components/alert.php';
+require_once __DIR__ . "/../../../model/OngsEmAnaliseModel.php";
 require_once './../../components/paginacao.php';
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
@@ -22,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 ?>
 
 
-<?php 
+<?php
 
 
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
@@ -40,6 +42,7 @@ $quantidadeDePaginas = ceil($totalRegistros / $itensPorPagina);
 // Busca os dados da página atual
 $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa, $paginaAtual, $itensPorPagina);
 ?>
+
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
@@ -84,25 +87,25 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
                             </tr>
                         </thead>
                         <tbody>
-                                <tr>
-                            <?php if(!$ongsEmAnalise): ?>
-                                <td colspan="4">Nenhuma ONG encontrada.</td>
-                            <?php else: ?>
-                                <?php foreach ($ongsEmAnalise as $ong): ?>
-                                    <tr>
-                                        <td>
-                                            <?= !empty($ong['dt_criacao']) ? date('d/m/Y', strtotime($ong['dt_criacao'])) : '-' ?>
-                                        </td>
-                                        <td><?= htmlspecialchars($ong['razao_social'], ENT_QUOTES, 'UTF-8') ?></td>
-                                        <td><?= htmlspecialchars($ong['status_validacao'], ENT_QUOTES, 'UTF-8') ?></td>
-                                        <td>
-                                            <a href="validarCadastroOng.php?id=<?= $ong['id'] ?>">
-                                                <?= renderAcao('visualizar') ?>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
+                            <tr>
+                                <?php if (!$ongsEmAnalise): ?>
+                                    <td colspan="4">Nenhuma ONG encontrada.</td>
+                                <?php else: ?>
+                                    <?php foreach ($ongsEmAnalise as $ong): ?>
+                            <tr>
+                                <td>
+                                    <?= !empty($ong['dt_criacao']) ? date('d/m/Y', strtotime($ong['dt_criacao'])) : '-' ?>
+                                </td>
+                                <td><?= htmlspecialchars($ong['razao_social'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td><?= htmlspecialchars($ong['status_validacao'], ENT_QUOTES, 'UTF-8') ?></td>
+                                <td>
+                                    <a href="validarCadastroOng.php?id=<?= $ong['id'] ?>">
+                                        <?= renderAcao('visualizar') ?>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -112,4 +115,5 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>
