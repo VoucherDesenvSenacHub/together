@@ -1,6 +1,6 @@
-# 📦 Projeto PHP com PHPMailer e Symfony Dotenv
+# 📦 Projeto PHP com PHPMailer, domPDF e Symfony Dotenv
 
-Este é um projeto PHP que utiliza **PHPMailer** para envio de e-mails e **Symfony Dotenv** para gerenciamento seguro de variáveis de ambiente.  
+Este é um projeto PHP que utiliza **PHPMailer** para envio de e-mails, **domPDF** para a criação de comprovantes e **Symfony Dotenv** para gerenciamento seguro de variáveis de ambiente.  
 O gerenciamento de dependências é feito com o **Composer local** (`composer.phar`)
 
 ## 🚀 Requisitos
