@@ -3,19 +3,27 @@
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../../model/OngModel.php' ?>
-
-<?php 
+<?php require_once './../../components/paginacao.php' ?>
+<?php
 $ongModel = new OngModel();
 
-$dtInicio = $_GET['dt_inicio'] ?? null;
-$dtFinal = $_GET['dt_final'] ?? null;
+if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pesquisar'])) {
+    $hoje = date('d/m/Y');
 
-$dtInicio = !empty($dtInicio) ? $dtInicio : null;
-$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+    $doacoes = $ongModel->buscarDoacoes(
+        $_SESSION['id'],
+        $_GET['pesquisar'],
+        $_GET['dt_inicio'],
+        $_GET['dt_final'] ? $_GET['dt_final'] : $hoje
+    );
+} else {
+    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $limite = 10;
+    $offset = ($paginaAtual - 1) * $limite;
 
-$doacoes = $ongModel->buscarTodasDoacoesOng($_SESSION['id']);
-
-$lista = $ongModel->filtroDataHoraDoacoes($_SESSION['id'], $dtInicio, $dtFinal);
+    $doacoes = $ongModel->buscarTodasDoacoesOng($_SESSION['id'], $limite, $offset);
+    $quantidadeDePaginas = ceil($ongModel->contarDoacoesOngs($_SESSION['id']) / 10);
+}
 ?>
 
 <body>
@@ -113,18 +121,18 @@ $lista = $ongModel->filtroDataHoraDoacoes($_SESSION['id'], $dtInicio, $dtFinal);
                                     <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($doacoes as $doacao): ?>
+                                <?php foreach ($doacoes as $doacao): ?>
                                     <tr>
-                                        <td><?= date('d/m/Y',strtotime($doacao['dt_doacao']))?></td>
+                                        <td><?= date('d/m/Y', strtotime($doacao['dt_doacao'])) ?></td>
                                         <td><?= $doacao['nome'] ?></td>
-                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, '.', '.')?></td>
+                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+                <?php !empty($quantidadeDePaginas) ? criarPaginacao($quantidadeDePaginas) : null; ?>
             </div>
         </div>
     </main>

@@ -70,45 +70,37 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function findDonorSearch($nome_doador)
+    public function buscarDoacoes($id_ong, $nome_doador = null, $data_inicio = null, $data_fim = null)
     {
         $sql = "SELECT D.dt_doacao, U.nome, D.valor
-                      FROM doacoes D 
-                      JOIN usuarios U ON U.id = D.id_usuario 
-                      WHERE U.nome
-                      LIKE :nome_doador
-                      ORDER BY D.dt_doacao DESC";
+            FROM doacoes D
+            JOIN usuarios U ON U.id = D.id_usuario
+            WHERE D.id_ong = :id_ong";
+
+        // Adiciona filtros opcionais dinamicamente
+        if (!empty($nome_doador)) {
+            $sql .= " AND U.nome LIKE :nome_doador";
+        }
+
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND D.dt_doacao BETWEEN :data_inicio AND :data_fim";
+        }
+
+        $sql .= " ORDER BY D.dt_doacao DESC";
 
         $stmt = $this->conn->prepare($sql);
-        $nome_doador = '%' . $nome_doador . '%';
-        $stmt->bindParam(':nome_doador', $nome_doador);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+        $stmt->bindParam(':id_ong', $id_ong);
 
-    public function filtroDataHoraDoacoes($id_ong, $data_inicio = NULL, $data_fim = NULL)
-    {
-        if (is_null($data_inicio) || is_null($data_fim)) {
-            $sql = "SELECT D.dt_doacao, U.nome, D.valor
-                          FROM doacoes D 
-                          JOIN usuarios U ON U.id = D.id_usuario 
-                          WHERE D.id_ong = :id_ong
-                          ORDER BY D.dt_doacao DESC";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_ong', $id_ong);
-        } else {
-            $sql = "SELECT D.dt_doacao, U.nome, D.valor
-                          FROM doacoes D 
-                          JOIN usuarios U ON U.id = D.id_usuario 
-                          WHERE D.dt_doacao BETWEEN :data_inicio AND :data_fim
-                          AND D.id_ong = :id_ong
-                          ORDER BY D.dt_doacao DESC";
+        if (!empty($nome_doador)) {
+            $nome_doador = '%' . $nome_doador . '%';
+            $stmt->bindParam(':nome_doador', $nome_doador);
+        }
 
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id_ong', $id_ong);
+        if (!empty($data_inicio) && !empty($data_fim)) {
             $stmt->bindParam(':data_inicio', $data_inicio);
             $stmt->bindParam(':data_fim', $data_fim);
         }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -575,14 +567,40 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function buscarTodasDoacoesOng($id_ong)
+    public function buscarTodasDoacoesOng($id_ong, $limite, $offset)
     {
-        $query = "SELECT d.dt_doacao, d.valor, d.anonimo, d.status, u.nome FROM doacoes d LEFT JOIN usuarios u ON d.id_usuario = u.id WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong";
+        $query = "SELECT d.dt_doacao, d.valor, d.anonimo, d.status, u.nome 
+        FROM doacoes d 
+        LEFT JOIN usuarios u ON d.id_usuario = u.id 
+        WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong 
+        ORDER BY d.dt_doacao ASC 
+        LIMIT :limite OFFSET :offset";
+
         $stmt = $this->conn->prepare($query);
-        $stmt->execute([
-            'id_ong' => $id_ong
-        ]);
+        $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function contarDoacoesOngs($id_ong)
+    {
+        try {
+            $query = "SELECT COUNT(*) AS total 
+            FROM doacoes d 
+            WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong 
+            ORDER BY v.dt_doacao ASC";
+            
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return (int)$resultado['total'];
+        } catch (Exception $e) {
+            return 0;
+        }
     }
 }
