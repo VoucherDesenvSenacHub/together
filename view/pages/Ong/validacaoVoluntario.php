@@ -3,8 +3,8 @@
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once "../../components/alert.php"; ?>
+<?php require_once './../../components/paginacao.php' ?>
 <?php require_once "./../../../model/OngModel.php";
-
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -13,26 +13,30 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
 $ongModel = new OngModel();
 
-$data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
-$data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
-$nome_voluntario = isset($_POST['nome_voluntario']) ? trim($_POST['nome_voluntario']) : '';
+if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET['pesquisar'])) {
+    $hoje = date('Y-m-d');
+    $dataInicio = $_GET['data-inicio'] ?? null;
+    $dataFinal = $_GET['data-final'] ?: $hoje;
+    $pesquisar = trim($_GET['pesquisar'] ?? '');
 
+    $VisualizarVoluntarios = $ongModel->filtrarVoluntarioPendente($_SESSION['id'], $nome_voluntario, $data_inicio, $data_fim);
+} else {
+    $paginaAtual = max((int)($_GET['pagina'] ?? 1), 1);
+    $limite = 10;
+    $offset = ($paginaAtual - 1) * $limite;
 
-$VisualizarVoluntarios = $ongModel->filtrarVoluntarioPendente(2, $nome_voluntario, $data_inicio, $data_fim);
-
-$pagina = isset($pagina) ? $pagina : 1;
-$quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
-?>
+    $VisualizarVoluntarios = $ongModel->buscarVoluntarioDaOng($_SESSION['id'], $limite, $offset);
+    $quantidadeDePaginas = ceil($ongModel->contarVoluntariosPendentes($_SESSION['id']) / 10);
+}?>
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
         <?php require_once './../../components/back-button.php' ?>
-
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Validação de Voluntários</h1>
             <div class="formulario-perfil">
-                <form action="validacaoVoluntario.php" method="POST">
+                <form action="validacaoVoluntario.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
                             <div class="filtro-por-mes">
@@ -89,7 +93,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+                <?php !empty($quantidadeDePaginas) ? criarPaginacao($quantidadeDePaginas) : null; ?>
             </div>
         </div>
     </main>
