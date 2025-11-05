@@ -1,13 +1,15 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/select.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-<?php require_once __DIR__ ."/../../../model/ValidarCadastroOngModel.php"; ?>
+<?php require_once __DIR__ . "/../../../model/ValidarCadastroOngModel.php"; ?>
 
-<?php 
+<?php
 
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $validarCadastroOng = new ValidarCadastroOngModel();
     $ong = $validarCadastroOng->BuscarCadastroOng($id);
@@ -99,7 +101,7 @@ if(isset($_GET['id'])){
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
                             <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', "/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "aprovado") ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '',"/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "rejeitado") ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '', "/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "rejeitado") ?> </div>
                         </div>
                     </div>
                 </form>

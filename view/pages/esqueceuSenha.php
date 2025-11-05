@@ -1,3 +1,5 @@
+<?php require_once './../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoSemLogin();  ?>
 <?php require_once "../../view/components/head.php" ?>
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>

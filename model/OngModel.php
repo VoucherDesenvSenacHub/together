@@ -20,23 +20,25 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtrarVoluntario($nome_usuario_voluntario, $data_inicio = null, $data_fim = null)
+    public function filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio = null, $data_fim = null)
     {
         $sql = "SELECT V.dt_associacao, U.nome
             FROM voluntarios V
             JOIN usuarios U ON U.id = V.id_usuario
-            WHERE V.ativo = 1";
+            JOIN ongs O ON O.id = V.id_ong
+            WHERE V.status_validacao = 'aprovado'
+            AND O.id = :id_ong";
 
-        $params = [];
+        $params = [
+            ':id_ong' => $id_ong
+        ];
 
         if (!empty($nome_usuario_voluntario)) {
-            // Adiciona o filtro de nome, se fornecido
             $sql .= " AND U.nome LIKE :nome_usuario_voluntario";
             $params[':nome_usuario_voluntario'] = '%' . $nome_usuario_voluntario . '%';
         }
 
         if (!empty($data_inicio) && !empty($data_fim)) {
-            // Adiciona o filtro de data, se fornecido
             $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
             $params[':data_inicio'] = $data_inicio;
             $params[':data_fim'] = $data_fim;
@@ -51,6 +53,7 @@ class OngModel
         }
 
         $stmt->execute();
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -139,7 +142,6 @@ class OngModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
@@ -265,7 +267,6 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
     }
-
 
     public function buscarOngPorId($id)
     {
@@ -567,8 +568,6 @@ class OngModel
 
         return $ultimo ?: null;
     }
-
-
 
     public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
