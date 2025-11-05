@@ -5,8 +5,6 @@
 <?php require_once './../../../model/OngModel.php' ?>
 
 <?php 
-// $idOng = $_SESSION['id_ong'] ?? null;
-$idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
 
 $dtInicio = $_GET['dt_inicio'] ?? null;
@@ -15,7 +13,9 @@ $dtFinal = $_GET['dt_final'] ?? null;
 $dtInicio = !empty($dtInicio) ? $dtInicio : null;
 $dtFinal = !empty($dtFinal) ? $dtFinal : null;
 
-$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+$doacoes = $ongModel->buscarTodasDoacoesOng($_SESSION['id']);
+
+$lista = $ongModel->filtroDataHoraDoacoes($_SESSION['id'], $dtInicio, $dtFinal);
 ?>
 
 <body>
@@ -108,16 +108,16 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($lista)): ?>
+                            <?php if (empty($doacoes)): ?>
                                 <tr>
                                     <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($lista as $doacao): ?>
+                                <?php foreach($doacoes as $doacao): ?>
                                     <tr>
-                                        <td><?= $doacao['dt_doacao']?></td>
+                                        <td><?= date('d/m/Y',strtotime($doacao['dt_doacao']))?></td>
                                         <td><?= $doacao['nome'] ?></td>
-                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
+                                        <td><?= 'R$ ' . number_format($doacao['valor'], 2, '.', '.')?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php endif; ?>

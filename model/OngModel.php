@@ -574,4 +574,15 @@ class OngModel
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+    public function buscarTodasDoacoesOng($id_ong)
+    {
+        $query = "SELECT d.dt_doacao, d.valor, d.anonimo, d.status, u.nome FROM doacoes d LEFT JOIN usuarios u ON d.id_usuario = u.id WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([
+            'id_ong' => $id_ong
+        ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
