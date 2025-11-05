@@ -2,7 +2,7 @@
 
 class Database
 {
-    private $host = "10.78.0.215";
+    private $host = "localhost";
     private $port = "3306";
     private $dbName = "together";
     private $user = "root";
