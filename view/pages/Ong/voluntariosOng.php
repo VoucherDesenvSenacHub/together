@@ -9,17 +9,15 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once './../../components/paginacao.php'; ?>
 
 <?php
-// $idOng = $_SESSION['id_ong'] ?? null;
-// $idOng = $_SESSION['id_ong'] ?? null;
 
-$idOng = 1; // Temporário para testes
 $ongModel = new OngModel();
 
+$id_ong = $_SESSION['id'] ?? null;
 $nome_usuario_voluntario = isset($_POST['nome_usuario_voluntario']) ? trim($_POST['nome_usuario_voluntario']) : '';
 $data_inicio = isset($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
 
-$lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $data_inicio, $data_fim);
+$lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio, $data_fim);
 
 // página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
@@ -35,27 +33,29 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
             <div class="formulario-perfil">
 
-                <form action="voluntariosOng.php" class="filtro" method="POST">
-                    <div class="bloco-datas">
-                        <div class="filtro-por-mes">
-                            <?= label('data-inicio', 'Período') ?>
-                            <?= inputFilter('date', 'data-inicio', 'data-inicio', $_POST['data-inicio'] ?? '') ?>
+                <form action="voluntariosOng.php" method="POST">
+                    <div class="filtro">
+                        <div class="bloco-datas">
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio', $_POST['data-inicio'] ?? '') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final', $_POST['data-final'] ?? '') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
                         </div>
-                        <div class="filtro-por-mes">
-                            <?= label('data-final', '&nbsp;') ?>
-                            <?= inputFilter('date', 'data-final', 'data-final', $_POST['data-final'] ?? '') ?>
-                        </div>
-                        <div class="filtro-por-mes">
-                            <?= botao('primary', '✔') ?>
-                        </div>
-                    </div>
 
-                    <div class="bloco-pesquisa">
-                        <?= label('nome_usuario_voluntario', '&nbsp;') ?>
-                        <?= inputFilter('text', 'nome_usuario_voluntario', 'nome_usuario_voluntario', 'Pesquisar Usuario') ?>
+                        <div class="bloco-pesquisa">
+                            <?= label('nome_usuario_voluntario', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_usuario_voluntario', 'nome_usuario_voluntario', 'Pesquisar Usuario') ?>
+                        </div>
                     </div>
                 </form>
-
 
                 <div class="table-mobile">
                     <table class="tabela">
@@ -94,8 +94,6 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             </div>
         </div>
     </main>
-
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
 </html>
