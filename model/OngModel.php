@@ -662,11 +662,13 @@ class OngModel
     public function buscarTodasDoacoesOng($id_ong, $limite, $offset)
     {
         $query = "SELECT d.dt_doacao, d.valor, d.anonimo, d.status, u.nome 
-        FROM doacoes d 
-        LEFT JOIN usuarios u ON d.id_usuario = u.id 
-        WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong 
-        ORDER BY d.dt_doacao ASC 
-        LIMIT :limite OFFSET :offset";
+            FROM doacoes d 
+            LEFT JOIN usuarios u ON d.id_usuario = u.id 
+            WHERE d.status = 'APROVADO'
+            AND d.id_ong = :id_ong 
+            ORDER BY d.dt_doacao ASC 
+            LIMIT :limite
+            OFFSET :offset";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
