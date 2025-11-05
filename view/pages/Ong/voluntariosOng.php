@@ -8,12 +8,6 @@
 
 <?php
 
-// $idOng = $_SESSION['id_ong'] ?? null;
-// $idOng = $_SESSION['id_ong'] ?? null;
-
-//$id_ong = 1; // Temporário para testes
-
-
 $ongModel = new OngModel();
 
 $id_ong = $_SESSION['id'] ?? null;
@@ -61,7 +55,6 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                     </div>
                 </form>
 
-
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -99,8 +92,6 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             </div>
         </div>
     </main>
-
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
 </html>

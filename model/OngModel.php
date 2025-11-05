@@ -143,7 +143,6 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
         try {
@@ -268,7 +267,6 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
     }
-
 
     public function buscarOngPorId($id)
     {
@@ -421,7 +419,6 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     public function pegarImagemPerfilPaginaOng($id_ong)
     {
         $query = "SELECT i.caminho 
@@ -477,8 +474,6 @@ class OngModel
 
         return $ultimo ?: null;
     }
-
-
 
     public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
