@@ -1,15 +1,22 @@
 <?php 
 
-require_once(dirname(__FILE__) ."../model/DoacaoModel.php");
-$modelDoacao = new ModelDoacao();
+require_once(dirname(__FILE__) ."/../model/DoacaoModel.php");
+require_once(dirname(__FILE__) ."/../services/RelatorioService.php");
+$modelDoacao = new DoacaoModel();
+$relatorioService= new RelatorioService();
 session_start();
 
-$idUsuario = $_SESSION["idUsuario"];
+if ($_SERVER['REQUEST_METHOD'] === 'GET')
+{
+    $idDoacao = trim($_GET['id']);
 
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    if (!empty($idDoacao))
+    {
+        $relatorio = $relatorioService->gerarComprovanteDoacao($idDoacao);
 
-    if (!empty($idUsuario)) {
-        $doacoes = $modelDoacao->getDoacoes($idUsuario);
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="comprovante.pdf"');
+        echo $relatorio;
     }
 }
 
