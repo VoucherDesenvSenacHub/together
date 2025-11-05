@@ -20,23 +20,25 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function filtrarVoluntario($nome_usuario_voluntario, $data_inicio = null, $data_fim = null)
+    public function filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio = null, $data_fim = null)
     {
         $sql = "SELECT V.dt_associacao, U.nome
             FROM voluntarios V
             JOIN usuarios U ON U.id = V.id_usuario
-            WHERE V.ativo = 1";
+            JOIN ongs O ON O.id = V.id_ong
+            WHERE V.status_validacao = 'aprovado'
+            AND O.id = :id_ong";
 
-        $params = [];
+        $params = [
+            ':id_ong' => $id_ong
+        ];
 
         if (!empty($nome_usuario_voluntario)) {
-            // Adiciona o filtro de nome, se fornecido
             $sql .= " AND U.nome LIKE :nome_usuario_voluntario";
             $params[':nome_usuario_voluntario'] = '%' . $nome_usuario_voluntario . '%';
         }
 
         if (!empty($data_inicio) && !empty($data_fim)) {
-            // Adiciona o filtro de data, se fornecido
             $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
             $params[':data_inicio'] = $data_inicio;
             $params[':data_fim'] = $data_fim;
@@ -51,6 +53,7 @@ class OngModel
         }
 
         $stmt->execute();
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -131,7 +134,6 @@ class OngModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
 
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
@@ -257,7 +259,6 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
     }
-
 
     public function buscarOngPorId($id)
     {
@@ -410,6 +411,99 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function filtrarVoluntarioPendente($idOng, $nome_voluntario = '', $data_inicio = null, $data_fim = null)
+    {
+    $sql = "SELECT
+                V.id AS id_voluntario,
+                U.nome,
+                V.id_usuario AS id_usuario_voluntario,
+                V.status_validacao,
+                V.dt_associacao,
+                O.id AS id_ong
+            FROM
+                usuarios U
+            INNER JOIN
+                voluntarios V ON V.id_usuario = U.id
+            INNER JOIN
+                ongs O ON O.id = V.id_ong
+            WHERE
+                O.id = :idOng
+            AND V.status_validacao = 'pendente'";
+
+    $params = [':idOng' => $idOng];
+
+    if (!empty($nome_voluntario)) {
+        $sql .= " AND U.nome LIKE :nome_voluntario";
+        $params[':nome_voluntario'] = '%' . $nome_voluntario . '%';
+    }
+
+    if (!empty($data_inicio) && !empty($data_fim)) {
+        $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+        $params[':data_inicio'] = $data_inicio;
+        $params[':data_fim'] = $data_fim;
+    }
+
+    $sql .= " ORDER BY U.dt_criacao DESC";
+
+    $stmt = $this->conn->prepare($sql);
+
+    foreach ($params as $param => $value) {
+        $stmt->bindValue($param, $value);
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function contarVoluntariosPendentes($idOng)
+    {
+        try {
+            $sql = "SELECT COUNT(*) AS total FROM usuarios U INNER JOIN voluntarios V ON V.id_usuario = U.id INNER JOIN ongs O ON O.id = V.id_ong WHERE O.id = :idOng AND V.status_validacao = 'pendente'";
+          
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':idOng', $idOng, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+            return (int)$resultado['total'];
+        } catch (Exception $e) {
+            return 0;
+        }
+    }
+
+    public function buscarVoluntarioDaOng($idOng, $limite, $offset){
+        try {
+            $sql = "SELECT
+                V.id AS id_voluntario,
+                U.nome,
+                V.id_usuario AS id_usuario_voluntario,
+                V.status_validacao,
+                V.dt_associacao,
+                O.id AS id_ong
+            FROM
+                usuarios U
+            INNER JOIN
+                voluntarios V ON V.id_usuario = U.id
+            INNER JOIN
+                ongs O ON O.id = V.id_ong
+            WHERE
+                O.id = :idOng
+            AND
+                V.status_validacao = 'pendente'
+            ORDER BY
+                V.dt_associacao ASC
+            LIMIT :limite OFFSET :offset";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':idOng', $idOng, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }catch (Exception $e) {
+            return 0;
+        }
+    }
 
     public function pegarImagemPerfilPaginaOng($id_ong)
     {
@@ -466,8 +560,6 @@ class OngModel
 
         return $ultimo ?: null;
     }
-
-
 
     public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {

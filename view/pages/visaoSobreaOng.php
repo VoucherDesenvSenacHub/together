@@ -1,5 +1,4 @@
 <?php
-
 require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
@@ -74,7 +73,7 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php';
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         // Se for ONG e estiver vendo outra ONG, checar status pra desabilitar botão após solicitação
         if (!empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl) {
@@ -103,7 +102,7 @@ switch ($perfil) {
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamento_Usuario.php?id_ong=' . $idOngUrl;
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?id_ong=' . $idOngUrl;
         if ($statusVoluntario) {
             if ($statusVoluntario['status_validacao'] == 'aprovado') {
                 $btnVoluntarioText = 'Você é Voluntário';
