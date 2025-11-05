@@ -26,7 +26,7 @@ class OngModel
             FROM voluntarios V
             JOIN usuarios U ON U.id = V.id_usuario
             JOIN ongs O ON O.id = V.id_ong
-            WHERE V.status_validacao = 1
+            WHERE V.status_validacao = 'aprovado'
             AND O.id = :id_ong";
 
         $params = [
