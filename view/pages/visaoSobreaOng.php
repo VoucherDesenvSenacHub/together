@@ -42,7 +42,6 @@ if ($perfilLogado === 'Ong') {
 $postagens = $postagemModel->getByOng($idOngUrl);
 $pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
-$doacoes = $ongModel->filtroDataHoraDoacoes($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
 // Verifica o status de voluntariado do usuário logado 
