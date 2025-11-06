@@ -14,7 +14,9 @@ class PostagemModel
     public function criar($titulo, $descricao, $link, $idImagem, $idOng)
     {
         $sql = "INSERT INTO postagens (titulo, dt_postagem, descricao, link, id_imagem, id_ong) 
-                VALUES (:titulo, NOW(), :descricao, :link, :id_imagem, :id_ong)";
+            VALUES (:titulo, NOW(), :descricao, :link, :id_imagem, :id_ong)
+        ";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':descricao', $descricao);
@@ -26,12 +28,13 @@ class PostagemModel
 
     public function getAll()
     {
-        $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao,
-                       p.link, i.caminho AS imagem, o.razao_social AS ong
-                FROM postagens p
-                LEFT JOIN imagens i ON p.id_imagem = i.id
-                LEFT JOIN ongs o ON p.id_ong = o.id
-                ORDER BY p.dt_postagem DESC";
+        $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao, p.link, i.caminho AS imagem, o.razao_social AS ong
+            FROM postagens p
+            LEFT JOIN imagens i ON p.id_imagem = i.id
+            LEFT JOIN ongs o ON p.id_ong = o.id
+            ORDER BY p.dt_postagem DESC
+        ";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,13 +42,14 @@ class PostagemModel
 
     public function getByOng($idOng)
     {
-        $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao,
-                   p.link, i.caminho AS imagem, o.razao_social AS ong
+        $sql = "SELECT p.id, p.titulo, p.dt_postagem, p.descricao, p.link, i.caminho AS imagem, o.razao_social AS ong
             FROM postagens p
             LEFT JOIN imagens i ON p.id_imagem = i.id
             LEFT JOIN ongs o ON p.id_ong = o.id
             WHERE p.id_ong = :id_ong
-            ORDER BY p.dt_postagem DESC";
+            ORDER BY p.dt_postagem DESC
+        ";
+
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id_ong', $idOng);
         $stmt->execute();
