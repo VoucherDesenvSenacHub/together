@@ -32,7 +32,8 @@ class ValidarCadastroOngModel
         ON O.id_usuario = U.id
         JOIN enderecos E
         ON O.id_endereco = E.id
-        WHERE O.id = :id";        
+        WHERE O.id = :id";   
+             
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -42,7 +43,12 @@ class ValidarCadastroOngModel
     }
 
     public function ValidarPerfilUsuario(int $idDaOng):array{
-        $queryConsultaUsuario = "SELECT U.tipo_perfil FROM ongs O JOIN usuarios U ON O.id_usuario = U.id WHERE O.id = :id";   
+        $queryConsultaUsuario = "SELECT U.tipo_perfil 
+            FROM ongs O 
+            JOIN usuarios U 
+            ON O.id_usuario = U.id 
+            WHERE O.id = :id"; 
+
         $stmt = $this->conn->prepare($queryConsultaUsuario);
         $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);     
         $stmt->execute();
@@ -50,8 +56,9 @@ class ValidarCadastroOngModel
     }
     public function AtualizarStatusValidacao(int $idDaOng, string $tipo_alteracao){
         try{
-            $queryAtualizaStatusValidacao = "UPDATE ongs SET status_validacao = :tipo 
-            WHERE id = :id;";        
+            $queryAtualizaStatusValidacao = "UPDATE ongs 
+                SET status_validacao = :tipo 
+                WHERE id = :id;";        
 
             $stmt = $this->conn->prepare($queryAtualizaStatusValidacao);
             $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);
@@ -64,8 +71,10 @@ class ValidarCadastroOngModel
     public function AtualizarTipoDeUsuario(string $statusAlteracao, $idDaOng){
         try{
             if($statusAlteracao === 'aprovado') {
-                $queryAtualizaUsuario = "UPDATE usuarios U SET U.tipo_perfil = 'Ong'
-                WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+                $queryAtualizaUsuario = "UPDATE usuarios U 
+                    SET U.tipo_perfil = 'Ong'
+                    WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)";
+
                 $stmtUser = $this->conn->prepare($queryAtualizaUsuario);
                 $stmtUser->bindParam(":id", $idDaOng, PDO::PARAM_INT);
                 return $stmtUser->execute();
