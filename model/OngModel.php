@@ -413,7 +413,7 @@ class OngModel
 
     public function filtrarVoluntarioPendente($idOng, $nome_voluntario = '', $data_inicio = null, $data_fim = null)
     {
-    $sql = "SELECT
+        $sql = "SELECT
                 V.id AS id_voluntario,
                 U.nome,
                 V.id_usuario AS id_usuario_voluntario,
@@ -430,36 +430,36 @@ class OngModel
                 O.id = :idOng
             AND V.status_validacao = 'pendente'";
 
-    $params = [':idOng' => $idOng];
+        $params = [':idOng' => $idOng];
 
-    if (!empty($nome_voluntario)) {
-        $sql .= " AND U.nome LIKE :nome_voluntario";
-        $params[':nome_voluntario'] = '%' . $nome_voluntario . '%';
-    }
+        if (!empty($nome_voluntario)) {
+            $sql .= " AND U.nome LIKE :nome_voluntario";
+            $params[':nome_voluntario'] = '%' . $nome_voluntario . '%';
+        }
 
-    if (!empty($data_inicio) && !empty($data_fim)) {
-        $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
-        $params[':data_inicio'] = $data_inicio;
-        $params[':data_fim'] = $data_fim;
-    }
+        if (!empty($data_inicio) && !empty($data_fim)) {
+            $sql .= " AND V.dt_associacao BETWEEN :data_inicio AND :data_fim";
+            $params[':data_inicio'] = $data_inicio;
+            $params[':data_fim'] = $data_fim;
+        }
 
-    $sql .= " ORDER BY U.dt_criacao DESC";
+        $sql .= " ORDER BY U.dt_criacao DESC";
 
-    $stmt = $this->conn->prepare($sql);
+        $stmt = $this->conn->prepare($sql);
 
-    foreach ($params as $param => $value) {
-        $stmt->bindValue($param, $value);
-    }
+        foreach ($params as $param => $value) {
+            $stmt->bindValue($param, $value);
+        }
 
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function contarVoluntariosPendentes($idOng)
     {
         try {
             $sql = "SELECT COUNT(*) AS total FROM usuarios U INNER JOIN voluntarios V ON V.id_usuario = U.id INNER JOIN ongs O ON O.id = V.id_ong WHERE O.id = :idOng AND V.status_validacao = 'pendente'";
-          
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':idOng', $idOng, PDO::PARAM_INT);
             $stmt->execute();
@@ -471,7 +471,8 @@ class OngModel
         }
     }
 
-    public function buscarVoluntarioDaOng($idOng, $limite, $offset){
+    public function buscarVoluntarioDaOng($idOng, $limite, $offset)
+    {
         try {
             $sql = "SELECT
                 V.id AS id_voluntario,
@@ -499,8 +500,7 @@ class OngModel
             $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             return 0;
         }
     }
@@ -679,22 +679,19 @@ class OngModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function contarDoacoesOngs($id_ong)
+    public function contarQuantidadeDeVoluntariosOngs($id_ong)
     {
-        try {
-            $query = "SELECT COUNT(*) AS total 
-            FROM doacoes d 
-            WHERE d.status = 'APROVADO' AND d.id_ong = :id_ong 
-            ORDER BY v.dt_doacao ASC";
-            
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
-            $stmt->execute();
+        $query = "SELECT COUNT(*) AS total
+            FROM voluntarios 
+            WHERE status_validacao = 'aprovado' 
+            AND ativo = 1
+            AND id_ong = :id_ong";
 
-            $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-            return (int)$resultado['total'];
-        } catch (Exception $e) {
-            return 0;
-        }
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return isset($resultado['total']) ? (int)$resultado['total'] : 0;
     }
 }
