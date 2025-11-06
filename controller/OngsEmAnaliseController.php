@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . "/../model/ValidarCadastroOngModel.php";
-require_once __DIR__ ."/../config/database.php";
+require_once __DIR__ . "/../config/database.php";
 
 $validarCadastroOngModel = new ValidarCadastroOngModel();
 
@@ -15,19 +15,19 @@ try {
     $idOng = $_POST["id"];
     $tipo = $_POST["tipo_alteracao"];
     $tipoUsuario = $validarCadastroOngModel->ValidarPerfilUsuario($idOng);
-    if($tipoUsuario['tipo_perfil'] == "Administrador" && $tipo == 'aprovado') {
+    if ($tipoUsuario['tipo_perfil'] == "Administrador" && $tipo == 'aprovado') {
         $_SESSION["message"] = 'Não é possível transformar um usuário administrador em ong';
         $_SESSION["type"] = 'erro';
         header("Location: /together/view/pages/adm/OngsAValidar.php");
         exit();
     }
 
-    if(isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
-        $validarCadastroOngModel->AtualizarStatusValidacao($idOng);
-        $validarCadastroOngModel->AtualizarTipoDeUsuario($tipo);
-        if($tipo == "aprovado"){
+    if (isset($_POST["id"]) && isset($_POST['tipo_alteracao'])) {
+        $validarCadastroOngModel->AtualizarStatusValidacao($idOng, $tipo);
+        $validarCadastroOngModel->AtualizarTipoDeUsuario($tipo, $idOng);
+        if ($tipo == "aprovado") {
             $_SESSION["message"] = 'Ong validada com sucesso!';
-        }else{
+        } else {
             $_SESSION["message"] = 'Ong rejeitada!';
         }
         $_SESSION["type"] = 'sucesso';
@@ -35,7 +35,7 @@ try {
         exit();
     }
 } catch (Exception $e) {
-        $_SESSION[""] = 'erro';
-        $_SESSION["message"] = 'Algo deu errado!';
+    $_SESSION[""] = 'erro';
+    $_SESSION["message"] = 'Algo deu errado!';
     header('Location: /together/view/pages/Adm/OngsAValidar.php');
 }

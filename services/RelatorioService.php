@@ -18,6 +18,23 @@ class RelatorioService
         {
             error_log('Erro ao gerar o comprovante: '. $e->getMessage());
         }
-    }   
+    } 
+    
+    public function gerarRelatorioDoacoesOng($idOng)
+    {
+        try
+        {
+            ob_start();
+            require __DIR__ . '/../reports/relatorioDoacoesOngReport.php';
+            $relatorioOng = ob_get_clean();
+    
+            $pdfUtil = new PdfUtil();
+            return $pdfUtil->gerarPdf($relatorioOng);
+        }
+        catch(Exception $e)
+        {
+            error_log('Erro ao gerar o relatório: '. $e->getMessage());
+        }
+    }  
 }
 

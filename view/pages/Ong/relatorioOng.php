@@ -5,19 +5,33 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../../model/OngModel.php' ?>
-
-<?php 
-// $idOng = $_SESSION['id_ong'] ?? null;
-$idOng = 1; // Temporário para testes
+<?php require_once './../../../model/DoacaoModel.php' ?>
+<?php require_once './../../components/paginacao.php' ?>
+<?php
 $ongModel = new OngModel();
+$doacaoModel = new DoacaoModel();
 
-$dtInicio = $_GET['dt_inicio'] ?? null;
-$dtFinal = $_GET['dt_final'] ?? null;
+$totalDoacoes = $doacaoModel->somarDoacoesRecebidasPorId($_SESSION['id']);
+$totalVoluntarios = $ongModel->contarQuantidadeDeVoluntariosOngs($_SESSION['id']);
+$totalDoadores = $doacaoModel->contarDoacoesOngs($_SESSION['id']);
 
-$dtInicio = !empty($dtInicio) ? $dtInicio : null;
-$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pesquisar'])) {
+    $hoje = date('Y-m-d');
 
-$lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
+    $doacoes = $ongModel->buscarDoacoes(
+        $_SESSION['id'],
+        $_GET['pesquisar'],
+        $_GET['dt_inicio'],
+        $_GET['dt_final'] ? $_GET['dt_final'] : $hoje
+    );
+} else {
+    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $limite = 10;
+    $offset = ($paginaAtual - 1) * $limite;
+
+    $doacoes = $ongModel->buscarTodasDoacoesOng($_SESSION['id'], $limite, $offset);
+    $quantidadeDePaginas = ceil($totalDoadores / 10);
+}
 ?>
 
 <body>
@@ -33,12 +47,8 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                     <div class="relatorio-ong-statistic-cards-div">
                         <div class="relatorio-ong-card-clicks-1">
                             <div title="+1,0 mil Clicks" class="relatorio-ong-card-text-value">
-                                <h3 class="h3-relatorio-ong">Clicks para Doação</h3>
-                                <h2 class="h2-relatorio-ong">2,2 mil</h2>
-                                <div class="relatorio-ong-statistic-green-text">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    <p class="p-relatorio-ong">1,0 mil em Junho</p>
-                                </div>
+                                <h3 class="h3-relatorio-ong">Doações Recebidas</h3>
+                                <h2 class="h2-relatorio-ong"><?='R$ ' . number_format($totalDoacoes, 2, ',', '.') ?></h2>
                             </div>
                             <div class="relatorio-ong-card-icon-div">
                                 <i class="fa-solid fa-circle-plus relatorio-ong-icon-card-1"></i>
@@ -46,37 +56,33 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                         </div>
                         <div class="relatorio-ong-card-acess-2">
                             <div title="+1,0 mil Acessos" class="relatorio-ong-card-text-value">
-                                <h3 class="h3-relatorio-ong">Acessos na Página</h3>
-                                <h2 class="h2-relatorio-ong">1,6 mil</h2>
-                                <div class="relatorio-ong-statistic-green-text">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    <p class="p-relatorio-ong">1,0 mil em Junho</p>
-                                </div>
+                                <h3 class="h3-relatorio-ong">Total de Doadores</h3>
+                                <h2 class="h2-relatorio-ong"><?= $totalDoadores ?></h2>
                             </div>
                             <div class="relatorio-ong-card-icon-div">
-                                <i class="fa-regular fa-message relatorio-ong-icon-card-2"></i>
+                                <i class="fa-solid fa-user relatorio-ong-icon-card-3"></i>
                             </div>
                         </div>
                         <div class="relatorio-ong-card-volunters-3">
                             <div title="+100 Voluntários" class="relatorio-ong-card-text-value">
-                                <h3 class="h3-relatorio-ong">Adesão de Voluntários</h3>
-                                <h2 class="h2-relatorio-ong">215,0</h2>
-                                <div class="relatorio-ong-statistic-green-text">
-                                    <i class="fa-solid fa-arrow-up"></i>
-                                    <p class="p-relatorio-ong">100 em Junho</p>
-                                </div>
+                                <h3 class="h3-relatorio-ong">Total de Voluntários</h3>
+                                <h2 class="h2-relatorio-ong"><?= $totalVoluntarios ?></h2>
                             </div>
                             <div class="relatorio-ong-card-icon-div">
                                 <i class="fa-solid fa-user relatorio-ong-icon-card-3"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
-                            <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
-                            <p>Baixar Relatório</p>
-                        </a>
-                    </div>
+                    <form action="../../../controller/RelatorioDoacoesOngController.php" method="GET">
+                        <div class="relatorio-ong-ong-options-4">
+                            <input type="hidden" value="<?=$idOng ?>" name="id">
+                            <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
+                                <button style="border: none; background-color: inherit; color: #D2A680" >
+                                <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>    
+                                Baixar Relatório</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
                 <form class="filtro" method="GET">
                     <div class="bloco-datas">
@@ -110,14 +116,14 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (empty($lista)): ?>
+                            <?php if (empty($doacoes)): ?>
                                 <tr>
                                     <td colspan="3">Nenhuma doação encontrada.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($lista as $doacao): ?>
+                                <?php foreach ($doacoes as $doacao): ?>
                                     <tr>
-                                        <td><?= $doacao['dt_doacao']?></td>
+                                        <td><?= date('d/m/Y', strtotime($doacao['dt_doacao'])) ?></td>
                                         <td><?= $doacao['nome'] ?></td>
                                         <td><?= 'R$ ' . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     </tr>
@@ -126,7 +132,7 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+                <?php !empty($quantidadeDePaginas) ? criarPaginacao($quantidadeDePaginas) : null; ?>
             </div>
         </div>
     </main>
