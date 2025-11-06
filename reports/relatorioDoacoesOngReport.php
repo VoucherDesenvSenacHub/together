@@ -80,16 +80,16 @@ $dataAtual = getDate();
 </head>
 <body>
     <div class="container">
-        <h1 class="titulo">Doacoes recebidas pela <?=$doacoes[0]['razao_social']?></h1>
+        <h1 class="titulo">Doacoes recebidas pela <?=$doacoes[0]['razao_social'] ?? 'Ong'?></h1>
         <?php foreach($doacoes as $doacao){
             $doacao['hora'] = date('H:i:s', strtotime($doacao['dt_doacao']));
             $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao'])); 
         ?>
         <table>
             <tr>
-                <td><strong>Data da doação:</strong> <?= $doacao['dt_doacao'] ?></td>
-                <td><strong>Doador:</strong> <?= $doacao['nome'] ?></td>
-                <td><strong>Valor:</strong> <?= number_format($doacao['valor'],2, ',', '.') ?></td>
+                <td><strong>Data da doação:</strong> <?= $doacao['dt_doacao'] ?? ''?></td>
+                <td><strong>Doador:</strong> <?= $doacao['nome'] ?? ''?></td>
+                <td><strong>Valor:</strong> <?= number_format($doacao['valor'],2, ',', '.') ?? ''?></td>
             </tr>
         </table>
 
