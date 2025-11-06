@@ -39,7 +39,8 @@ class RelatorioModel
                 FROM doacoes D
                 JOIN ongs O ON D.id_ong = O.id
                 JOIN usuarios U ON D.id_usuario = U.id
-                WHERE O.id = :idOng
+                WHERE O.id = :idOng 
+                AND D.status = 'APROVADO'
                 ORDER BY D.dt_doacao DESC;
             ";
 
