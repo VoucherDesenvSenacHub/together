@@ -16,7 +16,7 @@ $totalVoluntarios = $ongModel->contarQuantidadeDeVoluntariosOngs($_SESSION['id']
 $totalDoadores = $doacaoModel->contarDoacoesOngs($_SESSION['id']);
 
 if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pesquisar'])) {
-    $hoje = date('d/m/Y');
+    $hoje = date('Y-m-d');
 
     $doacoes = $ongModel->buscarDoacoes(
         $_SESSION['id'],
