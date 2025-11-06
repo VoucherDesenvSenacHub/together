@@ -4,7 +4,7 @@ require_once __DIR__ . '/../model/RelatorioModel.php';
 
 global $idOng;
 $relatorioModel = new RelatorioModel();
-$doacoes = $relatorioModel->buscarDoacoesOng(1);
+$doacoes = $relatorioModel->buscarDoacoesOng($_SESSION['id']);
 date_default_timezone_set('America/Sao_Paulo');
 $dataAtual = getDate();
 

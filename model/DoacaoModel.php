@@ -121,7 +121,7 @@ class DoacaoModel
         $query = "SELECT SUM(valor) AS total_doacoes
             FROM doacoes 
             WHERE status = 'APROVADO' 
-            AND id = :id_ong";
+            AND id_ong = :id_ong";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam('id_ong', $id_ong);
         $stmt->execute();

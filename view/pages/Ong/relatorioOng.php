@@ -77,7 +77,7 @@ if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pes
                         <div class="relatorio-ong-ong-options-4">
                             <input type="hidden" value="<?=$idOng ?>" name="id">
                             <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
-                                <button style="border: none; background-color: inherit">
+                                <button style="border: none; background-color: inherit; color: #D2A680" >
                                 <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>    
                                 Baixar Relatório</button>
                             </a>
