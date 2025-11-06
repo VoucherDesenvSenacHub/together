@@ -71,12 +71,16 @@ $lista = $ongModel->filtroDataHoraDoacoes($idOng, $dtInicio, $dtFinal);
                             </div>
                         </div>
                     </div>
-                    <div class="relatorio-ong-ong-options-4">
-                        <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
-                            <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>
-                            <p>Baixar Relatório</p>
-                        </a>
-                    </div>
+                    <form action="../../../controller/RelatorioDoacoesOngController.php" method="GET">
+                        <div class="relatorio-ong-ong-options-4">
+                            <input type="hidden" value="<?=$idOng ?>" name="id">
+                            <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
+                                <button style="border: none; background-color: inherit">
+                                <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>    
+                                Baixar Relatório</button>
+                            </a>
+                        </div>
+                    </form>
                 </div>
                 <form class="filtro" method="GET">
                     <div class="bloco-datas">
