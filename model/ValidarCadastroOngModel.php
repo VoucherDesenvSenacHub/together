@@ -14,25 +14,27 @@ class ValidarCadastroOngModel
     public function BuscarCadastroOng(int $id)
     {
         $sql = "SELECT O.razao_social, 
-        O.telefone, 
-        O.cnpj, 
-        CO.nome as categoria_ong, 
-        U.email,
-        E.numero,
-        E.cep,
-        E.logradouro,
-        E.complemento,
-        E.bairro,
-        E.cidade,
-        E.estado
-        FROM ongs O
-        JOIN  categorias_ongs CO
-        ON O.id_categoria = CO.id
-        JOIN usuarios U
-        ON O.id_usuario = U.id
-        JOIN enderecos E
-        ON O.id_endereco = E.id
-        WHERE O.id = :id";        
+            O.telefone, 
+            O.cnpj, 
+            CO.nome as categoria_ong, 
+            U.email,
+            E.numero,
+            E.cep,
+            E.logradouro,
+            E.complemento,
+            E.bairro,
+            E.cidade,
+            E.estado
+            FROM ongs O
+            JOIN  categorias_ongs CO
+            ON O.id_categoria = CO.id
+            JOIN usuarios U
+            ON O.id_usuario = U.id
+            JOIN enderecos E
+            ON O.id_endereco = E.id
+            WHERE O.id = :id
+        ";   
+             
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -42,16 +44,24 @@ class ValidarCadastroOngModel
     }
 
     public function ValidarPerfilUsuario(int $idDaOng):array{
-        $queryConsultaUsuario = "SELECT U.tipo_perfil FROM ongs O JOIN usuarios U ON O.id_usuario = U.id WHERE O.id = :id";   
+        $queryConsultaUsuario = "SELECT U.tipo_perfil 
+            FROM ongs O 
+            JOIN usuarios U 
+            ON O.id_usuario = U.id 
+            WHERE O.id = :id
+        "; 
+
         $stmt = $this->conn->prepare($queryConsultaUsuario);
         $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);     
         $stmt->execute();
         return $stmt->fetch();
     }
-    public function AtualizarStatusValidacao(int $idDaOng){
+    public function AtualizarStatusValidacao(int $idDaOng, string $tipo_alteracao){
         try{
-            $queryAtualizaStatusValidacao = "UPDATE ongs SET status_validacao = :tipo 
-            WHERE id = :id;";        
+            $queryAtualizaStatusValidacao = "UPDATE ongs 
+                SET status_validacao = :tipo 
+                WHERE id = :id
+            ";        
 
             $stmt = $this->conn->prepare($queryAtualizaStatusValidacao);
             $stmt->bindParam(":id", $idDaOng, PDO::PARAM_INT);
@@ -61,14 +71,17 @@ class ValidarCadastroOngModel
             throw new Exception($e->getMessage());
         }
     }
-    public function AtualizarTipoDeUsuario(string $statusAlteracao){
+    public function AtualizarTipoDeUsuario(string $statusAlteracao, $idDaOng){
         try{
-            if($statusAlteracao == "aprovado") {
-                $queryAtualizaUsuario = "UPDATE usuarios U SET U.tipo_perfil = 'Ong'
-                WHERE id =  (SELECT id_usuario FROM ongs WHERE id_usuario = :id)";
+            if($statusAlteracao === 'aprovado') {
+                $queryAtualizaUsuario = "UPDATE usuarios U 
+                    SET U.tipo_perfil = 'Ong'
+                    WHERE id = (SELECT id_usuario FROM ongs WHERE id = :id)
+                ";
+
                 $stmtUser = $this->conn->prepare($queryAtualizaUsuario);
                 $stmtUser->bindParam(":id", $idDaOng, PDO::PARAM_INT);
-                $stmtUser->execute();
+                return $stmtUser->execute();
             }
         }catch(Exception $e){
             throw new Exception($e->getMessage());

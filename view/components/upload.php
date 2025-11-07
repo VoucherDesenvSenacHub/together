@@ -24,7 +24,7 @@ Como usar:
          <?php $preview->preview() ?>
 */
 
-require_once './../../components/acoes.php';
+require_once __DIR__ . "/acoes.php";
 require_once __DIR__ . "/../../model/ImagemModel.php";
 
 class ImagemPreview
@@ -40,7 +40,7 @@ class ImagemPreview
       $this->imagem = $this->imagemModel->buscarImagemPorId($this->id);
    }
 
-   public function preview()
+   public function preview($disabled = false)
    {
 ?>
       <div class="formulario-imagem-preview">
@@ -53,7 +53,7 @@ class ImagemPreview
                </div>
             <?php endif; ?>
 
-            <input type="file" id="file" name="file" accept="image/*">
+            <input type="file" id="file" name="file" accept="image/*" <?= $disabled ? 'disabled' : '' ?>>
 
             <img id="preview"
                src="<?= $this->imagem ? $this->imagem['caminho'] : '#' ?>"

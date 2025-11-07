@@ -1,3 +1,5 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once "../../components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
 <?php require_once "../../components/label.php" ?>

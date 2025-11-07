@@ -1,15 +1,19 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']);  ?>
 <?php require_once "./../../components/head.php"; ?>
 <?php require_once "./../../components/acoes.php"; ?>
 <?php require_once "./../../components/label.php"; ?>
 <?php require_once "./../../components/input.php"; ?>
 <?php require_once "./../../../model/DoacaoModel.php"; ?>
 <?php require_once './../../components/paginacao.php'; ?>
+<?php require_once './../../../services/RelatorioService.php'; ?>
 
 <?php
 $idUsuario = (int)$_SESSION['id'];
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 
 $doacaoModel = new DoacaoModel();
+$relatorioService = new RelatorioService();
 
 // quantidade total de registros
 $totalDoacoes = count($doacaoModel->BuscarDoacoesPorID($idUsuario));
@@ -55,7 +59,6 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
                                 </div>
 
                             </div>
-
                         <div class="bloco-pesquisa">
                             <?= label('pesquisar', '&nbsp;') ?>
                             <?= inputFilter('text', 'pesquisar', 'nome_ong', "Pesquisar Ong&#39s") ?>
@@ -79,9 +82,12 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
                                     <td><?= htmlspecialchars($doacao['razao_social']) ?></td>
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
-                                        <a href="assets/images/usuario/historicoDoacoes.jpg" download style="color: #797777;">
-                                            <?= renderAcao('baixar') ?>
-                                        </a>
+                                        <form action="../../../controller/HistoricoDoacoesUsuarioController.php" method="GET">
+                                            <input type="hidden" name="id" value="<?= $doacao['id'] ?>">
+                                            <button type="submit" style="border: none; background-color: inherit;">
+                                                <?= renderAcao('baixar') ?>
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             <?php } ?>

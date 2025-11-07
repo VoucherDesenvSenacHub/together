@@ -1,3 +1,5 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php
 require_once "../../components/head.php";
 require_once "../../components/button.php";
@@ -17,7 +19,7 @@ $imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
 // --------------------------------------------
 // USADO PARA O PREVIEW DA IMAGEM
 require_once "./../../components/upload.php";
-$preview = new ImagemPreview($imagem['id']);
+$preview = new ImagemPreview($imagem['id'] ?? null);
 // --------------------------------------------
 
 // Popup do session
@@ -50,12 +52,12 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             </div>
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>
-                                <?= textareaRequiredMaxLength("subtitulo", "subtitulo", $pagina['subtitulo'], 150) ?>
+                                <?= textareaRequiredMaxLength("subtitulo", "subtitulo", $pagina['subtitulo'] ?? '', 150) ?>
                             </div>
                         </div>
                     </div>
                     <?= label("descricao", "Descrição") ?>
-                    <?= textareaRequiredMaxLength("descricao", "descricao", $pagina['descricao'], 800) ?>
+                    <?= textareaRequiredMaxLength("descricao", "descricao", $pagina['descricao'] ?? '', 800) ?>
                     <div class="formulario-redes-buttons">
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">

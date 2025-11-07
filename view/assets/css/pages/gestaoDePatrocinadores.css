@@ -59,7 +59,6 @@
     }
 }
 
-<<<<<<< HEAD
 .lista-patrocinadores {
     width: 70vw;
     height: 100vh;
@@ -228,8 +227,4 @@
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
-=======
-.botao-modal-patrocinadores{
-    margin-top: 50px;
->>>>>>> 2962f672661f301bfcac8bcf3c0ecb2b31315a55
 }

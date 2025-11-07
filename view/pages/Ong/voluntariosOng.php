@@ -1,24 +1,27 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once './../../components/head.php' ?>
 <?php require_once './../../components/acoes.php' ?>
 <?php require_once './../../components/button.php' ?>
 <?php require_once './../../components/input.php' ?>
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../../model/OngModel.php' ?>
+<?php require_once './../../components/paginacao.php'; ?>
 
 <?php
-// $idOng = $_SESSION['id_ong'] ?? null;
-$idOng = 1; // Temporário para testes
+
 $ongModel = new OngModel();
 
-$dtInicio = $_GET['dt_inicio'] ?? null;
-$dtFinal = $_GET['dt_final'] ?? null;
+$id_ong = $_SESSION['id'] ?? null;
+$nome_usuario_voluntario = isset($_POST['nome_usuario_voluntario']) ? trim($_POST['nome_usuario_voluntario']) : '';
+$data_inicio = isset($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
+$data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
 
-$dtInicio = !empty($dtInicio) ? $dtInicio : null;
-$dtFinal = !empty($dtFinal) ? $dtFinal : null;
+$lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio, $data_fim);
 
-$lista = $ongModel->filtroDataHoraVoluntarios($idOng, $dtInicio, $dtFinal);
-
-
+// página atual e quantidade de páginas vindo do controller
+$pagina = isset($pagina) ? $pagina : 1;
+$quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
 
 <body class="voluntario-ong">
@@ -29,27 +32,31 @@ $lista = $ongModel->filtroDataHoraVoluntarios($idOng, $dtInicio, $dtFinal);
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
             <div class="formulario-perfil">
-            <form class="filtro" method="GET">
-                <div class="bloco-datas">
-                    <div class="filtro-por-mes">
-                        <?= label('data-inicio', 'Período') ?>
-                        <?= inputDefault('date', 'data-inicio', 'dt_inicio', $_GET['dt_inicio'] ?? null) ?>
-                    </div>
-                    <div class="filtro-por-mes">
-                        <?= label('data-final', '&nbsp;') ?>
-                        <?= inputDefault('date', 'data-final', 'dt_final', $_GET['dt_final'] ?? null) ?>
-                    </div>
-                    <div class="filtro-por-mes">
-                        <?= label('data-final', '&nbsp;') ?>
-                        <?= botao('primary', '✔') ?>
-                    </div>
-                </div>
 
-                <div class="bloco-pesquisa">
-                    <?= label('pesquisar', '&nbsp;') ?>
-                    <?= inputFilter('text', 'pesquisar', 'pesquisar', 'Pesquisar Voluntário') ?>
-                </div>
-            </form>
+                <form action="voluntariosOng.php" method="POST">
+                    <div class="filtro">
+                        <div class="bloco-datas">
+                            <div class="filtro-por-mes">
+                                <?= label('data-inicio', 'Período') ?>
+                                <?= inputFilter('date', 'data-inicio', 'data-inicio', $_POST['data-inicio'] ?? '') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= inputFilter('date', 'data-final', 'data-final', $_POST['data-final'] ?? '') ?>
+                            </div>
+                            <div class="filtro-por-mes">
+                                <?= label('data-final', '&nbsp;') ?>
+                                <?= botao('primary', '✔') ?>
+                            </div>
+                        </div>
+
+                        <div class="bloco-pesquisa">
+                            <?= label('nome_usuario_voluntario', '&nbsp;') ?>
+                            <?= inputFilter('text', 'nome_usuario_voluntario', 'nome_usuario_voluntario', 'Pesquisar Usuario') ?>
+                        </div>
+                    </div>
+                </form>
+
                 <div class="table-mobile">
                     <table class="tabela">
                         <thead>
@@ -60,14 +67,14 @@ $lista = $ongModel->filtroDataHoraVoluntarios($idOng, $dtInicio, $dtFinal);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if(empty($lista)): ?>
+                            <?php if (empty($lista)): ?>
                                 <tr>
                                     <td colspan="3">Nenhum voluntário encontrado.</td>
                                 </tr>
                             <?php else: ?>
-                                <?php foreach($lista as $voluntarios): ?>
+                                <?php foreach ($lista as $voluntarios): ?>
                                     <tr>
-                                        <td><?= $voluntarios['dt_associacao']?></td>
+                                        <td><?= $voluntarios['dt_associacao'] ?></td>
                                         <td><?= $voluntarios['nome'] ?></td>
                                         <td>
                                             <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
@@ -80,12 +87,13 @@ $lista = $ongModel->filtroDataHoraVoluntarios($idOng, $dtInicio, $dtFinal);
                         </tbody>
                     </table>
                 </div>
-                <?php require_once './../../components/paginacao.php' ?>
+                <!-- Paginação -->
+                <?php if ($quantidadeDePaginas > 1) { ?>
+                    <?php criarPaginacao($quantidadeDePaginas); ?>
+                <?php } ?>
             </div>
         </div>
     </main>
-
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
 </html>

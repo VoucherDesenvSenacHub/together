@@ -1,3 +1,5 @@
+<?php require_once './../../../services/AutenticacaoService.php';
+AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once './../../components/head.php' ?>
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
