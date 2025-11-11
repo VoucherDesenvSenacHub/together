@@ -44,5 +44,7 @@ class ValidacoesSenhaService
             $erro = "A senha não pode conter espaços.";
             return $erro;
         }
+
+        return true;
     }
 }

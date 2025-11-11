@@ -17,18 +17,20 @@ try {
 
     $erros = [];
 
-    if (empty($senha) || empty($confirmar)) {
-        $erros[] = "Preencha todos os campos.";
-    }
+    
 
-    if (strlen($senha) < 8) {
-        $erros[] = "A senha deve ter no mínimo 8 caracteres.";
-        var_dump("Caiu no if menor que 8");
-    }
+    // if (empty($senha) || empty($confirmar)) {
+    //     $erros[] = "Preencha todos os campos.";
+    // }
 
-    if ($senha !== $confirmar) {
-        $erros[] = "As senhas digitadas não coincidem.";
-    }
+    // if (strlen($senha) < 8) {
+    //     $erros[] = "A senha deve ter no mínimo 8 caracteres.";
+    //     var_dump("Caiu no if menor que 8");
+    // }
+
+    // if ($senha !== $confirmar) {
+    //     $erros[] = "As senhas digitadas não coincidem.";
+    // }
 
     $loginModel = new LoginModel();
     $senhaAtual = $loginModel->buscarSenhaAtual($email);
