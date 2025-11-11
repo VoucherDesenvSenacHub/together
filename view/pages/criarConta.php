@@ -22,7 +22,7 @@ if (!isset($_SESSION['step'])) {
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php $_SESSION['step'] === 2 ? '' : require_once './../components/back-button.php' ?>
+            <?php $_SESSION['step'] === 2  ?>
         </div>
 
         <div class="conteudo-login">

@@ -44,7 +44,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <?php require_once './../components/back-button.php' ?>
+        
         <div class="ong-search-screen">
 
             <!-- Areá de Filtro -->

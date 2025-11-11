@@ -28,7 +28,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 <body class="voluntario-ong">
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>

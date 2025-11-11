@@ -42,7 +42,7 @@ $quantidadeDePaginas = ceil(count($patrocinadores) / 10);
     </header>
 
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <div class="container-botao-patrocinadores">
