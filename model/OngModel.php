@@ -694,4 +694,13 @@ class OngModel
 
         return isset($resultado['total']) ? (int)$resultado['total'] : 0;
     }
+
+    public function buscarOngPorIdUsuario($id_usuario)
+    {
+        $query = "SELECT * FROM ongs WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
