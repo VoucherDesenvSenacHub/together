@@ -34,7 +34,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Página</h1>
