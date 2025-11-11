@@ -465,7 +465,7 @@ class OngModel
             $stmt->execute();
 
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-            return (int)$resultado['total'];
+            return (int) $resultado['total'];
         } catch (Exception $e) {
             return 0;
         }
@@ -496,8 +496,8 @@ class OngModel
             LIMIT :limite OFFSET :offset";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':idOng', $idOng, PDO::PARAM_INT);
-            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -523,7 +523,7 @@ class OngModel
 
     public function mostrarInformacoesPaginaOng($id)
     {
-        $query = "SELECT p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
+        $query = "SELECT p.titulo, p.subtitulo, p.descricao, p.facebook, p.instagram, p.twitter 
               FROM paginas p 
               WHERE p.id_ong = :id";
         $stmt = $this->conn->prepare($query);
@@ -544,11 +544,13 @@ class OngModel
     // Função auxiliar para pegar o último segmento da URL
     private function extrairNomePerfil($url)
     {
-        if (!$url) return null;
+        if (!$url)
+            return null;
 
         $parsed = parse_url($url);
 
-        if (!isset($parsed['path'])) return null;
+        if (!isset($parsed['path']))
+            return null;
 
         // Remove barra final e query string
         $path = rtrim($parsed['path'], '/');
@@ -603,7 +605,7 @@ class OngModel
                 LIMIT :limite";
 
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
             $stmt->execute();
 
             $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -672,8 +674,8 @@ class OngModel
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
-        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -692,6 +694,6 @@ class OngModel
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return isset($resultado['total']) ? (int)$resultado['total'] : 0;
+        return isset($resultado['total']) ? (int) $resultado['total'] : 0;
     }
 }
