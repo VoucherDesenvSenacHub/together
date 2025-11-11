@@ -34,7 +34,7 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Validação de Voluntários</h1>
             <div class="formulario-perfil">
