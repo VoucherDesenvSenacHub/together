@@ -27,15 +27,16 @@ function validarEdicaoOng()
     foreach ($campos as $campo) {
         if (empty($_POST[$campo])) {
             $erros[] = "O campo {$campo} é obrigatório!";
-            foreach ($erros as $erro) {
-                $_SESSION['type'] = 'erro';
-                $_SESSION['message'] = $erro;
-                header('Location: /together/view/pages/Ong/editarPaginaOng.php');
-                exit;
-            }
+        }
+    }
+    if (!empty($erros)) {
+            $_SESSION['type'] = 'erro';
+            $_SESSION['message'] = implode("<br>", $erros);
+            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            exit;
+    }
             // header('Location: /together/view/pages/Ong/editarPaginaOng.php');
             // return $erros;
-        }
         // if (empty($_POST['titulo'])) {
         //     $_SESSION['type'] = 'erro';
         //     $_SESSION['message'] = 'O título é obrigatório!';
@@ -93,7 +94,7 @@ function validarEdicaoOng()
             }
         }
     }
-}
+
 
 function validarUrls()
 {
