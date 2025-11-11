@@ -32,7 +32,7 @@ if (isset($_SESSION['id'])) {
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+            
         </div>
 
 

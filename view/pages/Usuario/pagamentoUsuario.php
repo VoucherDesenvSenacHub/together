@@ -20,7 +20,7 @@ if (isset($_SESSION['erro'], $erro)) {
   <?php require_once "../../../view/components/navbar.php"; ?>
 
   <main class="main-container">
-    <?php require_once './../../components/back-button.php' ?>
+   
     <div class="div-wrap-width">
       <h3 class="titulo-pay-user">Pagamento</h3>
       <div class="container-pay-user">
