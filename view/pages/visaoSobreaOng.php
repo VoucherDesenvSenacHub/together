@@ -155,7 +155,7 @@ if ($popupType && $popupMessage) {
     ?>
 
     <main class="main-container">
-        <?php require_once './../components/back-button.php' ?>
+        
 
         <div class="adm-ong-vision-container">
 

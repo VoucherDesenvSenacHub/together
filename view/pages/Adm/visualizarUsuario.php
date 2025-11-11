@@ -40,7 +40,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 <body>
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <form action="" class="form-filtro-data">
