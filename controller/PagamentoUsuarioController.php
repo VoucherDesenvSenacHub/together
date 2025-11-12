@@ -125,7 +125,7 @@ try {
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
 
     
-    header("Location: ../index.php");
+    header("Location: ../view/pages/Usuario/historicoDoacao.php");
     exit();
 
 } catch (Exception $e) {

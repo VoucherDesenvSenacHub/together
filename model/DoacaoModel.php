@@ -51,7 +51,7 @@ class DoacaoModel
     public function filtrarDoacao(int $userid, string $nome_ong = "", ?string $data_inicio = null, ?string $data_fim = null)
     {
 
-        $sql = "SELECT D.id, D.dt_doacao, O.razao_social, D.valor 
+        $sql = "SELECT D.id, D.dt_doacao, O.razao_social, D.valor, D.codigo_transacao 
             FROM doacoes D
             JOIN ongs O ON O.id = D.id_ong
             JOIN usuarios U ON U.id = D.id_usuario
