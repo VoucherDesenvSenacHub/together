@@ -101,7 +101,7 @@ switch ($perfil) {
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?id_ong=' . $idOngUrl;
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . $idOngUrl;
         if ($statusVoluntario) {
             if ($statusVoluntario['status_validacao'] == 'aprovado') {
                 $btnVoluntarioText = 'Você é Voluntário';
@@ -155,7 +155,7 @@ if ($popupType && $popupMessage) {
     ?>
 
     <main class="main-container">
-        <?php require_once './../components/back-button.php' ?>
+        
 
         <div class="adm-ong-vision-container">
 

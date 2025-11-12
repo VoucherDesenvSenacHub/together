@@ -20,7 +20,7 @@ if (isset($_SESSION['erro'], $erro)) {
   <?php require_once "../../../view/components/navbar.php"; ?>
 
   <main class="main-container">
-    <?php require_once './../../components/back-button.php' ?>
+   
     <div class="div-wrap-width">
       <h3 class="titulo-pay-user">Pagamento</h3>
       <div class="container-pay-user">
@@ -76,7 +76,6 @@ if (isset($_SESSION['erro'], $erro)) {
 
   <?php require_once "../../../view/components/footer.php"; ?>
 
-  <script src="/together/view/assets/js/pages/pagamento_ComprovantePDF.js"></script>
   <script src="/together/view/assets/js/pages/pagamentoUsuario.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>

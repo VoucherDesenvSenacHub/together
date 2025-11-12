@@ -34,7 +34,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Página</h1>
@@ -47,8 +47,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         </div>
                         <div class="formulario-campos">
                             <div>
-                                <?= label("titulo", "Título") ?>
-                                <?= inputRequiredMaxLength("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
+                                <?= label("titulo", "Razão Social") ?>
+                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
                             </div>
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>

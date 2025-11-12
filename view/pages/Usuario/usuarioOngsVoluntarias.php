@@ -26,7 +26,7 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
     <?php require_once './../../components/navbar.php' ?>
     <main class="main-container">
         <div class="btn-voltar-validacao-atualizacao">
-            <?php require_once './../../components/back-button.php' ?>
+           
         </div>
 
         <div class="div-wrap-width">
