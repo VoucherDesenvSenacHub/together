@@ -77,7 +77,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                         <td><?= $voluntarios['dt_associacao'] ?></td>
                                         <td><?= $voluntarios['nome'] ?></td>
                                         <td>
-                                            <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
+                                            <a href="/together/view/pages/ong/visualizarVoluntarioCadastrado.php">
                                                 <?= renderAcao('visualizar') ?>
                                             </a>
                                         </td>

@@ -37,5 +37,5 @@ try {
 } catch (Exception $e) {
     $_SESSION[""] = 'erro';
     $_SESSION["message"] = 'Algo deu errado!';
-    header('Location: /together/view/pages/Adm/OngsAValidar.php');
+    header('Location: /together/view/pages/adm/OngsAValidar.php');
 }

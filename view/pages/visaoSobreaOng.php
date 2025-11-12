@@ -72,7 +72,7 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php';
+        $urlDoacao = '/together/view/pages/usuario/pagamentoUsuario.php';
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         // Se for ONG e estiver vendo outra ONG, checar status pra desabilitar botão após solicitação
         if (!empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl) {
@@ -101,7 +101,7 @@ switch ($perfil) {
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?id_ong=' . $idOngUrl;
+        $urlDoacao = '/together/view/pages/usuario/pagamentoUsuario.php?id_ong=' . $idOngUrl;
         if ($statusVoluntario) {
             if ($statusVoluntario['status_validacao'] == 'aprovado') {
                 $btnVoluntarioText = 'Você é Voluntário';
@@ -170,7 +170,7 @@ if ($popupType && $popupMessage) {
                         </div>
                         <?php if ($mostrarEdicao): ?>
                             <a class="icon-sobreaong"
-                                href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+                                href="/together/view/pages/ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
                         <?php endif; ?>
                     </div>
 
@@ -293,7 +293,7 @@ if ($popupType && $popupMessage) {
                                                 <div class="icon-visao-sobre-ong">
                                                     <?php if ($mostrarEdicao): ?>
                                                         <a
-                                                            href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                            href="/together/view/pages/ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
@@ -314,7 +314,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['instagram'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/instagram.png" alt="Instagram">
+                                                src="./../assets/images/adm/instagram.png" alt="Instagram">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['instagram']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -327,7 +327,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['facebook'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/facebook.png" alt="Facebook">
+                                                src="./../assets/images/adm/facebook.png" alt="Facebook">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['facebook']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -340,7 +340,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['twitter'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/X.png" alt="Twitter">
+                                                src="./../assets/images/adm/X.png" alt="Twitter">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['twitter']) ?>" target="_blank"
                                                     rel="noopener noreferrer">

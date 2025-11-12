@@ -16,7 +16,7 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
-                            <img src="/together/view/assets/images/Ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
+                            <img src="/together/view/assets/images/ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
@@ -89,7 +89,7 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
                     </div>
                     <!-- <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/Adm/visualizarUsuario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarUsuario.php') ?> </div>
                         </div>
                     </div> -->
                 </form>

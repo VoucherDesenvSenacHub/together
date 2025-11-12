@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         container_comprovante.innerHTML = `
         <div style="text-align: center; margin-bottom: 20px;">
-            <img src="../../images/Geral/Together.png" alt="Together" style="max-width: 150px; margin-bottom: 10px;" />
+            <img src="../../images/geral/Together.png" alt="Together" style="max-width: 150px; margin-bottom: 10px;" />
             <h1 style="margin: 0; font-size: 22px;">Comprovante de Doação</h1>
         </div>
 
