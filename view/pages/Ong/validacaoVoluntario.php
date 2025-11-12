@@ -14,6 +14,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 }
 
 $ongModel = new OngModel();
+$idOng = $ongModel->buscarOngPorIdUsuario($_SESSION['id'])['id'] ?? null;
+$_SESSION['id_ong'] = $idOng;
 
 if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET['pesquisar'])) {
     $hoje = date('Y-m-d');
@@ -21,14 +23,14 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
     $dataFinal = $_GET['data-final'] ?: $hoje;
     $pesquisar = trim($_GET['pesquisar'] ?? '');
 
-    $VisualizarVoluntarios = $ongModel->filtrarVoluntarioPendente($_SESSION['id'], $nome_voluntario, $data_inicio, $data_fim);
+    $VisualizarVoluntarios = $ongModel->filtrarVoluntarioPendente($_SESSION['id_ong'], $pesquisar, $data_inicio, $data_fim);
 } else {
     $paginaAtual = max((int)($_GET['pagina'] ?? 1), 1);
     $limite = 10;
     $offset = ($paginaAtual - 1) * $limite;
 
-    $VisualizarVoluntarios = $ongModel->buscarVoluntarioDaOng($_SESSION['id'], $limite, $offset);
-    $quantidadeDePaginas = ceil($ongModel->contarVoluntariosPendentes($_SESSION['id']) / 10);
+    $VisualizarVoluntarios = $ongModel->buscarVoluntarioDaOng($_SESSION['id_ong'], $limite, $offset);
+    $quantidadeDePaginas = ceil($ongModel->contarVoluntariosPendentes($_SESSION['id_ong']) / 10);
 }?>
 
 <body>

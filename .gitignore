@@ -1,4 +1,4 @@
 .env
 composer.lock
 /vendor/
-
+/upload/

@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../utils/PdfUtil.php';
 class RelatorioService
 {
-    public function gerarComprovanteDoacao($idDoacao)
+    public function gerarComprovanteDoacao($idCodigoTransacao)
     {
         try
         {
