@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/../model/RelatorioModel.php';
 
-global $idDoacao;
+global $idCodigoTransacao;
 
 $relatorioModel = new RelatorioModel();
-$doacao = $relatorioModel->buscarDoacao($idDoacao);
+$doacao = $relatorioModel->buscarDoacao($idCodigoTransacao);
 
 $doacao['hora'] = date('H:i:s', strtotime($doacao['dt_doacao']));
 $doacao['dt_doacao'] = date('d/m/Y', strtotime($doacao['dt_doacao']));
