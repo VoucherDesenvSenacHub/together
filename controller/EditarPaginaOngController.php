@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function validarEdicaoOng()
 {
     $erros = [];
-    $campos = ['titulo', 'subtitulo', 'descricao'];
+    $campos = ['subtitulo', 'descricao'];
     foreach ($campos as $campo) {
         if (empty($_POST[$campo])) {
             $erros[] = "O campo {$campo} é obrigatório!";
@@ -52,7 +52,6 @@ function validarEdicaoOng()
 
         $resultado = $ongModel->editarPaginaOng(
             $_SESSION['id'],
-            $_POST['titulo'],
             $_POST['subtitulo'],
             $_POST['descricao'],
             $_POST['Facebook'],
