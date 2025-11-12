@@ -46,7 +46,7 @@ $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $da
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
         <div class="div-wrap-width">
             <div class="titulo-pagina">
                 <h1>Validação de ONGs</h1>
