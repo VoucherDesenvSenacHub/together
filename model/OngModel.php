@@ -22,7 +22,7 @@ class OngModel
 
     public function filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio = null, $data_fim = null)
     {
-        $sql = "SELECT V.dt_associacao, U.nome
+        $sql = "SELECT U.id, V.dt_associacao, U.nome
             FROM voluntarios V
             JOIN usuarios U ON U.id = V.id_usuario
             JOIN ongs O ON O.id = V.id_ong
@@ -700,5 +700,14 @@ class OngModel
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
         return isset($resultado['total']) ? (int)$resultado['total'] : 0;
+    }
+
+    public function buscarOngPorIdUsuario($id_usuario)
+    {
+        $query = "SELECT * FROM ongs WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

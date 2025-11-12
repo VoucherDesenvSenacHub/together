@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . "/../model/ValidarCadastroOngModel.php";
-require_once __DIR__ . "/../config/database.php";
 
 $validarCadastroOngModel = new ValidarCadastroOngModel();
 
