@@ -3,15 +3,26 @@ require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
 require_once './../components/alert.php';
+require_once './../components/upload.php';
 require_once './../../model/OngModel.php';
 require_once './../../model/PostagemModel.php';
 require_once './../../model/UsuarioModel.php';
+require_once './../../model/ImagemModel.php';
 ?>
 
 <?php
 $ongModel = new OngModel();
 $postagemModel = new PostagemModel();
 $usuarioModel = new UsuarioModel();
+
+// require_once "./../../../model/ImagemModel.php";
+$imagemModel = new ImagemModel();
+$imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
+
+// --------------------------------------------
+// USADO PARA O PREVIEW DA IMAGEM
+// require_once "./../../components/upload.php";
+$preview = new ImagemPreview($imagem['id'] ?? null);
 
 // Converte ID s  da URL em inteiros para evitar erro de tipo
 $idOngUrl = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -34,7 +45,7 @@ if (!$idOngUrl && $perfilLogado === 'Ong') {
 $mostrarEdicao = false;
 if ($perfilLogado === 'Ong') {
     if ($idOngUrl === $idOngDoUsuario) {
-        $mostrarEdicao = true; 
+        $mostrarEdicao = true;
     }
 }
 
@@ -92,7 +103,7 @@ switch ($perfil) {
                     $btnVoluntarioClass = 'secondary';
                 }
             } else {
-                
+
                 $btnVoluntarioDisabled = false;
                 $btnVoluntarioText = 'Voluntariar-se';
                 $btnVoluntarioClass = 'primary';
@@ -126,11 +137,19 @@ switch ($perfil) {
 ?>
 
 <?php if (!empty($spanMsgVisivel)): ?>
-<style>.span-msg { display: block; }</style>
+    <style>
+        .span-msg {
+            display: block;
+        }
+    </style>
 <?php endif; ?>
 
 <?php if (!empty($sessionOngVisivel)): ?>
-<style>.sessionOng { display: block; }</style>
+    <style>
+        .sessionOng {
+            display: block;
+        }
+    </style>
 <?php endif; ?>
 
 <?php
@@ -155,7 +174,7 @@ if ($popupType && $popupMessage) {
     ?>
 
     <main class="main-container">
-        
+
 
         <div class="adm-ong-vision-container">
 
@@ -175,8 +194,12 @@ if ($popupType && $popupMessage) {
                     </div>
 
                     <div class="adm-ong-vision-title-options">
-                        <div class="adm-ong-vision-title-img-div">
+                        <!-- <div class="adm-ong-vision-title-img-div">
                             <img class="adm-ong-vision-img" src="<?= $imagemPerfil ?>" alt="Imagem da ONG">
+                        </div> -->
+                        <div class='formulario-imagem-preview'>
+                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
+                            <?php $preview->preview() ?>
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">
@@ -196,14 +219,19 @@ if ($popupType && $popupMessage) {
 
                                     <?php if (!$btnVoluntarioDisabled): ?>
                                         <!-- botão do usuário: desativa no submit via JS -->
-                                        <form id="formVoluntariarVisaoOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                              onsubmit="document.getElementById('btnVolUsuario').setAttribute('disabled','disabled'); document.getElementById('btnVolUsuario').innerText='Solicitando...';">
+                                        <form id="formVoluntariarVisaoOng" method="POST"
+                                            action="/together/controller/voluntarioController.php"
+                                            style="display: inline; margin: 0;"
+                                            onsubmit="document.getElementById('btnVolUsuario').setAttribute('disabled','disabled'); document.getElementById('btnVolUsuario').innerText='Solicitando...';">
                                             <input type="hidden" name="action" value="voluntariar">
-                                            <input type="hidden" name="id_ong" value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
-                                            <button id="btnVolUsuario" type="submit" class="botao botao-primary"><?= $btnVoluntarioText ?></button>
+                                            <input type="hidden" name="id_ong"
+                                                value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
+                                            <button id="btnVolUsuario" type="submit"
+                                                class="botao botao-primary"><?= $btnVoluntarioText ?></button>
                                         </form>
                                     <?php else: ?>
-                                        <button id="btnVolUsuarioDisabled" type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                        <button id="btnVolUsuarioDisabled" type="button" class="botao botao-secondary" disabled
+                                            style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                     <?php endif; ?>
 
                                 <?php elseif ($perfil === 'Ong'): ?>
@@ -215,19 +243,25 @@ if ($popupType && $popupMessage) {
                                     <?php
                                     // Caso seja a própria ONG, mostramos botão desabilitado 
                                     if ($btnVoluntarioDisabled && !empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl): ?>
-                                        <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                        <button type="button" class="botao botao-secondary" disabled
+                                            style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
 
                                     <?php else: ?>
                                         <?php if ($btnVoluntarioDisabled): ?>
                                             <!-- se já solicitou ou é voluntário, mostra desabilitado -->
-                                            <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                            <button type="button" class="botao botao-secondary" disabled
+                                                style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                         <?php else: ?>
                                             <!-- Form pra ONG voluntariar em outra ONG: desativa no submit via JS -->
-                                            <form id="formVoluntariarVisaoOngOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                                  onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
+                                            <form id="formVoluntariarVisaoOngOng" method="POST"
+                                                action="/together/controller/voluntarioController.php"
+                                                style="display: inline; margin: 0;"
+                                                onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
                                                 <input type="hidden" name="action" value="voluntariar">
-                                                <input type="hidden" name="id_ong" value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
-                                                <button id="btnVolOng" type="submit" class="botao botao-primary"><?= $btnVoluntarioText ?></button>
+                                                <input type="hidden" name="id_ong"
+                                                    value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
+                                                <button id="btnVolOng" type="submit"
+                                                    class="botao botao-primary"><?= $btnVoluntarioText ?></button>
                                             </form>
                                         <?php endif; ?>
                                     <?php endif; ?>
@@ -354,7 +388,7 @@ if ($popupType && $popupMessage) {
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </main>
     <?php require_once "../../view/components/footer.php"; ?>
