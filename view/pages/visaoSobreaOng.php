@@ -3,7 +3,6 @@ require_once "./../components/head.php";
 require_once "./../components/button.php";
 require_once "./../components/acoes.php";
 require_once './../components/alert.php';
-require_once './../components/upload.php';
 require_once './../../model/OngModel.php';
 require_once './../../model/PostagemModel.php';
 require_once './../../model/UsuarioModel.php';
@@ -14,15 +13,6 @@ require_once './../../model/ImagemModel.php';
 $ongModel = new OngModel();
 $postagemModel = new PostagemModel();
 $usuarioModel = new UsuarioModel();
-
-// require_once "./../../../model/ImagemModel.php";
-$imagemModel = new ImagemModel();
-$imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
-
-// --------------------------------------------
-// USADO PARA O PREVIEW DA IMAGEM
-// require_once "./../../components/upload.php";
-$preview = new ImagemPreview($imagem['id'] ?? null);
 
 // Converte ID s  da URL em inteiros para evitar erro de tipo
 $idOngUrl = isset($_GET['id']) ? intval($_GET['id']) : null;
@@ -194,12 +184,8 @@ if ($popupType && $popupMessage) {
                     </div>
 
                     <div class="adm-ong-vision-title-options">
-                        <!-- <div class="adm-ong-vision-title-img-div">
+                        <div class="adm-ong-vision-title-img-div">
                             <img class="adm-ong-vision-img" src="<?= $imagemPerfil ?>" alt="Imagem da ONG">
-                        </div> -->
-                        <div class='formulario-imagem-preview'>
-                            <input type="hidden" name="id_imagem" value="<?= $imagem['id'] ?? null ?>">
-                            <?php $preview->preview() ?>
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">
