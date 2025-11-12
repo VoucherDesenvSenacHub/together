@@ -99,5 +99,4 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
-
 </html>
