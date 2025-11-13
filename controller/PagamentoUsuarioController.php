@@ -125,7 +125,7 @@ try {
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
 
     
-    header("Location: ../index.php");
+    header("Location: ../view/pages/Usuario/historicoDoacao.php");
     exit();
 
 } catch (Exception $e) {
@@ -136,7 +136,7 @@ try {
     if ($logadont) {
         header('Location: ../view/pages/login.php');
     } else if (isset($_POST['idOng'])) {
-        header('Location: ../view/pages/Usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
+        header('Location: ../view/pages/usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
     } else {
         header('Location: ../index.php');
     }

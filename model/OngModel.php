@@ -618,7 +618,7 @@ class OngModel
             // 🔹 Caso não tenha imagem, definir uma padrão
             foreach ($ongs as &$ong) {
                 if (empty($ong['foto_ong'])) {
-                    $ong['foto_ong'] = "/together/view/assests/images/Adm/adm-vision-ong.png";
+                    $ong['foto_ong'] = "/together/view/assests/images/adm/adm-vision-ong.png";
                 }
                 if (empty($ong['descricao_ong'])) {
                     $ong['descricao_ong'] = "Descrição não disponível.";

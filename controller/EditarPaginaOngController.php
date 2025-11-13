@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($erros as $erro) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = $erro;
-            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            header('Location: /together/view/pages/ong/editarPaginaOng.php');
             exit;
         }
     }
@@ -25,17 +25,17 @@ function validarEdicaoOng()
     if (empty($_POST['titulo'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'O título é obrigatório!';
-        header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+        header('Location: /together/view/pages/ong/editarPaginaOng.php');
         exit;
     } elseif (empty($_POST['subtitulo'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'O subtítulo é obrigatório!';
-        header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+        header('Location: /together/view/pages/ong/editarPaginaOng.php');
         exit;
     } elseif (empty($_POST['descricao'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'A descrição é obrigatória!';
-        header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+        header('Location: /together/view/pages/ong/editarPaginaOng.php');
         exit;
     } else {
         require_once __DIR__ . "/../model/OngModel.php";
@@ -50,7 +50,7 @@ function validarEdicaoOng()
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
             if ($idImagem === false) {
-                header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+                header('Location: /together/view/pages/ong/editarPaginaOng.php');
                 exit;
             }
         }
@@ -69,7 +69,7 @@ function validarEdicaoOng()
         if (!$resultado) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao editar informações da página!';
-            header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+            header('Location: /together/view/pages/ong/editarPaginaOng.php');
             exit;
         } else {
             $_SESSION['type'] = 'sucesso';

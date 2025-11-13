@@ -13,7 +13,7 @@
 /* BANNER DO INDEX */
 .home-banner-together {
     height: 90vmin;
-    background-image: url("/together/view/assets/images/Geral/imgHome.jpg");
+    background-image: url("/together/view/assets/images/geral/imgHome.jpg");
     background-position-x: 50%;
     background-position-Y: 25%;
     background-repeat: no-repeat;
@@ -63,11 +63,11 @@
     background-position: center;
 
     &.ong {
-        background-image: url("/together/view/assets/images/Geral/imgOng.jpg");
+        background-image: url("/together/view/assets/images/geral/imgOng.jpg");
     }
 
     &.voluntario {
-        background-image: url("/together/view/assets/images/Geral/imgVoluntariar.jpg");
+        background-image: url("/together/view/assets/images/geral/imgVoluntariar.jpg");
     }
 }
 
