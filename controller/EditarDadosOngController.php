@@ -11,7 +11,7 @@ try {
     // verifica se o metodo é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         $_SESSION['erro'] = "Método inválido para esta requisição";
-        header("location: ./../view/pages/Ong/perfilOng.php");
+        header("location: ./../view/pages/ong/perfilOng.php");
         exit;
     }
     // campos que devem ser preenchidos e verifica se está vazio.
@@ -193,7 +193,7 @@ try {
 
         if ($idImagemProcessado === false) {
             // Se o upload falhar, a mensagem de erro já foi definida no UploadController
-            header('Location: /together/view/pages/Ong/perfilOng.php');
+            header('Location: /together/view/pages/ong/perfilOng.php');
             exit;
         }
         // Atualiza o id da imagem com o retornado pelo processamento
@@ -223,7 +223,7 @@ try {
     if ($resultado) {
         // retorna mensagem de sucesso e volta para pagina de perfil da ong
         $_SESSION["sucesso"] = "Informações atualizadas com sucesso!";
-        header("location: ./../view/pages/Ong/perfilOng.php");
+        header("location: ./../view/pages/ong/perfilOng.php");
     } else {
         throw new Exception("Erro ao atualizar os dados da ONG!");
     }
@@ -233,7 +233,7 @@ try {
 
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
-    header("location: ./../view/pages/Ong/perfilOng.php");
+    header("location: ./../view/pages/ong/perfilOng.php");
     exit();
 }
 
