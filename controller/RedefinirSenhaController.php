@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . "/../model/LoginModel.php";
+require_once __DIR__ . '/../services/ValidarSenhaService.php';
+
 
 try {
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -17,26 +19,21 @@ try {
 
     $erros = [];
 
-    
-
-    // if (empty($senha) || empty($confirmar)) {
-    //     $erros[] = "Preencha todos os campos.";
-    // }
-
-    // if (strlen($senha) < 8) {
-    //     $erros[] = "A senha deve ter no mínimo 8 caracteres.";
-    //     var_dump("Caiu no if menor que 8");
-    // }
-
-    // if ($senha !== $confirmar) {
-    //     $erros[] = "As senhas digitadas não coincidem.";
-    // }
+    $erroSenha = ValidarSenhaService::validarSenha($senha, $confirmar);
 
     $loginModel = new LoginModel();
     $senhaAtual = $loginModel->buscarSenhaAtual($email);
 
     if ($senhaAtual && password_verify($senha, $senhaAtual)) {
         $erros[] = "A nova senha não pode ser igual à atual.";
+    }
+
+    if ($erroSenha !== true) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = $erroSenha;
+        $token = $_POST['token'] ?? '';
+        header("Location: /together/view/pages/redefinirSenha.php?token=" . urlencode($token));
+        exit;
     }
 
     if (!empty($erros)) {
@@ -55,10 +52,9 @@ try {
     $_SESSION['message'] = "Senha redefinida com sucesso!";
     header("Location: ../view/pages/login.php");
     exit;
-
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
-    $_SESSION['message'] = $e->getMessage();
+    $_SESSION['message'] = 'Erro ao validar senha';
     $token = $_POST['token'] ?? '';
     header("Location: /together/view/pages/redefinirSenha.php?token=" . urlencode($token));
     exit;

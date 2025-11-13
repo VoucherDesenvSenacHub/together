@@ -1,6 +1,6 @@
 <?php
 
-class ValidacoesSenhaService
+class ValidarSenhaService
 {
     public static function validarSenha(string $senha, string $confirmarSenha)
     {
