@@ -55,31 +55,22 @@ class PagamentoException{
             throw new Exception("Valor inválido. Deve ser um número positivo.");
         }
 
-        // if (!$this->numeroValido($numero)) {
-        //     throw new Exception("Número do cartão inválido.");
-        // }
+        if (!$this->numeroValido($numero)) {
+            throw new Exception("Número do cartão inválido.");
+        }
     }
 
 
     private function numeroValido($numero) {
         $numero = preg_replace('/\D/', '', $numero);
-        $soma = 0;
-        $par = false;
-
-        for ($i = strlen($numero) - 1; $i >= 0; $i--) {
-            $digito = (int)$numero[$i];
-
-            if ($par) {
-                $digito *= 2;
-                if ($digito > 9) {
-                    $digito -= 9;
-                }
-            }
-
-            $soma += $digito;
-            $par = !$par;
+        $primeiroDigito = $numero[0];
+        $ultimoDigito = $numero[strlen($numero) - 1];
+        if ($primeiroDigito != '2' && $primeiroDigito != '4' && $primeiroDigito != '5') {
+            return false;
         }
-
-        return $soma % 10 === 0;
-}
+        if ($ultimoDigito % 2 != 1) {
+            return false;
+        }
+        return true;
+    }
 }
