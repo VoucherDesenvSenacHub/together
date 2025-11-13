@@ -8,11 +8,11 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET')
 {
-    $idDoacao = trim($_GET['id']);
+    $idCodigoTransacao = trim($_GET['id']);
 
-    if (!empty($idDoacao))
+    if (!empty($idCodigoTransacao))
     {
-        $relatorio = $relatorioService->gerarComprovanteDoacao($idDoacao);
+        $relatorio = $relatorioService->gerarComprovanteDoacao($idCodigoTransacao);
 
         header('Content-Type: application/pdf');
         header('Content-Disposition: attachment; filename="comprovante.pdf"');

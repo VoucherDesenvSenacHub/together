@@ -4,6 +4,7 @@ AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']);  ?>
 <?php require_once "./../../components/acoes.php"; ?>
 <?php require_once "./../../components/label.php"; ?>
 <?php require_once "./../../components/input.php"; ?>
+<?php require_once './../../components/alert.php' ?>
 <?php require_once "./../../../model/DoacaoModel.php"; ?>
 <?php require_once './../../components/paginacao.php'; ?>
 <?php require_once './../../../services/RelatorioService.php'; ?>
@@ -37,6 +38,12 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
     <main class="main-container">
+        <?php 
+        if (isset($_SESSION['type'], $_SESSION['message'])) {
+            showPopup($_SESSION['type'], $_SESSION['message']);
+            unset($_SESSION['type'], $_SESSION['message']);
+        }
+        ?>
         <?php require_once './../../components/back-button.php' ?>
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Histórico de Doações</h1>
@@ -83,7 +90,7 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
                                     <td><?= "R$ " . number_format($doacao['valor'], 2, ',', '.') ?></td>
                                     <td>
                                         <form action="../../../controller/HistoricoDoacoesUsuarioController.php" method="GET">
-                                            <input type="hidden" name="id" value="<?= $doacao['id'] ?>">
+                                            <input type="hidden" name="id" value="<?= $doacao['codigo_transacao'] ?>">
                                             <button type="submit" style="border: none; background-color: inherit;">
                                                 <?= renderAcao('baixar') ?>
                                             </button>

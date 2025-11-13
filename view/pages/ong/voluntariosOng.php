@@ -11,8 +11,9 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php
 
 $ongModel = new OngModel();
+$id_ong = $ongModel->buscarOngPorIdUsuario($_SESSION['id'])['id'] ?? null;
+$_SESSION['id_ong'] = $id_ong;
 
-$id_ong = $_SESSION['id'] ?? null;
 $nome_usuario_voluntario = isset($_POST['nome_usuario_voluntario']) ? trim($_POST['nome_usuario_voluntario']) : '';
 $data_inicio = isset($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
@@ -27,7 +28,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 <body class="voluntario-ong">
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>

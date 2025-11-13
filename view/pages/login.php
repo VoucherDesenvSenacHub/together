@@ -21,18 +21,13 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
     unset($_SESSION['type'], $_SESSION['message']);
 }
 
-//verifica se está logado e redireciona para o index
-if (isset($_SESSION['id'])) {
-    header("Location: /together/index.php");
-    exit;
-}
 ?>
 
 <body class="body-login">
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+            
         </div>
 
 

@@ -34,7 +34,7 @@ foreach ($tipos as $tipo) {
 <body>
   <?php require_once "../../../view/components/navbar.php"; ?>
   <main class="main-container">
-    <?php require_once './../../components/back-button.php' ?>
+   
 
     <div class="div-wrap-width">
       <h1 class="titulo-pagina">Informações da ONG</h1>

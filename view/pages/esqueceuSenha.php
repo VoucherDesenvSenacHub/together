@@ -17,7 +17,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+           
         </div>
 
 
