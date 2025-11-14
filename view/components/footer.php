@@ -12,15 +12,14 @@
             <ul>
                 <li><a href="/together/index.php">Início</a></li>
                 <li><a href="/together/index.php#sobre-nos">Sobre</a></li>
-                <li><a href="/servicos">Descobrir</a></li>
+                <li><a href="/together/view/pages/pesquisarOng.php">Descobrir</a></li>
             </ul>
         </div>
 
         <div class="footer-social">
             <h4>Contatos</h4>
             <div class="contatos">
-                <p>+55 (67) 9 9999-9999</p>
-                <p>together@email.com</p>
+                <p>suporte.together@gmail.com</p>
             </div>
         </div>
     </div>
