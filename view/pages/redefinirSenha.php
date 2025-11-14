@@ -50,7 +50,7 @@ $_SESSION['email_redefinicao'] = $email;
             <div class="box-login">
 
                 <form class="login" method="POST" action="">
-                     <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+                    <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
                     <h1 class="titulo-login">Redefinir Senha</h1>
 
                     <div class="step active">
@@ -62,6 +62,16 @@ $_SESSION['email_redefinicao'] = $email;
                             <div>
                                 <?= label('confirmar_senha', 'Confirmar Senha') ?>
                                 <?= inputRequired('password', 'confirmar_senha', 'confirmar_senha') ?>
+                            </div>
+                            <div class="validar-senha">
+                                <p class="p-validar-senha"><strong>Crie uma senha que inclua:</strong></p>
+                                <ul class="ul-validar-senha">
+                                    <li id="min-length">No mínimo 8 caracteres</li>
+                                    <li id="uppercase">Uma letra maiúscula</li>
+                                    <li id="lowercase">Uma letra minúscula</li>
+                                    <li id="number">Um número</li>
+                                    <li id="symbol">Um símbolo especial</li>
+                                </ul>
                             </div>
                             <div class="botao-login group-btn-cadastro-ong">
                                 <?= botao('salvar', 'Redefinir', "", "/together/controller/RedefinirSenhaController.php") ?>
@@ -75,6 +85,8 @@ $_SESSION['email_redefinicao'] = $email;
     </div>
 
     <script src="/together/view/assets/js/pages/mascara.js"></script>
+    <script src="/together/view/assets/js/components/validarSenha.js"></script>
+
 </body>
 
 </html>
