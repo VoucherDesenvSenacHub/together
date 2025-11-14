@@ -49,7 +49,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                 </div>
             </form>
             <div class="formulario-perfil">
-                <form action="visualizarUsuario.php" method="POST">
+                <form action="visualizarUsuario.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
                             <div class="filtro-por-mes">
