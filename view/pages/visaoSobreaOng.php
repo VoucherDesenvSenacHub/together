@@ -73,7 +73,7 @@ switch ($perfil) {
 
     case 'Ong':
         $sessionOngVisivel = true;
-        $urlDoacao = '/together/view/pages/usuario/pagamentoUsuario.php';
+        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . $idOngUrl;
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
         // Se for ONG e estiver vendo outra ONG, checar status pra desabilitar botão após solicitação
         if (!empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl) {
