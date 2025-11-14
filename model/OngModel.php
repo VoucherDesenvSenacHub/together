@@ -276,6 +276,7 @@ class OngModel
                 e.bairro, 
                 e.numero, 
                 e.cidade,
+                o.id_endereco,
                 o.id_imagem_de_perfil,   
                 i.caminho AS imagem      
             FROM 

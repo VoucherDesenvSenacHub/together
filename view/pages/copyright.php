@@ -5,9 +5,6 @@
 <?php require_once "./../../model/DevModel.php" ?>
 <body>
     <div class="global">
-        <div class="login-icon-group">  
-            <?php require_once './../components/back-button.php' ?>
-        </div>
         <div class="container">
             <?php foreach($vetor as $item)
             {
