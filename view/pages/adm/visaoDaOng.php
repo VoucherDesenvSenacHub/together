@@ -4,7 +4,7 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-<?php require_once "../../../model/UsuarioModel.php";
+<?php require_once "../../../model/OngModel.php";
 require_once "../../../model/ImagemModel.php";
 require_once "../../components/upload.php";
 
@@ -13,8 +13,8 @@ $imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id']);
 
 $preview = new ImagemPreview($imagem['id'] ?? null);
 
-$usuarioModel = new UsuarioModel();
-$usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
+$ongModel = new ongModel();
+$ong = $ongModel->buscarongId($_GET['id']);
 
 ?>
 
@@ -36,28 +36,28 @@ $usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', $ong['nome'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputReadonly('text', 'telefone', 'telefone', $usuario['telefone'] ?? '') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', $ong['telefone'] ?? '') ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf'] ?? '') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $ong['cpf'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('data', 'Data de nascimento') ?>
-                                        <?= inputReadonly('text', 'data', 'data', $usuario['dt_nascimento'] ?? '') ?>
+                                        <?= inputReadonly('text', 'data', 'data', $ong['dt_nascimento'] ?? '') ?>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputReadonly('text', 'email', 'email', $usuario['email'] ?? '') ?>
+                                <?= inputReadonly('text', 'email', 'email', $ong['email'] ?? '') ?>
                             </div>
                         </div>
                     </div>
@@ -68,41 +68,41 @@ $usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputReadonly('text', 'cep', 'cep', $usuario['cep'] ?? '') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', $ong['cep'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', $ong['cidade'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', $usuario['estado'] ?? '') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', $ong['estado'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputReadonly('text', 'bairro', 'bairro', $usuario['bairro'] ?? '') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', $ong['bairro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', $usuario['logradouro'] ?? '') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', $ong['logradouro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', $usuario['numero'] ?? '') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', $ong['numero'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', $usuario['complemento'] ?? '') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', $ong['complemento'] ?? '') ?>
                             </div>
                         </div>
                     </div>
                     <!-- <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarUsuario.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarong.php') ?> </div>
                         </div>
                     </div> -->
                 </form>
