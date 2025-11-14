@@ -3,6 +3,8 @@
     padding: 20px 0px;
     margin: 0 auto;
     background-color: var(--cor-body);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .main-min {

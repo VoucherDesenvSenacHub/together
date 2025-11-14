@@ -34,7 +34,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
             <div class="formulario-perfil">
 
-                <form action="voluntariosOng.php" method="POST">
+                <form action="voluntariosOng.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
                             <div class="filtro-por-mes">

@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . "/../model/OngModel.php";
 
-var_dump($_POST);
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
@@ -22,20 +20,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 function validarEdicaoOng()
 {
-    if (empty($_POST['titulo'])) {
+    $erros = [];
+    $campos = ['subtitulo', 'descricao'];
+    foreach ($campos as $campo) {
+        if (empty($_POST[$campo])) {
+            $erros[] = "O campo {$campo} é obrigatório!";
+        }
+    }
+    if (!empty($erros)) {
         $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'O título é obrigatório!';
-        header('Location: /together/view/pages/ong/editarPaginaOng.php');
-        exit;
-    } elseif (empty($_POST['subtitulo'])) {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'O subtítulo é obrigatório!';
-        header('Location: /together/view/pages/ong/editarPaginaOng.php');
-        exit;
-    } elseif (empty($_POST['descricao'])) {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'A descrição é obrigatória!';
-        header('Location: /together/view/pages/ong/editarPaginaOng.php');
+        $_SESSION['message'] = implode("<br>", $erros);
+        header('Location: /together/view/pages/Ong/editarPaginaOng.php');
         exit;
     } else {
         require_once __DIR__ . "/../model/OngModel.php";
@@ -57,7 +52,6 @@ function validarEdicaoOng()
 
         $resultado = $ongModel->editarPaginaOng(
             $_SESSION['id'],
-            $_POST['titulo'],
             $_POST['subtitulo'],
             $_POST['descricao'],
             $_POST['Facebook'],
@@ -79,7 +73,6 @@ function validarEdicaoOng()
         }
     }
 }
-
 
 function validarUrls()
 {

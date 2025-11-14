@@ -50,7 +50,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             </form>
 
             <div class="formulario-perfil">
-                <form action="visualizarOngs.php" method="POST">
+                <form action="visualizarOngs.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
 
