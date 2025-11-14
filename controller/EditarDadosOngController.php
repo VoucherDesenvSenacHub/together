@@ -1,9 +1,7 @@
 <?php
 session_start();
-
 require_once __DIR__ . "/../model/OngModel.php";
 require_once __DIR__ . "/../controller/UploadController.php";
-
 
 try {
 
@@ -11,7 +9,7 @@ try {
     // verifica se o metodo é post
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         $_SESSION['erro'] = "Método inválido para esta requisição";
-        header("location: ./../view/pages/Ong/perfilOng.php");
+        header("location: ./../view/pages/ong/perfilOng.php");
         exit;
     }
     // campos que devem ser preenchidos e verifica se está vazio.
@@ -29,11 +27,11 @@ try {
     }
 
     // verifica se é uma data valida e se não é maior que o ano atual
-    $VerificarData = explode('/', $_POST['data']);
-    if (count($VerificarData) === 3) {
-        $dia = (int) $VerificarData[0];
-        $mes = (int) $VerificarData[1];
-        $ano = (int) $VerificarData[2];
+    $verificarData = explode('/', $_POST['data']);
+    if (count($verificarData) === 3) {
+        $dia = (int) $verificarData[0];
+        $mes = (int) $verificarData[1];
+        $ano = (int) $verificarData[2];
         if (!checkdate($mes, $dia, $ano)) {
             $erros[] = "Insira uma data válida!";
         } elseif ($ano > date("Y")) {
@@ -43,50 +41,49 @@ try {
         $erros[] = "Insira uma data válida!";
     }
 
-    function VerificarNumerosRepetidos($NumeroVerificado, $QuantidadeDeDigitos, $QuantidadeDeDigitos2 = null)
+    function VerificarNumerosRepetidos($numeroVerificado, $quantidadeDeDigitos, $quantidadeDeDigitos2 = null)
     {
         // monta o intervalo do quantificador do regex
-        if ($QuantidadeDeDigitos2 !== null) {
-            $range = "{" . $QuantidadeDeDigitos . "," . $QuantidadeDeDigitos2 . "}";
+        if ($quantidadeDeDigitos2 !== null) {
+            $range = "{" . $quantidadeDeDigitos . "," . $quantidadeDeDigitos2 . "}";
         } else {
-            $range = "{" . $QuantidadeDeDigitos . "}";
+            $range = "{" . $quantidadeDeDigitos . "}";
         }
 
         // monta o regex dinâmico
         $pattern = '/^(\d)\1' . $range . '$/';
 
         // verifica
-        return preg_match($pattern, $NumeroVerificado) === 1;
+        return preg_match($pattern, $numeroVerificado) === 1;
     }
 
-    $VerificarCep = preg_replace('/\D/', "", $_POST['cep']);
-    if (strlen($VerificarCep) < 8 || strlen($VerificarCep) > 8) {
+    $verificarCep = preg_replace('/\D/', "", $_POST['cep']);
+    if (strlen($verificarCep) < 8 || strlen($verificarCep) > 8) {
         $erros[] = "CEP informado é invalido!";
     }
 
-    if (VerificarNumerosRepetidos($VerificarCep, 7, null)) {
+    if (VerificarNumerosRepetidos($verificarCep, 7, null)) {
         $erros[] = "CEP informado é invalido: sequência repetida.";
     }
 
-
     // retira tudo que não for número do cnpj
-    $VerificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
-    if (strlen($VerificarCnpj) != 14) { // verifica se tem 14 números 
+    $verificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
+    if (strlen($verificarCnpj) != 14) { // verifica se tem 14 números 
         $erros[] = 'CNPJ informado é  invalido!';
     }
 
-    if (VerificarNumerosRepetidos($VerificarCnpj, 13, null)) {
+    if (VerificarNumerosRepetidos($verificarCnpj, 13, null)) {
         $erros[] = 'CNPJ informado não é valido: sequência repetida.';
     }
 
     // verficar se o cnpj é valido
-    $PesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    $PesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    intval($VerificarCnpj);
-    $base = substr($VerificarCnpj, 0, 12);
+    $pesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    $pesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    intval($verificarCnpj);
+    $base = substr($verificarCnpj, 0, 12);
     $soma = 0;
     for ($i = 0; $i < 12; $i++) {
-        $soma += (int) $base[$i] * $PesoVerificadorCnpj1[$i];
+        $soma += (int) $base[$i] * $pesoVerificadorCnpj1[$i];
     }
     $resto = $soma % 11;
 
@@ -97,27 +94,27 @@ try {
 
     $soma = 0;
     for ($i = 0; $i < 13; $i++) {
-        $soma += (int) $base13[$i] * $PesoVerificadorCnpj2[$i];
+        $soma += (int) $base13[$i] * $pesoVerificadorCnpj2[$i];
     }
     $resto = $soma % 11;
     $dv2 = ($resto < 2) ? 0 : 11 - $resto;
 
-    if ($VerificarCnpj[12] != $dv1 || $VerificarCnpj[13] != $dv2) {
+    if ($verificarCnpj[12] != $dv1 || $verificarCnpj[13] != $dv2) {
         $erros[] = "CNPJ informado é invalido!";
     }
 
     // pega o telefone informado e remove tudo que não for número
-    $VerificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
-    if (strlen($VerificarTelefone) < 10 || strlen($VerificarTelefone) > 11) {
+    $verificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
+    if (strlen($verificarTelefone) < 10 || strlen($verificarTelefone) > 11) {
         $erros[] = 'Número de telefone inválido: quantidade de dígitos insuficiente ';
     }
 
     // se for celular (11 dígitos), verificar se começa com 9
-    if (strlen($VerificarTelefone) == 11 && substr($VerificarTelefone, 2, 1) != '9') {
+    if (strlen($verificarTelefone) == 11 && substr($verificarTelefone, 2, 1) != '9') {
         $erros[] = 'Número de celular inválido: deve começar com 9.';
     }
 
-    if (VerificarNumerosRepetidos($VerificarTelefone, 9, 10)) {
+    if (VerificarNumerosRepetidos($verificarTelefone, 9, 10)) {
         $erros[] = 'Número de telefone inválido: sequência repetida.';
     }
     // Pega o ID da ONG da sessão
@@ -179,9 +176,6 @@ try {
     if (!empty($erros)) {
         throw new Exception(implode("<br>", $erros));
     }
-    // $upload = new UploadController();
-    // $idImagem =
-    //     $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
 
     $idImagem = !empty($_POST['id_imagem']) ? (int) $_POST['id_imagem'] : null;
 
@@ -193,7 +187,7 @@ try {
 
         if ($idImagemProcessado === false) {
             // Se o upload falhar, a mensagem de erro já foi definida no UploadController
-            header('Location: /together/view/pages/Ong/perfilOng.php');
+            header('Location: /together/view/pages/ong/perfilOng.php');
             exit;
         }
         // Atualiza o id da imagem com o retornado pelo processamento
@@ -207,11 +201,11 @@ try {
     $resultado = $ongModel->atualizarOng(
         $idOng,
         $_POST['nome'],
-        $VerificarTelefone,
-        $VerificarCnpj,
+        $verificarTelefone,
+        $verificarCnpj,
         $dataFormatada,
         $_POST['email'],
-        $VerificarCep,
+        $verificarCep,
         $_POST['logradouro'],
         $_POST['complemento'] ?? '',
         $_POST['numero'],
@@ -223,17 +217,13 @@ try {
     if ($resultado) {
         // retorna mensagem de sucesso e volta para pagina de perfil da ong
         $_SESSION["sucesso"] = "Informações atualizadas com sucesso!";
-        header("location: ./../view/pages/Ong/perfilOng.php");
+        header("location: ./../view/pages/ong/perfilOng.php");
     } else {
         throw new Exception("Erro ao atualizar os dados da ONG!");
     }
-
-
-
-
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
-    header("location: ./../view/pages/Ong/perfilOng.php");
+    header("location: ./../view/pages/ong/perfilOng.php");
     exit();
 }
 

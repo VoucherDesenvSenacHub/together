@@ -6,6 +6,7 @@ require_once './../components/alert.php';
 require_once './../../model/OngModel.php';
 require_once './../../model/PostagemModel.php';
 require_once './../../model/UsuarioModel.php';
+require_once './../../model/ImagemModel.php';
 ?>
 
 <?php
@@ -34,7 +35,7 @@ if (!$idOngUrl && $perfilLogado === 'Ong') {
 $mostrarEdicao = false;
 if ($perfilLogado === 'Ong') {
     if ($idOngUrl === $idOngDoUsuario) {
-        $mostrarEdicao = true; 
+        $mostrarEdicao = true;
     }
 }
 
@@ -92,7 +93,7 @@ switch ($perfil) {
                     $btnVoluntarioClass = 'secondary';
                 }
             } else {
-                
+
                 $btnVoluntarioDisabled = false;
                 $btnVoluntarioText = 'Voluntariar-se';
                 $btnVoluntarioClass = 'primary';
@@ -101,7 +102,7 @@ switch ($perfil) {
         break;
 
     case 'Usuario':
-        $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . $idOngUrl;
+        $urlDoacao = '/together/view/pages/usuario/pagamentoUsuario.php?id_ong=' . $idOngUrl;
         if ($statusVoluntario) {
             if ($statusVoluntario['status_validacao'] == 'aprovado') {
                 $btnVoluntarioText = 'Você é Voluntário';
@@ -126,11 +127,19 @@ switch ($perfil) {
 ?>
 
 <?php if (!empty($spanMsgVisivel)): ?>
-<style>.span-msg { display: block; }</style>
+    <style>
+        .span-msg {
+            display: block;
+        }
+    </style>
 <?php endif; ?>
 
 <?php if (!empty($sessionOngVisivel)): ?>
-<style>.sessionOng { display: block; }</style>
+    <style>
+        .sessionOng {
+            display: block;
+        }
+    </style>
 <?php endif; ?>
 
 <?php
@@ -155,7 +164,7 @@ if ($popupType && $popupMessage) {
     ?>
 
     <main class="main-container">
-        
+
 
         <div class="adm-ong-vision-container">
 
@@ -170,7 +179,7 @@ if ($popupType && $popupMessage) {
                         </div>
                         <?php if ($mostrarEdicao): ?>
                             <a class="icon-sobreaong"
-                                href="/together/view/pages/Ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
+                                href="/together/view/pages/ong/editarPaginaOng.php"><?= renderAcao('editar') ?></a>
                         <?php endif; ?>
                     </div>
 
@@ -196,14 +205,19 @@ if ($popupType && $popupMessage) {
 
                                     <?php if (!$btnVoluntarioDisabled): ?>
                                         <!-- botão do usuário: desativa no submit via JS -->
-                                        <form id="formVoluntariarVisaoOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                              onsubmit="document.getElementById('btnVolUsuario').setAttribute('disabled','disabled'); document.getElementById('btnVolUsuario').innerText='Solicitando...';">
+                                        <form id="formVoluntariarVisaoOng" method="POST"
+                                            action="/together/controller/voluntarioController.php"
+                                            style="display: inline; margin: 0;"
+                                            onsubmit="document.getElementById('btnVolUsuario').setAttribute('disabled','disabled'); document.getElementById('btnVolUsuario').innerText='Solicitando...';">
                                             <input type="hidden" name="action" value="voluntariar">
-                                            <input type="hidden" name="id_ong" value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
-                                            <button id="btnVolUsuario" type="submit" class="botao botao-primary"><?= $btnVoluntarioText ?></button>
+                                            <input type="hidden" name="id_ong"
+                                                value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
+                                            <button id="btnVolUsuario" type="submit"
+                                                class="botao botao-primary"><?= $btnVoluntarioText ?></button>
                                         </form>
                                     <?php else: ?>
-                                        <button id="btnVolUsuarioDisabled" type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                        <button id="btnVolUsuarioDisabled" type="button" class="botao botao-secondary" disabled
+                                            style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                     <?php endif; ?>
 
                                 <?php elseif ($perfil === 'Ong'): ?>
@@ -215,19 +229,25 @@ if ($popupType && $popupMessage) {
                                     <?php
                                     // Caso seja a própria ONG, mostramos botão desabilitado 
                                     if ($btnVoluntarioDisabled && !empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl): ?>
-                                        <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                        <button type="button" class="botao botao-secondary" disabled
+                                            style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
 
                                     <?php else: ?>
                                         <?php if ($btnVoluntarioDisabled): ?>
                                             <!-- se já solicitou ou é voluntário, mostra desabilitado -->
-                                            <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                            <button type="button" class="botao botao-secondary" disabled
+                                                style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                         <?php else: ?>
                                             <!-- Form pra ONG voluntariar em outra ONG: desativa no submit via JS -->
-                                            <form id="formVoluntariarVisaoOngOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                                  onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
+                                            <form id="formVoluntariarVisaoOngOng" method="POST"
+                                                action="/together/controller/voluntarioController.php"
+                                                style="display: inline; margin: 0;"
+                                                onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
                                                 <input type="hidden" name="action" value="voluntariar">
-                                                <input type="hidden" name="id_ong" value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
-                                                <button id="btnVolOng" type="submit" class="botao botao-primary"><?= $btnVoluntarioText ?></button>
+                                                <input type="hidden" name="id_ong"
+                                                    value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
+                                                <button id="btnVolOng" type="submit"
+                                                    class="botao botao-primary"><?= $btnVoluntarioText ?></button>
                                             </form>
                                         <?php endif; ?>
                                     <?php endif; ?>
@@ -293,7 +313,7 @@ if ($popupType && $popupMessage) {
                                                 <div class="icon-visao-sobre-ong">
                                                     <?php if ($mostrarEdicao): ?>
                                                         <a
-                                                            href="/together/view/pages/Ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                            href="/together/view/pages/ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
@@ -314,7 +334,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['instagram'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/instagram.png" alt="Instagram">
+                                                src="./../assets/images/adm/instagram.png" alt="Instagram">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['instagram']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -327,7 +347,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['facebook'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/facebook.png" alt="Facebook">
+                                                src="./../assets/images/adm/facebook.png" alt="Facebook">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['facebook']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -340,7 +360,7 @@ if ($popupType && $popupMessage) {
                                     <?php if (!empty($pagina['twitter'])): ?>
                                         <div class="adm-ong-vision-area-div-perfil">
                                             <img class="adm-ong-vision-perfil-default-icon"
-                                                src="./../assets/images/Adm/X.png" alt="Twitter">
+                                                src="./../assets/images/adm/X.png" alt="Twitter">
                                             <h1>
                                                 <a href="<?= htmlspecialchars($pagina['twitter']) ?>" target="_blank"
                                                     rel="noopener noreferrer">
@@ -354,7 +374,7 @@ if ($popupType && $popupMessage) {
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </main>
     <?php require_once "../../view/components/footer.php"; ?>

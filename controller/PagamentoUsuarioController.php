@@ -140,7 +140,7 @@ try {
     if ($logadont) {
         header('Location: ../view/pages/login.php');
     } else if (isset($_POST['idOng'])) {
-        header('Location: ../view/pages/Usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
+        header('Location: ../view/pages/usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
     } else {
         header('Location: ../index.php');
     }
