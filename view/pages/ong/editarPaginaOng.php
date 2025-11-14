@@ -69,7 +69,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                     value="<?= $pagina['instagram'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assets/images/Adm/X.png" alt="X">
+                                <img src="/together/view/assets/images/adm/X.png" alt="X">
                                 <input type="text" placeholder="@" name="X" value="<?= $pagina['twitter'] ?? '' ?>" />
                             </div>
                         </div>

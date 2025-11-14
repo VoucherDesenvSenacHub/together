@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($link) && !filter_var($link, FILTER_VALIDATE_URL)) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'O link informado não é válido.';
-        header("Location: /together/view/pages/Ong/criarPostagemOng.php");
+        header("Location: /together/view/pages/ong/criarPostagemOng.php");
         exit;
     }
 
