@@ -37,6 +37,7 @@
 @import url(pages/copyright.css);
 @import url(components/paginacao.css);
 @import url(components/alert.css);
+@import url(components/validarSenha.css);
 
 :root {
   font-size: 16px;
@@ -59,6 +60,7 @@
     */
   --cor-login: #000;
   --cor-font-link: #355d8c;
+  --cor-validacao-senha: #11529c;
   /*GERAL*/
   --cor-branco: #ffffff;
 
