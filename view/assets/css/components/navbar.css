@@ -110,23 +110,7 @@
     min-width: 120px;
 }
 
-/* .login-botao-navbar {
-    width: 130px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background-color: #5c3a21;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3S;
-    letter-spacing: 2px;
-} */
 
-/* .login-botao-navbar:hover {
-    scale: 1.1;
-    transition: 0.3S;
-} */
 
 
 @media screen and (max-width: 1280px) {

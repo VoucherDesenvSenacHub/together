@@ -10,7 +10,7 @@ require_once __DIR__ . "/../utils/EmailUtil.php";
 class EmailService
 {
     /**
-     * Envia um e-mail utilizando o EmailUtil.
+
      *
      * @param string $destinatario
      * @param string $assunto

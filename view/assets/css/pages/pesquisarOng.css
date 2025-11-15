@@ -1,6 +1,5 @@
 .ong-search-screen {
     display: flex;
-    /* background-color: var(--cor-container-painel); */
     background-color: var(--cor-font-branco);
     border-radius: 15px;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
@@ -50,7 +49,6 @@
     margin-left: 10px;
 }
 
-/* Filter Input Area */
 .ong-search-screen-​​ngo-type {
     flex-direction: column;
     display: flex;
@@ -175,7 +173,6 @@
     flex: 1;
 }
 
-/* End - Filter Input Area */
 
 .ong-search-screen-mobile-filter{
     display: none;
@@ -228,20 +225,12 @@
         max-height: 160px;
     }
 
-    /* .ong-search-screen-mobile-filter{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        margin-left: 30px;
-        margin-top: 10px;
-    } */
 }
 
 
 .ong-search-screen {
     display: flex;
-    /* background-color: var(--cor-container-painel); */
+   
     border-radius: 15px;
 }
 
@@ -286,7 +275,7 @@
     margin-left: 10px;
 }
 
-/* Filter Input Area */
+
 .ong-search-screen-​​ngo-type {
     flex-direction: column;
     display: flex;
@@ -411,7 +400,7 @@
     flex: 1;
 }
 
-/* End - Filter Input Area */
+
 
 .ong-search-screen-mobile-filter{
     display: none;
@@ -464,13 +453,5 @@
         max-height: 160px;
     }
 
-    /* .ong-search-screen-mobile-filter{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100px;
-        margin-left: 30px;
-        margin-top: 10px;
-    } */
 }
 

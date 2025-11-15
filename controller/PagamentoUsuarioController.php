@@ -118,7 +118,7 @@ try {
         $ultimosDigitos
     ];
 
-    // Salva no banco
+    
     $doacaoModel = new DoacaoModel();
     $sucesso = $doacaoModel->SalvarDoacao(...$dadosPagamento);
     if (!$sucesso) {

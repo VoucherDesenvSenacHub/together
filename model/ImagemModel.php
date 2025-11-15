@@ -19,7 +19,6 @@ class ImagemModel
         $query = "INSERT INTO $this->tabela (nome_enviado, nome_original, caminho) VALUES (:nome_enviado, :nome_original, :caminho)";
         $stmt = $this->conn->prepare($query);
 
-        // utilizar dentro do execulte no lugar de bindparam
 
         $stmt->execute([
             ':nome_enviado' => $nome_enviado,

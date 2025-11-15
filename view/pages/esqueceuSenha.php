@@ -6,7 +6,7 @@ AutenticacaoService::validarAcessoSemLogin();  ?>
 <?php require_once "./../components/label.php" ?>
 <?php require_once "./../components/alert.php" ?>
 <?php
-// Notificacao
+
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);

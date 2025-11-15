@@ -14,13 +14,13 @@ $ongModel = new OngModel();
 $postagemModel = new PostagemModel();
 $usuarioModel = new UsuarioModel();
 
-// Converte ID s  da URL em inteiros para evitar erro de tipo
+
 $idOngUrl = isset($_GET['id']) ? intval($_GET['id']) : null;
 $idUsuarioLogado = $_SESSION['id'] ?? null;
 $perfilLogado = $_SESSION['perfil'] ?? null;
 $idPostagem = isset($_GET['id_postagem']) ? intval($_GET['id_postagem']) : null;
 
-// busca id_ong da conta
+
 $idOngDoUsuario = null;
 if ($perfilLogado === 'Ong' && $idUsuarioLogado) {
     $dadosOngDoUsuario = $ongModel->verificarUsuarioTemOng($idUsuarioLogado);
@@ -39,19 +39,19 @@ if ($perfilLogado === 'Ong') {
     }
 }
 
-// Carrega informações da pagina
+
 $postagens = $postagemModel->getByOng($idOngUrl);
 $pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
-// Verifica o status de voluntariado do usuário logado 
+
 $statusVoluntario = null;
 if (($perfilLogado === 'Usuario' || $perfilLogado === 'Ong') && $idUsuarioLogado) {
     $statusVoluntario = $usuarioModel->verificarStatusVoluntario($idUsuarioLogado, $idOngUrl);
 }
 
-// Variáveis pra controle do botão 
+
 $perfil = $_SESSION['perfil'] ?? null;
 $usuario = $perfil ?? 'Visitante';
 
@@ -63,7 +63,7 @@ $btnVoluntarioClass = 'primary';
 $spanMsgVisivel = false;
 $sessionOngVisivel = false;
 
-// Ajustes conforme perfil
+
 switch ($perfil) {
     case 'Administrador':
         $spanMsgVisivel = true;
@@ -75,13 +75,11 @@ switch ($perfil) {
         $sessionOngVisivel = true;
         $urlDoacao = '/together/view/pages/Usuario/pagamentoUsuario.php?idOng=' . $idOngUrl;
         $urlVoluntario = '/together/index.php?msg=voluntarioenviado';
-        // Se for ONG e estiver vendo outra ONG, checar status pra desabilitar botão após solicitação
         if (!empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl) {
             $btnVoluntarioDisabled = true;
             $btnVoluntarioText = 'Não é possível voluntariar para sua própria ONG';
             $btnVoluntarioClass = 'secondary';
         } else {
-            // Visualizando outra ONG dai se já tem solicitação  desabilita 
             if ($statusVoluntario) {
                 if ($statusVoluntario['status_validacao'] == 'aprovado') {
                     $btnVoluntarioText = 'Você é Voluntário';
@@ -121,7 +119,6 @@ switch ($perfil) {
         break;
 
     default:
-        // Visitante não logado
         break;
 }
 ?>
@@ -143,11 +140,11 @@ switch ($perfil) {
 <?php endif; ?>
 
 <?php
-// Popup do session  SALVA em variáveis antes de apagar
+
 $popupType = $_SESSION['type'] ?? null;
 $popupMessage = $_SESSION['message'] ?? null;
 
-// Limpa a sessão ANTES de mostrar 
+
 if ($popupType && $popupMessage) {
     unset($_SESSION['type'], $_SESSION['message']);
 }
@@ -157,7 +154,6 @@ if ($popupType && $popupMessage) {
     <?php require_once './../components/navbar.php' ?>
 
     <?php
-    // Mostra o popup DENTRO do body, depois que tudo carregou
     if ($popupType && $popupMessage) {
         showPopup($popupType, $popupMessage);
     }
@@ -228,7 +224,7 @@ if ($popupType && $popupMessage) {
                                     </a>
 
                                     <?php
-                                    // Caso seja a própria ONG, mostramos botão desabilitado 
+                                    
                                     if ($btnVoluntarioDisabled && !empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl): ?>
                                         <button type="button" class="botao botao-secondary" disabled
                                             style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
