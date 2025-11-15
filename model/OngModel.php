@@ -387,11 +387,17 @@ class OngModel
 
     public function buscarTodasOngs($idCategorias = null)
     {
-        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao
+        $query = "SELECT 
+                o.id,
+                o.razao_social,
+                o.id_endereco AS endereco_ong,     
+                i.caminho, 
+                c.nome AS categoria, 
+                p.descricao
               FROM ongs o
-              INNER JOIN categorias_ongs c ON c.id = o.id_categoria
-              INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil
-              INNER JOIN paginas p ON p.id_ong = o.id";
+              LEFT JOIN categorias_ongs c ON c.id = o.id_categoria
+              LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
+              LEFT JOIN paginas p ON p.id_ong = o.id";
 
         $params = [];
 
@@ -597,6 +603,7 @@ class OngModel
                 SELECT 
                     o.id,
                     o.razao_social AS titulo_ong,
+                    o.id_endereco AS endereco_ong,
                     p.descricao AS descricao_ong,
                     i.caminho AS foto_ong,
                     COUNT(d.id) AS total_doacoes
