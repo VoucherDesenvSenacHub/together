@@ -14,9 +14,13 @@ addClickEvent('buttonSideMobile', function (event) {
 
     // Abrir menu
     buttonSideMobile.addEventListener('click', function () {
-        sideContainerMobileArea.classList.remove('hidden');
-        sideContainerMobileArea.classList.add('show');
-        buttonSideMobile.classList.add('hidden');
+        if (sideContainerMobileArea.classList.contains('hidden')) {
+            sideContainerMobileArea.classList.remove('hidden');
+            sideContainerMobileArea.classList.add('show');
+        } else {
+            sideContainerMobileArea.classList.remove('show');
+            sideContainerMobileArea.classList.add('hidden');
+        }
     });
 
     // Fechar menu ao clicar fora
@@ -31,3 +35,7 @@ addClickEvent('buttonSideMobile', function (event) {
         };
     });
 })
+
+
+
+

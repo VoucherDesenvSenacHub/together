@@ -1,36 +1,25 @@
-<div class="button-side-mobile-div hidden">
-    <button class="button-side-mobile" id="buttonSideMobile">
-        <i class="fa-solid fa-bars" id="barsIcon"></i>
-    </button>
-</div>
-
 <div class="side-container-mobile-area hidden" id="sideContainerMobileArea">
 
     <?php if (isset($_SESSION['perfil'])) { ?>
     <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
     <!-- ASIDE DO ADM -->
-    <aside class="aside-area">
-        <div class="aside-content" id="sideAdministrador">
+    <aside class="aside-area-mobile">
+        <div class="aside-content-mobile" id="sideAdministrador">
 
-            <a title="Validar Ongs" href="/together/view/pages/adm/OngsAValidar.php" class="aside-button">
-                <i id="validarOngsIcon" class="fa-solid fa-building"></i>
-
+            <a title="Validar Ongs" href="/together/view/pages/Adm/OngsAValidar.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Validar Ongs</p>
             </a>
 
-            <a title="Patrocinadores" href="/together/view/pages/adm/gestaoDePatrocinadores.php" class="aside-button"
-                id="categoriaButton">
-                <i id="patrocinadoresIcon" class="fa-solid fa-hand-holding-dollar"></i>
-
+            <a title="Patrocinadores" href="/together/view/pages/Adm/gestaoDePatrocinadores.php" class="aside-button-mobile" id="categoriaButton">
+                <p class="mobile-side-legenda">Patrocinadores</p>
             </a>
 
-            <a title="Usuarios Cadastrados" href="/together/view/pages/adm/visualizarUsuario.php" class="aside-button">
-                <i id="usuariosCadastradosIcon" class="fa-solid fa-user"></i>
-
+            <a title="Usuarios Cadastrados" href="/together/view/pages/Adm/visualizarUsuario.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Usuarios Cadastrados</p>
             </a>
 
-            <a title="Ongs Cadastrados" href="/together/view/pages/adm/visualizarOngs.php" class="aside-button">
-                <i id="ongsCadastradasIcon" class="fa-solid fa-building-circle-check"></i>
-
+            <a title="Ongs Cadastrados" href="/together/view/pages/Adm/visualizarOngs.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Ongs Cadastradas</p>
             </a>
 
         </div>
@@ -38,45 +27,41 @@
 
     <?php } elseif ($_SESSION['perfil'] === 'Ong') { ?>
     <!-- ASIDE DA ONG -->
-    <aside class="aside-area">
-        <div class="aside-content" id="sideOng">
+    <aside class="aside-area-mobile">
+        <div class="aside-content-mobile" id="sideOng">
 
-            <a title="Editar Perfil" href="/together/view/pages/usuario/editarInformacoes.php" class="aside-button">
-                <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i>
+            <a title="Editar Perfil" href="/together/view/pages/Usuario/editarInformacoes.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Editar Perfil</p>
             </a>
 
-            <a title="Ongs Voluntariado" href="/together/view/pages/usuario/usuarioOngsVoluntarias.php"
-                class="aside-button">
-                <i id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i>
+            <a title="Ongs Voluntariado" href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Ongs Voluntariado</p>
             </a>
 
-            <a title="Historico" href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button">
-                <i id="historicoIcon" class="fa-solid fa-clock"></i>
+            <a title="Historico" href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Historico</p>
             </a>
-        </div>
+        
+            <hr class="divisor-mobile">
 
-        <div class="aside-content">
-
-            <a title="Visão sobre Ong" href="/together/view/pages/visaoSobreaOng.php" class="aside-button"
-                id="categoriaButton">
-                <i id="visaoSobreOng" class="fa-solid fa-address-card"></i>
+            <a title="Visão sobre Ong" href="/together/view/pages/visaoSobreaOng.php" class="aside-button-mobile" id="categoriaButton">
+                <p class="mobile-side-legenda">Visão Sobre Ong</p>
             </a>
 
-            <a title="Criar Postagem" href="/together/view/pages/ong/criarPostagemOng.php" class="aside-button">
-                <i id="criarIcon" class="fa-solid fa-square-plus"></i>
+            <a title="Criar Postagem" href="/together/view/pages/Ong/criarPostagemOng.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Criar Postagem</p>
             </a>
 
-            <a title="Relatorio" href="/together/view/pages/ong/relatorioOng.php" class="aside-button">
-                <i id="relatorioIcon" class="fa-solid fa-book"></i>
+            <a title="Relatorio" href="/together/view/pages/Ong/relatorioOng.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Relatorio</p>
             </a>
 
-            <a title="Voluntarios Pendentes da Ong" href="/together/view/pages/ong/validacaoVoluntario.php"
-                class="aside-button">
-                <i id="voluntariosPendentes" class="fa-solid fa-user-clock"></i>
+            <a title="Voluntarios Pendentes da Ong" href="/together/view/pages/Ong/validacaoVoluntario.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Voluntarios Pendentes da Ong</p>
             </a>
 
-            <a title="Voluntarios" href="/together/view/pages/ong/voluntariosOng.php" class="aside-button">
-                <i id="userIcon" class="fa-solid fa-users"></i>
+            <a title="Voluntarios" href="/together/view/pages/Ong/voluntariosOng.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Voluntarios</p>
             </a>
 
         </div>
@@ -84,14 +69,17 @@
 
     <?php } elseif ($_SESSION['perfil'] === 'Usuario') { ?>
     <!-- ASIDE DO USUARIO -->
-    <aside class="aside-area">
-        <div class="aside-content" id="sideUsuario">
-            <a href="/together/view/pages/usuario/editarInformacoes.php" class="aside-button"> <i id="usuarioEdtarIcon"
-                    class="fa-solid fa-user-pen"></i></i> </a>
-            <a href="/together/view/pages/usuario/usuarioOngsVoluntarias.php" class="aside-button"> <i
-                    id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i> </a>
-            <a href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button"> <i id="historicoIcon"
-                    class="fa-solid fa-clock"></i> </a>
+    <aside class="aside-area-mobile">
+        <div class="aside-content-mobile" id="sideUsuario">
+            <a href="/together/view/pages/Usuario/editarInformacoes.php" class="aside-button-mobile"> 
+                <p class="mobile-side-legenda">Editar Informacoes</p>    
+            </a>
+            <a href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php" class="aside-button-mobile"> 
+                <p class="mobile-side-legenda">Ongs que sou Voluntario</p>    
+            </a>
+            <a href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button-mobile"> 
+                <p class="mobile-side-legenda">Historico de Docação</p>
+            </a>
         </div>
     </aside>
 
@@ -109,23 +97,23 @@
     <aside class="aside-area">
         <div class="aside-content" id="sideAdministrador">
 
-            <a title="Validar Ongs" href="/together/view/pages/adm/OngsAValidar.php" class="aside-button">
+            <a title="Validar Ongs" href="/together/view/pages/Adm/OngsAValidar.php" class="aside-button">
                 <i id="validarOngsIcon" class="fa-solid fa-building"></i>
 
             </a>
 
-            <a title="Patrocinadores" href="/together/view/pages/adm/gestaoDePatrocinadores.php" class="aside-button"
+            <a title="Patrocinadores" href="/together/view/pages/Adm/gestaoDePatrocinadores.php" class="aside-button"
                 id="categoriaButton">
                 <i id="patrocinadoresIcon" class="fa-solid fa-hand-holding-dollar"></i>
 
             </a>
 
-            <a title="Usuarios Cadastrados" href="/together/view/pages/adm/visualizarUsuario.php" class="aside-button">
+            <a title="Usuarios Cadastrados" href="/together/view/pages/Adm/visualizarUsuario.php" class="aside-button">
                 <i id="usuariosCadastradosIcon" class="fa-solid fa-user"></i>
 
             </a>
 
-            <a title="Ongs Cadastrados" href="/together/view/pages/adm/visualizarOngs.php" class="aside-button">
+            <a title="Ongs Cadastrados" href="/together/view/pages/Adm/visualizarOngs.php" class="aside-button">
                 <i id="ongsCadastradasIcon" class="fa-solid fa-building-circle-check"></i>
 
             </a>
@@ -142,12 +130,12 @@
                 <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i>
             </a>
 
-            <a title="Ongs Voluntariado" href="/together/view/pages/usuario/usuarioOngsVoluntarias.php"
+            <a title="Ongs Voluntariado" href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php"
                 class="aside-button">
                 <i id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i>
             </a>
 
-            <a title="Historico" href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button">
+            <a title="Historico" href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button">
                 <i id="historicoIcon" class="fa-solid fa-clock"></i>
             </a>
         </div>
@@ -159,20 +147,20 @@
                 <i id="visaoSobreOng" class="fa-solid fa-address-card"></i>
             </a>
 
-            <a title="Criar Postagem" href="/together/view/pages/ong/criarPostagemOng.php" class="aside-button">
+            <a title="Criar Postagem" href="/together/view/pages/Ong/criarPostagemOng.php" class="aside-button">
                 <i id="criarIcon" class="fa-solid fa-square-plus"></i>
             </a>
 
-            <a title="Relatorio" href="/together/view/pages/ong/relatorioOng.php" class="aside-button">
+            <a title="Relatorio" href="/together/view/pages/Ong/relatorioOng.php" class="aside-button">
                 <i id="relatorioIcon" class="fa-solid fa-book"></i>
             </a>
 
-            <a title="Voluntarios Pendentes da Ong" href="/together/view/pages/ong/validacaoVoluntario.php"
+            <a title="Voluntarios Pendentes da Ong" href="/together/view/pages/Ong/validacaoVoluntario.php"
                 class="aside-button">
                 <i id="voluntariosPendentes" class="fa-solid fa-user-clock"></i>
             </a>
 
-            <a title="Voluntarios" href="/together/view/pages/ong/voluntariosOng.php" class="aside-button">
+            <a title="Voluntarios" href="/together/view/pages/Ong/voluntariosOng.php" class="aside-button">
                 <i id="userIcon" class="fa-solid fa-users"></i>
             </a>
 
@@ -188,12 +176,12 @@
                 <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i>
             </a>
 
-            <a title="Ongs Voluntariado" href="/together/view/pages/usuario/usuarioOngsVoluntarias.php"
+            <a title="Ongs Voluntariado" href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php"
                 class="aside-button">
                 <i id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i>
             </a>
 
-            <a title="Historico" href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button">
+            <a title="Historico" href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button">
                 <i id="historicoIcon" class="fa-solid fa-clock"></i>
             </a>
 

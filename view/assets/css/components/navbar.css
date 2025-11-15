@@ -1,12 +1,6 @@
-.hidden {
-    display: none;
-}
-
 .show-nav {
     display: flex;
 }
-
-
 
 .navbar-group {
     background: var(--cor-navbar);
@@ -16,6 +10,7 @@
     justify-content: space-between;
     height: 65px;
     padding: 0 85px 0 85px;
+    box-shadow: 1px 9px 16px -2px rgba(0,0,0,0.47);
 }
 
 .logo-navbar {
@@ -27,20 +22,6 @@
 #btn-circular {
     font-size: 20px;
     color: #5c3a21;
-}
-
-@keyframes RODA {
-    0% {
-        transform: rotateZ(0deg);
-    }
-
-    50% {
-        transform: rotateZ(180deg);
-    }
-
-    100% {
-        transform: rotateZ(3600deg);
-    }
 }
 
 .a-navbar {
@@ -62,8 +43,6 @@
     gap: 50px;
     letter-spacing: 1.5px;
     width: 450px;
-    flex-shrink: 1;
-    min-width: 0;
 }
 
 .div-barra-pesquisa {
@@ -78,8 +57,6 @@
     padding: 0 40px 0 15px;
     animation-name: search-slide-animation;
     animation-duration: 0.3s;
-    max-width: 100%;
-    box-sizing: border-box;
 }
 
 .barra-pesquisa-input:focus {
@@ -106,27 +83,11 @@
     display: flex;
     justify-content: end;
     width: 120px;
-    flex-shrink: 0;
-    min-width: 120px;
 }
 
-/* .login-botao-navbar {
-    width: 130px;
-    height: 42px;
-    border: none;
-    border-radius: 10px;
-    background-color: #5c3a21;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3S;
-    letter-spacing: 2px;
-} */
-
-/* .login-botao-navbar:hover {
-    scale: 1.1;
-    transition: 0.3S;
-} */
+.button-side-mobile-div {
+    display: none;
+}
 
 
 @media screen and (max-width: 1280px) {
@@ -165,6 +126,7 @@
 @media screen and (max-width: 850px) {
 
     .navbar-group {
+        display: flex;
         height: 50px;
         padding: 0 35px 0 35px;
     }    
@@ -175,9 +137,7 @@
     }
 
     .login-botao-area-navbar {
-        width: auto;
-        /* padding-right: 35px; */
-        justify-content: end;
+        display: none
     }
 
     .login-botao-navbar {
@@ -186,7 +146,28 @@
         height: 30px;
         font-size: 10px;
     }
+    
+    .button-side-mobile-div {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 0 0 10px;
+    }
 
+    .button-side-mobile {
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        border: none;
+        background-color: #bd986a00;
+        color: #5d380b;
+    }
+
+    #barsIcon {
+        font-size: 17px;
+    }
 
 }
 
@@ -211,7 +192,7 @@
     }
 
     .login-botao-area-navbar {
-        width: auto;
+        display: 20%;
         /* padding-right: 35px; */
         justify-content: end;
     }
