@@ -49,12 +49,21 @@
             </div>
             <div class="container-home card-ong">
                 <?php foreach ($ongs as $ong) { ?>
-                    <?= cardOng(
-                        $ong['foto_ong'],
-                        $ong['titulo_ong'],
-                        $ong['descricao_ong'],
-                        $ong['id']
-                    ) ?>
+                    <?php 
+                        $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['foto_ong'];
+
+                        $validarFoto = !empty($ong['foto_ong'] && file_exists($imagem));
+                        $validarEndereco = !empty($ong['endereco_ong']);
+                    ?>
+                    <?php if ($validarFoto && $validarEndereco): ?>
+                        <?= cardOng(
+                            $ong['foto_ong'],
+                            $ong['titulo_ong'],
+                            $ong['descricao_ong'],
+                            $ong['id']
+                        ) 
+                        ?>
+                    <?php endif ?>
                 <?php } ?>
             </div>
             <div class="linha-home"></div>
