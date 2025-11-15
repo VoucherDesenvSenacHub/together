@@ -14,13 +14,13 @@
     $patrocinadoresModel = new PatrocinadoresModel();
     $patrocinadores = $patrocinadoresModel->findPatrocinadores();
 
-    // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
+   
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Ops! Esta página é exclusiva para usuários.';
     }
 
-    // Popup do session
+    
     if (isset($_SESSION['type'], $_SESSION['message'])) {
         showPopup($_SESSION['type'], $_SESSION['message']);
         unset($_SESSION['type'], $_SESSION['message']);

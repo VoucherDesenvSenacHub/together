@@ -20,7 +20,6 @@ $data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
 
 $lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio, $data_fim);
 
-// página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
 $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
@@ -88,7 +87,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </tbody>
                     </table>
                 </div>
-                <!-- Paginação -->
+               
                 <?php if ($quantidadeDePaginas > 1) { ?>
                     <?php criarPaginacao($quantidadeDePaginas); ?>
                 <?php } ?>

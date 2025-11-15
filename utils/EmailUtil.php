@@ -19,7 +19,7 @@ class EmailUtil
         $this->mailer = new PHPMailer(true);
 
         try {
-            // Configurações do servidor SMTP (Gmail)
+            
             $this->mailer->isSMTP();
             $this->mailer->Host = $_ENV['EMAIL_HOST'];
             $this->mailer->SMTPAuth = true;
@@ -38,7 +38,6 @@ class EmailUtil
     }
 
     /**
-     * Envia um e-mail.
      *
      * @param string $destinatario
      * @param string $assunto

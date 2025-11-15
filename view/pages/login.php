@@ -7,15 +7,14 @@ AutenticacaoService::validarAcessoSemLogin();  ?>
 <?php require_once "./../components/alert.php" ?>
 
 <?php
-// // Pega a mensagem de erro e já limpa a sessão
 
 if (isset($_SESSION['erro'])) {
     $erro = $_SESSION['erro'];
-    showPopup("erro", $erro); // passar o tipo e a mensagem
+    showPopup("erro", $erro); 
     unset($_SESSION['erro']);
 }
 
-// Notificacao
+
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);

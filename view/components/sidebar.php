@@ -8,7 +8,6 @@
 
     <?php if (isset($_SESSION['perfil'])) { ?>
     <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
-    <!-- ASIDE DO ADM -->
     <aside class="aside-area">
         <div class="aside-content" id="sideAdministrador">
 
@@ -37,7 +36,6 @@
     </aside>
 
     <?php } elseif ($_SESSION['perfil'] === 'Ong') { ?>
-    <!-- ASIDE DA ONG -->
     <aside class="aside-area">
         <div class="aside-content" id="sideOng">
 
@@ -83,7 +81,6 @@
     </aside>
 
     <?php } elseif ($_SESSION['perfil'] === 'Usuario') { ?>
-    <!-- ASIDE DO USUARIO -->
     <aside class="aside-area">
         <div class="aside-content" id="sideUsuario">
             <a href="/together/view/pages/usuario/editarInformacoes.php" class="aside-button"> <i id="usuarioEdtarIcon"
@@ -105,7 +102,6 @@
 
     <?php if (isset($_SESSION['perfil'])) { ?>
     <?php if ($_SESSION['perfil'] === 'Administrador') { ?>
-    <!-- ASIDE DO ADM -->
     <aside class="aside-area">
         <div class="aside-content" id="sideAdministrador">
 
@@ -134,7 +130,6 @@
     </aside>
 
     <?php } elseif ($_SESSION['perfil'] === 'Ong') { ?>
-    <!-- ASIDE DA ONG -->
     <aside class="aside-area">
         <div class="aside-content" id="sideOng">
 
@@ -180,7 +175,6 @@
     </aside>
 
     <?php } elseif ($_SESSION['perfil'] === 'Usuario') { ?>
-    <!-- ASIDE DO USUARIO -->
     <aside class="aside-area">
         <div class="aside-content" id="sideUsuario">
 

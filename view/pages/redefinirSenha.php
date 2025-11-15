@@ -9,7 +9,6 @@ AutenticacaoService::validarAcessoSemLogin();  ?>
 <?php require_once "./../../model/LoginModel.php"; ?>
 
 <?php
-// Notificacao 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
@@ -34,7 +33,6 @@ if (!$email) {
     exit;
 }
 
-// salva email na sessão (para o controller usar)
 $_SESSION['email_redefinicao'] = $email;
 ?>
 

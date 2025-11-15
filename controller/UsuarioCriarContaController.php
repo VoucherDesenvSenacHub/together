@@ -3,7 +3,7 @@ require_once __DIR__ . '/../model/UsuarioModel.php';
 
 session_start();
 
-// Controla os steps do criarConta.php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST['step_action'] ?? null;
     $usuarioModel = new UsuarioModel();
@@ -61,7 +61,7 @@ function registrarDadosConta()
 {
     $usuarioModel = new UsuarioModel();
 
-    // Só entra no try se todos os dados estiverem preenchidos
+    
     try {
         $senhaComHash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 

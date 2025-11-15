@@ -9,30 +9,30 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once './../../../model/AdmModel.php'; ?>
 
 <?php
-// verifica se o perfil é de administrador
+
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     header('Location: /together/view/pages/login.php');
     exit;
 }
 
-// mostra popup de erro se existir
+
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
 }
 
-// Instancia o modelo
+
 $admModel = new AdmModel();
 
-// Pega os dados do formulário de filtro
+
 $nome_usuario = isset($_POST['nome_usuario']) ? trim($_POST['nome_usuario']) : '';
 $data_inicio = !empty($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
 
-//  Chama a nova função de filtro em vez de listar todos
+
 $ListarUsuarios = $admModel->filtrarUsuarios($nome_usuario, $data_inicio, $data_fim);
 
-// página atual e quantidade de páginas vindo do controller
+
 $pagina = isset($pagina) ? $pagina : 1;
 $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
@@ -104,7 +104,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                 </table>
             </div>
 
-            <!-- Paginação -->
+        
             <?php if ($quantidadeDePaginas > 1) { ?>
                 <?php criarPaginacao($quantidadeDePaginas); ?>
             <?php } ?>

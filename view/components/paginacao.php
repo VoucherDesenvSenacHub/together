@@ -7,21 +7,21 @@ function criarPaginacao(int $quantidadeDePaginas)
     <nav aria-label="pagination" class="nav-pagination">
         <ul class="pagination">
 
-            <!-- Primeira página -->
+          
             <li class="<?= $paginaAtual <= 1 ? 'disabled' : '' ?>">
                 <a href="?pagina=1">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
 
-            <!-- Página anterior -->
+           
             <li class="<?= $paginaAtual <= 1 ? 'disabled' : '' ?>">
                 <a href="?pagina=<?= max(1, $paginaAtual - 1) ?>">
                     <span aria-hidden="true">&lsaquo;</span>
                 </a>
             </li>
 
-            <!-- Números -->
+          
             <?php for ($i = max(1, $paginaAtual - 2); $i <= min($quantidadeDePaginas, $paginaAtual + 2); $i++): ?>
                 <li>
                     <a href="?pagina=<?= $i ?>" <?= $i === $paginaAtual ? 'aria-current="page" class="active"' : '' ?>>
@@ -30,14 +30,14 @@ function criarPaginacao(int $quantidadeDePaginas)
                 </li>
             <?php endfor; ?>
 
-            <!-- Próxima página -->
+            
             <li class="<?= $paginaAtual >= $quantidadeDePaginas ? 'disabled' : '' ?>">
                 <a href="?pagina=<?= min($quantidadeDePaginas, $paginaAtual + 1) ?>">
                     <span aria-hidden="true">&rsaquo;</span>
                 </a>
             </li>
 
-            <!-- Última página -->
+            
             <li class="<?= $paginaAtual >= $quantidadeDePaginas ? 'disabled' : '' ?>">
                 <a href="?pagina=<?= $quantidadeDePaginas ?>">
                     <span aria-hidden="true">&raquo;</span>
