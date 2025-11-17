@@ -1,13 +1,13 @@
 <?php 
 
     /**
-     * Renderiza um componente de card
+     
      * 
-     * @param string $imagem - é através do imagem que colocamos a imagem desse card com o PHP;
-     * @param string $titulo - é utilizado para atribuir título ao card;
-     * @param string $descricao - é utilizado para adicionar uma pequeno texto uma descrição;
+     * @param string $imagem 
+     * @param string $titulo 
+     * @param string $descricao
      * 
-     * @return string - HTML para renderizar o card;
+     * @return string 
      */
 
   function cardOng($imagem,$titulo,$descricao,$idOng = "") {

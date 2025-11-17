@@ -17,7 +17,6 @@ class CategoriaOngModel
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
 
-        // fetchAll já retorna um array associativo com id e nome de cada linha
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

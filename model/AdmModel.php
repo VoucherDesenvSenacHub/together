@@ -69,7 +69,7 @@ class AdmModel
     {
         $sql = "SELECT id, nome, dt_criacao, ativo
                 FROM usuarios
-                WHERE ativo = 1"; // Assumindo que '1' significa ativo.
+                WHERE ativo = 1"; 
 
         $params = [];
 
@@ -131,15 +131,14 @@ class AdmModel
         } catch (PDOException $e) {
             // Registra erro no log
             error_log("Erro ao listar usuários: " . $e->getMessage());
-            return []; // retorna um array vazio para evitar quebra do sistema
+            return []; 
         }
     }
 
 }
 
 
-// ===== Configuração da paginação da listagem =====
 $porPagina = 15;
 $pagina = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-$pagina = max(1, $pagina); // nunca menor que 1
+$pagina = max(1, $pagina); 
 $offset = ($pagina - 1) * $porPagina;
