@@ -17,7 +17,7 @@ function getEstadosDoJson($caminhoJson = null) {
         return [];
     }
 
-    return $dados; // array completo dos estados
+    return $dados; 
 }
 
 function getCidadesDoJson($estadoSigla, $caminhoJson = null) {

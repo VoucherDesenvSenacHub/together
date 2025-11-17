@@ -99,7 +99,7 @@ input:checked + .slider:before {
 
 
 
-/* LAYOUT GERAL */
+
 
 .layout-geral {
   display: flex;
@@ -108,7 +108,7 @@ input:checked + .slider:before {
   width: 100%;
   max-width: 900px;
   margin: 20px 0;
-  /* margin-left: 40px; <-- empurra tudo um pouco pra esquerda */
+
 }
 
 
@@ -130,7 +130,7 @@ input:checked + .slider:before {
 
 #imagem-doacao {
   max-width: 100%;
-  width: 400px; /* Aumenta a largura da imagem */
+  width: 400px; 
   height: auto;
   object-fit: contain;
   position: relative;
@@ -146,7 +146,7 @@ input:checked + .slider:before {
   width: 100%;
 }
 
-/* RESPONSIVIDADE */
+
 
 @media (max-width: 1024px) {
   .layout-geral {

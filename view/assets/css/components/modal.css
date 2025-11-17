@@ -6,7 +6,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
-  /* escondido por padrão */
+
   justify-content: center;
   align-items: center;
   z-index: 9999;
@@ -31,10 +31,10 @@
 
 .modal-overlay {
   display: none;
-  /* padrão */
+
 }
 
 .modal-overlay.aberto {
   display: flex;
-  /* ou block, como seu layout */
+
 }

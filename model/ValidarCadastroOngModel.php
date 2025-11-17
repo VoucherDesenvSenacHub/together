@@ -39,7 +39,7 @@ class ValidarCadastroOngModel
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        // fetchAll já retorna um array associativo com id e nome de cada linha
+        
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

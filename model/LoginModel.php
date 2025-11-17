@@ -38,7 +38,6 @@ class LoginModel
         return $stmt->fetchColumn() !== false;
     }
 
-    // Gera token de redefinição e salva na própria tabela usuarios
     public function gerarTokenRedefinicao($email)
     {
         $tokenGerado = bin2hex(random_bytes(32));
@@ -56,7 +55,6 @@ class LoginModel
         return $tokenGerado;
     }
 
-    // Valida token e retorna o email se válido
     public function validarToken(string $token): ?string
     {
         $stmt = $this->conn->prepare("SELECT email FROM usuarios WHERE token_redefinicao = :token AND token_expira > NOW() LIMIT 1");
@@ -64,8 +62,7 @@ class LoginModel
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['email'] ?? null;
     }
-
-    // Redefine a senha e remove token
+    
     public function redefinirSenha(string $email, string $novaSenhaHash): bool
     {
         $stmt = $this->conn->prepare("

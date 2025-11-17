@@ -11,10 +11,10 @@ function renderSelectEstado(string $estadoSelecionado = '') {
         $opcoesEstados[$estado['sigla']] = $estado['nome'];
     }
 
-    // Envia lista de estados para o JS
+   
     echo "<script>window.estados = " . json_encode($estados) . ";</script>";
 
-    // Usa seu componente para montar o select
+   
     echo selectDefault('estado', 'estado', $opcoesEstados, $estadoSelecionado);
 }
 
@@ -35,6 +35,5 @@ function renderSelectCidade(string $estadoSelecionado = '', string $cidadeSeleci
         }
     }
 
-    // Usa seu componente para montar o select
     echo selectDefault('cidade', 'cidade', $opcoesCidades, $cidadeSelecionada);
 }

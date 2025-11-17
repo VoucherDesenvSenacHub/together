@@ -1,6 +1,6 @@
 <?php
 function renderAcao($action, $extraClasses = '', $id = '') {
-    // Define os ícones, classes de estilo e estilos inline
+   
     $icons = [
         'visualizar' => ['eye', 'fa-regular', 'color: #797777;'],
         'editar'     => ['pen-to-square', 'fa-solid', 'color: #797777;'],

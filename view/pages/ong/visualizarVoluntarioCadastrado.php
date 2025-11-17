@@ -8,11 +8,11 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 require_once "../../../model/ImagemModel.php";
 require_once "./../../components/upload.php";
 
-// USADO PARA LISTAR INFORMAÇÕES DO USUARIO
+
 $usuarioModel = new UsuarioModel();
 $usuario = $usuarioModel->buscarUsuarioId($_GET['id'] ?? null);
 
-// USADO PARA O PREVIEW DA IMAGEM
+
 $imagemModel = new ImagemModel();
 $id_imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id'] ?? null);
 $preview = new ImagemPreview($id_imagem['id'] ?? null);
@@ -100,11 +100,9 @@ $preview = new ImagemPreview($id_imagem['id'] ?? null);
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="container-readonly-footer">
-                        <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', 'voluntariosOng.php') ?> </div>
-                        </div>
-                    </div> -->
+                   <?= botao('botao-primary', 'Voltar', '', 'voluntariosOng.php') ?> </div>
+                      
+                
                 </form>
             </div>
         </div>

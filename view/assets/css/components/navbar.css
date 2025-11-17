@@ -17,7 +17,6 @@
 .logo-navbar {
     height: 50px;
     width: 175px;
-    /* animation: RODA 3s linear infinite; */
 }
 
 #btn-circular {
@@ -194,7 +193,6 @@
 
     .login-botao-area-navbar {
         display: 20%;
-        /* padding-right: 35px; */
         justify-content: end;
     }
 
