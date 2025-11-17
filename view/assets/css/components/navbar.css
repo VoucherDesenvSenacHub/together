@@ -62,6 +62,8 @@
     gap: 50px;
     letter-spacing: 1.5px;
     width: 450px;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .div-barra-pesquisa {
@@ -76,6 +78,8 @@
     padding: 0 40px 0 15px;
     animation-name: search-slide-animation;
     animation-duration: 0.3s;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .barra-pesquisa-input:focus {
@@ -102,6 +106,8 @@
     display: flex;
     justify-content: end;
     width: 120px;
+    flex-shrink: 0;
+    min-width: 120px;
 }
 
 
@@ -153,7 +159,7 @@
     }
 
     .login-botao-area-navbar {
-        display: 20%;
+        width: auto;
         /* padding-right: 35px; */
         justify-content: end;
     }
@@ -189,7 +195,7 @@
     }
 
     .login-botao-area-navbar {
-        display: 20%;
+        width: auto;
         /* padding-right: 35px; */
         justify-content: end;
     }

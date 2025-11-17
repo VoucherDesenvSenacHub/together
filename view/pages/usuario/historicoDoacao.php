@@ -48,7 +48,7 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Histórico de Doações</h1>
             <div class="formulario-perfil">
-                <form action="visualizarOngs.php" method="POST">
+                <form action="visualizarOngs.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
 

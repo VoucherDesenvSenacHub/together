@@ -17,6 +17,7 @@
     background-image: url("../../images/components/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
 .conteudo-login {
@@ -31,7 +32,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    flex: 1;
     background-color: rgba(0, 0, 0, 0.3);
 
 }
@@ -60,7 +61,7 @@
     gap: 30px;
     padding: 30px;
     width: 300px;
-    background-color: rgba(255, 255, 255, 0.532);
+    background-color: var(--cor-container-painel);
     border: none;
     border-radius: 10px;
 }

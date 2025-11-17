@@ -1,9 +1,7 @@
 <?php
 session_start();
-
 require_once __DIR__ . "/../model/OngModel.php";
 require_once __DIR__ . "/../controller/UploadController.php";
-
 
 try {
 
@@ -43,28 +41,28 @@ try {
         $erros[] = "Insira uma data válida!";
     }
 
-    function VerificarNumerosRepetidos($NumeroVerificado, $QuantidadeDeDigitos, $QuantidadeDeDigitos2 = null)
+    function VerificarNumerosRepetidos($numeroVerificado, $quantidadeDeDigitos, $quantidadeDeDigitos2 = null)
     {
         
-        if ($QuantidadeDeDigitos2 !== null) {
-            $range = "{" . $QuantidadeDeDigitos . "," . $QuantidadeDeDigitos2 . "}";
+        if ($quantidadeDeDigitos2 !== null) {
+            $range = "{" . $quantidadeDeDigitos . "," . $quantidadeDeDigitos2 . "}";
         } else {
-            $range = "{" . $QuantidadeDeDigitos . "}";
+            $range = "{" . $quantidadeDeDigitos . "}";
         }
 
         
         $pattern = '/^(\d)\1' . $range . '$/';
 
       
-        return preg_match($pattern, $NumeroVerificado) === 1;
+        return preg_match($pattern, $numeroVerificado) === 1;
     }
 
-    $VerificarCep = preg_replace('/\D/', "", $_POST['cep']);
-    if (strlen($VerificarCep) < 8 || strlen($VerificarCep) > 8) {
+    $verificarCep = preg_replace('/\D/', "", $_POST['cep']);
+    if (strlen($verificarCep) < 8 || strlen($verificarCep) > 8) {
         $erros[] = "CEP informado é invalido!";
     }
 
-    if (VerificarNumerosRepetidos($VerificarCep, 7, null)) {
+    if (VerificarNumerosRepetidos($verificarCep, 7, null)) {
         $erros[] = "CEP informado é invalido: sequência repetida.";
     }
 
@@ -75,7 +73,7 @@ try {
         $erros[] = 'CNPJ informado é  invalido!';
     }
 
-    if (VerificarNumerosRepetidos($VerificarCnpj, 13, null)) {
+    if (VerificarNumerosRepetidos($verificarCnpj, 13, null)) {
         $erros[] = 'CNPJ informado não é valido: sequência repetida.';
     }
 
@@ -86,7 +84,7 @@ try {
     $base = substr($VerificarCnpj, 0, 12);
     $soma = 0;
     for ($i = 0; $i < 12; $i++) {
-        $soma += (int) $base[$i] * $PesoVerificadorCnpj1[$i];
+        $soma += (int) $base[$i] * $pesoVerificadorCnpj1[$i];
     }
     $resto = $soma % 11;
 
@@ -97,12 +95,12 @@ try {
 
     $soma = 0;
     for ($i = 0; $i < 13; $i++) {
-        $soma += (int) $base13[$i] * $PesoVerificadorCnpj2[$i];
+        $soma += (int) $base13[$i] * $pesoVerificadorCnpj2[$i];
     }
     $resto = $soma % 11;
     $dv2 = ($resto < 2) ? 0 : 11 - $resto;
 
-    if ($VerificarCnpj[12] != $dv1 || $VerificarCnpj[13] != $dv2) {
+    if ($verificarCnpj[12] != $dv1 || $verificarCnpj[13] != $dv2) {
         $erros[] = "CNPJ informado é invalido!";
     }
 
@@ -117,7 +115,7 @@ try {
         $erros[] = 'Número de celular inválido: deve começar com 9.';
     }
 
-    if (VerificarNumerosRepetidos($VerificarTelefone, 9, 10)) {
+    if (VerificarNumerosRepetidos($verificarTelefone, 9, 10)) {
         $erros[] = 'Número de telefone inválido: sequência repetida.';
     }
     
@@ -204,11 +202,11 @@ try {
     $resultado = $ongModel->atualizarOng(
         $idOng,
         $_POST['nome'],
-        $VerificarTelefone,
-        $VerificarCnpj,
+        $verificarTelefone,
+        $verificarCnpj,
         $dataFormatada,
         $_POST['email'],
-        $VerificarCep,
+        $verificarCep,
         $_POST['logradouro'],
         $_POST['complemento'] ?? '',
         $_POST['numero'],
@@ -224,10 +222,6 @@ try {
     } else {
         throw new Exception("Erro ao atualizar os dados da ONG!");
     }
-
-
-
-
 } catch (Exception $e) {
     $_SESSION['erro'] = $e->getMessage();
     header("location: ./../view/pages/ong/perfilOng.php");

@@ -21,10 +21,6 @@ if (!isset($_SESSION['step'])) {
 <body class="body-login">
 
     <div class="container-login">
-        <div class="login-icon-group">
-            <?php $_SESSION['step'] === 2  ?>
-        </div>
-
         <div class="conteudo-login">
 
             <div class="logo-login">
@@ -70,11 +66,21 @@ if (!isset($_SESSION['step'])) {
                             <div class="container-input-login">
                                 <div>
                                     <?= label('senha', 'Senha') ?>
-                                    <?= inputRequired('text', 'senha', 'senha') ?>
+                                    <?= inputRequired('password', 'senha', 'senha') ?>
                                 </div>
                                 <div>
                                     <?= label('confirmar_senha_nova_conta', 'Confirmar Senha') ?>
-                                    <?= inputRequired('text', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
+                                    <?= inputRequired('password', 'confirmar_senha_nova_conta', 'confirmar_senha') ?>
+                                </div>
+                                <div class="validar-senha">
+                                    <p class="p-validar-senha"><strong>Crie uma senha que inclua:</strong></p>
+                                    <ul class="ul-validar-senha">
+                                        <li id="min-length">No mínimo 8 caracteres</li>
+                                        <li id="uppercase">Uma letra maiúscula</li>
+                                        <li id="lowercase">Uma letra minúscula</li>
+                                        <li id="number">Um número</li>
+                                        <li id="symbol">Um símbolo especial</li>
+                                    </ul>
                                 </div>
                                 <div class="botao-login group-btn-cadastro-ong">
                                     <?= botaoFormNoValide('prev', 'Voltar', name: 'step_action', value: 'prev', formaction: '../../controller/UsuarioCriarContaController.php') ?>
@@ -91,6 +97,8 @@ if (!isset($_SESSION['step'])) {
 
     <script src="/together/view/assets/js/pages/mascara.js"></script>
     <script src="/together/view/assets/js/pages/validacaoCriarUsuario.js"></script>
+    <script src="/together/view/assets/js/components/validarSenha.js"></script>
+    
 </body>
 
 </html>

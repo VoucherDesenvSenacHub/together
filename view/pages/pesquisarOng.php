@@ -59,7 +59,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                                 <?= label('pesquisar', '&nbsp;') ?>
                                 <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
                             </div>
-                            <br>
+                            <br>    
                             <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">

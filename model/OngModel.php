@@ -276,6 +276,7 @@ class OngModel
                 e.bairro, 
                 e.numero, 
                 e.cidade,
+                o.id_endereco,
                 o.id_imagem_de_perfil,   
                 i.caminho AS imagem      
             FROM 
@@ -465,7 +466,7 @@ class OngModel
             $stmt->execute();
 
             $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-            return (int)$resultado['total'];
+            return (int) $resultado['total'];
         } catch (Exception $e) {
             return 0;
         }
@@ -496,8 +497,8 @@ class OngModel
             LIMIT :limite OFFSET :offset";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindValue(':idOng', $idOng, PDO::PARAM_INT);
-            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -551,11 +552,13 @@ class OngModel
     
     private function extrairNomePerfil($url)
     {
-        if (!$url) return null;
+        if (!$url)
+            return null;
 
         $parsed = parse_url($url);
 
-        if (!isset($parsed['path'])) return null;
+        if (!isset($parsed['path']))
+            return null;
 
         
         $path = rtrim($parsed['path'], '/');
@@ -568,13 +571,12 @@ class OngModel
         return $ultimo ?: null;
     }
 
-    public function editarPaginaOng($id, $titulo, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    public function editarPaginaOng($id, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
         try {
-            $query = "UPDATE paginas p SET p.titulo=:titulo, p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $query = "UPDATE paginas p SET p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':titulo', $titulo);
             $stmt->bindParam(':subtitulo', $subtitulo);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':facebook', $facebook);
@@ -610,7 +612,7 @@ class OngModel
                 LIMIT :limite";
 
             $stmt = $this->conn->prepare($query);
-            $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
+            $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
             $stmt->execute();
 
             $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -679,8 +681,8 @@ class OngModel
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':id_ong', $id_ong, PDO::PARAM_INT);
-        $stmt->bindValue(':limite', (int)$limite, PDO::PARAM_INT);
-        $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
+        $stmt->bindValue(':limite', (int) $limite, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', (int) $offset, PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -699,7 +701,7 @@ class OngModel
         $stmt->execute();
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return isset($resultado['total']) ? (int)$resultado['total'] : 0;
+        return isset($resultado['total']) ? (int) $resultado['total'] : 0;
     }
 
     public function buscarOngPorIdUsuario($id_usuario)

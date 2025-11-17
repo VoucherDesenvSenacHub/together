@@ -13,5 +13,6 @@ import "./pages/mascara.js";
 import "./pages/carrossel.js";
 import "./components/selectEndereco.js";
 import "./components/endereco.js";
+import "./components/validarSenha.js";
 
 
