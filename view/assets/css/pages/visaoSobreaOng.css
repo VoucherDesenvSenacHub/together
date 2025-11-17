@@ -29,8 +29,7 @@
   flex-direction: column;
   border-radius: 15px;
 }
-
-/* Tags de filtro */
+ 
 .adm-ong-vision-filter-tags {
   width: 100%;
   height: 50px;
@@ -48,8 +47,7 @@
   font-size: 17px;
   color: var(--cor-cinza-p);
 }
-
-/* Seção de título e imagem */
+ 
 .adm-ong-vision-title-options {
   justify-content: space-between;
   display: flex;
@@ -86,33 +84,20 @@
 }
 
 .adm-ong-vision-subtitle {
-  /* padding: 10px 0 10px 10px; */
-  width: 80%;
-  border-left: 2px solid var(--cor-botao-hover);
-  /* margin-left: 10px; */
+
+    width: 80%;
+    border-left: 2px solid var(--cor-botao-hover);
+
 }
 
 .adm-ong-vision-button-div {
-  /* width: 120px; */
-  /* height: 133px; */
-  gap: 50px;
-  display: flex;
-  align-items: center;
+
+    gap: 50px;
+    display: flex;
+    align-items: center;
 }
-
-/* .adm-ong-vision-default-button {
-    background-color: var(--cor-title-card);
-    color: var(--cor-font-branco);
-    border: none;
-    height: 45px;
-    width: 145px;
-    border-radius: 20px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: var(--botao-box-shadow);
-} */
-
+ 
+ 
 .adm-ong-vision-default-button:hover {
   scale: 1.1;
 }
@@ -120,8 +105,7 @@
 #adm-ong-vision-title-description {
   font-weight: bold;
 }
-
-/* Seção de localização e sobre */
+ 
 .adm-ong-vision-about-location-div {
   width: 100%;
   height: 35px;
@@ -148,8 +132,7 @@
   font-size: 17px;
   color: var(--cor-cinza-p);
 }
-
-/* Seção de postagens */
+ 
 .adm-ong-vision-post-container {
   background-color: var(--cor-navbar);
   width: 100%;
@@ -254,7 +237,6 @@
   width: 95%;
 }
 
-/* Icon */
 #adm-ong-vision-icon-default {
   color: var(--cor-cinza-p);
   margin-right: 10px;
@@ -379,35 +361,35 @@
 }
 
 @media screen and (max-width: 768px) {
-  .adm-ong-vision-post-box {
-    flex-direction: column;
-    height: auto;
-    gap: 20px;
-    padding-bottom: 20px;
-  }
-
-  .adm-ong-vision-post-area,
-  .adm-ong-vision-social-area {
-    width: 95%;
-  }
-
-  .adm-ong-vision-post-container {
-    height: auto;
-  }
-
-  .adm-ong-vision-post-title-div {
-    width: 95%;
-  }
-
-  .adm-ong-vision-title-text {
-    font-size: 32px;
-  }
-
-  .adm-ong-vision-button-div {
-    gap: 20px;
-    height: auto;
-    /* padding: 15px 0; */
-  }
+    .adm-ong-vision-post-box {
+        flex-direction: column;
+        height: auto;
+        gap: 20px;
+        padding-bottom: 20px;
+    }
+   
+    .adm-ong-vision-post-area,
+    .adm-ong-vision-social-area {
+        width: 95%;
+    }
+   
+    .adm-ong-vision-post-container {
+        height: auto;
+    }
+   
+    .adm-ong-vision-post-title-div {
+        width: 95%;
+    }
+   
+    .adm-ong-vision-title-text {
+        font-size: 32px;
+    }
+   
+    .adm-ong-vision-button-div {
+        gap: 20px;
+        height: auto;
+        
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -486,8 +468,6 @@
     gap: 0px;
   }
 }
-
-/* Ajustes específicos para elementos críticos */
 @media screen and (max-width: 320px) {
   .adm-ong-vision-default-button {
     width: 110px;

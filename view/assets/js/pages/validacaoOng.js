@@ -1,4 +1,4 @@
-// Abrir visualizar
+
 document.addEventListener('DOMContentLoaded', function() {
     const botoesVisualizar = document.querySelectorAll('.validacao-ong-botao-visualizar');
 
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } 
 });
 
-// Fecha visualizar
 document.addEventListener('DOMContentLoaded', function() {
     const botaoFecharVisualizacao = document.querySelector('.botao-fechar-dialog');
 
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } 
 });
 
-// Abre Observações
+
 document.addEventListener('DOMContentLoaded', function() {
     const botaoCancelarEdicao = document.querySelector('.botao-cancelar-formulario');
 
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } 
 });
 
-// Fecha Observações
 document.addEventListener('DOMContentLoaded', function() {
     const botaoCancelarEdicao = document.querySelector('.botao-fechar-dialog-observacao');
 
@@ -51,5 +49,4 @@ document.addEventListener('DOMContentLoaded', function() {
     } 
 });
 
-// botao-cancelar-formulario // ABRE OBSERVAÇÕES
 

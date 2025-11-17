@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
         campo.value = `R$ ${reais},${centavos}`;
     }
 
-    // Seleção dos campos
+
     const campoCartao = document.getElementById("numero");
     const campoValidade = document.getElementById("validade");
     const campoCVV = document.getElementById("cvv");
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
         campoValor.addEventListener("keypress", somenteNumeros);
     }
 
-    // Submissão do formulário
+    
     const form = document.getElementById("form-pagamento");
     if (form) {
         form.addEventListener("submit", (e) => {
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // === Aqui entra o segundo script ===
+    
     const toggle = document.getElementById('pagamento_anonimo');
     const mainContainer = document.querySelector('.main-container');
     const body = document.querySelector('.user_pay');
