@@ -11,6 +11,7 @@
     height: 65px;
     padding: 0 85px 0 85px;
     box-shadow: 1px 9px 16px -2px rgba(0,0,0,0.47);
+    position: fixed;
 }
 
 .logo-navbar {
