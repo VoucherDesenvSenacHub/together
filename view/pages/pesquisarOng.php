@@ -104,7 +104,20 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
 
                 <div class="ong-search-screen-content-align-itens">
                     <?php foreach ($ongs as $ong): ?>
-                        <?= cardOng($ong["caminho"], $ong["razao_social"], $ong["descricao"], $ong['id']) ?>
+                        <?php 
+                            $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['caminho'];
+
+                            $validarFoto = !empty($ong['caminho'] && file_exists($imagem));
+                            $validarEndereco = !empty($ong['endereco_ong']);
+                        ?>
+                        <?php if ($validarFoto && $validarEndereco): ?>
+                            <?= cardOng(
+                                $ong["caminho"], 
+                                $ong["razao_social"], 
+                                $ong["descricao"], 
+                                $ong['id']) 
+                            ?>
+                        <?php endif ?>
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>
