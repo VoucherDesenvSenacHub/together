@@ -80,7 +80,7 @@
     width: 50%;
 }
 
-/* --------------------Login-------------------- */
+
 .text-login {
     color: var(--cor-login);
     font-weight: bold;
@@ -101,7 +101,7 @@
     gap: 10px;
 }
 
-/* --------------------Recuperar Senha-------------------- */
+
 
 .titulo-login {
     font-size: 30px;
@@ -114,15 +114,13 @@
     font-weight: 500;
 }
 
-/* ------------------------------------------------------ */
+
 
 .termos-area-login {
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
-    /* top: 389px; */
     margin-top: 20px;
 }
 
@@ -148,7 +146,7 @@
 
 @media (max-width: 400px) {
     .conteudo-login {
-        /* margin-top: 100px; */
+       
         width: 110%;
     }
 }

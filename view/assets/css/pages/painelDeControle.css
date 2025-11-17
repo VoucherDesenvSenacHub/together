@@ -68,29 +68,29 @@
     opacity: 50%;
 }
 
-/* Responsividade para telas menores que 1200px */
+
 @media (max-width: 1200px) {
     .box-painel-de-controle-adm {
-        max-width: 1000px; /* Ajuste da largura máxima */
-        height: auto; /* Altura ajustável */
-        padding: 20px; /* Espaçamento interno */
+        max-width: 1000px; 
+        height: auto;
+        padding: 20px; 
         display: flex;
         flex-wrap: wrap;
         justify-content: center; 
     }
 
     .painel-de-controle-conteudo-interno {
-        width: 300px; /* Reduzindo o tamanho dos blocos */
-        height: auto; /* Altura ajustável */
-        margin-bottom: 20px; /* Espaçamento entre os blocos */
+        width: 300px; 
+        height: auto; 
+        margin-bottom: 20px; 
     }
 }
 
-/* Responsividade para telas menores que 768px */
+
 @media (max-width: 768px) {
     .box-painel-de-controle-adm {
-        max-width: 400px; /* Ajuste da largura máxima */
-        padding: 10px; /* Espaçamento interno reduzido */
+        max-width: 400px; 
+        padding: 10px; 
         display:flex;
         justify-content:center;
     }

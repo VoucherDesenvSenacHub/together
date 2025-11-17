@@ -7,11 +7,11 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once "../../../model/OngModel.php";
 require_once "./../../components/upload.php";
 
-// USADO PARA LISTAR INFORMAÇÕES DO USUARIO
+
 $ongModel = new OngModel();
 $usuario = $ongModel->buscarVoluntarioPorId($_GET['id'] ?? null);
 
-// USADO PARA O PREVIEW DA IMAGEM
+
 $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
 ?>
 
@@ -110,15 +110,9 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
         </div>
     </main>
 
-    <!-- <div id="modalConfirmacao" class="modal-overlay">
-        <div class="modal-content">
-            <p>Tem certeza que deseja recusar este voluntário?</p>
-            <div class="modal-botoes">
-                <div class="postagem-geral-btn"><?= botao('salvar', 'Sim', "btnConfirmarExclusao") ?> </div>
-                <div class="postagem-geral-btn"><?= botao('excluir', 'Cancelar', "btnCancelarExclusao") ?> </div>
-            </div>
-        </div>
-    </div> -->
+  <?= botao('salvar', 'Sim', "btnConfirmarExclusao") ?> </div>
+               <?= botao('excluir', 'Cancelar', "btnCancelarExclusao") ?> </div>
+     
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
