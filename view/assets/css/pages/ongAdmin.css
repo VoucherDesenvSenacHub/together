@@ -1,4 +1,4 @@
-/* Box/Containers */
+
 .ong-admin-container {
     width: 70%;
     height: 83dvh;
@@ -15,7 +15,6 @@
 .ong-admin-box {
     width: 900px;
     height: 600px;
-    /* background-color: red; */
     justify-content: center;
     display: flex;
     align-items: center;
@@ -31,11 +30,9 @@
     margin-top: 50px;
 }
 
-/* Default-card-config */
 .ong-admin-default-card-config{
     width: 200px;
     height: 250px;
-    /* background-color: var(--cor-cinza-claro); */
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -60,7 +57,7 @@
 }
 
 
-/* Cards */
+
 #ong-admin-volunter-card {}
 #ong-admin-edit-page-card {}
 #ong-admin-report-card {}
@@ -72,7 +69,6 @@
 #ong-admin-create-post-card {}
 
 
-/* Id-Cards */
 
 #ong-admin-peding-volunter-card{
     margin-left: 33px;

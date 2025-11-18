@@ -1,7 +1,7 @@
 .desenvolvimento{
     display: flex;
-  justify-content: center;  /* Centraliza horizontalmente */
-  align-items: center;      /* Centraliza verticalmente */
+  justify-content: center;  
+  align-items: center;      
   flex-direction: column;
   height: 100vh;
   img{

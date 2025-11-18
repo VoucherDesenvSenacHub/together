@@ -47,7 +47,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
         
         <div class="ong-search-screen">
 
-            <!-- Areá de Filtro -->
+           
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
                     <div class="ong-search-screen-category-title-div">
@@ -59,7 +59,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                                 <?= label('pesquisar', '&nbsp;') ?>
                                 <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
                             </div>
-                            <br>
+                            <br>    
                             <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
@@ -94,18 +94,30 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                 </div>
             </div>
 
-            <!-- Área de Conteúdo -->
+            
             <div class="ong-search-screen-content">
 
-                <!-- <div class="ong-search-screen-mobile-filter-container">
-                    <div class="ong-search-screen-mobile-filter">
+              
                         <?= botao("primary", "Adicionar Filtros", "filter-mobile-button-id") ?>
                     </div>
-                </div> -->
+                </div> 
 
                 <div class="ong-search-screen-content-align-itens">
                     <?php foreach ($ongs as $ong): ?>
-                        <?= cardOng($ong["caminho"], $ong["razao_social"], $ong["descricao"], $ong['id']) ?>
+                        <?php 
+                            $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['caminho'];
+
+                            $validarFoto = !empty($ong['caminho'] && file_exists($imagem));
+                            $validarEndereco = !empty($ong['endereco_ong']);
+                        ?>
+                        <?php if ($validarFoto && $validarEndereco): ?>
+                            <?= cardOng(
+                                $ong["caminho"], 
+                                $ong["razao_social"], 
+                                $ong["descricao"], 
+                                $ong['id']) 
+                            ?>
+                        <?php endif ?>
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>

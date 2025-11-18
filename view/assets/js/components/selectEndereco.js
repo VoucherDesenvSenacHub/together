@@ -3,7 +3,7 @@ if (estadoSelect) {
     estadoSelect.addEventListener('change', function () {
         const sigla = this.value;
         const cidadeSelect = document.querySelector('#cidade');
-        if (!cidadeSelect) return; // valida se cidade também existe
+        if (!cidadeSelect) return; 
 
         cidadeSelect.innerHTML = '<option value="">Selecione</option>';
         if (!sigla) return;

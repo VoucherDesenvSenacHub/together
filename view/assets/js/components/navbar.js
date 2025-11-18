@@ -8,7 +8,7 @@ function addClickEvent(id, callback) {
     }
 }
 
-// Mostrar a barra de pesquisa
+
 addClickEvent('searchBarButton', function () {
     const searchBar = document.getElementById('searchBar');
     if (searchBar) {
@@ -17,7 +17,7 @@ addClickEvent('searchBarButton', function () {
     }
 });
 
-// Mostrar a barra lateral
+
 addClickEvent('imageArea', function () {
     const lateralBar = document.getElementById('lateralBar');
     if (lateralBar) {
@@ -26,7 +26,7 @@ addClickEvent('imageArea', function () {
     }
 });
 
-// Ocultar a barra lateral
+
 addClickEvent('imageLateralBar', function () {
     const lateralBar = document.getElementById('lateralBar');
     if (lateralBar) {
@@ -35,7 +35,7 @@ addClickEvent('imageLateralBar', function () {
     }
 });
 
-// Mostrar o círculo de opções
+
 addClickEvent('mobileButton', function () {
     const circleChoice = document.getElementById('circleChoice');
     if (circleChoice) {
@@ -43,7 +43,7 @@ addClickEvent('mobileButton', function () {
     }
 });
 
-// Esconder o círculo de opções
+
 addClickEvent('barsCircleButton', function () {
     const circleChoice = document.getElementById('circleChoice');
     if (circleChoice) {
@@ -51,7 +51,7 @@ addClickEvent('barsCircleButton', function () {
     }
 });
 
-// Alternar a área de filtro
+
 addClickEvent('filtrarTopButton', function () {
     const filtrarArea = document.getElementById('filtrarArea');
     const filtrarList = document.getElementById('filtrarList');
@@ -71,7 +71,7 @@ addClickEvent('filtrarTopButton', function () {
     }
 });
 
-// Mostrar a área de filtro e esconder o círculo de opções
+
 addClickEvent('filtrarButton', function () {
     const filtrarArea = document.getElementById('filtrarArea');
     const filtrarList = document.getElementById('filtrarList');
@@ -88,7 +88,7 @@ addClickEvent('filtrarButton', function () {
     }
 });
 
-// Esconder elementos ao clicar fora deles
+
 document.addEventListener('click', function (event) {
     const filtrarArea = document.getElementById('filtrarArea');
     const filtrarList = document.getElementById('filtrarList');
@@ -116,18 +116,4 @@ document.addEventListener('click', function (event) {
     }
 });
 
-
-// document.addEventListener("DOMContentLoaded", function () {
-//     const imageAreaButton = document.getElementById('imageArea');
-
-//     if (imageAreaButton) {
-//         imageAreaButton.addEventListener('click', function () {
-//             const nextPageUrl = "./view/pages/usuario/loginUsuario.php";
-
-//             if (nextPageUrl) {
-//                 window.location.href = nextPageUrl;
-//             }
-//         });
-//     }
-// });
 

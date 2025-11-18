@@ -7,7 +7,7 @@ $validarCadastroOngModel = new ValidarCadastroOngModel();
 
 
 try {
-    // Verifica se a requisão é post
+   
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         throw new Exception("Método inválido para esta requisição");
     }

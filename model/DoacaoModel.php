@@ -11,11 +11,9 @@ class DoacaoModel
         $this->conn = $database->conectar();
     }
 
-    // Buscar doações com paginação
     public function BuscarDoacoesPorID(int $idUsuario, ?int $pagina = null, int $tamanhoPagina = 15)
     {
         if ($pagina === null) {
-            // busca total (sem paginação)
             $query = "SELECT O.id, D.dt_doacao, O.razao_social, D.valor 
                       FROM doacoes D 
                       JOIN ongs O ON O.id = D.id_ong 
@@ -26,7 +24,6 @@ class DoacaoModel
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':id', $idUsuario, PDO::PARAM_INT);
         } else {
-            // busca paginada
             $offset = ($pagina - 1) * $tamanhoPagina;
             $query = "SELECT DATE_FORMAT(D.dt_doacao, '%d/%m/%Y') as dt_doacao, 
                              O.razao_social, 

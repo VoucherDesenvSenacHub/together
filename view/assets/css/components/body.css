@@ -1,3 +1,48 @@
-body{
+body {
     background-color: var(--cor-body);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+header nav,
+.navbar-group {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+    display: block;
+}
+
+
+main > * {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+body.body-login .container-login {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
 }
