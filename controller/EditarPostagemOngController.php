@@ -53,7 +53,7 @@ function validarEdicaoPostagemOng()
         }
 
         $resultado = $ongModel->editarPostagemDaOng(
-            $_SESSION['id'],
+            $_POST['id'],
             $_POST['titulo'],
             $_POST['descricao'],
             $_POST['link'],
