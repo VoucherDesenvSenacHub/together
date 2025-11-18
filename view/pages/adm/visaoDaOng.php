@@ -8,20 +8,19 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 require_once "../../../model/ImagemModel.php";
 require_once "../../components/upload.php";
 
+$ongModel = new ongModel();
+$ong = $ongModel->buscarOngId($_GET['id']);
+
 $imagemModel = new ImagemModel();
-$imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id']);
+$imagem = $imagemModel->buscarImagemPorId($ong['id_imagem']);
 
 $preview = new ImagemPreview($imagem['id'] ?? null);
-
-$ongModel = new ongModel();
-$ong = $ongModel->buscarongId($_GET['id']);
 
 ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
     <main class="main-container">
-
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Dados Cadastrais</h1>
@@ -35,8 +34,8 @@ $ong = $ongModel->buscarongId($_GET['id']);
                             <div class="container-readonly-primary">
                                 <div class="form-row">
                                     <div>
-                                        <?= label('nome', 'Nome') ?>
-                                        <?= inputReadonly('text', 'nome', 'nome', $ong['nome'] ?? '') ?>
+                                        <?= label('razao_social', 'Razão Social') ?>
+                                        <?= inputReadonly('text', 'razao_social', 'razao_social', $ong['razao_social'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
@@ -45,12 +44,12 @@ $ong = $ongModel->buscarongId($_GET['id']);
                                 </div>
                                 <div class="form-row">
                                     <div>
-                                        <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', $ong['cpf'] ?? '') ?>
+                                        <?= label('cnpj', 'CNPJ') ?>
+                                        <?= inputReadonly('text', 'cnpj', 'cnpj', $ong['cnpj'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('data', 'Data de nascimento') ?>
-                                        <?= inputReadonly('text', 'data', 'data', $ong['dt_nascimento'] ?? '') ?>
+                                        <?= inputReadonly('text', 'data', 'data', $ong['dt_criacao'] ?? '') ?>
                                     </div>
                                 </div>
                             </div>
