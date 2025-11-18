@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . "/../model/OngModel.php";
+require_once __DIR__ . "/../model/ImagemModel.php";
+require_once __DIR__ . "/../controller/UploadController.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
@@ -25,7 +27,7 @@ function validarExistenciaPaginaOng()
 {
     $ongModel = new OngModel();
     $validarExiste = $ongModel->verificarSeExistePaginaPorIdUsuario($_SESSION['id']);
-    return (bool) $validarExiste;
+    return $validarExiste > 0 ? true : false;
 }
 
 function criarPaginaOng()
@@ -49,7 +51,7 @@ function criarPaginaOng()
         $_POST['Instagram'],
         $_POST['X'],
         $idImagem,
-        $_SESSION['id'],
+        $_SESSION['id']
     );
 
     if (!$resultado) {
@@ -80,14 +82,10 @@ function validarEdicaoOng()
         header('Location: /together/view/pages/Ong/editarPaginaOng.php');
         exit;
     } else {
-        require_once __DIR__ . "/../model/OngModel.php";
-        require_once __DIR__ . "/../model/ImagemModel.php";
-        require_once __DIR__ . "/../controller/UploadController.php";
-
         $ongModel = new OngModel();
         $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
 
-       
+
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
