@@ -5,7 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
     $erros = validarUrls();
-    if (empty($erros)) {
+    if (!validarExistenciaPaginaOng()) {
+        criarPaginaOng();
+        exit;
+    } elseif (empty($erros)) {
         validarEdicaoOng();
         exit;
     } else {
@@ -15,6 +18,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: /together/view/pages/ong/editarPaginaOng.php');
             exit;
         }
+    }
+}
+
+function validarExistenciaPaginaOng()
+{
+    $ongModel = new OngModel();
+    $validarExiste = $ongModel->verificarSeExistePaginaPorIdUsuario($_SESSION['id']);
+    return (bool) $validarExiste;
+}
+
+function criarPaginaOng()
+{
+    $ongModel = new OngModel();
+
+    $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
+        if ($idImagem === false) {
+            header('Location: /together/view/pages/ong/editarPaginaOng.php');
+            exit;
+        }
+    }
+
+    $resultado = $ongModel->criarPaginaOng(
+        $_POST['subtitulo'],
+        $_POST['descricao'],
+        $_POST['Facebook'],
+        $_POST['Instagram'],
+        $_POST['X'],
+        $idImagem,
+        $_SESSION['id'],
+    );
+
+    if (!$resultado) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Erro ao editar informações da página!';
+        header('Location: /together/view/pages/ong/editarPaginaOng.php');
+        exit;
+    } else {
+        $_SESSION['type'] = 'sucesso';
+        $_SESSION['message'] = 'Dados da ONG atualizados com sucesso!';
+        header('Location: /together/view/pages/visaoSobreaOng.php');
+        exit;
     }
 }
 

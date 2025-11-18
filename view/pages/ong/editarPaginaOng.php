@@ -45,7 +45,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="formulario-campos">
                             <div>
                                 <?= label("titulo", "Razão Social") ?>
-                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
+                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '') ?>
                             </div>
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>

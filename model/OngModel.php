@@ -530,16 +530,17 @@ class OngModel
 
     public function mostrarInformacoesPaginaOng($id)
     {
-        $query = "SELECT o.razao_social as titulo, 
-                p.subtitulo, 
-                p.descricao, 
-                p.facebook, 
-                p.instagram,
-                p.twitter 
-                FROM paginas p 
-                JOIN  ongs o
-                ON o.id = p.id_ong
-                WHERE p.id_ong = :id";
+        $query = "SELECT 
+            o.razao_social as titulo,
+            p.subtitulo,
+            p.descricao,
+            p.facebook,
+            p.instagram,
+            p.twitter
+            FROM ongs o
+            LEFT JOIN paginas p 
+            ON p.id_ong = o.id
+            WHERE o.id_usuario = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -718,5 +719,54 @@ class OngModel
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verificarSeExistePaginaPorIdUsuario($id_usuario)
+    {
+        $query = "SELECT 
+            COUNT(*) AS existe
+            FROM paginas p
+            JOIN ongs o ON o.id = p.id_ong
+            WHERE o.id_usuario = :id_usuario
+        ";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function criarPaginaOng($subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem, $id_usuario)
+    {
+        try {
+            $query = "INSERT INTO paginas ( 
+                subtitulo,  
+                descricao,
+                facebook,
+                instagram,
+                twitter,
+                id_imagem,
+                id_ong
+                ) VALUES (
+                :subtitulo,
+                :descricao,
+                :facebook,
+                :instagram,
+                :twitter,
+                :id_imagem,
+                (SELECT id FROM ongs WHERE id_usuario = :id_usuario LIMIT 1)
+            )";
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
+            $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
+            $stmt->bindParam(':facebook', $facebook, PDO::PARAM_STR);
+            $stmt->bindParam(':instagram', $instagram, PDO::PARAM_STR);
+            $stmt->bindParam(':twitter', $twitter, PDO::PARAM_STR);
+            $stmt->bindParam(':id_imagem', $id_imagem, PDO::PARAM_INT);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+
+            return $stmt->execute();
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
