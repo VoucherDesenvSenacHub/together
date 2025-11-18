@@ -48,7 +48,7 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
                                         <?= inputReadonly('text', 'cnpj', 'cnpj', $ong['cnpj'] ?? '') ?>
                                     </div>
                                     <div>
-                                        <?= label('data', 'Data de nascimento') ?>
+                                        <?= label('data', 'Data de criação') ?>
                                         <?= inputReadonly('text', 'data', 'data', $ong['dt_criacao'] ?? '') ?>
                                     </div>
                                 </div>
