@@ -397,8 +397,8 @@ class OngModel
                 p.descricao
               FROM ongs o
               LEFT JOIN categorias_ongs c ON c.id = o.id_categoria
-              LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
-              LEFT JOIN paginas p ON p.id_ong = o.id";
+              LEFT JOIN paginas p ON p.id_ong = o.id
+              LEFT JOIN imagens i ON i.id = p.id_imagem";
 
         $params = [];
 
@@ -622,7 +622,7 @@ class OngModel
                 FROM ongs o
                 LEFT JOIN doacoes d ON d.id_ong = o.id
                 LEFT JOIN paginas p ON p.id_ong = o.id
-                LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
+                LEFT JOIN imagens i ON i.id = p.id_imagem
                 WHERE o.ativo = TRUE 
                 AND o.status_validacao = 'aprovado'
                 GROUP BY o.id, o.razao_social, p.descricao, i.caminho
@@ -724,7 +724,14 @@ class OngModel
 
     public function buscarOngPorIdUsuario($id_usuario)
     {
-        $query = "SELECT * FROM ongs WHERE id_usuario = :id_usuario";
+        $query = "SELECT 
+            o.id_endereco,
+            p.id_imagem    
+            FROM ongs o
+            LEFT JOIN paginas p ON p.id_ong = o.id
+            LEFT JOIN imagens i ON i.id = p.id_imagem
+            WHERE o.id_usuario = :id_usuario
+        ";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $stmt->execute();
