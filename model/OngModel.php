@@ -138,16 +138,16 @@ class OngModel
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
         try {
-            // Inicia a transação
+           
             $this->conn->beginTransaction();
 
-            // Insere endereço vazio
+            
             $queryEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES ('', 0, '', '', '', '', '')";
             $stmt = $this->conn->prepare($queryEndereco);
             $stmt->execute();
             $id_endereco = $this->conn->lastInsertId();
 
-            // Insere a ONG vinculada ao endereço
+            
             $queryOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria) VALUES (:id_usuario, :razao_social, :cnpj, :telefone, :id_endereco, :id_categoria)";
             $stmt = $this->conn->prepare($queryOng);
             $stmt->bindParam(':id_usuario', $id_usuario);
@@ -158,14 +158,14 @@ class OngModel
             $stmt->bindParam(':id_categoria', $id_categoria);
             $stmt->execute();
 
-            // Confirma transação
+          
             $this->conn->commit();
             return [
                 'response' => true,
                 'id_endereco' => $id_endereco
             ];
         } catch (Exception $e) {
-            // Em caso de erro, desfaz tudo
+           
             $this->conn->rollBack();
             return [
                 'response' => false,
@@ -257,7 +257,7 @@ class OngModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC); // retorna array ou false
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
     public function buscarOngPorId($id)
@@ -276,6 +276,7 @@ class OngModel
                 e.bairro, 
                 e.numero, 
                 e.cidade,
+                o.id_endereco,
                 o.id_imagem_de_perfil,   
                 i.caminho AS imagem      
             FROM 
@@ -387,16 +388,22 @@ class OngModel
 
     public function buscarTodasOngs($idCategorias = null)
     {
-        $query = "SELECT o.id, o.razao_social, i.caminho, c.nome AS categoria, p.descricao
+        $query = "SELECT 
+                o.id,
+                o.razao_social,
+                o.id_endereco AS endereco_ong,     
+                i.caminho, 
+                c.nome AS categoria, 
+                p.descricao
               FROM ongs o
-              INNER JOIN categorias_ongs c ON c.id = o.id_categoria
-              INNER JOIN imagens i ON i.id = o.id_imagem_de_perfil
-              INNER JOIN paginas p ON p.id_ong = o.id";
+              LEFT JOIN categorias_ongs c ON c.id = o.id_categoria
+              LEFT JOIN imagens i ON i.id = o.id_imagem_de_perfil
+              LEFT JOIN paginas p ON p.id_ong = o.id";
 
         $params = [];
 
         if (!empty($idCategorias)) {
-            // Gera placeholders dinâmicos (:id0, :id1, :id2...)
+            
             $placeholders = [];
             foreach ($idCategorias as $key => $id) {
                 $ph = ":id$key";
@@ -539,7 +546,7 @@ class OngModel
         $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($pagina) {
-            // Extrai apenas o nome do perfil das URLs
+           
             $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
             $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
             $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
@@ -548,7 +555,7 @@ class OngModel
         return $pagina;
     }
 
-    // Função auxiliar para pegar o último segmento da URL
+    
     private function extrairNomePerfil($url)
     {
         if (!$url)
@@ -559,11 +566,11 @@ class OngModel
         if (!isset($parsed['path']))
             return null;
 
-        // Remove barra final e query string
+        
         $path = rtrim($parsed['path'], '/');
         $path = explode('?', $path)[0];
 
-        // Pega apenas o último segmento
+       
         $parts = explode('/', $path);
         $ultimo = end($parts);
 
@@ -597,6 +604,7 @@ class OngModel
                 SELECT 
                     o.id,
                     o.razao_social AS titulo_ong,
+                    o.id_endereco AS endereco_ong,
                     p.descricao AS descricao_ong,
                     i.caminho AS foto_ong,
                     COUNT(d.id) AS total_doacoes
@@ -616,7 +624,7 @@ class OngModel
 
             $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // 🔹 Caso não tenha imagem, definir uma padrão
+            
             foreach ($ongs as &$ong) {
                 if (empty($ong['foto_ong'])) {
                     $ong['foto_ong'] = "/together/view/assests/images/adm/adm-vision-ong.png";

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (url.search === '?msg=voluntarioenviado') {
         notificacao.style.display = 'block';
 
-        // Opcional: ocultar depois de 5 segundos
+       
         setTimeout(() => {
             notificacao.style.display = 'none';
         }, 5000);

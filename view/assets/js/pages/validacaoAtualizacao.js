@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    // JS para Dialog (observações) da página! ---------------------------------------------------------------------------------
 
     var btnAbrir = document.querySelector("#validacao-atualizacao-botao-recusar"); 
     var btnFechar = document.querySelector("#validacao-atualizacao-botao-fechar");
@@ -30,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     var textarea = document.querySelector(".textarea-validacao-atualizacao");
     if (textarea) textarea.value = '';
 
-    // JS para add nome do arquivo no form! -----------------------------------------------------------------------------
 
     var inputLogoNovo = document.querySelector("#logo-ong-novo");
     var nomeLogoNovo = document.querySelector("#validacao-atualizacao-logo-file-novo");
@@ -39,19 +37,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (inputLogoNovo && nomeLogoNovo) {
         inputLogoNovo.addEventListener('change', function () {
-            var nomeLogo = this.files[0] ? this.files[0].name : ''; // Nome do arquivo de logo
+            var nomeLogo = this.files[0] ? this.files[0].name : ''; 
             nomeLogoNovo.textContent = nomeLogo;
         });
     }
 
     if (inputConselhoFiscalNovo && nomeConselhoNovo) {
         inputConselhoFiscalNovo.addEventListener('change', function () {
-            var nomeConselho = this.files[0] ? this.files[0].name : ''; // Nome do arquivo de conselho fiscal
+            var nomeConselho = this.files[0] ? this.files[0].name : ''; 
             nomeConselhoNovo.textContent = nomeConselho;
         }); 
     }
 
-    // Btn para mandar a notificação para a tela validarAtualizacaoOng.php -----------------------------------------------
+   
 
     var botaoAceitar = document.querySelector("#validacao-atualizacao-botao-aceitar");
     var botaoObs = document.querySelector("#validacao-atualizacao-botao-obs");

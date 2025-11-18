@@ -8,7 +8,6 @@ class Database
     private $user = "root";
     private $password = "";
 
-
     public function conectar()
     {
         $url = "mysql:host=$this->host;port=$this->port;dbname=$this->dbName";
@@ -17,6 +16,4 @@ class Database
         return $conn;
     }
 }
-
-
 ?>

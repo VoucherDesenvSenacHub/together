@@ -95,8 +95,6 @@
   outline: none;
 }
 
-/* Estilos do Carrossel */
-
 .carousel-ver-ongs {
   position: relative;
   padding: 10px;
@@ -147,7 +145,6 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Responsividade */
 
 @media screen and (max-width: 1300px) {
   .carousel-ver-ongs {

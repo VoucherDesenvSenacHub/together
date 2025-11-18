@@ -10,13 +10,13 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 
 
 <?php
-// verifica se o perfil é de administrador
+
 if (!isset($_SESSION['perfil']) || $_SESSION['perfil'] !== 'Administrador') {
     header('Location: /together/view/pages/login.php');
     exit;
 }
 
-// mostra popup de erro se existir
+
 if (isset($_SESSION['erro'], $erro)) {
     showPopup($_SESSION['erro'], $erro);
     unset($_SESSION['erro'], $erro);
@@ -32,7 +32,6 @@ $data_fim = !empty($_POST['data-final']) ? $_POST['data-final'] : null;
 $VisualizarOngs = $admModel->filtrarOngs($nome_ong, $data_inicio, $data_fim);
 
 
-// página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
 $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
@@ -50,7 +49,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
             </form>
 
             <div class="formulario-perfil">
-                <form action="visualizarOngs.php" method="POST">
+                <form action="visualizarOngs.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
 

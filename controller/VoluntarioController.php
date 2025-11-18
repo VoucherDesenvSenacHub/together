@@ -6,7 +6,7 @@ require_once __DIR__ . '/../model/OngModel.php';
 
 
 
-// Verifica se o usuário está logado
+
 if (!isset($_SESSION['id']) || !isset($_SESSION['perfil'])) {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = 'Você precisa estar logado para se voluntariar.';
@@ -14,7 +14,6 @@ if (!isset($_SESSION['id']) || !isset($_SESSION['perfil'])) {
     exit;
 }
 
-// Verifica se é um usuário ou ong 
 if ($_SESSION['perfil'] === 'Administrador') {
     $_SESSION['type'] = 'erro';
     $_SESSION['message'] = 'Administradores não podem se voluntariar.';
@@ -22,13 +21,13 @@ if ($_SESSION['perfil'] === 'Administrador') {
     exit;
 }
 
-// Verifica se foi enviado via POST
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'voluntariar') {
     
     $id_usuario = $_SESSION['id'];
     $id_ong = isset($_POST['id_ong']) ? intval($_POST['id_ong']) : null;
     
-    // Validação 
+
     if (!$id_ong || $id_ong <= 0) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'ONG inválida.';
@@ -37,10 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         exit;
     }
     
-    // Impede que a ONG se voluntarie para si mesma
     if ($_SESSION['perfil'] === 'Ong') {
         $ongModelTmp = new OngModel();
-        // método verificarUsuarioTemOng está no OngModel
         $dadosOngDoUsuario = $ongModelTmp->verificarUsuarioTemOng($id_usuario);
         $idOngDoUsuario = isset($dadosOngDoUsuario['id_ong']) ? intval($dadosOngDoUsuario['id_ong']) : null;
 
@@ -57,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     
     $resultado = $usuarioModel->registrarVoluntario($id_usuario, $id_ong);
     
-    // Trata o resultado
     if ($resultado === true) {
         $_SESSION['type'] = 'sucesso';
         $_SESSION['message'] = 'Solicitação de voluntariado enviada com sucesso! Aguarde a aprovação da ONG.';
@@ -72,12 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         $_SESSION['message'] = 'Erro ao enviar solicitação. Tente novamente mais tarde.';
     }
     
-    // Redireciona de volta para a página da ONG
     header('Location: /together/view/pages/visaoSobreaOng.php?id=' . $id_ong);
     exit;
     
 } else {
-    // Se não for POST, redireciona para home
     header('Location: /together/index.php');
     exit;
 }

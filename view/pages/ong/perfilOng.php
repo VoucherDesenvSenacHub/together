@@ -19,7 +19,7 @@ $preview = new ImagemPreview($idImagem);
 if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
   header("location: ./../login.php");
 }
-// mostra popup de erro se existir
+
 $tipos = ['erro', 'sucesso'];
 
 foreach ($tipos as $tipo) {

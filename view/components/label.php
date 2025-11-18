@@ -1,12 +1,11 @@
 <?php    
 
     /**
-     * Renderiza um componente de label
      * 
-     * @param string $for -  é usado para associar a label a um input **ADICIONE O ID DO INPUT, TEXTAREA AQUI!**;
-     * @param string $content - é o conteúdo que será exibido pelo label (nome, idade, telefone, etc);
+     * @param string $for 
+     * @param string $content 
      * 
-     * @return string - HTML para renderizar o label;
+     * @return string
      */
 
     function label($for, $content) {
