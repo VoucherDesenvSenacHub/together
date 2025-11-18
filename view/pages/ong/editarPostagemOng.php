@@ -65,7 +65,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("descricao", "Descrição") ?>
-                                <?= inputRequiredMaxLength("text", "descricao", "descricao", "", 255) ?>
+                                <?= inputRequiredMaxLength("text", "descricao", "descricao", $pagina['descricao'] , 255) ?>
                             </div>
                         </div>
                     </div>
