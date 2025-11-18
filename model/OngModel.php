@@ -138,16 +138,16 @@ class OngModel
     public function registrarDadosOng($id_usuario, $razao_social, $cnpj, $telefone, $id_categoria)
     {
         try {
-           
+
             $this->conn->beginTransaction();
 
-            
+
             $queryEndereco = "INSERT INTO enderecos (logradouro, numero, cep, complemento, bairro, cidade, estado) VALUES ('', 0, '', '', '', '', '')";
             $stmt = $this->conn->prepare($queryEndereco);
             $stmt->execute();
             $id_endereco = $this->conn->lastInsertId();
 
-            
+
             $queryOng = "INSERT INTO ongs (id_usuario, razao_social, cnpj, telefone, id_endereco, id_categoria) VALUES (:id_usuario, :razao_social, :cnpj, :telefone, :id_endereco, :id_categoria)";
             $stmt = $this->conn->prepare($queryOng);
             $stmt->bindParam(':id_usuario', $id_usuario);
@@ -158,14 +158,14 @@ class OngModel
             $stmt->bindParam(':id_categoria', $id_categoria);
             $stmt->execute();
 
-          
+
             $this->conn->commit();
             return [
                 'response' => true,
                 'id_endereco' => $id_endereco
             ];
         } catch (Exception $e) {
-           
+
             $this->conn->rollBack();
             return [
                 'response' => false,
@@ -257,7 +257,7 @@ class OngModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC); 
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function buscarOngPorId($id)
@@ -403,7 +403,7 @@ class OngModel
         $params = [];
 
         if (!empty($idCategorias)) {
-            
+
             $placeholders = [];
             foreach ($idCategorias as $key => $id) {
                 $ph = ":id$key";
@@ -547,7 +547,7 @@ class OngModel
         $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($pagina) {
-           
+
             $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
             $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
             $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
@@ -556,7 +556,7 @@ class OngModel
         return $pagina;
     }
 
-    
+
     private function extrairNomePerfil($url)
     {
         if (!$url)
@@ -567,23 +567,33 @@ class OngModel
         if (!isset($parsed['path']))
             return null;
 
-        
+
         $path = rtrim($parsed['path'], '/');
         $path = explode('?', $path)[0];
 
-       
+
         $parts = explode('/', $path);
         $ultimo = end($parts);
 
         return $ultimo ?: null;
     }
 
-    public function editarPaginaOng($id, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
+    public function editarPaginaOng($id_usuario, $subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem)
     {
         try {
-            $query = "UPDATE paginas p SET p.subtitulo=:subtitulo, p.descricao=:descricao, p.facebook=:facebook, p.instagram=:instagram, p.twitter=:twitter, p.id_imagem=:id_imagem WHERE id=:id";
+            $query = "UPDATE paginas p
+                INNER JOIN ongs o ON o.id = p.id_ong
+                SET p.subtitulo = :subtitulo,
+                p.descricao = :descricao,
+                p.facebook = :facebook,
+                p.instagram = :instagram,
+                p.twitter = :twitter,
+                p.id_imagem = :id_imagem,
+                o.id_imagem_de_perfil = :id_imagem
+                WHERE o.id_usuario  = :id_usuario
+            ";
             $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':id_usuario', $id_usuario);
             $stmt->bindParam(':subtitulo', $subtitulo);
             $stmt->bindParam(':descricao', $descricao);
             $stmt->bindParam(':facebook', $facebook);
@@ -625,7 +635,7 @@ class OngModel
 
             $ongs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            
+
             foreach ($ongs as &$ong) {
                 if (empty($ong['foto_ong'])) {
                     $ong['foto_ong'] = "/together/view/assests/images/adm/adm-vision-ong.png";
@@ -724,7 +734,7 @@ class OngModel
     public function verificarSeExistePaginaPorIdUsuario($id_usuario)
     {
         $query = "SELECT 
-            COUNT(*) AS existe
+            COUNT(*) AS total
             FROM paginas p
             JOIN ongs o ON o.id = p.id_ong
             WHERE o.id_usuario = :id_usuario
@@ -732,7 +742,8 @@ class OngModel
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $resultado['total'] > 0;
     }
 
     public function criarPaginaOng($subtitulo, $descricao, $facebook, $instagram, $twitter, $id_imagem, $id_usuario)

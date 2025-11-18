@@ -9,10 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $erros = validarUrls();
     if (!validarExistenciaPaginaOng()) {
         criarPaginaOng();
-        exit;
     } elseif (empty($erros)) {
         validarEdicaoOng();
-        exit;
+        echo 'editar';
     } else {
         foreach ($erros as $erro) {
             $_SESSION['type'] = 'erro';
@@ -27,7 +26,7 @@ function validarExistenciaPaginaOng()
 {
     $ongModel = new OngModel();
     $validarExiste = $ongModel->verificarSeExistePaginaPorIdUsuario($_SESSION['id']);
-    return $validarExiste > 0 ? true : false;
+    return $validarExiste;
 }
 
 function criarPaginaOng()
@@ -84,7 +83,6 @@ function validarEdicaoOng()
     } else {
         $ongModel = new OngModel();
         $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
-
 
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
