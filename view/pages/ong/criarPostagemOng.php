@@ -45,7 +45,7 @@ $preview = new ImagemPreview(null)
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("descricao", "Descrição") ?>
-                                <?= textareaRequired("descricao", "descricao") ?>
+                                <?= inputRequiredMaxLength("text", "descricao", "descricao", "", 255) ?>
                             </div>
                         </div>
                     </div>
