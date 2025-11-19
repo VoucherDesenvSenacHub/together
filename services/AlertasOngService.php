@@ -14,7 +14,7 @@ class AlertasOngService
         $ongModel = new OngModel();
         $ong = $ongModel->buscarOngPorIdUsuario($_SESSION['id']);
 
-        $imagemPerfil = $ong['id_imagem_de_perfil'] ?? null;
+        $imagemPerfil = $ong['id_imagem'] ?? null;
         $endereco = $ong['id_endereco'] ?? null;
 
         if (empty($imagemPerfil) && empty($endereco)) {

@@ -15,11 +15,8 @@ require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
 $imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
 
-
 require_once "./../../components/upload.php";
 $preview = new ImagemPreview($imagem['id'] ?? null);
-
-
 
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -45,7 +42,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="formulario-campos">
                             <div>
                                 <?= label("titulo", "Razão Social") ?>
-                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
+                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '') ?>
                             </div>
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>
