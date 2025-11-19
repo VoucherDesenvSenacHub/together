@@ -766,6 +766,32 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function buscarOngId($id_ong){
+        $query = "SELECT 
+        O.razao_social,
+        O.cnpj,
+        O.telefone,
+        DATE_FORMAT(O.dt_criacao, '%d/%m/%Y') as dt_criacao,
+        U.email,
+        E.cep,
+        E.logradouro,
+        E.numero,
+        E.complemento,
+        E.bairro,
+        E.cidade,
+        E.estado,
+        O.id_imagem_de_perfil as id_imagem
+        FROM ongs O
+        JOIN usuarios U
+        ON U.id = O.id_usuario
+        JOIN enderecos E
+        ON E.id = O.id_endereco
+        WHERE O.id = :id_ong";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public function verificarSeExistePaginaPorIdUsuario($id_usuario)
     {
         $query = "SELECT 
@@ -814,5 +840,14 @@ class OngModel
         } catch (Exception $e) {
             return false;
         }
+    }
+
+    public function buscarIdOngPorIdUsuario($id_usuario)
+    {
+        $query = "SELECT id FROM ongs WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->execute();
+        return $stmt->fetch();
     }
 }
