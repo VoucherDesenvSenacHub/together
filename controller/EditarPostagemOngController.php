@@ -42,7 +42,7 @@ function validarEdicaoPostagemOng()
         $ongModel = new OngModel();
         $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
 
-        // Se veio imagem no POST, processa o upload
+        
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
@@ -53,7 +53,7 @@ function validarEdicaoPostagemOng()
         }
 
         $resultado = $ongModel->editarPostagemDaOng(
-            $_SESSION['id'],
+            $_POST['id'],
             $_POST['titulo'],
             $_POST['descricao'],
             $_POST['link'],

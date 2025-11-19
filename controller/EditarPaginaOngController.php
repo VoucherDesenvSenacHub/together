@@ -1,15 +1,17 @@
 <?php
 require_once __DIR__ . "/../model/OngModel.php";
-
-var_dump($_POST);
+require_once __DIR__ . "/../model/ImagemModel.php";
+require_once __DIR__ . "/../controller/UploadController.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     session_start();
 
     $erros = validarUrls();
-    if (empty($erros)) {
+    if (!validarExistenciaPaginaOng()) {
+        criarPaginaOng();
+    } elseif (empty($erros)) {
         validarEdicaoOng();
-        exit;
+        echo 'editar';
     } else {
         foreach ($erros as $erro) {
             $_SESSION['type'] = 'erro';
@@ -20,32 +22,68 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-function validarEdicaoOng()
+function validarExistenciaPaginaOng()
 {
-    if (empty($_POST['titulo'])) {
+    $ongModel = new OngModel();
+    $validarExiste = $ongModel->verificarSeExistePaginaPorIdUsuario($_SESSION['id']);
+    return $validarExiste;
+}
+
+function criarPaginaOng()
+{
+    $ongModel = new OngModel();
+
+    $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
+    if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
+        $upload = new UploadController();
+        $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
+        if ($idImagem === false) {
+            header('Location: /together/view/pages/ong/editarPaginaOng.php');
+            exit;
+        }
+    }
+
+    $resultado = $ongModel->criarPaginaOng(
+        $_POST['subtitulo'],
+        $_POST['descricao'],
+        $_POST['Facebook'],
+        $_POST['Instagram'],
+        $_POST['X'],
+        $idImagem,
+        $_SESSION['id']
+    );
+
+    if (!$resultado) {
         $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'O título é obrigatório!';
-        header('Location: /together/view/pages/ong/editarPaginaOng.php');
-        exit;
-    } elseif (empty($_POST['subtitulo'])) {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'O subtítulo é obrigatório!';
-        header('Location: /together/view/pages/ong/editarPaginaOng.php');
-        exit;
-    } elseif (empty($_POST['descricao'])) {
-        $_SESSION['type'] = 'erro';
-        $_SESSION['message'] = 'A descrição é obrigatória!';
+        $_SESSION['message'] = 'Erro ao editar informações da página!';
         header('Location: /together/view/pages/ong/editarPaginaOng.php');
         exit;
     } else {
-        require_once __DIR__ . "/../model/OngModel.php";
-        require_once __DIR__ . "/../model/ImagemModel.php";
-        require_once __DIR__ . "/../controller/UploadController.php";
+        $_SESSION['type'] = 'sucesso';
+        $_SESSION['message'] = 'Dados da ONG atualizados com sucesso!';
+        header('Location: /together/view/pages/visaoSobreaOng.php');
+        exit;
+    }
+}
 
+function validarEdicaoOng()
+{
+    $erros = [];
+    $campos = ['subtitulo', 'descricao'];
+    foreach ($campos as $campo) {
+        if (empty($_POST[$campo])) {
+            $erros[] = "O campo {$campo} é obrigatório!";
+        }
+    }
+    if (!empty($erros)) {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = implode("<br>", $erros);
+        header('Location: /together/view/pages/Ong/editarPaginaOng.php');
+        exit;
+    } else {
         $ongModel = new OngModel();
         $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
 
-        // Se veio imagem no POST, processa o upload
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'paginasOng');
@@ -57,7 +95,6 @@ function validarEdicaoOng()
 
         $resultado = $ongModel->editarPaginaOng(
             $_SESSION['id'],
-            $_POST['titulo'],
             $_POST['subtitulo'],
             $_POST['descricao'],
             $_POST['Facebook'],
@@ -79,7 +116,6 @@ function validarEdicaoOng()
         }
     }
 }
-
 
 function validarUrls()
 {

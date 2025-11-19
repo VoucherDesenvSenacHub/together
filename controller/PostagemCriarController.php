@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $descricao = $_POST['descricao'] ;
     $link      = $_POST['link']      ;
     $idImagem  = $_POST['id_imagem'] ;
-    $idOng     = $_SESSION['id']; 
+    $idUsuario     = $_SESSION['id']; 
 
     if (!empty($link) && !filter_var($link, FILTER_VALIDATE_URL)) {
         $_SESSION['type'] = 'erro';
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $postagemModel = new PostagemModel();
 
     try {
-        // Se veio imagem no POST, processa o upload
+        
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'postagensOng');
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
         
-        $ok = $postagemModel->criar($titulo, $descricao, $link, $idImagem, $idOng);
+        $ok = $postagemModel->criar($titulo, $descricao, $link, $idImagem, $idUsuario);
 
         if ($ok) {
             $_SESSION['type'] = 'sucesso';

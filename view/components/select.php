@@ -1,13 +1,12 @@
 <?php
 
 /**
- * Renderiza um componente de select
  * 
- * @param string $name - é através do name que pegamos o value desse select com o PHP;
- * @param string $id - é utilizado para atribuir uma identificação única **ADICIONAR ESSE ID NO FOR DO LABEL**;
- * @param array $listaOptions - é utilizado para criar options;
+ * @param string $name 
+ * @param string $id 
+ * @param array $listaOptions 
  * 
- * @return string - HTML para renderizar o select;
+ * @return string
  */
 
 
@@ -45,22 +44,6 @@ function selectRequired($name, $id, $listaOptions = [])
     return $select;
 }
 
-// function selectDefault($name, $id, $listaOptions = [])
-// {
-//     $select = "
-//             <select name='$name' id='$id' class='formulario-select'>
-//             ";
-
-//     foreach ($listaOptions as $option) {
-//         $select .= "<option value='$option'>$option</option>";
-//     }
-
-//     $select .= "
-//             </select>
-//             ";
-
-//     return $select;
-// }
 
 function selectDefault($name, $id, $listaOptions = [], $valorSelecionado = '')
 {

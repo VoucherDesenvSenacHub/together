@@ -16,7 +16,6 @@ $categorias = $categoriaModel->getAll();
 <body class="body-login">
 
     <?php
-    // Popup do session
     if (isset($_SESSION['type'], $_SESSION['message'])) {
         showPopup($_SESSION['type'], $_SESSION['message']);
         unset($_SESSION['type'], $_SESSION['message']);
@@ -117,7 +116,6 @@ $categorias = $categoriaModel->getAll();
             </div>
         </div>
     </div>
-    <!-- Não Apagar -->
     <script src="/together/view/assets/js/pages/mascara.js"></script>
     <script src="/together/view/assets/js/components/selectEndereco.js"></script>
 </body>

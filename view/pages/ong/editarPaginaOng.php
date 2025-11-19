@@ -1,14 +1,13 @@
 <?php require_once './../../../services/AutenticacaoService.php';
-AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
-<?php
+AutenticacaoService::validarAcessoLogado(['Ong']);
 require_once "../../components/head.php";
 require_once "../../components/button.php";
 require_once "../../components/label.php";
 require_once "../../components/input.php";
 require_once "../../components/textarea.php";
 require_once "../../components/alert.php";
-
 require_once "../../../model/OngModel.php";
+
 $ongModel = new OngModel();
 $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
 
@@ -16,25 +15,20 @@ require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
 $imagem = $imagemModel->buscarImagemPorIdPagina($_SESSION['id']);
 
-// --------------------------------------------
-// USADO PARA O PREVIEW DA IMAGEM
 require_once "./../../components/upload.php";
 $preview = new ImagemPreview($imagem['id'] ?? null);
-// --------------------------------------------
 
-// Popup do session
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
-
 ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Página</h1>
@@ -48,7 +42,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="formulario-campos">
                             <div>
                                 <?= label("titulo", "Razão Social") ?>
-                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '', 100) ?>
+                                <?= inputReadonly("text", "titulo", "titulo", $pagina['titulo'] ?? '') ?>
                             </div>
                             <div>
                                 <?= label("subtitulo", "Subtítulo") ?>
@@ -61,12 +55,14 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                     <div class="formulario-redes-buttons">
                         <div class="formulario-redes-sociais">
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assets/images/adm/facebook.png" alt="Facebook">
-                                <input type="text" placeholder="@" name="Facebook" value="<?= $pagina['facebook'] ?? '' ?>" />
+                                <img src="/together/view/assets/images/Adm/facebook.png" alt="Facebook">
+                                <input type="text" placeholder="@" name="Facebook"
+                                    value="<?= $pagina['facebook'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
-                                <img src="/together/view/assets/images/adm/instagram.png" alt="Instagram">
-                                <input type="text" placeholder="@" name="Instagram" value="<?= $pagina['instagram'] ?? '' ?>" />
+                                <img src="/together/view/assets/images/Adm/instagram.png" alt="Instagram">
+                                <input type="text" placeholder="@" name="Instagram"
+                                    value="<?= $pagina['instagram'] ?? '' ?>" />
                             </div>
                             <div class="formulario-rede-social">
                                 <img src="/together/view/assets/images/adm/X.png" alt="X">
@@ -74,8 +70,12 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                             </div>
                         </div>
                         <div class="formulario-buttons">
-                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPaginaOngController.php') ?></div>
-                            <div class="postagem-geral-btn "><?= botao('cancelar', 'Cancelar', formaction: '') ?></div>
+                            <div class="postagem-geral-btn ">
+                                <?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPaginaOngController.php') ?>
+                            </div>
+                            <div class="postagem-geral-btn ">
+                                <?= botao('cancelar', 'Cancelar', formaction: '/together/view/pages/visaoSobreaOng.php') ?>
+                            </div>
                         </div>
                     </div>
                 </form>

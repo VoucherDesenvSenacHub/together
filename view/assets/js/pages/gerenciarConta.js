@@ -17,4 +17,4 @@ document.addEventListener("DOMContentLoaded", function () {
     formatarCPF(campoCPF);
     campoCPF.addEventListener("input", () => formatarCPF(campoCPF));
   })();
-}); // <- esse ponto e vírgula é importante aqui
+});
