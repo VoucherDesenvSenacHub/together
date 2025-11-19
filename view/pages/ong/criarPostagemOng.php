@@ -1,5 +1,5 @@
 <?php require_once './../../../services/AutenticacaoService.php';
-AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
+AutenticacaoService::validarAcessoLogado(['Ong']); ?>
 <?php require_once "../../components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
 <?php require_once "../../components/label.php" ?>
@@ -7,6 +7,7 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/alert.php" ?>
 <?php require_once "./../../components/upload.php" ?>
+<?php require_once "./../../components/aside.php" ?>
 <?php
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -14,13 +15,13 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 }
 
 $preview = new ImagemPreview(null)
-?>
+    ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
 
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Criar Postagem</h1>
