@@ -26,12 +26,12 @@ try {
         $erros[] = "Informe um email válido!";
     }
 
-    // verifica se é uma data valida e se não é maior que o ano atual
-    $verificarData = explode('/', $_POST['data']);
-    if (count($verificarData) === 3) {
-        $dia = (int) $verificarData[0];
-        $mes = (int) $verificarData[1];
-        $ano = (int) $verificarData[2];
+    
+    $VerificarData = explode('/', $_POST['data']);
+    if (count($VerificarData) === 3) {
+        $dia = (int) $VerificarData[0];
+        $mes = (int) $VerificarData[1];
+        $ano = (int) $VerificarData[2];
         if (!checkdate($mes, $dia, $ano)) {
             $erros[] = "Insira uma data válida!";
         } elseif ($ano > date("Y")) {
@@ -43,7 +43,7 @@ try {
 
     function VerificarNumerosRepetidos($numeroVerificado, $quantidadeDeDigitos, $quantidadeDeDigitos2 = null)
     {
-        // monta o intervalo do quantificador do regex
+        
         if ($quantidadeDeDigitos2 !== null) {
             $range = "{" . $quantidadeDeDigitos . "," . $quantidadeDeDigitos2 . "}";
         } else {
@@ -53,7 +53,7 @@ try {
         
         $pattern = '/^(\d)\1' . $range . '$/';
 
-        // verifica
+      
         return preg_match($pattern, $numeroVerificado) === 1;
     }
 
@@ -66,9 +66,10 @@ try {
         $erros[] = "CEP informado é invalido: sequência repetida.";
     }
 
-    // retira tudo que não for número do cnpj
-    $verificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
-    if (strlen($verificarCnpj) != 14) { // verifica se tem 14 números 
+
+    
+    $VerificarCnpj = preg_replace('/\D/', '', $_POST['cnpj']);
+    if (strlen($VerificarCnpj) != 14) {  
         $erros[] = 'CNPJ informado é  invalido!';
     }
 
@@ -76,11 +77,11 @@ try {
         $erros[] = 'CNPJ informado não é valido: sequência repetida.';
     }
 
-    // verficar se o cnpj é valido
-    $pesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    $pesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
-    intval($verificarCnpj);
-    $base = substr($verificarCnpj, 0, 12);
+    
+    $PesoVerificadorCnpj1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    $PesoVerificadorCnpj2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+    intval($VerificarCnpj);
+    $base = substr($VerificarCnpj, 0, 12);
     $soma = 0;
     for ($i = 0; $i < 12; $i++) {
         $soma += (int) $base[$i] * $pesoVerificadorCnpj1[$i];
@@ -103,14 +104,14 @@ try {
         $erros[] = "CNPJ informado é invalido!";
     }
 
-    // pega o telefone informado e remove tudo que não for número
-    $verificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
-    if (strlen($verificarTelefone) < 10 || strlen($verificarTelefone) > 11) {
+   
+    $VerificarTelefone = preg_replace("/\D/", "", $_POST["telefone"]);
+    if (strlen($VerificarTelefone) < 10 || strlen($VerificarTelefone) > 11) {
         $erros[] = 'Número de telefone inválido: quantidade de dígitos insuficiente ';
     }
 
-    // se for celular (11 dígitos), verificar se começa com 9
-    if (strlen($verificarTelefone) == 11 && substr($verificarTelefone, 2, 1) != '9') {
+    
+    if (strlen($VerificarTelefone) == 11 && substr($VerificarTelefone, 2, 1) != '9') {
         $erros[] = 'Número de celular inválido: deve começar com 9.';
     }
 

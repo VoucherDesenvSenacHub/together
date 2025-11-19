@@ -40,7 +40,6 @@ try {
         $usuario['telefone'] = preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '${1}9$2$3', $usuario['telefone']);
     }
 
-    // Montar dados para a API
     $data = [
         "titular" => [
             "nome" => $usuario['nome'],

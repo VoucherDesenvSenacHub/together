@@ -231,15 +231,12 @@ if ($popupType && $popupMessage) {
 
                                     <?php else: ?>
                                         <?php if ($btnVoluntarioDisabled): ?>
-                                            <!-- se já solicitou ou é voluntário, mostra desabilitado -->
-                                            <button type="button" class="botao botao-secondary" disabled
-                                                style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
+                                            
+                                            <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                         <?php else: ?>
-                                            <!-- Form pra ONG voluntariar em outra ONG: desativa no submit via JS -->
-                                            <form id="formVoluntariarVisaoOngOng" method="POST"
-                                                action="/together/controller/voluntarioController.php"
-                                                style="display: inline; margin: 0;"
-                                                onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
+                                            
+                                            <form id="formVoluntariarVisaoOngOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
+                                                  onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
                                                 <input type="hidden" name="action" value="voluntariar">
                                                 <input type="hidden" name="id_ong"
                                                     value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
