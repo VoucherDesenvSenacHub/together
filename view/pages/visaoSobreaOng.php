@@ -41,7 +41,7 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
-$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
+$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id'] ?? null);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
@@ -186,7 +186,7 @@ if ($popupType && $popupMessage) {
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">
-                                <?= $pagina['titulo']  ?>
+                                <?= $pagina['titulo'] ?? '' ?>
                             </strong>
                             <div class="adm-ong-vision-subtitle">
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">
