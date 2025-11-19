@@ -162,6 +162,7 @@ if ($popupType && $popupMessage) {
     <main class="main-container">
 
 
+
         <div class="adm-ong-vision-container">
 
             <div class="adm-ong-vision-form-box">
@@ -299,21 +300,21 @@ if ($popupType && $popupMessage) {
                                             </div>
                                             <div class="adm-ong-vision-post-text-div">
                                                 <h1><?= $post['titulo'] ?></h1>
-                                                <p><?= $post['descricao'] ?></p>
+                                                <p class="adm-ong-vision-post-text-descricao"><?= $post['descricao'] ?></p>
                                                 <?php if ($post['link']): ?>
                                                     <h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
                                                 <?php endif; ?>
                                                 <div class="icon-visao-sobre-ong">
                                                     <?php if ($mostrarEdicao): ?>
                                                         <a
-                                                            href="/together/view/pages/ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                            href="/together/view/pages/ong/editarPostagemOng.php?id=<?= $post['id'] ?>"><?= renderAcao('editar') ?></a>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
                                         </li>
                                         <hr>
                                     <?php endforeach; ?>
-                                <?php else: ?>
+                                <?php else: ?>  
                                     <p>Nenhuma postagem disponível.</p>
                                 <?php endif; ?>
                             </div>

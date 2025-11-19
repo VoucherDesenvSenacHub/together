@@ -96,10 +96,10 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
 
             
             <div class="ong-search-screen-content">
-
-              
-                        <?= botao("primary", "Adicionar Filtros", "filter-mobile-button-id") ?>
-                    </div>
+                <div class="ong-search-screen-mobile-filter-container">
+                        <div class="ong-search-screen-mobile-filter">
+                            <?= botao("primary", "Adicionar Filtros", "filter-mobile-button-id") ?>
+                        </div>
                 </div> 
 
                 <div class="ong-search-screen-content-align-itens">
