@@ -41,7 +41,22 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
+<<<<<<< Updated upstream
 $pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
+=======
+
+if (!empty($_GET['id'])) {
+    $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
+    $categoria = $ongModel->buscarCategoriaOng($_GET['id']);
+    $enderecos = $ongModel->buscarEnderecoOng($_GET['id']);
+} else {
+    $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
+    $pagina = $ongModel->mostrarPaginaOng($IdOng);
+    $categoria = $ongModel->buscarCategoriaOng($IdOng);
+    $enderecos = $ongModel->buscarEnderecoOng($IdOng);
+}
+
+>>>>>>> Stashed changes
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
@@ -171,7 +186,7 @@ if ($popupType && $popupMessage) {
                         <div class="adm-ong-group-filter-tag">
                             <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
                             <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">
-                                <?= $pagina['nome_categoria'] ?? 'Categoria não definida' ?>
+                                <?= $categoria['nome'] ?? 'Categoria não definida' ?>
                             </h3>
                         </div>
                         <?php if ($mostrarEdicao): ?>
@@ -273,9 +288,11 @@ if ($popupType && $popupMessage) {
                     <div class="adm-ong-vision-about-location-div">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-location-dot"></i>
                         <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">
-                            <?= $pagina['cidade'] ?? 'Cidade' ?> - <?= $pagina['estado'] ?? 'Estado' ?>
-                            <?= $pagina['logradouro'] ?? '' ?>
-                            <?= $pagina['numero'] ?? '' ?>
+                            <?= $enderecos['logradouro'] ?? '' ?>,
+                            <?= $enderecos['numero'] ?? '' ?>,
+                            <?= $enderecos['bairro'] ?? '' ?>
+                            <br>
+                            <?= $enderecos['cidade'] ?? 'Cidade' ?> - <?= $enderecos['estado'] ?? 'Estado' ?>
                         </h3>
                     </div>
 
