@@ -133,7 +133,7 @@ try {
 
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
-    $_SESSION['message'] = $e->getMessage();
+    $_SESSION['message'] = 'Falha ao realizar doação';
     $_SESSION['erro'] = $e->getMessage();
 
     if ($logadont) {
