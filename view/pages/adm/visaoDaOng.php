@@ -99,11 +99,11 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="container-readonly-footer">
+                    <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarong.php') ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/index.php') ?> </div>
                         </div>
-                    </div> -->
+                    </div>
                 </form>
             </div>
         </div>
