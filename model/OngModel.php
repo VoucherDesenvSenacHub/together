@@ -568,7 +568,7 @@ class OngModel
             FROM ongs o
             LEFT JOIN paginas p 
             ON p.id_ong = o.id
-            WHERE o.id_ong = :id";
+            WHERE o.id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
