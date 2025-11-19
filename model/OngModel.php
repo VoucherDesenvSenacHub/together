@@ -556,6 +556,34 @@ class OngModel
         return $pagina;
     }
 
+    public function mostrarPaginaOng($id)
+    {
+        $query = "SELECT 
+            o.razao_social as titulo,
+            p.subtitulo,
+            p.descricao,
+            p.facebook,
+            p.instagram,
+            p.twitter
+            FROM ongs o
+            LEFT JOIN paginas p 
+            ON p.id_ong = o.id
+            WHERE o.id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($pagina) {
+
+            $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
+            $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
+            $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
+        }
+
+        return $pagina;
+    }
+
 
     private function extrairNomePerfil($url)
     {
@@ -738,6 +766,32 @@ class OngModel
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function buscarOngId($id_ong){
+        $query = "SELECT 
+        O.razao_social,
+        O.cnpj,
+        O.telefone,
+        DATE_FORMAT(O.dt_criacao, '%d/%m/%Y') as dt_criacao,
+        U.email,
+        E.cep,
+        E.logradouro,
+        E.numero,
+        E.complemento,
+        E.bairro,
+        E.cidade,
+        E.estado,
+        O.id_imagem_de_perfil as id_imagem
+        FROM ongs O
+        JOIN usuarios U
+        ON U.id = O.id_usuario
+        JOIN enderecos E
+        ON E.id = O.id_endereco
+        WHERE O.id = :id_ong";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
     public function verificarSeExistePaginaPorIdUsuario($id_usuario)
     {
         $query = "SELECT 
@@ -787,8 +841,6 @@ class OngModel
             return false;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     public function buscarIdOngPorIdUsuario($id_usuario)
     {
@@ -816,5 +868,4 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch();
     }
->>>>>>> Stashed changes
 }
