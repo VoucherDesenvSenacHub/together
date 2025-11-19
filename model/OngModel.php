@@ -556,6 +556,34 @@ class OngModel
         return $pagina;
     }
 
+    public function mostrarPaginaOng($id)
+    {
+        $query = "SELECT 
+            o.razao_social as titulo,
+            p.subtitulo,
+            p.descricao,
+            p.facebook,
+            p.instagram,
+            p.twitter
+            FROM ongs o
+            LEFT JOIN paginas p 
+            ON p.id_ong = o.id
+            WHERE o.id_ong = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $pagina = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($pagina) {
+
+            $pagina['facebook_nome'] = $this->extrairNomePerfil($pagina['facebook']);
+            $pagina['instagram_nome'] = $this->extrairNomePerfil($pagina['instagram']);
+            $pagina['twitter_nome'] = $this->extrairNomePerfil($pagina['twitter']);
+        }
+
+        return $pagina;
+    }
+
 
     private function extrairNomePerfil($url)
     {

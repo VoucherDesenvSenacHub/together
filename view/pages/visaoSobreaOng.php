@@ -41,7 +41,7 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
-$pagina = $ongModel->mostrarInformacoesPaginaOng($_GET['id'] ?? null);
+$pagina = $ongModel->mostrarPaginaOng($_GET['id'] ?? null);
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
