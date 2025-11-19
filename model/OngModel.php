@@ -815,4 +815,13 @@ class OngModel
             return false;
         }
     }
+
+    public function buscarIdOngPorIdUsuario($id_usuario)
+    {
+        $query = "SELECT id FROM ongs WHERE id_usuario = :id_usuario";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
