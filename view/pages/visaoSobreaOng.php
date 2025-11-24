@@ -41,7 +41,7 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
-$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id']);
+$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id'] ?? '');
 
 
 if (!empty($_GET['id'])) {
