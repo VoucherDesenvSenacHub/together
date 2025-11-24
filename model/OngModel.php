@@ -850,4 +850,22 @@ class OngModel
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public function buscarEnderecoOng($id_ong)
+    {
+        $query = "SELECT e.logradouro, e.numero, e.bairro, e.cidade, e.estado FROM enderecos e LEFT JOIN ongs o ON o.id_endereco = e.id WHERE o.id = :id_ong";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function buscarCategoriaOng($id_ong) 
+    {
+        $query = "SELECT c.nome FROM categorias_ongs c LEFT JOIN ongs o ON o.id_categoria = c.id WHERE o.id = :id_ong";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id_ong', $id_ong);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }

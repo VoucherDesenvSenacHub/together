@@ -41,6 +41,20 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
+$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id'] ?? '');
+
+
+if (!empty($_GET['id'])) {
+    $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
+    $categoria = $ongModel->buscarCategoriaOng($_GET['id']);
+    $enderecos = $ongModel->buscarEnderecoOng($_GET['id']);
+
+} else {
+    $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
+    $pagina = $ongModel->mostrarPaginaOng($IdOng);
+    $categoria = $ongModel->buscarCategoriaOng($IdOng);
+    $enderecos = $ongModel->buscarEnderecoOng($IdOng);
+}
 
 if (!empty($_GET['id'])) {
     $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
@@ -167,8 +181,6 @@ if ($popupType && $popupMessage) {
 
     <main class="main-container">
 
-
-
         <div class="adm-ong-vision-container">
 
             <div class="adm-ong-vision-form-box">
@@ -177,7 +189,7 @@ if ($popupType && $popupMessage) {
                         <div class="adm-ong-group-filter-tag">
                             <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
                             <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">
-                                <?= $pagina['nome_categoria'] ?? 'Categoria não definida' ?>
+                                <?= $categoria['nome'] ?? 'Categoria não definida' ?>
                             </h3>
                         </div>
                         <?php if ($mostrarEdicao): ?>
@@ -207,7 +219,6 @@ if ($popupType && $popupMessage) {
                                     </a>
 
                                     <?php if (!$btnVoluntarioDisabled): ?>
-                                        <!-- botão do usuário: desativa no submit via JS -->
                                         <form id="formVoluntariarVisaoOng" method="POST"
                                             action="/together/controller/voluntarioController.php"
                                             style="display: inline; margin: 0;"
@@ -279,9 +290,11 @@ if ($popupType && $popupMessage) {
                     <div class="adm-ong-vision-about-location-div">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-location-dot"></i>
                         <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">
-                            <?= $pagina['cidade'] ?? 'Cidade' ?> - <?= $pagina['estado'] ?? 'Estado' ?>
-                            <?= $pagina['logradouro'] ?? '' ?>
-                            <?= $pagina['numero'] ?? '' ?>
+                            <?= $enderecos['logradouro'] ?? '' ?>,
+                            <?= $enderecos['numero'] ?? '' ?>,
+                            <?= $enderecos['bairro'] ?? '' ?>
+                            <br>
+                            <?= $enderecos['cidade'] ?? 'Cidade' ?> - <?= $enderecos['estado'] ?? 'Estado' ?>
                         </h3>
                     </div>
 

@@ -100,9 +100,10 @@ $usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
                             </div>
                         </div>
                     </div>
-                 
-                           <?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarUsuario.php') ?> </div>
-                        
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/index.php') ?> </div>
+                        </div>
                     </div>
                 </form>
             </div>

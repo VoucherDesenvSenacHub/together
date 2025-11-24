@@ -54,7 +54,7 @@ try {
 
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
-    $_SESSION['message'] = $e->getMessage();
+    $_SESSION['message'] = 'Erro ao validar senha';
     header('Location: ../view/pages/esqueceuSenha.php');
     exit;
 }
