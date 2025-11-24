@@ -8,9 +8,6 @@ require_once __DIR__ . "/../controller/EnderecoController.php";
 $modelUsuario = new UsuarioModel();
 $modelImagem = new ImagemModel();
 
-var_dump($_POST['cidade']);
-var_dump($_POST['estado']);
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
