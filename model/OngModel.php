@@ -753,6 +753,7 @@ class OngModel
     public function buscarOngPorIdUsuario($id_usuario)
     {
         $query = "SELECT 
+            o.id,
             o.id_endereco,
             p.id_imagem    
             FROM ongs o

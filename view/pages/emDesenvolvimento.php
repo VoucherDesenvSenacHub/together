@@ -4,8 +4,6 @@
     <?php require_once "./../components/navbar.php" ?>
     <?php require_once "./../components/sidebar.php" ?>
     <main class="main-container">
-    <?php require_once './../components/back-button.php'?>
-
         <div class="desenvolvimento">
             <img src="/together/view/assets/images/components/togetherBlack.png" alt="">
             <div>
