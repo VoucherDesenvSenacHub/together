@@ -42,7 +42,7 @@ class ImagemModel
 
     public function buscarImagemPorIdPagina($id)
     {
-        $query = "SELECT i.* FROM $this->tabela i INNER JOIN paginas p ON i.id = p.id_imagem WHERE p.id = :id";
+        $query = "SELECT i.* FROM imagens i INNER JOIN paginas p ON i.id = p.id_imagem WHERE p.id_ong = (SELECT id FROM ongs WHERE id_usuario = :id)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

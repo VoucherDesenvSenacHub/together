@@ -123,6 +123,11 @@
   gap: 30px;
 }
 
+.adm-ong-vision-post-text-descricao{
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
 .adm-ong-vision-default-text {
   color: var(--cor-cinza-escuro);
 }

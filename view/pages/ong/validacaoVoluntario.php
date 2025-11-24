@@ -35,6 +35,7 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
+    <?php require_once "./../../components/sidebar.php"; ?>
     <main class="main-container">
        
         <div class="div-wrap-width">

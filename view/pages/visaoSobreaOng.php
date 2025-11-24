@@ -41,7 +41,28 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
-$pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
+$pagina = $ongModel->mostrarInformacoesPaginaOng($_SESSION['id'] ?? '');
+
+
+if (!empty($_GET['id'])) {
+    $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
+    $categoria = $ongModel->buscarCategoriaOng($_GET['id']);
+    $enderecos = $ongModel->buscarEnderecoOng($_GET['id']);
+
+} else {
+    $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
+    $pagina = $ongModel->mostrarPaginaOng($IdOng);
+    $categoria = $ongModel->buscarCategoriaOng($IdOng);
+    $enderecos = $ongModel->buscarEnderecoOng($IdOng);
+}
+
+if (!empty($_GET['id'])) {
+    $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
+} else {
+    $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
+    $pagina = $ongModel->mostrarPaginaOng($IdOng);
+}
+
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
@@ -50,7 +71,6 @@ $statusVoluntario = null;
 if (($perfilLogado === 'Usuario' || $perfilLogado === 'Ong') && $idUsuarioLogado) {
     $statusVoluntario = $usuarioModel->verificarStatusVoluntario($idUsuarioLogado, $idOngUrl);
 }
-
 
 $perfil = $_SESSION['perfil'] ?? null;
 $usuario = $perfil ?? 'Visitante';
@@ -152,6 +172,7 @@ if ($popupType && $popupMessage) {
 
 <body>
     <?php require_once './../components/navbar.php' ?>
+    <?php require_once './../components/sidebar.php' ?>
 
     <?php
     if ($popupType && $popupMessage) {
@@ -161,7 +182,6 @@ if ($popupType && $popupMessage) {
 
     <main class="main-container">
 
-
         <div class="adm-ong-vision-container">
 
             <div class="adm-ong-vision-form-box">
@@ -170,7 +190,7 @@ if ($popupType && $popupMessage) {
                         <div class="adm-ong-group-filter-tag">
                             <i id="adm-ong-vision-icon-default" class="fa-solid fa-tag fa-rotate-90"></i>
                             <h3 id="adm-ong-vision-filter-tag-title" class="adm-ong-vision-default-text">
-                                <?= $pagina['nome_categoria'] ?? 'Categoria não definida' ?>
+                                <?= $categoria['nome'] ?? 'Categoria não definida' ?>
                             </h3>
                         </div>
                         <?php if ($mostrarEdicao): ?>
@@ -185,7 +205,7 @@ if ($popupType && $popupMessage) {
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">
-                                <?= $pagina['titulo'] ?? 'Página da ONG' ?>
+                                <?= $pagina['titulo'] ?? '' ?>
                             </strong>
                             <div class="adm-ong-vision-subtitle">
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">
@@ -200,7 +220,6 @@ if ($popupType && $popupMessage) {
                                     </a>
 
                                     <?php if (!$btnVoluntarioDisabled): ?>
-                                        <!-- botão do usuário: desativa no submit via JS -->
                                         <form id="formVoluntariarVisaoOng" method="POST"
                                             action="/together/controller/voluntarioController.php"
                                             style="display: inline; margin: 0;"
@@ -223,19 +242,19 @@ if ($popupType && $popupMessage) {
                                     </a>
 
                                     <?php
-                                    
+
                                     if ($btnVoluntarioDisabled && !empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl): ?>
                                         <button type="button" class="botao botao-secondary" disabled
                                             style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
 
                                     <?php else: ?>
                                         <?php if ($btnVoluntarioDisabled): ?>
-                                            
+
                                             <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                         <?php else: ?>
-                                            
+
                                             <form id="formVoluntariarVisaoOngOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                                  onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
+                                                onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
                                                 <input type="hidden" name="action" value="voluntariar">
                                                 <input type="hidden" name="id_ong"
                                                     value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
@@ -272,9 +291,11 @@ if ($popupType && $popupMessage) {
                     <div class="adm-ong-vision-about-location-div">
                         <i id="adm-ong-vision-icon-default" class="fa-solid fa-location-dot"></i>
                         <h3 id="adm-ong-vision-about-location-title" class="adm-ong-vision-default-text">
-                            <?= $pagina['cidade'] ?? 'Cidade' ?> - <?= $pagina['estado'] ?? 'Estado' ?>
-                            <?= $pagina['logradouro'] ?? '' ?>
-                            <?= $pagina['numero'] ?? '' ?>
+                            <?= $enderecos['logradouro'] ?? '' ?>,
+                            <?= $enderecos['numero'] ?? '' ?>,
+                            <?= $enderecos['bairro'] ?? '' ?>
+                            <br>
+                            <?= $enderecos['cidade'] ?? 'Cidade' ?> - <?= $enderecos['estado'] ?? 'Estado' ?>
                         </h3>
                     </div>
 
@@ -299,14 +320,14 @@ if ($popupType && $popupMessage) {
                                             </div>
                                             <div class="adm-ong-vision-post-text-div">
                                                 <h1><?= $post['titulo'] ?></h1>
-                                                <p><?= $post['descricao'] ?></p>
+                                                <p class="adm-ong-vision-post-text-descricao"><?= $post['descricao'] ?></p>
                                                 <?php if ($post['link']): ?>
                                                     <h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
                                                 <?php endif; ?>
                                                 <div class="icon-visao-sobre-ong">
                                                     <?php if ($mostrarEdicao): ?>
                                                         <a
-                                                            href="/together/view/pages/ong/editarPostagemOng.php"><?= renderAcao('editar') ?></a>
+                                                            href="/together/view/pages/ong/editarPostagemOng.php?id=<?= $post['id'] ?>"><?= renderAcao('editar') ?></a>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>

@@ -38,6 +38,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
+    <?php require_once './../../components/sidebar.php' ?>
     <main class="main-container">
        
 
@@ -94,7 +95,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                     <td><?= date("d/m/Y", strtotime($ong['dt_criacao'])) ?></td>
                                     <td><?= htmlspecialchars($ong['razao_social']) ?></td>
                                     <td>
-                                        <a href="visaoDoUsuario.php?id=<?= $ong['id'] ?? '' ?>">
+                                        <a href="visaoDaOng.php?id=<?= $ong['id'] ?? '' ?>">
                                             <?= renderAcao('visualizar') ?>
                                         </a>
                                     </td>

@@ -4,47 +4,61 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
+<?php require_once "../../../model/UsuarioModel.php";
+require_once "../../../model/ImagemModel.php";
+require_once "../../components/upload.php";
+
+$imagemModel = new ImagemModel();
+$imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id']);
+
+$preview = new ImagemPreview($imagem['id'] ?? null);
+
+$usuarioModel = new UsuarioModel();
+$usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
+
+?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
-            <h1 class="titulo-pagina">Dados do Usuário</h1>
+            <h1 class="titulo-pagina">Dados Cadastrais</h1>
             <div class="formulario-perfil">
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
                         <div class="div-logo">
-                            <img src="/together/view/assets/images/ong/perfil-user.png" alt="Foto do usuário" class="logo-user">
+                            <?php $preview->preview(true) ?>
                         </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
                                     <div>
                                         <?= label('nome', 'Nome') ?>
-                                        <?= inputReadonly('text', 'nome', 'nome', 'Jhon F. Kennedy') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputReadonly('text', 'telefone', 'telefone', '+55 (67) 9 9999-9999') ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', $usuario['telefone'] ?? '') ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
                                         <?= label('cpf', 'CPF') ?>
-                                        <?= inputReadonly('text', 'cpf', 'cpf', '000.000.000-00') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('data', 'Data de nascimento') ?>
-                                        <?= inputReadonly('text', 'data', 'data', '19/01/1990') ?>
+                                        <?= inputReadonly('text', 'data', 'data', $usuario['dt_nascimento'] ?? '') ?>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputReadonly('text', 'email', 'email', 'jhon.f.kennedy@email.com') ?>
+                                <?= inputReadonly('text', 'email', 'email', $usuario['email'] ?? '') ?>
                             </div>
                         </div>
                     </div>
@@ -55,41 +69,42 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputReadonly('text', 'cep', 'cep', '123456-7') ?>
+                                <?= inputReadonly('text', 'cep', 'cep', $usuario['cep'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', 'Campo Grande') ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', 'Mato Grosso do Sul') ?>
+                                <?= inputReadonly('text', 'estado', 'estado', $usuario['estado'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputReadonly('text', 'bairro', 'bairro', 'Centro') ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', $usuario['bairro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', 'Rua dos bobos') ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', $usuario['logradouro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', '4444') ?>
+                                <?= inputReadonly('text', 'numero', 'numero', $usuario['numero'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', 'Ao lado do hospital do carinho') ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', $usuario['complemento'] ?? '') ?>
                             </div>
                         </div>
                     </div>
-                 
-                           <?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarUsuario.php') ?> </div>
-                        
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/index.php') ?> </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -98,4 +113,5 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>

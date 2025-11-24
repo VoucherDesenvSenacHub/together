@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $descricao = $_POST['descricao'] ;
     $link      = $_POST['link']      ;
     $idImagem  = $_POST['id_imagem'] ;
-    $idOng     = $_SESSION['id']; 
+    $idUsuario     = $_SESSION['id']; 
 
     if (!empty($link) && !filter_var($link, FILTER_VALIDATE_URL)) {
         $_SESSION['type'] = 'erro';
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
         
-        $ok = $postagemModel->criar($titulo, $descricao, $link, $idImagem, $idOng);
+        $ok = $postagemModel->criar($titulo, $descricao, $link, $idImagem, $idUsuario);
 
         if ($ok) {
             $_SESSION['type'] = 'sucesso';

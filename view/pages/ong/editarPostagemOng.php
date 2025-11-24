@@ -12,11 +12,11 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 require_once "../../../model/OngModel.php";
 $ongModel = new OngModel();
 
-$pagina = $ongModel->mostrarinformacoesPostagemOng($_SESSION['id']);
+$pagina = $ongModel->mostrarinformacoesPostagemOng($_GET['id']);
 
 require_once "../../../model/ImagemModel.php";
 $imagemModel = new ImagemModel();
-$imagem = $imagemModel->buscarImagemPorIdPostagem($_SESSION['id']);
+$imagem = $imagemModel->buscarImagemPorIdPostagem($_GET['id']);
 
 
 
@@ -34,6 +34,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
 
     <main class="main-container">
        
@@ -44,6 +45,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                 <form action="" method="POST" class="postagem-geral-form" enctype="multipart/form-data">
                     <div class="postagem-geral-form-linha-superior">
                         <div class='formulario-imagem-preview'>
+                            <input type="hidden" name="id" value="<?= $_GET['id']?>">
                             <input type="hidden" name="id_imagem" value="<?= $imagem ? $imagem['id'] : null ?>">
                             <?php $preview->preview() ?>
                         </div>
@@ -62,7 +64,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("descricao", "Descrição") ?>
-                                <?= textareaRequired("descricao", "descricao", $pagina['descricao'] ?? '') ?>
+                                <?= inputRequiredMaxLength("text", "descricao", "descricao", $pagina['descricao'] , 255) ?>
                             </div>
                         </div>
                     </div>

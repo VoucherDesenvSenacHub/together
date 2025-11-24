@@ -1,5 +1,5 @@
 <?php require_once './../../../services/AutenticacaoService.php';
-AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
+AutenticacaoService::validarAcessoLogado(['Ong']); ?>
 <?php require_once "../../components/head.php"; ?>
 <?php require_once "../../components/button.php" ?>
 <?php require_once "../../components/label.php" ?>
@@ -14,13 +14,14 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 }
 
 $preview = new ImagemPreview(null)
-?>
+    ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
 
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Criar Postagem</h1>
@@ -45,7 +46,7 @@ $preview = new ImagemPreview(null)
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("descricao", "Descrição") ?>
-                                <?= textareaRequired("descricao", "descricao") ?>
+                                <?= inputRequiredMaxLength("text", "descricao", "descricao", "", 255) ?>
                             </div>
                         </div>
                     </div>

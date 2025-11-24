@@ -37,6 +37,7 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
+    <?php require_once "./../../components/sidebar.php"; ?>
     <main class="main-container">
         <?php 
         if (isset($_SESSION['type'], $_SESSION['message'])) {
