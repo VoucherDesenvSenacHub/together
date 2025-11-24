@@ -21,33 +21,34 @@ if (isset($_SESSION['buscaDeOng'])) {
 $ongModel = new OngModel();
 $pesquisa = '';
 
-if (isset($_SESSION['nome_ong_pesquisa']) ) {
+if (isset($_SESSION['nome_ong_pesquisa'])) {
     $pesquisa = $_SESSION['nome_ong_pesquisa'] ?? '';
-    if(count($categoriasSelecionadas) > 0){
+    if (count($categoriasSelecionadas) > 0) {
         $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
-    }else{
+    } else {
         $ongs = $ongModel->buscarTodasOngs();
     }
-    foreach($ongs as $chave => $ong){
-    if(!str_contains(strtolower($ong['razao_social']),strtolower( $pesquisa))){
-        unset($ongs[$chave]);
+    foreach ($ongs as $chave => $ong) {
+        if (!str_contains(strtolower($ong['razao_social']), strtolower($pesquisa))) {
+            unset($ongs[$chave]);
         }
     }
-}else{
+} else {
     $ongs = $ongModel->buscarTodasOngs($categoriasSelecionadas);
 }
 
 $quantidadeDePaginas = ceil(count($ongs) / 16)
 
-?>
+    ?>
 
 <body>
     <?php require_once "./../../view/components/navbar.php"; ?>
+    <?php require_once "./../../view/components/sidebar.php"; ?>
     <main class="main-container">
-        
+
         <div class="ong-search-screen">
 
-           
+
             <div class="ong-search-screen-filter-container">
                 <div class="ong-search-screen-​​ngo-type">
                     <div class="ong-search-screen-category-title-div">
@@ -57,9 +58,9 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                         <form class="ong-search-screen-options-form" method="POST">
                             <div class="bloco-pesquisa">
                                 <?= label('pesquisar', '&nbsp;') ?>
-                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa ) ?>
+                                <?= inputFilter('text', 'nome_ong', 'nome_ong', 'Pesquisar Razão Social', $pesquisa) ?>
                             </div>
-                            <br>    
+                            <br>
                             <hr class="ong-search-screen-hr-line">
                             <div class="ong-search-screen-options-buttons">
                                 <div class="filter-expandable" id="filters">
@@ -67,7 +68,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                                         <div class="ong-search-screen-filter-area">
                                             <label class="checkbox-label">
                                                 <?php
-                                                $checked='';
+                                                $checked = '';
                                                 if (!empty($categoriasSelecionadas)) {
                                                     if (in_array($categoria["id"], $categoriasSelecionadas)) {
                                                         $checked = 'checked';
@@ -80,7 +81,9 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
-                                <button type="button" class="toggle-btn" onclick="document.getElementById('filters').classList.toggle('expanded'); this.textContent = this.textContent === 'Ver mais ▼' ? 'Ver menos ▲' : 'Ver mais ▼'">Ver mais ▼</button>
+                                <button type="button" class="toggle-btn"
+                                    onclick="document.getElementById('filters').classList.toggle('expanded'); this.textContent = this.textContent === 'Ver mais ▼' ? 'Ver menos ▲' : 'Ver mais ▼'">Ver
+                                    mais ▼</button>
                             </div>
 
                             <div class="filter-hidden-div"></div>
@@ -94,7 +97,7 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
                 </div>
             </div>
 
-            
+
             <div class="ong-search-screen-content">
                 <div class="ong-search-screen-mobile-filter-container">
                         <div class="ong-search-screen-mobile-filter">
@@ -104,26 +107,27 @@ $quantidadeDePaginas = ceil(count($ongs) / 16)
 
                 <div class="ong-search-screen-content-align-itens">
                     <?php foreach ($ongs as $ong): ?>
-                        <?php 
-                            $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['caminho'];
+                        <?php
+                        $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['caminho'];
 
-                            $validarFoto = !empty($ong['caminho'] && file_exists($imagem));
-                            $validarEndereco = !empty($ong['endereco_ong']);
+                        $validarFoto = !empty($ong['caminho'] && file_exists($imagem));
+                        $validarEndereco = !empty($ong['endereco_ong']);
                         ?>
                         <?php if ($validarFoto && $validarEndereco): ?>
                             <?= cardOng(
-                                $ong["caminho"], 
-                                $ong["razao_social"], 
-                                $ong["descricao"], 
-                                $ong['id']) 
-                            ?>
+                                $ong["caminho"],
+                                $ong["razao_social"],
+                                $ong["descricao"],
+                                $ong['id']
+                            )
+                                ?>
                         <?php endif ?>
                     <?php endforeach; ?>
                     <?php require_once './../components/paginacao.php' ?>
                 </div>
                 <div class="ong-search-screen-pagination">
                     <?php criarPaginacao($quantidadeDePaginas); ?>
-            
+
                 </div>
             </div>
         </div>

@@ -36,6 +36,7 @@ if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pes
 
 <body>
     <?php require_once "./../../components/navbar.php"; ?>
+    <?php require_once "./../../components/sidebar.php"; ?>
     <main class="main-container">
        
 

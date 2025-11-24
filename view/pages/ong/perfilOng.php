@@ -33,6 +33,7 @@ foreach ($tipos as $tipo) {
 
 <body>
   <?php require_once "../../../view/components/navbar.php"; ?>
+  <?php require_once "../../../view/components/sidebar.php"; ?>
   <main class="main-container">
    
 

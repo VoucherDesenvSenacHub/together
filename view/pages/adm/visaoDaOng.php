@@ -20,6 +20,7 @@ $preview = new ImagemPreview($imagem['id'] ?? null);
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
 
         <div class="div-wrap-width">
