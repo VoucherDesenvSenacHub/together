@@ -91,6 +91,7 @@ body {
         justify-content: center;
         border-radius: 0 0 35px 35px;
         box-shadow: 7px 10px 5px 0px rgba(0, 0, 0, 0.119);
+        margin: 50px 0 0 0;
     }
 
     .divisor-mobile {
@@ -105,7 +106,7 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        z-index: 10000;
+        z-index: 9;
     }
 
     .aside-button-mobile {

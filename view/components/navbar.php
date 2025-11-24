@@ -40,9 +40,12 @@
         <div class="login-botao-area-navbar">
             <form action="">
                 <?php if (isset($_SESSION['perfil'])) {
-                    echo '<a href="/together/controller/SairController.php">
-                        <i class="fa-solid fa-right-from-bracket icone-sair" title="Sair" id="btn-circular"></i>
-                    </a>';
+                    echo '<div class="button-side-mobile-div">
+                        <button class="button-side-mobile" id="buttonSideMobile">
+                            <i class="fa-solid fa-bars" id="barsIcon"></i>
+                        </button>
+                         </div>
+                        ';
                 } else {
                     echo botao('entrar', 'Entrar', '', '/together/view/pages/login.php');
                 }
@@ -50,10 +53,5 @@
             </form>         
         </div>
         
-        <div class="button-side-mobile-div">
-            <button class="button-side-mobile" id="buttonSideMobile">
-                <i class="fa-solid fa-bars" id="barsIcon"></i>
-            </button>
-        </div>
-
+        
 </header>

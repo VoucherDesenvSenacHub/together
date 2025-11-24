@@ -21,6 +21,10 @@
                 <p class="mobile-side-legenda">Ongs Cadastradas</p>
             </a>
 
+            <a title="Sair" href="/together/controller/SairController.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Sair</p>
+            </a>
+
         </div>
     </aside>
 
@@ -28,15 +32,15 @@
     <aside class="aside-area-mobile">
         <div class="aside-content-mobile" id="sideOng">
 
-            <a title="Editar Perfil" href="/together/view/pages/Usuario/editarInformacoes.php" class="aside-button-mobile">
+            <a title="Editar Perfil" href="/together/view/pages/editarInformacoes.php" class="aside-button-mobile">
                 <p class="mobile-side-legenda">Editar Perfil</p>
             </a>
 
-            <a title="Ongs Voluntariado" href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php" class="aside-button-mobile">
+            <a title="Ongs Voluntariado" href="/together/view/pages/usuario/usuarioOngsVoluntarias.php" class="aside-button-mobile">
                 <p class="mobile-side-legenda">Ongs Voluntariado</p>
             </a>
 
-            <a title="Historico" href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button-mobile">
+            <a title="Historico" href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button-mobile">
                 <p class="mobile-side-legenda">Historico</p>
             </a>
         
@@ -62,10 +66,16 @@
                 <p class="mobile-side-legenda">Voluntarios</p>
             </a>
 
+            <a title="Sair" href="/together/controller/SairController.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Sair</p>
+            </a>
+
         </div>
     </aside>
 
-    <?php } elseif ($_SESSION['perfil'] === 'Usuario') { ?>
+    <a href="/together/controller/SairController.php">
+                <p class="mobile-side-legenda">Sair</p>
+            </a><?php } elseif ($_SESSION['perfil'] === 'Usuario') { ?>
     <aside class="aside-area-mobile">
         <div class="aside-content-mobile" id="sideUsuario">
             <a href="/together/view/pages/Usuario/editarInformacoes.php" class="aside-button-mobile"> 
@@ -76,6 +86,10 @@
             </a>
             <a href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button-mobile"> 
                 <p class="mobile-side-legenda">Historico de Docação</p>
+            </a>
+
+            <a title="Sair" href="/together/controller/SairController.php" class="aside-button-mobile">
+                <p class="mobile-side-legenda">Sair</p>
             </a>
         </div>
     </aside>
@@ -125,12 +139,12 @@
                 <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i>
             </a>
 
-            <a title="Ongs Voluntariado" href="/together/view/pages/Usuario/usuarioOngsVoluntarias.php"
+            <a title="Ongs Voluntariado" href="/together/view/pages/usuario/usuarioOngsVoluntarias.php"
                 class="aside-button">
                 <i id="userVoluntariadoIcon" class="fa-solid fa-handshake-simple"></i>
             </a>
 
-            <a title="Historico" href="/together/view/pages/Usuario/historicoDoacao.php" class="aside-button">
+            <a title="Historico" href="/together/view/pages/usuario/historicoDoacao.php" class="aside-button">
                 <i id="historicoIcon" class="fa-solid fa-clock"></i>
             </a>
         </div>
