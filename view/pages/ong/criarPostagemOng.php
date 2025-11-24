@@ -14,6 +14,8 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
     unset($_SESSION['type'], $_SESSION['message']);
 }
 
+var_dump($_SESSION);
+
 $preview = new ImagemPreview(null)
     ?>
 

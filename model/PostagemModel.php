@@ -11,18 +11,17 @@ class PostagemModel
         $this->conn = $database->conectar();
     }
 
-    public function criar($titulo, $descricao, $link, $idImagem, $idOng)
+    public function criar($titulo, $descricao, $link, $idImagem, $idUsuario)
     {
         $sql = "INSERT INTO postagens (titulo, dt_postagem, descricao, link, id_imagem, id_ong) 
-            VALUES (:titulo, NOW(), :descricao, :link, :id_imagem, :id_ong)
+            VALUES (:titulo, NOW(), :descricao, :link, :id_imagem, (SELECT id FROM ongs WHERE id_usuario = :id_usuario))
         ";
-
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':descricao', $descricao);
         $stmt->bindParam(':link', $link);
         $stmt->bindParam(':id_imagem', $idImagem);
-        $stmt->bindParam(':id_ong', $idOng);
+        $stmt->bindParam(':id_usuario', $idUsuario);
         return $stmt->execute();
     }
 

@@ -41,7 +41,14 @@ if ($perfilLogado === 'Ong') {
 
 
 $postagens = $postagemModel->getByOng($idOngUrl);
-$pagina = $ongModel->mostrarInformacoesPaginaOng($idOngUrl);
+
+if (!empty($_GET['id'])) {
+    $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
+} else {
+    $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
+    $pagina = $ongModel->mostrarPaginaOng($IdOng);
+}
+
 $voluntarios = $ongModel->filtroDataHoraVoluntarios($idOngUrl);
 $imagemPerfil = $ongModel->pegarImagemPerfilPaginaOng($idOngUrl);
 
@@ -50,7 +57,6 @@ $statusVoluntario = null;
 if (($perfilLogado === 'Usuario' || $perfilLogado === 'Ong') && $idUsuarioLogado) {
     $statusVoluntario = $usuarioModel->verificarStatusVoluntario($idUsuarioLogado, $idOngUrl);
 }
-
 
 $perfil = $_SESSION['perfil'] ?? null;
 $usuario = $perfil ?? 'Visitante';
@@ -186,7 +192,7 @@ if ($popupType && $popupMessage) {
                         </div>
                         <div class="adm-ong-vision-title-div">
                             <strong class="adm-ong-vision-title">
-                                <?= $pagina['titulo'] ?? 'Página da ONG' ?>
+                                <?= $pagina['titulo'] ?? '' ?>
                             </strong>
                             <div class="adm-ong-vision-subtitle">
                                 <p id="adm-ong-vision-title-description" class="adm-ong-vision-default-text">
@@ -224,19 +230,19 @@ if ($popupType && $popupMessage) {
                                     </a>
 
                                     <?php
-                                    
+
                                     if ($btnVoluntarioDisabled && !empty($idOngDoUsuario) && $idOngDoUsuario === $idOngUrl): ?>
                                         <button type="button" class="botao botao-secondary" disabled
                                             style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
 
                                     <?php else: ?>
                                         <?php if ($btnVoluntarioDisabled): ?>
-                                            
+
                                             <button type="button" class="botao botao-secondary" disabled style="opacity: 0.6; cursor: not-allowed;"><?= $btnVoluntarioText ?></button>
                                         <?php else: ?>
-                                            
+
                                             <form id="formVoluntariarVisaoOngOng" method="POST" action="/together/controller/voluntarioController.php" style="display: inline; margin: 0;"
-                                                  onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
+                                                onsubmit="document.getElementById('btnVolOng').setAttribute('disabled','disabled'); document.getElementById('btnVolOng').innerText='Solicitando...';">
                                                 <input type="hidden" name="action" value="voluntariar">
                                                 <input type="hidden" name="id_ong"
                                                     value="<?= htmlspecialchars($idOngUrl, ENT_QUOTES) ?>">
@@ -314,7 +320,7 @@ if ($popupType && $popupMessage) {
                                         </li>
                                         <hr>
                                     <?php endforeach; ?>
-                                <?php else: ?>  
+                                <?php else: ?>
                                     <p>Nenhuma postagem disponível.</p>
                                 <?php endif; ?>
                             </div>
