@@ -45,7 +45,6 @@ $doacoesDoUsuario = $doacaoModel->filtrarDoacao($idUsuario, $nome_ong, $data_ini
             unset($_SESSION['type'], $_SESSION['message']);
         }
         ?>
-        <?php require_once './../../components/back-button.php' ?>
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Histórico de Doações</h1>
             <div class="formulario-perfil">
