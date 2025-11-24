@@ -109,11 +109,7 @@ $preview = new ImagemPreview($usuario['id_imagem'] ?? null);
                 </form>
             </div>
         </div>
-    </main>
-
-  <?= botao('salvar', 'Sim', "btnConfirmarExclusao") ?> </div>
-               <?= botao('excluir', 'Cancelar', "btnCancelarExclusao") ?> </div>
-     
+    </main>     
 
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
