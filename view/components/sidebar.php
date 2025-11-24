@@ -39,7 +39,7 @@
     <aside class="aside-area">
         <div class="aside-content" id="sideOng">
 
-            <a title="Editar Perfil" href="/together/view/pages/usuario/editarInformacoes.php" class="aside-button">
+            <a title="Editar Perfil" href="/together/view/pages/editarInformacoes.php" class="aside-button">
                 <i id="usuarioEdtarIcon" class="fa-solid fa-user-pen"></i>
             </a>
 
