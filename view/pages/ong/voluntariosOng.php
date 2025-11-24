@@ -25,7 +25,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
 
 <body class="voluntario-ong">
-    <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
        
 

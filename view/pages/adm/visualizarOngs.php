@@ -38,6 +38,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
+    <?php require_once './../../components/sidebar.php' ?>
     <main class="main-container">
        
 

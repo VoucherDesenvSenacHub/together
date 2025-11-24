@@ -39,6 +39,7 @@ $quantidadeDePaginas = ceil(count($patrocinadores) / 10);
 <body>
     <header>
         <?php require_once './../../components/navbar.php' ?>
+        <?php require_once './../../components/sidebar.php' ?>
     </header>
 
     <main class="main-container">

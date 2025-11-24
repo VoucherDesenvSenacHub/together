@@ -158,6 +158,7 @@ if ($popupType && $popupMessage) {
 
 <body>
     <?php require_once './../components/navbar.php' ?>
+    <?php require_once './../components/sidebar.php' ?>
 
     <?php
     if ($popupType && $popupMessage) {

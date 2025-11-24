@@ -7,7 +7,6 @@ AutenticacaoService::validarAcessoLogado(['Ong']); ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/alert.php" ?>
 <?php require_once "./../../components/upload.php" ?>
-<?php require_once "./../../components/aside.php" ?>
 <?php
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
@@ -21,6 +20,7 @@ $preview = new ImagemPreview(null)
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
 
     <main class="main-container">
 

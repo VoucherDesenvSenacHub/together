@@ -26,6 +26,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
 
     <main class="main-container">
 

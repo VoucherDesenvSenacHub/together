@@ -1,5 +1,5 @@
 <?php require_once './../../../services/AutenticacaoService.php';
-AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']);  ?>
+AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']); ?>
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
 <?php require_once "../../../view/components/label.php"; ?>
@@ -10,24 +10,26 @@ AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']);  ?>
 $erro = $_SESSION['erro'] ?? '';
 
 if (isset($_SESSION['erro'], $erro)) {
-    showPopup($_SESSION['erro'], $erro);
-    unset($_SESSION['erro'], $erro);
+  showPopup($_SESSION['erro'], $erro);
+  unset($_SESSION['erro'], $erro);
 }
 
 ?>
 
 <body class="user_pay">
   <?php require_once "../../../view/components/navbar.php"; ?>
+  <?php require_once "../../../view/components/sidebar.php"; ?>
 
   <main class="main-container">
-   
+
     <div class="div-wrap-width">
       <h3 class="titulo-pay-user">Pagamento</h3>
       <div class="container-pay-user">
         <!-- Lado esquerdo com título, botão e formulário -->
         <div class="layout-geral">
           <div class="formulario-e-imagem">
-            <form action="../../../controller/PagamentoUsuarioController.php" method="POST" class="form-pagamento" id="form-pagamento">
+            <form action="../../../controller/PagamentoUsuarioController.php" method="POST" class="form-pagamento"
+              id="form-pagamento">
               <div class="anonimo-div-box">
                 <div class="anonimo-toggle">
                   <label class="switch">
@@ -37,7 +39,7 @@ if (isset($_SESSION['erro'], $erro)) {
                   <span class="anonimo-text">Doação anônima</span>
                 </div>
               </div>
-              <?php if (isset($_GET['idOng'])) : ?>
+              <?php if (isset($_GET['idOng'])): ?>
                 <input type="hidden" name="idOng" value="<?= $_GET['idOng']; ?>">
               <?php endif; ?>
               <div>
@@ -63,7 +65,7 @@ if (isset($_SESSION['erro'], $erro)) {
                 <?= inputRequired('text', 'valor', 'valor') ?>
               </div>
               <div class="container-botao-pagamento">
-                <?= botao('salvar', 'Realizar Pagamento','realizar_pagamento','../../../controller/PagamentoUsuarioController.php') ?>
+                <?= botao('salvar', 'Realizar Pagamento', 'realizar_pagamento', '../../../controller/PagamentoUsuarioController.php') ?>
               </div>
 
             </form>
@@ -77,7 +79,9 @@ if (isset($_SESSION['erro'], $erro)) {
   <?php require_once "../../../view/components/footer.php"; ?>
 
   <script src="/together/view/assets/js/pages/pagamentoUsuario.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/3.0.3/jspdf.umd.min.js"></script>
 </body>
 
