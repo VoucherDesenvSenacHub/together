@@ -1,10 +1,12 @@
 <footer class="footer" id="footer">
     <div class="footer-container">
         <div class="footer-about">
-            <div class="footer-about">
-                <img src="\together\view\assets\images\components\logo_nova_together.png" alt="Logo da Empresa"
-                    class="footer-logo">
-            </div>
+            <a href="/together/index.php">
+                <div class="footer-about">
+                    <img src="\together\view\assets\images\components\logo_nova_together.png" alt="Logo da Empresa"
+                        class="footer-logo">
+                </div>
+            </a>
 
         </div>
 
