@@ -70,7 +70,7 @@ class UsuarioModel
             $query = "INSERT INTO usuarios (nome, cpf, telefone, email, senha, ativo, tipo_perfil) VALUES (:nome, :cpf, :telefone, :email, :senha, :ativo, :tipo_perfil)";
             $stmt = $this->conn->prepare($query);
 
-          
+
             $stmt->execute([
                 ':nome' => $nome,
                 ':cpf' => $cpf,
@@ -141,7 +141,7 @@ class UsuarioModel
     {
         $sql = "SELECT V.dt_associacao, V.status_validacao, V.id_ong as id, O.razao_social FROM voluntarios V JOIN ongs O ON O.id = V.id_ong WHERE V.id_usuario = :userid";
 
-      
+
         if (!empty($nome_ong)) {
             $sql .= " AND O.razao_social LIKE :nome_ong";
         }
@@ -154,10 +154,10 @@ class UsuarioModel
 
         $stmt = $this->conn->prepare($sql);
 
-       
+
         $stmt->bindParam(':userid', $userid, PDO::PARAM_INT);
 
-        
+
         if (!empty($nome_ong)) {
             $nome_ong = '%' . $nome_ong . '%';
             $stmt->bindParam(':nome_ong', $nome_ong, PDO::PARAM_STR);
@@ -205,7 +205,7 @@ class UsuarioModel
     public function editarUsuario($id, $nome, $dt_nascimento, $telefone, $email, $id_endereco, $id_imagem_de_perfil = null)
     {
         try {
-            
+
             $verificaTelefone = $this->conn->prepare("SELECT id FROM usuarios WHERE telefone = :telefone AND id != :id");
             $verificaTelefone->bindParam(':telefone', $telefone);
             $verificaTelefone->bindParam(':id', $id, PDO::PARAM_INT);
@@ -213,7 +213,7 @@ class UsuarioModel
             if ($verificaTelefone->fetch())
                 return 'telefone_duplicado';
 
-           
+
             $sql = "UPDATE usuarios 
                     SET nome = :nome, 
                         dt_nascimento = :dt_nascimento,
@@ -227,7 +227,7 @@ class UsuarioModel
 
             $sql .= " WHERE id = :id";
 
-        
+
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':nome', $nome);
             $stmt->bindParam(':dt_nascimento', $dt_nascimento);
@@ -320,6 +320,18 @@ class UsuarioModel
 
                 if ($voluntarioExistente['status_validacao'] == 'aprovado') {
                     return 'ja_voluntario';
+                } elseif ($voluntarioExistente['status_validacao'] == 'rejeitado') {
+
+                    $sqlUpdate = "UPDATE voluntarios 
+                        SET status_validacao = 'pendente', dt_associacao = NOW()
+                        WHERE id_usuario = :id_usuario AND id_ong = :id_ong
+                    ";
+                    $stmtUpdate = $this->conn->prepare($sqlUpdate);
+                    $stmtUpdate->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
+                    $stmtUpdate->bindParam(':id_ong', $id_ong, PDO::PARAM_INT);
+                    $stmtUpdate->execute();
+
+                    return true;
                 } else {
                     return 'solicitacao_pendente';
                 }

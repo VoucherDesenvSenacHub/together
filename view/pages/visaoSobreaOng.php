@@ -48,7 +48,6 @@ if (!empty($_GET['id'])) {
     $pagina = $ongModel->mostrarPaginaOng($_GET['id']);
     $categoria = $ongModel->buscarCategoriaOng($_GET['id']);
     $enderecos = $ongModel->buscarEnderecoOng($_GET['id']);
-
 } else {
     $IdOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id'])['id'];
     $pagina = $ongModel->mostrarPaginaOng($IdOng);
@@ -126,6 +125,10 @@ switch ($perfil) {
                 $btnVoluntarioText = 'Você é Voluntário';
                 $btnVoluntarioDisabled = true;
                 $btnVoluntarioClass = 'secondary';
+            } elseif ($statusVoluntario['status_validacao'] == 'rejeitado') {
+                $btnVoluntarioDisabled = false;
+                $btnVoluntarioText = 'Voluntariar-se';
+                $btnVoluntarioClass = 'primary';
             } else {
                 $btnVoluntarioText = 'Solicitação Pendente';
                 $btnVoluntarioDisabled = true;
