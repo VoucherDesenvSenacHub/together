@@ -3,6 +3,7 @@
     background-color: var(--cor-font-branco);
     border-radius: 15px;
     box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 35px;
 }
 
 
@@ -17,6 +18,7 @@
     h1 {
         font-size: 20px;
     }
+    margin-left: 20px;
 }
 
 .ong-search-screen-pagination{
