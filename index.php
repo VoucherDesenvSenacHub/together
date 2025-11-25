@@ -117,7 +117,7 @@
         <div class="logos">
             <div class="logos-slide">
                 <?php foreach ($patrocinadores as $patrocinador) { ?>
-                    <img src="<?= $patrocinador["caminho"] ?>" />
+                    <a href="<?= $patrocinador["rede_social"] ?> ?>"><img src="<?= $patrocinador["caminho"] ?>" /></a>
                 <?php } ?>
             </div>
         </div>
