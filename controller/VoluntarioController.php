@@ -63,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     } elseif ($resultado === 'solicitacao_pendente') {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Você já possui uma solicitação pendente para esta ONG.';
+    } elseif ($resultado === 'rejeitado') {
+        $_SESSION['type'] = 'erro';
+        $_SESSION['message'] = 'Você foi rejeitado para esta ONG.';
     } else {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Erro ao enviar solicitação. Tente novamente mais tarde.';
