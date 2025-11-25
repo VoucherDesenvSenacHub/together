@@ -22,7 +22,7 @@ $preview = new ImagemPreview($id_imagem['id'] ?? null);
     <?php require_once "../../../view/components/navbar.php"; ?>
     <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Dados do Voluntário</h1>
@@ -101,9 +101,11 @@ $preview = new ImagemPreview($id_imagem['id'] ?? null);
                             </div>
                         </div>
                     </div>
-                   <?= botao('botao-primary', 'Voltar', '', 'voluntariosOng.php') ?> </div>
-                      
-                
+                    <div class="container-readonly-footer">
+                        <div class="botao-excluir-voluntario">
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', 'voluntariosOng.php')?> </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -28,7 +28,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
     <?php require_once "./../../components/navbar.php"; ?>
     <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-       
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
@@ -78,7 +78,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                         <td><?= $voluntarios['dt_associacao'] ?></td>
                                         <td><?= $voluntarios['nome'] ?></td>
                                         <td>
-                                            <a href="/together/view/pages/ong/visualizarVoluntarioCadastrado.php">
+                                            <a href="/together/view/pages/ong/visualizarVoluntarioCadastrado.php?id=<?= $voluntarios['id']?>">
                                                 <?= renderAcao('visualizar') ?>
                                             </a>
                                         </td>
@@ -88,7 +88,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </tbody>
                     </table>
                 </div>
-               
+
                 <?php if ($quantidadeDePaginas > 1) { ?>
                     <?php criarPaginacao($quantidadeDePaginas); ?>
                 <?php } ?>
@@ -97,4 +97,5 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>
