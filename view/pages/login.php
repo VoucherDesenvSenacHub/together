@@ -32,11 +32,13 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
         <div class="conteudo-login">
 
-            <div class="logo-login">
-                <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
-                    class="logo-imagem-login-mobile">
-                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
-            </div>
+            <a href="/together/index.php">
+                <div class="logo-login">
+                    <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
+                        class="logo-imagem-login-mobile">
+                    <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                </div>
+            </a>
 
             <div class="box-login">
 

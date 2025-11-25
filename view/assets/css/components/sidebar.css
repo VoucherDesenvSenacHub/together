@@ -11,7 +11,7 @@ body {
 }
 
 .aside-area {
-    height: 90vh;
+    height: calc(100vh + 65px);
     position: fixed;
     display: flex;
     flex-direction: column;

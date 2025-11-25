@@ -54,7 +54,7 @@ $preview = new ImagemPreview(null)
                         <div class="postagem-geral-btn">
                             <?= botao('salvar', 'Salvar', "", '/together/controller/PostagemCriarController.php') ?>
                         </div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", '') ?></div>
+                        <div class="postagem-geral-btn"><?= botaoFormNoValide('cancelar', 'Cancelar', "", '/together/index.php') ?></div>
                     </div>
                 </form>
             </div>
