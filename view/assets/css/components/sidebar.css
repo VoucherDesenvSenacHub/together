@@ -74,6 +74,10 @@ body {
     transition: 0.2s;
 }
 
+.aside-content-mobile {
+    display: none;
+}
+
 
 @media screen and (max-width: 768px) {
     .side-container-area {
@@ -119,6 +123,10 @@ body {
         align-items: center;
         border-radius: 10px;
         transition: 0.2s;
+    }
+
+    .sair-button-desktop {
+        display: none;
     }
 
 }

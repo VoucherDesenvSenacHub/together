@@ -44,14 +44,17 @@
                         <button class="button-side-mobile" id="buttonSideMobile">
                             <i class="fa-solid fa-bars" id="barsIcon"></i>
                         </button>
-                         </div>
+                        </div>
+                        <a title="Sair" href="/together/controller/SairController.php" class="sair-button-desktop">
+                            <i class="fa-solid fa-right-from-bracket icone-sair" title="Sair" id="btn-circular"></i>
+                        </a>
                         ';
                 } else {
                     echo botao('entrar', 'Entrar', '', '/together/view/pages/login.php');
                 }
                 ?>
-            </form>         
+            </form>
         </div>
-        
-        
+
+
 </header>
