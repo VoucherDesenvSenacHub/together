@@ -323,9 +323,10 @@ if ($popupType && $popupMessage) {
                                             </div>
                                             <div class="adm-ong-vision-post-text-div">
                                                 <h1><?= $post['titulo'] ?></h1>
+                                                <br>
                                                 <p class="adm-ong-vision-post-text-descricao"><?= $post['descricao'] ?></p>
                                                 <?php if ($post['link']): ?>
-                                                    <h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
+                                                    <br><h3><a href="<?= $post['link'] ?>">Saiba mais</a></h3>
                                                 <?php endif; ?>
                                                 <div class="icon-visao-sobre-ong">
                                                     <?php if ($mostrarEdicao): ?>
