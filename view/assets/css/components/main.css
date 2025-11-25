@@ -1,10 +1,11 @@
-.main-container{
+.main-container {
     /* max-width: 1200px; */
     padding: 20px 0px;
     margin: 0 auto;
     background-color: var(--cor-body);
     width: 100%;
     box-sizing: border-box;
+    padding: 65px 0 35px 0;
 }
 
 .main-min {
@@ -18,7 +19,7 @@
 } */
 
 @media (max-width: 575.98px) {
-    .main-container{
+    .main-container {
         max-width: 575px;
         margin: auto 0;
     }
@@ -26,27 +27,27 @@
 }
 
 @media (min-width: 768px) {
-    .main-container{
+    .main-container {
         max-width: 768px;
     }
 
 }
 
 @media (min-width: 992px) {
-    .main-container{
+    .main-container {
         max-width: 990px;
     }
-    
+
 }
 
 @media (min-width: 1200px) {
-    .main-container{
+    .main-container {
         max-width: 1200px;
-    } 
+    }
 }
 
 @media (min-width: 1400px) {
-    .main-container{
+    .main-container {
         max-width: 1400px;
     }
 }
