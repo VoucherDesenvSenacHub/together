@@ -22,20 +22,11 @@
                 <a class="a-navbar" href="/together/index.php#footer">Contate-nos</a>
             </li>
 
+            <li class="li-navbar">
+                <a class="a-navbar" href="/together/view/pages/copyright.php">Desenvolvedores</a>
+            </li>
+
         </ul>
-
-        <div class="div-barra-pesquisa-botao hidden">
-            <button id="barraPesquisaBotao" class="barra-pesquisa-button">
-                <i class="fa fa-search" id="lente-button-icon"></i>
-            </button>
-        </div>
-
-        <div id="barraPesquisa" class="div-barra-pesquisa">
-            <input class="barra-pesquisa-input" type="text" placeholder="Pesquisar Ong's">
-            <button class="submit-lente">
-                <i class="fa fa-search" id="lente-icon"></i>
-            </button>
-        </div>
 
         <div class="login-botao-area-navbar">
             <form action="">
