@@ -127,7 +127,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="postagem-geral-btn">
                             <?= botao('salvar', 'Salvar', formaction: '../../controller/UsuarioEditarController.php') ?>
                         </div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
+                        <div class="postagem-geral-btn"><?= botaoFormNoValide('cancelar', 'Cancelar', formaction:'/together/index.php') ?></div>
                     </div>
                 </form>
             </div>

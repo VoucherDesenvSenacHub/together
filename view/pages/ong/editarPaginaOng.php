@@ -75,7 +75,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                                 <?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPaginaOngController.php') ?>
                             </div>
                             <div class="postagem-geral-btn ">
-                                <?= botao('cancelar', 'Cancelar', formaction: '/together/view/pages/visaoSobreaOng.php') ?>
+                                <?= botaoFormNoValide('cancelar', 'Cancelar', formaction: '/together/view/pages/visaoSobreaOng.php') ?>
                             </div>
                         </div>
                     </div>
