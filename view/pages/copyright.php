@@ -1,5 +1,6 @@
 <?php include "../components/card.php"; ?>
 <?php require_once "../../view/components/head.php" ?>
+<?php require_once "./../components/navbar.php" ?>
 <?php require_once "./../components/button.php" ?>
 <?php require_once "./../components/input.php" ?>
 <?php require_once "./../../model/DevModel.php" ?>

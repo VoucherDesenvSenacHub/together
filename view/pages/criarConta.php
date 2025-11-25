@@ -23,9 +23,11 @@ if (!isset($_SESSION['step'])) {
     <div class="container-login">
         <div class="conteudo-login">
 
-            <div class="logo-login">
-                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
-            </div>
+            <a href="/together/index.php">
+                <div class="logo-login">
+                    <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                </div>
+            </a>
 
             <div class="box-login">
 
