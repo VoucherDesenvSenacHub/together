@@ -21,11 +21,21 @@ INSERT INTO usuarios (nome, cpf, dt_nascimento, telefone, email, senha, ativo, i
 ('Carla Mendes', '66677788899', '1989-11-12', '41977770006', 'carla@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', true, 2, 2, 'Usuario'),
 ('Ricardo Gomes', '77788899900', '1987-04-20', '51966660007', 'ricardo@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Usuario');
 
-('Carlos Pereira', '33344455566', '1985-12-15', '11988880003', 'carlos@example.com', '$2y$10$JAanY6sROINWvIGDFI3oHusgGCqdd5GgEO/IwQQXJ8zG0hlkP5rRO', false, 3, 3, 'Administrador');
 
 INSERT INTO categorias_ongs (nome) VALUES
 ('Erradicação da pobreza'),
-@@ -40,61 +18,4 @@ INSERT INTO categorias_ongs (nome) VALUES
+('Fome zero e agricultura sustentável'),
+('Saúde e bem-estar'),
+('Educação de qualidade'),
+('Igualdade de gênero'),
+('Água potável e saneamento'),
+('Energia limpa e acessível'),
+('Trabalho decente e crescimento econômico'),
+('Indústria, inovação e infraestrutura'),
+('Redução das desigualdades'),
+('Cidades e comunidades sustentáveis'),
+('Consumo e produção responsáveis'),
+('Ação contra a mudança global do clima'),
 ('Vida na água'),
 ('Vida terrestre'),
 ('Paz, justiça e instituições eficazes'),
