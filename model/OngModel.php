@@ -719,7 +719,7 @@ class OngModel
         $query = "SELECT d.dt_doacao, d.valor, d.anonimo, d.status, u.nome 
             FROM doacoes d 
             LEFT JOIN usuarios u ON d.id_usuario = u.id 
-            WHERE d.status = 'APROVADO'
+            WHERE d.status = 'APROVADA'
             AND d.id_ong = :id_ong 
             ORDER BY d.dt_doacao ASC 
             LIMIT :limite

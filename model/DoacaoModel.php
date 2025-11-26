@@ -117,7 +117,7 @@ class DoacaoModel
     {
         $query = "SELECT SUM(valor) AS total_doacoes
             FROM doacoes 
-            WHERE status = 'APROVADO' 
+            WHERE status = 'APROVADA' 
             AND id_ong = :id_ong";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam('id_ong', $id_ong);
@@ -130,7 +130,7 @@ class DoacaoModel
         try {
             $query = "SELECT COUNT(*) AS total 
             FROM doacoes d 
-            WHERE d.status = 'APROVADO' 
+            WHERE d.status = 'APROVADA' 
             AND d.id_ong = :id_ong 
             ORDER BY d.dt_doacao ASC";
 
