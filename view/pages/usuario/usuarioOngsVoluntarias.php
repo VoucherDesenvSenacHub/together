@@ -1,5 +1,5 @@
 <?php require_once './../../../services/AutenticacaoService.php';
-AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']);  ?>
+AutenticacaoService::validarAcessoLogado(['Usuario', 'Ong']); ?>
 <?php require_once './../../components/head.php' ?>
 <?php require_once './../../components/label.php' ?>
 <?php require_once './../../components/input.php' ?>
@@ -13,7 +13,7 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
     $hoje = date('Y-m-d');
     $voluntariados = $usuarioModel->buscarOngsVoluntario($_SESSION['id'], $_GET['pesquisar'], $_GET['data-inicio'], $_GET['data-final'] ? $_GET['data-final'] : $hoje);
 } else {
-    $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
     $limite = 10;
     $offset = ($paginaAtual - 1) * $limite;
 
@@ -24,9 +24,10 @@ if (!empty($_GET['data-inicio']) || !empty($_GET['data-final']) || !empty($_GET[
 
 <body>
     <?php require_once './../../components/navbar.php' ?>
+    <?php require_once './../../components/sidebar.php' ?>
     <main class="main-container">
         <div class="btn-voltar-validacao-atualizacao">
-            <?php require_once './../../components/back-button.php' ?>
+
         </div>
 
         <div class="div-wrap-width">

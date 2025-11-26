@@ -3,59 +3,62 @@ AutenticacaoService::validarAcessoLogado(['Administrador']);  ?>
 <?php require_once "../../../view/components/head.php"; ?>
 <?php require_once "../../../view/components/label.php"; ?>
 <?php require_once "../../../view/components/input.php"; ?>
-<?php require_once "../../../view/components/select.php"; ?>
 <?php require_once "../../../view/components/button.php"; ?>
-<?php require_once __DIR__ . "/../../../model/ValidarCadastroOngModel.php"; ?>
+<?php require_once "../../../model/UsuarioModel.php";
+require_once "../../../model/ImagemModel.php";
+require_once "../../components/upload.php";
 
-<?php
+$imagemModel = new ImagemModel();
+$imagem = $imagemModel->buscarImagemPorIdUsuario($_GET['id']);
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $validarCadastroOng = new ValidarCadastroOngModel();
-    $ong = $validarCadastroOng->BuscarCadastroOng($id);
-    $_SESSION['idOngValidar'] = $id;
-}
+$preview = new ImagemPreview($imagem['id'] ?? null);
+
+$usuarioModel = new UsuarioModel();
+$usuario = $usuarioModel->buscarUsuarioId($_GET['id']);
 
 ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+
 
         <div class="div-wrap-width">
-            <h1 class="titulo-pagina">Validar Cadastro ONG</h1>
+            <h1 class="titulo-pagina">Dados Cadastrais</h1>
             <div class="formulario-perfil">
                 <form action="" method="POST">
                     <div class="container-perfil-voluntario">
+                        <div class="div-logo">
+                            <?php $preview->preview(true) ?>
+                        </div>
                         <div class="container-readonly">
                             <div class="container-readonly-primary">
                                 <div class="form-row">
-                                    <input type="hidden" name="id" value="<?= $id ?>">
                                     <div>
-                                        <?= label('razao_social', 'Razão Social') ?>
-                                        <?= inputReadonly('text', 'razao_social', 'razao_social', $ong['razao_social']) ?>
+                                        <?= label('nome', 'Nome') ?>
+                                        <?= inputReadonly('text', 'nome', 'nome', $usuario['nome'] ?? '') ?>
                                     </div>
                                     <div>
                                         <?= label('telefone', 'Telefone') ?>
-                                        <?= inputReadonly('text', 'telefone', 'telefone', $ong['telefone']) ?>
+                                        <?= inputReadonly('text', 'telefone', 'telefone', $usuario['telefone'] ?? '') ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div>
-                                        <?= label('cnpj', 'CNPJ') ?>
-                                        <?= inputReadonly('text', 'cnpj', 'cnpj', $ong['cnpj']) ?>
+                                        <?= label('cpf', 'CPF') ?>
+                                        <?= inputReadonly('text', 'cpf', 'cpf', $usuario['cpf'] ?? '') ?>
                                     </div>
                                     <div>
-                                        <?= label('ods', 'Tipo da ONG') ?>
-                                        <?= inputReadonly('text', 'ods', 'ods', $ong['categoria_ong']) ?>
+                                        <?= label('data', 'Data de nascimento') ?>
+                                        <?= inputReadonly('text', 'data', 'data', $usuario['dt_nascimento'] ?? '') ?>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="container-input-email-voluntario">
                                 <?= label('email', 'Email') ?>
-                                <?= inputReadonly('text', 'email', 'email', $ong['email']) ?>
+                                <?= inputReadonly('text', 'email', 'email', $usuario['email'] ?? '') ?>
                             </div>
                         </div>
                     </div>
@@ -66,42 +69,41 @@ if (isset($_GET['id'])) {
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cep', 'CEP') ?>
-                                <?= inputReadonly('text', 'cep', 'cep', $ong['cep']) ?>
+                                <?= inputReadonly('text', 'cep', 'cep', $usuario['cep'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('cidade', 'Cidade') ?>
-                                <?= inputReadonly('text', 'cidade', 'cidade', $ong['cidade']) ?>
+                                <?= inputReadonly('text', 'cidade', 'cidade', $usuario['cidade'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('estado', 'Estado') ?>
-                                <?= inputReadonly('text', 'estado', 'estado', $ong['cidade']) ?>
+                                <?= inputReadonly('text', 'estado', 'estado', $usuario['estado'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('bairro', 'Bairro') ?>
-                                <?= inputReadonly('text', 'bairro', 'bairro', $ong['bairro']) ?>
+                                <?= inputReadonly('text', 'bairro', 'bairro', $usuario['bairro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('logradouro', 'Logradouro') ?>
-                                <?= inputReadonly('text', 'logradouro', 'logradouro', $ong['logradouro']) ?>
+                                <?= inputReadonly('text', 'logradouro', 'logradouro', $usuario['logradouro'] ?? '') ?>
                             </div>
                             <div class="container-input-endereco-voluntario">
                                 <?= label('numero', 'Número') ?>
-                                <?= inputReadonly('text', 'numero', 'numero', $ong['numero']) ?>
+                                <?= inputReadonly('text', 'numero', 'numero', $usuario['numero'] ?? '') ?>
                             </div>
                         </div>
                         <div class="container-endereco-voluntario">
                             <div class="container-input-endereco-voluntario">
                                 <?= label('complemento', 'Complemento') ?>
-                                <?= inputReadonly('text', 'complemento', 'complemento', $ong['complemento']) ?>
+                                <?= inputReadonly('text', 'complemento', 'complemento', $usuario['complemento'] ?? '') ?>
                             </div>
                         </div>
                     </div>
                     <div class="container-readonly-footer">
                         <div class="botao-excluir-voluntario">
-                            <div class="postagem-geral-btn"><?= botao('salvar', 'Aceitar', '', "/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "aprovado") ?> </div>
-                            <div class="postagem-geral-btn"><?= botao('excluir', 'Recusar', '', "/together/controller/OngsEmAnaliseController.php?", "tipo_alteracao", "rejeitado") ?> </div>
+                            <div class="postagem-geral-btn"><?= botao('botao-primary', 'Voltar', '', '/together/view/pages/adm/visualizarUsuario.php') ?> </div>
                         </div>
                     </div>
                 </form>

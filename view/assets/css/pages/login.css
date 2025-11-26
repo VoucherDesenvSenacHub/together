@@ -17,6 +17,7 @@
     background-image: url("../../images/components/fundo_tela_login.jpg");
     background-size: cover;
     background-attachment: fixed;
+    min-height: 100vh;
 }
 
 .conteudo-login {
@@ -31,7 +32,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    flex: 1;
     background-color: rgba(0, 0, 0, 0.3);
 
 }
@@ -60,7 +61,7 @@
     gap: 30px;
     padding: 30px;
     width: 300px;
-    background-color: rgba(255, 255, 255, 0.532);
+    background-color: var(--cor-container-painel);
     border: none;
     border-radius: 10px;
 }
@@ -79,7 +80,7 @@
     width: 50%;
 }
 
-/* --------------------Login-------------------- */
+
 .text-login {
     color: var(--cor-login);
     font-weight: bold;
@@ -100,7 +101,7 @@
     gap: 10px;
 }
 
-/* --------------------Recuperar Senha-------------------- */
+
 
 .titulo-login {
     font-size: 30px;
@@ -113,15 +114,13 @@
     font-weight: 500;
 }
 
-/* ------------------------------------------------------ */
+
 
 .termos-area-login {
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: absolute; */
-    /* top: 389px; */
     margin-top: 20px;
 }
 
@@ -147,7 +146,7 @@
 
 @media (max-width: 400px) {
     .conteudo-login {
-        /* margin-top: 100px; */
+       
         width: 110%;
     }
 }

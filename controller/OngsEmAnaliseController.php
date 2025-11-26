@@ -1,14 +1,13 @@
 <?php
 session_start();
 require_once __DIR__ . "/../model/ValidarCadastroOngModel.php";
-require_once __DIR__ . "/../config/database.php";
 
 $validarCadastroOngModel = new ValidarCadastroOngModel();
 
 
 
 try {
-    // Verifica se a requisão é post
+   
     if ($_SERVER["REQUEST_METHOD"] !== "POST") {
         throw new Exception("Método inválido para esta requisição");
     }
@@ -37,5 +36,5 @@ try {
 } catch (Exception $e) {
     $_SESSION[""] = 'erro';
     $_SESSION["message"] = 'Algo deu errado!';
-    header('Location: /together/view/pages/Adm/OngsAValidar.php');
+    header('Location: /together/view/pages/adm/OngsAValidar.php');
 }

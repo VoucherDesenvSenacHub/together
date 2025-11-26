@@ -8,9 +8,6 @@ require_once __DIR__ . "/../controller/EnderecoController.php";
 $modelUsuario = new UsuarioModel();
 $modelImagem = new ImagemModel();
 
-var_dump($_POST['cidade']);
-var_dump($_POST['estado']);
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
@@ -21,10 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $cpf = preg_replace('/\D/', '', $_POST['cpf'] ?? '');
     $idImagem = null; // inicializa
-
-    // =====================
-    // Validações simples
-    // =====================
     
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['type'] = 'erro';
@@ -40,9 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // =====================
-    // Processa upload da imagem
-
     $idImagem = $_POST['id_imagem'];
     if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
         $upload = new UploadController();
@@ -57,9 +47,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $enderecoController = new EnderecoController();
     $idEndereco = $enderecoController->atualizarEndereco($idEnderecoUsuario, $_POST['logradouro'], $_POST['numero'], $_POST['cep'], $_POST['complemento'], $_POST['bairro'], $_POST['cidade'], $_POST['estado']); 
 
-    // =====================
-    // Atualiza usuário
-    // =====================
     $resultado = $modelUsuario->editarUsuario(
         $id,
         $nome,
@@ -67,12 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $telefone,
         $email,
         $idEndereco,
-        $idImagem // se for null, não altera a imagem
+        $idImagem
     );
 
-    // =====================
-    // Mensagens de feedback
-    // =====================
     if ($resultado === 'telefone_duplicado') {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = "Telefone já cadastrado!";

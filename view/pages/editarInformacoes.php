@@ -36,9 +36,10 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
 <body>
     <?php require_once "../../view/components/navbar.php" ?>
+    <?php require_once "../../view/components/sidebar.php" ?>
 
     <main class="main-container main-min">
-        <?php require_once './../components/back-button.php' ?>
+    
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Editar Informações</h1>
@@ -126,7 +127,7 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
                         <div class="postagem-geral-btn">
                             <?= botao('salvar', 'Salvar', formaction: '../../controller/UsuarioEditarController.php') ?>
                         </div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar') ?></div>
+                        <div class="postagem-geral-btn"><?= botaoFormNoValide('cancelar', 'Cancelar', formaction:'/together/index.php') ?></div>
                     </div>
                 </form>
             </div>

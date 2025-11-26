@@ -6,38 +6,57 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php require_once "../../components/input.php" ?>
 <?php require_once "../../components/textarea.php" ?>
 <?php require_once "../../components/alert.php" ?>
-<?php require_once "./../../components/upload.php" ?>
+
+
 <?php
+require_once "../../../model/OngModel.php";
+$ongModel = new OngModel();
+
+$pagina = $ongModel->mostrarinformacoesPostagemOng($_GET['id']);
+
+require_once "../../../model/ImagemModel.php";
+$imagemModel = new ImagemModel();
+$imagem = $imagemModel->buscarImagemPorIdPostagem($_GET['id']);
+
+
+
+require_once "./../../components/upload.php";
+$preview = new ImagemPreview($imagem ? $imagem['id'] : null);
+
+
+
+
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
 }
-
-$preview = new ImagemPreview(null)
 ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
 
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
 
         <div class="div-wrap-width">
-            <h1 class="titulo-pagina">Criar Postagem</h1>
+            <h1 class="titulo-pagina">Editar Postagem</h1>
             <div class="formulario-perfil">
                 <form action="" method="POST" class="postagem-geral-form" enctype="multipart/form-data">
                     <div class="postagem-geral-form-linha-superior">
                         <div class='formulario-imagem-preview'>
+                            <input type="hidden" name="id" value="<?= $_GET['id']?>">
+                            <input type="hidden" name="id_imagem" value="<?= $imagem ? $imagem['id'] : null ?>">
                             <?php $preview->preview() ?>
                         </div>
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("titulo", "Título") ?>
-                                <?= inputRequired("text", "titulo", "titulo") ?>
+                                <?= inputRequired("text", "titulo", "titulo" , $pagina['titulo'] ?? '') ?>
                             </div>
                             <div>
                                 <?= label("link", "Link") ?>
-                                <?= inputRequired("text", "link", "link") ?>
+                                <?= inputRequired("text", "link", "link", $pagina['link'] ?? '') ?>
                             </div>
                         </div>
                     </div>
@@ -45,15 +64,15 @@ $preview = new ImagemPreview(null)
                         <div class="postagem-geral-input-text">
                             <div>
                                 <?= label("descricao", "Descrição") ?>
-                                <?= textareaRequired("descricao", "descricao") ?>
+                                <?= inputRequiredMaxLength("text", "descricao", "descricao", $pagina['descricao'] , 255) ?>
                             </div>
                         </div>
                     </div>
-                    <div class="postagem-geral-div-btn">
-                        <div class="postagem-geral-btn">
-                            <?= botao('salvar', 'Salvar', "", '/together/controller/PostagemCriarController.php') ?>
+                    <div class="postagem-geral-btn-group">
+                        <div class="postagem-geral-div-btn">
+                            <div class="postagem-geral-btn "><?= botao('salvar', 'Salvar', formaction: '/together/controller/EditarPostagemOngController.php') ?></div>
+                            <div class="postagem-geral-btn "><?= botaoFormNoValide('cancelar', 'Cancelar', formaction: '/together/view/pages/visaoSobreaOng.php') ?></div>
                         </div>
-                        <div class="postagem-geral-btn"><?= botao('cancelar', 'Cancelar', "", '') ?></div>
                     </div>
                 </form>
             </div>

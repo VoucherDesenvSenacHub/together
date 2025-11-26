@@ -6,7 +6,7 @@ AutenticacaoService::validarAcessoSemLogin();  ?>
 <?php require_once "./../components/label.php" ?>
 <?php require_once "./../components/alert.php" ?>
 <?php
-// Notificacao
+
 if (isset($_SESSION['type'], $_SESSION['message'])) {
     showPopup($_SESSION['type'], $_SESSION['message']);
     unset($_SESSION['type'], $_SESSION['message']);
@@ -17,17 +17,19 @@ if (isset($_SESSION['type'], $_SESSION['message'])) {
 
     <div class="container-login">
         <div class="login-icon-group">
-            <?php require_once './../components/back-button.php' ?>
+           
         </div>
 
 
         <div class="conteudo-login">
 
-            <div class="logo-login">
-                <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
-                    class="logo-imagem-login-mobile">
-                <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
-            </div>
+            <a href="/together/index.php">
+                <div class="logo-login">
+                    <img src="../assets/images/components/logoTogetherLoginMobile.png" alt="logoMobile"
+                        class="logo-imagem-login-mobile">
+                    <img src="../assets/images/components/logoTogetherLogin.png" alt="logo" class="logo-imagem-login">
+                </div>
+            </a>
 
             <div class="box-login">
 

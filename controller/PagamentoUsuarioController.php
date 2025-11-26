@@ -30,13 +30,16 @@ try {
     $usuarioModel = new UsuarioModel();
     $usuario = $usuarioModel->findUsuarioById($_SESSION['id']);
 
-    if( is_null($usuario['cep']) || is_null($usuario['numero']) ||
-        is_null($usuario['telefone']) || is_null($usuario['complemento']) )
+    if( empty($usuario['cep']) || empty($usuario['numero']) ||
+        empty($usuario['telefone']) || empty($usuario['complemento']) )
     {
         throw new Exception("Informações insuficientes do usuário.");
     }
 
-    // Montar dados para a API
+    if(strlen($usuario['telefone']) == 10) {
+        $usuario['telefone'] = preg_replace('/^(\d{2})(\d{4})(\d{4})$/', '${1}9$2$3', $usuario['telefone']);
+    }
+
     $data = [
         "titular" => [
             "nome" => $usuario['nome'],
@@ -88,12 +91,12 @@ try {
 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
+    $respostaApi = json_decode($response, true);
 
     if ($httpCode !== 200) {
-        throw new Exception("Erro na API de pagamento. Código HTTP: $httpCode.");
+        throw new Exception("Erro na API de pagamento. Erro: $respostaApi[detail]");
     }
 
-    $respostaApi = json_decode($response, true);
 
     if($respostaApi === null) {
         throw new Exception("Resposta inválida da API de pagamento.");
@@ -114,29 +117,29 @@ try {
         $ultimosDigitos
     ];
 
-    // Salva no banco
+    
     $doacaoModel = new DoacaoModel();
     $sucesso = $doacaoModel->SalvarDoacao(...$dadosPagamento);
     if (!$sucesso) {
         throw new Exception("Falha ao registrar a doação no sistema. Por favor, tente novamente.");
     }
 
-    $_SESSION['type'] = 'success';
+    $_SESSION['type'] = 'sucesso';
     $_SESSION['message'] = 'Pagamento realizado com sucesso! Obrigado por sua doação.';
 
     
-    header("Location: ../index.php");
+    header("Location: ../view/pages/Usuario/historicoDoacao.php");
     exit();
 
 } catch (Exception $e) {
     $_SESSION['type'] = 'erro';
-    $_SESSION['message'] = $e->getMessage();
+    $_SESSION['message'] = 'Falha ao realizar doação';
     $_SESSION['erro'] = $e->getMessage();
 
     if ($logadont) {
         header('Location: ../view/pages/login.php');
     } else if (isset($_POST['idOng'])) {
-        header('Location: ../view/pages/Usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
+        header('Location: ../view/pages/usuario/pagamentoUsuario.php?idOng=' . $_POST['idOng']);
     } else {
         header('Location: ../index.php');
     }

@@ -3,7 +3,7 @@ require_once __DIR__ . '/../model/OngModel.php';
 
 session_start();
 
-// Controla os steps do cadastrarOng.php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST['step_action'] ?? null;
     $ongModel = new OngModel();
@@ -51,7 +51,6 @@ function verificarDadosOng()
     if (!empty($_POST['cnpj'] && $_POST['telefone'])) {
         // echo ($cnpjLimpo);
         $existe = $ongModel->verificaExisteDadosOng($_POST['cnpj'], $_POST['razao_social'], $_POST['telefone']);
-        var_dump($existe);
         return $existe['existe'];
     }
 }
@@ -60,7 +59,7 @@ function registrarDados()
 {
     $ongModel = new OngModel();
 
-    // Só entra no try se todos os dados estiverem preenchidos
+  
     try {
         $ok = $ongModel->registrarDadosOng(
             $_SESSION['id'] ?? null,
@@ -91,7 +90,7 @@ function registrarEndereco()
 {
     $ongModel = new OngModel();
 
-    // Só entra no try se todos os dados estiverem preenchidos
+    
     try {
         $id_endereco = $_SESSION['id_endereco'];
         $ok = $ongModel->editarEnderecoOng(

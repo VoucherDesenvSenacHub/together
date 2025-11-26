@@ -11,29 +11,30 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 <?php
 
 $ongModel = new OngModel();
+$id_ong = $ongModel->buscarOngPorIdUsuario($_SESSION['id'])['id'] ?? null;
+$_SESSION['id_ong'] = $id_ong;
 
-$id_ong = $_SESSION['id'] ?? null;
 $nome_usuario_voluntario = isset($_POST['nome_usuario_voluntario']) ? trim($_POST['nome_usuario_voluntario']) : '';
 $data_inicio = isset($_POST['data-inicio']) ? $_POST['data-inicio'] : null;
 $data_fim = isset($_POST['data-final']) ? $_POST['data-final'] : null;
 
 $lista = $ongModel->filtrarVoluntario($nome_usuario_voluntario, $id_ong, $data_inicio, $data_fim);
 
-// página atual e quantidade de páginas vindo do controller
 $pagina = isset($pagina) ? $pagina : 1;
 $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
 ?>
 
 <body class="voluntario-ong">
-    <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "./../../components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+
 
         <div class="div-wrap-width">
             <h1 class="titulo-pagina">Voluntários da ONG</h1>
             <div class="formulario-perfil">
 
-                <form action="voluntariosOng.php" method="POST">
+                <form action="voluntariosOng.php" method="GET">
                     <div class="filtro">
                         <div class="bloco-datas">
                             <div class="filtro-por-mes">
@@ -77,7 +78,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                                         <td><?= $voluntarios['dt_associacao'] ?></td>
                                         <td><?= $voluntarios['nome'] ?></td>
                                         <td>
-                                            <a href="/together/view/pages/Ong/visualizarVoluntarioCadastrado.php">
+                                            <a href="/together/view/pages/ong/visualizarVoluntarioCadastrado.php?id=<?= $voluntarios['id']?>">
                                                 <?= renderAcao('visualizar') ?>
                                             </a>
                                         </td>
@@ -87,7 +88,7 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
                         </tbody>
                     </table>
                 </div>
-                <!-- Paginação -->
+
                 <?php if ($quantidadeDePaginas > 1) { ?>
                     <?php criarPaginacao($quantidadeDePaginas); ?>
                 <?php } ?>
@@ -96,4 +97,5 @@ $quantidadeDePaginas = isset($quantidadeDePaginas) ? $quantidadeDePaginas : 1;
     </main>
     <?php require_once "../../../view/components/footer.php"; ?>
 </body>
+
 </html>

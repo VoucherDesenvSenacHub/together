@@ -29,24 +29,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 $buscarOngsEmAnaliseModel = new BuscarOngsEmAnaliseModel();
 
-// Captura filtros do formulário via GET
+
 $dataInicio = $_GET['data-inicio'] ?? null;
 $dataFim    = $_GET['data-final'] ?? null;
-// Página atual e itens por página para paginação
+
 $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
-$paginaAtual = max(1, $paginaAtual);  // Garante que o valor mínimo seja 1
+$paginaAtual = max(1, $paginaAtual);  
 $itensPorPagina = 6;
-// Total de registros para cálculo da paginação
+
 $totalRegistros = $buscarOngsEmAnaliseModel->contarOngsEmAnalise($dataInicio, $dataFim, $pesquisa);
 $quantidadeDePaginas = ceil($totalRegistros / $itensPorPagina);
-// Busca os dados da página atual
+
 $ongsEmAnalise = $buscarOngsEmAnaliseModel->BuscarOngsEmAnalise($dataInicio, $dataFim, $pesquisa, $paginaAtual, $itensPorPagina);
 ?>
 
 <body>
     <?php require_once "../../../view/components/navbar.php"; ?>
+    <?php require_once "../../../view/components/sidebar.php"; ?>
     <main class="main-container">
-        <?php require_once './../../components/back-button.php' ?>
+       
         <div class="div-wrap-width">
             <div class="titulo-pagina">
                 <h1>Validação de ONGs</h1>

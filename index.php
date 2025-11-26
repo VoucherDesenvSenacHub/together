@@ -14,13 +14,13 @@
     $patrocinadoresModel = new PatrocinadoresModel();
     $patrocinadores = $patrocinadoresModel->findPatrocinadores();
 
-    // msg de erro ao tentar cadastrar-se sem estar logado como Usuario
+   
     if (isset($_GET['redirect']) && $_GET['redirect'] === 'cadastrarOng') {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'Ops! Esta página é exclusiva para usuários.';
     }
 
-    // Popup do session
+    
     if (isset($_SESSION['type'], $_SESSION['message'])) {
         showPopup($_SESSION['type'], $_SESSION['message']);
         unset($_SESSION['type'], $_SESSION['message']);
@@ -49,12 +49,21 @@
             </div>
             <div class="container-home card-ong">
                 <?php foreach ($ongs as $ong) { ?>
-                    <?= cardOng(
-                        $ong['foto_ong'],
-                        $ong['titulo_ong'],
-                        $ong['descricao_ong'],
-                        $ong['id']
-                    ) ?>
+                    <?php 
+                        $imagem = $_SERVER['DOCUMENT_ROOT'] . "/" . $ong['foto_ong'];
+
+                        $validarFoto = !empty($ong['foto_ong'] && file_exists($imagem));
+                        $validarEndereco = !empty($ong['endereco_ong']);
+                    ?>
+                    <?php if ($validarFoto && $validarEndereco): ?>
+                        <?= cardOng(
+                            $ong['foto_ong'],
+                            $ong['titulo_ong'],
+                            $ong['descricao_ong'],
+                            $ong['id']
+                        ) 
+                        ?>
+                    <?php endif ?>
                 <?php } ?>
             </div>
             <div class="linha-home"></div>
@@ -108,7 +117,7 @@
         <div class="logos">
             <div class="logos-slide">
                 <?php foreach ($patrocinadores as $patrocinador) { ?>
-                    <img src="<?= $patrocinador["caminho"] ?>" />
+                    <a href="<?= $patrocinador["rede_social"] ?> ?>"><img src="<?= $patrocinador["caminho"] ?>" /></a>
                 <?php } ?>
             </div>
         </div>

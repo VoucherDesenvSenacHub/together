@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Renderiza um componente de input
+
  * 
- * @param string $type - tipo do input (text, number, file, etc);
- * @param string $id - é utilizado para atribuir uma identificação única **ADICIONAR ESSE ID NO FOR DO LABEL**;
- * @param string $name - é através do name que pegamos o value desse input com o PHP;
- * @param string $value - esse parâmetro somente vai ser usado se o readonly estiver true;
+ * @param string $type 
+ * @param string $id 
+ * @param string $name 
+ * @param string $value 
  * 
- * @return string - HTML para renderizar o input;
+ * @return string
  */
 
 function inputRequired($type, $id, $name, $value = "")

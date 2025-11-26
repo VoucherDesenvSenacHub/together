@@ -19,7 +19,7 @@ $preview = new ImagemPreview($idImagem);
 if (isset($_SESSION) and $_SESSION["perfil"] !== "Ong") {
   header("location: ./../login.php");
 }
-// mostra popup de erro se existir
+
 $tipos = ['erro', 'sucesso'];
 
 foreach ($tipos as $tipo) {
@@ -33,8 +33,9 @@ foreach ($tipos as $tipo) {
 
 <body>
   <?php require_once "../../../view/components/navbar.php"; ?>
+  <?php require_once "../../../view/components/sidebar.php"; ?>
   <main class="main-container">
-    <?php require_once './../../components/back-button.php' ?>
+   
 
     <div class="div-wrap-width">
       <h1 class="titulo-pagina">Informações da ONG</h1>

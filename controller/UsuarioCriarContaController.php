@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__ . '/../model/UsuarioModel.php';
+require_once __DIR__ . '/../services/ValidarSenhaService.php';
 
 session_start();
 
-// Controla os steps do criarConta.php
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $acao = $_POST['step_action'] ?? null;
     $usuarioModel = new UsuarioModel();
@@ -19,14 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: /together/view/pages/criarConta.php");
             exit;
         } elseif ($acao === "salvar") {
-            if ($_POST['senha'] === $_POST['confirmar_senha']) {
+            $erroSenha = ValidarSenhaService::validarSenha($_POST['senha'], $_POST['confirmar_senha']);
+            if ($erroSenha === true) {
                 registrarDadosConta();
                 tirarDadosContaDaSession();
                 header("Location: /together/view/pages/login.php");
                 exit;
             } else {
                 $_SESSION['type'] = 'erro';
-                $_SESSION['message'] = 'Confirmação de senha incorreta.';
+                $_SESSION['message'] = $erroSenha;
                 header("Location: /together/view/pages/criarConta.php");
                 exit;
             }
@@ -61,7 +63,7 @@ function registrarDadosConta()
 {
     $usuarioModel = new UsuarioModel();
 
-    // Só entra no try se todos os dados estiverem preenchidos
+    
     try {
         $senhaComHash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 

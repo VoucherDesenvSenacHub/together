@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($erros as $erro) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = $erro;
-            header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+            header('Location: /together/view/pages/ong/editarPostagemOng.php');
             exit;
         }
     }
@@ -22,17 +22,17 @@ function validarEdicaoPostagemOng()
     if (empty($_POST['titulo'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'O título é obrigatório!';
-        header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+        header('Location: /together/view/pages/ong/editarPostagemOng.php');
         exit;
     } elseif (empty($_POST['link'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'O link é obrigatório!';
-        header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+        header('Location: /together/view/pages/ong/editarPostagemOng.php');
         exit;
     } elseif (empty($_POST['descricao'])) {
         $_SESSION['type'] = 'erro';
         $_SESSION['message'] = 'A descrição é obrigatória!';
-        header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+        header('Location: /together/view/pages/ong/editarPostagemOng.php');
         exit;
     } else {
         require_once __DIR__ . "/../model/OngModel.php";
@@ -42,18 +42,18 @@ function validarEdicaoPostagemOng()
         $ongModel = new OngModel();
         $idImagem = !empty($_POST['id_imagem']) ? $_POST['id_imagem'] : null;
 
-        // Se veio imagem no POST, processa o upload
+        
         if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $upload = new UploadController();
             $idImagem = $upload->processar($_FILES['file'], $idImagem, 'ongs');
             if ($idImagem === false) {
-                header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+                header('Location: /together/view/pages/ong/editarPostagemOng.php');
                 exit;
             }
         }
 
         $resultado = $ongModel->editarPostagemDaOng(
-            $_SESSION['id'],
+            $_POST['id'],
             $_POST['titulo'],
             $_POST['descricao'],
             $_POST['link'],
@@ -63,7 +63,7 @@ function validarEdicaoPostagemOng()
         if (!$resultado) {
             $_SESSION['type'] = 'erro';
             $_SESSION['message'] = 'Erro ao editar informações da postagem!';
-            header('Location: /together/view/pages/Ong/editarPostagemOng.php');
+            header('Location: /together/view/pages/ong/editarPostagemOng.php');
             exit;
         } else {
             $_SESSION['type'] = 'sucesso';

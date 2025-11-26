@@ -19,7 +19,6 @@ class ImagemModel
         $query = "INSERT INTO $this->tabela (nome_enviado, nome_original, caminho) VALUES (:nome_enviado, :nome_original, :caminho)";
         $stmt = $this->conn->prepare($query);
 
-        // utilizar dentro do execulte no lugar de bindparam
 
         $stmt->execute([
             ':nome_enviado' => $nome_enviado,
@@ -43,7 +42,7 @@ class ImagemModel
 
     public function buscarImagemPorIdPagina($id)
     {
-        $query = "SELECT i.* FROM $this->tabela i INNER JOIN paginas p ON i.id = p.id_imagem WHERE p.id = :id";
+        $query = "SELECT i.* FROM imagens i INNER JOIN paginas p ON i.id = p.id_imagem WHERE p.id_ong = (SELECT id FROM ongs WHERE id_usuario = :id)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
