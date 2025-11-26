@@ -11,15 +11,17 @@ AutenticacaoService::validarAcessoLogado(['Ong']);  ?>
 $ongModel = new OngModel();
 $doacaoModel = new DoacaoModel();
 
-$totalDoacoes = $doacaoModel->somarDoacoesRecebidasPorId($_SESSION['id']);
-$totalVoluntarios = $ongModel->contarQuantidadeDeVoluntariosOngs($_SESSION['id']);
-$totalDoadores = $doacaoModel->contarDoacoesOngs($_SESSION['id']);
+$idOng = $ongModel->buscarIdOngPorIdUsuario($_SESSION['id']);
+
+$totalDoacoes = $doacaoModel->somarDoacoesRecebidasPorId($idOng['id']);
+$totalVoluntarios = $ongModel->contarQuantidadeDeVoluntariosOngs($idOng['id']);
+$totalDoadores = $doacaoModel->contarDoacoesOngs($idOng['id']);
 
 if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pesquisar'])) {
     $hoje = date('Y-m-d');
 
     $doacoes = $ongModel->buscarDoacoes(
-        $_SESSION['id'],
+        $idOng['id'],
         $_GET['pesquisar'],
         $_GET['dt_inicio'],
         $_GET['dt_final'] ? $_GET['dt_final'] : $hoje
@@ -29,7 +31,7 @@ if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pes
     $limite = 10;
     $offset = ($paginaAtual - 1) * $limite;
 
-    $doacoes = $ongModel->buscarTodasDoacoesOng($_SESSION['id'], $limite, $offset);
+    $doacoes = $ongModel->buscarTodasDoacoesOng($idOng['id'], $limite, $offset);
     $quantidadeDePaginas = ceil($totalDoadores / 10);
 }
 ?>
@@ -74,16 +76,7 @@ if (!empty($_GET['dt_inicio']) || !empty($_GET['dt_final']) || !empty($_GET['pes
                             </div>
                         </div>
                     </div>
-                    <form action="../../../controller/RelatorioDoacoesOngController.php" method="GET">
-                        <div class="relatorio-ong-ong-options-4">
-                            <input type="hidden" value="<?=$idOng ?>" name="id">
-                            <a title="Baixar Relatório" class="relatorio-ong-default-icon-div" href="assets/images/Ong/relatorio.jpg" download>
-                                <button style="border: none; background-color: inherit; color: #D2A680" >
-                                <i id="relatorio-ong-yey-icon" class="fa-solid fa-download"></i>    
-                                Baixar Relatório</button>
-                            </a>
-                        </div>
-                    </form>
+                    <br>
                 </div>
                 <form class="filtro" method="GET">
                     <div class="bloco-datas">
